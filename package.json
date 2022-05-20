@@ -195,7 +195,7 @@
 		"watch": "yarn clean && npm-run-all --parallel watch:*",
 		"watch:ext": "webpack --mode development --watch --config ./webpack/extension.config.js",
 		"watch:webview": "webpack serve --mode development --config ./webpack/webview.config.js",
-		"package": "yarn clean && npm-run-all --parallel package:*",
+		"package": "yarn clean && yarn package:ext && yarn package:webview",
 		"package:ext": "webpack --mode production --config ./webpack/extension.config.js --devtool hidden-source-map",
 		"package:webview": "webpack --mode production --config ./webpack/webview.config.js",
 		"clean": "rimraf dist"

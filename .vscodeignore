@@ -14,3 +14,5 @@ vsc-extension-quickstart.md
 tailwind.config.js
 postcss.config.js
 webpack
+.github
+scripts

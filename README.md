@@ -1,5 +1,5 @@
 <h1 align="center">
-  <img alt="Viva Connections Toolkit" src="./assets/logo.svg" width="100px" />
+  <img alt="Viva Connections Toolkit" src="./assets/logo.png" width="100px" />
 </h1>
 
 # Viva Connections Toolkit for Visual Studio Code
