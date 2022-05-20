@@ -5,6 +5,7 @@
 	"version": "0.0.1",
 	"publisher": "pnp",
 	"preview": true,
+	"homepage": "https://github.com/pnp/m365-hosted-apps-vscode",
 	"icon": "assets/logo.png",
 	"engines": {
 		"vscode": "^1.65.0"
@@ -12,12 +13,25 @@
 	"categories": [
 		"Other"
 	],
-	"repository": {},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/pnp/m365-hosted-apps-vscode"
+	},
+	"bugs": {
+    "url": "https://github.com/pnp/m365-hosted-apps-vscode/issues"
+  },
+  "keywords": [
+    "SPFx",
+    "Viva",
+    "Viva-Connections",
+    "Microsoft365"
+  ],
 	"activationEvents": [
 		"workspaceContains:**/project.pnp",
 		"onAuthenticationRequest:m365-pnp-auth",
 		"onStartupFinished"
 	],
+  "license": "MIT",
 	"main": "./dist/extension.js",
 	"contributes": {
 		"viewsContainers": {

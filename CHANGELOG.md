@@ -1,10 +1,5 @@
 # Change Log
 
-## [2022-03-25]
+## [0.0.1] - 2022-05-20
 
-- Better command execution with output channel
-- Created the welcome panel
-
-## [2022-03-18]
-
-- Project scaffolding
+- First beta release
