@@ -25,4 +25,4 @@ jobs:
         run: node scripts/beta-release.js $GITHUB_RUN_ID
 
       - name: Publish
-        run: npx vsce publish -p ${{ secrets.VSCE_PAT }} --pre-release --yarn --baseImagesUrl https://github.com/pnp/m365-hosted-apps-vscode/blob/dev
+        run: npx vsce publish -p ${{ secrets.VSCE_PAT }} --pre-release --yarn --baseImagesUrl https://raw.githubusercontent.com/pnp/m365-hosted-apps-vscode/dev
