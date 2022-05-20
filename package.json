@@ -1,0 +1,231 @@
+{
+	"name": "viva.connections.toolkit",
+	"displayName": "Viva Connections Toolkit",
+	"description": "With the Viva Connections Toolkit extension, you can create and manage your Viva Connections solutions on your tenant. All actions you need to perform during the development flow are at your fingertips. ",
+	"version": "0.0.1",
+	"publisher": "pnp",
+	"icon": "assets/logo.png",
+	"engines": {
+		"vscode": "^1.65.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"repository": {},
+	"activationEvents": [
+		"workspaceContains:**/project.pnp",
+		"onAuthenticationRequest:m365-pnp-auth",
+		"onStartupFinished"
+	],
+	"main": "./dist/extension.js",
+	"contributes": {
+		"viewsContainers": {
+			"activitybar": [
+				{
+					"id": "pnp-view",
+					"title": "Viva Connections Toolkit",
+					"icon": "assets/logo-light.svg"
+				}
+			]
+		},
+		"views": {
+			"pnp-view": [
+				{
+					"id": "pnp-view-empty",
+					"name": "Viva Connections Toolkit",
+					"when": "pnp.project.showWelcome"
+				},
+				{
+					"id": "pnp-view-account",
+					"name": "Account",
+					"when": "pnp.project.isSPFxSolution"
+				},
+				{
+					"id": "pnp-view-environment",
+					"name": "Environment details",
+					"when": "pnp.project.isSPFxSolution && pnp.project.isLoggedIn"
+				},
+				{
+					"id": "pnp-view-tasks",
+					"name": "Tasks",
+					"when": "pnp.project.isSPFxSolution"
+				},
+				{
+					"id": "pnp-view-actions",
+					"name": "Actions",
+					"when": "pnp.project.isSPFxSolution"
+				},
+				{
+					"id": "pnp-view-help",
+					"name": "Help and feedback",
+					"when": "pnp.project.isSPFxSolution"
+				}
+			]
+		},
+		"viewsWelcome": [
+			{
+				"view": "pnp-view-empty",
+				"contents": "To start a new Viva Connections project, create it from one of our samples or create a new project.\n[Create a Viva Connections project](command:viva.connections.toolkit.createProject)\n[View samples](command:viva.connections.toolkit.showSampleGallery)\n\n\n\n\n\nYou can also open an existing app.\n[Open folder](command:vscode.openFolder)\n\n\n\n\n\nIf you want to make sure you are having the required dependencies, you can run our validation script.\n[Check dependencies](command:viva.connections.toolkit.checkDependencies)\n\n\n\n\n\nIf you want to install the dependencies, you can run our installation script.\n[Install dependencies](command:viva.connections.toolkit.installDependencies)"
+			}
+		],
+		"commands": [
+			{
+				"command": "viva.connections.toolkit.checkDependencies",
+				"title": "Check dependencies",
+				"category": "Viva Connections Toolkit"
+			},
+			{
+				"command": "viva.connections.toolkit.installDependencies",
+				"title": "Install dependencies",
+				"category": "Viva Connections Toolkit"
+			},
+			{
+				"command": "viva.connections.toolkit.createProject",
+				"title": "Create new project",
+				"category": "Viva Connections Toolkit"
+			},
+			{
+				"command": "viva.connections.toolkit.addToProject",
+				"title": "Add component to project",
+				"category": "Viva Connections Toolkit"
+			},
+			{
+				"command": "viva.connections.toolkit.executeTerminalCommand",
+				"title": "Execute terminal command",
+				"category": "Viva Connections Toolkit"
+			},
+			{
+				"command": "viva.connections.toolkit.upgradeSolution",
+				"title": "Upgrade solution to latest SPFx version",
+				"category": "Viva Connections Toolkit"
+			},
+			{
+				"command": "viva.connections.toolkit.deploySolution",
+				"title": "Viva Connections Toolkit: Deploy the solution"
+			},
+			{
+				"command": "viva.connections.toolkit.showSampleGallery",
+				"title": "Viva Connections Toolkit: Open the sample gallery"
+			},
+			{
+				"command": "viva.connections.toolkit.validateSolution",
+				"title": "Validate current solution",
+				"category": "Viva Connections Toolkit"
+			},
+			{
+				"command": "viva.connections.toolkit.login",
+				"title": "Sign in to M365",
+				"category": "Viva Connections Toolkit",
+				"icon": "$(sign-in)"
+			},
+			{
+				"command": "viva.connections.toolkit.logout",
+				"title": "Sign out from M365",
+				"category": "Viva Connections Toolkit",
+				"icon": "$(sign-out)"
+			}
+		],
+		"menus": {
+			"commandPalette": [
+				{
+					"command": "viva.connections.toolkit.executeTerminalCommand",
+					"when": "false"
+				},
+				{
+					"command": "viva.connections.toolkit.addToProject",
+					"when": "pnp.project.isSPFxSolution"
+				},
+				{
+					"command": "viva.connections.toolkit.upgradeSolution",
+					"when": "pnp.project.isSPFxSolution"
+				},
+				{
+					"command": "viva.connections.toolkit.validateSolution",
+					"when": "pnp.project.isSPFxSolution"
+				}
+			],
+			"view/item/context": [
+				{
+					"command": "viva.connections.toolkit.logout",
+					"when": "view == pnp-view-account && viewItem == m365Account",
+					"group": "inline@1"
+				}
+			],
+			"explorer/context": [
+				{
+					"command": "viva.connections.toolkit.deploySolution",
+					"group": "pnp.project@1",
+					"when": "resourceExtname == '.sppkg' && pnp.project.hasAppCatalog"
+				}
+			]
+		},
+		"languages": [
+			{
+				"id": "pnp.project.output",
+				"mimetypes": [
+					"text/x-code-output"
+				]
+			}
+		],
+		"grammars": [
+			{
+				"language": "pnp.project.output",
+				"scopeName": "pnp.project.output",
+				"path": "./syntaxes/pnp-output.tmLanguage.json"
+			}
+		]
+	},
+	"scripts": {
+		"vscode:prepublish": "yarn package",
+		"watch": "yarn clean && npm-run-all --parallel watch:*",
+		"watch:ext": "webpack --mode development --watch --config ./webpack/extension.config.js",
+		"watch:webview": "webpack serve --mode development --config ./webpack/webview.config.js",
+		"package": "yarn clean && npm-run-all --parallel package:*",
+		"package:ext": "webpack --mode production --config ./webpack/extension.config.js --devtool hidden-source-map",
+		"package:webview": "webpack --mode production --config ./webpack/webview.config.js",
+		"clean": "rimraf dist"
+	},
+	"devDependencies": {
+		"@estruyf/vscode": "0.0.3",
+		"@types/glob": "^7.2.0",
+		"@types/mocha": "^9.0.0",
+		"@types/node": "14.x",
+		"@types/react": "^18.0.8",
+		"@types/react-dom": "^18.0.3",
+		"@types/react-router-dom": "^5.3.3",
+		"@types/vscode": "^1.65.0",
+		"@typescript-eslint/eslint-plugin": "^5.9.1",
+		"@typescript-eslint/parser": "^5.9.1",
+		"@vscode/test-electron": "^2.0.3",
+		"@vscode/webview-ui-toolkit": "^1.0.0",
+		"autoprefixer": "^10.4.5",
+		"css-loader": "^6.7.1",
+		"date-fns": "^2.28.0",
+		"eslint": "^8.6.0",
+		"fast-glob": "^3.2.11",
+		"file-loader": "^6.2.0",
+		"github-directory-downloader": "^1.3.6",
+		"glob": "^7.2.0",
+		"mocha": "^9.1.3",
+		"npm": "^8.8.0",
+		"npm-run-all": "^4.1.5",
+		"path-browserify": "^1.0.1",
+		"postcss": "^8.4.12",
+		"postcss-loader": "^6.2.1",
+		"postcss-nested": "^5.0.6",
+		"react": "^18.1.0",
+		"react-dom": "^18.1.0",
+		"react-router-dom": "^6.3.0",
+		"rimraf": "^3.0.2",
+		"style-loader": "^3.3.1",
+		"tailwindcss": "^3.0.24",
+		"ts-loader": "^9.2.9",
+		"typescript": "^4.5.4",
+		"webpack": "^5.66.0",
+		"webpack-cli": "^4.9.1",
+		"webpack-dev-server": "^4.8.1"
+	},
+	"dependencies": {
+		"@pnp/cli-microsoft365": "^5.3.0-beta.b46b892"
+	}
+}

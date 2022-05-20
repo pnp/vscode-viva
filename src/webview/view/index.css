@@ -1,0 +1,38 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.sample__icon {
+  color: var(--vscode-textLink-foreground)
+}
+
+.sample_card {
+  background: var(--vscode-editorWidget-background);
+  border: 1px solid var(--vscode-editorWidget-border);
+
+  img {
+    border-bottom: 1px solid var(--vscode-editorWidget-border);
+  }
+}
+
+.sample_card__description {
+  height: 60px;
+  display: -webkit-box !important;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+.sample_card__actions svg {
+  @apply text-lg !important;
+}
+
+.sample_card__details {
+  color: var(--vscode-editorWidget-foreground);
+}
+
+.sample_card__author_avatar:nth-of-type(2), 
+.sample_card__author_avatar:nth-of-type(3), 
+.sample_card__author_avatar:nth-of-type(4), 
+.sample_card__author_avatar:nth-of-type(5) {
+  @apply -ml-3;
+}
