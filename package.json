@@ -1,5 +1,5 @@
 {
-	"name": "viva.connections.toolkit",
+	"name": "viva-connections-toolkit",
 	"displayName": "Viva Connections Toolkit",
 	"description": "With the Viva Connections Toolkit extension, you can create and manage your Viva Connections solutions on your tenant. All actions you need to perform during the development flow are at your fingertips. ",
 	"version": "0.0.1",
@@ -80,61 +80,61 @@
 		"viewsWelcome": [
 			{
 				"view": "pnp-view-empty",
-				"contents": "To start a new Viva Connections project, create it from one of our samples or create a new project.\n[Create a Viva Connections project](command:viva.connections.toolkit.createProject)\n[View samples](command:viva.connections.toolkit.showSampleGallery)\n\n\n\n\n\nYou can also open an existing app.\n[Open folder](command:vscode.openFolder)\n\n\n\n\n\nIf you want to make sure you are having the required dependencies, you can run our validation script.\n[Check dependencies](command:viva.connections.toolkit.checkDependencies)\n\n\n\n\n\nIf you want to install the dependencies, you can run our installation script.\n[Install dependencies](command:viva.connections.toolkit.installDependencies)"
+				"contents": "To start a new Viva Connections project, create it from one of our samples or create a new project.\n[Create a Viva Connections project](command:viva-connections-toolkit.createProject)\n[View samples](command:viva-connections-toolkit.showSampleGallery)\n\n\n\n\n\nYou can also open an existing app.\n[Open folder](command:vscode.openFolder)\n\n\n\n\n\nIf you want to make sure you are having the required dependencies, you can run our validation script.\n[Check dependencies](command:viva-connections-toolkit.checkDependencies)\n\n\n\n\n\nIf you want to install the dependencies, you can run our installation script.\n[Install dependencies](command:viva-connections-toolkit.installDependencies)"
 			}
 		],
 		"commands": [
 			{
-				"command": "viva.connections.toolkit.checkDependencies",
+				"command": "viva-connections-toolkit.checkDependencies",
 				"title": "Check dependencies",
 				"category": "Viva Connections Toolkit"
 			},
 			{
-				"command": "viva.connections.toolkit.installDependencies",
+				"command": "viva-connections-toolkit.installDependencies",
 				"title": "Install dependencies",
 				"category": "Viva Connections Toolkit"
 			},
 			{
-				"command": "viva.connections.toolkit.createProject",
+				"command": "viva-connections-toolkit.createProject",
 				"title": "Create new project",
 				"category": "Viva Connections Toolkit"
 			},
 			{
-				"command": "viva.connections.toolkit.addToProject",
+				"command": "viva-connections-toolkit.addToProject",
 				"title": "Add component to project",
 				"category": "Viva Connections Toolkit"
 			},
 			{
-				"command": "viva.connections.toolkit.executeTerminalCommand",
+				"command": "viva-connections-toolkit.executeTerminalCommand",
 				"title": "Execute terminal command",
 				"category": "Viva Connections Toolkit"
 			},
 			{
-				"command": "viva.connections.toolkit.upgradeSolution",
+				"command": "viva-connections-toolkit.upgradeSolution",
 				"title": "Upgrade solution to latest SPFx version",
 				"category": "Viva Connections Toolkit"
 			},
 			{
-				"command": "viva.connections.toolkit.deploySolution",
+				"command": "viva-connections-toolkit.deploySolution",
 				"title": "Viva Connections Toolkit: Deploy the solution"
 			},
 			{
-				"command": "viva.connections.toolkit.showSampleGallery",
+				"command": "viva-connections-toolkit.showSampleGallery",
 				"title": "Viva Connections Toolkit: Open the sample gallery"
 			},
 			{
-				"command": "viva.connections.toolkit.validateSolution",
+				"command": "viva-connections-toolkit.validateSolution",
 				"title": "Validate current solution",
 				"category": "Viva Connections Toolkit"
 			},
 			{
-				"command": "viva.connections.toolkit.login",
+				"command": "viva-connections-toolkit.login",
 				"title": "Sign in to M365",
 				"category": "Viva Connections Toolkit",
 				"icon": "$(sign-in)"
 			},
 			{
-				"command": "viva.connections.toolkit.logout",
+				"command": "viva-connections-toolkit.logout",
 				"title": "Sign out from M365",
 				"category": "Viva Connections Toolkit",
 				"icon": "$(sign-out)"
@@ -143,32 +143,32 @@
 		"menus": {
 			"commandPalette": [
 				{
-					"command": "viva.connections.toolkit.executeTerminalCommand",
+					"command": "viva-connections-toolkit.executeTerminalCommand",
 					"when": "false"
 				},
 				{
-					"command": "viva.connections.toolkit.addToProject",
+					"command": "viva-connections-toolkit.addToProject",
 					"when": "pnp.project.isSPFxSolution"
 				},
 				{
-					"command": "viva.connections.toolkit.upgradeSolution",
+					"command": "viva-connections-toolkit.upgradeSolution",
 					"when": "pnp.project.isSPFxSolution"
 				},
 				{
-					"command": "viva.connections.toolkit.validateSolution",
+					"command": "viva-connections-toolkit.validateSolution",
 					"when": "pnp.project.isSPFxSolution"
 				}
 			],
 			"view/item/context": [
 				{
-					"command": "viva.connections.toolkit.logout",
+					"command": "viva-connections-toolkit.logout",
 					"when": "view == pnp-view-account && viewItem == m365Account",
 					"group": "inline@1"
 				}
 			],
 			"explorer/context": [
 				{
-					"command": "viva.connections.toolkit.deploySolution",
+					"command": "viva-connections-toolkit.deploySolution",
 					"group": "pnp.project@1",
 					"when": "resourceExtname == '.sppkg' && pnp.project.hasAppCatalog"
 				}
