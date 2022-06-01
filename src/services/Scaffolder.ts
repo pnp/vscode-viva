@@ -520,9 +520,13 @@ export class Scaffolder {
     }
 
     const wsFolder = await Folders.getWorkspaceFolder();
-    const pattern = `**/${componentFolder}/${value}/*`;
-    const files = await glob([pattern], { caseSensitiveMatch: false, cwd: wsFolder?.uri.fsPath });
+    if (wsFolder) {
+      const pattern = `**/${componentFolder}/${value}/*`;
+      const files = await glob([pattern], { caseSensitiveMatch: false, cwd: wsFolder?.uri.fsPath });
+  
+      return files.length > 0;
+    }
 
-    return files.length > 0;
+    return false;
   }
 }
