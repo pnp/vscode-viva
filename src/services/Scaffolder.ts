@@ -1,3 +1,4 @@
+import { parseWinPath } from './../utils/parseWinPath';
 import { Executer } from './CommandExecuter';
 import { Folders } from './Folders';
 import { Notifications } from './Notifications';
@@ -148,7 +149,7 @@ export class Scaffolder {
    */
   private static async createProjectFileAndOpen(folderPath: string, content: any) {
     writeFileSync(join(folderPath, PROJECT_FILE), content, { encoding: 'utf8' });
-    await commands.executeCommand(`vscode.openFolder`, Uri.parse(folderPath));
+    await commands.executeCommand(`vscode.openFolder`, Uri.parse(parseWinPath(folderPath)));
   }
 
   /**
