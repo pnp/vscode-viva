@@ -1,9 +1,9 @@
-import * as os from "os";
 import { commands, ThemeIcon, workspace } from "vscode";
 import { Commands } from "../constants";
 import { Subscription } from "../models";
 import { window } from "vscode";
 import { Extension } from "./Extension";
+import { getPlatform } from "../utils";
 
 interface ShellSetting {
   path: string;
@@ -38,7 +38,7 @@ export class Terminal {
    * @returns 
    */
   private static getShellPath(): string | ShellSetting | undefined {
-    const platform = Terminal.getPlatform();
+    const platform = getPlatform();
     const terminalSettings = workspace.getConfiguration("terminal");
 
     const automationProfile = terminalSettings.get<string | ShellSetting>(`integrated.automationProfile.${platform}`);
@@ -54,21 +54,6 @@ export class Terminal {
     }
     
     return terminalSettings.get(`integrated.shell.${platform}`);
-  }
-
-  /**
-   * Get the platform name
-   * @returns 
-   */
-  private static getPlatform(): "windows" | "linux" | "osx" {
-    const platform = os.platform();
-    if (platform === "win32") {
-      return "windows";
-    } else if (platform === "darwin") {
-      return "osx";
-    } else {
-      return "linux";
-    }
   }
 
   private static registerCommands(subscriptions: Subscription[]) {
