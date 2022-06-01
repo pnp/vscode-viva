@@ -13,6 +13,7 @@ import { ExtensionTypes } from '../constants/ExtensionTypes';
 import { Extension } from './Extension';
 import download from "github-directory-downloader/esm";
 import { CliExecuter } from './CliCommandExecuter';
+import { getPlatform } from '../utils';
 
 export const PROJECT_FILE = 'project.pnp';
 
@@ -149,7 +150,12 @@ export class Scaffolder {
    */
   private static async createProjectFileAndOpen(folderPath: string, content: any) {
     writeFileSync(join(folderPath, PROJECT_FILE), content, { encoding: 'utf8' });
-    await commands.executeCommand(`vscode.openFolder`, Uri.parse(parseWinPath(folderPath)));
+
+    if (getPlatform() === "windows") {
+      await commands.executeCommand(`vscode.openFolder`, Uri.file(parseWinPath(folderPath)));
+    } else {
+      await commands.executeCommand(`vscode.openFolder`, Uri.parse(folderPath));
+    }
   }
 
   /**
