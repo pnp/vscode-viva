@@ -1,3 +1,4 @@
+import { ServeConfig } from './../models/ServeConfig';
 import { readFileSync } from 'fs';
 import { Folders } from './Folders';
 import { commands, Progress, ProgressLocation, Range, Uri, window, workspace } from "vscode";
@@ -25,6 +26,9 @@ export class CliActions {
     );
     subscriptions.push(
       commands.registerCommand(Commands.validateSolution, CliActions.validateSolution)
+    );
+    subscriptions.push(
+      commands.registerCommand(Commands.serveSolution, CliActions.serveSolution)
     );
   }
 
@@ -192,5 +196,37 @@ export class CliActions {
         Notifications.error(message);
       }
     });
+  }
+
+  /**
+   * Serve the solution
+   */
+  public static async serveSolution() {
+    const wsFolder = Folders.getWorkspaceFolder();
+    if (!wsFolder) {
+      return;
+    }
+
+    const serveFiles = await workspace.findFiles("config/serve.json", "**/node_modules/**");
+    let serveFile = serveFiles && serveFiles.length > 0 ? serveFiles[0] : null;
+
+    if (!serveFile) {
+      return;
+    }
+
+    const serveFileContents = readFileSync(serveFile.fsPath, "utf8");
+    const serveFileData: ServeConfig = JSON.parse(serveFileContents);
+    const configNames = Object.keys(serveFileData.serveConfigurations);
+
+    const answer = await window.showQuickPick(configNames, {
+      title: "Select the configuration to serve",
+      ignoreFocusOut: true
+    });
+
+    if (!answer) {
+      return;
+    }
+
+    commands.executeCommand(Commands.executeTerminalCommand, `gulp serve --config=${answer}`);
   }
 }

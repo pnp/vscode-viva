@@ -130,8 +130,11 @@ export class CommandPanel {
       new ActionTreeItem("Bundle project (production)", "", { name: "debug-start", custom: false }, undefined, Commands.executeTerminalCommand, `gulp bundle --ship`),
       new ActionTreeItem("Package (local)", "", { name: "debug-start", custom: false }, undefined, Commands.executeTerminalCommand, `gulp package-solution`),
       new ActionTreeItem("Package (production)", "", { name: "debug-start", custom: false }, undefined, Commands.executeTerminalCommand, `gulp package-solution --ship`),
-      new ActionTreeItem("Serve", "", { name: "debug-start", custom: false }, undefined, Commands.executeTerminalCommand, `gulp serve --nobrowser`),
+      new ActionTreeItem("Serve", "", { name: "debug-start", custom: false }, undefined, Commands.executeTerminalCommand, `gulp serve`),
+      new ActionTreeItem("Serve (nobrowser)", "", { name: "debug-start", custom: false }, undefined, Commands.executeTerminalCommand, `gulp serve --nobrowser`),
+      new ActionTreeItem("Serve from configuration", "", { name: "debug-start", custom: false }, undefined, Commands.serveSolution),
     ];
+
     window.registerTreeDataProvider('pnp-view-tasks', new ActionTreeviewProvider(taskCommands));
   }
 
