@@ -50,7 +50,7 @@ export class Scaffolder {
       return;
     }
 
-    const solutionName = await Scaffolder.getSolutionName();
+    const solutionName = await Scaffolder.getSolutionName(folderPath);
     if (!solutionName) {
       Logger.warning(`Cancelled solution name input`);
       return;
@@ -104,7 +104,7 @@ export class Scaffolder {
       return;
     }
 
-    const solutionName = await Scaffolder.getSolutionName();
+    const solutionName = await Scaffolder.getSolutionName(folderPath);
     if (!solutionName) {
       Logger.warning(`Cancelled solution name input`);
       return;
@@ -162,7 +162,7 @@ export class Scaffolder {
    * Get the name of the solution to create
    * @returns 
    */
-  private static async getSolutionName(): Promise<string | undefined> {
+  private static async getSolutionName(folderPath: string): Promise<string | undefined> {
     return await window.showInputBox({
       title: 'What is your solution name?',
       placeHolder: 'Enter your solution name',
@@ -171,6 +171,12 @@ export class Scaffolder {
         if (!value) {
           return 'Solution name is required';
         }
+
+        const solutionPath = join(folderPath, value);
+        if (existsSync(solutionPath)) {
+          return `Folder with "${value}" already exists`;
+        }
+
         return undefined;
       }
     });
