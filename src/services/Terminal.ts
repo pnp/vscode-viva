@@ -77,8 +77,8 @@ export class Terminal {
     }
 
     if (terminal) {
-      terminal.sendText(command);
       terminal.show(true);
+      terminal.sendText(command);
     }
   }
 }

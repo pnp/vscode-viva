@@ -19,6 +19,9 @@ export class PnPWebview {
     subscriptions.push(
       commands.registerCommand(Commands.showSampleGallery, () => PnPWebview.open(WebviewType.SampleGallery))
     );
+    subscriptions.push(
+      commands.registerCommand(Commands.showScenariosGallery, () => PnPWebview.open(WebviewType.ScenarioGallery))
+    );
   }
 
   /**
@@ -88,14 +91,14 @@ export class PnPWebview {
 
     // Listen to the messages from the webview
     PnPWebview.webview.webview.onDidReceiveMessage(async (msg) => {
-      const { command, data } = msg;
+      const { command, payload } = msg;
 
       switch (command) {
         case WebviewCommand.toVSCode.logError:
-          Logger.error(data);
+          Logger.error(payload);
           break;
         case WebviewCommand.toVSCode.useSample:
-          Scaffolder.useSample(data);
+          Scaffolder.useSample(payload);
           break;
       }
     });
@@ -114,6 +117,9 @@ export class PnPWebview {
     switch (type) {
       case WebviewType.SampleGallery:
         PnPWebview.webview.title = 'Sample Gallery';
+        break;
+      case WebviewType.ScenarioGallery:
+        PnPWebview.webview.title = 'Scenario Gallery';
         break;
     }
   }
@@ -176,8 +182,8 @@ export class PnPWebview {
     ];
 
     // Provide additional data attributes for the webview
-    dataAttr[version] = version;
-    dataAttr[type] = type;
+    dataAttr["version"] = version;
+    dataAttr["type"] = type;
 
     const dataAttributes = Object.keys(dataAttr).map(key => `data-${key}="${dataAttr[key]}"`).join(' ');
     

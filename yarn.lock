@@ -141,10 +141,10 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
-"@estruyf/vscode@0.0.3":
-  version "0.0.3"
-  resolved "https://registry.yarnpkg.com/@estruyf/vscode/-/vscode-0.0.3.tgz#a3ae2c9bc1d44aa838e1ee22b9469e3011b8edb1"
-  integrity sha512-Mak13ZHj/TcyL0snPHsrqELlhpvV1JszZFScCcm1G2dp6UdP4dSk32MlNH5FusGhTIEOI6APE8krldMcZjS/3w==
+"@estruyf/vscode@1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@estruyf/vscode/-/vscode-1.0.0.tgz#5164d4cd24ac98e15aa34b8136c23c5b07515e2b"
+  integrity sha512-d8MWUuLMGcDLCL47z3/KVlHwzZ9m8fG91zZZ+9ipVaH2XgVlsh8CefgyD28jO9ox+uBRO/M+/v12I3sQm6s54g==
   dependencies:
     "@types/vscode-webview" "1.57.0"
 

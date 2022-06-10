@@ -31,6 +31,9 @@
 		"onAuthenticationRequest:m365-pnp-auth",
 		"onStartupFinished"
 	],
+	"extensionDependencies": [
+		"vsls-contrib.codetour"
+	],
 	"license": "MIT",
 	"main": "./dist/extension.js",
 	"contributes": {
@@ -80,7 +83,7 @@
 		"viewsWelcome": [
 			{
 				"view": "pnp-view-empty",
-				"contents": "To start a new Viva Connections project, create it from one of our samples or create a new project.\n[Create a Viva Connections project](command:viva-connections-toolkit.createProject)\n[View samples](command:viva-connections-toolkit.showSampleGallery)\n\n\n\n\n\nYou can also open an existing app.\n[Open folder](command:vscode.openFolder)\n\n\n\n\n\nIf you want to make sure you are having the required dependencies, you can run our validation script.\n[Check dependencies](command:viva-connections-toolkit.checkDependencies)\n\n\n\n\n\nIf you want to install the dependencies, you can run our installation script.\n[Install dependencies](command:viva-connections-toolkit.installDependencies)"
+				"contents": "To start a new Viva Connections project, create it from one of our samples or create a new project.\n[Create a Viva Connections project](command:viva-connections-toolkit.createProject)\n[Create from a scenario](command:viva-connections-toolkit.showScenariosGallery)\n[View samples](command:viva-connections-toolkit.showSampleGallery)\n\n\n\n\n\nYou can also open an existing app.\n[Open folder](command:vscode.openFolder)\n\n\n\n\n\nIf you want to make sure you are having the required dependencies, you can run our validation script.\n[Check dependencies](command:viva-connections-toolkit.checkDependencies)\n\n\n\n\n\nIf you want to install the dependencies, you can run our installation script.\n[Install dependencies](command:viva-connections-toolkit.installDependencies)"
 			}
 		],
 		"commands": [
@@ -121,6 +124,10 @@
 			{
 				"command": "viva-connections-toolkit.showSampleGallery",
 				"title": "Viva Connections Toolkit: Open the sample gallery"
+			},
+			{
+				"command": "viva-connections-toolkit.showScenariosGallery",
+				"title": "Viva Connections Toolkit: Open the scenario gallery"
 			},
 			{
 				"command": "viva-connections-toolkit.validateSolution",
@@ -202,7 +209,7 @@
 	},
 	"devDependencies": {
 		"@actions/core": "^1.8.2",
-		"@estruyf/vscode": "0.0.3",
+		"@estruyf/vscode": "1.0.0",
 		"@types/glob": "^7.2.0",
 		"@types/mocha": "^9.0.0",
 		"@types/node": "14.x",

@@ -4,7 +4,7 @@ import { Folders } from './Folders';
 import { Notifications } from './Notifications';
 import { Logger } from "./Logger";
 import { commands, ProgressLocation, QuickPickItem, Uri, window } from 'vscode';
-import { AdaptiveCardTypes, Commands, ComponentType, ComponentTypes, FrameworkTypes } from '../constants';
+import { AdaptiveCardTypes, Commands, ComponentType, ComponentTypes, FrameworkTypes, ProjectFileContent } from '../constants';
 import { Sample, Subscription } from '../models';
 import { join } from 'path';
 import { existsSync, mkdirSync, writeFileSync } from 'fs';
@@ -139,7 +139,9 @@ export class Scaffolder {
         return;
       }
 
-      Scaffolder.createProjectFileAndOpen(solutionPath, 'init');
+      const isScenario = sample.url.includes('/scenarios/');
+
+      Scaffolder.createProjectFileAndOpen(solutionPath, isScenario ? ProjectFileContent.initScenario : ProjectFileContent.init);
     });
   }
 
