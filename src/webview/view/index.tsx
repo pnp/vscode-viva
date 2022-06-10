@@ -1,8 +1,19 @@
 import * as React from "react";
 import { createRoot } from 'react-dom/client';
+import { MemoryRouter } from "react-router-dom";
 import { WebviewType } from "../WebviewType";
 import { App } from "./components/App";
 import "./index.css";
+
+export const paths: { [pathName: string ]: string } = {
+  sample: "/sample-gallery",
+  scenario: "/scenario-gallery"
+}
+
+export const routeEntries: { [routeKey: string]: string } = {
+  [WebviewType.SampleGallery]: paths.sample,
+  [WebviewType.ScenarioGallery]: paths.scenario,
+};
 
 const elm = document.querySelector('#root');
 if (elm) {
@@ -11,7 +22,15 @@ if (elm) {
   const version = elm.getAttribute('data-version');
   const type = elm.getAttribute('data-type');
 
-  root.render(<App version={version} type={type as WebviewType | null} />);
+  const routeEntry = Object.keys(routeEntries).findIndex(key => key === type);
+
+  root.render(
+    <MemoryRouter 
+      initialEntries={Object.keys(routeEntries).map(key => routeEntries[key] as string) as string[]}
+      initialIndex={routeEntry || 0}>
+      <App version={version} type={type as WebviewType | null} />
+    </MemoryRouter>
+  );
 }
 
 // Webpack HMR

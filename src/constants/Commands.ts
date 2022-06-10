@@ -31,6 +31,7 @@ export const Commands = {
 
   // Webviews
   showSampleGallery: `${EXTENSION_NAME}.showSampleGallery`,
+  showScenariosGallery: `${EXTENSION_NAME}.showScenariosGallery`,
 
   // Serving
   serveSolution: `${EXTENSION_NAME}.serveSolution`,
