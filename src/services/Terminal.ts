@@ -66,7 +66,7 @@ export class Terminal {
     Terminal.runInTerminal(command, 'Gulp task', 'tasks-list-configure');
   }
 
-  public static runInTerminal(command: string, name?: string, icon?: string) {
+  public static async runInTerminal(command: string, name?: string, icon?: string) {
     let terminal = window.terminals.find(t => t.name === name);
 
     if (!terminal) {
@@ -74,6 +74,12 @@ export class Terminal {
         name: name ? name : undefined,
         iconPath: icon ? new ThemeIcon(icon) : undefined
       });
+
+      // Check if nvm is used
+      const nvmFiles = await workspace.findFiles('.nvmrc', '**/node_modules/**');
+      if (nvmFiles.length > 0) {
+        terminal.sendText(`nvm use`);
+      }
     }
 
     if (terminal) {
