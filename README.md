@@ -26,11 +26,13 @@ The extension automatically detects if you are in an M365 Hostes Apps project. I
 
 To ensure that you can create Viva Connections Toolkit, you can use the **check dependencies** functionality. This action will check if you have the required dependencies to create a new hosted app.
 
-- Node version: 12 or 14
+- Node version: 12, 14, or 16
 - NPM dependencies:
   - gulp
   - yo
   - @microsoft/generator-sharepoint
+
+> **Info**: This list is based on the [set up your development environment recommendations](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-development-environment)
 
 ### Installing the dependencies
 
