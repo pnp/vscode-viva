@@ -7,7 +7,7 @@ import { NpmLs, Subscription } from '../models';
 import { Terminal } from './Terminal';
 import { Extension } from './Extension';
 
-const SUPPORTED_VERSIONS = ["12", "14"];
+const SUPPORTED_VERSIONS = ["12", "14", "16"];
 const DEPENDENCIES = ["gulp-cli", "yo", "@microsoft/generator-sharepoint"];
 
 export class Dependencies {
