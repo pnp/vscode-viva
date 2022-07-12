@@ -1,4 +1,4 @@
-> ### **Important**: The extension is currently in preview. If you find issues, please report them to the [issue list](https://github.com/pnp/m365-hosted-apps-vscode/issues).
+> ### Important: The extension is currently in preview. If you find issues, please report them to the [issue list](https://github.com/pnp/m365-hosted-apps-vscode/issues).
 
 <br />
 
