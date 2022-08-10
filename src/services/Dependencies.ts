@@ -34,46 +34,52 @@ export class Dependencies {
     }, async (progress) => {
       return new Promise((resolve) => {
         setTimeout(() => {
-          progress.report({ message: 'Checking node version...' });
+          try {
+            progress.report({ message: 'Checking node version...' });
 
-          // Validate node
-          const isNodeValid = Dependencies.isValidNodeJs();
-          if (!isNodeValid) {
-            Notifications.warning(`Your Node.js version is not supported. Make sure you are using one of the following Node.js versions: ${SUPPORTED_VERSIONS.join(', ')}.`);
-            resolve(null);
-            return;
-          }
-
-          progress.report({ message: 'Checking npm dependencies...' });
-
-          const command = `npm ls -g ${DEPENDENCIES.join(' ')} --json`;
-          const result = execSync(command, { shell: Terminal.shell });
-
-          if (!result) {
-            Notifications.error(`Failed checking dependencies`);
-          }
-
-          // Check for missing dependencies
-          const npmLs: NpmLs = JSON.parse(result.toString());
-          const missingDependencies = [];
-          for (const dependency of DEPENDENCIES) {
-            const dependencyResult = npmLs.dependencies[dependency];
-            if (!dependencyResult) {
-              missingDependencies.push(dependency);
+            // Validate node
+            const isNodeValid = Dependencies.isValidNodeJs();
+            if (!isNodeValid) {
+              Notifications.warning(`Your Node.js version is not supported. Make sure you are using one of the following Node.js versions: ${SUPPORTED_VERSIONS.join(', ')}.`);
+              resolve(null);
+              return;
             }
-          }
 
-          if (missingDependencies.length > 0) {
-            const installItem = 'Install dependencies';
-            Notifications.warning(`Missing dependencies: ${missingDependencies.join(', ')}`, installItem).then((item) => {
-              if (item === installItem) {
-                commands.executeCommand(Commands.installDependencies);
+            progress.report({ message: 'Checking npm dependencies...' });
+
+            const command = `npm list -g --json --silent`;
+            const result = execSync(command, { shell: Terminal.shell, timeout: 15000 });
+
+            if (!result) {
+              Notifications.error(`Failed checking dependencies`);
+            }
+
+            // Check for missing dependencies
+            const npmLs: NpmLs = JSON.parse(result.toString());
+            const missingDependencies = [];
+            for (const dependency of DEPENDENCIES) {
+              const dependencyResult = npmLs.dependencies[dependency];
+              if (!dependencyResult) {
+                missingDependencies.push(dependency);
               }
-            })
-          } else {
-            Notifications.info('You have all dependencies installed and ready to go!');
+            }
+
+            if (missingDependencies.length > 0) {
+              const installItem = 'Install dependencies';
+              Notifications.warning(`Missing dependencies: ${missingDependencies.join(', ')}`, installItem).then((item) => {
+                if (item === installItem) {
+                  commands.executeCommand(Commands.installDependencies);
+                }
+              })
+            } else {
+              Notifications.info('You have all dependencies installed and ready to go!');
+            }
+            resolve(null);
+          } catch (e) {
+            Notifications.error(`Failed checking dependencies`);
+            Logger.error(`${(e as Error).message}`);
+            resolve(null);
           }
-          resolve(null);
         }, 0);
       });
     });
@@ -103,6 +109,9 @@ export class Dependencies {
       const match = /v(?<major_version>\d+)\.(?<minor_version>\d+)\.(?<patch_version>\d+)/gm.exec(output.toString());
 
       Logger.info(`Node.js version: ${output}`);
+
+      const npmOutput = execSync(`npm --version`, { shell: Terminal.shell });
+      Logger.info(`npm version: ${npmOutput}`);
 
       if (!match) return false;
       

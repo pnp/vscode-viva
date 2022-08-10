@@ -2,6 +2,7 @@ export interface ServeConfig {
   '$schema': string;
   port: number;
   https: boolean;
+  initialPage?: string;
   serveConfigurations: ServeConfigurations;
 }
 

@@ -92,10 +92,24 @@ export class DebuggerCheck {
 
       content = typeof content === "string" ? JSON.parse(content) as ServeConfig : content;
 
+
+
+      if (content.initialPage?.toLowerCase().startsWith(this.servePlaceholderUrl.toLowerCase()) || 
+          content.initialPage?.toLowerCase().startsWith(this.launchPlaceholderUrl.toLowerCase())) {
+        const answer = await Notifications.info(`The serve config "initialPage", uses the placeholder URL. Do you want to update it with the ${url}?`, "yes", "no");
+
+        if (answer === "yes") {
+          const newUrl = url.endsWith('/') ? url.substring(0, url.length - 1) : url;
+          content.initialPage = `${newUrl}/_layouts/workbench.aspx`;
+          needsUpdate = true;
+        }
+      }
+
       for (const configKey in content.serveConfigurations) {
         const config = content.serveConfigurations[configKey];
 
-        if (config.pageUrl.toLowerCase().startsWith(this.servePlaceholderUrl.toLowerCase())) {
+        if (config.pageUrl.toLowerCase().startsWith(this.servePlaceholderUrl.toLowerCase()) || 
+            config.pageUrl.toLowerCase().startsWith(this.launchPlaceholderUrl.toLowerCase())) {
           const answer = await Notifications.info(`The serve config "${configKey}", uses the placeholder URL. Do you want to update it with the ${url}?`, "yes", "no");
 
           if (answer === "yes") {
