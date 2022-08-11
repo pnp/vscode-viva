@@ -7,7 +7,7 @@ import { NpmLs, Subscription } from '../models';
 import { Terminal } from './Terminal';
 import { Extension } from './Extension';
 
-const SUPPORTED_VERSIONS = ["12", "14", "16"];
+const SUPPORTED_VERSIONS = ["12", "14", "16.13"];
 const DEPENDENCIES = ["gulp-cli", "yo", "@microsoft/generator-sharepoint"];
 
 export class Dependencies {
@@ -117,7 +117,21 @@ export class Dependencies {
       
       let groups;
       const majorVersion = null === (groups = match.groups) || void 0 === groups ? void 0 : groups.major_version;
-      return !!majorVersion && SUPPORTED_VERSIONS.includes(majorVersion);
+      const minorVersion = null === (groups = match.groups) || void 0 === groups ? void 0 : groups.minor_version;
+
+      const supported = SUPPORTED_VERSIONS.find((version) => {
+        const versionParts = version.split('.');
+        const major = versionParts[0];
+        const minor = versionParts[1];
+
+        if (minor && minorVersion) {
+          return majorVersion === major && minorVersion >= minor;
+        }
+
+        return majorVersion === major;
+      });
+
+      return !!supported;
     } catch(e) {
       Logger.error(`Failed checking node version: ${(e as Error).message}`);
       return false;
