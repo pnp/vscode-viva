@@ -1,4 +1,4 @@
-import * as cp from 'child_process';
+import { ChildProcess, spawn, SpawnOptions } from 'child_process';
 import * as os from 'os';
 import { CommandResult } from '../models';
 import { Logger } from './Logger';
@@ -34,11 +34,11 @@ export class Executer {
       const outputChannel = Logger.channel;
 
       workingDirectory = workingDirectory || os.tmpdir();
-      const options: cp.SpawnOptions = {
-          cwd: workingDirectory,
-          shell: Terminal.shell
+      const options: SpawnOptions = {
+        cwd: workingDirectory,
+        shell: true
       };
-      const childProc: cp.ChildProcess = cp.spawn(command, args, options);
+      const childProc: ChildProcess = spawn(command, args, options);
 
       Logger.info(`Running command: ${command} ${formattedArgs}`);
 
@@ -59,7 +59,10 @@ export class Executer {
         }
       });
 
-      childProc.on('error', reject);
+      childProc.on('error', (e) => {
+        reject(e);
+      });
+
       childProc.on('close', (code: number) => {
         resolve({
           code,
