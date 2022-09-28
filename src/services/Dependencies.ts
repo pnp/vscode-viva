@@ -7,7 +7,7 @@ import { NpmLs, Subscription } from '../models';
 import { Terminal } from './Terminal';
 import { Extension } from './Extension';
 
-const SUPPORTED_VERSIONS = ["12", "14", "16.13"];
+const SUPPORTED_VERSIONS = ["16.13"];
 const DEPENDENCIES = ["gulp-cli", "yo", "@microsoft/generator-sharepoint"];
 
 export class Dependencies {
@@ -40,7 +40,7 @@ export class Dependencies {
             // Validate node
             const isNodeValid = Dependencies.isValidNodeJs();
             if (!isNodeValid) {
-              Notifications.warning(`Your Node.js version is not supported. Make sure you are using one of the following Node.js versions: ${SUPPORTED_VERSIONS.join(', ')}.`);
+              Notifications.warning(`Your Node.js version is not supported. Make sure you are using version: >=${SUPPORTED_VERSIONS.join(', ')}.`);
               resolve(null);
               return;
             }
