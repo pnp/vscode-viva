@@ -5,7 +5,7 @@
 	"version": "0.0.1",
 	"publisher": "m365pnp",
 	"preview": true,
-	"homepage": "https://github.com/pnp/m365-hosted-apps-vscode",
+	"homepage": "https://github.com/pnp/vscode-viva",
 	"icon": "assets/logo.png",
 	"engines": {
 		"vscode": "^1.65.0"
@@ -15,10 +15,10 @@
 	],
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/pnp/m365-hosted-apps-vscode"
+		"url": "https://github.com/pnp/vscode-viva"
 	},
 	"bugs": {
-		"url": "https://github.com/pnp/m365-hosted-apps-vscode/issues"
+		"url": "https://github.com/pnp/vscode-viva/issues"
 	},
 	"keywords": [
 		"SPFx",
