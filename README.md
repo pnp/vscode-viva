@@ -68,7 +68,7 @@ This project welcomes contributions and suggestions. Most contributions require 
 
 When you submit a pull request, a CLA-bot will automatically determine whether you need to provide a CLA and decorate the PR appropriately (e.g., label, comment). Simply follow the instructions provided by the bot. You will only need to do this once across all repos using our CLA.
 
-If you have ideas for new features or feedback, let us know by creating an issue in the [issues list](https://github.com/pnp/m365-hosted-apps-vscode/issues). Before you submit a PR with your improvements, please review our [contributing guide](./contributing.md).
+If you have ideas for new features or feedback, let us know by creating an issue in the [issues list](https://github.com/pnp/vscode-viva/issues). Before you submit a PR with your improvements, please review our [contributing guide](./contributing.md).
 
 ## Code of Conduct
 
