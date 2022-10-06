@@ -26,7 +26,7 @@ The extension automatically detects if you are in an M365 Hostes Apps project. I
 
 To ensure that you can create Viva Connections Toolkit, you can use the **check dependencies** functionality. This action will check if you have the required dependencies to create a new hosted app.
 
-- Node version: 12, 14, or 16
+- Node version: 16
 - NPM dependencies:
   - gulp
   - yo
