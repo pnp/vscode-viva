@@ -1,4 +1,4 @@
-> ### Important: The extension is currently in preview. If you find issues, please report them to the [issue list](https://github.com/pnp/m365-hosted-apps-vscode/issues).
+> ### Important: The extension is currently in preview. If you find issues, please report them to the [issue list](https://github.com/pnp/vscode-viva/issues).
 
 <br />
 
@@ -16,15 +16,15 @@ With the Viva Connections Toolkit extension, you can create and manage your Viva
 
 The extension provides the following capabilities:
 
-### Create a new M365 hosted app
+### Create a new Viva Connections app
 
-The extension automatically detects if you are in an M365 Hostes Apps project. If not, it will show helpful actions to allow you to create a new hosted app.
+The extension automatically detects if you are in an Viva Connections project (SharePoint Framework project). If not, it will show helpful actions to allow you to create a new Viva Connections app.
 
 ![Welcome experience](./assets/images/welcome-experience.png)
 
 ### Check the dependencies
 
-To ensure that you can create Viva Connections Toolkit, you can use the **check dependencies** functionality. This action will check if you have the required dependencies to create a new hosted app.
+To ensure that you can create Viva Connections Toolkit, you can use the **check dependencies** functionality. This action will check if you have the required dependencies to create a new Viva Connections app.
 
 - Node version: 16
 - NPM dependencies:
@@ -48,7 +48,7 @@ Creating a new project was never easier. Just use the **create a Viva Connection
 
 ### Project actions
 
-When you open an M365 Hosted App project, you will be able to perform the following actions:
+When you open a Viva Connections app project (SharePoint Framework solution), you will be able to perform the following actions:
 
 - Sign in and out to your tenant
 - Run gulp tasks
