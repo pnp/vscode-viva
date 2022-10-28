@@ -134,12 +134,12 @@ export class AuthProvider implements AuthenticationProvider, Disposable {
             return "";
           },
           stderr: (message: string) => {
+            Logger.error(`M365 CLI - login: ${message}`);
             return message;
           }
         });
 
         if (result.stderr) {
-          Logger.error(`M365 CLI - login: ${result.stderr}`);
           resolve(undefined as any);
           return;
         }
