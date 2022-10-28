@@ -198,11 +198,11 @@
 		]
 	},
 	"scripts": {
-		"vscode:prepublish": "yarn package",
-		"watch": "yarn clean && npm-run-all --parallel watch:*",
+		"vscode:prepublish": "npm run package",
+		"watch": "npm run clean && npm-run-all --parallel watch:*",
 		"watch:ext": "webpack --mode development --watch --config ./webpack/extension.config.js",
 		"watch:webview": "webpack serve --mode development --config ./webpack/webview.config.js",
-		"package": "yarn clean && yarn package:ext && yarn package:webview",
+		"package": "npm run clean && npm run package:ext && npm run package:webview",
 		"package:ext": "webpack --mode production --config ./webpack/extension.config.js --devtool hidden-source-map",
 		"package:webview": "webpack --mode production --config ./webpack/webview.config.js",
 		"clean": "rimraf dist"
