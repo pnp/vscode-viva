@@ -8,10 +8,16 @@
 
 # Viva Connections Toolkit for Visual Studio Code
 
-With the Viva Connections Toolkit extension, you can create and manage your Viva Connections solutions on your tenant. All actions you need to perform during the development flow are at your fingertips. 
+With the Viva Connections Toolkit extension, you can create and manage your Viva Connections solutions in your tenant. All actions you need to perform during the development flow are at your fingertips.
 
 ![Sample Gallery](./assets/images/sample-gallery.png)
 
+## Architecture
+
+Viva Connections Toolkit for Viva Studio Code is an abstraction layer on top of the [SPFx](https://aka.ms/spfx) Yeoman generator and [CLI for Microsoft 365](https://pnp.github.io/cli-microsoft365/). All operations and actions are performed on the command line level using these two tools with the environment settings on your computer.
+
+This means that the features and capabilities provided through this tool are avaialble for any solution which has been build with SPFx.
+ 
 ## Capabilities
 
 The extension provides the following capabilities:
@@ -42,6 +48,10 @@ In case when you do not have all dependencies installed, you can use the **insta
 
 From our sample gallery, you can quickly get started with one of the Viva Connections Toolkit that were created by the community.
 
+### Start from a scenario
+
+Start your solution creation based on the provided set of scenarios with ready to use code to showcase what's possible. Scenario solutions are provided with detailed guidance using the [Code Tour](https://aka.ms/codetour) to provide you more details on the structure and options.
+
 ### Create a new project
 
 Creating a new project was never easier. Just use the **create a Viva Connections project** action, and the extension will guide you through the process.
@@ -62,6 +72,8 @@ When you open a Viva Connections app project (SharePoint Framework solution), yo
   <img alt="Add new component" src="./assets/images/new-component.png" />
 </p>
 
+These options are available for any SPFx solution regardless if it was created using the Viva Toolkit or not.
+
 ## Contributing
 
 This project welcomes contributions and suggestions. Most contributions require you to agree to a Contributor License Agreement (CLA) declaring that you have the right to grant us the right to use your contribution. For details, visit https://cla.microsoft.com.
@@ -69,6 +81,10 @@ This project welcomes contributions and suggestions. Most contributions require 
 When you submit a pull request, a CLA-bot will automatically determine whether you need to provide a CLA and decorate the PR appropriately (e.g., label, comment). Simply follow the instructions provided by the bot. You will only need to do this once across all repos using our CLA.
 
 If you have ideas for new features or feedback, let us know by creating an issue in the [issues list](https://github.com/pnp/vscode-viva/issues). Before you submit a PR with your improvements, please review our [contributing guide](./contributing.md).
+
+## Support
+
+This project is community lead extensions. Microsoft employees are closely involved on this work, but the solution is provided under the community brand without direct supportability channels from Microsoft.
 
 ## Code of Conduct
 
