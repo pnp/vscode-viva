@@ -3,14 +3,14 @@
 <br />
 
 <h1 align="center">
-  <img alt="Viva Connections Toolkit" src="./assets/logo.png" width="100px" />
+  <img alt="Viva Connections Toolkit for Visual Studio Code" src="./assets/logo.png" width="100px" />
 </h1>
 
 # Viva Connections Toolkit for Visual Studio Code
 
 With the Viva Connections Toolkit extension, you can create and manage your Viva Connections solutions in your tenant. All actions you need to perform during the development flow are at your fingertips.
 
-![Sample Gallery](./assets/images/sample-gallery.png)
+![Sample Gallery](./assets/images/sample-gallery)
 
 ## Architecture
 
