@@ -19,10 +19,10 @@ jobs:
           registry-url: https://registry.npmjs.org/
 
       - name: Install the dependencies
-        run: yarn
+        run: npm ci
       
       - name: Prepare BETA
         run: node scripts/beta-release.js $GITHUB_RUN_ID
 
       - name: Publish
-        run: npx vsce publish -p ${{ secrets.VSCE_PAT }} --pre-release --yarn --baseImagesUrl https://raw.githubusercontent.com/pnp/m365-hosted-apps-vscode/dev
+        run: npx vsce publish -p ${{ secrets.VSCE_PAT }} --pre-release --baseImagesUrl https://raw.githubusercontent.com/pnp/vscode-viva/dev

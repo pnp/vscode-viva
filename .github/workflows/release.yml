@@ -19,7 +19,7 @@ jobs:
           registry-url: https://registry.npmjs.org/
 
       - name: Install the dependencies
-        run: yarn
+        run: npm ci
 
       - name: Publish
-        run: npx vsce publish -p ${{ secrets.VSCE_PAT }} --yarn
+        run: npx vsce publish -p ${{ secrets.VSCE_PAT }}
