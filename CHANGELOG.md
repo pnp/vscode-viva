@@ -1,5 +1,9 @@
 # Change Log
 
+## [0.2.2] - 2022-12-29
+
+- Small updates on the extension overview and release notes
+
 ## [0.2.0] - 2022-12-28
 
 - Updated to support SPFx 1.16.1 version
