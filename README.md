@@ -10,7 +10,7 @@
 
 With the Viva Connections Toolkit extension, you can create and manage your Viva Connections solutions in your tenant. All actions you need to perform during the development flow are at your fingertips.
 
-![Sample Gallery](./assets/images/sample-gallery)
+![Sample Gallery](./assets/images/sample-gallery.png)
 
 ## Architecture
 
@@ -84,7 +84,11 @@ If you have ideas for new features or feedback, let us know by creating an issue
 
 ## Support
 
-This project is community lead extensions. Microsoft employees are closely involved on this work, but the solution is provided under the community brand without direct supportability channels from Microsoft.
+This project is community lead extension providded by the [Microsoft 365 platform community](https://aka.ms/m365/community) members. Microsoft employees are closely involved on this work, but the solution is provided under the community brand without direct supportability channels from Microsoft.
+
+## Community
+
+Are you building experiences for the Microsoft 365? - Everyone is welcome to join on our [Microsoft 365 platform community](https://aka.ms/m365/community) efforts with community calls, samples and guidance. Join on our [weekly community calls](https://aka.ms/m365/calls) for Microsoft 365 and Power Platform topics. Everyone is welcome 🧡
 
 ## Code of Conduct
 
