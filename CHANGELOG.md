@@ -1,12 +1,12 @@
 # Change Log
 
-## [0.2.2] - 2023-01-02
+## [0.3.1] - 2023-01-02
 
 - Updated to use CLI for Microsoft 365 6.1 GA version
 
 ## [0.2.2] - 2022-12-29
 
-- Small updates on the extension overview and release notes
+- Small updates on the extension overview and releases
 
 ## [0.2.0] - 2022-12-28
 
