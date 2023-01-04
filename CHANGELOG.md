@@ -1,5 +1,9 @@
 # Change Log
 
+## [0.3.2] - 2023-01-04
+
+- Improved exception description when checking the installed Node.js version
+
 ## [0.3.1] - 2023-01-02
 
 - Updated to use CLI for Microsoft 365 6.1 GA version
