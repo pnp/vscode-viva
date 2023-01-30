@@ -8,6 +8,7 @@ export interface IListProps {
   items: Sample[];
 }
 
+const INITIAL_PAGE = 0;
 const NR_OF_ITEMS = 12;
 
 export const List: React.FunctionComponent<IListProps> = ({ items }: React.PropsWithChildren<IListProps>) => {
@@ -15,16 +16,20 @@ export const List: React.FunctionComponent<IListProps> = ({ items }: React.Props
   const [pagedItems, setPagedItems] = useState<Sample[]>([]);
 
   useEffect(() => {
-    const newSet = items.slice(page * NR_OF_ITEMS, page * NR_OF_ITEMS + NR_OF_ITEMS);
+    setPage(INITIAL_PAGE);
+    setPagedItems(getNewSet(INITIAL_PAGE));
+  }, []);
 
-    setPagedItems(newSet);
+  useEffect(() => {
+    setPage(INITIAL_PAGE);
+    setPagedItems(getNewSet(INITIAL_PAGE));
   }, [items]);
 
   useEffect(() => {
-    const newSet = items.slice(page * NR_OF_ITEMS, page * NR_OF_ITEMS + NR_OF_ITEMS);
-
-    setPagedItems(newSet);
+    setPagedItems(getNewSet(page));
   }, [page, items]);
+
+  const getNewSet = (page: number): Sample[] => items.slice(page * NR_OF_ITEMS, page * NR_OF_ITEMS + NR_OF_ITEMS);
 
   if (!pagedItems || pagedItems.length === 0) {
     return null;
