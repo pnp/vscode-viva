@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { Messenger } from '@estruyf/vscode/dist/client';
 import { WebviewCommand } from '../../../constants';
 import { Sample } from '../../../models';
@@ -6,25 +6,24 @@ import { GalleryType } from '../components/gallery';
 
 const SAMPLES_URL = "https://pnp.github.io/sp-dev-fx-aces/samples.json";
 
-export default function useSamples(type: GalleryType) {
+export default function useSamples(type: GalleryType): [Sample[], ((query: string) => void)] {
   const [allSamples, setAllSamples] = useState<Sample[] | undefined>(undefined);
   const [samples, setSamples] = useState<Sample[] | undefined>(undefined);
+  const state = Messenger.getState() as any || {};
 
   const fetchData = async () => {
-    const state = Messenger.getState() as any || {};
-
-    if (state['samples']) {
-      setAllSamples(state['samples']);
+    if (state['allSamples']) {
+      setAllSamples(state['allSamples']);
     }
 
     try {
       const response = await fetch(SAMPLES_URL);
       const data = await response.json();
-      
+
       setAllSamples(data);
       Messenger.setState({ 
         ...state,
-        samples: data
+        allSamples: data
       });
     } catch (e) {
       Messenger.send(WebviewCommand.toVSCode.logError, `useSamples: ${(e as Error).message}`);
@@ -38,10 +37,19 @@ export default function useSamples(type: GalleryType) {
       return;
     }
 
-    setSamples(allSamples.filter(sample => sample.url.includes(`/${type}/`)));
+    const samples: Sample[] = allSamples.filter(sample => sample.url.includes(`/${type}/`));
+    setSamples(samples);
+    Messenger.setState({ 
+      ...state,
+      samples: samples
+    });
   }, [type, allSamples]);
 
-  return {
-    samples
+  const search = (query: string) => {
+    const samples: Sample[] = state['samples'];
+    const newSamples: Sample[] = samples!.filter((sample: Sample) => sample.name.toLowerCase().includes(query.toLowerCase()));
+    setSamples(newSamples);
   };
+
+  return [samples!, search];
 }
