@@ -1,5 +1,9 @@
 # Change Log
 
+## [0.4] - 2023-03-09
+
+- Sample and scenario listing improvements
+
 ## [0.3.2] - 2023-01-04
 
 - Improved exception description when checking the installed Node.js version
