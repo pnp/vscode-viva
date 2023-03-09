@@ -1,5 +1,9 @@
 # Change Log
 
+## [0.4.1] - 2023-03-09
+
+- Maintenance release to fix bug caused by branch conflict
+
 ## [0.4] - 2023-03-09
 
 - Sample and scenario listing improvements
