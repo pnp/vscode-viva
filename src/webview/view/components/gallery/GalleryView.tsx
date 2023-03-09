@@ -1,8 +1,10 @@
 import * as React from 'react';
+import { useEffect, useState } from 'react';
 import useSamples from '../../hooks/useSamples';
 import { VSCodeProgressRing } from '@vscode/webview-ui-toolkit/react';
 import { List } from './List';
 import { LibraryIcon } from '../icons/LibraryIcon';
+import { SearchBar } from './SearchBar';
 
 export type GalleryType = 'samples' | 'scenarios';
 
@@ -11,7 +13,18 @@ export interface IGalleryViewProps {
 }
 
 export const GalleryView: React.FunctionComponent<IGalleryViewProps> = ({type}: React.PropsWithChildren<IGalleryViewProps>) => {
-  const { samples } = useSamples(type);
+  const [samples, search] = useSamples(type);
+  const [query, setQuery] = useState<string>('');
+  
+  const onSampleSearch = (event: any) => {
+    const input: string = event.target.value;
+    setQuery(input);
+    search(input);
+  };
+
+  useEffect(() => {
+    setQuery('');
+  }, [type]);
 
   return (
     <div className="w-full h-full max-w-7xl mx-auto sm:px-6 lg:px-8 py-16">
@@ -31,21 +44,10 @@ export const GalleryView: React.FunctionComponent<IGalleryViewProps> = ({type}: 
       }
 
       {
-        samples !== undefined && samples.length === 0 && (
-          <div className="flex justify-center items-center h-full">
-            <div className="text-center h-16">
-              <p className='mt-4 text-xl'>No {type} found.</p>
-            </div>
-          </div>
-        )
-      }
-
-      {
-        samples !== undefined && samples.length > 0 && (
+        samples !== undefined && (
           <div className='pb-16'>
             <div className={`flex items-center`}>
               <LibraryIcon className={`sample__icon w-16`} />
-
               <div className={`ml-4`}>
                 <h1 className='text-2xl first-letter:uppercase'>{type}</h1>
                 {
@@ -60,8 +62,24 @@ export const GalleryView: React.FunctionComponent<IGalleryViewProps> = ({type}: 
                 }
               </div>
             </div>
+            <SearchBar onSearch={(event) => onSampleSearch(event)} initialQuery={query}/>
 
-            <List items={samples} />
+            {
+              samples.length === 0 && (
+                <div className="flex justify-center items-center h-full">
+                  <div className="text-center h-16">
+                    <p className='mt-4 text-xl'>No {type} found.</p>
+                  </div>
+                </div>
+              )
+            }
+
+            {
+              samples.length > 0 && (
+                  <List items={samples} />
+              )
+            }
+
           </div>
         )
       }
