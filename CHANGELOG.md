@@ -1,5 +1,10 @@
 # Change Log
 
+## [0.4.2] - 2023-04-20
+
+- Updated to use SharePoint Framework version 1.17.1
+- Updated to use CLI for Microsoft 365 version 6.6
+
 ## [0.4.1] - 2023-03-09
 
 - Maintenance release to fix bug caused by branch conflict
