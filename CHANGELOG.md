@@ -1,5 +1,9 @@
 # Change Log
 
+## [0.4.5] - 2023-04-30
+
+- Maintenance release
+
 ## [0.4.2] - 2023-04-20
 
 - Updated to use SharePoint Framework version 1.17.1
