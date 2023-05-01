@@ -1,5 +1,9 @@
 # Change Log
 
+## [0.5.0] - 2023-05-01
+
+- documentation and guidance updates
+
 ## [0.4.5] - 2023-04-30
 
 - Maintenance release
