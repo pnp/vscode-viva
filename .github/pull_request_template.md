@@ -17,4 +17,4 @@
 
 > each PR should be linked with a related issue [Remove this line]
 
-CLoses: #123
+Closes: #123
