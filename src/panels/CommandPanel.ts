@@ -146,9 +146,10 @@ export class CommandPanel {
       new ActionTreeItem("Upgrade solution", "", { name: "arrow-up", custom: false }, undefined, Commands.upgradeSolution),
       new ActionTreeItem("Deploy solution (sppkg)", "", { name: "cloud-upload", custom: false }, undefined, Commands.deploySolution),
       new ActionTreeItem("Validate current project", "", { name: "check-all", custom: false }, undefined, Commands.validateSolution),
-      new ActionTreeItem("View samples", "", { name: "library", custom: false }, undefined, Commands.showSampleGallery),
-      new ActionTreeItem("View scenarios", "", { name: "library", custom: false }, undefined, Commands.showScenariosGallery),
       new ActionTreeItem("Add new component", "", { name: "add", custom: false }, undefined, Commands.addToProject),
+      // TODO: update samples links
+      // new ActionTreeItem("View samples", "", { name: "library", custom: false }, undefined, Commands.showACESampleGallery),
+      // new ActionTreeItem("View scenarios", "", { name: "library", custom: false }, undefined, Commands.showScenariosGallery),
     ];
     
     window.registerTreeDataProvider('pnp-view-actions', new ActionTreeviewProvider(actionCommands));
