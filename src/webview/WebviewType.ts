@@ -1,6 +1,6 @@
 
 
 export enum WebviewType {
-  SampleGallery = "sample-gallery",
-  ScenarioGallery = "scenario-gallery",
+  ACESampleGallery = "ace-sample-gallery",
+  ACEScenarioGallery = "ace-scenario-gallery",
 }

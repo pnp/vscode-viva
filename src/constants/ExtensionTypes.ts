@@ -1,13 +1,15 @@
 export enum ExtensionType {
-  Application = "ApplicationCustomizer",
+  application = "ApplicationCustomizer",
   field = "FieldCustomizer",
-  listViewCommandSet = "ListViewCommandSet"
+  listViewCommandSet = "ListViewCommandSet",
+  formCustomizer = "FormCustomizer",
+  searchQueryModifier = "SearchQueryModifier"
 }
 
 export const ExtensionTypes = [
   {
     name: 'Application Customizer',
-    value: ExtensionType.Application,
+    value: ExtensionType.application,
     templates: []
   },
   {
@@ -20,4 +22,14 @@ export const ExtensionTypes = [
     value: ExtensionType.listViewCommandSet,
     templates: []
   },
+  {
+    name: 'Form Customizer',
+    value: ExtensionType.formCustomizer,
+    templates: ['react', 'none']
+  },
+  {
+    name: 'Search Query Modifier',
+    value: ExtensionType.searchQueryModifier,
+    templates: []
+  }
 ];

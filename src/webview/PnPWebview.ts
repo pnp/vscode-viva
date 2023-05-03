@@ -17,10 +17,10 @@ export class PnPWebview {
     const subscriptions = ext.subscriptions;
 
     subscriptions.push(
-      commands.registerCommand(Commands.showSampleGallery, () => PnPWebview.open(WebviewType.SampleGallery))
+      commands.registerCommand(Commands.showACESampleGallery, () => PnPWebview.open(WebviewType.ACESampleGallery))
     );
     subscriptions.push(
-      commands.registerCommand(Commands.showScenariosGallery, () => PnPWebview.open(WebviewType.ScenarioGallery))
+      commands.registerCommand(Commands.showScenariosGallery, () => PnPWebview.open(WebviewType.ACEScenarioGallery))
     );
   }
 
@@ -115,10 +115,10 @@ export class PnPWebview {
     }
 
     switch (type) {
-      case WebviewType.SampleGallery:
+      case WebviewType.ACESampleGallery:
         PnPWebview.webview.title = 'Sample Gallery';
         break;
-      case WebviewType.ScenarioGallery:
+      case WebviewType.ACEScenarioGallery:
         PnPWebview.webview.title = 'Scenario Gallery';
         break;
     }

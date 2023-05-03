@@ -30,7 +30,7 @@ export const Commands = {
   validateSolution: `${EXTENSION_NAME}.validateSolution`,
 
   // Webviews
-  showSampleGallery: `${EXTENSION_NAME}.showSampleGallery`,
+  showACESampleGallery: `${EXTENSION_NAME}.showACESampleGallery`,
   showScenariosGallery: `${EXTENSION_NAME}.showScenariosGallery`,
 
   // Serving

@@ -11,8 +11,8 @@ export const paths: { [pathName: string ]: string } = {
 }
 
 export const routeEntries: { [routeKey: string]: string } = {
-  [WebviewType.SampleGallery]: paths.sample,
-  [WebviewType.ScenarioGallery]: paths.scenario,
+  [WebviewType.ACESampleGallery]: paths.sample,
+  [WebviewType.ACEScenarioGallery]: paths.scenario,
 };
 
 const elm = document.querySelector('#root');
