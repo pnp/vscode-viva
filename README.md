@@ -24,7 +24,7 @@ The extension provides the following capabilities:
 
 ### Welcome experience
 
-The extension automatically detects if you are in an SharePoint Framework project. If not, it will show helpful actions to allow you to create a new Viva Connections app.
+The extension automatically detects if you are in a SharePoint Framework project. If not, it will show helpful actions to allow you to create a new Viva Connections app.
 
 ![Welcome experience](./assets/images/welcome-experience.png)
 
@@ -66,17 +66,21 @@ You may also run any gulp task with a click of a button
 
 ![Gulp Tasks](./assets/images/tasks.png)
 
-As well as perform additional actions that among many things allows you to validate and upgrade your project to the latest version of the SharePoint Framework.
+As well as perform additional actions that among many things allow you to validate and upgrade your project to the latest version of the SharePoint Framework.
 
 ![Actions](./assets/images/actions.png)
 
 Additionally, you can also add new components to your existing project in a fast and easy way.
 
-<p align="center">
-  <img alt="Add new component" src="./assets/images/new-component.png" />
-</p>
+![Add a new component](./assets/images/new-component.png)
 
-![add a new component](./assets/images/add-component-gif.gif)
+![Add a new component](./assets/images/add-component-gif.gif)
+
+### Help and feedback
+
+At any time have easy access to all the up-to-date documentation and additional resources that may be helpful when creating solutions for Viva Connections.
+
+![Help and feedback/](./assets/images/help-and-feedback.png)
 
 ## Contributing
 
@@ -88,7 +92,7 @@ If you have ideas for new features or feedback, let us know by creating an issue
 
 ## Support
 
-This project is community lead extension provided by the [Microsoft 365 and Power Platform Community](https://aka.ms/m365/community) members. Microsoft employees are closely involved on this work, but the solution is provided under the community brand without direct supportability channels from Microsoft.
+This project is community lead extension provided by the [Microsoft 365 and Power Platform Community](https://aka.ms/m365/community) members. Microsoft employees are closely involved in this work, but the solution is provided under the community brand without direct supportability channels from Microsoft.
 
 ## Community
 
