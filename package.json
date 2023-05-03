@@ -2,7 +2,7 @@
 	"name": "viva-connections-toolkit",
 	"displayName": "Viva Connections Toolkit",
 	"description": "With the Viva Connections Toolkit extension, you can create and manage your Viva Connections solutions on your tenant. All actions you need to perform during the development flow are at your fingertips. Extensions also works with any SharePoint Framework. This toolkit is provided by the community.",
-	"version": "0.5.0",
+	"version": "0.5.1",
 	"publisher": "m365pnp",
 	"preview": true,
 	"homepage": "https://github.com/pnp/vscode-viva",

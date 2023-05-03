@@ -1,8 +1,12 @@
 # Change Log
 
+## [0.5.1] - 2023-05-03
+
+- Updated help and feedback section
+
 ## [0.5.0] - 2023-05-01
 
-- documentation and guidance updates
+- Updated documentation and guidance
 
 ## [0.4.5] - 2023-04-30
 
