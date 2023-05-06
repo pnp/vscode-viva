@@ -1,7 +1,10 @@
-name: runs every monday at 14:00
+name: Update samples data
+
 on:
+  workflow_dispatch:
   schedule:
     - cron: '0 14 * * 1'
+
 jobs:
   update:
     name: "Update samples json"
