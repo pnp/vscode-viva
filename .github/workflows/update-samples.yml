@@ -1,0 +1,45 @@
+name: runs every monday at 14:00
+on:
+  schedule:
+    - cron: '0 14 * * 1'
+jobs:
+  update:
+    name: "Update samples json"
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout vscode-viva
+        uses: actions/checkout@v3
+        with:
+          path: vscode-viva
+
+      - name: Checkout sp-dev-fx-aces
+        uses: actions/checkout@v3
+        with:
+          repository: pnp/sp-dev-fx-aces
+          path: sp-dev-fx-aces
+
+      - name: Checkout sp-dev-fx-library-components
+        uses: actions/checkout@v3
+        with:
+          repository: pnp/sp-dev-fx-extensions
+          path: sp-dev-fx-extensions
+
+      - name: Checkout sp-dev-fx-library-components
+        uses: actions/checkout@v3
+        with:
+          repository: pnp/sp-dev-fx-library-components
+          path: sp-dev-fx-library-components
+
+      - name: Checkout sp-dev-fx-webparts
+        uses: actions/checkout@v3
+        with:
+          repository: pnp/sp-dev-fx-webparts
+          path: sp-dev-fx-webparts
+
+      - run: '& $env:GITHUB_ACTION_PATH/vscode-viva/scripts/prepare-sample-data.ps1'
+        shell: pwsh
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v5
+...
