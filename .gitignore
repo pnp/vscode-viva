@@ -4,3 +4,7 @@ node_modules
 .vscode-test/
 *.vsix
 .DS_Store
+sp-dev-fx-aces
+sp-dev-fx-extensions
+sp-dev-fx-library-components
+sp-dev-fx-webparts
