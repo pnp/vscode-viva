@@ -15,6 +15,12 @@ function Parse-SampleJsonFiles {
         Write-output $sample.FullName
 
         $sampleContent = Get-Content -Path $sample.FullName -Raw
+
+        if (($sampleContent | Test-Json) -ne $true){
+            Write-Output "Invalid JSON file: $sample"
+            continue
+        }
+
         $sampleJson = ConvertFrom-Json -InputObject $sampleContent
 
         $sampleAuthors = @()
