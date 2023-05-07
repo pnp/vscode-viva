@@ -185,6 +185,16 @@ export class CommandPanel {
         image: { name: "globe", custom: false }
       },
       {
+        title: "Overview of the SharePoint Framework",
+        url: "https://learn.microsoft.com/en-us/sharepoint/dev/spfx/sharepoint-framework-overview",
+        image: { name: "book", custom: false }
+      },
+      {
+        title: "Join the Microsoft 365 Developer Program",
+        url: "https://developer.microsoft.com/en-us/microsoft-365/dev-program",
+        image: { name: "star-empty", custom: false }
+      },
+      {
         title: "Microsoft Graph REST API Documentation",
         url: "https://docs.microsoft.com/en-us/graph/api/overview?view=graph-rest-1.0",
         image: { name: "book", custom: false }
@@ -195,8 +205,13 @@ export class CommandPanel {
         image: { name: "globe", custom: false }
       },
       {
+        title: "Join the Microsoft 365 & Power Platform Community",
+        url: "https://pnp.github.io/",
+        image: { name: "organization", custom: false }
+      },
+      {
         title: "Report an issue",
-        url: "https://github.com/SharePoint/sp-dev-docs/issues/new/choose",
+        url: "https://github.com/pnp/vscode-viva/issues/new/choose",
         image: { name: "github", custom: false }
       }
     ]
