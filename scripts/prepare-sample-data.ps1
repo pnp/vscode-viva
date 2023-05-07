@@ -14,31 +14,30 @@ function Parse-SampleJsonFiles {
 
         Write-output $sample.FullName
 
-        $sampleContent = Get-Content -Path $sample.FullName -Raw
+        try {
+            $sampleContent = Get-Content -Path $sample.FullName -Raw
+            $sampleJson = ConvertFrom-Json -InputObject $sampleContent
 
-        if (($sampleContent | Test-Json) -ne $true){
-            Write-Output "Invalid JSON file: $sample"
-            continue
-        }
+            $sampleAuthors = @()
+            foreach ($author in $sampleJson.authors) {
+                $sampleAuthors += [pscustomobject]@{ 
+                    name       = $author.name;
+                    pictureUrl = $author.pictureUrl;
+                }
+            }
 
-        $sampleJson = ConvertFrom-Json -InputObject $sampleContent
-
-        $sampleAuthors = @()
-        foreach ($author in $sampleJson.authors) {
-            $sampleAuthors += [pscustomobject]@{ 
-                name       = $author.name;
-                pictureUrl = $author.pictureUrl;
+            $samples += [pscustomobject]@{
+                title       = $sampleJson.title; 
+                url         = $sampleJson.url;
+                description = $sampleJson.shortDescription; 
+                image       = $sampleJson.thumbnails[0].url; 
+                authors     = $sampleAuthors;
+                tags        = $sampleJson.tags;
+                createDate  = $sampleJson.creationDateTime;
             }
         }
-
-        $samples += [pscustomobject]@{
-            title       = $sampleJson.title; 
-            url         = $sampleJson.url;
-            description = $sampleJson.shortDescription; 
-            image       = $sampleJson.thumbnails[0].url; 
-            authors     = $sampleAuthors;
-            tags        = $sampleJson.tags;
-            createDate  = $sampleJson.creationDateTime;
+        catch {
+            Write-Output "Error: $($_.Exception.Message)"
         }
     }
 
