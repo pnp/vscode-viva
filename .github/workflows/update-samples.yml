@@ -13,8 +13,6 @@ jobs:
     steps:
       - name: Checkout vscode-viva
         uses: actions/checkout@v3
-        with:
-          path: vscode-viva
 
       - name: Checkout sp-dev-fx-aces
         uses: actions/checkout@v3
@@ -43,8 +41,9 @@ jobs:
       - run: |
           dir
 
-      - run: .\vscode-viva\scripts\prepare-sample-data.ps1
+      - run: .\scripts\prepare-sample-data.ps1 -workspacePath "${{ github.workspace }}"
         shell: pwsh
+        continue-on-error: true
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v5
