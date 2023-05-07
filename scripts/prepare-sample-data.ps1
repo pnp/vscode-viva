@@ -47,7 +47,7 @@ function Parse-SampleJsonFiles {
     foreach ($Item in ($sampleModel.GetEnumerator() | Sort-Object -Property Key)) {
         $orderedSampleModel[$Item.Key] = $Item.Value
     }
-    New-Object -TypeName psobject -Property $orderedSampleModel | ConvertTo-Json -Depth 10 | Out-File "..\data\$sampleRepo-$folder.json"
+    New-Object -TypeName psobject -Property $orderedSampleModel | ConvertTo-Json -Depth 10 | Out-File "$workspacePath\data\$sampleRepo-$folder.json"
 }
 
 foreach ($sampleRepo in $sampleRepos) {
