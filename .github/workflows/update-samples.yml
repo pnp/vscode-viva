@@ -3,7 +3,7 @@ name: Update samples data
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 14 * * 1'
+    - cron: '0 12 * * 6'
 
 jobs:
   update:
@@ -48,4 +48,9 @@ jobs:
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v5
+        with:
+          commit-message: Updates sample data
+          branch: update-sample-data
+          title: Sample data update
+          body: Automated check and update of SPFx extensions and webparts samples data and aces sample data.
 ...
