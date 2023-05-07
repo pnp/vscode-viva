@@ -40,9 +40,11 @@ jobs:
           repository: pnp/sp-dev-fx-webparts
           path: sp-dev-fx-webparts
 
-      - name: Run script
+      - run: |
+          dir
+
+      - run: '& $env:GITHUB_ACTION_PATH/scripts/prepare-sample-data.ps1'
         shell: pwsh
-        run: scripts/prepare-sample-data.ps1
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v5
