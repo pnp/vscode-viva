@@ -41,7 +41,7 @@ jobs:
       - run: |
           dir
 
-      - run: .\scripts\prepare-sample-data.ps1
+      - run: .\scripts\prepare-sample-data.ps1 -workspacePath "${{ github.workspace }}"
         shell: pwsh
 
       - name: Create Pull Request
