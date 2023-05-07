@@ -43,6 +43,7 @@ jobs:
 
       - run: .\scripts\prepare-sample-data.ps1 -workspacePath "${{ github.workspace }}"
         shell: pwsh
+        continue-on-error: true
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v5
