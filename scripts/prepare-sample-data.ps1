@@ -7,7 +7,7 @@ function Parse-SampleJsonFiles {
         [string[]]$folder
     )
 
-    $allSamples = Get-ChildItem -Path "..\..\$sampleRepo\$folder\**\sample.json" -Recurse -Force
+    $allSamples = Get-ChildItem -Path "..\$sampleRepo\$folder\**\sample.json" -Recurse -Force
     $samples = @()
     foreach ($sample in $allSamples) {
 
@@ -48,10 +48,10 @@ foreach ($sampleRepo in $sampleRepos) {
 
     Write-output $sampleRepo
 
-    if (Test-Path -Path "..\..\$sampleRepo\samples" -PathType Container) {
+    if (Test-Path -Path "..\$sampleRepo\samples" -PathType Container) {
         Parse-SampleJsonFiles -sampleRepo $sampleRepo -folder 'samples'
     }
-    if (Test-Path -Path "..\..\$sampleRepo\scenarios" -PathType Container) {
+    if (Test-Path -Path "..\$sampleRepo\scenarios" -PathType Container) {
         Parse-SampleJsonFiles -sampleRepo $sampleRepo -folder 'scenarios'
     }
 }

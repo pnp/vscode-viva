@@ -41,7 +41,7 @@ jobs:
       - run: |
           dir
 
-      - run: .\vscode-viva\scripts\prepare-sample-data.ps1
+      - run: .\scripts\prepare-sample-data.ps1
         shell: pwsh
 
       - name: Create Pull Request
