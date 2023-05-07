@@ -27,13 +27,15 @@ function Parse-SampleJsonFiles {
             }
 
             $samples += [pscustomobject]@{
-                title       = $sampleJson.title; 
-                url         = $sampleJson.url;
-                description = $sampleJson.shortDescription; 
-                image       = $sampleJson.thumbnails[0].url; 
-                authors     = $sampleAuthors;
-                tags        = $sampleJson.tags;
-                createDate  = $sampleJson.creationDateTime;
+                name            = $sampleJson.name; 
+                title           = $sampleJson.title; 
+                url             = $sampleJson.url;
+                description     = $sampleJson.shortDescription; 
+                image           = $sampleJson.thumbnails[0].url; 
+                authors         = $sampleAuthors;
+                tags            = $sampleJson.products;
+                createDate      = $sampleJson.creationDateTime;
+                updateDate      = $sampleJson.updateDateTime;
             }
         }
         catch {

@@ -1,6 +1,7 @@
 {
   "samples": [
     {
+      "name": "pnp-sp-dev-fx-aces-scenarios-ace-data-api-builder",
       "title": "Exposing business data in Microsoft 365 using Azure Data API builder",
       "url": "https://github.com/pnp/sp-dev-fx-aces/tree/main/scenarios/ace-data-api-builder/",
       "description": "This is a sample application that shows you how to expose business data in Microsoft Viva Connections consuming a back-end API implemented with the preview version of Azure Data API builder.",
@@ -15,10 +16,18 @@
           "pictureUrl": "https://github.com/yorek.png"
         }
       ],
-      "tags": null,
-      "createDate": "2023-04-04"
+      "tags": [
+        "SharePoint",
+        "Viva",
+        "Microsoft Teams",
+        "AzureAD",
+        "Microsoft Graph"
+      ],
+      "createDate": "2023-04-04",
+      "updateDate": "2023-04-04"
     },
     {
+      "name": "pnp-sp-fx-aces-scenario-ace-lob",
       "title": "LOB integration - ACE scenario",
       "url": "https://github.com/pnp/sp-dev-fx-aces/tree/main/scenarios/ace-lob",
       "description": "Starting point on building LOB API connected ACE extension for Microsoft Viva",
@@ -29,10 +38,15 @@
           "pictureUrl": "https://github.com/waldekmastykarz.png"
         }
       ],
-      "tags": null,
-      "createDate": "2021-06-10"
+      "tags": [
+        "SharePoint",
+        "Viva"
+      ],
+      "createDate": "2021-06-10",
+      "updateDate": "2022-12-09"
     },
     {
+      "name": "pnp-sp-fx-aces-scenario-ace-microsoftgraph",
       "title": "Microsoft Graph - ACE Scenario",
       "url": "https://github.com/pnp/sp-dev-fx-aces/tree/main/scenarios/ace-microsoftgraph",
       "description": "Starting point on building Microsoft Graph connected ACE extension for Microsoft Viva",
@@ -43,8 +57,12 @@
           "pictureUrl": "https://github.com/waldekmastykarz.png"
         }
       ],
-      "tags": null,
-      "createDate": "2021-06-10"
+      "tags": [
+        "SharePoint",
+        "Viva"
+      ],
+      "createDate": "2021-06-10",
+      "updateDate": "2022-12-09"
     }
   ]
 }

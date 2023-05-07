@@ -20,7 +20,13 @@ export class PnPWebview {
       commands.registerCommand(Commands.showACESampleGallery, () => PnPWebview.open(WebviewType.ACESampleGallery))
     );
     subscriptions.push(
-      commands.registerCommand(Commands.showScenariosGallery, () => PnPWebview.open(WebviewType.ACEScenarioGallery))
+      commands.registerCommand(Commands.showACEScenariosGallery, () => PnPWebview.open(WebviewType.ACEScenarioGallery))
+    );
+    subscriptions.push(
+      commands.registerCommand(Commands.showExtensionsSampleGallery, () => PnPWebview.open(WebviewType.ExtensionSampleGallery))
+    );
+    subscriptions.push(
+      commands.registerCommand(Commands.showWebpartSampleGallery, () => PnPWebview.open(WebviewType.WebpartSampleGallery))
     );
   }
 
@@ -116,10 +122,16 @@ export class PnPWebview {
 
     switch (type) {
       case WebviewType.ACESampleGallery:
-        PnPWebview.webview.title = 'Sample Gallery';
+        PnPWebview.webview.title = 'ACE Sample Gallery';
         break;
       case WebviewType.ACEScenarioGallery:
-        PnPWebview.webview.title = 'Scenario Gallery';
+        PnPWebview.webview.title = 'ACE Scenario Gallery';
+        break;
+      case WebviewType.WebpartSampleGallery:
+        PnPWebview.webview.title = 'SPFx Webparts Sample Gallery';
+        break;
+      case WebviewType.ExtensionSampleGallery:
+        PnPWebview.webview.title = 'SPFx Extensions Sample Gallery';
         break;
     }
   }
@@ -178,7 +190,7 @@ export class PnPWebview {
       `script-src http: https: 'self' 'unsafe-inline' 'unsafe-eval'`,
       `img-src http: https: blob: data: 'self'`,
       `font-src 'self' https: ${isProd ? `` : `${localServer}:${devPort}`}`,
-      `connect-src https://pnp.github.io/sp-dev-fx-aces/samples.json ${isProd ? `` : `ws://localhost:${devPort} ws://0.0.0.0:${devPort} ${localServer}:${devPort} http://0.0.0.0:${devPort}`}`,
+      `connect-src https://raw.githubusercontent.com/pnp/vscode-viva/dev/data/sp-dev-fx-aces-samples.json https://raw.githubusercontent.com/pnp/vscode-viva/dev/data/sp-dev-fx-aces-scenarios.json https://raw.githubusercontent.com/pnp/vscode-viva/dev/data/sp-dev-fx-extensions-samples.json https://raw.githubusercontent.com/pnp/vscode-viva/dev/data/sp-dev-fx-webparts-samples.json ${isProd ? `` : `ws://localhost:${devPort} ws://0.0.0.0:${devPort} ${localServer}:${devPort} http://0.0.0.0:${devPort}`}`,
     ];
 
     // Provide additional data attributes for the webview

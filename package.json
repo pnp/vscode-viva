@@ -87,7 +87,7 @@
 		"viewsWelcome": [
 			{
 				"view": "pnp-view-empty",
-				"contents": "To start create a new SPFx project. \n[Create a new project](command:viva-connections-toolkit.createProject)\n\n\n\n\n\nUse one of our samples to boost your development.\n[SharePoint Framework Client-Side Web Part Samples](command:viva-connections-toolkit.showWebpartSampleGallery)\n[SharePoint Framework Library Component Samples](command:viva-connections-toolkit.showLibrarySampleGallery)\n[SharePoint Framework Extensions Samples](command:viva-connections-toolkit.showExtensionsSampleGallery)\n[Viva Connection Adaptive Card Extensions (ACEs) Scenarios](command:viva-connections-toolkit.showScenariosGallery)\n[Viva Connection Adaptive Card Extensions (ACEs) Samples](command:viva-connections-toolkit.showACESampleGallery)\n\n\n\n\n\nYou can also open an existing app.\n[Open folder](command:vscode.openFolder)\n\n\n\n\n\nIf you want to make sure you are having the required dependencies, you can run our validation script.\n[Check dependencies](command:viva-connections-toolkit.checkDependencies)\n\n\n\n\n\nIf you want to install the dependencies, you can run our installation script.\n[Install dependencies](command:viva-connections-toolkit.installDependencies)"
+				"contents": "To start create a new SPFx project. \n[Create a new project](command:viva-connections-toolkit.createProject)\n\n\n\n\n\nUse one of our samples to boost your development.\n[SharePoint Framework Client-Side Web Part Samples](command:viva-connections-toolkit.showWebpartSampleGallery)\n[SharePoint Framework Extensions Samples](command:viva-connections-toolkit.showExtensionsSampleGallery)\n[Viva Connection Adaptive Card Extensions (ACEs) Scenarios](command:viva-connections-toolkit.showACEScenariosGallery)\n[Viva Connection Adaptive Card Extensions (ACEs) Samples](command:viva-connections-toolkit.showACESampleGallery)\n\n\n\n\n\nYou can also open an existing app.\n[Open folder](command:vscode.openFolder)\n\n\n\n\n\nIf you want to make sure you are having the required dependencies, you can run our validation script.\n[Check dependencies](command:viva-connections-toolkit.checkDependencies)\n\n\n\n\n\nIf you want to install the dependencies, you can run our installation script.\n[Install dependencies](command:viva-connections-toolkit.installDependencies)"
 			}
 		],
 		"commands": [
@@ -126,12 +126,20 @@
 				"title": "Viva Connections Toolkit: Deploy the solution"
 			},
 			{
-				"command": "viva-connections-toolkit.showSampleGallery",
-				"title": "Viva Connections Toolkit: Open the sample gallery"
+				"command": "viva-connections-toolkit.showACESampleGallery",
+				"title": "Viva Connections Toolkit: Open the Adaptive Card Extensions (ACEs) Samples gallery"
 			},
 			{
-				"command": "viva-connections-toolkit.showScenariosGallery",
-				"title": "Viva Connections Toolkit: Open the scenario gallery"
+				"command": "viva-connections-toolkit.showACEScenariosGallery",
+				"title": "Viva Connections Toolkit: Open the Adaptive Card Extensions (ACEs) Scenarios gallery"
+			},
+			{
+				"command": "viva-connections-toolkit.showExtensionsSampleGallery",
+				"title": "Viva Connections Toolkit: Open the SharePoint Framework Client-Side Web Part Samples gallery"
+			},
+			{
+				"command": "viva-connections-toolkit.showWebpartSampleGallery",
+				"title": "Viva Connections Toolkit: Open the SharePoint Framework Extensions Samples gallery"
 			},
 			{
 				"command": "viva-connections-toolkit.validateSolution",

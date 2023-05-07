@@ -15,8 +15,6 @@ export interface IAppProps {
   type: WebviewType | null;
 }
 
-
-
 export const App: React.FunctionComponent<IAppProps> = ({ version, type }: React.PropsWithChildren<IAppProps>) => {
   const navigate = useNavigate(); 
 
@@ -38,8 +36,10 @@ export const App: React.FunctionComponent<IAppProps> = ({ version, type }: React
 
   return (
     <Routes>
-      <Route path={paths.sample} element={<GalleryView type={`samples`} />} />
-      <Route path={paths.scenario} element={<GalleryView type={`scenarios`} />} />
+      <Route path={paths.aCESample} element={<GalleryView type={`sp-dev-fx-aces-samples`} />} />
+      <Route path={paths.aCEScenario} element={<GalleryView type={`sp-dev-fx-aces-scenarios`} />} />
+      <Route path={paths.extensionSample} element={<GalleryView type={`sp-dev-fx-extensions-samples`} />} />
+      <Route path={paths.webpartSample} element={<GalleryView type={`sp-dev-fx-webparts-samples`} />} />
     </Routes>
   );
 };

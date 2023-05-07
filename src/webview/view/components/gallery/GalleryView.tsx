@@ -6,7 +6,7 @@ import { List } from './List';
 import { LibraryIcon } from '../icons/LibraryIcon';
 import { SearchBar } from './SearchBar';
 
-export type GalleryType = 'samples' | 'scenarios';
+export type GalleryType = 'sp-dev-fx-aces-samples' | 'sp-dev-fx-aces-scenarios' | 'sp-dev-fx-extensions-samples' | 'sp-dev-fx-webparts-samples';
 
 export interface IGalleryViewProps {
   type: GalleryType;
@@ -51,12 +51,12 @@ export const GalleryView: React.FunctionComponent<IGalleryViewProps> = ({type}: 
               <div className={`ml-4`}>
                 <h1 className='text-2xl first-letter:uppercase'>{type}</h1>
                 {
-                  type === 'samples' && (
+                  type !== 'sp-dev-fx-aces-scenarios' && (
                     <p>Explore our sample gallery filled with solutions created by the community.</p>
                   )
                 }
                 {
-                  type === 'scenarios' && (
+                  type === 'sp-dev-fx-aces-scenarios' && (
                     <p>Our scenarios provide you a guided experience to get you started with building a Viva Connections solution.</p>
                   )
                 }
