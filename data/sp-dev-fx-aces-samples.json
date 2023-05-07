@@ -345,20 +345,6 @@
       "createDate": "2022-03-24"
     },
     {
-      "title": "Weather Adaptive Card Extension",
-      "url": "https://github.com/pnp/sp-dev-fx-aces/tree/main/samples/ImageCard-Weather",
-      "description": "This Adaptive Card Extension allows users to display information about the weather in a specific location.",
-      "image": "https://raw.githubusercontent.com/pnp/sp-dev-fx-aces/main/samples/ImageCard-Weather/assets/demo.gif",
-      "authors": [
-        {
-          "name": "Aakash Bhardwaj",
-          "pictureUrl": "https://github.com/aakashbhardwaj619.png"
-        }
-      ],
-      "tags": null,
-      "createDate": "2022-03-24"
-    },
-    {
       "title": "COVID-19 Indicator",
       "url": "https://github.com/pnp/sp-dev-fx-aces/tree/main/samples/PrimaryTextCard-Covid-Indicator",
       "description": "This Adaptive Card Extension displays COVID-19 data from the specified country.",
