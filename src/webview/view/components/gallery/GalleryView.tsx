@@ -26,6 +26,21 @@ export const GalleryView: React.FunctionComponent<IGalleryViewProps> = ({type}: 
     setQuery('');
   }, [type]);
 
+  const translateTypeName = (type: GalleryType): string => {
+    switch (type) {
+      case 'sp-dev-fx-aces-samples':
+        return 'ACE Samples';
+      case 'sp-dev-fx-aces-scenarios':
+        return 'ACE Scenarios';
+      case 'sp-dev-fx-extensions-samples':
+        return 'SPFx Extensions Samples';
+      case 'sp-dev-fx-webparts-samples':
+        return 'SPFx Web Parts Samples';
+      default:
+        return '';
+    }
+  };
+
   return (
     <div className="w-full h-full max-w-7xl mx-auto sm:px-6 lg:px-8 py-16">
       {
@@ -37,7 +52,7 @@ export const GalleryView: React.FunctionComponent<IGalleryViewProps> = ({type}: 
                 height: '100%',
               }} />
 
-              <p className='mt-4 text-xl'>Loading {type}...</p>
+              <p className='mt-4 text-xl'>Loading {translateTypeName(type)}...</p>
             </div>
           </div>
         )
@@ -49,7 +64,7 @@ export const GalleryView: React.FunctionComponent<IGalleryViewProps> = ({type}: 
             <div className={`flex items-center`}>
               <LibraryIcon className={`sample__icon w-16`} />
               <div className={`ml-4`}>
-                <h1 className='text-2xl first-letter:uppercase'>{type}</h1>
+                <h1 className='text-2xl first-letter:uppercase'>{translateTypeName(type)}</h1>
                 {
                   type !== 'sp-dev-fx-aces-scenarios' && (
                     <p>Explore our sample gallery filled with solutions created by the community.</p>
@@ -68,7 +83,7 @@ export const GalleryView: React.FunctionComponent<IGalleryViewProps> = ({type}: 
               samples.length === 0 && (
                 <div className="flex justify-center items-center h-full">
                   <div className="text-center h-16">
-                    <p className='mt-4 text-xl'>No {type} found.</p>
+                    <p className='mt-4 text-xl'>No {translateTypeName(type)} found.</p>
                   </div>
                 </div>
               )

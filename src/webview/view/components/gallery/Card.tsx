@@ -1,4 +1,4 @@
-import { VSCodeButton, VSCodeLink, VSCodeTag } from '@vscode/webview-ui-toolkit/react';
+import { VSCodeLink, VSCodeTag } from '@vscode/webview-ui-toolkit/react';
 import * as React from 'react';
 import { useMemo } from 'react';
 import { Sample } from '../../../../models';
@@ -68,7 +68,10 @@ export const Card: React.FunctionComponent<ICardProps> = ({ item }: React.PropsW
 
           <div className={`sample_card__details ml-2 text-xs`}>
             <p className={`font-bold`}>{item.authors && item.authors.length > 0 && <>{item.authors[0].name}{item.authors.length > 1 ? <> +{item.authors.length - 1}</> : null}</>}</p>
-            <p>Modified {format(Date.parse(item.updateDate), "EEE MMM dd yyyy")}</p>
+            {
+              item.updateDate && item.updateDate.length > 0 &&
+                <p>Modified {format(Date.parse(item.updateDate), "EEE MMM dd yyyy")}</p>
+            }
           </div>
         </div>
       </div>
