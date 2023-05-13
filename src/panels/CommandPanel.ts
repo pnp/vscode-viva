@@ -147,7 +147,7 @@ export class CommandPanel {
       new ActionTreeItem("Deploy solution (sppkg)", "", { name: "cloud-upload", custom: false }, undefined, Commands.deploySolution),
       new ActionTreeItem("Validate current project", "", { name: "check-all", custom: false }, undefined, Commands.validateSolution),
       new ActionTreeItem("Add new component", "", { name: "add", custom: false }, undefined, Commands.addToProject),
-      new ActionTreeItem("View SPFx webpart samples", "", { name: "library", custom: false }, undefined, Commands.showWebpartSampleGallery),
+      new ActionTreeItem("View SPFx web part samples", "", { name: "library", custom: false }, undefined, Commands.showWebpartSampleGallery),
       new ActionTreeItem("View SPFx extension samples", "", { name: "library", custom: false }, undefined, Commands.showExtensionsSampleGallery),
       new ActionTreeItem("View ACEs samples", "", { name: "library", custom: false }, undefined, Commands.showACESampleGallery),
       new ActionTreeItem("View ACEs scenarios", "", { name: "library", custom: false }, undefined, Commands.showACEScenariosGallery),

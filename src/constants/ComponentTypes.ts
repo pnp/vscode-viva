@@ -7,7 +7,7 @@ export enum ComponentType {
 
 export const ComponentTypes = [
   {
-    name: 'WebPart',
+    name: 'Web Part',
     value: ComponentType.webPart
   },
   {

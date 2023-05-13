@@ -128,7 +128,7 @@ export class PnPWebview {
         PnPWebview.webview.title = 'ACE Scenario Gallery';
         break;
       case WebviewType.WebpartSampleGallery:
-        PnPWebview.webview.title = 'SPFx Webparts Sample Gallery';
+        PnPWebview.webview.title = 'SPFx Web Parts Sample Gallery';
         break;
       case WebviewType.ExtensionSampleGallery:
         PnPWebview.webview.title = 'SPFx Extensions Sample Gallery';
