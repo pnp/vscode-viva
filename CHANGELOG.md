@@ -1,5 +1,10 @@
 # Change Log
 
+## [0.5.2] - 2023-05-13
+
+- Added support for creating and managing SPFx solutions
+- Added SPFx web part and extension samples views
+
 ## [0.5.1] - 2023-05-03
 
 - Updated help and feedback section
