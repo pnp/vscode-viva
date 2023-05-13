@@ -345,6 +345,24 @@
       "createDate": "2022-03-24"
     },
     {
+      "title": "ChatGPT Daily Insights Adaptive Card Extension",
+      "url": "https://github.com/pnp/sp-dev-fx-aces/tree/main/samples/PrimaryTextCard-ChatGPTDailyInsights",
+      "description": "ACE to display Daily Insights based on ChatGPT OpenAI API.",
+      "image": "https://raw.githubusercontent.com/pnp/sp-dev-fx-aces/main/samples/PrimaryTextCard-ChatGPTDailyInsights/assets/3.png",
+      "authors": [
+        {
+          "name": "Siddharth Vaghasia",
+          "pictureUrl": "https://github.com/siddharth-vaghasia.png"
+        },
+        {
+          "name": "Kunj Sangani",
+          "pictureUrl": "https://github.com/kunj-sangani.png"
+        }
+      ],
+      "tags": null,
+      "createDate": "2023-02-18"
+    },
+    {
       "title": "COVID-19 Indicator",
       "url": "https://github.com/pnp/sp-dev-fx-aces/tree/main/samples/PrimaryTextCard-Covid-Indicator",
       "description": "This Adaptive Card Extension displays COVID-19 data from the specified country.",
