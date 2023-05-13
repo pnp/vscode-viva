@@ -1,20 +1,20 @@
 export enum FrameworkType {
-  None = 'none',
-  React = 'react',
-  Minimal = 'minimal',
+  none = 'none',
+  react = 'react',
+  minimal = 'minimal',
 }
 
 export const FrameworkTypes = [
   {
     name: 'No framework',
-    value: FrameworkType.None
+    value: FrameworkType.none
   },
   {
     name: 'React',
-    value: FrameworkType.React
+    value: FrameworkType.react
   },
   {
     name: 'Minimal',
-    value: FrameworkType.Minimal
+    value: FrameworkType.minimal
   },
 ];

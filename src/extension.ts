@@ -20,11 +20,10 @@ export async function activate(context: ExtensionContext) {
 
 	Dependencies.registerCommands();
 	Scaffolder.registerCommands();
-
 	CliActions.registerCommands();
 
 	CommandPanel.register();
-
+	
 	PnPWebview.register();
 
 	workspace.findFiles(PROJECT_FILE, `**/node_modules/**`).then(async (files) => {

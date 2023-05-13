@@ -1,6 +1,7 @@
 {
   "samples": [
     {
+      "name": "pnp-sp-fx-aces-ace-cardgallery",
       "title": "Adaptive Cards Sample Gallery",
       "url": "https://github.com/pnp/sp-dev-fx-aces/tree/main/samples/ace-cardgallery",
       "description": "11 Adaptive Card Extension Samples",
@@ -11,10 +12,15 @@
           "pictureUrl": "https://github.com/dcashpeterson.png"
         }
       ],
-      "tags": null,
-      "createDate": "2021-09-28"
+      "tags": [
+        "SharePoint",
+        "Viva"
+      ],
+      "createDate": "2021-09-28",
+      "updateDate": "2021-09-28"
     },
     {
+      "name": "pnp-sp-fx-aces-cardcomp",
       "title": "Card Composition",
       "url": "https://github.com/pnp/sp-dev-fx-aces/tree/main/samples/BasicCard-CardComposition",
       "description": "Viva Connection Adaptive Card Extension (ACE) that shows how to dynamically include dynamic cards pragmatically.",
@@ -25,10 +31,15 @@
           "pictureUrl": "https://github.com/mgwojciech.png"
         }
       ],
-      "tags": null,
-      "createDate": "2022-06-07"
+      "tags": [
+        "SharePoint",
+        "Viva"
+      ],
+      "createDate": "2022-06-07",
+      "updateDate": "2022-06-07"
     },
     {
+      "name": "pnp-sp-fx-aces-ace-upcoming-events",
       "title": "Upcoming Events Viewer",
       "url": "https://github.com/pnp/sp-dev-fx-aces/tree/main/samples/BasicCard-Graph-UpcomingEvents",
       "description": "Loads upcoming events from the users calendar.",
@@ -39,10 +50,15 @@
           "pictureUrl": "https://github.com/zachroberts8668.png"
         }
       ],
-      "tags": null,
-      "createDate": "2021-09-29"
+      "tags": [
+        "SharePoint",
+        "Office"
+      ],
+      "createDate": "2021-09-29",
+      "updateDate": "2021-11-29"
     },
     {
+      "name": "pnp-sp-fx-aces-monitorsecurity",
       "title": "Monitor Security ACE",
       "url": "https://github.com/pnp/sp-dev-fx-aces/tree/main/samples/BasicCard-MonitorSecurity",
       "description": "This solution provides a security monitoring feature using identity protection graph endpoint and ACE.",
@@ -53,10 +69,15 @@
           "pictureUrl": "https://github.com/ArijitCloud.png"
         }
       ],
-      "tags": null,
-      "createDate": "2022-02-05"
+      "tags": [
+        "SharePoint",
+        "Viva"
+      ],
+      "createDate": "2022-02-05",
+      "updateDate": "2022-02-05"
     },
     {
+      "name": "pnp-sp-fx-aces-multi-forms",
       "title": "Multiple Forms",
       "url": "https://github.com/pnp/sp-dev-fx-aces/tree/main/samples/BasicCard-Multiple-Forms-Apps",
       "description": "This Adaptive Card Extension shows how to have a single ACE card to display multiple Microsoft Forms or Multiple Power Apps that opens in the Stage View on Teams.",
@@ -67,10 +88,15 @@
           "pictureUrl": "https://github.com/marcus-castro-sp.png"
         }
       ],
-      "tags": null,
-      "createDate": "2023-04-13"
+      "tags": [
+        "SharePoint",
+        "Viva"
+      ],
+      "createDate": "2023-04-13",
+      "updateDate": "2023-04-13"
     },
     {
+      "name": "pnp-sp-fx-aces-myonedriveinfo",
       "title": "My OneDrive Info",
       "url": "https://github.com/pnp/sp-dev-fx-aces/tree/main/samples/BasicCard-My-OneDrive-Info",
       "description": "This ACE demonstrates how to use the Graph API endpoints to access information about the current users OneDrive.",
@@ -81,10 +107,15 @@
           "pictureUrl": "https://github.com/HarminderSethi.png"
         }
       ],
-      "tags": null,
-      "createDate": "2023-02-21"
+      "tags": [
+        "SharePoint",
+        "Viva"
+      ],
+      "createDate": "2023-02-21",
+      "updateDate": "2023-02-21"
     },
     {
+      "name": "pnp-sp-fx-aces-oneDriveImageOnlyCarousel",
       "title": "OneDrive Carousel",
       "url": "https://github.com/pnp/sp-dev-fx-aces/tree/main/samples/BasicCard-OneDriveCarousel",
       "description": "This solution provides a carousel that takes images from a OneDrive folder using microsoft graph and ACE and display only the current image.",
@@ -95,10 +126,15 @@
           "pictureUrl": "https://github.com/GuidoZam.png"
         }
       ],
-      "tags": null,
-      "createDate": "2022-04-11"
+      "tags": [
+        "SharePoint",
+        "Viva"
+      ],
+      "createDate": "2022-04-11",
+      "updateDate": "2022-04-11"
     },
     {
+      "name": "pnp-sp-fx-aces-people-search",
       "title": "People Search Adaptive Card Extension",
       "url": "https://github.com/pnp/sp-dev-fx-aces/tree/main/samples/BasicCard-PeopleSearch",
       "description": "This sample shows how to build an ACE with a card view and quick view to display users in a tenant and search users.",
@@ -109,10 +145,15 @@
           "pictureUrl": "https://github.com/kunj-sangani.png"
         }
       ],
-      "tags": null,
-      "createDate": "2023-01-08"
+      "tags": [
+        "SharePoint",
+        "Viva"
+      ],
+      "createDate": "2023-01-08",
+      "updateDate": "2023-01-08"
     },
     {
+      "name": "pnp-sp-fx-aces-SharedGraphClient",
       "title": "Using Shared Graph Client in ACEs",
       "url": "https://github.com/pnp/sp-dev-fx-aces/tree/main/samples/BasicCard-ShareGraphClient",
       "description": "This solution shows how to use a shared Microsoft Graph client between ACEs.",
@@ -123,10 +164,15 @@
           "pictureUrl": "https://github.com/mgwojciech.png"
         }
       ],
-      "tags": null,
-      "createDate": "2022-09-17"
+      "tags": [
+        "SharePoint",
+        "Viva"
+      ],
+      "createDate": "2022-09-17",
+      "updateDate": "2022-09-17"
     },
     {
+      "name": "pnp-sp-fx-aces-sharepoint-crud",
       "title": "SharePoint CRUD Example",
       "url": "https://github.com/pnp/sp-dev-fx-aces/tree/main/samples/BasicCard-SharePoint-CRUD",
       "description": "This Adaptive Card Extension shows how to work with form elements and form data in an Adaptive Card. It is an example of how to use an ACE to interact with SharePoint List data using PnPJS.",
@@ -137,10 +183,15 @@
           "pictureUrl": "https://github.com/dcashpeterson.png"
         }
       ],
-      "tags": null,
-      "createDate": "2022-01-13"
+      "tags": [
+        "SharePoint",
+        "Viva"
+      ],
+      "createDate": "2022-01-13",
+      "updateDate": "2022-01-13"
     },
     {
+      "name": "pnp-sp-fx-aces-statusmessage",
       "title": "Teams Status ACE Example",
       "url": "https://github.com/pnp/sp-dev-fx-aces/tree/main/samples/BasicCard-StatusMessage",
       "description": "This ACE demonstrates how to use the Presence Graph API endpoints (beta) to set and retrieve a presence status message for a user.",
@@ -151,10 +202,15 @@
           "pictureUrl": "https://github.com/yhabersaat.png"
         }
       ],
-      "tags": null,
-      "createDate": "2022-12-21"
+      "tags": [
+        "SharePoint",
+        "Viva"
+      ],
+      "createDate": "2022-12-21",
+      "updateDate": "2023-01-22"
     },
     {
+      "name": "pnp-sp-fx-aces-ace-articlecontent",
       "title": "Article Content at a glance",
       "url": "https://github.com/pnp/sp-dev-fx-aces/tree/main/samples/ImageCard-At-a-glance",
       "description": "Adaptive Card displays of Article Content",
@@ -165,10 +221,15 @@
           "pictureUrl": "https://github.com/anoopt.png"
         }
       ],
-      "tags": null,
-      "createDate": "2021-10-06"
+      "tags": [
+        "SharePoint",
+        "Viva"
+      ],
+      "createDate": "2021-10-06",
+      "updateDate": "2021-10-06"
     },
     {
+      "name": "pnp-sp-fx-aces-hidable-ace",
       "title": "Hidable ACE",
       "url": "https://github.com/pnp/sp-dev-fx-aces/tree/main/samples/ImageCard-HideACE",
       "description": "This solution shows an example of how to hide an ACE based on a user action such as a button click.",
@@ -179,10 +240,15 @@
           "pictureUrl": "https://github.com/dcashpeterson.png"
         }
       ],
-      "tags": null,
-      "createDate": "2022-03-24"
+      "tags": [
+        "SharePoint",
+        "Viva"
+      ],
+      "createDate": "2022-03-24",
+      "updateDate": "2022-03-24"
     },
     {
+      "name": "pnp-sp-fx-aces-hybridwork-checkin",
       "title": "Hybrid Work Employee Check-in Adaptive Card Extension",
       "url": "https://github.com/pnp/sp-dev-fx-aces/tree/main/samples/ImageCard-HybridWork-Checkin",
       "description": "Adaptive Card Extension that allows users to check in to the office.",
@@ -193,10 +259,15 @@
           "pictureUrl": "https://github.com/ArijitCloud.png"
         }
       ],
-      "tags": null,
-      "createDate": "2021-11-08"
+      "tags": [
+        "SharePoint",
+        "Viva"
+      ],
+      "createDate": "2021-11-08",
+      "updateDate": "2021-11-08"
     },
     {
+      "name": "pnp-sp-fx-aces-internship",
       "title": "Internship",
       "url": "https://github.com/pnp/sp-dev-fx-aces/tree/main/samples/ImageCard-Internships",
       "description": "This education sample shows how to build an ACE with a card view and quick view to display new and recent internships available to gain work experience.",
@@ -207,10 +278,15 @@
           "pictureUrl": "https://github.com/jesegher.png"
         }
       ],
-      "tags": null,
-      "createDate": "2023-04-15"
+      "tags": [
+        "SharePoint",
+        "Viva"
+      ],
+      "createDate": "2023-04-15",
+      "updateDate": "2023-04-15"
     },
     {
+      "name": "pnp-sp-fx-aces-most-lifed-pages",
       "title": "Most Liked Pages Adaptive Card Extension",
       "url": "https://github.com/pnp/sp-dev-fx-aces/tree/main/samples/ImageCard-MostLikedPages",
       "description": "This Adaptive Card Extension shows the most liked pages of selected SharePoint sites.",
@@ -221,10 +297,15 @@
           "pictureUrl": "https://github.com/a1mery.png"
         }
       ],
-      "tags": null,
-      "createDate": "2023-03-15"
+      "tags": [
+        "SharePoint",
+        "Viva"
+      ],
+      "createDate": "2023-03-15",
+      "updateDate": "2023-03-15"
     },
     {
+      "name": "pnp-sp-fx-aces-my-recent-files",
       "title": "My Recent Files",
       "url": "https://github.com/pnp/sp-dev-fx-aces/tree/main/samples/ImageCard-my-recent-files",
       "description": "This Adaptive Card Extension allows user quick access recent files",
@@ -235,10 +316,15 @@
           "pictureUrl": "https://github.com/joaojmendes.png"
         }
       ],
-      "tags": null,
-      "createDate": "2022-04-12"
+      "tags": [
+        "SharePoint",
+        "Viva"
+      ],
+      "createDate": "2022-04-12",
+      "updateDate": "2022-04-12"
     },
     {
+      "name": "pnp-sp-fx-aces-officelocations",
       "title": "Office Locations",
       "url": "https://github.com/pnp/sp-dev-fx-aces/tree/main/samples/ImageCard-OfficeLocations",
       "description": "This sample shows how to build an ACE with multiple card views to show the details of the offices in an organization.",
@@ -249,10 +335,15 @@
           "pictureUrl": "https://github.com/anoopt.png"
         }
       ],
-      "tags": null,
-      "createDate": "2022-02-15"
+      "tags": [
+        "SharePoint",
+        "Viva"
+      ],
+      "createDate": "2022-02-15",
+      "updateDate": "2022-06-01"
     },
     {
+      "name": "pnp-sp-fx-aces-oneDriveCarousel",
       "title": "OneDrive Carousel",
       "url": "https://github.com/pnp/sp-dev-fx-aces/tree/main/samples/ImageCard-OneDriveCarousel",
       "description": "This solution provides a carousel that takes images from a OneDrive folder using Microsoft Graph and ACE.",
@@ -263,10 +354,15 @@
           "pictureUrl": "https://github.com/GuidoZam.png"
         }
       ],
-      "tags": null,
-      "createDate": "2022-04-11"
+      "tags": [
+        "SharePoint",
+        "Viva"
+      ],
+      "createDate": "2022-04-11",
+      "updateDate": "2022-04-11"
     },
     {
+      "name": "pnp-sp-fx-aces-publicHolidays",
       "title": "Public Holiday Listing",
       "url": "https://github.com/pnp/sp-dev-fx-aces/tree/main/samples/ImageCard-PublicHolidays",
       "description": "This sample provides a listing of holidays set in a SharePoint list.",
@@ -285,10 +381,15 @@
           "pictureUrl": "https://github.com/SmitaNachan.png"
         }
       ],
-      "tags": null,
-      "createDate": "2022-08-03"
+      "tags": [
+        "SharePoint",
+        "Viva"
+      ],
+      "createDate": "2022-08-03",
+      "updateDate": "2022-08-03"
     },
     {
+      "name": "pnp-sp-fx-aces-rss",
       "title": "Adaptive Card Extension PnP Weekly Feed",
       "url": "https://github.com/pnp/sp-dev-fx-aces/tree/main/samples/ImageCard-Rss",
       "description": "This ACE displays the PnP Weekly video recording RSS feed. ",
@@ -299,10 +400,15 @@
           "pictureUrl": "https://github.com/aaclage.png"
         }
       ],
-      "tags": null,
-      "createDate": "2022-01-27"
+      "tags": [
+        "SharePoint",
+        "Viva"
+      ],
+      "createDate": "2022-01-27",
+      "updateDate": "2022-01-27"
     },
     {
+      "name": "pnp-sp-fx-aces-todays-lunch",
       "title": "Today's Lunch Adaptive Card Extension",
       "url": "https://github.com/pnp/sp-dev-fx-aces/tree/main/samples/ImageCard-TodaysLunch",
       "description": "Adaptive Card Extension that shows today's lunch.",
@@ -313,10 +419,15 @@
           "pictureUrl": "https://github.com/luismanez.png"
         }
       ],
-      "tags": null,
-      "createDate": "2021-10-28"
+      "tags": [
+        "SharePoint",
+        "Viva"
+      ],
+      "createDate": "2021-10-28",
+      "updateDate": "2021-12-13"
     },
     {
+      "name": "pnp-sp-fx-aces-tuitions",
       "title": "Tuitions",
       "url": "https://github.com/pnp/sp-dev-fx-aces/tree/main/samples/ImageCard-Tuitions",
       "description": "This sample shows how to build an ACE with a card view to display outstanding payment for Tuitions and payment breakage.",
@@ -327,10 +438,15 @@
           "pictureUrl": "https://github.com/jesegher.png"
         }
       ],
-      "tags": null,
-      "createDate": "2023-04-15"
+      "tags": [
+        "SharePoint",
+        "Viva"
+      ],
+      "createDate": "2023-04-15",
+      "updateDate": "2023-04-15"
     },
     {
+      "name": "pnp-sp-fx-aces-weather-ace",
       "title": "Weather Adaptive Card Extension",
       "url": "https://github.com/pnp/sp-dev-fx-aces/tree/main/samples/ImageCard-Weather",
       "description": "This Adaptive Card Extension allows users to display information about the weather in a specific location.",
@@ -341,10 +457,15 @@
           "pictureUrl": "https://github.com/aakashbhardwaj619.png"
         }
       ],
-      "tags": null,
-      "createDate": "2022-03-24"
+      "tags": [
+        "SharePoint",
+        "Viva"
+      ],
+      "createDate": "2022-03-24",
+      "updateDate": "2022-03-24"
     },
     {
+      "name": "pnp-sp-fx-aces-ChatGPTDailyInsights",
       "title": "ChatGPT Daily Insights Adaptive Card Extension",
       "url": "https://github.com/pnp/sp-dev-fx-aces/tree/main/samples/PrimaryTextCard-ChatGPTDailyInsights",
       "description": "ACE to display Daily Insights based on ChatGPT OpenAI API.",
@@ -359,10 +480,15 @@
           "pictureUrl": "https://github.com/kunj-sangani.png"
         }
       ],
-      "tags": null,
-      "createDate": "2023-02-18"
+      "tags": [
+        "SharePoint",
+        "Viva"
+      ],
+      "createDate": "2023-02-18",
+      "updateDate": "2023-02-18"
     },
     {
+      "name": "pnp-sp-fx-aces-covid-indicator",
       "title": "COVID-19 Indicator",
       "url": "https://github.com/pnp/sp-dev-fx-aces/tree/main/samples/PrimaryTextCard-Covid-Indicator",
       "description": "This Adaptive Card Extension displays COVID-19 data from the specified country.",
@@ -373,10 +499,15 @@
           "pictureUrl": "https://github.com/joaojmendes.png"
         }
       ],
-      "tags": null,
-      "createDate": "2021-12-12"
+      "tags": [
+        "SharePoint",
+        "Viva"
+      ],
+      "createDate": "2021-12-12",
+      "updateDate": "2021-12-12"
     },
     {
+      "name": "pnp-sp-fx-aces-ace-createteam",
       "title": "Create a new Team",
       "url": "https://github.com/pnp/sp-dev-fx-aces/tree/main/samples/PrimaryTextCard-CreateTeam",
       "description": "Provision a Team based on default templates using Graph API",
@@ -387,10 +518,15 @@
           "pictureUrl": "https://github.com/dips365.png"
         }
       ],
-      "tags": null,
-      "createDate": "2021-10-06"
+      "tags": [
+        "SharePoint",
+        "Viva"
+      ],
+      "createDate": "2021-10-06",
+      "updateDate": "2021-10-06"
     },
     {
+      "name": "pnp-sp-fx-aces-ace-dynamic-announcements",
       "title": "Dynamic Announcements",
       "url": "https://github.com/pnp/sp-dev-fx-aces/tree/main/samples/PrimaryTextCard-Dynamic-Announcements",
       "description": "This ACE card would be useful for an organization use it to make Announcements driven from SharePoint List.",
@@ -401,10 +537,15 @@
           "pictureUrl": "https://github.com/siddharth-vaghasia.png"
         }
       ],
-      "tags": null,
-      "createDate": "2022-03-12"
+      "tags": [
+        "SharePoint",
+        "Viva"
+      ],
+      "createDate": "2022-03-12",
+      "updateDate": "2022-03-12"
     },
     {
+      "name": "pnp-sp-fx-aces-flight-tracker",
       "title": "Flight Tracker",
       "url": "https://github.com/pnp/sp-dev-fx-aces/tree/main/samples/PrimaryTextCard-FlightTracker",
       "description": "This Adaptive Card Extension allows user to follow in real time a flight.",
@@ -415,10 +556,15 @@
           "pictureUrl": "https://github.com/joaojmendes.png"
         }
       ],
-      "tags": null,
-      "createDate": "2022-11-08"
+      "tags": [
+        "SharePoint",
+        "Viva"
+      ],
+      "createDate": "2022-11-08",
+      "updateDate": "2022-11-08"
     },
     {
+      "name": "pnp-sp-fx-aces-ace-followdocument",
       "title": "Follow Documents",
       "url": "https://github.com/pnp/sp-dev-fx-aces/tree/main/samples/PrimaryTextCard-Follow-Documents",
       "description": "Adaptive Card showing Followed Documents",
@@ -429,10 +575,15 @@
           "pictureUrl": "https://github.com/aaclage.png"
         }
       ],
-      "tags": null,
-      "createDate": "2021-12-01"
+      "tags": [
+        "SharePoint",
+        "Viva"
+      ],
+      "createDate": "2021-12-01",
+      "updateDate": "2021-12-01"
     },
     {
+      "name": "pnp-sp-fx-aces-football-stats",
       "title": "Football Stats",
       "url": "https://github.com/pnp/sp-dev-fx-aces/tree/main/samples/PrimaryTextCard-FootballStats",
       "description": "This Adaptive Card Extension allows user to choose one of the top five European Football League to get information about current team standing. The data is retrieved using REST API provided by - https://api.football-data.org",
@@ -451,10 +602,15 @@
           "pictureUrl": "https://github.com/soumyadeep2207.png"
         }
       ],
-      "tags": null,
-      "createDate": "2022-01-25"
+      "tags": [
+        "SharePoint",
+        "Viva"
+      ],
+      "createDate": "2022-01-25",
+      "updateDate": "2022-01-25"
     },
     {
+      "name": "pnp-sp-fx-aces-joinnewteam",
       "title": "Join New Team",
       "url": "https://github.com/pnp/sp-dev-fx-aces/tree/main/samples/PrimaryTextCard-Graph-JoinNewTeams",
       "description": "This Adaptive Card Extension shows public Teams the user is not a member of and allows them to join the Team.",
@@ -465,10 +621,15 @@
           "pictureUrl": "https://github.com/a1mery.png"
         }
       ],
-      "tags": null,
-      "createDate": "2022-02-28"
+      "tags": [
+        "SharePoint",
+        "Viva"
+      ],
+      "createDate": "2022-02-28",
+      "updateDate": "2023-03-06"
     },
     {
+      "name": "pnp-sp-fx-aces-graph-unreademails",
       "title": "Unread Emails Viewer",
       "url": "https://github.com/pnp/sp-dev-fx-aces/tree/main/samples/PrimaryTextCard-Graph-UnreadEmails",
       "description": "Checks the users inbox for unread emails",
@@ -479,10 +640,15 @@
           "pictureUrl": "https://github.com/techienickb.png"
         }
       ],
-      "tags": null,
-      "createDate": "2021-12-06"
+      "tags": [
+        "SharePoint",
+        "Viva"
+      ],
+      "createDate": "2021-12-06",
+      "updateDate": "2022-05-04"
     },
     {
+      "name": "pnp-sp-fx-aces-primarytextcard-manageteam",
       "title": "Display and Manage Team",
       "url": "https://github.com/pnp/sp-dev-fx-aces/tree/main/samples/PrimaryTextCard-ManageTeam",
       "description": "Display all team members who directly reports to current viewing user.",
@@ -493,10 +659,15 @@
           "pictureUrl": "https://github.com/dips365.png"
         }
       ],
-      "tags": null,
-      "createDate": "2021-10-06"
+      "tags": [
+        "SharePoint",
+        "Viva"
+      ],
+      "createDate": "2021-10-06",
+      "updateDate": "2021-10-06"
     },
     {
+      "name": "pnp-sp-fx-aces-my-calendar",
       "title": "My Calendar Plan",
       "url": "https://github.com/pnp/sp-dev-fx-aces/tree/main/samples/PrimaryTextCard-my-calendar-plan",
       "description": "This ACE show user events for specific day.",
@@ -507,10 +678,15 @@
           "pictureUrl": "https://github.com/joaojmendes.png"
         }
       ],
-      "tags": null,
-      "createDate": "2022-02-25"
+      "tags": [
+        "SharePoint",
+        "Viva"
+      ],
+      "createDate": "2022-02-25",
+      "updateDate": "2022-02-25"
     },
     {
+      "name": "pnp-sp-fx-aces-my-m365-groups",
       "title": "My M365 Groups",
       "url": "https://github.com/pnp/sp-dev-fx-aces/tree/main/samples/PrimaryTextCard-My-M365-Groups",
       "description": "Adaptive Card Extension that shows logged-in user M365 Unified Groups",
@@ -525,10 +701,15 @@
           "pictureUrl": "https://github.com/SmitaNachan.png"
         }
       ],
-      "tags": null,
-      "createDate": "2022-01-07"
+      "tags": [
+        "SharePoint",
+        "Viva"
+      ],
+      "createDate": "2022-01-07",
+      "updateDate": "2022-06-12"
     },
     {
+      "name": "pnp-sp-fx-aces-my-notifications",
       "title": "My Notifications",
       "url": "https://github.com/pnp/sp-dev-fx-aces/tree/main/samples/PrimaryTextCard-My-Notifications",
       "description": "This Adaptive Card Extension shows real time notifications for Lists and Libraries",
@@ -539,10 +720,15 @@
           "pictureUrl": "https://github.com/joaojmendes.png"
         }
       ],
-      "tags": null,
-      "createDate": "2021-11-25"
+      "tags": [
+        "SharePoint",
+        "Viva"
+      ],
+      "createDate": "2021-11-25",
+      "updateDate": "2021-11-25"
     },
     {
+      "name": "pnp-sp-fx-aces-myemails",
       "title": "My Notifications",
       "url": "https://github.com/pnp/sp-dev-fx-aces/tree/main/samples/PrimaryTextCard-MyEmails",
       "description": "This Adaptive Card Extension shows current users email using Microsoft Graph.",
@@ -553,10 +739,15 @@
           "pictureUrl": "https://github.com/siddharth-vaghasia.png"
         }
       ],
-      "tags": null,
-      "createDate": "2022-01-03"
+      "tags": [
+        "SharePoint",
+        "Viva"
+      ],
+      "createDate": "2022-01-03",
+      "updateDate": "2022-01-03"
     },
     {
+      "name": "pnp-sp-fx-aces-myshifts",
       "title": "My SHifts",
       "url": "https://github.com/pnp/sp-dev-fx-aces/tree/main/samples/PrimaryTextCard-MyShifts",
       "description": "This sample shows how to build an ACE with a PrimaryText card view and a quick view to display current logged in user's immediate upcoming shifts.",
@@ -567,10 +758,15 @@
           "pictureUrl": "https://github.com/siddharth-vaghasia.png"
         }
       ],
-      "tags": null,
-      "createDate": "2022-02-07"
+      "tags": [
+        "SharePoint",
+        "Viva"
+      ],
+      "createDate": "2022-02-07",
+      "updateDate": "2022-02-07"
     },
     {
+      "name": "pnp-sp-fx-aces-peopledetails",
       "title": "People Details",
       "url": "https://github.com/pnp/sp-dev-fx-aces/tree/main/samples/PrimaryTextCard-PeopleDetails",
       "description": "This Adaptive Card Extension shows general CRUD operations for people details using SharePoint list and Adaptive Card which involves multiple QuickViews and pnp js",
@@ -589,10 +785,15 @@
           "pictureUrl": "https://github.com/XLR8-0.png"
         }
       ],
-      "tags": null,
-      "createDate": "2022-01-03"
+      "tags": [
+        "SharePoint",
+        "Viva"
+      ],
+      "createDate": "2022-01-03",
+      "updateDate": "2022-01-03"
     },
     {
+      "name": "pnp-sp-fx-aces-ace-plannertasks",
       "title": "Planner Tasks",
       "url": "https://github.com/pnp/sp-dev-fx-aces/tree/main/samples/PrimaryTextCard-PlannerTasks",
       "description": "Adaptive Card displays of Planner Tasks",
@@ -603,10 +804,15 @@
           "pictureUrl": "https://github.com/ejazhussain.png"
         }
       ],
-      "tags": null,
-      "createDate": "2021-10-06"
+      "tags": [
+        "SharePoint",
+        "Viva"
+      ],
+      "createDate": "2021-10-06",
+      "updateDate": "2021-10-06"
     },
     {
+      "name": "pnp-sp-fx-aces-recentfiles",
       "title": "Recent files",
       "url": "https://github.com/pnp/sp-dev-fx-aces/tree/main/samples/PrimaryTextCard-RecentFiles",
       "description": "Viva Connection Adaptive Card Extension (ACE) that shows the recent files for the current user.",
@@ -617,10 +823,15 @@
           "pictureUrl": "https://github.com/GuidoZam.png"
         }
       ],
-      "tags": null,
-      "createDate": "2022-04-11"
+      "tags": [
+        "SharePoint",
+        "Viva"
+      ],
+      "createDate": "2022-04-11",
+      "updateDate": "2022-04-11"
     },
     {
+      "name": "pnp-sp-fx-aces-search",
       "title": "Search",
       "url": "https://github.com/pnp/sp-dev-fx-aces/tree/main/samples/PrimaryTextCard-Search",
       "description": "Viva Connection Adaptive Card Extension (ACE) that allows for search.",
@@ -631,10 +842,15 @@
           "pictureUrl": "https://github.com/mgwojciech.png"
         }
       ],
-      "tags": null,
-      "createDate": "2022-12-09"
+      "tags": [
+        "SharePoint",
+        "Viva"
+      ],
+      "createDate": "2022-12-09",
+      "updateDate": "2022-12-09"
     },
     {
+      "name": "pnp-sp-fx-aces-ace-servicehealth",
       "title": "Status of Tenant Service Health",
       "url": "https://github.com/pnp/sp-dev-fx-aces/tree/main/samples/PrimaryTextCard-Service-Health",
       "description": "Adaptive Card displays of Microsoft 365 Service Health",
@@ -645,10 +861,15 @@
           "pictureUrl": "https://github.com/anoopt.png"
         }
       ],
-      "tags": null,
-      "createDate": "2021-10-06"
+      "tags": [
+        "SharePoint",
+        "Viva"
+      ],
+      "createDate": "2021-10-06",
+      "updateDate": "2021-10-28"
     },
     {
+      "name": "pnp-PrimaryTextCard-StockBitcoinFeed",
       "title": "Price updates on stocks, rex and crypto",
       "url": "https://github.com/pnp/sp-dev-fx-aces/tree/main/samples/PrimaryTextCard-StockBitcoinFeed",
       "description": "Display the last price udpates of US stocks, forex and crypto with the help of finnhub APIs.",
@@ -659,10 +880,15 @@
           "pictureUrl": "https://avatars.githubusercontent.com/u/25693207?v=4"
         }
       ],
-      "tags": null,
-      "createDate": "2022-09-11"
+      "tags": [
+        "SharePoint",
+        "Viva"
+      ],
+      "createDate": "2022-09-11",
+      "updateDate": "2022-09-11"
     },
     {
+      "name": "pnp-sp-fx-aces-ace-londonservices",
       "title": "Status of London Transport Services",
       "url": "https://github.com/pnp/sp-dev-fx-aces/tree/main/samples/PrimaryTextCard-TfL-Status",
       "description": "Adaptive Card displays of London Train services and status",
@@ -673,10 +899,15 @@
           "pictureUrl": "https://github.com/anoopt.png"
         }
       ],
-      "tags": null,
-      "createDate": "2021-10-06"
+      "tags": [
+        "SharePoint",
+        "Viva"
+      ],
+      "createDate": "2021-10-06",
+      "updateDate": "2021-10-06"
     },
     {
+      "name": "pnp-sp-fx-aces-wordoftheday",
       "title": "Word Of The Day",
       "url": "https://github.com/pnp/sp-dev-fx-aces/tree/main/samples/PrimaryTextCard-WordOfTheDay",
       "description": "Viva Connection Adaptive Card Extension (ACE) that shows the word of the day.",
@@ -687,8 +918,12 @@
           "pictureUrl": "https://github.com/GuidoZam.png"
         }
       ],
-      "tags": null,
-      "createDate": "2022-04-14"
+      "tags": [
+        "SharePoint",
+        "Viva"
+      ],
+      "createDate": "2022-04-14",
+      "updateDate": "2022-04-14"
     }
   ]
 }

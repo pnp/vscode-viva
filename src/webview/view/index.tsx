@@ -6,13 +6,17 @@ import { App } from "./components/App";
 import "./index.css";
 
 export const paths: { [pathName: string ]: string } = {
-  sample: "/sample-gallery",
-  scenario: "/scenario-gallery"
-}
+  aCESample: "/sp-dev-fx-aces-samples",
+  aCEScenario: "/sp-dev-fx-aces-scenarios",
+  extensionSample: "/sp-dev-fx-extensions-samples",
+  webpartSample: "/sp-dev-fx-webparts-samples"
+};
 
 export const routeEntries: { [routeKey: string]: string } = {
-  [WebviewType.SampleGallery]: paths.sample,
-  [WebviewType.ScenarioGallery]: paths.scenario,
+  [WebviewType.ACESampleGallery]: paths.aCESample,
+  [WebviewType.ACEScenarioGallery]: paths.aCEScenario,
+  [WebviewType.ExtensionSampleGallery]: paths.extensionSample,
+  [WebviewType.WebpartSampleGallery]: paths.webpartSample
 };
 
 const elm = document.querySelector('#root');

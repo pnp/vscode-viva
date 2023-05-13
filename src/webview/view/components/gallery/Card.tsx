@@ -1,4 +1,4 @@
-import { VSCodeButton, VSCodeLink, VSCodeTag } from '@vscode/webview-ui-toolkit/react';
+import { VSCodeLink, VSCodeTag } from '@vscode/webview-ui-toolkit/react';
 import * as React from 'react';
 import { useMemo } from 'react';
 import { Sample } from '../../../../models';
@@ -18,17 +18,17 @@ export const Card: React.FunctionComponent<ICardProps> = ({ item }: React.PropsW
   };
 
   const image = useMemo(() => {
-    if (item.thumbnails && item.thumbnails.length > 0) {
+    if (item.image) {
       return (
         <img 
           className={`w-full h-full object-cover`}
-          src={item.thumbnails[0].url} 
+          src={item.image} 
           alt={item.name} 
           loading={`lazy`} />
       );
     }
     return null;
-  }, [item.thumbnails, item.name]);
+  }, [item.image, item.name]);
 
   return (
     <li className={`sample_card`}>
@@ -37,11 +37,11 @@ export const Card: React.FunctionComponent<ICardProps> = ({ item }: React.PropsW
       </div>
 
       <div className={`p-4 space-y-2`}>
-        <div className={`flex items-center space-x-2`}>{ item.products && item.products.map(product => <VSCodeTag key={product}>{product}</VSCodeTag>) }</div>
+        <div className={`flex items-center space-x-2`}>{ item.tags && item.tags.map(tag => <VSCodeTag key={tag}>{tag}</VSCodeTag>) }</div>
         
         <h2 className={`text-base font-bold overflow-hidden text-ellipsis whitespace-nowrap`}>{ item.title }</h2>
         
-        <p className={`sample_card__description text-sm overflow-hidden text-ellipsis`}>{ item.shortDescription }</p>
+        <p className={`sample_card__description text-sm overflow-hidden text-ellipsis`}>{ item.description }</p>
 
         <div className={`sample_card__actions flex flex-row space-x-2`}>
           <VSCodeLink href={item.url} title={`View in GitHub`}>
@@ -68,7 +68,10 @@ export const Card: React.FunctionComponent<ICardProps> = ({ item }: React.PropsW
 
           <div className={`sample_card__details ml-2 text-xs`}>
             <p className={`font-bold`}>{item.authors && item.authors.length > 0 && <>{item.authors[0].name}{item.authors.length > 1 ? <> +{item.authors.length - 1}</> : null}</>}</p>
-            <p>Modified {format(Date.parse(item.updateDateTime), "EEE MMM dd yyyy")}</p>
+            {
+              item.updateDate && item.updateDate.length > 0 &&
+                <p>Modified {format(Date.parse(item.updateDate), "EEE MMM dd yyyy")}</p>
+            }
           </div>
         </div>
       </div>

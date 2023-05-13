@@ -8,13 +8,13 @@
 
 # Viva Connections Toolkit for Visual Studio Code
 
-With the Viva Connections Toolkit extension, you can create and manage your Viva Connections solutions in your tenant. All actions you need to perform during the development flow are at your fingertips.
+With the Viva Connections Toolkit extension, you can create and manage your Viva Connections solutions (SharePoint Framework & Viva Adaptive Card) in your tenant. All actions you need to perform during the development flow are at your fingertips.
 
-![Sample Gallery](./assets/images/sample-gallery.png)
+![Sample Gallery](./assets/images/start.png)
 
 ## Architecture
 
-Viva Connections Toolkit for Viva Studio Code is an abstraction layer on top of the [SPFx](https://aka.ms/spfx) Yeoman generator and [CLI for Microsoft 365](https://pnp.github.io/cli-microsoft365/). All operations and actions are performed on the command line level using these two tools with the environment settings on your computer.
+Viva Connections Toolkit for Visual Studio Code is an abstraction layer on top of the [SPFx](https://aka.ms/spfx) Yeoman generator and [CLI for Microsoft 365](https://pnp.github.io/cli-microsoft365/). All operations and actions are performed on the command line level using these two tools with the environment settings on your computer.
 
 This means that the features and capabilities provided through this tool are available for any solution which has been build with SPFx.
  
@@ -24,7 +24,7 @@ The extension provides the following capabilities:
 
 ### Welcome experience
 
-The extension automatically detects if you are in a SharePoint Framework project. If not, it will show helpful actions to allow you to create a new Viva Connections app.
+The extension automatically detects if you are in a SharePoint Framework project. If not, it will show helpful actions to allow you to create a new SPFx or ACE solution.
 
 ![Welcome experience](./assets/images/welcome-experience.png)
 
@@ -44,21 +44,25 @@ To ensure that you can create Viva Connections Toolkit, you can use the **check 
 
 In case when you do not have all dependencies installed, you can use the **install dependencies** action to install them.
 
-### Start from a sample
+### Start from a SPFx (web part or extension) or ACE sample
 
-From our sample gallery, you can quickly get started with one of the Viva Connections Toolkit that were created by the community.
+From one of the samples gallery, you can kick start your development with a new project. Create a new SPFx web part or Extension or ACE solution with a click of a button.
 
-![Create project based on sample](./assets/images/start-from-ace-sample-gif.gif)
+![Create project based on web part sample](./assets/images/create-base-on-spfx-webpart.gif)
 
-### Start from a scenario
+![Create project based on ace sample](./assets/images/create-base-on-spfx-ace.gif)
 
-Start your solution creation based on the provided set of scenarios with ready to use code to showcase what's possible. Scenario solutions are provided with detailed guidance using the [Code Tour](https://aka.ms/codetour) to provide you more details on the structure and options.
+### Start from a ACE scenario
+
+Start your solution creation based on the provided set of ACE scenarios with ready to use code to showcase what's possible. Scenario solutions are provided with detailed guidance using the [Code Tour](https://aka.ms/codetour) to provide you more details on the structure and options.
 
 ### Create a new project
 
 Creating a new project was never easier. Just use the **create a Viva Connections project** action, and the extension will guide you through the process.
 
-### Project actions
+![Create new project](./assets/images/scaffolding.png)
+
+### Project tasks & actions
 
 When you open a SharePoint Framework solution, you will be able to Sign in and out to your tenant. This allows you to retrieve helpful links to your tenant main SharePoint site and app catalog.
 
@@ -66,15 +70,9 @@ You may also run any gulp task with a click of a button
 
 ![Gulp Tasks](./assets/images/tasks.png)
 
-As well as perform additional actions that among many things allow you to validate and upgrade your project to the latest version of the SharePoint Framework.
+As well as perform additional actions that among many things allow you to validate and upgrade your project to the latest version of the SharePoint Framework, as well as add new components to your existing project in a fast and easy way.
 
 ![Actions](./assets/images/actions.png)
-
-Additionally, you can also add new components to your existing project in a fast and easy way.
-
-![Add a new component](./assets/images/new-component.png)
-
-![Add a new component](./assets/images/add-component-gif.gif)
 
 ### Help and feedback
 
