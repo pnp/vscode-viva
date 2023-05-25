@@ -1634,13 +1634,17 @@
         {
           "name": "Abderahman Moujahid",
           "pictureUrl": "https://avatars.githubusercontent.com/u/36161889?s=460&u=afdd5f6681bc375ee3811482dec79824c12d8170&v=4"
+        },
+        {
+          "name": "Chris Lizon",
+          "pictureUrl": "https://github.com/ChrisLizon.png"
         }
       ],
       "tags": [
         "SharePoint"
       ],
       "createDate": "2021-01-07",
-      "updateDate": "2021-01-07"
+      "updateDate": "2023-05-04"
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-content-query-onprem",
@@ -2353,7 +2357,7 @@
         "SharePoint"
       ],
       "createDate": "2022-04-20",
-      "updateDate": "2023-01-18"
+      "updateDate": "2023-05-15"
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-fluentui-theme-variant",
@@ -2616,6 +2620,24 @@
       "updateDate": "2022-02-03"
     },
     {
+      "name": "pnp-sp-dev-spfx-web-parts-react-graph-azureapps",
+      "title": "Azure Apps",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-graph-azureapps",
+      "description": "This sample web part shows list of Azure apps in your tenant. A new Azure application can also be registered and can be edited using this web part.",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-graph-azureapps/assets/Add-New-App.gif",
+      "authors": [
+        {
+          "name": "Diksha Bhura",
+          "pictureUrl": "https://github.com/Diksha-Bhura.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2023-05-07",
+      "updateDate": "2023-05-07"
+    },
+    {
       "name": "pnp-sp-dev-spfx-web-parts-react-graph-calendar",
       "title": "Graph Calendar Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-graph-calendar",
@@ -2844,6 +2866,24 @@
       "updateDate": "2023-03-10"
     },
     {
+      "name": "pnp-sp-dev-spfx-web-parts-react-graph-webpart-report",
+      "title": "Web Part Report",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-graph-webpart-report",
+      "description": "This sample web part shows a report of the web parts used on the current site.",
+      "image": "https://raw.githubusercontent.com/pnp/sp-dev-fx-webparts/main/samples/react-graph-webpart-report/assets/Animated.gif",
+      "authors": [
+        {
+          "name": "Aimery Thomas",
+          "pictureUrl": "https://github.com/a1mery.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2023-05-13",
+      "updateDate": "2023-05-13"
+    },
+    {
       "name": "pnp-sp-dev-spfx-web-parts-react-group-membership-manager",
       "title": "Group Membership Manager",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-group-membership-manager",
@@ -2859,7 +2899,7 @@
         "SharePoint"
       ],
       "createDate": "2022-08-25",
-      "updateDate": "2023-01-18"
+      "updateDate": "2023-05-15"
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-groups-teams",
@@ -3134,6 +3174,24 @@
       ],
       "createDate": "2019-06-23",
       "updateDate": "2019-06-23"
+    },
+    {
+      "name": "pnp-sp-dev-spfx-web-parts-react-json-form",
+      "title": "Json form builder",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-json-form",
+      "description": "Build a custom form with ease",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-caml2table/assets/Demo.gif",
+      "authors": [
+        {
+          "name": "Dan Toft",
+          "pictureUrl": "https://github.com/Tanddant.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2023-05-16",
+      "updateDate": "2023-05-16"
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-kanban-board",
@@ -4156,13 +4214,17 @@
         {
           "name": "Jasey Waegebaert",
           "pictureUrl": "https://github.com/Jwaegebaert.png"
+        },
+        {
+          "name": "Mike Zimmerman",
+          "pictureUrl": "https://github.com/mikezimm.png"
         }
       ],
       "tags": [
         "SharePoint"
       ],
       "createDate": "2019-09-05",
-      "updateDate": "2023-01-20"
+      "updateDate": "2023-05-23"
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-page-sections-navigation",
@@ -4222,13 +4284,17 @@
         {
           "name": "ruslan-s",
           "pictureUrl": "https://github.com/ruslan-s.png"
+        },
+        {
+          "name": "SlowRobot",
+          "pictureUrl": "https://github.com/SlowRobot.png"
         }
       ],
       "tags": [
         "SharePoint"
       ],
       "createDate": "2020-04-30",
-      "updateDate": "2023-03-29"
+      "updateDate": "2023-05-11"
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-palette-picker",
@@ -5029,7 +5095,7 @@
         "SharePoint"
       ],
       "createDate": "2020-11-22",
-      "updateDate": "2020-11-22"
+      "updateDate": "2023-04-21"
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-rxjs-event-emitter",
@@ -5099,13 +5165,21 @@
         {
           "name": "Felix Bohnacker",
           "pictureUrl": "https://github.com/felixbohnacker.png"
+        },
+        {
+          "name": "salascz",
+          "pictureUrl": "https://github.com/salascz.png"
+        },
+        {
+          "name": "Mikael Svenson",
+          "pictureUrl": "https://github.com/wobba.png"
         }
       ],
       "tags": [
         "SharePoint"
       ],
       "createDate": "2019-10-13",
-      "updateDate": "2023-03-11"
+      "updateDate": "2023-04-24"
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-script-editor-onprem",
