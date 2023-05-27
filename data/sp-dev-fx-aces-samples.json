@@ -229,6 +229,25 @@
       "updateDate": "2021-10-06"
     },
     {
+      "name": "pnp-sp-fx-aces-bookingspace",
+      "title": "Booking Spaces ACE",
+      "url": "https://github.com/pnp/sp-dev-fx-aces/tree/main/samples/ImageCard-BookingSpaces",
+      "description": "This sample shows how to build an ACE with a card view and quick view to search spaces in the campus and be able to quickly check previous/upcoming reservations.",
+      "image": "https://raw.githubusercontent.com/pnp/sp-dev-fx-aces/main/samples/ImageCard-BookingSpaces/assets/BookSpaces1.PNG",
+      "authors": [
+        {
+          "name": "Jethro Seghers",
+          "pictureUrl": "https://github.com/jesegher.png"
+        }
+      ],
+      "tags": [
+        "SharePoint",
+        "Viva"
+      ],
+      "createDate": "2023-05-16",
+      "updateDate": "2023-05-16"
+    },
+    {
       "name": "pnp-sp-fx-aces-hidable-ace",
       "title": "Hidable ACE",
       "url": "https://github.com/pnp/sp-dev-fx-aces/tree/main/samples/ImageCard-HideACE",
@@ -284,6 +303,25 @@
       ],
       "createDate": "2023-04-15",
       "updateDate": "2023-04-15"
+    },
+    {
+      "name": "pnp-sp-fx-aces-internship",
+      "title": "Library Loans ACE",
+      "url": "https://github.com/pnp/sp-dev-fx-aces/tree/main/samples/ImageCard-LibraryLoans",
+      "description": "This sample shows how to build an ACE with a card view and quick view to check pending library loans and their due dates.",
+      "image": "https://raw.githubusercontent.com/pnp/sp-dev-fx-aces/main/samples/ImageCard-LibraryLoans/assets/Library.gif",
+      "authors": [
+        {
+          "name": "Jethro Seghers",
+          "pictureUrl": "https://github.com/jesegher.png"
+        }
+      ],
+      "tags": [
+        "SharePoint",
+        "Viva"
+      ],
+      "createDate": "2023-05-03",
+      "updateDate": "2023-05-03"
     },
     {
       "name": "pnp-sp-fx-aces-most-lifed-pages",
@@ -406,6 +444,25 @@
       ],
       "createDate": "2022-01-27",
       "updateDate": "2022-01-27"
+    },
+    {
+      "name": "pnp-sp-fx-aces-scholarship",
+      "title": "Scholarship ACE",
+      "url": "https://github.com/pnp/sp-dev-fx-aces/tree/main/samples/ImageCard-Scholarships",
+      "description": "This sample shows how to build an ACE with a card view and quick view to display new, recent and applied scholarships available to user.",
+      "image": "https://github.com/pnp/sp-dev-fx-aces/tree/main/samples/ImageCard-Scholarships/assets/Scholarship.gif",
+      "authors": [
+        {
+          "name": "Jethro Seghers",
+          "pictureUrl": "https://github.com/jesegher.png"
+        }
+      ],
+      "tags": [
+        "SharePoint",
+        "Viva"
+      ],
+      "createDate": "2023-05-03",
+      "updateDate": "2023-05-03"
     },
     {
       "name": "pnp-sp-fx-aces-todays-lunch",
