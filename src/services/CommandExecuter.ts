@@ -2,16 +2,16 @@ import { ChildProcess, spawn, SpawnOptions } from 'child_process';
 import * as os from 'os';
 import { CommandResult } from '../models';
 import { Logger } from './Logger';
-import { Terminal } from './Terminal';
+
 
 export class Executer {
 
   /**
    * Execute the command
-   * @param workingDirectory 
-   * @param command 
-   * @param args 
-   * @returns 
+   * @param workingDirectory
+   * @param command
+   * @param args
+   * @returns
    */
   public static async executeCommand(workingDirectory: string, command: string, args: string[] = []): Promise<number> {
     const result: CommandResult = await Executer.tryExecuteCommand(workingDirectory, command, ...args);
@@ -20,12 +20,13 @@ export class Executer {
 
   /**
    * Try to execute the command and log the output to the output channel.
-   * @param workingDirectory 
-   * @param command 
-   * @param args 
-   * @returns 
+   * @param workingDirectory
+   * @param command
+   * @param args
+   * @returns
    */
   private static async tryExecuteCommand(workingDirectory: string | undefined, command: string, ...args: string[]): Promise<CommandResult> {
+    // eslint-disable-next-line no-unused-vars
     return await new Promise((resolve: (res: CommandResult) => void, reject: (e: Error) => void): void => {
       Logger.getInstance();
       let cmdOutput: string = '';

@@ -21,7 +21,7 @@ const extensionConfig = {
   },
   externals: {
     vscode: 'commonjs vscode',
-    "@pnp/cli-microsoft365": "commonjs @pnp/cli-microsoft365",
+    '@pnp/cli-microsoft365': 'commonjs @pnp/cli-microsoft365',
   },
   resolve: {
     // support reading TypeScript and JavaScript files, 📖 -> https://github.com/TypeStrong/ts-loader
@@ -42,7 +42,7 @@ const extensionConfig = {
   },
   devtool: 'nosources-source-map',
   infrastructureLogging: {
-    level: "log", // enables logging required for problem matchers
+    level: 'log', // enables logging required for problem matchers
   },
 };
 module.exports = [ extensionConfig ];

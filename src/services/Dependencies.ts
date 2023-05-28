@@ -7,8 +7,9 @@ import { NpmLs, Subscription } from '../models';
 import { Terminal } from './Terminal';
 import { Extension } from './Extension';
 
-const SUPPORTED_VERSIONS = ["16.13"];
-const DEPENDENCIES = ["gulp-cli", "yo", "@microsoft/generator-sharepoint"];
+
+const SUPPORTED_VERSIONS = ['16.13'];
+const DEPENDENCIES = ['gulp-cli', 'yo', '@microsoft/generator-sharepoint'];
 
 export class Dependencies {
 
@@ -40,18 +41,18 @@ export class Dependencies {
             // Validate node
             const isNodeValid = Dependencies.isValidNodeJs();
             if (!isNodeValid) {
-              Notifications.warning(`Your Node.js version is not supported with SPFx development. Make sure you are using version: >=16.13 and <17.0`);
+              Notifications.warning('Your Node.js version is not supported with SPFx development. Make sure you are using version: >=16.13 and <17.0');
               resolve(null);
               return;
             }
 
             progress.report({ message: 'Checking npm dependencies...' });
 
-            const command = `npm list -g --json --silent`;
+            const command = 'npm list -g --json --silent';
             const result = execSync(command, { shell: Terminal.shell, timeout: 15000 });
 
             if (!result) {
-              Notifications.error(`Failed checking dependencies`);
+              Notifications.error('Failed checking dependencies');
             }
 
             // Check for missing dependencies
@@ -70,13 +71,13 @@ export class Dependencies {
                 if (item === installItem) {
                   commands.executeCommand(Commands.installDependencies);
                 }
-              })
+              });
             } else {
               Notifications.info('You have all dependencies installed and ready to go!');
             }
             resolve(null);
           } catch (e) {
-            Notifications.error(`Failed checking dependencies`);
+            Notifications.error('Failed checking dependencies');
             Logger.error(`${(e as Error).message}`);
             resolve(null);
           }
@@ -90,7 +91,7 @@ export class Dependencies {
    */
   public static install() {
     const terminal = window.createTerminal({
-      name: `Installing dependencies`,
+      name: 'Installing dependencies',
       iconPath: new ThemeIcon('cloud-download')
     });
 
@@ -105,16 +106,18 @@ export class Dependencies {
    */
   private static isValidNodeJs() {
     try {
-      const output = execSync(`node --version`, { shell: Terminal.shell });
+      const output = execSync('node --version', { shell: Terminal.shell });
       const match = /v(?<major_version>\d+)\.(?<minor_version>\d+)\.(?<patch_version>\d+)/gm.exec(output.toString());
 
       Logger.info(`Node.js version: ${output}`);
 
-      const npmOutput = execSync(`npm --version`, { shell: Terminal.shell });
+      const npmOutput = execSync('npm --version', { shell: Terminal.shell });
       Logger.info(`npm version: ${npmOutput}`);
 
-      if (!match) return false;
-      
+      if (!match) {
+        return false;
+      }
+
       let groups;
       const majorVersion = null === (groups = match.groups) || void 0 === groups ? void 0 : groups.major_version;
       const minorVersion = null === (groups = match.groups) || void 0 === groups ? void 0 : groups.minor_version;
@@ -132,7 +135,7 @@ export class Dependencies {
       });
 
       return !!supported;
-    } catch(e) {
+    } catch (e) {
       Logger.error(`Failed checking node version: ${(e as Error).message}`);
       return false;
     }

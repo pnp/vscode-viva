@@ -1,4 +1,4 @@
-import { EXTENSION_NAME } from "./General";
+import { EXTENSION_NAME } from './General';
 
 
 export const Commands = {
@@ -37,4 +37,4 @@ export const Commands = {
 
   // Serving
   serveSolution: `${EXTENSION_NAME}.serveSolution`,
-}
+};

@@ -1,18 +1,17 @@
-import { join } from "path";
-import { commands, Uri, ViewColumn, Webview, WebviewPanel, window } from "vscode";
-import { Commands } from "../constants";
-import { Extension } from "../services/Extension";
-import { Logger } from "../services/Logger";
-import { WebviewCommand } from "../constants";
-import { WebviewType } from "./WebviewType";
-import { Scaffolder } from "../services/Scaffolder";
+import { join } from 'path';
+import { commands, Uri, ViewColumn, Webview, WebviewPanel, window } from 'vscode';
+import { Commands, WebviewCommand } from '../constants';
+import { Extension } from '../services/Extension';
+import { Logger } from '../services/Logger';
+import { WebviewType } from './WebviewType';
+import { Scaffolder } from '../services/Scaffolder';
 
 
 export class PnPWebview {
   public static webview: WebviewPanel | null = null;
   private static isDisposed: boolean = true;
 
-  public static register() { 
+  public static register() {
     const ext = Extension.getInstance();
     const subscriptions = ext.subscriptions;
 
@@ -40,18 +39,18 @@ export class PnPWebview {
   /**
    * Open or reveal the webview
    */
-   public static async open(type: WebviewType) {    
+  public static async open(type: WebviewType) {
     if (PnPWebview.isOpen) {
-			PnPWebview.reveal(type);
-		} else {
-			PnPWebview.create(type);
-		}
+      PnPWebview.reveal(type);
+    } else {
+      PnPWebview.create(type);
+    }
   }
 
   /**
    * Reveal the dashboard if it is open
    */
-   public static reveal(type: WebviewType) {
+  public static reveal(type: WebviewType) {
     if (PnPWebview.webview) {
       PnPWebview.setTitle(type);
       PnPWebview.webview.reveal();
@@ -75,7 +74,7 @@ export class PnPWebview {
       {
         enableScripts: true,
         retainContextWhenHidden: true,
-        localResourceRoots: [Uri.file(join(ext.extensionPath, "dist"))]
+        localResourceRoots: [Uri.file(join(ext.extensionPath, 'dist'))]
       }
     );
 
@@ -112,8 +111,8 @@ export class PnPWebview {
 
   /**
    * Set the title of the webview
-   * @param type 
-   * @returns 
+   * @param type
+   * @returns
    */
   public static setTitle(type: WebviewType) {
     if (!PnPWebview.webview) {
@@ -137,7 +136,7 @@ export class PnPWebview {
   }
 
   /**
-   * Close the webview 
+   * Close the webview
    */
   public static close() {
     PnPWebview.webview?.dispose();
@@ -145,13 +144,13 @@ export class PnPWebview {
 
   /**
    * Send messages to the webview
-   * @param command 
-   * @param data 
+   * @param command
+   * @param data
    */
   public static postMessage(command: string, data?: any) {
     if (command) {
       Logger.info(`[${command}]: ${data ? JSON.stringify(data) : 'no data provided'}`);
-      
+
       this.webview?.webview.postMessage({
         command,
         payload: data
@@ -161,23 +160,24 @@ export class PnPWebview {
 
   /**
    * Create the webview HTML content
-   * @param webView 
-   * @param type 
-   * @param dataAttr 
-   * @returns 
+   * @param webView
+   * @param type
+   * @param dataAttr
+   * @returns
    */
+  /* eslint-disable quotes */
   private static getWebviewContent(webView: Webview, type: WebviewType, dataAttr: { [key: string]: string } = {}): string {
-    const localServer = "http://localhost";
+    const localServer = 'http://localhost';
     const devPort = 9000;
-    const bundleName = "vscode-webview";
+    const bundleName = 'vscode-webview';
     const jsFile = `${bundleName}.js`;
-  
+
     let scriptUrl = null;
-    
+
     const ext = Extension.getInstance();
     const isProd = ext.isProductionMode;
     const version = ext.version;
-    
+
     if (isProd) {
       scriptUrl = webView.asWebviewUri(Uri.file(join(ext.extensionPath, 'dist', jsFile))).toString();
     } else {
@@ -194,12 +194,12 @@ export class PnPWebview {
     ];
 
     // Provide additional data attributes for the webview
-    dataAttr["version"] = version;
-    dataAttr["type"] = type;
+    dataAttr['version'] = version;
+    dataAttr['type'] = type;
 
-    const dataAttributes = Object.keys(dataAttr).map(key => `data-${key}="${dataAttr[key]}"`).join(' ');
-    
-    return  `
+    const dataAttributes = Object.keys(dataAttr).map(key => `data-${key}='${dataAttr[key]}'`).join(' ');
+
+    return `
     <!DOCTYPE html>
     <html lang="en" style="width:100%;height:100%;margin:0;padding:0;">
     <head>

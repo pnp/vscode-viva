@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+// eslint-disable-next-line no-shadow
 export enum ComponentType {
   adaptiveCardExtension = 'adaptiveCardExtension',
   webPart = 'webpart',

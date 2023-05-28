@@ -2,9 +2,10 @@ import { Extension } from './Extension';
 import { commands, OutputChannel, window } from 'vscode';
 import { Commands } from '../constants';
 
+
 export class Logger {
   private static instance: Logger;
-  public static channel: OutputChannel | null = null; 
+  public static channel: OutputChannel | null = null;
 
   private constructor() {
     const title = Extension.getInstance().displayName;
@@ -19,7 +20,7 @@ export class Logger {
     return Logger.instance;
   }
 
-  public static info(message: string, type: "INFO" | "WARNING" | "ERROR" = "INFO"): void {
+  public static info(message: string, type: 'INFO' | 'WARNING' | 'ERROR' = 'INFO'): void {
     if (!Logger.channel) {
       Logger.getInstance();
     }
@@ -29,10 +30,10 @@ export class Logger {
   }
 
   public static warning(message: string): void {
-    Logger.info(message, "WARNING");
+    Logger.info(message, 'WARNING');
   }
 
   public static error(message: string): void {
-    Logger.info(message, "ERROR");
+    Logger.info(message, 'ERROR');
   }
 }

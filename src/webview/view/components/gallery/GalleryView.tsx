@@ -6,16 +6,17 @@ import { List } from './List';
 import { LibraryIcon } from '../icons/LibraryIcon';
 import { SearchBar } from './SearchBar';
 
+
 export type GalleryType = 'sp-dev-fx-aces-samples' | 'sp-dev-fx-aces-scenarios' | 'sp-dev-fx-extensions-samples' | 'sp-dev-fx-webparts-samples';
 
 export interface IGalleryViewProps {
   type: GalleryType;
 }
 
-export const GalleryView: React.FunctionComponent<IGalleryViewProps> = ({type}: React.PropsWithChildren<IGalleryViewProps>) => {
+export const GalleryView: React.FunctionComponent<IGalleryViewProps> = ({ type }: React.PropsWithChildren<IGalleryViewProps>) => {
   const [samples, search] = useSamples(type);
   const [query, setQuery] = useState<string>('');
-  
+
   const onSampleSearch = (event: any) => {
     const input: string = event.target.value;
     setQuery(input);
@@ -26,8 +27,8 @@ export const GalleryView: React.FunctionComponent<IGalleryViewProps> = ({type}: 
     setQuery('');
   }, [type]);
 
-  const translateTypeName = (type: GalleryType): string => {
-    switch (type) {
+  const translateTypeName = (galleryType: GalleryType): string => {
+    switch (galleryType) {
       case 'sp-dev-fx-aces-samples':
         return 'ACE Samples';
       case 'sp-dev-fx-aces-scenarios':
@@ -61,9 +62,9 @@ export const GalleryView: React.FunctionComponent<IGalleryViewProps> = ({type}: 
       {
         samples !== undefined && (
           <div className='pb-16'>
-            <div className={`flex items-center`}>
-              <LibraryIcon className={`sample__icon w-16`} />
-              <div className={`ml-4`}>
+            <div className={'flex items-center'}>
+              <LibraryIcon className={'sample__icon w-16'} />
+              <div className={'ml-4'}>
                 <h1 className='text-2xl first-letter:uppercase'>{translateTypeName(type)}</h1>
                 {
                   type !== 'sp-dev-fx-aces-scenarios' && (
@@ -77,7 +78,7 @@ export const GalleryView: React.FunctionComponent<IGalleryViewProps> = ({type}: 
                 }
               </div>
             </div>
-            <SearchBar onSearch={(event) => onSampleSearch(event)} initialQuery={query}/>
+            <SearchBar onSearch={(event) => onSampleSearch(event)} initialQuery={query} />
 
             {
               samples.length === 0 && (
@@ -91,7 +92,7 @@ export const GalleryView: React.FunctionComponent<IGalleryViewProps> = ({type}: 
 
             {
               samples.length > 0 && (
-                  <List items={samples} />
+                <List items={samples} />
               )
             }
 
