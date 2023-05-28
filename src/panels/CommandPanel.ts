@@ -207,9 +207,14 @@ export class CommandPanel {
         image: { name: 'globe', custom: false }
       },
       {
-        title: 'Join the Microsoft 365 & Power Platform Community',
+        title: 'Microsoft 365 & Power Platform Community Home',
         url: 'https://pnp.github.io/',
         image: { name: 'organization', custom: false }
+      },
+      {
+        title: 'Join the Microsoft 365 & Power Platform Community Discord Server',
+        url: 'https://aka.ms/community/discord',
+        image: { name: 'feedback', custom: false }
       },
       {
         title: 'Report an issue',
