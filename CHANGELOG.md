@@ -1,5 +1,10 @@
 # Change Log
 
+## [0.5.3] - 2023-05-29
+
+- Added link to Microsoft 365 & Power Platform Community Discord Server
+- Code maintenance
+
 ## [0.5.2] - 2023-05-13
 
 - Added support for creating and managing SPFx solutions
