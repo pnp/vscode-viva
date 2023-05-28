@@ -1,4 +1,3 @@
-
 export interface CommandResult {
   code: number;
   cmdOutput: string;

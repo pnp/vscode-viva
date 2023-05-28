@@ -9,10 +9,10 @@
 .sample_card {
   background: var(--vscode-editorWidget-background);
   border: 1px solid var(--vscode-editorWidget-border);
+}
 
-  img {
-    border-bottom: 1px solid var(--vscode-editorWidget-border);
-  }
+.sample_card img {
+  border-bottom: 1px solid var(--vscode-editorWidget-border);
 }
 
 .sample_card__description {

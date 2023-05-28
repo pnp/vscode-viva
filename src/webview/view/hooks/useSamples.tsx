@@ -4,8 +4,10 @@ import { WebviewCommand } from '../../../constants';
 import { Sample } from '../../../models';
 import { GalleryType } from '../components/gallery';
 
-const SAMPLES_URL = "https://raw.githubusercontent.com/pnp/vscode-viva/dev/data/";
 
+const SAMPLES_URL = 'https://raw.githubusercontent.com/pnp/vscode-viva/dev/data/';
+
+// eslint-disable-next-line no-unused-vars
 export default function useSamples(type: GalleryType): [Sample[], ((query: string) => void)] {
   const [allSamples, setAllSamples] = useState<Sample[] | undefined>(undefined);
   const [samples, setSamples] = useState<Sample[] | undefined>(undefined);
@@ -21,7 +23,7 @@ export default function useSamples(type: GalleryType): [Sample[], ((query: strin
       const data = await response.json();
 
       setAllSamples(data.samples);
-      Messenger.setState({ 
+      Messenger.setState({
         ...state,
         allSamples: data.samples,
         type: type
@@ -37,9 +39,9 @@ export default function useSamples(type: GalleryType): [Sample[], ((query: strin
       fetchData();
       return;
     }
-    
+
     setSamples(allSamples);
-    Messenger.setState({ 
+    Messenger.setState({
       ...state,
       samples: allSamples,
       type: type
@@ -47,8 +49,8 @@ export default function useSamples(type: GalleryType): [Sample[], ((query: strin
   }, [type, allSamples]);
 
   const search = (query: string) => {
-    const samples: Sample[] = state['samples'];
-    const newSamples: Sample[] = samples!.filter((sample: Sample) => sample.title.toString().toLowerCase().includes(query.toLowerCase()));
+    const currentSamples: Sample[] = state['samples'];
+    const newSamples: Sample[] = currentSamples!.filter((sample: Sample) => sample.title.toString().toLowerCase().includes(query.toLowerCase()));
     setSamples(newSamples);
   };
 

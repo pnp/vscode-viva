@@ -1,5 +1,3 @@
-
-
 export const WebviewCommand = {
   toWebview: {
     viewType: 'view-type'

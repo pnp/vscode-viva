@@ -2,7 +2,7 @@ import { parseWinPath } from './../utils/parseWinPath';
 import { Executer } from './CommandExecuter';
 import { Folders } from './Folders';
 import { Notifications } from './Notifications';
-import { Logger } from "./Logger";
+import { Logger } from './Logger';
 import { commands, ProgressLocation, QuickPickItem, Uri, window } from 'vscode';
 import { AdaptiveCardTypes, Commands, ComponentType, ComponentTypes, FrameworkTypes, ProjectFileContent } from '../constants';
 import { Sample, Subscription } from '../models';
@@ -11,9 +11,10 @@ import { existsSync, mkdirSync, writeFileSync } from 'fs';
 import * as glob from 'fast-glob';
 import { ExtensionTypes } from '../constants/ExtensionTypes';
 import { Extension } from './Extension';
-import download from "github-directory-downloader/esm";
+import download from 'github-directory-downloader/esm';
 import { CliExecuter } from './CliCommandExecuter';
 import { getPlatform } from '../utils';
+
 
 export const PROJECT_FILE = 'project.pnp';
 
@@ -37,20 +38,20 @@ export class Scaffolder {
 
   /**
    * Create a new project
-   * @returns 
+   * @returns
    */
   public static async createProject() {
     Logger.info('Start creating a new project');
 
     const folderPath = await Scaffolder.getFolderPath();
     if (!folderPath) {
-      Notifications.warning(`You must select the parent folder to create the project in`);
+      Notifications.warning('You must select the parent folder to create the project in');
       return;
     }
 
     const solutionName = await Scaffolder.getSolutionName(folderPath);
     if (!solutionName) {
-      Logger.warning(`Cancelled solution name input`);
+      Logger.warning('Cancelled solution name input');
       return;
     }
 
@@ -59,20 +60,20 @@ export class Scaffolder {
 
   /**
    * Start from a sample
-   * @param sample 
+   * @param sample
    */
   public static async useSample(sample: Sample) {
     Logger.info(`Start using sample ${sample.name}`);
 
     const folderPath = await Scaffolder.getFolderPath();
     if (!folderPath) {
-      Notifications.warning(`You must select the parent folder to create the project in`);
+      Notifications.warning('You must select the parent folder to create the project in');
       return;
     }
 
     const solutionName = await Scaffolder.getSolutionName(folderPath);
     if (!solutionName) {
-      Logger.warning(`Cancelled solution name input`);
+      Logger.warning('Cancelled solution name input');
       return;
     }
 
@@ -84,24 +85,24 @@ export class Scaffolder {
 
     await window.withProgress({
       location: ProgressLocation.Notification,
-      title: `Downloading the sample...`,
+      title: 'Downloading the sample...',
       cancellable: false
     }, async (progress) => {
       const ghFolder = await download(sample.url, solutionPath);
 
       if (!ghFolder.downloaded) {
-        Notifications.error(`Failed to download the sample.`);
+        Notifications.error('Failed to download the sample.');
         return;
       }
 
-      progress.report({ message: `Renaming the sample data...` });
+      progress.report({ message: 'Renaming the sample data...' });
 
       // Update the current process to the path of the new folder
       process.chdir(solutionPath);
-      const result = await CliExecuter.execute("spfx project rename", "md", { newName: projectName, generateNewId: true });
+      const result = await CliExecuter.execute('spfx project rename', 'md', { newName: projectName, generateNewId: true });
 
       if (result.error || result.stderr) {
-        Notifications.error(`Failed to rename the sample.`);
+        Notifications.error('Failed to rename the sample.');
         return;
       }
 
@@ -113,22 +114,22 @@ export class Scaffolder {
 
   /**
    * Create project file and open it in VS Code
-   * @param folderPath 
-   * @param content 
+   * @param folderPath
+   * @param content
    */
   private static async createProjectFileAndOpen(folderPath: string, content: any) {
     writeFileSync(join(folderPath, PROJECT_FILE), content, { encoding: 'utf8' });
 
-    if (getPlatform() === "windows") {
-      await commands.executeCommand(`vscode.openFolder`, Uri.file(parseWinPath(folderPath)));
+    if (getPlatform() === 'windows') {
+      await commands.executeCommand('vscode.openFolder', Uri.file(parseWinPath(folderPath)));
     } else {
-      await commands.executeCommand(`vscode.openFolder`, Uri.parse(folderPath));
+      await commands.executeCommand('vscode.openFolder', Uri.parse(folderPath));
     }
   }
 
   /**
    * Get the name of the solution to create
-   * @returns 
+   * @returns
    */
   private static async getSolutionName(folderPath: string): Promise<string | undefined> {
     return await window.showInputBox({
@@ -142,7 +143,7 @@ export class Scaffolder {
 
         const solutionPath = join(folderPath, value);
         if (existsSync(solutionPath)) {
-          return `Folder with "${value}" already exists`;
+          return `Folder with '${value}' already exists`;
         }
 
         return undefined;
@@ -152,7 +153,7 @@ export class Scaffolder {
 
   /**
    * Select the path to create the project in
-   * @returns 
+   * @returns
    */
   private static async getFolderPath(): Promise<string | undefined> {
     const wsFolder = await Folders.getWorkspaceFolder();
@@ -186,9 +187,9 @@ export class Scaffolder {
           return folder[0].fsPath;
         }
         return undefined;
-      } else {
-        return selectedFolder?.description;
       }
+
+      return selectedFolder?.description;
     });
 
     return folderPath;
@@ -199,13 +200,13 @@ export class Scaffolder {
    */
   private static async addProject(solutionName?: string | undefined, folderPath?: string | undefined) {
     const componentTypeChoice = await window.showQuickPick(ComponentTypes.map(ct => ct.name), {
-      title: `Which type of client-side component to create?`,
+      title: 'Which type of client-side component to create?',
       ignoreFocusOut: true,
       canPickMany: false
     });
 
     if (!componentTypeChoice) {
-      Logger.warning(`Cancelled client-side component input`);
+      Logger.warning('Cancelled client-side component input');
       return;
     }
 
@@ -216,9 +217,9 @@ export class Scaffolder {
       return;
     }
 
-    let yoCommand = ``;
+    let yoCommand = '';
 
-    const yoCommandSolutionName = solutionName ? ` --solution-name "${solutionName}"` : ``;
+    const yoCommandSolutionName = solutionName ? ` --solution-name "${solutionName}"` : '';
 
     // Ask questions per component type
     if (componentType.value === ComponentType.adaptiveCardExtension) {
@@ -244,7 +245,7 @@ export class Scaffolder {
         yoCommand += ` --framework ${framework}`;
       } else {
         // To prevent the 'templates/react' scandir issue
-        yoCommand += ` --template ""`;
+        yoCommand += ' --template ""';
       }
     } else if (componentType.value === ComponentType.webPart) {
       const componentAnswers = await Scaffolder.webpartComponent();
@@ -280,7 +281,7 @@ export class Scaffolder {
       try {
         if (!folderPath) {
           const wsFolder = await Folders.getWorkspaceFolder();
-          folderPath = wsFolder?.uri.fsPath || "";
+          folderPath = wsFolder?.uri.fsPath || '';
         }
 
         const result = await Executer.executeCommand(folderPath, yoCommand);
@@ -294,7 +295,7 @@ export class Scaffolder {
           Scaffolder.createProjectFileAndOpen(newFolderPath, 'init');
         }
 
-        Notifications.info(`Component successfully created.`);
+        Notifications.info('Component successfully created.');
       } catch (e) {
         Logger.error((e as Error).message);
         Notifications.errorNoLog(`Error creating the component. Check [output window](command:${Commands.showOutputChannel}) for more details.`);
@@ -304,17 +305,17 @@ export class Scaffolder {
 
   /**
    * Questions to create a new ACE component
-   * @returns 
+   * @returns
    */
   private static async aceComponent(): Promise<{ aceTemplateType: NameValue, componentName: string } | undefined> {
     const aceTemplateTypeChoice = await window.showQuickPick(AdaptiveCardTypes.map(ace => ace.name), {
-      title: `Which adaptive card extension template do you want to use?`,
+      title: 'Which adaptive card extension template do you want to use?',
       ignoreFocusOut: true,
       canPickMany: false
     });
 
     if (!aceTemplateTypeChoice) {
-      Logger.warning(`Cancelled ACE template input`);
+      Logger.warning('Cancelled ACE template input');
       return;
     }
 
@@ -322,7 +323,7 @@ export class Scaffolder {
 
     const componentName = await window.showInputBox({
       title: 'What is your Adaptive Card Extension name?',
-      value: "HelloWorld",
+      value: 'HelloWorld',
       ignoreFocusOut: true,
       validateInput: async (value) => {
         if (!value) {
@@ -338,24 +339,24 @@ export class Scaffolder {
     });
 
     if (!componentName) {
-      Logger.warning(`Cancelled component name input`);
+      Logger.warning('Cancelled component name input');
       return;
     }
 
     return {
       aceTemplateType: aceTemplateType as NameValue,
       componentName
-    }
+    };
   }
 
   /**
    * Questions to create a new library component
-   * @returns 
+   * @returns
    */
   private static async libraryComponent(): Promise<{ componentName: string } | undefined> {
     const componentName = await window.showInputBox({
       title: 'What is your library name?',
-      value: "HelloWorld",
+      value: 'HelloWorld',
       ignoreFocusOut: true,
       validateInput: async (value) => {
         if (!value) {
@@ -371,23 +372,23 @@ export class Scaffolder {
     });
 
     if (!componentName) {
-      Logger.warning(`Cancelled component name input`);
+      Logger.warning('Cancelled component name input');
       return;
     }
 
     return {
       componentName
-    }
+    };
   }
 
   /**
    * Questions to create a new web part component
-   * @returns 
+   * @returns
    */
   private static async webpartComponent(): Promise<{ componentName: string, framework: string } | undefined> {
     const componentName = await window.showInputBox({
       title: 'What is your web part name?',
-      value: "HelloWorld",
+      value: 'HelloWorld',
       ignoreFocusOut: true,
       validateInput: async (value) => {
         if (!value) {
@@ -403,18 +404,18 @@ export class Scaffolder {
     });
 
     if (!componentName) {
-      Logger.warning(`Cancelled component name input`);
+      Logger.warning('Cancelled component name input');
       return;
     }
 
     const frameworkChoice = await window.showQuickPick(FrameworkTypes.map(type => type.name), {
-      title: `Which template would you like to use?`,
+      title: 'Which template would you like to use?',
       ignoreFocusOut: true,
       canPickMany: false
     });
 
     if (!frameworkChoice) {
-      Logger.warning(`Cancelled template input`);
+      Logger.warning('Cancelled template input');
       return;
     }
 
@@ -423,17 +424,17 @@ export class Scaffolder {
     return {
       componentName,
       framework: framework?.value as string
-    }
+    };
   }
 
   /**
    * Questions to create a new extension component
-   * @returns 
+   * @returns
    */
   private static async extensionComponent(): Promise<{ componentName: string, extensionType: string, framework: string | undefined } | undefined> {
     const componentName = await window.showInputBox({
       title: 'What is your extension name?',
-      value: "HelloWorld",
+      value: 'HelloWorld',
       ignoreFocusOut: true,
       validateInput: async (value) => {
         if (!value) {
@@ -449,18 +450,18 @@ export class Scaffolder {
     });
 
     if (!componentName) {
-      Logger.warning(`Cancelled component name input`);
+      Logger.warning('Cancelled component name input');
       return;
     }
 
     const extensionChoice = await window.showQuickPick(ExtensionTypes.map(type => type.name), {
-      title: `Which extension type would you like to create?`,
+      title: 'Which extension type would you like to create?',
       ignoreFocusOut: true,
       canPickMany: false
     });
 
     if (!extensionChoice) {
-      Logger.warning(`Cancelled extension type input`);
+      Logger.warning('Cancelled extension type input');
       return;
     }
 
@@ -469,13 +470,13 @@ export class Scaffolder {
     let framework: string | undefined = undefined;
     if (extension && extension.templates.length > 0) {
       const frameworkChoice = await window.showQuickPick(extension.templates, {
-        title: `Which template would you like to use?`,
+        title: 'Which template would you like to use?',
         ignoreFocusOut: true,
         canPickMany: false
       });
 
       if (!frameworkChoice) {
-        Logger.warning(`Cancelled template input`);
+        Logger.warning('Cancelled template input');
         return;
       }
 
@@ -486,7 +487,7 @@ export class Scaffolder {
       componentName,
       extensionType: extension?.value as string,
       framework
-    }
+    };
   }
 
   /**
@@ -496,16 +497,16 @@ export class Scaffolder {
     let componentFolder = '';
     switch (type) {
       case ComponentType.adaptiveCardExtension:
-        componentFolder = `adaptiveCardExtensions`;
+        componentFolder = 'adaptiveCardExtensions';
         break;
       case ComponentType.extension:
-        componentFolder = `extensions`;
+        componentFolder = 'extensions';
         break;
       case ComponentType.library:
-        componentFolder = `libraries`;
+        componentFolder = 'libraries';
         break;
       case ComponentType.webPart:
-        componentFolder = `webparts`;
+        componentFolder = 'webparts';
         break;
     }
 

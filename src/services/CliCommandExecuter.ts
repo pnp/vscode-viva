@@ -1,26 +1,26 @@
-import { CommandResult } from '../models';
 import { Logger } from './Logger';
-import { Terminal } from './Terminal';
 import { CommandOutput, executeCommand } from '@pnp/cli-microsoft365';
+
 
 export class CliExecuter {
 
   /**
    * Execute the command
-   * @param command 
-   * @param args 
-   * @returns 
+   * @param command
+   * @param args
+   * @returns
    */
-  public static async execute(command: string, output: string | undefined = "text", args?: any): Promise<CommandOutput> {
+  public static async execute(command: string, output: string | undefined = 'text', args?: any): Promise<CommandOutput> {
     return await CliExecuter.tryExecuteCommand(command, output, args);
   }
 
   /**
    * Try to execute the command and log the output to the output channel.
    * @param command
-   * @returns 
+   * @returns
    */
-  private static async tryExecuteCommand(command: string, output: string | undefined = "text", args?: any): Promise<CommandOutput> {
+  private static async tryExecuteCommand(command: string, output: string | undefined = 'text', args?: any): Promise<CommandOutput> {
+    // eslint-disable-next-line no-unused-vars
     return await new Promise((resolve: (res: CommandOutput) => void, reject: (e: Error) => void): void => {
       Logger.getInstance();
       let cmdOutput: string = '';

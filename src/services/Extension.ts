@@ -1,14 +1,15 @@
-import { ExtensionContext, ExtensionMode, SecretStorage } from "vscode";
+import { ExtensionContext, ExtensionMode, SecretStorage } from 'vscode';
 
 
 export class Extension {
   private static instance: Extension;
-  
+
+  // eslint-disable-next-line no-unused-vars
   private constructor(private ctx: ExtensionContext) {}
 
   /**
    * Creates the singleton instance for the extension.
-   * @param ctx 
+   * @param ctx
    */
   public static getInstance(ctx?: ExtensionContext): Extension {
     if (!Extension.instance && ctx) {

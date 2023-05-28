@@ -1,5 +1,3 @@
-
-
 export const AdaptiveCardTypes = [
   {
     name: 'Basic Card Template',
