@@ -69,7 +69,6 @@ export class DebuggerCheck {
     }
   }
 
-
   /**
    * Validate the serve.json file
    * @param url
