@@ -1,5 +1,9 @@
 # Change Log
 
+## [1.0.0] - 2023-05-31
+
+- Major release
+
 ## [0.5.3] - 2023-05-29
 
 - Added link to Microsoft 365 & Power Platform Community Discord Server
