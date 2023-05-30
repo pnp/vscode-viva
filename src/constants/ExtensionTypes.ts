@@ -1,13 +1,17 @@
+/* eslint-disable no-unused-vars */
+// eslint-disable-next-line no-shadow
 export enum ExtensionType {
-  Application = "ApplicationCustomizer",
-  field = "FieldCustomizer",
-  listViewCommandSet = "ListViewCommandSet"
+  application = 'ApplicationCustomizer',
+  field = 'FieldCustomizer',
+  listViewCommandSet = 'ListViewCommandSet',
+  formCustomizer = 'FormCustomizer',
+  searchQueryModifier = 'SearchQueryModifier'
 }
 
 export const ExtensionTypes = [
   {
     name: 'Application Customizer',
-    value: ExtensionType.Application,
+    value: ExtensionType.application,
     templates: []
   },
   {
@@ -20,4 +24,14 @@ export const ExtensionTypes = [
     value: ExtensionType.listViewCommandSet,
     templates: []
   },
+  {
+    name: 'Form Customizer',
+    value: ExtensionType.formCustomizer,
+    templates: ['react', 'none']
+  },
+  {
+    name: 'Search Query Modifier',
+    value: ExtensionType.searchQueryModifier,
+    templates: []
+  }
 ];

@@ -1,9 +1,9 @@
-import { commands, ThemeIcon, workspace } from "vscode";
-import { Commands } from "../constants";
-import { Subscription } from "../models";
-import { window } from "vscode";
-import { Extension } from "./Extension";
-import { getPlatform } from "../utils";
+import { commands, ThemeIcon, workspace, window } from 'vscode';
+import { Commands } from '../constants';
+import { Subscription } from '../models';
+import { Extension } from './Extension';
+import { getPlatform } from '../utils';
+
 
 interface ShellSetting {
   path: string;
@@ -24,9 +24,9 @@ export class Terminal {
   }
 
   private static initShellPath() {
-    let shell: string | { path: string } | undefined = Terminal.getShellPath();
+    const shell: string | { path: string } | undefined = Terminal.getShellPath();
 
-    if (typeof shell !== "string" && !!shell) {
+    if (typeof shell !== 'string' && !!shell) {
       Terminal.shellPath = shell.path;
     } else {
       Terminal.shellPath = shell || undefined;
@@ -35,24 +35,24 @@ export class Terminal {
 
   /**
    * Retrieve the automation profile for the current platform
-   * @returns 
+   * @returns
    */
   private static getShellPath(): string | ShellSetting | undefined {
     const platform = getPlatform();
-    const terminalSettings = workspace.getConfiguration("terminal");
+    const terminalSettings = workspace.getConfiguration('terminal');
 
     const automationProfile = terminalSettings.get<string | ShellSetting>(`integrated.automationProfile.${platform}`);
     if (!!automationProfile) {
       return automationProfile;
     }
 
-    const defaultProfile = terminalSettings.get<string>(`integrated.defaultProfile.${platform}`)
-    const profiles = terminalSettings.get<{ [prop: string ]: ShellSetting}>(`integrated.profiles.${platform}`);
+    const defaultProfile = terminalSettings.get<string>(`integrated.defaultProfile.${platform}`);
+    const profiles = terminalSettings.get<{ [prop: string]: ShellSetting }>(`integrated.profiles.${platform}`);
 
     if (defaultProfile && profiles && profiles[defaultProfile]) {
       return profiles[defaultProfile];
     }
-    
+
     return terminalSettings.get(`integrated.shell.${platform}`);
   }
 
@@ -62,6 +62,7 @@ export class Terminal {
     );
   }
 
+  // eslint-disable-next-line no-unused-vars
   public static async runCommand(command: string, args: string[]) {
     Terminal.runInTerminal(command, 'Gulp task', 'tasks-list-configure');
   }
@@ -78,7 +79,7 @@ export class Terminal {
       // Check if nvm is used
       const nvmFiles = await workspace.findFiles('.nvmrc', '**/node_modules/**');
       if (nvmFiles.length > 0) {
-        terminal.sendText(`nvm use`);
+        terminal.sendText('nvm use');
       }
     }
 

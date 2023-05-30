@@ -1,4 +1,4 @@
-import { EXTENSION_NAME } from "./General";
+import { EXTENSION_NAME } from './General';
 
 
 export const Commands = {
@@ -30,9 +30,11 @@ export const Commands = {
   validateSolution: `${EXTENSION_NAME}.validateSolution`,
 
   // Webviews
-  showSampleGallery: `${EXTENSION_NAME}.showSampleGallery`,
-  showScenariosGallery: `${EXTENSION_NAME}.showScenariosGallery`,
+  showACESampleGallery: `${EXTENSION_NAME}.showACESampleGallery`,
+  showACEScenariosGallery: `${EXTENSION_NAME}.showACEScenariosGallery`,
+  showExtensionsSampleGallery: `${EXTENSION_NAME}.showExtensionsSampleGallery`,
+  showWebpartSampleGallery: `${EXTENSION_NAME}.showWebpartSampleGallery`,
 
   // Serving
   serveSolution: `${EXTENSION_NAME}.serveSolution`,
-}
+};

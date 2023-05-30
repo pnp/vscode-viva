@@ -8,7 +8,8 @@ const version = packageJson.version.split('.');
 packageJson.version = `${version[0]}.${version[1]}.${process.argv[process.argv.length-1].substr(0, 7)}`;
 packageJson.preview = true;
 
+// eslint-disable-next-line no-console
 console.log(packageJson.version);
-core.summary.addHeading(`Version info`).addDetails(`${packageJson.version}`);
+core.summary.addHeading('Version info').addDetails(`${packageJson.version}`);
 
 fs.writeFileSync(path.join(path.resolve('.'), 'package.json'), JSON.stringify(packageJson, null, 2));

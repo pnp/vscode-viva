@@ -1,5 +1,36 @@
 # Change Log
 
+## [1.0.0] - 2023-05-31
+
+- Major release
+
+## [0.5.3] - 2023-05-29
+
+- Added link to Microsoft 365 & Power Platform Community Discord Server
+- Code maintenance
+
+## [0.5.2] - 2023-05-13
+
+- Added support for creating and managing SPFx solutions
+- Added SPFx web part and extension samples views
+
+## [0.5.1] - 2023-05-03
+
+- Updated help and feedback section
+
+## [0.5.0] - 2023-05-01
+
+- Updated documentation and guidance
+
+## [0.4.5] - 2023-04-30
+
+- Maintenance release
+
+## [0.4.2] - 2023-04-20
+
+- Updated to use SharePoint Framework version 1.17.1
+- Updated to use CLI for Microsoft 365 version 6.6
+
 ## [0.4.1] - 2023-03-09
 
 - Maintenance release to fix bug caused by branch conflict

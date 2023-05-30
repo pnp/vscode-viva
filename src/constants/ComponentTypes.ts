@@ -1,25 +1,27 @@
+/* eslint-disable no-unused-vars */
+// eslint-disable-next-line no-shadow
 export enum ComponentType {
-  AdaptiveCardExtension = 'adaptiveCardExtension',
-  WebPart = 'webpart',
-  Library = 'library',
-  Extension = 'extension',
+  adaptiveCardExtension = 'adaptiveCardExtension',
+  webPart = 'webpart',
+  library = 'library',
+  extension = 'extension',
 }
 
 export const ComponentTypes = [
   {
-    name: 'WebPart',
-    value: ComponentType.WebPart
+    name: 'Web Part',
+    value: ComponentType.webPart
   },
   {
     name: 'Extension',
-    value: ComponentType.Extension
+    value: ComponentType.extension
   },
   {
     name: 'Library',
-    value: ComponentType.Library
+    value: ComponentType.library
   },
   {
     name: 'Adaptive Card Extension',
-    value: ComponentType.AdaptiveCardExtension
+    value: ComponentType.adaptiveCardExtension
   }
 ];
