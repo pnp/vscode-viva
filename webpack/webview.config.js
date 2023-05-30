@@ -14,8 +14,8 @@ const config = [{
   devtool: 'source-map',
   resolve: {
     extensions: ['.ts', '.js', '.tsx', '.jsx'],
-    fallback: { 
-      "path": require.resolve("path-browserify")
+    fallback: {
+      'path': require.resolve('path-browserify')
     }
   },
   module: {
@@ -47,9 +47,9 @@ const config = [{
     compress: true,
     port: 9000,
     hot: true,
-    allowedHosts: "all",
+    allowedHosts: 'all',
     headers: {
-      "Access-Control-Allow-Origin": "*",
+      'Access-Control-Allow-Origin': '*',
     }
   }
 }];
@@ -59,7 +59,7 @@ module.exports = (env, argv) => {
     configItem.mode = argv.mode;
 
     if (argv.mode === 'production') {
-      configItem.devtool = "hidden-source-map";
+      configItem.devtool = 'hidden-source-map';
     }
   }
 

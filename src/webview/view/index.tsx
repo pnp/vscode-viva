@@ -1,18 +1,23 @@
-import * as React from "react";
+import * as React from 'react';
 import { createRoot } from 'react-dom/client';
-import { MemoryRouter } from "react-router-dom";
-import { WebviewType } from "../WebviewType";
-import { App } from "./components/App";
-import "./index.css";
+import { MemoryRouter } from 'react-router-dom';
+import { WebviewType } from '../WebviewType';
+import { App } from './components/App';
+import './index.css';
+
 
 export const paths: { [pathName: string ]: string } = {
-  sample: "/sample-gallery",
-  scenario: "/scenario-gallery"
-}
+  aCESample: '/sp-dev-fx-aces-samples',
+  aCEScenario: '/sp-dev-fx-aces-scenarios',
+  extensionSample: '/sp-dev-fx-extensions-samples',
+  webpartSample: '/sp-dev-fx-webparts-samples'
+};
 
 export const routeEntries: { [routeKey: string]: string } = {
-  [WebviewType.SampleGallery]: paths.sample,
-  [WebviewType.ScenarioGallery]: paths.scenario,
+  [WebviewType.ACESampleGallery]: paths.aCESample,
+  [WebviewType.ACEScenarioGallery]: paths.aCEScenario,
+  [WebviewType.ExtensionSampleGallery]: paths.extensionSample,
+  [WebviewType.WebpartSampleGallery]: paths.webpartSample
 };
 
 const elm = document.querySelector('#root');
@@ -25,7 +30,7 @@ if (elm) {
   const routeEntry = Object.keys(routeEntries).findIndex(key => key === type);
 
   root.render(
-    <MemoryRouter 
+    <MemoryRouter
       initialEntries={Object.keys(routeEntries).map(key => routeEntries[key] as string) as string[]}
       initialIndex={routeEntry || 0}>
       <App version={version} type={type as WebviewType | null} />
@@ -34,4 +39,6 @@ if (elm) {
 }
 
 // Webpack HMR
-if ((module as any).hot) (module as any).hot.accept();
+if ((module as any).hot) {
+  (module as any).hot.accept();
+}

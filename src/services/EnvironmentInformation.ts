@@ -1,5 +1,3 @@
-
-
 export class EnvironmentInformation {
   private static _appCatalogUrl: string | undefined = undefined;
   private static _account: string | undefined = undefined;

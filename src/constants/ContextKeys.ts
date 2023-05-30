@@ -1,5 +1,3 @@
-
-
 export const ContextKeys = {
   showWelcome: 'pnp.project.showWelcome',
   isSPFxSolution: 'pnp.project.isSPFxSolution',
