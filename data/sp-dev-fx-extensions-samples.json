@@ -237,7 +237,7 @@
       "title": "Redirect Application Customizers",
       "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/js-application-redirect",
       "description": "Redirect from URL based on mapping from a list on the site. Can be used to automatically redirect from pages to other locations.",
-      "image": "https://github.com/pnp/sp-starter-kit/raw/master/assets/images/components/ext-redirects.gif?raw=true",
+      "image": "https://github.com/pnp/sp-starter-kit/raw/main/assets/images/components/ext-redirects.gif?raw=true",
       "authors": [
         {
           "name": "Paolo Pialorsi",
