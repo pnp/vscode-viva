@@ -233,7 +233,7 @@
       "title": "Booking Spaces ACE",
       "url": "https://github.com/pnp/sp-dev-fx-aces/tree/main/samples/ImageCard-BookingSpaces",
       "description": "This sample shows how to build an ACE with a card view and quick view to search spaces in the campus and be able to quickly check previous/upcoming reservations.",
-      "image": "https://raw.githubusercontent.com/pnp/sp-dev-fx-aces/main/samples/ImageCard-BookingSpaces/assets/BookSpaces1.PNG",
+      "image": "https://raw.githubusercontent.com/pnp/sp-dev-fx-aces/main/samples/ImageCard-BookingSpaces/assets/BookSpaces1.png",
       "authors": [
         {
           "name": "Jethro Seghers",
@@ -450,7 +450,7 @@
       "title": "Scholarship ACE",
       "url": "https://github.com/pnp/sp-dev-fx-aces/tree/main/samples/ImageCard-Scholarships",
       "description": "This sample shows how to build an ACE with a card view and quick view to display new, recent and applied scholarships available to user.",
-      "image": "https://github.com/pnp/sp-dev-fx-aces/tree/main/samples/ImageCard-Scholarships/assets/Scholarship.gif",
+      "image": "https://raw.githubusercontent.com/pnp/sp-dev-fx-aces/main/samples/ImageCard-Scholarships/assets/Scholarship.gif",
       "authors": [
         {
           "name": "Jethro Seghers",

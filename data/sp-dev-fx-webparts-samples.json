@@ -1018,6 +1018,10 @@
         {
           "name": "Abderahman Moujahid",
           "pictureUrl": "https://avatars.githubusercontent.com/u/36161889?s=460&u=afdd5f6681bc375ee3811482dec79824c12d8170&v=4"
+        },
+        {
+          "name": "Nishkalank Bezawada",
+          "pictureUrl": "https://avatars.githubusercontent.com/u/47456098?v=4"
         }
       ],
       "tags": [
@@ -1793,6 +1797,24 @@
       ],
       "createDate": "2022-11-08",
       "updateDate": "2022-11-08"
+    },
+    {
+      "name": "pnp-sp-dev-spfx-web-parts-react-dashboards",
+      "title": "Application Insights and Cost Management Dashboards",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-dashboards",
+      "description": "Sharing Application Insights and solution's cost information with your stakeholders typically requires either using _Azure Dashboards_ or using _Power BI_. This sample solution allows displaying this dashboards directly in a SharePoint site or a tab in MS Teams, moving it close to the users.",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-dashboards/assets/AppInsights.png",
+      "authors": [
+        {
+          "name": "Kinga Kazala",
+          "pictureUrl": "https://github.com/kkazala.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2023-06-05",
+      "updateDate": "2023-06-05"
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-datatable",
