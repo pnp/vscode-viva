@@ -36,7 +36,8 @@
 		"onStartupFinished"
 	],
 	"extensionDependencies": [
-		"vsls-contrib.codetour"
+		"vsls-contrib.codetour",
+		"eliostruyf.spfx-snippets"
 	],
 	"license": "MIT",
 	"main": "./dist/extension.js",
