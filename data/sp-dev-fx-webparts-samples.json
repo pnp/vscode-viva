@@ -334,7 +334,7 @@
         "SharePoint"
       ],
       "createDate": "2020-02-05",
-      "updateDate": "2023-03-09"
+      "updateDate": "2023-06-09"
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-js-display-list",
@@ -3144,6 +3144,24 @@
       "updateDate": "2017-10-09"
     },
     {
+      "name": "pnp-sp-dev-spfx-web-parts-react-invoice-generator",
+      "title": "Invoice Generator",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-invoice-generator",
+      "description": "SPFx Invoice Generator Web part using PnP JS allows users to create invoices for different clients or customers.",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-invoice-generator/assets/YOUR-IMAGE-NAME-HERE",
+      "authors": [
+        {
+          "name": "Rishabh Shukla",
+          "pictureUrl": "https://github.com/rishabhshukla12.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2023-06-12",
+      "updateDate": "2023-06-12"
+    },
+    {
       "name": "pnp-sp-dev-spfx-web-parts-react-ioc-tests",
       "title": "React Inversion Of Control Web Part with Unit Tests using Jest and Enzyme",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-ioc-tests",
@@ -5117,7 +5135,7 @@
         "SharePoint"
       ],
       "createDate": "2020-11-22",
-      "updateDate": "2023-04-21"
+      "updateDate": "2023-05-23"
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-rxjs-event-emitter",
