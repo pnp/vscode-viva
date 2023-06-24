@@ -3148,7 +3148,7 @@
       "title": "Invoice Generator",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-invoice-generator",
       "description": "SPFx Invoice Generator Web part using PnP JS allows users to create invoices for different clients or customers.",
-      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-invoice-generator/assets/YOUR-IMAGE-NAME-HERE",
+      "image": "https://raw.githubusercontent.com/pnp/sp-dev-fx-webparts/main/samples/react-invoice-generator/assets/invoice.PNG",
       "authors": [
         {
           "name": "Rishabh Shukla",
