@@ -1,5 +1,10 @@
 # Change Log
 
+## [1.1.0] - 2023-06-30
+
+- Upgraded CLI for Microsoft 365 dependency to version v6.9
+- Added support for SPFx v1.17.4
+
 ## [1.0.0] - 2023-05-31
 
 - Major release
