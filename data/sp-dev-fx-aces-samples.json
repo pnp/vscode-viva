@@ -522,6 +522,63 @@
       "updateDate": "2022-03-24"
     },
     {
+      "name": "pnp-sp-fx-aces-people-search-input-card",
+      "title": "People Search Text Box Card ",
+      "url": "https://github.com/pnp/sp-dev-fx-aces/tree/main/samples/InputCard-PeopleSearch",
+      "description": "People Search card sample to showcase complex Viva Connections card extensibility.",
+      "image": "https://raw.githubusercontent.com/pnp/sp-dev-fx-aces/main/samples/InputCard-PeopleSearch/assets/qv-person.png",
+      "authors": [
+        {
+          "name": "Alex Terentiev",
+          "pictureUrl": "https://avatars.githubusercontent.com/u/17036219?v=4"
+        }
+      ],
+      "tags": [
+        "SharePoint",
+        "Viva"
+      ],
+      "createDate": "2023-06-28",
+      "updateDate": "2023-06-28"
+    },
+    {
+      "name": "pnp-sp-fx-aces-start-survey-input-card",
+      "title": "Text box Survey Card",
+      "url": "https://github.com/pnp/sp-dev-fx-aces/tree/main/samples/InputCard-Prompt-Survey",
+      "description": "Input Text Box ACE with start a survey scenario.",
+      "image": "https://raw.githubusercontent.com/pnp/sp-dev-fx-aces/main/samples/InputCard-Prompt-Survey/assets/ace-survey.png",
+      "authors": [
+        {
+          "name": "Alex Terentiev",
+          "pictureUrl": "https://avatars.githubusercontent.com/u/17036219?v=4"
+        }
+      ],
+      "tags": [
+        "SharePoint",
+        "Viva"
+      ],
+      "createDate": "2023-06-28",
+      "updateDate": "2023-06-28"
+    },
+    {
+      "name": "pnp-sp-fx-aces-start-chat-input-card",
+      "title": "Start a Chat card",
+      "url": "https://github.com/pnp/sp-dev-fx-aces/tree/main/samples/InputCard-Start-Chat",
+      "description": "Input Text Box ACE with a start a chat with a person scenario.",
+      "image": "https://raw.githubusercontent.com/pnp/sp-dev-fx-aces/main/samples/InputCard-Start-Chat/assets/ace-default.png",
+      "authors": [
+        {
+          "name": "Alex Terentiev",
+          "pictureUrl": "https://avatars.githubusercontent.com/u/17036219?v=4"
+        }
+      ],
+      "tags": [
+        "SharePoint",
+        "Viva"
+      ],
+      "createDate": "2023-06-28",
+      "updateDate": "2023-06-28"
+    },
+    {
       "name": "pnp-sp-fx-aces-ChatGPTDailyInsights",
       "title": "ChatGPT Daily Insights Adaptive Card Extension",
       "url": "https://github.com/pnp/sp-dev-fx-aces/tree/main/samples/PrimaryTextCard-ChatGPTDailyInsights",
