@@ -29,6 +29,9 @@ export const Commands = {
   // Validation
   validateSolution: `${EXTENSION_NAME}.validateSolution`,
 
+  // Rename
+  renameSolution: `${EXTENSION_NAME}.renameSolution`,
+
   // Webviews
   showACESampleGallery: `${EXTENSION_NAME}.showACESampleGallery`,
   showACEScenariosGallery: `${EXTENSION_NAME}.showACEScenariosGallery`,

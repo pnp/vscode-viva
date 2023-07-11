@@ -10,6 +10,7 @@ import { Notifications } from './Notifications';
 import { basename, join } from 'path';
 import { EnvironmentInformation } from './EnvironmentInformation';
 import { AuthProvider } from '../providers/AuthProvider';
+import { CommandOutput } from '@pnp/cli-microsoft365';
 
 
 export class CliActions {
@@ -25,6 +26,9 @@ export class CliActions {
     );
     subscriptions.push(
       commands.registerCommand(Commands.validateSolution, CliActions.validateSolution)
+    );
+    subscriptions.push(
+      commands.registerCommand(Commands.renameSolution, CliActions.renameSolution)
     );
     subscriptions.push(
       commands.registerCommand(Commands.serveSolution, CliActions.serveSolution)
@@ -65,6 +69,65 @@ export class CliActions {
           writeFileSync(filePath, result.stdout);
           await commands.executeCommand('markdown.showPreview', Uri.file(filePath));
         } else if (result.stderr) {
+          Notifications.error(result.stderr);
+        }
+      } catch (e: any) {
+        const message = e?.error?.message;
+        Notifications.error(message);
+      }
+    });
+  }
+
+  /**
+     * Renames the current solution
+     */
+  private static async renameSolution() {
+    // Change the current working directory to the root of the solution
+    const wsFolder = await Folders.getWorkspaceFolder();
+    if (wsFolder) {
+      process.chdir(wsFolder.uri.fsPath);
+    }
+
+    const newName = await window.showInputBox({
+      title: 'What should be the new name for the project?',
+      value: 'NewWorld',
+      ignoreFocusOut: true,
+      validateInput: async (value) => {
+        if (!value) {
+          return 'Name is required';
+        }
+
+        return undefined;
+      }
+    });
+
+    if (!newName) {
+      return;
+    }
+
+    const shouldGenerateNewIdAnswer = await window.showQuickPick(['Yes', 'No'], {
+      title: 'Generate a new solution ID for the project?',
+      ignoreFocusOut: true,
+      canPickMany: false
+    });
+
+    const shouldGenerateNewId = shouldGenerateNewIdAnswer === 'Yes';
+
+    await window.withProgress({
+      location: ProgressLocation.Notification,
+      title: 'Renaming the current solution...',
+      cancellable: true
+      // eslint-disable-next-line no-unused-vars
+    }, async (progress: Progress<{ message?: string; increment?: number }>) => {
+      try {
+        let result: CommandOutput;
+        if(shouldGenerateNewId) {
+          result = await CliExecuter.execute('spfx project rename', 'json', { newName: newName, generateNewId: shouldGenerateNewId });
+        } else {
+          result = await CliExecuter.execute('spfx project rename', 'json', { newName: newName });
+        }
+
+        if (result.stderr) {
           Notifications.error(result.stderr);
         }
       } catch (e: any) {
