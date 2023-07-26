@@ -1934,7 +1934,7 @@
         "SharePoint"
       ],
       "createDate": "2021-03-04",
-      "updateDate": "2021-03-04"
+      "updateDate": "2023-06-20"
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-display-hierarchy",
@@ -2108,6 +2108,10 @@
           "pictureUrl": "https://github.com/hugoabernier.png"
         },
         {
+          "name": "Babak Danyal",
+          "pictureUrl": "https://github.com/babakdanyal.png"
+        },
+        {
           "name": "Kunj Balkrishna Sangani",
           "pictureUrl": "https://github.com/kunj-sangani.png"
         }
@@ -2116,7 +2120,7 @@
         "SharePoint"
       ],
       "createDate": "2020-07-26",
-      "updateDate": "2022-01-29"
+      "updateDate": "2023-06-27"
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-events-aggregator",
@@ -3887,6 +3891,24 @@
       "updateDate": "2022-11-03"
     },
     {
+      "name": "pnp-sp-dev-spfx-web-parts-react-my-dashboard",
+      "title": "My Dashboard",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-my-dashboard",
+      "description": "This SPFx app allows quick access to user agenda, ToDo Tasks, Files and  News and Relevant People related to user.",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-my-dashboard/assets/MyDashboard_default.png",
+      "authors": [
+        {
+          "name": "João Mendes",
+          "pictureUrl": "https://github.com/joaojmendes.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2023-06-23",
+      "updateDate": "2023-06-23"
+    },
+    {
       "name": "pnp-sp-dev-spfx-web-parts-react-my-events",
       "title": "My Events",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-my-events",
@@ -5492,7 +5514,25 @@
       "updateDate": "2020-09-08"
     },
     {
-      "name": "react-spfx-control-iframepanel",
+      "name": "pnp-sp-dev-spfx-web-parts-react-sp-tinymce",
+      "title": "List Integration with TinyMCE Editor",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-sp-tinymce",
+      "description": "The web part allows users to insert column data from associated SharePoint lists using a split button on the toolbar",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-sp-tinymce/assets/demo.gif",
+      "authors": [
+        {
+          "name": "Ejaz Hussain",
+          "pictureUrl": "https://github.com/ejazhussain.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2023-06-06",
+      "updateDate": "2023-06-06"
+    },
+    {
+      "name": "pnp-sp-dev-spfx-web-parts-react-spfx-control-iframepanel",
       "title": "IFramePanel sample",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-spfx-control-iframepanel",
       "description": "This sample shows how to use the IFramePanel control in a SharePoint Framework web part.",
