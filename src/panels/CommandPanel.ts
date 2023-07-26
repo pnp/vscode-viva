@@ -144,8 +144,9 @@ export class CommandPanel {
   private static async actionsTreeView() {
     const actionCommands: ActionTreeItem[] = [
       new ActionTreeItem('Upgrade solution', '', { name: 'arrow-up', custom: false }, undefined, Commands.upgradeSolution),
-      new ActionTreeItem('Deploy solution (sppkg)', '', { name: 'cloud-upload', custom: false }, undefined, Commands.deploySolution),
       new ActionTreeItem('Validate current project', '', { name: 'check-all', custom: false }, undefined, Commands.validateSolution),
+      new ActionTreeItem('Rename current project', '', { name: 'whole-word', custom: false }, undefined, Commands.renameSolution),
+      new ActionTreeItem('Deploy solution (sppkg)', '', { name: 'cloud-upload', custom: false }, undefined, Commands.deploySolution),
       new ActionTreeItem('Add new component', '', { name: 'add', custom: false }, undefined, Commands.addToProject),
       new ActionTreeItem('View SPFx web part samples', '', { name: 'library', custom: false }, undefined, Commands.showWebpartSampleGallery),
       new ActionTreeItem('View SPFx extension samples', '', { name: 'library', custom: false }, undefined, Commands.showExtensionsSampleGallery),
