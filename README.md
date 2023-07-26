@@ -22,10 +22,13 @@
 
 <p align="center">
   <a href="#%EF%B8%8F-architecture">Architecture</a> |
-  <a href="#install">Install</a> |
-  <a href="#usage">Usage</a> |
-  <a href="#build">Build</a> |
-  <a href="#contribute">Contribute</a>
+  <a href="#-capabilities">Capabilities</a> |
+  <a href="#-contributing">Contributing</a> |
+  <a href="#-support">Support</a> |
+  <a href="#-code-of-conduct">Code of Conduct</a> |
+  <a href="#-changelog">Changelog</a> |
+  <a href="#-sharing-is-caring">Sharing is Caring</a> |
+  <a href="#-additional-resources">Additional resources</a>
 </p>
 
 ![Sample Gallery](./assets/images/start.png)
