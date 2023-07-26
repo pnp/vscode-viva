@@ -95,26 +95,36 @@ export class CommandPanel {
    * Provide the actions for the environment treeview
    */
   private static async environmentTreeView() {
-    const appCatalogUrl = await CliActions.appCatalogUrlGet();
+    const appCatalogUrls = await CliActions.appCatalogUrlsGet();
 
     const environmentCommands: ActionTreeItem[] = [];
 
-    if (!appCatalogUrl) {
+    if (!appCatalogUrls) {
       environmentCommands.push(new ActionTreeItem('No app catalog found', ''));
     } else {
-      const url = new URL(appCatalogUrl);
+      const tenantAppCatalogUrl = appCatalogUrls[0]!;
+      const url = new URL(tenantAppCatalogUrl);
       commands.executeCommand('setContext', ContextKeys.hasAppCatalog, true);
 
-      DebuggerCheck.validateUrl(url.origin);
+      const origin = url.origin;
+      DebuggerCheck.validateUrl(origin);
 
       environmentCommands.push(
         new ActionTreeItem('SharePoint', '', { name: 'sharepoint', custom: true }, undefined, undefined, undefined, undefined, [
-          new ActionTreeItem(url.origin, '', { name: 'globe', custom: false }, undefined, 'vscode.open', Uri.parse(url.origin), 'sp-url')
+          new ActionTreeItem(origin, '', { name: 'globe', custom: false }, undefined, 'vscode.open', Uri.parse(origin), 'sp-url')
         ]),
-        new ActionTreeItem('SharePoint App Catalog', '', { name: 'sharepoint', custom: true }, undefined, undefined, undefined, undefined, [
-          new ActionTreeItem(appCatalogUrl, '', { name: 'globe', custom: false }, undefined, 'vscode.open', Uri.parse(appCatalogUrl), 'sp-app-catalog-url')
+        new ActionTreeItem('SharePoint Tenant App Catalog', '', { name: 'sharepoint', custom: true }, undefined, undefined, undefined, undefined, [
+          new ActionTreeItem(tenantAppCatalogUrl.replace(origin, '...'), '', { name: 'globe', custom: false }, undefined, 'vscode.open', Uri.parse(tenantAppCatalogUrl), 'sp-app-catalog-url')
         ]),
       );
+
+      const siteAppCatalogActionItems: ActionTreeItem[] = [];
+      for (let i = 1; i < appCatalogUrls.length; i++) {
+        siteAppCatalogActionItems.push(new ActionTreeItem(appCatalogUrls[i].replace(origin, '...'), '', { name: 'globe', custom: false }, undefined, 'vscode.open', Uri.parse(appCatalogUrls[i]), 'sp-app-catalog-url'));
+      }
+      if (siteAppCatalogActionItems.length > 0) {
+        environmentCommands.push(new ActionTreeItem('SharePoint Site App Catalogs', '', { name: 'sharepoint', custom: true }, undefined, undefined, undefined, undefined, siteAppCatalogActionItems));
+      }
     }
 
     window.registerTreeDataProvider('pnp-view-environment', new ActionTreeviewProvider(environmentCommands));

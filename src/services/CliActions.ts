@@ -3,7 +3,7 @@ import { readFileSync, writeFileSync } from 'fs';
 import { Folders } from './Folders';
 import { commands, Progress, ProgressLocation, Uri, window, workspace } from 'vscode';
 import { Commands } from '../constants';
-import { SolutionAddResult, Subscription } from '../models';
+import { SiteAppCatalog, SolutionAddResult, Subscription } from '../models';
 import { Extension } from './Extension';
 import { CliExecuter } from './CliCommandExecuter';
 import { Notifications } from './Notifications';
@@ -38,10 +38,22 @@ export class CliActions {
   /**
    * Get the root SPO URL
    */
-  public static async appCatalogUrlGet() {
-    const data = (await CliExecuter.execute('spo tenant appcatalogurl get', 'json')).stdout || undefined;
-    EnvironmentInformation.appCatalogUrl = data ? JSON.parse(data) : undefined;
-    return EnvironmentInformation.appCatalogUrl;
+  public static async appCatalogUrlsGet(): Promise<string[] | undefined> {
+    const appCatalogUrls: string[] = [];
+    const tenantAppCatalog = (await CliExecuter.execute('spo tenant appcatalogurl get', 'json')).stdout || undefined;
+    const siteAppCatalogs = (await CliExecuter.execute('spo site appcatalog list', 'json')).stdout || undefined;
+
+    if (tenantAppCatalog) {
+      appCatalogUrls.push(JSON.parse(tenantAppCatalog));
+    }
+
+    if (siteAppCatalogs) {
+      const siteAppCatalogsJson: SiteAppCatalog[] = JSON.parse(siteAppCatalogs);
+      siteAppCatalogsJson.forEach((siteAppCatalog) => appCatalogUrls.push(`${siteAppCatalog.AbsoluteUrl}/AppCatalog`));
+    }
+
+    EnvironmentInformation.appCatalogUrls = appCatalogUrls ? appCatalogUrls : undefined;
+    return EnvironmentInformation.appCatalogUrls;
   }
 
   /**
@@ -214,10 +226,26 @@ export class CliActions {
       return;
     }
 
-    if (!EnvironmentInformation.appCatalogUrl) {
-      Notifications.error('We haven\'t been able to find an app catalog URL.Make sure your environment has an app catalog site.');
+    if (!EnvironmentInformation.appCatalogUrls) {
+      Notifications.error('We haven\'t been able to find an app catalog URL. Make sure your environment has an app catalog site.');
       return;
     }
+
+    let appCatalogUrl: string | undefined = EnvironmentInformation.appCatalogUrls[0];
+    if (EnvironmentInformation.appCatalogUrls.length > 1) {
+      appCatalogUrl = await window.showQuickPick(EnvironmentInformation.appCatalogUrls.map(url => url, {
+        placeHolder: 'Select the App Catalog',
+        ignoreFocusOut: true,
+        canPickMany: false,
+        title: 'Select the App Catalog'
+      }));
+    }
+
+    if (!appCatalogUrl) {
+      return;
+    }
+
+    const appCatalogScope = appCatalogUrl === EnvironmentInformation.appCatalogUrls[0] ? 'tenant' : 'sitecollection';
 
     await window.withProgress({
       location: ProgressLocation.Notification,
@@ -226,7 +254,7 @@ export class CliActions {
       // eslint-disable-next-line no-unused-vars
     }, async (progress: Progress<{ message?: string; increment?: number }>) => {
       try {
-        const addResult = await CliExecuter.execute('spo app add', 'json', { filePath: file?.fsPath, appCatalogUrl: EnvironmentInformation.appCatalogUrl, overwrite: true });
+        const addResult = await CliExecuter.execute('spo app add', 'json', { filePath: file?.fsPath, appCatalogUrl: appCatalogUrl, appCatalogScope: appCatalogScope, overwrite: true });
 
         if (addResult.stderr) {
           Notifications.error(addResult.stderr);
@@ -248,10 +276,10 @@ export class CliActions {
           shouldSkipFeatureDeployment = packageSolutionData.solution.skipFeatureDeployment;
         }
 
-        const deployResult = await CliExecuter.execute('spo app deploy', 'json', { id: data.UniqueId, appCatalogUrl: EnvironmentInformation.appCatalogUrl, skipFeatureDeployment: shouldSkipFeatureDeployment });
+        const deployResult = await CliExecuter.execute('spo app deploy', 'json', { id: data.UniqueId, appCatalogUrl: appCatalogUrl, appCatalogScope: appCatalogScope, skipFeatureDeployment: shouldSkipFeatureDeployment });
 
         if (deployResult.stderr) {
-          Notifications.error(addResult.stderr);
+          Notifications.error(deployResult.stderr);
           return;
         }
 
