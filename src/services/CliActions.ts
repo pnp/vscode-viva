@@ -34,17 +34,17 @@ export class CliActions {
   /**
    * Get the root SPO URL
    */
-  public static async appCatalogUrlsGet() : Promise<string[] | undefined> {
-    const appCatalogUrls : string[] = [];
+  public static async appCatalogUrlsGet(): Promise<string[] | undefined> {
+    const appCatalogUrls: string[] = [];
     const tenantAppCatalog = (await CliExecuter.execute('spo tenant appcatalogurl get', 'json')).stdout || undefined;
     const siteAppCatalogs = (await CliExecuter.execute('spo site appcatalog list', 'json')).stdout || undefined;
 
-    if(tenantAppCatalog) {
+    if (tenantAppCatalog) {
       appCatalogUrls.push(JSON.parse(tenantAppCatalog));
     }
 
-    if(siteAppCatalogs) {
-      const siteAppCatalogsJson : SiteAppCatalog[] = JSON.parse(siteAppCatalogs);
+    if (siteAppCatalogs) {
+      const siteAppCatalogsJson: SiteAppCatalog[] = JSON.parse(siteAppCatalogs);
       siteAppCatalogsJson.forEach((siteAppCatalog) => appCatalogUrls.push(`${siteAppCatalog.AbsoluteUrl}/AppCatalog`));
     }
 
@@ -169,7 +169,7 @@ export class CliActions {
     }
 
     let appCatalogUrl: string | undefined = EnvironmentInformation.appCatalogUrls[0];
-    if(EnvironmentInformation.appCatalogUrls.length > 1) {
+    if (EnvironmentInformation.appCatalogUrls.length > 1) {
       appCatalogUrl = await window.showQuickPick(EnvironmentInformation.appCatalogUrls.map(url => url, {
         placeHolder: 'Select the App Catalog',
         ignoreFocusOut: true,
