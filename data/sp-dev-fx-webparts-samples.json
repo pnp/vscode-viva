@@ -1197,6 +1197,24 @@
       "updateDate": "2023-03-19"
     },
     {
+      "name": "pnp-sp-dev-spfx-web-parts-react-azure-openai-connector",
+      "title": "Using Azure OpenAI Connectors API",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-azure-openai-connector",
+      "description": "Shows how to use the new feature of Azure OpenAI Connectors API in a SharePoint Framework web part.",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-azure-openai-connector/assets/react-azure-openai-connector.gif",
+      "authors": [
+        {
+          "name": "Luis Mañez",
+          "pictureUrl": "https://github.com/luismanez.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2023-07-26",
+      "updateDate": "2023-07-26"
+    },
+    {
       "name": "pnp-sp-dev-spfx-web-parts-react-azurefunction-northwind2",
       "title": "Consume Northwind Microsoft database from Azure using a Function App ",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-azurefunction-northwind2",
@@ -2167,6 +2185,24 @@
       "updateDate": "2020-07-08"
     },
     {
+      "name": "pnp-sp-dev-spfx-web-parts-react-extension-manager",
+      "title": "Tenant wide extension manager",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-extension-manager",
+      "description": "Manage those tenant wide extensions",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-extension-manager/assets/Demo.gif",
+      "authors": [
+        {
+          "name": "Dan Toft",
+          "pictureUrl": "https://github.com/Tanddant.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2023-07-10",
+      "updateDate": "2023-07-10"
+    },
+    {
       "name": "pnp-sp-dev-spfx-web-parts-react-facebook-plugin",
       "title": "SharePoint Framework Facebook Page Social Plugin web part sample",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-facebook-plugin",
@@ -2366,6 +2402,24 @@
       ],
       "createDate": "2022-02-09",
       "updateDate": "2022-03-28"
+    },
+    {
+      "name": "pnp-sp-dev-spfx-web-parts-react-flow-dashboard",
+      "title": "Flow Dashboard",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-flow-dashboard",
+      "description": "This web part demonstrates displaying the list of flows in different environments, ability to re-enable flows which are stopped or suspended, and the flow run history of the selected flow.",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-flow-dashboard/assets/Dashboard.gif",
+      "authors": [
+        {
+          "name": "NIshkalank Bezawada",
+          "pictureUrl": "https://github.com/NishkalankBezawada.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2023-08-03",
+      "updateDate": "2023-08-03"
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-fluentui-9",
@@ -2907,7 +2961,7 @@
         "SharePoint"
       ],
       "createDate": "2023-05-13",
-      "updateDate": "2023-05-13"
+      "updateDate": "2023-07-11"
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-group-membership-manager",
@@ -2932,7 +2986,7 @@
       "title": "All Microsoft 365 Groups and Teams",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-groups-teams",
       "description": "Web part pulls all Microsoft 365 Groups and Teams that the logged in user has access to view.",
-      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-groups-teams/assets/Groups-in-my-organization.png",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-groups-teams/assets/Card-Display.png",
       "authors": [
         {
           "name": "Alison Collins",
@@ -3221,7 +3275,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-json-form",
-      "title": "Json form builder",
+      "title": "JSON form builder",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-json-form",
       "description": "Build a custom form with ease",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-caml2table/assets/Demo.gif",
@@ -3444,7 +3498,12 @@
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-lob-integration",
       "description": "This web part allows you to learn how to consume 3rd party APIs, secured with Azure Active Directory, in the context of SharePoint Framework.",
       "image": "https://github.com/pnp/sp-starter-kit/raw/master/assets/images/components/part-lob-integration.png",
-      "authors": [],
+      "authors": [
+        {
+          "name": "Microsoft 365 & Power Platform Community",
+          "pictureUrl": "https://github.com/pnp.png"
+        }
+      ],
       "tags": [
         "SharePoint"
       ],
@@ -4171,6 +4230,24 @@
       ],
       "createDate": "2021-04-16",
       "updateDate": "2021-05-20"
+    },
+    {
+      "name": "pnp-sp-dev-spfx-web-parts-react-openai-devops",
+      "title": "OpenAI Azure DevOps Bot",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-openai-devops",
+      "description": "The SPFx web part is a SharePoint Framework web part that allows users to view recent tasks, bugs, and commits assigned to them from a specific project in Azure DevOps",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-openai-devops/assets/demo.gif",
+      "authors": [
+        {
+          "name": "Ejaz Hussain",
+          "pictureUrl": "https://github.com/ejazhussain.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2023-07-23",
+      "updateDate": "2023-07-23"
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-openai-summarise-page-content",

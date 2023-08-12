@@ -989,7 +989,7 @@
       "authors": [
         {
           "name": "Rodrigo Silva",
-          "pictureUrl": "https://githob.com/Rodrigo Silva.png"
+          "pictureUrl": "https://github.com/RodrigoSilva.png"
         }
       ],
       "tags": [
@@ -1328,7 +1328,12 @@
       "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-command-direct-link",
       "description": "Sample SharePoint Framework (SPFx) solution which gives the end-user the ability to just get a regular, simple link to a document or folder in the modern SharePoint document libraries. This is done using a CommandSet.",
       "image": "https://camo.githubusercontent.com/b65cbd290ecf800f79481174196e527ccb36aa15/68747470733a2f2f6a6f6e6173626a65726b652e66696c65732e776f726470726573732e636f6d2f323031392f30312f636f70796469726563746c696e6b2e706e673f773d343530",
-      "authors": [],
+      "authors": [
+        {
+          "name": "Jonas Bjerke Hansen",
+          "pictureUrl": "https://github.com/JonasBjerke89.png"
+        }
+      ],
       "tags": [
         "SharePoint"
       ],
@@ -1763,7 +1768,12 @@
       "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-field-votes",
       "description": "An extension that displays Vote counter and button to vote or unvote.",
       "image": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-field-votes/assets/preview.gif",
-      "authors": [],
+      "authors": [
+        {
+          "name": "Ari Gunawan",
+          "pictureUrl": "https://github.com/AriGunawan.png"
+        }
+      ],
       "tags": [
         "SharePoint"
       ],
