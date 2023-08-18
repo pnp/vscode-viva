@@ -173,29 +173,9 @@ export class CommandPanel {
   private static helpTreeView() {
     const links = [
       {
-        title: 'Viva Connections Extensibility',
-        url: 'https://docs.microsoft.com/en-us/sharepoint/dev/spfx/viva/overview-viva-connections',
+        title: 'Overview of Viva Connections Extensibility',
+        url: 'https://learn.microsoft.com/en-us/sharepoint/dev/spfx/viva/overview-viva-connections',
         image: { name: 'book', custom: false }
-      },
-      {
-        title: 'Viva Connections Design Guidance',
-        url: 'https://docs.microsoft.com/en-us/sharepoint/dev/spfx/viva/design/design-intro',
-        image: { name: 'book', custom: false }
-      },
-      {
-        title: 'Viva Connections samples',
-        url: 'https://adoption.microsoft.com/sample-solution-gallery?sortby=creationDateTime-true&keyword=&product=Viva&action=ajax_plugin_call_sample_solution_gallery',
-        image: { name: 'library', custom: false }
-      },
-      {
-        title: 'Learning path: Microsoft Viva Connections',
-        url: 'https://docs.microsoft.com/en-us/learn/modules/viva-connections-get-started/',
-        image: { name: 'mortar-board', custom: false }
-      },
-      {
-        title: 'Adaptive Card Designer',
-        url: 'https://adaptivecards.io/designer/',
-        image: { name: 'globe', custom: false }
       },
       {
         title: 'Overview of the SharePoint Framework',
@@ -203,19 +183,44 @@ export class CommandPanel {
         image: { name: 'book', custom: false }
       },
       {
-        title: 'Join the Microsoft 365 Developer Program',
-        url: 'https://developer.microsoft.com/en-us/microsoft-365/dev-program',
-        image: { name: 'star-empty', custom: false }
+        title: 'Overview of Microsoft Graph',
+        url: 'https://learn.microsoft.com/en-us/graph/overview?view=graph-rest-1.0',
+        image: { name: 'book', custom: false }
       },
       {
-        title: 'Microsoft Graph REST API Documentation',
-        url: 'https://docs.microsoft.com/en-us/graph/api/overview?view=graph-rest-1.0',
-        image: { name: 'book', custom: false }
+        title: 'Learning path: Extend Microsoft Viva Connections',
+        url: 'https://learn.microsoft.com/en-us/training/paths/m365-extend-viva-connections/',
+        image: { name: 'mortar-board', custom: false }
+      },
+      {
+        title: 'Learning path: Extend Microsoft SharePoint - Associate',
+        url: 'https://learn.microsoft.com/en-us/training/paths/m365-sharepoint-associate/',
+        image: { name: 'mortar-board', custom: false }
+      },
+      {
+        title: 'Learning path: Microsoft Graph Fundamentals',
+        url: 'https://learn.microsoft.com/en-us/training/paths/m365-msgraph-fundamentals/',
+        image: { name: 'mortar-board', custom: false }
+      },
+      {
+        title: 'Sample Solution Gallery',
+        url: 'https://adoption.microsoft.com/en-us/sample-solution-gallery/',
+        image: { name: 'library', custom: false }
+      },
+      {
+        title: 'Adaptive Card Designer',
+        url: 'https://adaptivecards.io/designer/',
+        image: { name: 'globe', custom: false }
       },
       {
         title: 'Microsoft Graph Explorer',
         url: 'https://developer.microsoft.com/en-us/graph/graph-explorer',
         image: { name: 'globe', custom: false }
+      },
+      {
+        title: 'Join the Microsoft 365 Developer Program',
+        url: 'https://developer.microsoft.com/en-us/microsoft-365/dev-program',
+        image: { name: 'star-empty', custom: false }
       },
       {
         title: 'Microsoft 365 & Power Platform Community Home',
