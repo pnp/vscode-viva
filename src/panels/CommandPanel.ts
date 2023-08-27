@@ -156,6 +156,7 @@ export class CommandPanel {
       new ActionTreeItem('Upgrade project', '', { name: 'arrow-up', custom: false }, undefined, Commands.upgradeProject),
       new ActionTreeItem('Validate current project', '', { name: 'check-all', custom: false }, undefined, Commands.validateProject),
       new ActionTreeItem('Rename current project', '', { name: 'whole-word', custom: false }, undefined, Commands.renameProject),
+      new ActionTreeItem('Grant API permissions', '', { name: 'workspace-trusted', custom: false }, undefined, Commands.grantAPIPermissions),
       new ActionTreeItem('Deploy project (sppkg)', '', { name: 'cloud-upload', custom: false }, undefined, Commands.deployProject),
       new ActionTreeItem('Add new component', '', { name: 'add', custom: false }, undefined, Commands.addToProject),
       new ActionTreeItem('View SPFx web part samples', '', { name: 'library', custom: false }, undefined, Commands.showWebpartSampleGallery),

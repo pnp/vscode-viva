@@ -25,13 +25,16 @@ export class CliActions {
       commands.registerCommand(Commands.deployProject, CliActions.deploy)
     );
     subscriptions.push(
-      commands.registerCommand(Commands.validateProject, CliActions.validateSolution)
+      commands.registerCommand(Commands.validateProject, CliActions.validateProject)
     );
     subscriptions.push(
-      commands.registerCommand(Commands.renameProject, CliActions.renameSolution)
+      commands.registerCommand(Commands.renameProject, CliActions.renameProject)
     );
     subscriptions.push(
-      commands.registerCommand(Commands.serveProject, CliActions.serveSolution)
+      commands.registerCommand(Commands.grantAPIPermissions, CliActions.grantAPIPermissions)
+    );
+    subscriptions.push(
+      commands.registerCommand(Commands.serveProject, CliActions.serveProject)
     );
   }
 
@@ -57,10 +60,10 @@ export class CliActions {
   }
 
   /**
-   * Upgrade the solution
+   * Upgrade the Project
    */
   private static async upgrade() {
-    // Change the current working directory to the root of the solution
+    // Change the current working directory to the root of the Project
     const wsFolder = await Folders.getWorkspaceFolder();
     if (wsFolder) {
       process.chdir(wsFolder.uri.fsPath);
@@ -91,10 +94,10 @@ export class CliActions {
   }
 
   /**
-     * Renames the current solution
+     * Renames the current Project
      */
-  private static async renameSolution() {
-    // Change the current working directory to the root of the solution
+  private static async renameProject() {
+    // Change the current working directory to the root of the Project
     const wsFolder = await Folders.getWorkspaceFolder();
     if (wsFolder) {
       process.chdir(wsFolder.uri.fsPath);
@@ -118,7 +121,7 @@ export class CliActions {
     }
 
     const shouldGenerateNewIdAnswer = await window.showQuickPick(['Yes', 'No'], {
-      title: 'Generate a new solution ID for the project?',
+      title: 'Generate a new ID for the project?',
       ignoreFocusOut: true,
       canPickMany: false
     });
@@ -127,7 +130,7 @@ export class CliActions {
 
     await window.withProgress({
       location: ProgressLocation.Notification,
-      title: 'Renaming the current solution...',
+      title: 'Renaming the current project...',
       cancellable: true
       // eslint-disable-next-line no-unused-vars
     }, async (progress: Progress<{ message?: string; increment?: number }>) => {
@@ -150,10 +153,10 @@ export class CliActions {
   }
 
   /**
-   * Validates the current solution
-   */
-  private static async validateSolution() {
-    // Change the current working directory to the root of the solution
+     * grant API permissions for the current Project
+     */
+  private static async grantAPIPermissions() {
+    // Change the current working directory to the root of the Project
     const wsFolder = await Folders.getWorkspaceFolder();
     if (wsFolder) {
       process.chdir(wsFolder.uri.fsPath);
@@ -161,7 +164,41 @@ export class CliActions {
 
     await window.withProgress({
       location: ProgressLocation.Notification,
-      title: 'Validating the current solution...',
+      title: 'Granting API permissions for the current project...',
+      cancellable: true
+      // eslint-disable-next-line no-unused-vars
+    }, async (progress: Progress<{ message?: string; increment?: number }>) => {
+      try {
+        const result: CommandOutput = await CliExecuter.execute('spfx project permissions grant', 'json');
+
+        if (result.stderr) {
+          Notifications.error(result.stderr);
+        }
+        Notifications.info('API permissions granted successfully.');
+      } catch (e: any) {
+        const message = e?.error?.message;
+        if (message.toString().indexOf('webApiPermissionsRequest is not iterable') > -1) {
+          Notifications.error('No API permissions found in the current project.');
+        } else {
+          Notifications.error(message);
+        }
+      }
+    });
+  }
+
+  /**
+   * Validates the current Project
+   */
+  private static async validateProject() {
+    // Change the current working directory to the root of the Project
+    const wsFolder = await Folders.getWorkspaceFolder();
+    if (wsFolder) {
+      process.chdir(wsFolder.uri.fsPath);
+    }
+
+    await window.withProgress({
+      location: ProgressLocation.Notification,
+      title: 'Validating the current project...',
       cancellable: true
       // eslint-disable-next-line no-unused-vars
     }, async (progress: Progress<{ message?: string; increment?: number }>) => {
@@ -184,14 +221,14 @@ export class CliActions {
   }
 
   /**
-   * Deploy the solution
+   * Deploy the Project
    */
   private static async deploy(file: Uri | undefined) {
     const authInstance = AuthProvider.getInstance();
     const account = await authInstance.getAccount();
 
     if (!account) {
-      Notifications.error('You must be logged in to deploy a solution.');
+      Notifications.error('You must be logged in to deploy a project.');
       return;
     }
 
@@ -249,7 +286,7 @@ export class CliActions {
 
     await window.withProgress({
       location: ProgressLocation.Notification,
-      title: `Deploying the ${basename(file.fsPath)} solution. Check [output window](command:${Commands.showOutputChannel}) to follow the progress.`,
+      title: `Deploying the ${basename(file.fsPath)} project. Check [output window](command:${Commands.showOutputChannel}) to follow the progress.`,
       cancellable: false
       // eslint-disable-next-line no-unused-vars
     }, async (progress: Progress<{ message?: string; increment?: number }>) => {
@@ -263,7 +300,7 @@ export class CliActions {
 
         const data: SolutionAddResult = JSON.parse(addResult.stdout);
         if (!data.UniqueId) {
-          Notifications.error('We haven\'t been able to find the unique ID of the solution.Make sure the solution was added correctly.');
+          Notifications.error('We haven\'t been able to find the unique ID of the project. Make sure the project was added correctly.');
         }
 
         // Check if skip feature deployment
@@ -283,7 +320,7 @@ export class CliActions {
           return;
         }
 
-        Notifications.info('The solution has been deployed successfully.');
+        Notifications.info('The project has been deployed successfully.');
       } catch (e: any) {
         const message = e?.error?.message;
         Notifications.error(message);
@@ -292,9 +329,9 @@ export class CliActions {
   }
 
   /**
-   * Serve the solution
+   * Serve the Project
    */
-  public static async serveSolution() {
+  public static async serveProject() {
     const wsFolder = Folders.getWorkspaceFolder();
     if (!wsFolder) {
       return;

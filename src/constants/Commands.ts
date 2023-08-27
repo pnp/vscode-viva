@@ -32,6 +32,9 @@ export const Commands = {
   // Rename
   renameProject: `${EXTENSION_NAME}.renameProject`,
 
+  // Grant API permissions
+  grantAPIPermissions: `${EXTENSION_NAME}.grantAPIPermissions`,
+
   // Webviews
   showACESampleGallery: `${EXTENSION_NAME}.showACESampleGallery`,
   showACEScenariosGallery: `${EXTENSION_NAME}.showACEScenariosGallery`,

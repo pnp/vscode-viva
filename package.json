@@ -158,6 +158,11 @@
 				"category": "Viva Connections Toolkit"
 			},
 			{
+				"command": "viva-connections-toolkit.grantAPIPermissions",
+				"title": "Grant API permissions",
+				"category": "Viva Connections Toolkit"
+			},
+			{
 				"command": "viva-connections-toolkit.login",
 				"title": "Sign in to M365",
 				"category": "Viva Connections Toolkit",
