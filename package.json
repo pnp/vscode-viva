@@ -61,27 +61,27 @@
 				{
 					"id": "pnp-view-account",
 					"name": "Account",
-					"when": "pnp.project.isSPFxSolution"
+					"when": "pnp.project.isSPFxProject"
 				},
 				{
 					"id": "pnp-view-environment",
 					"name": "Environment details",
-					"when": "pnp.project.isSPFxSolution && pnp.project.isLoggedIn"
+					"when": "pnp.project.isSPFxProject && pnp.project.isLoggedIn"
 				},
 				{
 					"id": "pnp-view-tasks",
 					"name": "Tasks",
-					"when": "pnp.project.isSPFxSolution"
+					"when": "pnp.project.isSPFxProject"
 				},
 				{
 					"id": "pnp-view-actions",
 					"name": "Actions",
-					"when": "pnp.project.isSPFxSolution"
+					"when": "pnp.project.isSPFxProject"
 				},
 				{
 					"id": "pnp-view-help",
 					"name": "Help and feedback",
-					"when": "pnp.project.isSPFxSolution"
+					"when": "pnp.project.isSPFxProject"
 				}
 			]
 		},
@@ -118,38 +118,43 @@
 				"category": "Viva Connections Toolkit"
 			},
 			{
-				"command": "viva-connections-toolkit.upgradeSolution",
-				"title": "Upgrade solution to latest SPFx version",
+				"command": "viva-connections-toolkit.upgradeProject",
+				"title": "Upgrade project to latest SPFx version",
 				"category": "Viva Connections Toolkit"
 			},
 			{
-				"command": "viva-connections-toolkit.deploySolution",
-				"title": "Viva Connections Toolkit: Deploy the solution"
+				"command": "viva-connections-toolkit.deployProject",
+				"title": "Deploy the project",
+				"category": "Viva Connections Toolkit"
 			},
 			{
 				"command": "viva-connections-toolkit.showACESampleGallery",
-				"title": "Viva Connections Toolkit: Open the Adaptive Card Extensions (ACEs) Samples gallery"
-			},
-			{
-				"command": "viva-connections-toolkit.showACEScenariosGallery",
-				"title": "Viva Connections Toolkit: Open the Adaptive Card Extensions (ACEs) Scenarios gallery"
-			},
-			{
-				"command": "viva-connections-toolkit.showExtensionsSampleGallery",
-				"title": "Viva Connections Toolkit: Open the SharePoint Framework Client-Side Web Part Samples gallery"
-			},
-			{
-				"command": "viva-connections-toolkit.showWebpartSampleGallery",
-				"title": "Viva Connections Toolkit: Open the SharePoint Framework Extensions Samples gallery"
-			},
-			{
-				"command": "viva-connections-toolkit.validateSolution",
-				"title": "Validate current solution",
+				"title": "Open the Adaptive Card Extensions (ACEs) Samples gallery",
 				"category": "Viva Connections Toolkit"
 			},
 			{
-				"command": "viva-connections-toolkit.renameSolution",
-				"title": "Rename current solution",
+				"command": "viva-connections-toolkit.showACEScenariosGallery",
+				"title": "Open the Adaptive Card Extensions (ACEs) Scenarios gallery",
+				"category": "Viva Connections Toolkit"
+			},
+			{
+				"command": "viva-connections-toolkit.showExtensionsSampleGallery",
+				"title": "Open the SharePoint Framework Client-Side Web Part Samples gallery",
+				"category": "Viva Connections Toolkit"
+			},
+			{
+				"command": "viva-connections-toolkit.showWebpartSampleGallery",
+				"title": "Open the SharePoint Framework Extensions Samples gallery",
+				"category": "Viva Connections Toolkit"
+			},
+			{
+				"command": "viva-connections-toolkit.validateProject",
+				"title": "Validate project",
+				"category": "Viva Connections Toolkit"
+			},
+			{
+				"command": "viva-connections-toolkit.renameProject",
+				"title": "Rename project",
 				"category": "Viva Connections Toolkit"
 			},
 			{
@@ -173,15 +178,15 @@
 				},
 				{
 					"command": "viva-connections-toolkit.addToProject",
-					"when": "pnp.project.isSPFxSolution"
+					"when": "pnp.project.isSPFxProject"
 				},
 				{
-					"command": "viva-connections-toolkit.upgradeSolution",
-					"when": "pnp.project.isSPFxSolution"
+					"command": "viva-connections-toolkit.upgradeProject",
+					"when": "pnp.project.isSPFxProject"
 				},
 				{
-					"command": "viva-connections-toolkit.validateSolution",
-					"when": "pnp.project.isSPFxSolution"
+					"command": "viva-connections-toolkit.validateProject",
+					"when": "pnp.project.isSPFxProject"
 				}
 			],
 			"view/item/context": [
@@ -193,7 +198,7 @@
 			],
 			"explorer/context": [
 				{
-					"command": "viva-connections-toolkit.deploySolution",
+					"command": "viva-connections-toolkit.deployProject",
 					"group": "pnp.project@1",
 					"when": "resourceExtname == '.sppkg' && pnp.project.hasAppCatalog"
 				}

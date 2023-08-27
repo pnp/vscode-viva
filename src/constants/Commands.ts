@@ -21,16 +21,16 @@ export const Commands = {
   executeTerminalCommand: `${EXTENSION_NAME}.executeTerminalCommand`,
 
   // Upgrade
-  upgradeSolution: `${EXTENSION_NAME}.upgradeSolution`,
+  upgradeProject: `${EXTENSION_NAME}.upgradeProject`,
 
   // Deployment
-  deploySolution: `${EXTENSION_NAME}.deploySolution`,
+  deployProject: `${EXTENSION_NAME}.deployProject`,
 
   // Validation
-  validateSolution: `${EXTENSION_NAME}.validateSolution`,
+  validateProject: `${EXTENSION_NAME}.validateProject`,
 
   // Rename
-  renameSolution: `${EXTENSION_NAME}.renameSolution`,
+  renameProject: `${EXTENSION_NAME}.renameProject`,
 
   // Webviews
   showACESampleGallery: `${EXTENSION_NAME}.showACESampleGallery`,
@@ -39,5 +39,5 @@ export const Commands = {
   showWebpartSampleGallery: `${EXTENSION_NAME}.showWebpartSampleGallery`,
 
   // Serving
-  serveSolution: `${EXTENSION_NAME}.serveSolution`,
+  serveProject: `${EXTENSION_NAME}.serveProject`,
 };

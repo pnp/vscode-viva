@@ -19,19 +19,19 @@ export class CliActions {
     const subscriptions: Subscription[] = Extension.getInstance().subscriptions;
 
     subscriptions.push(
-      commands.registerCommand(Commands.upgradeSolution, CliActions.upgrade)
+      commands.registerCommand(Commands.upgradeProject, CliActions.upgrade)
     );
     subscriptions.push(
-      commands.registerCommand(Commands.deploySolution, CliActions.deploy)
+      commands.registerCommand(Commands.deployProject, CliActions.deploy)
     );
     subscriptions.push(
-      commands.registerCommand(Commands.validateSolution, CliActions.validateSolution)
+      commands.registerCommand(Commands.validateProject, CliActions.validateSolution)
     );
     subscriptions.push(
-      commands.registerCommand(Commands.renameSolution, CliActions.renameSolution)
+      commands.registerCommand(Commands.renameProject, CliActions.renameSolution)
     );
     subscriptions.push(
-      commands.registerCommand(Commands.serveSolution, CliActions.serveSolution)
+      commands.registerCommand(Commands.serveProject, CliActions.serveSolution)
     );
   }
 
