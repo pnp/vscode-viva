@@ -233,6 +233,11 @@ export class CommandPanel {
         image: { name: 'feedback', custom: false }
       },
       {
+        title: 'Wiki',
+        url: 'https://github.com/pnp/vscode-viva/wiki/How-to',
+        image: { name: 'question', custom: false }
+      },
+      {
         title: 'Report an issue',
         url: 'https://github.com/pnp/vscode-viva/issues/new/choose',
         image: { name: 'github', custom: false }
