@@ -1,6 +1,6 @@
 export const ContextKeys = {
   showWelcome: 'pnp.project.showWelcome',
-  isSPFxSolution: 'pnp.project.isSPFxSolution',
+  isSPFxProject: 'pnp.project.isSPFxProject',
   isLoggedIn: 'pnp.project.isLoggedIn',
   hasAppCatalog: 'pnp.project.hasAppCatalog',
 };

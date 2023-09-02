@@ -38,7 +38,7 @@ export class CommandPanel {
       return;
     }
 
-    commands.executeCommand('setContext', ContextKeys.isSPFxSolution, true);
+    commands.executeCommand('setContext', ContextKeys.isSPFxProject, true);
     commands.executeCommand('setContext', ContextKeys.showWelcome, false);
 
     CommandPanel.registerTreeview();
@@ -142,7 +142,7 @@ export class CommandPanel {
       new ActionTreeItem('Package (production)', '', { name: 'debug-start', custom: false }, undefined, Commands.executeTerminalCommand, 'gulp package-solution --ship'),
       new ActionTreeItem('Serve', '', { name: 'debug-start', custom: false }, undefined, Commands.executeTerminalCommand, 'gulp serve'),
       new ActionTreeItem('Serve (nobrowser)', '', { name: 'debug-start', custom: false }, undefined, Commands.executeTerminalCommand, 'gulp serve --nobrowser'),
-      new ActionTreeItem('Serve from configuration', '', { name: 'debug-start', custom: false }, undefined, Commands.serveSolution),
+      new ActionTreeItem('Serve from configuration', '', { name: 'debug-start', custom: false }, undefined, Commands.serveProject),
     ];
 
     window.registerTreeDataProvider('pnp-view-tasks', new ActionTreeviewProvider(taskCommands));
@@ -153,10 +153,11 @@ export class CommandPanel {
    */
   private static async actionsTreeView() {
     const actionCommands: ActionTreeItem[] = [
-      new ActionTreeItem('Upgrade solution', '', { name: 'arrow-up', custom: false }, undefined, Commands.upgradeSolution),
-      new ActionTreeItem('Validate current project', '', { name: 'check-all', custom: false }, undefined, Commands.validateSolution),
-      new ActionTreeItem('Rename current project', '', { name: 'whole-word', custom: false }, undefined, Commands.renameSolution),
-      new ActionTreeItem('Deploy solution (sppkg)', '', { name: 'cloud-upload', custom: false }, undefined, Commands.deploySolution),
+      new ActionTreeItem('Upgrade project', '', { name: 'arrow-up', custom: false }, undefined, Commands.upgradeProject),
+      new ActionTreeItem('Validate current project', '', { name: 'check-all', custom: false }, undefined, Commands.validateProject),
+      new ActionTreeItem('Rename current project', '', { name: 'whole-word', custom: false }, undefined, Commands.renameProject),
+      new ActionTreeItem('Grant API permissions', '', { name: 'workspace-trusted', custom: false }, undefined, Commands.grantAPIPermissions),
+      new ActionTreeItem('Deploy project (sppkg)', '', { name: 'cloud-upload', custom: false }, undefined, Commands.deployProject),
       new ActionTreeItem('Add new component', '', { name: 'add', custom: false }, undefined, Commands.addToProject),
       new ActionTreeItem('View SPFx web part samples', '', { name: 'library', custom: false }, undefined, Commands.showWebpartSampleGallery),
       new ActionTreeItem('View SPFx extension samples', '', { name: 'library', custom: false }, undefined, Commands.showExtensionsSampleGallery),
