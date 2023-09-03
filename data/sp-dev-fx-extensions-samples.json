@@ -856,6 +856,24 @@
       "updateDate": "2020-06-12"
     },
     {
+      "name": "pnp-sp-dev-spfx-extensions-react-application-nav-search-driven",
+      "title": "Search driven navigation",
+      "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-application-qna-chat",
+      "description": "SPFx application search driven navigation and permission side panel.",
+      "image": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-nav-search-driven/assets/01SearchDrivenNavigation.png",
+      "authors": [
+        {
+          "name": "Markus Moeller",
+          "pictureUrl": "https://github.com/mmsharepoint.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2023-07-27",
+      "updateDate": "2023-07-27"
+    },
+    {
       "name": "pnp-sp-dev-spfx-extensions-react-application-news-ticker",
       "title": "News Ticker",
       "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-application-news-ticker",
@@ -928,6 +946,24 @@
       "updateDate": "2019-10-25"
     },
     {
+      "name": "pnp-sp-dev-spfx-extensions-react-application-personal-assistant",
+      "title": "Personal Assistant - OpenAI Function Calling with Microsoft Graph",
+      "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-application-personal-assistant",
+      "description": "This sample is chatbot that provides information to the current logged in user.",
+      "image": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-personal-assistant/assets/demo.gif",
+      "authors": [
+        {
+          "name": "Anoop Tatti",
+          "pictureUrl": "https://github.com/anoopt.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2023-06-23",
+      "updateDate": "2023-06-23"
+    },
+    {
       "name": "pnp-sp-dev-spfx-extensions-react-application-portal-footer",
       "title": "Portal Footer Application Customizers",
       "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-application-portal-footer",
@@ -989,7 +1025,7 @@
       "authors": [
         {
           "name": "Rodrigo Silva",
-          "pictureUrl": "https://githob.com/Rodrigo Silva.png"
+          "pictureUrl": "https://github.com/RodrigoSilva.png"
         }
       ],
       "tags": [
@@ -1105,6 +1141,24 @@
       ],
       "createDate": "2017-09-28",
       "updateDate": "2017-09-28"
+    },
+    {
+      "name": "pnp-sp-dev-spfx-extensions-react-application-tfl-status",
+      "title": "Transport for London (TfL) Status",
+      "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-application-tfl-status",
+      "description": "This sample is chatbot that provides information about Transport for London (TfL) status.",
+      "image": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-tfl-status/assets/demo.gif",
+      "authors": [
+        {
+          "name": "anoopt",
+          "pictureUrl": "https://github.com/anoopt.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2023-06-23",
+      "updateDate": "2023-06-23"
     },
     {
       "name": "pnp-sp-dev-spfx-extensions-react-application-weather-widget",
@@ -1328,7 +1382,12 @@
       "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-command-direct-link",
       "description": "Sample SharePoint Framework (SPFx) solution which gives the end-user the ability to just get a regular, simple link to a document or folder in the modern SharePoint document libraries. This is done using a CommandSet.",
       "image": "https://camo.githubusercontent.com/b65cbd290ecf800f79481174196e527ccb36aa15/68747470733a2f2f6a6f6e6173626a65726b652e66696c65732e776f726470726573732e636f6d2f323031392f30312f636f70796469726563746c696e6b2e706e673f773d343530",
-      "authors": [],
+      "authors": [
+        {
+          "name": "Jonas Bjerke Hansen",
+          "pictureUrl": "https://github.com/JonasBjerke89.png"
+        }
+      ],
       "tags": [
         "SharePoint"
       ],
@@ -1632,6 +1691,42 @@
       "updateDate": "2019-09-01"
     },
     {
+      "name": "pnp-sp-dev-spfx-extensions-react-dynamic-form-with-location-picker",
+      "title": "Dynamic Form with location picker",
+      "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-dynamic-form-with-location-picker",
+      "description": "This solution implements a simple Form Customizer with a Dynamic Form with a location picker, to demonstrate the many usages of a Dynamic Form.",
+      "image": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-dynamic-form-with-location-picker/assets/dynamic-form-with-location-picker.gif",
+      "authors": [
+        {
+          "name": "Martin Lingstuyl",
+          "pictureUrl": "https://github.com/martinlingstuyl.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2023-06-28",
+      "updateDate": "2023-06-28"
+    },
+    {
+      "name": "pnp-sp-dev-spfx-extensions-react-dynamic-site-form",
+      "title": "Dynamic Site Form",
+      "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-dynamic-site-form",
+      "description": "The Dynamic Site Form solution implements a Form Customizer with a Dynamic Form with field overrides to look like the default SharePoint new site form.",
+      "image": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-dynamic-site-form/assets/dynamic-site-form.gif",
+      "authors": [
+        {
+          "name": "Martin Lingstuyl",
+          "pictureUrl": "https://github.com/martinlingstuyl.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2023-06-22",
+      "updateDate": "2023-06-22"
+    },
+    {
       "name": "pnp-sp-dev-spfx-extensions-react-field-attachment-info",
       "title": "Field Attachment Info",
       "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-field-attachment-info",
@@ -1740,6 +1835,24 @@
       "updateDate": "2017-10-04"
     },
     {
+      "name": "pnp-sp-dev-spfx-extensions-react-field-unique-permissions",
+      "title": "Unique permissions on list items",
+      "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-field-unique-permissions",
+      "description": "This sample demonstrates how to use field customizer to handle unique permissions on list items. ",
+      "image": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-field-unique-permissions/assets/currentUserPermissions.png",
+      "authors": [
+        {
+          "name": "Michał Kornet",
+          "pictureUrl": "https://github.com/mkm17.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2023-06-23",
+      "updateDate": "2023-06-23"
+    },
+    {
       "name": "pnp-sp-dev-spfx-extensions-react-field-user-permission",
       "title": "Displaying the current user permission with PNPJs",
       "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-field-user-permission",
@@ -1763,7 +1876,12 @@
       "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-field-votes",
       "description": "An extension that displays Vote counter and button to vote or unvote.",
       "image": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-field-votes/assets/preview.gif",
-      "authors": [],
+      "authors": [
+        {
+          "name": "Ari Gunawan",
+          "pictureUrl": "https://github.com/AriGunawan.png"
+        }
+      ],
       "tags": [
         "SharePoint"
       ],
