@@ -236,7 +236,7 @@ export class CommandPanel {
       },
       {
         title: 'Wiki',
-        url: 'https://github.com/pnp/vscode-viva/wiki/How-to',
+        url: 'https://github.com/pnp/vscode-viva/wiki',
         image: { name: 'question', custom: false }
       },
       {
