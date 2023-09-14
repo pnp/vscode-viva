@@ -1,5 +1,15 @@
 # Change Log
 
+## [2.0.0] - 2023-09-15
+
+- Added new rename action
+- Extended environment details with site app catalog links
+- Extended Deploy action to support site app catalog
+- Added Grant API permissions action
+- Added CI/CD GitHub generate workflow action
+- Integrated SPFx Code Snippets
+- Upgraded Help and Feedback section
+
 ## [1.1.0] - 2023-06-30
 
 - Upgraded CLI for Microsoft 365 dependency to version v6.9
