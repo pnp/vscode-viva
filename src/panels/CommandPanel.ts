@@ -38,7 +38,7 @@ export class CommandPanel {
       return;
     }
 
-    commands.executeCommand('setContext', ContextKeys.isSPFxSolution, true);
+    commands.executeCommand('setContext', ContextKeys.isSPFxProject, true);
     commands.executeCommand('setContext', ContextKeys.showWelcome, false);
 
     CommandPanel.registerTreeview();
@@ -95,26 +95,36 @@ export class CommandPanel {
    * Provide the actions for the environment treeview
    */
   private static async environmentTreeView() {
-    const appCatalogUrl = await CliActions.appCatalogUrlGet();
+    const appCatalogUrls = await CliActions.appCatalogUrlsGet();
 
     const environmentCommands: ActionTreeItem[] = [];
 
-    if (!appCatalogUrl) {
+    if (!appCatalogUrls) {
       environmentCommands.push(new ActionTreeItem('No app catalog found', ''));
     } else {
-      const url = new URL(appCatalogUrl);
+      const tenantAppCatalogUrl = appCatalogUrls[0]!;
+      const url = new URL(tenantAppCatalogUrl);
       commands.executeCommand('setContext', ContextKeys.hasAppCatalog, true);
 
-      DebuggerCheck.validateUrl(url.origin);
+      const origin = url.origin;
+      DebuggerCheck.validateUrl(origin);
 
       environmentCommands.push(
         new ActionTreeItem('SharePoint', '', { name: 'sharepoint', custom: true }, undefined, undefined, undefined, undefined, [
-          new ActionTreeItem(url.origin, '', { name: 'globe', custom: false }, undefined, 'vscode.open', Uri.parse(url.origin), 'sp-url')
+          new ActionTreeItem(origin, '', { name: 'globe', custom: false }, undefined, 'vscode.open', Uri.parse(origin), 'sp-url')
         ]),
-        new ActionTreeItem('SharePoint App Catalog', '', { name: 'sharepoint', custom: true }, undefined, undefined, undefined, undefined, [
-          new ActionTreeItem(appCatalogUrl, '', { name: 'globe', custom: false }, undefined, 'vscode.open', Uri.parse(appCatalogUrl), 'sp-app-catalog-url')
+        new ActionTreeItem('SharePoint Tenant App Catalog', '', { name: 'sharepoint', custom: true }, undefined, undefined, undefined, undefined, [
+          new ActionTreeItem(tenantAppCatalogUrl.replace(origin, '...'), '', { name: 'globe', custom: false }, undefined, 'vscode.open', Uri.parse(tenantAppCatalogUrl), 'sp-app-catalog-url')
         ]),
       );
+
+      const siteAppCatalogActionItems: ActionTreeItem[] = [];
+      for (let i = 1; i < appCatalogUrls.length; i++) {
+        siteAppCatalogActionItems.push(new ActionTreeItem(appCatalogUrls[i].replace(origin, '...'), '', { name: 'globe', custom: false }, undefined, 'vscode.open', Uri.parse(appCatalogUrls[i]), 'sp-app-catalog-url'));
+      }
+      if (siteAppCatalogActionItems.length > 0) {
+        environmentCommands.push(new ActionTreeItem('SharePoint Site App Catalogs', '', { name: 'sharepoint', custom: true }, undefined, undefined, undefined, undefined, siteAppCatalogActionItems));
+      }
     }
 
     window.registerTreeDataProvider('pnp-view-environment', new ActionTreeviewProvider(environmentCommands));
@@ -132,7 +142,7 @@ export class CommandPanel {
       new ActionTreeItem('Package (production)', '', { name: 'debug-start', custom: false }, undefined, Commands.executeTerminalCommand, 'gulp package-solution --ship'),
       new ActionTreeItem('Serve', '', { name: 'debug-start', custom: false }, undefined, Commands.executeTerminalCommand, 'gulp serve'),
       new ActionTreeItem('Serve (nobrowser)', '', { name: 'debug-start', custom: false }, undefined, Commands.executeTerminalCommand, 'gulp serve --nobrowser'),
-      new ActionTreeItem('Serve from configuration', '', { name: 'debug-start', custom: false }, undefined, Commands.serveSolution),
+      new ActionTreeItem('Serve from configuration', '', { name: 'debug-start', custom: false }, undefined, Commands.serveProject),
     ];
 
     window.registerTreeDataProvider('pnp-view-tasks', new ActionTreeviewProvider(taskCommands));
@@ -143,10 +153,13 @@ export class CommandPanel {
    */
   private static async actionsTreeView() {
     const actionCommands: ActionTreeItem[] = [
-      new ActionTreeItem('Upgrade solution', '', { name: 'arrow-up', custom: false }, undefined, Commands.upgradeSolution),
-      new ActionTreeItem('Deploy solution (sppkg)', '', { name: 'cloud-upload', custom: false }, undefined, Commands.deploySolution),
-      new ActionTreeItem('Validate current project', '', { name: 'check-all', custom: false }, undefined, Commands.validateSolution),
+      new ActionTreeItem('Upgrade project', '', { name: 'arrow-up', custom: false }, undefined, Commands.upgradeProject),
+      new ActionTreeItem('Validate current project', '', { name: 'check-all', custom: false }, undefined, Commands.validateProject),
+      new ActionTreeItem('Rename current project', '', { name: 'whole-word', custom: false }, undefined, Commands.renameProject),
+      new ActionTreeItem('Grant API permissions', '', { name: 'workspace-trusted', custom: false }, undefined, Commands.grantAPIPermissions),
+      new ActionTreeItem('Deploy project (sppkg)', '', { name: 'cloud-upload', custom: false }, undefined, Commands.deployProject),
       new ActionTreeItem('Add new component', '', { name: 'add', custom: false }, undefined, Commands.addToProject),
+      new ActionTreeItem('CI/CD GitHub Workflow', '', { name: 'rocket', custom: false }, undefined, Commands.pipelineGitHub),
       new ActionTreeItem('View SPFx web part samples', '', { name: 'library', custom: false }, undefined, Commands.showWebpartSampleGallery),
       new ActionTreeItem('View SPFx extension samples', '', { name: 'library', custom: false }, undefined, Commands.showExtensionsSampleGallery),
       new ActionTreeItem('View ACEs samples', '', { name: 'library', custom: false }, undefined, Commands.showACESampleGallery),
@@ -162,29 +175,9 @@ export class CommandPanel {
   private static helpTreeView() {
     const links = [
       {
-        title: 'Viva Connections Extensibility',
-        url: 'https://docs.microsoft.com/en-us/sharepoint/dev/spfx/viva/overview-viva-connections',
+        title: 'Overview of Viva Connections Extensibility',
+        url: 'https://learn.microsoft.com/en-us/sharepoint/dev/spfx/viva/overview-viva-connections',
         image: { name: 'book', custom: false }
-      },
-      {
-        title: 'Viva Connections Design Guidance',
-        url: 'https://docs.microsoft.com/en-us/sharepoint/dev/spfx/viva/design/design-intro',
-        image: { name: 'book', custom: false }
-      },
-      {
-        title: 'Viva Connections samples',
-        url: 'https://adoption.microsoft.com/sample-solution-gallery?sortby=creationDateTime-true&keyword=&product=Viva&action=ajax_plugin_call_sample_solution_gallery',
-        image: { name: 'library', custom: false }
-      },
-      {
-        title: 'Learning path: Microsoft Viva Connections',
-        url: 'https://docs.microsoft.com/en-us/learn/modules/viva-connections-get-started/',
-        image: { name: 'mortar-board', custom: false }
-      },
-      {
-        title: 'Adaptive Card Designer',
-        url: 'https://adaptivecards.io/designer/',
-        image: { name: 'globe', custom: false }
       },
       {
         title: 'Overview of the SharePoint Framework',
@@ -192,19 +185,44 @@ export class CommandPanel {
         image: { name: 'book', custom: false }
       },
       {
-        title: 'Join the Microsoft 365 Developer Program',
-        url: 'https://developer.microsoft.com/en-us/microsoft-365/dev-program',
-        image: { name: 'star-empty', custom: false }
+        title: 'Overview of Microsoft Graph',
+        url: 'https://learn.microsoft.com/en-us/graph/overview?view=graph-rest-1.0',
+        image: { name: 'book', custom: false }
       },
       {
-        title: 'Microsoft Graph REST API Documentation',
-        url: 'https://docs.microsoft.com/en-us/graph/api/overview?view=graph-rest-1.0',
-        image: { name: 'book', custom: false }
+        title: 'Learning path: Extend Microsoft Viva Connections',
+        url: 'https://learn.microsoft.com/en-us/training/paths/m365-extend-viva-connections/',
+        image: { name: 'mortar-board', custom: false }
+      },
+      {
+        title: 'Learning path: Extend Microsoft SharePoint - Associate',
+        url: 'https://learn.microsoft.com/en-us/training/paths/m365-sharepoint-associate/',
+        image: { name: 'mortar-board', custom: false }
+      },
+      {
+        title: 'Learning path: Microsoft Graph Fundamentals',
+        url: 'https://learn.microsoft.com/en-us/training/paths/m365-msgraph-fundamentals/',
+        image: { name: 'mortar-board', custom: false }
+      },
+      {
+        title: 'Sample Solution Gallery',
+        url: 'https://adoption.microsoft.com/en-us/sample-solution-gallery/',
+        image: { name: 'library', custom: false }
+      },
+      {
+        title: 'Adaptive Card Designer',
+        url: 'https://adaptivecards.io/designer/',
+        image: { name: 'globe', custom: false }
       },
       {
         title: 'Microsoft Graph Explorer',
         url: 'https://developer.microsoft.com/en-us/graph/graph-explorer',
         image: { name: 'globe', custom: false }
+      },
+      {
+        title: 'Join the Microsoft 365 Developer Program',
+        url: 'https://developer.microsoft.com/en-us/microsoft-365/dev-program',
+        image: { name: 'star-empty', custom: false }
       },
       {
         title: 'Microsoft 365 & Power Platform Community Home',
@@ -215,6 +233,11 @@ export class CommandPanel {
         title: 'Join the Microsoft 365 & Power Platform Community Discord Server',
         url: 'https://aka.ms/community/discord',
         image: { name: 'feedback', custom: false }
+      },
+      {
+        title: 'Wiki',
+        url: 'https://github.com/pnp/vscode-viva/wiki',
+        image: { name: 'question', custom: false }
       },
       {
         title: 'Report an issue',

@@ -117,7 +117,7 @@ export class AuthProvider implements AuthenticationProvider, Disposable {
         title: `Logging in to M365. Check [output window](command:${Commands.showOutputChannel}) for more details`,
         cancellable: true
       }, async (progress: Progress<{ message?: string; increment?: number }>) => {
-        const result = await executeCommand('login', { output: 'text' }, {
+        await executeCommand('login', { output: 'text' }, {
           stdout: (message: string) => {
             if (message.includes('https://microsoft.com/devicelogin')) {
               commands.executeCommand('vscode.open', 'https://microsoft.com/devicelogin');
@@ -141,11 +141,6 @@ export class AuthProvider implements AuthenticationProvider, Disposable {
             return message;
           }
         });
-
-        if (result.stderr) {
-          resolve(undefined as any);
-          return;
-        }
 
         Notifications.info('M365 CLI - Logged in to M365');
         const account = await this.getAccount();

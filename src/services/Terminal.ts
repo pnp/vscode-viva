@@ -85,7 +85,7 @@ export class Terminal {
 
     if (terminal) {
       terminal.show(true);
-      terminal.sendText(command);
+      terminal.sendText(` ${command}`);
     }
   }
 }

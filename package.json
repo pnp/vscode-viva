@@ -2,7 +2,7 @@
 	"name": "viva-connections-toolkit",
 	"displayName": "Viva Connections Toolkit",
 	"description": "With the Viva Connections Toolkit extension, you can create and manage your Viva Connections solutions on your tenant. All actions you need to perform during the development flow are at your fingertips. Extensions also works with any SharePoint Framework. This toolkit is provided by the community.",
-	"version": "1.1.0",
+	"version": "2.0.0",
 	"publisher": "m365pnp",
 	"preview": false,
 	"homepage": "https://github.com/pnp/vscode-viva",
@@ -12,7 +12,7 @@
 	},
 	"categories": [
 		"Snippets",
-		"Extension Packs", 
+		"Extension Packs",
 		"Other"
 	],
 	"repository": {
@@ -36,7 +36,8 @@
 		"onStartupFinished"
 	],
 	"extensionDependencies": [
-		"vsls-contrib.codetour"
+		"vsls-contrib.codetour",
+		"eliostruyf.spfx-snippets"
 	],
 	"license": "MIT",
 	"main": "./dist/extension.js",
@@ -60,27 +61,27 @@
 				{
 					"id": "pnp-view-account",
 					"name": "Account",
-					"when": "pnp.project.isSPFxSolution"
+					"when": "pnp.project.isSPFxProject"
 				},
 				{
 					"id": "pnp-view-environment",
 					"name": "Environment details",
-					"when": "pnp.project.isSPFxSolution && pnp.project.isLoggedIn"
+					"when": "pnp.project.isSPFxProject && pnp.project.isLoggedIn"
 				},
 				{
 					"id": "pnp-view-tasks",
 					"name": "Tasks",
-					"when": "pnp.project.isSPFxSolution"
+					"when": "pnp.project.isSPFxProject"
 				},
 				{
 					"id": "pnp-view-actions",
 					"name": "Actions",
-					"when": "pnp.project.isSPFxSolution"
+					"when": "pnp.project.isSPFxProject"
 				},
 				{
 					"id": "pnp-view-help",
 					"name": "Help and feedback",
-					"when": "pnp.project.isSPFxSolution"
+					"when": "pnp.project.isSPFxProject"
 				}
 			]
 		},
@@ -117,33 +118,53 @@
 				"category": "Viva Connections Toolkit"
 			},
 			{
-				"command": "viva-connections-toolkit.upgradeSolution",
-				"title": "Upgrade solution to latest SPFx version",
+				"command": "viva-connections-toolkit.upgradeProject",
+				"title": "Upgrade project to latest SPFx version",
 				"category": "Viva Connections Toolkit"
 			},
 			{
-				"command": "viva-connections-toolkit.deploySolution",
-				"title": "Viva Connections Toolkit: Deploy the solution"
+				"command": "viva-connections-toolkit.deployProject",
+				"title": "Deploy the project",
+				"category": "Viva Connections Toolkit"
 			},
 			{
 				"command": "viva-connections-toolkit.showACESampleGallery",
-				"title": "Viva Connections Toolkit: Open the Adaptive Card Extensions (ACEs) Samples gallery"
+				"title": "Open the Adaptive Card Extensions (ACEs) Samples gallery",
+				"category": "Viva Connections Toolkit"
 			},
 			{
 				"command": "viva-connections-toolkit.showACEScenariosGallery",
-				"title": "Viva Connections Toolkit: Open the Adaptive Card Extensions (ACEs) Scenarios gallery"
+				"title": "Open the Adaptive Card Extensions (ACEs) Scenarios gallery",
+				"category": "Viva Connections Toolkit"
 			},
 			{
 				"command": "viva-connections-toolkit.showExtensionsSampleGallery",
-				"title": "Viva Connections Toolkit: Open the SharePoint Framework Client-Side Web Part Samples gallery"
+				"title": "Open the SharePoint Framework Client-Side Web Part Samples gallery",
+				"category": "Viva Connections Toolkit"
 			},
 			{
 				"command": "viva-connections-toolkit.showWebpartSampleGallery",
-				"title": "Viva Connections Toolkit: Open the SharePoint Framework Extensions Samples gallery"
+				"title": "Open the SharePoint Framework Extensions Samples gallery",
+				"category": "Viva Connections Toolkit"
 			},
 			{
-				"command": "viva-connections-toolkit.validateSolution",
-				"title": "Validate current solution",
+				"command": "viva-connections-toolkit.validateProject",
+				"title": "Validate project",
+				"category": "Viva Connections Toolkit"
+			},
+			{
+				"command": "viva-connections-toolkit.renameProject",
+				"title": "Rename project",
+				"category": "Viva Connections Toolkit"
+			},
+			{
+				"command": "viva-connections-toolkit.grantAPIPermissions",
+				"title": "Grant API permissions",
+				"category": "Viva Connections Toolkit"
+			},
+			{
+				"command": "viva-connections-toolkit.pipelineGitHub",
+				"title": "Generate GitHub CI/CD workflow",
 				"category": "Viva Connections Toolkit"
 			},
 			{
@@ -167,15 +188,15 @@
 				},
 				{
 					"command": "viva-connections-toolkit.addToProject",
-					"when": "pnp.project.isSPFxSolution"
+					"when": "pnp.project.isSPFxProject"
 				},
 				{
-					"command": "viva-connections-toolkit.upgradeSolution",
-					"when": "pnp.project.isSPFxSolution"
+					"command": "viva-connections-toolkit.upgradeProject",
+					"when": "pnp.project.isSPFxProject"
 				},
 				{
-					"command": "viva-connections-toolkit.validateSolution",
-					"when": "pnp.project.isSPFxSolution"
+					"command": "viva-connections-toolkit.validateProject",
+					"when": "pnp.project.isSPFxProject"
 				}
 			],
 			"view/item/context": [
@@ -187,7 +208,7 @@
 			],
 			"explorer/context": [
 				{
-					"command": "viva-connections-toolkit.deploySolution",
+					"command": "viva-connections-toolkit.deployProject",
 					"group": "pnp.project@1",
 					"when": "resourceExtname == '.sppkg' && pnp.project.hasAppCatalog"
 				}
@@ -261,6 +282,6 @@
 		"webpack-dev-server": "^4.8.1"
 	},
 	"dependencies": {
-		"@pnp/cli-microsoft365": "^6.9.0"
+		"@pnp/cli-microsoft365": "^6.11.0"
 	}
 }
