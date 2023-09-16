@@ -1473,6 +1473,24 @@
       "updateDate": "2020-06-12"
     },
     {
+      "name": "pnp-sp-dev-spfx-web-parts-react-cascadingdropdowns",
+      "title": "Cascading Dropdowns",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-cascadingdropdowns",
+      "description": "Shows how to use Cascading Dropdowns in property panes.",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-cascadingdropdowns/assets/webpartpreview.png",
+      "authors": [
+        {
+          "name": "Hugo Bernier",
+          "pictureUrl": "https://github.com/hugoabernier.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2023-09-12",
+      "updateDate": "2023-09-12"
+    },
+    {
       "name": "pnp-sp-dev-spfx-web-parts-react-chartcontrol",
       "title": "Chart Control Samples",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-chartcontrol",
@@ -3527,6 +3545,28 @@
       ],
       "createDate": "2023-02-03",
       "updateDate": "2023-02-03"
+    },
+    {
+      "name": "pnp-sp-dev-spfx-web-parts-react-manage-hublevel-subscriptions",
+      "title": "Subscription Manager",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-manage-hublevel-subscriptions",
+      "description": "This sample web part demonstrates managing the list subscriptions (sharepoint webhooks) and action to renew the webhook expiration date using Rest calls.",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-manage-hublevel-subscriptions/assets/SubscriptionsDashboard.gif",
+      "authors": [
+        {
+          "name": "NIshkalank Bezawada",
+          "pictureUrl": "https://github.com/NishkalankBezawada.png"
+        }
+      ],
+      "tags": [
+        "SharePoint",
+        "WebHooks",
+        "Subscriptions",
+        "Update Subscriptions",
+        "Get Subscriptions"
+      ],
+      "createDate": "2023-09-01",
+      "updateDate": "2023-09-01"
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-manage-o365-groups",
