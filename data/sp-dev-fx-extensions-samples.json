@@ -649,6 +649,24 @@
       "updateDate": "2020-01-01"
     },
     {
+      "name": "pnp-sp-dev-spfx-extensions-react-react-application-customizer-feedback-widget",
+      "title": "Sticky Feedback Widget Application Customizer",
+      "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-application-customizer-feedback-widget",
+      "description": "An SPFx Application Customizer Extension placed in the bottom placeholder which allows users to input their feedbacks without scrolling down to the end of the page.",
+      "image": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-customizer-feedback-widget/assets/Feedback_Widget1.png",
+      "authors": [
+        {
+          "name": "Sandeep P S",
+          "pictureUrl": "https://github.com/Sandeep-FED.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2023-07-02",
+      "updateDate": "2023-07-02"
+    },
+    {
       "name": "pnp-sp-dev-spfx-extensions-react-application-duetasks",
       "title": "Overdue Tasks Application Customizer",
       "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-application-duetasks",
@@ -1561,6 +1579,24 @@
       "updateDate": "2018-11-13"
     },
     {
+      "name": "pnp-sp-dev-spfx-extensions-react-command-manage-list-subscriptions",
+      "title": "React-Manage-List-Subscriptions",
+      "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-command-manage-list-subscriptions",
+      "description": "Demonstrates managing the list subscriptions (sharepoint webhooks) and action to renew the webhook expiration date using Rest calls.",
+      "image": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-command-manage-list-subscriptions/assets/ManageSubscription.png",
+      "authors": [
+        {
+          "name": "NIshkalank Bezawada",
+          "pictureUrl": "https://github.com/NishkalankBezawada.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2023-09-12",
+      "updateDate": "2023-09-12"
+    },
+    {
       "name": "pnp-sp-dev-spfx-extensions-react-command-page-model-pnpjs",
       "title": "Modern Page Model with PnP/PnPjs",
       "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-command-page-model-pnpjs",
@@ -1914,15 +1950,15 @@
       "image": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-hidefrom-externalusers/assets/SharePoint-hidefrom-guest-user.gif",
       "authors": [
         {
-          "name": "Velin Georgiev",
-          "pictureUrl": "https://github.com/VelinGeorgiev.png"
+          "name": "Mohammad Mahyar Pourabdollah Khadar",
+          "pictureUrl": "https://github.com/Mahyar915.png"
         }
       ],
       "tags": [
         "SharePoint"
       ],
-      "createDate": "2019-06-21",
-      "updateDate": "2019-06-21"
+      "createDate": "2023-09-16",
+      "updateDate": "2023-09-16"
     },
     {
       "name": "pnp-sp-dev-spfx-extensions-react-item-History",
