@@ -1001,6 +1001,24 @@
       "updateDate": "2019-11-07"
     },
     {
+      "name": "pnp-sp-dev-spfx-web-parts-react-advanced-iframe",
+      "title": "Advanced IFrame",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-advanced-iframe",
+      "description": "This web part allows users to add a webpage in an IFrame to a modern SharePoint page.",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-advanced-iframe/assets/advancediframewebpart.gif",
+      "authors": [
+        {
+          "name": "Sven Sieverding",
+          "pictureUrl": "https://github.com/365knoten.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2024-08-27",
+      "updateDate": "2024-08-27"
+    },
+    {
       "name": "pnp-sp-dev-spfx-web-parts-react-advanced-page-properties",
       "title": "Advanced Page Properties",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-advanced-page-properties",
@@ -1047,6 +1065,24 @@
       ],
       "createDate": "2018-07-16",
       "updateDate": "2018-07-16"
+    },
+    {
+      "name": "pnp-sp-dev-spfx-web-parts-react-apim-tablestorage",
+      "title": "Accessing Azure table storage data using Azure API Management",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-apim-tablestorage",
+      "description": "Allows you to access securely Azure storage table data using Azure API Management (APIM)",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-apim-tablestorage/assets/demo.gif",
+      "authors": [
+        {
+          "name": "Ejaz Hussain",
+          "pictureUrl": "https://github.com/ejazhussain.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2023-09-11",
+      "updateDate": "2023-09-11"
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-app-settings",
@@ -2051,6 +2087,24 @@
       ],
       "createDate": "2020-04-28",
       "updateDate": "2020-04-28"
+    },
+    {
+      "name": "pnp-sp-dev-spfx-web-parts-react-download-multiple-documents",
+      "title": "Download Multiple Documents",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-download-multiple-documents",
+      "description": "This sample empowers users to effortlessly download multiple documents as a single compressed ZIP file.",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-download-multiple-documents/assets/MultipleDownloadsWebPartDemo.gif",
+      "authors": [
+        {
+          "name": "Ramin Ahmadi",
+          "pictureUrl": "https://github.com/AhmadiRamin.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2023-09-09",
+      "updateDate": "2023-09-09"
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-dynamics-crm-api",
