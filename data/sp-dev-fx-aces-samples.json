@@ -400,6 +400,25 @@
       "updateDate": "2022-04-11"
     },
     {
+      "name": "pnp-sp-fx-aces-promote-pages",
+      "title": "Promote Pages ACE",
+      "url": "https://github.com/pnp/sp-dev-fx-aces/tree/main/samples/ImageCard-PromotePages",
+      "description": "This Adaptive Card Extension shows the most recent pages on selected SharePoint sites and allows you to promote a page as a news post.",
+      "image": "https://raw.githubusercontent.com/pnp/sp-dev-fx-aces/main/samples/ImageCard-PropotePage/assets/card-preview.png",
+      "authors": [
+        {
+          "name": "Aimery Thomas",
+          "pictureUrl": "https://github.com/a1mery.png"
+        }
+      ],
+      "tags": [
+        "SharePoint",
+        "Viva"
+      ],
+      "createDate": "2023-08-22",
+      "updateDate": "2023-08-22"
+    },
+    {
       "name": "pnp-sp-fx-aces-publicHolidays",
       "title": "Public Holiday Listing",
       "url": "https://github.com/pnp/sp-dev-fx-aces/tree/main/samples/ImageCard-PublicHolidays",
