@@ -1583,7 +1583,7 @@
       "title": "React-Manage-List-Subscriptions",
       "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-command-manage-list-subscriptions",
       "description": "Demonstrates managing the list subscriptions (sharepoint webhooks) and action to renew the webhook expiration date using Rest calls.",
-      "image": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-command-manage-list-subscriptions/assets/ManageSubscription.png",
+      "image": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-command-manage-list-subscriptions/assets/ManageSubscription.png",
       "authors": [
         {
           "name": "NIshkalank Bezawada",
@@ -1731,7 +1731,7 @@
       "title": "Dynamic Form with location picker",
       "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-dynamic-form-with-location-picker",
       "description": "This solution implements a simple Form Customizer with a Dynamic Form with a location picker, to demonstrate the many usages of a Dynamic Form.",
-      "image": "https://github.com/pnp/sp-dev-fx-extensions/blob/main/samples/react-dynamic-form-with-location-picker/assets/dynamic-form-with-location-picker.gif",
+      "image": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-dynamic-form-with-location-picker/assets/dynamic-form-with-location-picker.gif",
       "authors": [
         {
           "name": "Martin Lingstuyl",
