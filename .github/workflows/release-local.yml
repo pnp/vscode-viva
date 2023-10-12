@@ -1,11 +1,11 @@
-name: Pre-Release
+name: Create .vsix package
 
 on:
   workflow_dispatch:
 
 jobs:
   build:
-    name: "Build and pre-release"
+    name: "Build and package"
     runs-on: ubuntu-latest
 
     steps:
@@ -53,5 +53,14 @@ jobs:
         shell: pwsh
         continue-on-error: false
 
-      - name: Publish
-        run: npx vsce publish -p ${{ secrets.VSCE_PAT }} --pre-release --baseImagesUrl https://raw.githubusercontent.com/pnp/vscode-viva/dev
+      - name: Package
+        run: |
+          npx vsce package
+        working-directory: vscode-viva
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: vsix_package
+          path: |
+            vscode-viva/*.vsix
