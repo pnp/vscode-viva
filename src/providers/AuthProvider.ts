@@ -170,6 +170,8 @@ export class AuthProvider implements AuthenticationProvider, Disposable {
       return;
     }
 
+    EnvironmentInformation.account = undefined;
+
     Logger.info('M365 CLI - logged out');
     AuthProvider.login(false);
 
