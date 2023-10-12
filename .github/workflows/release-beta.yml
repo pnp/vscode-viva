@@ -9,14 +9,39 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - uses: actions/setup-node@v2
         with:
-          node-version: 16
+          node-version: 18
           registry-url: https://registry.npmjs.org/
 
       - name: Install the dependencies
         run: npm i
 
-      - name: Publish
-        run: npx vsce publish -p ${{ secrets.VSCE_PAT }} --pre-release --baseImagesUrl https://raw.githubusercontent.com/pnp/vscode-viva/dev
+      - name: Checkout cli-microsoft365
+        uses: actions/checkout@v3
+        with:
+          repository: Adam-it/cli-microsoft365
+          path: cli-microsoft365
+          ref: cli-cjs
+
+      - run: |
+          dir
+
+      - run: .\scripts\cli-for-microsoft365-copy-local-version.ps1 -workspacePath "${{ github.workspace }}"
+        shell: pwsh
+        continue-on-error: false
+
+      - run: .\scripts\cli-for-microsoft365-cleanup.ps1 -workspacePath "${{ github.workspace }}"
+        shell: pwsh
+        continue-on-error: false
+
+      - uses: actions/upload-artifact@v3
+        with:
+          name: vsix_package
+          path: |
+            *.vsix
+
+      #TODO: uncomment when ready to publish
+      # - name: Publish
+      #   run: npx vsce publish -p ${{ secrets.VSCE_PAT }} --pre-release --baseImagesUrl https://raw.githubusercontent.com/pnp/vscode-viva/dev
