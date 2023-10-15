@@ -598,6 +598,25 @@
       "updateDate": "2023-06-28"
     },
     {
+      "name": "pnp-sp-fx-aces-status-message",
+      "title": "Status Message Adaptive Card Extension",
+      "url": "https://github.com/pnp/sp-dev-fx-aces/tree/main/samples/InputCard-StatusMessage",
+      "description": "This sample shows how to build an ACE with a card view to let users to set their presence status message.",
+      "image": "https://raw.githubusercontent.com/pnp/sp-dev-fx-aces/main/samples/InputCard-StatusMessage/assets/StatusMessageGif.gif",
+      "authors": [
+        {
+          "name": "Aimery Thomas",
+          "pictureUrl": "https://github.com/a1mery.png"
+        }
+      ],
+      "tags": [
+        "SharePoint",
+        "Viva"
+      ],
+      "createDate": "2023-10-10",
+      "updateDate": "2023-10-10"
+    },
+    {
       "name": "pnp-sp-fx-aces-ChatGPTDailyInsights",
       "title": "ChatGPT Daily Insights Adaptive Card Extension",
       "url": "https://github.com/pnp/sp-dev-fx-aces/tree/main/samples/PrimaryTextCard-ChatGPTDailyInsights",
