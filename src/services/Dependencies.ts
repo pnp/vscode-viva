@@ -8,7 +8,7 @@ import { Terminal } from './Terminal';
 import { Extension } from './Extension';
 
 
-const SUPPORTED_VERSIONS = ['16.13'];
+const SUPPORTED_VERSIONS = ['16.13', '18.12'];
 const DEPENDENCIES = ['gulp-cli', 'yo', '@microsoft/generator-sharepoint'];
 
 export class Dependencies {
@@ -41,7 +41,7 @@ export class Dependencies {
             // Validate node
             const isNodeValid = Dependencies.isValidNodeJs();
             if (!isNodeValid) {
-              Notifications.warning('Your Node.js version is not supported with SPFx development. Make sure you are using version: >=16.13 and <17.0');
+              Notifications.warning('Your Node.js version is not supported with SPFx development. Make sure you are using version: >=16.13 and <19.0');
               resolve(null);
               return;
             }
