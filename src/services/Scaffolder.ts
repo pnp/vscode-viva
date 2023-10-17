@@ -4,7 +4,7 @@ import { Folders } from './Folders';
 import { Notifications } from './Notifications';
 import { Logger } from './Logger';
 import { commands, ProgressLocation, QuickPickItem, Uri, window } from 'vscode';
-import { AdaptiveCardTypes, Commands, ComponentType, ComponentTypes, FrameworkTypes, ProjectFileContent } from '../constants';
+import { AdaptiveCardTypesNode16, AdaptiveCardTypesNode18, Commands, ComponentType, ComponentTypes, FrameworkTypes, ProjectFileContent } from '../constants';
 import { Sample, Subscription } from '../models';
 import { join } from 'path';
 import { existsSync, mkdirSync, writeFileSync } from 'fs';
@@ -14,6 +14,8 @@ import { Extension } from './Extension';
 import download from 'github-directory-downloader/esm';
 import { CliExecuter } from './CliCommandExecuter';
 import { getPlatform } from '../utils';
+import { Terminal } from './Terminal';
+import { execSync } from 'child_process';
 
 
 export const PROJECT_FILE = 'project.pnp';
@@ -308,7 +310,12 @@ export class Scaffolder {
    * @returns
    */
   private static async aceComponent(): Promise<{ aceTemplateType: NameValue, componentName: string } | undefined> {
-    const aceTemplateTypeChoice = await window.showQuickPick(AdaptiveCardTypes.map(ace => ace.name), {
+    const output = execSync('node --version', { shell: Terminal.shell });
+    const match = /v(?<major_version>\d+)\.(?<minor_version>\d+)\.(?<patch_version>\d+)/gm.exec(output.toString());
+    const nodeVersion = null === match ? '18' : match.groups?.major_version!;
+    const adaptiveCardTypes = nodeVersion === '16' ? AdaptiveCardTypesNode16 : AdaptiveCardTypesNode18;
+
+    const aceTemplateTypeChoice = await window.showQuickPick(adaptiveCardTypes.map(ace => ace.name), {
       title: 'Which adaptive card extension template do you want to use?',
       ignoreFocusOut: true,
       canPickMany: false
@@ -319,7 +326,7 @@ export class Scaffolder {
       return;
     }
 
-    const aceTemplateType = AdaptiveCardTypes.find(ace => ace.name === aceTemplateTypeChoice);
+    const aceTemplateType = adaptiveCardTypes.find(ace => ace.name === aceTemplateTypeChoice);
 
     const componentName = await window.showInputBox({
       title: 'What is your Adaptive Card Extension name?',

@@ -5,7 +5,7 @@ import { Sample } from '../../../models';
 import { GalleryType } from '../components/gallery';
 
 
-const SAMPLES_URL = 'https://raw.githubusercontent.com/pnp/vscode-viva/dev/data/';
+const SAMPLES_URL = 'https://raw.githubusercontent.com/pnp/vscode-viva/main/data/';
 
 // eslint-disable-next-line no-unused-vars
 export default function useSamples(type: GalleryType): [Sample[], ((query: string) => void)] {

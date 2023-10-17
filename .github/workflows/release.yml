@@ -1,4 +1,4 @@
-name: Main Release
+name: Release
 
 on:
   release:
@@ -12,14 +12,49 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - name: Setup node
+        uses: actions/setup-node@v3.8.1
         with:
-          node-version: 16
+          node-version: 18
           registry-url: https://registry.npmjs.org/
-
+      
+      - name: Checkout vscode-viva
+        uses: actions/checkout@v3
+        with:
+          path: vscode-viva
+        
       - name: Install the dependencies
-        run: npm i
+        run: npm install
+        working-directory: vscode-viva
+
+      - name: Checkout cli-microsoft365
+        uses: actions/checkout@v3
+        with:
+          repository: Adam-it/cli-microsoft365
+          path: cli-microsoft365
+          ref: cli-cjs
+
+      - name: Print dir
+        run: |
+          dir
+
+      - name: Restore dependencies for cli-microsoft365
+        run: npm install
+        working-directory: cli-microsoft365
+
+      - name: Build cli-microsoft365
+        run: npm run build
+        working-directory: cli-microsoft365
+
+      - name: Run script copy local CLI for M365    
+        run: .\vscode-viva\scripts\cli-for-microsoft365-copy-local-version.ps1 -workspacePath "${{ github.workspace }}"
+        shell: pwsh
+        continue-on-error: false
+
+      - name: Run script clean local CLI for M365 dependency  
+        run: .\vscode-viva\scripts\cli-for-microsoft365-cleanup.ps1 -workspacePath "${{ github.workspace }}"
+        shell: pwsh
+        continue-on-error: false
 
       - name: Publish
         run: npx vsce publish -p ${{ secrets.VSCE_PAT }}
