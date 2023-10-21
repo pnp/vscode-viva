@@ -1922,7 +1922,7 @@
         "SharePoint"
       ],
       "createDate": "2021-04-19",
-      "updateDate": "2022-11-11"
+      "updateDate": "2023-10-08"
     },
     {
       "name": "pnp-sp-dev-fx-extensions-react-formcustomizer-customers",
@@ -2031,6 +2031,32 @@
       ],
       "createDate": "2018-04-04",
       "updateDate": "2018-04-04"
+    },
+    {
+      "name": "pnp-sp-dev-spfx-extensions-react-modern-version-history",
+      "title": "Modern Version History",
+      "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-modern-version-history",
+      "description": "An extension modernizing the version history experience in SharePoint Online.",
+      "image": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-modern-version-history/assets/Demo.gif",
+      "authors": [
+        {
+          "name": "Dan Toft",
+          "pictureUrl": "https://github.com/Tanddant.png"
+        },
+        {
+          "name": "Emanuele Bartolesi",
+          "pictureUrl": "https://github.com/kasuken.png"
+        },
+        {
+          "name": "Tobias Maestrini",
+          "pictureUrl": "https://github.com/tmaestrini.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2023-09-01",
+      "updateDate": "2023-10-02"
     },
     {
       "name": "pnp-sp-dev-spfx-extensions-react-msal-bot",

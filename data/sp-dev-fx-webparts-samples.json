@@ -4272,6 +4272,24 @@
       "updateDate": "2021-05-06"
     },
     {
+      "name": "pnp-sp-dev-spfx-web-parts-react-news-extension",
+      "title": "Targeted News using Microsoft Graph Open Extension",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-news-extension",
+      "description": "This sample contains two SPFx web parts: User preferences web part and Curated news web part",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-news-extension/assets/curated-news.png",
+      "authors": [
+        {
+          "name": "Ejaz Hussain",
+          "pictureUrl": "https://github.com/ejazhussain.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2023-10-04",
+      "updateDate": "2023-10-04"
+    },
+    {
       "name": "pnp-sp-dev-spfx-web-parts-react-office-offer-creation",
       "title": "SharePoint document generator - Offer Creation (SPFx)",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-office-offer-creation",
