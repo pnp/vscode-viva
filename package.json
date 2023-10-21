@@ -6,7 +6,7 @@
 	"publisher": "m365pnp",
 	"preview": false,
 	"homepage": "https://github.com/pnp/vscode-viva",
-	"icon": "assets/logo.png",
+	"icon": "assets/logo-large.png",
 	"engines": {
 		"vscode": "^1.65.0"
 	},
