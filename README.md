@@ -1,5 +1,5 @@
 <h1 align="center">
-  <img alt="Viva Connections Toolkit for Visual Studio Code" src="./assets/logo.png" width="150px" />
+  <img alt="Viva Connections Toolkit for Visual Studio Code" src="./assets/logo-large.png" width="150px" />
 </h1>
 
 <h1 align="center">
@@ -64,7 +64,7 @@ To ensure that you can develop SPFx solutions, in Viva Connections Toolkit you m
 
 This action will check if you have the required dependencies to create a new Viva Connections app.
 
-- Node version: 16
+- Node version: 16 or 18
 - NPM dependencies:
   - gulp
   - yo
@@ -115,7 +115,6 @@ Thanks to that the extension will retrieve helpful URLs from your tenant like th
 Login-in is also required for some actions to work properly like the deploy action which allows to upload of the .sppkg file to the tenant or site-level App Catalog.
 
 Additionally, when an SPFx project is opened the extension will check serve.json file and suggest updating it to set the initialPage property based on the currently logged-in tenant.
-
 
 ### 7️⃣ Gulp tasks
 
