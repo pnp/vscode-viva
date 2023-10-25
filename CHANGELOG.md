@@ -1,5 +1,20 @@
 # Change Log
 
+## [2.1.0] - 2023-10-26
+
+- Updated npm packages
+- Updated product logo
+- Refactored pipelines to replace npm package with local cleaned-up
+version of CLI
+- Refactored pipelines to use node v18
+- Added new pipeline to create artifact with package
+- Bug fix of Login after logout
+- Bug fix to read sample data from main
+- Added support for SPFx 1.18.0 (upgrade)
+- Updated validate environment will validate node 16-18
+- Updated scaffolding process (different flow for node 16 and 18, new
+ACEs templates)
+
 ## [2.0.0] - 2023-09-15
 
 - Added new rename action
