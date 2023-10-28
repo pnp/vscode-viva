@@ -1248,7 +1248,7 @@
         "SharePoint"
       ],
       "createDate": "2023-07-26",
-      "updateDate": "2023-07-26"
+      "updateDate": "2023-10-06"
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-azurefunction-northwind2",
@@ -1432,7 +1432,7 @@
         "SharePoint"
       ],
       "createDate": "2020-12-04",
-      "updateDate": "2022-10-25"
+      "updateDate": "2023-10-05"
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-calendar-feed",
@@ -2202,7 +2202,7 @@
         "SharePoint"
       ],
       "createDate": "2023-09-23",
-      "updateDate": "2023-09-23"
+      "updateDate": "2023-10-10"
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-enhanced-powerapps",
@@ -2643,7 +2643,7 @@
         "SharePoint"
       ],
       "createDate": "2019-06-14",
-      "updateDate": "2022-02-21"
+      "updateDate": "2023-10-10"
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-functional-servicescope-hooks",
@@ -5875,6 +5875,24 @@
       ],
       "createDate": "2020-10-17",
       "updateDate": "2020-10-17"
+    },
+    {
+      "name": "pnp-sp-dev-spfx-web-parts-react-tailwindcss3",
+      "title": "Tailwind 3",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-tailwindcss",
+      "description": "This project showcases an integration of Tailwind CSS into an SPFx project.",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-tailwindcss/assets/example.png",
+      "authors": [
+        {
+          "name": "Ari Gunawan",
+          "pictureUrl": "https://github.com/AriGunawan.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2023-10-07",
+      "updateDate": "2023-10-07"
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-target-audience",
