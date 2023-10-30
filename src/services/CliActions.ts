@@ -179,8 +179,6 @@ export class CliActions {
         const message = e?.error?.message;
         if (message.toString().indexOf('webApiPermissionsRequest is not iterable') > -1) {
           Notifications.error('No API permissions found in the current project.');
-        } else {
-          Notifications.error(message);
         }
       }
     });
