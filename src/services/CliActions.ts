@@ -172,12 +172,9 @@ export class CliActions {
       // eslint-disable-next-line no-unused-vars
     }, async (progress: Progress<{ message?: string; increment?: number }>) => {
       try {
-        const result: CommandOutput = await CliExecuter.execute('spfx project permissions grant', 'json');
+        await CliExecuter.execute('spfx project permissions grant', 'json');
 
-        if (result.stderr) {
-          Notifications.error(result.stderr);
-        }
-        Notifications.info('API permissions granted successfully.');
+        Notifications.info('API permissions granted.');
       } catch (e: any) {
         const message = e?.error?.message;
         if (message.toString().indexOf('webApiPermissionsRequest is not iterable') > -1) {
