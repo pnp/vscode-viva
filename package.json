@@ -2,7 +2,7 @@
 	"name": "viva-connections-toolkit",
 	"displayName": "Viva Connections Toolkit",
 	"description": "Viva Connections Toolkit aims to boost your productivity in developing and managing SharePoint Framework solutions helping at every stage of your development flow, from setting up your development workspace to deploying a solution straight to your tenant without the need to leave VS Code and now even create a CI/CD pipeline to introduce automate deployment of your app. This toolkit is provided by the community.",
-	"version": "2.1.2",
+	"version": "2.2.0",
 	"publisher": "m365pnp",
 	"preview": false,
 	"homepage": "https://github.com/pnp/vscode-viva",
@@ -282,6 +282,6 @@
 		"webpack-dev-server": "^4.8.1"
 	},
 	"dependencies": {
-		"@pnp/cli-microsoft365": "^7.1.0"
+		"@pnp/cli-microsoft365": "6.11.0"
 	}
 }

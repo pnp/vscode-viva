@@ -4,6 +4,7 @@ $cliPackagePath = "$workspacePath\vscode-viva\node_modules\@pnp\cli-microsoft365
 
 if (Test-Path -Path $cliPackagePath -PathType Container) {
     Write-Host "Cleaning up cli-microsoft365 package..."
+
     Remove-Item -Path "$cliPackagePath\docs" -Recurse -Force -ErrorAction SilentlyContinue
     Remove-Item -Path "$cliPackagePath\dist\chili" -Recurse -Force -ErrorAction SilentlyContinue
     Remove-Item -Path "$cliPackagePath\dist\m365\aad" -Recurse -Force -ErrorAction SilentlyContinue
