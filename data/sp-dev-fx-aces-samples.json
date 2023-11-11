@@ -541,6 +541,25 @@
       "updateDate": "2022-03-24"
     },
     {
+      "name": "pnp-sp-fx-aces-new-item",
+      "title": "New Item Adaptive Card Extension",
+      "url": "https://github.com/pnp/sp-dev-fx-aces/tree/main/samples/InputCard-Generic-NewItem",
+      "description": "This Adaptive Card Extension shows how to create a new list item.",
+      "image": "https://raw.githubusercontent.com/pnp/sp-dev-fx-aces/main/samples/InputCard-Generic-NewItem/assets/demo.gif",
+      "authors": [
+        {
+          "name": "Aimery Thomas",
+          "pictureUrl": "https://github.com/a1mery.png"
+        }
+      ],
+      "tags": [
+        "SharePoint",
+        "Viva"
+      ],
+      "createDate": "2023-10-15",
+      "updateDate": "2023-10-31"
+    },
+    {
       "name": "pnp-sp-fx-aces-people-search-input-card",
       "title": "People Search Text Box Card ",
       "url": "https://github.com/pnp/sp-dev-fx-aces/tree/main/samples/InputCard-PeopleSearch",
@@ -1076,6 +1095,25 @@
       ],
       "createDate": "2022-04-14",
       "updateDate": "2022-04-14"
+    },
+    {
+      "name": "pnp-sp-fx-aces-searchcard-samples-gallery",
+      "title": "Search Samples Gallery ACE",
+      "url": "https://github.com/pnp/sp-dev-fx-aces/tree/main/samples/SearchCard-SamplesGallerySearch",
+      "description": "Viva Connection Adaptive Card Extension (ACE) that shows how to create a search card.",
+      "image": "https://raw.githubusercontent.com/pnp/sp-dev-fx-aces/main/samples/SearchCard-SamplesGallerySearch/assets/search-cardview.png",
+      "authors": [
+        {
+          "name": "Paolo Pialorsi",
+          "pictureUrl": "https://github.com/paolopia.png"
+        }
+      ],
+      "tags": [
+        "SharePoint",
+        "Viva"
+      ],
+      "createDate": "2023-10-31",
+      "updateDate": "2023-10-31"
     }
   ]
 }
