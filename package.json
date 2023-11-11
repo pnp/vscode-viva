@@ -282,6 +282,6 @@
 		"webpack-dev-server": "^4.8.1"
 	},
 	"dependencies": {
-		"@pnp/cli-microsoft365": "^6.11.0"
+		"@pnp/cli-microsoft365": "^7.1.0"
 	}
 }
