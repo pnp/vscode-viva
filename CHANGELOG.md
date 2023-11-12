@@ -1,5 +1,11 @@
 # Change Log
 
+## [2.2.0] - 2023-11-12
+
+- Updated npm packages
+- Added support for SPFx v1.18.1
+- Updated CI/CD GitHub generate workflow action to use node 18 for SPFx 1.18.x and higher
+
 ## [2.1.0] - 2023-10-26
 
 - Updated npm packages
