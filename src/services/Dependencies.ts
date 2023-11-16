@@ -9,7 +9,7 @@ import { Extension } from './Extension';
 
 
 const SUPPORTED_VERSIONS = ['16.13', '18.17.1'];
-const DEPENDENCIES = ['gulp-cli', 'yo', '@microsoft/generator-sharepoint'];
+const DEPENDENCIES = ['gulp-cli', 'yo@4.3.1', '@microsoft/generator-sharepoint'];
 
 export class Dependencies {
 
@@ -59,8 +59,11 @@ export class Dependencies {
             const npmLs: NpmLs = JSON.parse(result.toString());
             const missingDependencies = [];
             for (const dependency of DEPENDENCIES) {
-              const dependencyResult = npmLs.dependencies[dependency];
-              if (!dependencyResult) {
+              const dependencyDetails = Dependencies.splitDependency(dependency);
+              const dependencyVersion = dependencyDetails.length > 1 ? dependencyDetails[1] : null;
+              const dependencyName = dependencyDetails[0];
+              const installedDependency = npmLs.dependencies[dependencyName];
+              if (!installedDependency || (dependencyVersion && installedDependency.version !== dependencyVersion)) {
                 missingDependencies.push(dependency);
               }
             }
@@ -139,5 +142,16 @@ export class Dependencies {
       Logger.error(`Failed checking node version: ${(e as Error).message}`);
       return false;
     }
+  }
+
+  /**
+   * split dependency into name and version
+   */
+  private static splitDependency(dependency: string): string[] {
+    if (dependency.startsWith('@')) {
+      return ['@' + dependency.substring(1).split('@')[0], dependency.substring(1).split('@')[1]];
+    }
+
+    return dependency.split('@');
   }
 }
