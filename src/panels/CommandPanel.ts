@@ -6,6 +6,7 @@ import { AuthProvider, M365AuthenticationSession } from '../providers/AuthProvid
 import { CliActions } from '../services/CliActions';
 import { DebuggerCheck } from '../services/DebuggerCheck';
 import { EnvironmentInformation } from '../services/EnvironmentInformation';
+import { TeamsToolkitIntegration } from '../services/TeamsToolkitIntegration';
 
 
 export class CommandPanel {
@@ -19,7 +20,14 @@ export class CommandPanel {
    * @returns
    */
   private static async init() {
-    const files = await workspace.findFiles('.yo-rc.json', '**/node_modules/**');
+    let isTeamsToolkitProject = false;
+    let files = await workspace.findFiles('.yo-rc.json', '**/node_modules/**');
+
+    if (files.length <= 0) {
+      files = await workspace.findFiles('src/.yo-rc.json', '**/node_modules/**');
+      isTeamsToolkitProject = true;
+    }
+
     if (files.length <= 0) {
       CommandPanel.showWelcome();
       return;
@@ -40,6 +48,8 @@ export class CommandPanel {
 
     commands.executeCommand('setContext', ContextKeys.isSPFxProject, true);
     commands.executeCommand('setContext', ContextKeys.showWelcome, false);
+
+    TeamsToolkitIntegration.isTeamsToolkitProject = isTeamsToolkitProject;
 
     CommandPanel.registerTreeview();
     AuthProvider.verify();

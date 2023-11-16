@@ -14,7 +14,7 @@ import { Extension } from './Extension';
 import download from 'github-directory-downloader/esm';
 import { CliExecuter } from './CliCommandExecuter';
 import { getPlatform } from '../utils';
-import { Terminal } from './Terminal';
+import { TerminalCommandExecuter } from './TerminalCommandExecuter';
 import { execSync } from 'child_process';
 
 
@@ -310,7 +310,7 @@ export class Scaffolder {
    * @returns
    */
   private static async aceComponent(): Promise<{ aceTemplateType: NameValue, componentName: string } | undefined> {
-    const output = execSync('node --version', { shell: Terminal.shell });
+    const output = execSync('node --version', { shell: TerminalCommandExecuter.shell });
     const match = /v(?<major_version>\d+)\.(?<minor_version>\d+)\.(?<patch_version>\d+)/gm.exec(output.toString());
     const nodeVersion = null === match ? '18' : match.groups?.major_version!;
     const adaptiveCardTypes = nodeVersion === '16' ? AdaptiveCardTypesNode16 : AdaptiveCardTypesNode18;
