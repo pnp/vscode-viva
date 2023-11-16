@@ -1,5 +1,9 @@
 # Change Log
 
+## [2.3.0] - 2023-11-16
+
+- Updated dependencies validation to check for yo@4.3.1
+
 ## [2.2.0] - 2023-11-12
 
 - Updated npm packages
