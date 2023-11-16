@@ -11,6 +11,7 @@ import { basename, join } from 'path';
 import { EnvironmentInformation } from './EnvironmentInformation';
 import { AuthProvider } from '../providers/AuthProvider';
 import { CommandOutput } from '@pnp/cli-microsoft365';
+import { TeamsToolkitIntegration } from './TeamsToolkitIntegration';
 
 
 export class CliActions {
@@ -69,7 +70,13 @@ export class CliActions {
     // Change the current working directory to the root of the Project
     const wsFolder = await Folders.getWorkspaceFolder();
     if (wsFolder) {
-      process.chdir(wsFolder.uri.fsPath);
+      let path = wsFolder.uri.fsPath;
+
+      if (TeamsToolkitIntegration.isTeamsToolkitProject) {
+        path = join(path, 'src');
+      }
+
+      process.chdir(path);
     }
 
     await window.withProgress({
@@ -83,7 +90,13 @@ export class CliActions {
 
         if (result.stdout) {
           // Create a file to allow the Markdown preview to correctly open the linked/referenced files
-          const filePath = join(wsFolder?.uri.fsPath || '', 'spfx.upgrade.md');
+          let savePath = wsFolder?.uri.fsPath;
+
+          if (savePath && TeamsToolkitIntegration.isTeamsToolkitProject) {
+            savePath = join(savePath, 'src');
+          }
+
+          const filePath = join(savePath || '', 'spfx.upgrade.md');
           writeFileSync(filePath, result.stdout);
           await commands.executeCommand('markdown.showPreview', Uri.file(filePath));
         } else if (result.stderr) {
