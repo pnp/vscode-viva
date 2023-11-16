@@ -24,11 +24,14 @@
 	},
 	"keywords": [
 		"SPFx",
+		"SharePoint Framework",
 		"Viva",
-		"Viva-Connections",
+		"Viva Connections",
 		"Microsoft 365",
 		"SharePoint",
-		"Microsoft Teams"
+		"Microsoft Teams",
+		"Outlook",
+		"Office"
 	],
 	"activationEvents": [
 		"workspaceContains:**/project.pnp",
