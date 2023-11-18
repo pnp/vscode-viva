@@ -465,6 +465,25 @@
       "updateDate": "2022-01-27"
     },
     {
+      "name": "pnp-sp-fx-aces-sales-orders",
+      "title": "Adaptive Card Extension Sales Order Example",
+      "url": "https://github.com/pnp/sp-dev-fx-aces/tree/main/samples/ImageCard-Sales-Orders",
+      "description": "This Adaptive Card Extension allows user  list and Search Data (Sales Orders) using Microsoft Graph Connector.",
+      "image": "https://raw.githubusercontent.com/pnp/sp-dev-fx-aces/main/samples/ImageCard-Sales-Orders/assets/SalesOrders.png",
+      "authors": [
+        {
+          "name": "João Mendes",
+          "pictureUrl": "https://github.com/joaojmendes.png"
+        }
+      ],
+      "tags": [
+        "SharePoint",
+        "Viva"
+      ],
+      "createDate": "2023-11-01",
+      "updateDate": "2023-11-01"
+    },
+    {
       "name": "pnp-sp-fx-aces-scholarship",
       "title": "Scholarship ACE",
       "url": "https://github.com/pnp/sp-dev-fx-aces/tree/main/samples/ImageCard-Scholarships",
