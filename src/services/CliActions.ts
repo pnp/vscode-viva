@@ -116,7 +116,13 @@ export class CliActions {
     // Change the current working directory to the root of the Project
     const wsFolder = await Folders.getWorkspaceFolder();
     if (wsFolder) {
-      process.chdir(wsFolder.uri.fsPath);
+      let path = wsFolder.uri.fsPath;
+
+      if (TeamsToolkitIntegration.isTeamsToolkitProject) {
+        path = join(path, 'src');
+      }
+
+      process.chdir(path);
     }
 
     const newName = await window.showInputBox({
@@ -152,7 +158,7 @@ export class CliActions {
     }, async (progress: Progress<{ message?: string; increment?: number }>) => {
       try {
         let result: CommandOutput;
-        if(shouldGenerateNewId) {
+        if (shouldGenerateNewId) {
           result = await CliExecuter.execute('spfx project rename', 'json', { newName: newName, generateNewId: shouldGenerateNewId });
         } else {
           result = await CliExecuter.execute('spfx project rename', 'json', { newName: newName });
@@ -175,7 +181,13 @@ export class CliActions {
     // Change the current working directory to the root of the Project
     const wsFolder = await Folders.getWorkspaceFolder();
     if (wsFolder) {
-      process.chdir(wsFolder.uri.fsPath);
+      let path = wsFolder.uri.fsPath;
+
+      if (TeamsToolkitIntegration.isTeamsToolkitProject) {
+        path = join(path, 'src');
+      }
+
+      process.chdir(path);
     }
 
     await window.withProgress({
@@ -206,7 +218,13 @@ export class CliActions {
     // Change the current working directory to the root of the Project
     const wsFolder = await Folders.getWorkspaceFolder();
     if (wsFolder) {
-      process.chdir(wsFolder.uri.fsPath);
+      let path = wsFolder.uri.fsPath;
+
+      if (TeamsToolkitIntegration.isTeamsToolkitProject) {
+        path = join(path, 'src');
+      }
+
+      process.chdir(path);
     }
 
     const name = await window.showInputBox({
@@ -240,22 +258,31 @@ export class CliActions {
     });
 
     let siteUrl: string | undefined;
-    if (scope === 'sitecollection'){
-      siteUrl = await window.showInputBox({
-        title: 'Specify the URL of the site collection where the solution package will be added',
-        ignoreFocusOut: true,
-        validateInput: async (value) => {
-          if (!value) {
-            return 'Site app catalog url is required';
-          }
+    if (scope === 'sitecollection') {
+      if (EnvironmentInformation.appCatalogUrls && EnvironmentInformation.appCatalogUrls.length > 1) {
+        siteUrl = await window.showQuickPick(EnvironmentInformation.appCatalogUrls.map(url => url, {
+          placeHolder: 'Select the App Catalog',
+          ignoreFocusOut: true,
+          canPickMany: false,
+          title: 'Select the App Catalog'
+        }));
+      } else {
+        siteUrl = await window.showInputBox({
+          title: 'Specify the URL of the site collection where the solution package will be added',
+          ignoreFocusOut: true,
+          validateInput: async (value) => {
+            if (!value) {
+              return 'Site app catalog url is required';
+            }
 
-          if (value.toLowerCase().indexOf('https://') < 0 || value.toLowerCase().indexOf('appcatalog') < 0) {
-            return `${value} is not a valid SharePoint Online site app catalog URL`;
-          }
+            if (value.toLowerCase().indexOf('https://') < 0 || value.toLowerCase().indexOf('appcatalog') < 0) {
+              return `${value} is not a valid SharePoint Online site app catalog URL`;
+            }
 
-          return undefined;
-        }
-      });
+            return undefined;
+          }
+        });
+      }
 
       if (!siteUrl) {
         return;
@@ -337,7 +364,13 @@ export class CliActions {
     // Change the current working directory to the root of the Project
     const wsFolder = await Folders.getWorkspaceFolder();
     if (wsFolder) {
-      process.chdir(wsFolder.uri.fsPath);
+      let path = wsFolder.uri.fsPath;
+
+      if (TeamsToolkitIntegration.isTeamsToolkitProject) {
+        path = join(path, 'src');
+      }
+
+      process.chdir(path);
     }
 
     await window.withProgress({
@@ -351,7 +384,13 @@ export class CliActions {
 
         if (result.stdout) {
           // Create a file to allow the Markdown preview to correctly open the linked/referenced files
-          const filePath = join(wsFolder?.uri.fsPath || '', 'spfx.validate.md');
+          let savePath = wsFolder?.uri.fsPath;
+
+          if (savePath && TeamsToolkitIntegration.isTeamsToolkitProject) {
+            savePath = join(savePath, 'src');
+          }
+
+          const filePath = join(savePath || '', 'spfx.validate.md');
           writeFileSync(filePath, result.stdout);
           await commands.executeCommand('markdown.showPreview', Uri.file(filePath));
         } else if (result.stderr) {
