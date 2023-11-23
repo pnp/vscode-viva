@@ -16,6 +16,7 @@ import { CliExecuter } from './CliCommandExecuter';
 import { getPlatform } from '../utils';
 import { TerminalCommandExecuter } from './TerminalCommandExecuter';
 import { execSync } from 'child_process';
+import { TeamsToolkitIntegration } from './TeamsToolkitIntegration';
 
 
 export const PROJECT_FILE = 'project.pnp';
@@ -283,7 +284,13 @@ export class Scaffolder {
       try {
         if (!folderPath) {
           const wsFolder = await Folders.getWorkspaceFolder();
-          folderPath = wsFolder?.uri.fsPath || '';
+          let path = wsFolder?.uri.fsPath;
+
+          if (path && TeamsToolkitIntegration.isTeamsToolkitProject) {
+            path = join(path, 'src');
+          }
+
+          folderPath = path || '';
         }
 
         const result = await Executer.executeCommand(folderPath, yoCommand);
