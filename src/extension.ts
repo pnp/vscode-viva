@@ -5,7 +5,7 @@ import { PROJECT_FILE, Scaffolder } from './services/Scaffolder';
 import { Extension } from './services/Extension';
 import { Dependencies } from './services/Dependencies';
 import { unlinkSync, readFileSync } from 'fs';
-import { Terminal } from './services/Terminal';
+import { TerminalCommandExecuter } from './services/TerminalCommandExecuter';
 import { AuthProvider } from './providers/AuthProvider';
 import { CliActions } from './services/CliActions';
 import { ProjectFileContent } from './constants';
@@ -14,7 +14,7 @@ import { ProjectFileContent } from './constants';
 export async function activate(context: ExtensionContext) {
 	Extension.getInstance(context);
 
-	Terminal.register();
+	TerminalCommandExecuter.register();
 
 	AuthProvider.register();
 

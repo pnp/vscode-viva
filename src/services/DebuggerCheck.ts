@@ -34,7 +34,11 @@ export class DebuggerCheck {
    * @returns
    */
   private static async validateLaunch(url: string) {
-    const launchFiles = await workspace.findFiles('.vscode/launch.json', '**/node_modules/**');
+    let launchFiles = await workspace.findFiles('.vscode/launch.json', '**/node_modules/**');
+
+    if (!launchFiles || launchFiles.length <= 0) {
+      launchFiles = await workspace.findFiles('src/.vscode/launch.json', '**/node_modules/**');
+    }
 
     if (!launchFiles || launchFiles.length <= 0) {
       return;
@@ -75,7 +79,11 @@ export class DebuggerCheck {
    * @returns
    */
   private static async validateServe(url: string) {
-    const serveFiles = await workspace.findFiles('config/serve.json', '**/node_modules/**');
+    let serveFiles = await workspace.findFiles('config/serve.json', '**/node_modules/**');
+
+    if (!serveFiles || serveFiles.length <= 0) {
+      serveFiles = await workspace.findFiles('src/config/serve.json', '**/node_modules/**');
+    }
 
     if (!serveFiles || serveFiles.length <= 0) {
       return;

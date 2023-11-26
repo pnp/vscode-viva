@@ -1,35 +1,38 @@
-import { commands, ThemeIcon, workspace, window } from 'vscode';
+import { commands, ThemeIcon, workspace, window, Terminal } from 'vscode';
 import { Commands } from '../constants';
 import { Subscription } from '../models';
 import { Extension } from './Extension';
 import { getPlatform } from '../utils';
+import { TeamsToolkitIntegration } from './TeamsToolkitIntegration';
+import { Folders } from './Folders';
+import { join } from 'path';
 
 
 interface ShellSetting {
   path: string;
 }
 
-export class Terminal {
+export class TerminalCommandExecuter {
   private static shellPath: string | undefined = undefined;
 
   public static register() {
     const subscriptions: Subscription[] = Extension.getInstance().subscriptions;
-    Terminal.registerCommands(subscriptions);
+    TerminalCommandExecuter.registerCommands(subscriptions);
 
-    Terminal.initShellPath();
+    TerminalCommandExecuter.initShellPath();
   }
 
   public static get shell() {
-    return Terminal.shellPath;
+    return TerminalCommandExecuter.shellPath;
   }
 
   private static initShellPath() {
-    const shell: string | { path: string } | undefined = Terminal.getShellPath();
+    const shell: string | { path: string } | undefined = TerminalCommandExecuter.getShellPath();
 
     if (typeof shell !== 'string' && !!shell) {
-      Terminal.shellPath = shell.path;
+      TerminalCommandExecuter.shellPath = shell.path;
     } else {
-      Terminal.shellPath = shell || undefined;
+      TerminalCommandExecuter.shellPath = shell || undefined;
     }
   }
 
@@ -58,16 +61,11 @@ export class Terminal {
 
   private static registerCommands(subscriptions: Subscription[]) {
     subscriptions.push(
-      commands.registerCommand(Commands.executeTerminalCommand, Terminal.runCommand)
+      commands.registerCommand(Commands.executeTerminalCommand, TerminalCommandExecuter.runCommand)
     );
   }
 
-  // eslint-disable-next-line no-unused-vars
-  public static async runCommand(command: string, args: string[]) {
-    Terminal.runInTerminal(command, 'Gulp task', 'tasks-list-configure');
-  }
-
-  public static async runInTerminal(command: string, name?: string, icon?: string) {
+  private static async createTerminal(name?: string, icon?: string): Promise<Terminal | undefined> {
     let terminal = window.terminals.find(t => t.name === name);
 
     if (!terminal) {
@@ -83,9 +81,31 @@ export class Terminal {
       }
     }
 
+    return terminal;
+  }
+
+  private static async runInTerminal(command: string, terminal?: Terminal | undefined) {
     if (terminal) {
       terminal.show(true);
       terminal.sendText(` ${command}`);
     }
+  }
+
+  // eslint-disable-next-line no-unused-vars
+  public static async runCommand(command: string, args: string[]) {
+    const terminal = await TerminalCommandExecuter.createTerminal('Gulp task', 'tasks-list-configure');
+
+    const wsFolder = await Folders.getWorkspaceFolder();
+    if (wsFolder) {
+      let currentProjectPath = wsFolder.uri.fsPath;
+
+      if (TeamsToolkitIntegration.isTeamsToolkitProject) {
+        currentProjectPath = join(currentProjectPath, 'src');
+      }
+
+      TerminalCommandExecuter.runInTerminal(`cd ${currentProjectPath}`, terminal);
+    }
+
+    TerminalCommandExecuter.runInTerminal(command, terminal);
   }
 }
