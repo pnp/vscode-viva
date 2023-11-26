@@ -2202,7 +2202,7 @@
         "SharePoint"
       ],
       "createDate": "2023-09-23",
-      "updateDate": "2023-10-10"
+      "updateDate": "2023-10-28"
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-enhanced-powerapps",
@@ -2229,6 +2229,24 @@
       ],
       "createDate": "2020-07-26",
       "updateDate": "2023-06-27"
+    },
+    {
+      "name": "pnp-sp-dev-spfx-web-parts-react-environment-settings",
+      "title": "SPFx environment settings management",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-environment-settings",
+      "description": "Easily swap between environments when building SPFx solutions",
+      "image": "https://raw.githubusercontent.com/pnp/sp-dev-fx-webparts/main/samples/react-environment-settings/assets/demo.gif",
+      "authors": [
+        {
+          "name": "Dan Toft",
+          "pictureUrl": "https://github.com/Tanddant.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2023-11-14",
+      "updateDate": "2023-11-14"
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-events-aggregator",
@@ -4584,6 +4602,24 @@
       "updateDate": "2022-08-01"
     },
     {
+      "name": "pnp-sp-dev-spfx-web-parts-react-password-vault",
+      "title": "Password Vault",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-password-vault",
+      "description": "This web part allows you to protect your data, such as the username, password or even just a text note (rich text). This data is protected with a master password that you can choose yourself.",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-password-vault/assets/PasswordVaultDisplayMode.png",
+      "authors": [
+        {
+          "name": "Sergej Schwabauer",
+          "pictureUrl": "https://github.com/SPFxAppDev.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2023-10-27",
+      "updateDate": "2023-10-27"
+    },
+    {
       "name": "pnp-sp-dev-spfx-web-parts-react-people-directory",
       "title": "People Directory",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-people-directory",
@@ -5138,6 +5174,24 @@
       "updateDate": "2018-11-09"
     },
     {
+      "name": "pnp-sp-dev-spfx-web-parts-react-realtime-incidentdashboard",
+      "title": "List notifications + Microsoft Teams Integrations",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-realtime-incidentdashboard",
+      "description": "Illustrating using the SharePoint Framework List subscription capability, which allows you to get notified of changes to custom list refresh the displayed data",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-realtime-incidentdashboard/assets/list-notification-dashboard.jpg",
+      "authors": [
+        {
+          "name": "Ejaz Hussain",
+          "pictureUrl": "https://github.com/ejazhussain.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2023-10-23",
+      "updateDate": "2023-10-23"
+    },
+    {
       "name": "pnp-sp-dev-spfx-web-parts-react-recaptcha",
       "title": "Google reCaptcha Sample",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-recaptcha",
@@ -5383,6 +5437,24 @@
       ],
       "createDate": "2018-12-10",
       "updateDate": "2018-12-10"
+    },
+    {
+      "name": "pnp-sp-dev-spfx-web-parts-react-sales-orders",
+      "title": "Sales Orders",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-sales-orders",
+      "description": "Shows how how to use Microsoft Graph Connector that use DB2 Database and display Sales Orders in a list.",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-sales-orders/assets/salesOrders.gif",
+      "authors": [
+        {
+          "name": "YOUR-NAME",
+          "pictureUrl": "https://github.com/YOUR-GITHUB-ACCOUNT.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2023-11-06",
+      "updateDate": "2023-11-06"
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-save-attachments",
@@ -5808,7 +5880,7 @@
       "name": "pnp-sp-dev-spfx-web-parts-react-star-ratings",
       "title": "Star Ratings",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-star-ratings",
-      "description": "Demonstrates Star Ratings capablities to SharePoint News.",
+      "description": "Demonstrates Star Ratings capabilities to SharePoint News.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-star-ratings/assets/react-star-ratings.png",
       "authors": [
         {
@@ -5820,7 +5892,7 @@
         "SharePoint"
       ],
       "createDate": "2021-10-07",
-      "updateDate": "2022-03-28"
+      "updateDate": "2023-11-09"
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-stock-information",
@@ -5881,7 +5953,7 @@
       "title": "Tailwind 3",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-tailwindcss",
       "description": "This project showcases an integration of Tailwind CSS into an SPFx project.",
-      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-tailwindcss/assets/example.png",
+      "image": "https://raw.githubusercontent.com/pnp/sp-dev-fx-webparts/main/samples/react-tailwindcss3/assets/example.png",
       "authors": [
         {
           "name": "Ari Gunawan",
