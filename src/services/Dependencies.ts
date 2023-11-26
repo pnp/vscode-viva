@@ -9,7 +9,7 @@ import { Extension } from './Extension';
 
 
 const SUPPORTED_VERSIONS = ['16.13', '18.17.1'];
-const DEPENDENCIES = ['gulp-cli', 'yo@4.3.1', '@microsoft/generator-sharepoint'];
+const DEPENDENCIES = ['gulp-cli', 'yo', '@microsoft/generator-sharepoint'];
 
 export class Dependencies {
 
