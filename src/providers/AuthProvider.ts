@@ -7,7 +7,7 @@ import { Extension } from './../services/Extension';
 import { executeCommand } from '@pnp/cli-microsoft365';
 import { exec } from 'child_process';
 import { Folders } from '../services/Folders';
-import { Terminal } from '../services/Terminal';
+import { TerminalCommandExecuter } from '../services/TerminalCommandExecuter';
 
 
 export class M365AuthenticationSession implements AuthenticationSession {
@@ -147,7 +147,7 @@ export class AuthProvider implements AuthenticationProvider, Disposable {
 
         // Bring the editor to the front
         const wsFolder = await Folders.getWorkspaceFolder();
-        exec('code .', { cwd: wsFolder?.uri.fsPath, shell: Terminal.shell });
+        exec('code .', { cwd: wsFolder?.uri.fsPath, shell: TerminalCommandExecuter.shell });
 
         this.onDidChangeEventEmit.fire({ added: [account as any], removed: [], changed: [] });
 

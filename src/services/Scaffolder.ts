@@ -14,8 +14,9 @@ import { Extension } from './Extension';
 import download from 'github-directory-downloader/esm';
 import { CliExecuter } from './CliCommandExecuter';
 import { getPlatform } from '../utils';
-import { Terminal } from './Terminal';
+import { TerminalCommandExecuter } from './TerminalCommandExecuter';
 import { execSync } from 'child_process';
+import { TeamsToolkitIntegration } from './TeamsToolkitIntegration';
 
 
 export const PROJECT_FILE = 'project.pnp';
@@ -283,7 +284,13 @@ export class Scaffolder {
       try {
         if (!folderPath) {
           const wsFolder = await Folders.getWorkspaceFolder();
-          folderPath = wsFolder?.uri.fsPath || '';
+          let path = wsFolder?.uri.fsPath;
+
+          if (path && TeamsToolkitIntegration.isTeamsToolkitProject) {
+            path = join(path, 'src');
+          }
+
+          folderPath = path || '';
         }
 
         const result = await Executer.executeCommand(folderPath, yoCommand);
@@ -310,7 +317,7 @@ export class Scaffolder {
    * @returns
    */
   private static async aceComponent(): Promise<{ aceTemplateType: NameValue, componentName: string } | undefined> {
-    const output = execSync('node --version', { shell: Terminal.shell });
+    const output = execSync('node --version', { shell: TerminalCommandExecuter.shell });
     const match = /v(?<major_version>\d+)\.(?<minor_version>\d+)\.(?<patch_version>\d+)/gm.exec(output.toString());
     const nodeVersion = null === match ? '18' : match.groups?.major_version!;
     const adaptiveCardTypes = nodeVersion === '16' ? AdaptiveCardTypesNode16 : AdaptiveCardTypesNode18;
