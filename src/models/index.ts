@@ -6,3 +6,4 @@ export * from './SiteAppCatalog';
 export * from './solution-add-result';
 export * from './subscription';
 export * from './vscode-launch';
+export * from './YoRc';

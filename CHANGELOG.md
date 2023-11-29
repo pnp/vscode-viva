@@ -1,5 +1,14 @@
 # Change Log
 
+## [2.4.0] - 2023-11-29
+
+- Added support for SPFx v1.18.2
+- Added Teams Toolkit support
+- Refactored help and feedback section to tree view adding new links to Teams Toolkit and ACE previewer
+- Added ACE previewer checker to suggest this extension when ACE component is present in the project
+- Modified CI/CD GitHub generate workflow action to present list of site level app catalogs
+- Updated dependencies validation to check for latest version of yo
+
 ## [2.3.0] - 2023-11-16
 
 - Updated dependencies validation to check for yo@4.3.1

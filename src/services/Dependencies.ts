@@ -4,12 +4,12 @@ import { execSync } from 'child_process';
 import { commands, ProgressLocation, ThemeIcon, window } from 'vscode';
 import { Logger } from './Logger';
 import { NpmLs, Subscription } from '../models';
-import { Terminal } from './Terminal';
+import { TerminalCommandExecuter } from './TerminalCommandExecuter';
 import { Extension } from './Extension';
 
 
 const SUPPORTED_VERSIONS = ['16.13', '18.17.1'];
-const DEPENDENCIES = ['gulp-cli', 'yo@4.3.1', '@microsoft/generator-sharepoint'];
+const DEPENDENCIES = ['gulp-cli', 'yo', '@microsoft/generator-sharepoint'];
 
 export class Dependencies {
 
@@ -49,7 +49,7 @@ export class Dependencies {
             progress.report({ message: 'Checking npm dependencies...' });
 
             const command = 'npm list -g --json --silent';
-            const result = execSync(command, { shell: Terminal.shell, timeout: 15000 });
+            const result = execSync(command, { shell: TerminalCommandExecuter.shell, timeout: 15000 });
 
             if (!result) {
               Notifications.error('Failed checking dependencies');
@@ -109,12 +109,12 @@ export class Dependencies {
    */
   private static isValidNodeJs() {
     try {
-      const output = execSync('node --version', { shell: Terminal.shell });
+      const output = execSync('node --version', { shell: TerminalCommandExecuter.shell });
       const match = /v(?<major_version>\d+)\.(?<minor_version>\d+)\.(?<patch_version>\d+)/gm.exec(output.toString());
 
       Logger.info(`Node.js version: ${output}`);
 
-      const npmOutput = execSync('npm --version', { shell: Terminal.shell });
+      const npmOutput = execSync('npm --version', { shell: TerminalCommandExecuter.shell });
       Logger.info(`npm version: ${npmOutput}`);
 
       if (!match) {
