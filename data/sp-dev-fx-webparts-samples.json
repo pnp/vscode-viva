@@ -2772,6 +2772,24 @@
       "updateDate": "2019-01-14"
     },
     {
+      "name": "pnp-sp-dev-spfx-web-parts-react-governor-sharing",
+      "title": "Governor Sharing",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-governor-sharing",
+      "description": "Shows documents which have been (explicitly) shared within a SharePoint site or Team.",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-governor-sharing/assets/Govenor_Sharing_SharedItemsExample.png",
+      "authors": [
+        {
+          "name": "Robin Meure",
+          "pictureUrl": "https://github.com/robinmeure.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2023-11-24",
+      "updateDate": "2023-11-24"
+    },
+    {
       "name": "pnp-sp-dev-spfx-web-parts-react-graph-app-secret-expiration",
       "title": "Applications Secrets Expiration",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-graph-app-secret-expiration",
@@ -5446,8 +5464,8 @@
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-sales-orders/assets/salesOrders.gif",
       "authors": [
         {
-          "name": "YOUR-NAME",
-          "pictureUrl": "https://github.com/YOUR-GITHUB-ACCOUNT.png"
+          "name": "João Mendes",
+          "pictureUrl": "https://github.com/joaojmendes.png"
         }
       ],
       "tags": [
