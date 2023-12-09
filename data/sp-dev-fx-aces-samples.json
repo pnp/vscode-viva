@@ -17,7 +17,10 @@
         "Viva"
       ],
       "createDate": "2021-09-28",
-      "updateDate": "2021-09-28"
+      "updateDate": "2021-09-28",
+      "version": "1.13.0-beta.17",
+      "componentType": "adaptiveCardExtension",
+      "extensionType": null
     },
     {
       "name": "pnp-sp-fx-aces-cardcomp",
@@ -36,7 +39,10 @@
         "Viva"
       ],
       "createDate": "2022-06-07",
-      "updateDate": "2022-06-07"
+      "updateDate": "2022-06-07",
+      "version": "1.15.0-rc.0",
+      "componentType": "adaptiveCardExtension",
+      "extensionType": null
     },
     {
       "name": "pnp-sp-fx-aces-ace-upcoming-events",
@@ -55,7 +61,10 @@
         "Office"
       ],
       "createDate": "2021-09-29",
-      "updateDate": "2021-11-29"
+      "updateDate": "2021-11-29",
+      "version": "1.13.0-beta.17",
+      "componentType": "adaptiveCardExtension",
+      "extensionType": null
     },
     {
       "name": "pnp-sp-fx-aces-monitorsecurity",
@@ -74,7 +83,10 @@
         "Viva"
       ],
       "createDate": "2022-02-05",
-      "updateDate": "2022-02-05"
+      "updateDate": "2022-02-05",
+      "version": "1.13.1",
+      "componentType": "adaptiveCardExtension",
+      "extensionType": null
     },
     {
       "name": "pnp-sp-fx-aces-multi-forms",
@@ -93,7 +105,10 @@
         "Viva"
       ],
       "createDate": "2023-04-13",
-      "updateDate": "2023-04-13"
+      "updateDate": "2023-04-13",
+      "version": "1.16.1",
+      "componentType": "adaptiveCardExtension",
+      "extensionType": null
     },
     {
       "name": "pnp-sp-fx-aces-myonedriveinfo",
@@ -112,7 +127,10 @@
         "Viva"
       ],
       "createDate": "2023-02-21",
-      "updateDate": "2023-02-21"
+      "updateDate": "2023-02-21",
+      "version": "1.16.1",
+      "componentType": "adaptiveCardExtension",
+      "extensionType": null
     },
     {
       "name": "pnp-sp-fx-aces-oneDriveImageOnlyCarousel",
@@ -131,7 +149,10 @@
         "Viva"
       ],
       "createDate": "2022-04-11",
-      "updateDate": "2022-04-11"
+      "updateDate": "2022-04-11",
+      "version": "1.13.0",
+      "componentType": "adaptiveCardExtension",
+      "extensionType": null
     },
     {
       "name": "pnp-sp-fx-aces-people-search",
@@ -150,26 +171,10 @@
         "Viva"
       ],
       "createDate": "2023-01-08",
-      "updateDate": "2023-01-08"
-    },
-    {
-      "name": "pnp-sp-fx-aces-SharedGraphClient",
-      "title": "Using Shared Graph Client in ACEs",
-      "url": "https://github.com/pnp/sp-dev-fx-aces/tree/main/samples/BasicCard-ShareGraphClient",
-      "description": "This solution shows how to use a shared Microsoft Graph client between ACEs.",
-      "image": "https://raw.githubusercontent.com/pnp/sp-dev-fx-aces/main/samples/BasicCard-ShareGraphClient/assets/sharedgraphlg.png",
-      "authors": [
-        {
-          "name": "Marcin Wojciechowski",
-          "pictureUrl": "https://github.com/mgwojciech.png"
-        }
-      ],
-      "tags": [
-        "SharePoint",
-        "Viva"
-      ],
-      "createDate": "2022-09-17",
-      "updateDate": "2022-09-17"
+      "updateDate": "2023-01-08",
+      "version": "1.15.2",
+      "componentType": "adaptiveCardExtension",
+      "extensionType": null
     },
     {
       "name": "pnp-sp-fx-aces-sharepoint-crud",
@@ -188,7 +193,10 @@
         "Viva"
       ],
       "createDate": "2022-01-13",
-      "updateDate": "2022-01-13"
+      "updateDate": "2022-01-13",
+      "version": "1.15.2",
+      "componentType": "adaptiveCardExtension",
+      "extensionType": null
     },
     {
       "name": "pnp-sp-fx-aces-statusmessage",
@@ -207,7 +215,10 @@
         "Viva"
       ],
       "createDate": "2022-12-21",
-      "updateDate": "2023-01-22"
+      "updateDate": "2023-01-22",
+      "version": "1.16.0-rc.0",
+      "componentType": "adaptiveCardExtension",
+      "extensionType": null
     },
     {
       "name": "pnp-sp-fx-aces-ace-articlecontent",
@@ -226,26 +237,10 @@
         "Viva"
       ],
       "createDate": "2021-10-06",
-      "updateDate": "2021-10-06"
-    },
-    {
-      "name": "pnp-sp-fx-aces-bookingspace",
-      "title": "Booking Spaces ACE",
-      "url": "https://github.com/pnp/sp-dev-fx-aces/tree/main/samples/ImageCard-BookingSpaces",
-      "description": "This sample shows how to build an ACE with a card view and quick view to search spaces in the campus and be able to quickly check previous/upcoming reservations.",
-      "image": "https://raw.githubusercontent.com/pnp/sp-dev-fx-aces/main/samples/ImageCard-BookingSpaces/assets/BookSpaces1.png",
-      "authors": [
-        {
-          "name": "Jethro Seghers",
-          "pictureUrl": "https://github.com/jesegher.png"
-        }
-      ],
-      "tags": [
-        "SharePoint",
-        "Viva"
-      ],
-      "createDate": "2023-05-16",
-      "updateDate": "2023-05-16"
+      "updateDate": "2021-10-06",
+      "version": "1.13.0-beta.17",
+      "componentType": "adaptiveCardExtension",
+      "extensionType": null
     },
     {
       "name": "pnp-sp-fx-aces-hidable-ace",
@@ -264,7 +259,10 @@
         "Viva"
       ],
       "createDate": "2022-03-24",
-      "updateDate": "2022-03-24"
+      "updateDate": "2022-03-24",
+      "version": "1.15.2",
+      "componentType": "adaptiveCardExtension",
+      "extensionType": null
     },
     {
       "name": "pnp-sp-fx-aces-hybridwork-checkin",
@@ -283,7 +281,10 @@
         "Viva"
       ],
       "createDate": "2021-11-08",
-      "updateDate": "2021-11-08"
+      "updateDate": "2021-11-08",
+      "version": "1.13.0",
+      "componentType": "adaptiveCardExtension",
+      "extensionType": null
     },
     {
       "name": "pnp-sp-fx-aces-internship",
@@ -302,26 +303,10 @@
         "Viva"
       ],
       "createDate": "2023-04-15",
-      "updateDate": "2023-04-15"
-    },
-    {
-      "name": "pnp-sp-fx-aces-internship",
-      "title": "Library Loans ACE",
-      "url": "https://github.com/pnp/sp-dev-fx-aces/tree/main/samples/ImageCard-LibraryLoans",
-      "description": "This sample shows how to build an ACE with a card view and quick view to check pending library loans and their due dates.",
-      "image": "https://raw.githubusercontent.com/pnp/sp-dev-fx-aces/main/samples/ImageCard-LibraryLoans/assets/Library.gif",
-      "authors": [
-        {
-          "name": "Jethro Seghers",
-          "pictureUrl": "https://github.com/jesegher.png"
-        }
-      ],
-      "tags": [
-        "SharePoint",
-        "Viva"
-      ],
-      "createDate": "2023-05-03",
-      "updateDate": "2023-05-03"
+      "updateDate": "2023-04-15",
+      "version": "1.16.1",
+      "componentType": "adaptiveCardExtension",
+      "extensionType": null
     },
     {
       "name": "pnp-sp-fx-aces-most-lifed-pages",
@@ -340,7 +325,10 @@
         "Viva"
       ],
       "createDate": "2023-03-15",
-      "updateDate": "2023-03-15"
+      "updateDate": "2023-03-15",
+      "version": "1.16.1",
+      "componentType": "adaptiveCardExtension",
+      "extensionType": null
     },
     {
       "name": "pnp-sp-fx-aces-my-recent-files",
@@ -359,7 +347,10 @@
         "Viva"
       ],
       "createDate": "2022-04-12",
-      "updateDate": "2022-04-12"
+      "updateDate": "2022-04-12",
+      "version": "1.14.0",
+      "componentType": "adaptiveCardExtension",
+      "extensionType": null
     },
     {
       "name": "pnp-sp-fx-aces-officelocations",
@@ -378,7 +369,10 @@
         "Viva"
       ],
       "createDate": "2022-02-15",
-      "updateDate": "2022-06-01"
+      "updateDate": "2022-06-01",
+      "version": "1.13.1",
+      "componentType": "adaptiveCardExtension",
+      "extensionType": null
     },
     {
       "name": "pnp-sp-fx-aces-oneDriveCarousel",
@@ -397,26 +391,10 @@
         "Viva"
       ],
       "createDate": "2022-04-11",
-      "updateDate": "2022-04-11"
-    },
-    {
-      "name": "pnp-sp-fx-aces-promote-pages",
-      "title": "Promote Pages ACE",
-      "url": "https://github.com/pnp/sp-dev-fx-aces/tree/main/samples/ImageCard-PromotePages",
-      "description": "This Adaptive Card Extension shows the most recent pages on selected SharePoint sites and allows you to promote a page as a news post.",
-      "image": "https://raw.githubusercontent.com/pnp/sp-dev-fx-aces/main/samples/ImageCard-PropotePage/assets/card-preview.png",
-      "authors": [
-        {
-          "name": "Aimery Thomas",
-          "pictureUrl": "https://github.com/a1mery.png"
-        }
-      ],
-      "tags": [
-        "SharePoint",
-        "Viva"
-      ],
-      "createDate": "2023-08-22",
-      "updateDate": "2023-08-22"
+      "updateDate": "2022-04-11",
+      "version": "1.13.0",
+      "componentType": "adaptiveCardExtension",
+      "extensionType": null
     },
     {
       "name": "pnp-sp-fx-aces-publicHolidays",
@@ -443,7 +421,10 @@
         "Viva"
       ],
       "createDate": "2022-08-03",
-      "updateDate": "2022-08-03"
+      "updateDate": "2022-08-03",
+      "version": "1.15.0",
+      "componentType": "adaptiveCardExtension",
+      "extensionType": null
     },
     {
       "name": "pnp-sp-fx-aces-rss",
@@ -462,45 +443,10 @@
         "Viva"
       ],
       "createDate": "2022-01-27",
-      "updateDate": "2022-01-27"
-    },
-    {
-      "name": "pnp-sp-fx-aces-sales-orders",
-      "title": "Adaptive Card Extension Sales Order Example",
-      "url": "https://github.com/pnp/sp-dev-fx-aces/tree/main/samples/ImageCard-Sales-Orders",
-      "description": "This Adaptive Card Extension allows user  list and Search Data (Sales Orders) using Microsoft Graph Connector.",
-      "image": "https://raw.githubusercontent.com/pnp/sp-dev-fx-aces/main/samples/ImageCard-Sales-Orders/assets/SalesOrders.png",
-      "authors": [
-        {
-          "name": "João Mendes",
-          "pictureUrl": "https://github.com/joaojmendes.png"
-        }
-      ],
-      "tags": [
-        "SharePoint",
-        "Viva"
-      ],
-      "createDate": "2023-11-01",
-      "updateDate": "2023-11-01"
-    },
-    {
-      "name": "pnp-sp-fx-aces-scholarship",
-      "title": "Scholarship ACE",
-      "url": "https://github.com/pnp/sp-dev-fx-aces/tree/main/samples/ImageCard-Scholarships",
-      "description": "This sample shows how to build an ACE with a card view and quick view to display new, recent and applied scholarships available to user.",
-      "image": "https://raw.githubusercontent.com/pnp/sp-dev-fx-aces/main/samples/ImageCard-Scholarships/assets/Scholarship.gif",
-      "authors": [
-        {
-          "name": "Jethro Seghers",
-          "pictureUrl": "https://github.com/jesegher.png"
-        }
-      ],
-      "tags": [
-        "SharePoint",
-        "Viva"
-      ],
-      "createDate": "2023-05-03",
-      "updateDate": "2023-05-03"
+      "updateDate": "2022-01-27",
+      "version": "1.13.1",
+      "componentType": "adaptiveCardExtension",
+      "extensionType": null
     },
     {
       "name": "pnp-sp-fx-aces-todays-lunch",
@@ -519,7 +465,10 @@
         "Viva"
       ],
       "createDate": "2021-10-28",
-      "updateDate": "2021-12-13"
+      "updateDate": "2021-12-13",
+      "version": "1.13.0-rc.1",
+      "componentType": "adaptiveCardExtension",
+      "extensionType": null
     },
     {
       "name": "pnp-sp-fx-aces-tuitions",
@@ -538,7 +487,10 @@
         "Viva"
       ],
       "createDate": "2023-04-15",
-      "updateDate": "2023-04-15"
+      "updateDate": "2023-04-15",
+      "version": "1.16.0",
+      "componentType": "adaptiveCardExtension",
+      "extensionType": null
     },
     {
       "name": "pnp-sp-fx-aces-weather-ace",
@@ -557,102 +509,10 @@
         "Viva"
       ],
       "createDate": "2022-03-24",
-      "updateDate": "2022-03-24"
-    },
-    {
-      "name": "pnp-sp-fx-aces-new-item",
-      "title": "New Item Adaptive Card Extension",
-      "url": "https://github.com/pnp/sp-dev-fx-aces/tree/main/samples/InputCard-Generic-NewItem",
-      "description": "This Adaptive Card Extension shows how to create a new list item.",
-      "image": "https://raw.githubusercontent.com/pnp/sp-dev-fx-aces/main/samples/InputCard-Generic-NewItem/assets/demo.gif",
-      "authors": [
-        {
-          "name": "Aimery Thomas",
-          "pictureUrl": "https://github.com/a1mery.png"
-        }
-      ],
-      "tags": [
-        "SharePoint",
-        "Viva"
-      ],
-      "createDate": "2023-10-15",
-      "updateDate": "2023-10-31"
-    },
-    {
-      "name": "pnp-sp-fx-aces-people-search-input-card",
-      "title": "People Search Text Box Card ",
-      "url": "https://github.com/pnp/sp-dev-fx-aces/tree/main/samples/InputCard-PeopleSearch",
-      "description": "People Search card sample to showcase complex Viva Connections card extensibility.",
-      "image": "https://raw.githubusercontent.com/pnp/sp-dev-fx-aces/main/samples/InputCard-PeopleSearch/assets/qv-person.png",
-      "authors": [
-        {
-          "name": "Alex Terentiev",
-          "pictureUrl": "https://avatars.githubusercontent.com/u/17036219?v=4"
-        }
-      ],
-      "tags": [
-        "SharePoint",
-        "Viva"
-      ],
-      "createDate": "2023-06-28",
-      "updateDate": "2023-06-28"
-    },
-    {
-      "name": "pnp-sp-fx-aces-start-survey-input-card",
-      "title": "Text box Survey Card",
-      "url": "https://github.com/pnp/sp-dev-fx-aces/tree/main/samples/InputCard-Prompt-Survey",
-      "description": "Input Text Box ACE with start a survey scenario.",
-      "image": "https://raw.githubusercontent.com/pnp/sp-dev-fx-aces/main/samples/InputCard-Prompt-Survey/assets/ace-survey.png",
-      "authors": [
-        {
-          "name": "Alex Terentiev",
-          "pictureUrl": "https://avatars.githubusercontent.com/u/17036219?v=4"
-        }
-      ],
-      "tags": [
-        "SharePoint",
-        "Viva"
-      ],
-      "createDate": "2023-06-28",
-      "updateDate": "2023-06-28"
-    },
-    {
-      "name": "pnp-sp-fx-aces-start-chat-input-card",
-      "title": "Start a Chat card",
-      "url": "https://github.com/pnp/sp-dev-fx-aces/tree/main/samples/InputCard-Start-Chat",
-      "description": "Input Text Box ACE with a start a chat with a person scenario.",
-      "image": "https://raw.githubusercontent.com/pnp/sp-dev-fx-aces/main/samples/InputCard-Start-Chat/assets/ace-default.png",
-      "authors": [
-        {
-          "name": "Alex Terentiev",
-          "pictureUrl": "https://avatars.githubusercontent.com/u/17036219?v=4"
-        }
-      ],
-      "tags": [
-        "SharePoint",
-        "Viva"
-      ],
-      "createDate": "2023-06-28",
-      "updateDate": "2023-06-28"
-    },
-    {
-      "name": "pnp-sp-fx-aces-status-message",
-      "title": "Status Message Adaptive Card Extension",
-      "url": "https://github.com/pnp/sp-dev-fx-aces/tree/main/samples/InputCard-StatusMessage",
-      "description": "This sample shows how to build an ACE with a card view to let users to set their presence status message.",
-      "image": "https://raw.githubusercontent.com/pnp/sp-dev-fx-aces/main/samples/InputCard-StatusMessage/assets/StatusMessageGif.gif",
-      "authors": [
-        {
-          "name": "Aimery Thomas",
-          "pictureUrl": "https://github.com/a1mery.png"
-        }
-      ],
-      "tags": [
-        "SharePoint",
-        "Viva"
-      ],
-      "createDate": "2023-10-10",
-      "updateDate": "2023-10-10"
+      "updateDate": "2022-03-24",
+      "version": "1.15.2",
+      "componentType": "adaptiveCardExtension",
+      "extensionType": null
     },
     {
       "name": "pnp-sp-fx-aces-ChatGPTDailyInsights",
@@ -675,7 +535,10 @@
         "Viva"
       ],
       "createDate": "2023-02-18",
-      "updateDate": "2023-02-18"
+      "updateDate": "2023-02-18",
+      "version": "1.15.2",
+      "componentType": "adaptiveCardExtension",
+      "extensionType": null
     },
     {
       "name": "pnp-sp-fx-aces-covid-indicator",
@@ -694,7 +557,10 @@
         "Viva"
       ],
       "createDate": "2021-12-12",
-      "updateDate": "2021-12-12"
+      "updateDate": "2021-12-12",
+      "version": "1.13.1",
+      "componentType": "adaptiveCardExtension",
+      "extensionType": null
     },
     {
       "name": "pnp-sp-fx-aces-ace-createteam",
@@ -713,7 +579,10 @@
         "Viva"
       ],
       "createDate": "2021-10-06",
-      "updateDate": "2021-10-06"
+      "updateDate": "2021-10-06",
+      "version": "1.13.0-beta.15",
+      "componentType": "adaptiveCardExtension",
+      "extensionType": null
     },
     {
       "name": "pnp-sp-fx-aces-ace-dynamic-announcements",
@@ -732,7 +601,10 @@
         "Viva"
       ],
       "createDate": "2022-03-12",
-      "updateDate": "2022-03-12"
+      "updateDate": "2022-03-12",
+      "version": "1.14.0-beta.4",
+      "componentType": "adaptiveCardExtension",
+      "extensionType": null
     },
     {
       "name": "pnp-sp-fx-aces-flight-tracker",
@@ -751,7 +623,10 @@
         "Viva"
       ],
       "createDate": "2022-11-08",
-      "updateDate": "2022-11-08"
+      "updateDate": "2022-11-08",
+      "version": "1.16.0-beta.2",
+      "componentType": "adaptiveCardExtension",
+      "extensionType": null
     },
     {
       "name": "pnp-sp-fx-aces-ace-followdocument",
@@ -770,7 +645,10 @@
         "Viva"
       ],
       "createDate": "2021-12-01",
-      "updateDate": "2021-12-01"
+      "updateDate": "2021-12-01",
+      "version": "1.13.0",
+      "componentType": "adaptiveCardExtension",
+      "extensionType": null
     },
     {
       "name": "pnp-sp-fx-aces-football-stats",
@@ -797,7 +675,10 @@
         "Viva"
       ],
       "createDate": "2022-01-25",
-      "updateDate": "2022-01-25"
+      "updateDate": "2022-01-25",
+      "version": "1.13.1",
+      "componentType": "adaptiveCardExtension",
+      "extensionType": null
     },
     {
       "name": "pnp-sp-fx-aces-joinnewteam",
@@ -816,7 +697,10 @@
         "Viva"
       ],
       "createDate": "2022-02-28",
-      "updateDate": "2023-03-06"
+      "updateDate": "2023-03-06",
+      "version": "1.16.1",
+      "componentType": "adaptiveCardExtension",
+      "extensionType": null
     },
     {
       "name": "pnp-sp-fx-aces-graph-unreademails",
@@ -835,7 +719,10 @@
         "Viva"
       ],
       "createDate": "2021-12-06",
-      "updateDate": "2022-05-04"
+      "updateDate": "2022-05-04",
+      "version": "1.14.0",
+      "componentType": "adaptiveCardExtension",
+      "extensionType": null
     },
     {
       "name": "pnp-sp-fx-aces-primarytextcard-manageteam",
@@ -854,7 +741,10 @@
         "Viva"
       ],
       "createDate": "2021-10-06",
-      "updateDate": "2021-10-06"
+      "updateDate": "2021-10-06",
+      "version": "1.13.0-beta.17",
+      "componentType": "adaptiveCardExtension",
+      "extensionType": null
     },
     {
       "name": "pnp-sp-fx-aces-my-calendar",
@@ -873,7 +763,10 @@
         "Viva"
       ],
       "createDate": "2022-02-25",
-      "updateDate": "2022-02-25"
+      "updateDate": "2022-02-25",
+      "version": "1.14.0",
+      "componentType": "adaptiveCardExtension",
+      "extensionType": null
     },
     {
       "name": "pnp-sp-fx-aces-my-m365-groups",
@@ -896,7 +789,10 @@
         "Viva"
       ],
       "createDate": "2022-01-07",
-      "updateDate": "2022-06-12"
+      "updateDate": "2022-06-12",
+      "version": "1.14.0",
+      "componentType": "adaptiveCardExtension",
+      "extensionType": null
     },
     {
       "name": "pnp-sp-fx-aces-my-notifications",
@@ -915,7 +811,10 @@
         "Viva"
       ],
       "createDate": "2021-11-25",
-      "updateDate": "2021-11-25"
+      "updateDate": "2021-11-25",
+      "version": "1.13.0",
+      "componentType": "adaptiveCardExtension",
+      "extensionType": null
     },
     {
       "name": "pnp-sp-fx-aces-myemails",
@@ -934,7 +833,10 @@
         "Viva"
       ],
       "createDate": "2022-01-03",
-      "updateDate": "2022-01-03"
+      "updateDate": "2022-01-03",
+      "version": "1.14.0-beta.4",
+      "componentType": "adaptiveCardExtension",
+      "extensionType": null
     },
     {
       "name": "pnp-sp-fx-aces-myshifts",
@@ -953,7 +855,10 @@
         "Viva"
       ],
       "createDate": "2022-02-07",
-      "updateDate": "2022-02-07"
+      "updateDate": "2022-02-07",
+      "version": "1.14.0-beta.4",
+      "componentType": "adaptiveCardExtension",
+      "extensionType": null
     },
     {
       "name": "pnp-sp-fx-aces-peopledetails",
@@ -980,7 +885,10 @@
         "Viva"
       ],
       "createDate": "2022-01-03",
-      "updateDate": "2022-01-03"
+      "updateDate": "2022-01-03",
+      "version": "1.13.1",
+      "componentType": "adaptiveCardExtension",
+      "extensionType": null
     },
     {
       "name": "pnp-sp-fx-aces-ace-plannertasks",
@@ -999,7 +907,10 @@
         "Viva"
       ],
       "createDate": "2021-10-06",
-      "updateDate": "2021-10-06"
+      "updateDate": "2021-10-06",
+      "version": "1.13.0-beta.20",
+      "componentType": "adaptiveCardExtension",
+      "extensionType": null
     },
     {
       "name": "pnp-sp-fx-aces-recentfiles",
@@ -1018,7 +929,10 @@
         "Viva"
       ],
       "createDate": "2022-04-11",
-      "updateDate": "2022-04-11"
+      "updateDate": "2022-04-11",
+      "version": "1.14.0",
+      "componentType": "adaptiveCardExtension",
+      "extensionType": null
     },
     {
       "name": "pnp-sp-fx-aces-search",
@@ -1037,7 +951,10 @@
         "Viva"
       ],
       "createDate": "2022-12-09",
-      "updateDate": "2022-12-09"
+      "updateDate": "2022-12-09",
+      "version": "1.16.0-beta.2",
+      "componentType": "adaptiveCardExtension",
+      "extensionType": null
     },
     {
       "name": "pnp-sp-fx-aces-ace-servicehealth",
@@ -1056,26 +973,10 @@
         "Viva"
       ],
       "createDate": "2021-10-06",
-      "updateDate": "2021-10-28"
-    },
-    {
-      "name": "pnp-PrimaryTextCard-StockBitcoinFeed",
-      "title": "Price updates on stocks, rex and crypto",
-      "url": "https://github.com/pnp/sp-dev-fx-aces/tree/main/samples/PrimaryTextCard-StockBitcoinFeed",
-      "description": "Display the last price udpates of US stocks, forex and crypto with the help of finnhub APIs.",
-      "image": "https://raw.githubusercontent.com/pnp/sp-dev-fx-aces/main/samples/PrimaryTextCard-StockBitcoinFeed/assets/stock-bitcoin-feed.gif",
-      "authors": [
-        {
-          "name": "Kunj Balkrishna Sangani",
-          "pictureUrl": "https://avatars.githubusercontent.com/u/25693207?v=4"
-        }
-      ],
-      "tags": [
-        "SharePoint",
-        "Viva"
-      ],
-      "createDate": "2022-09-11",
-      "updateDate": "2022-09-11"
+      "updateDate": "2021-10-28",
+      "version": "1.13.0-beta.20",
+      "componentType": "adaptiveCardExtension",
+      "extensionType": null
     },
     {
       "name": "pnp-sp-fx-aces-ace-londonservices",
@@ -1094,7 +995,10 @@
         "Viva"
       ],
       "createDate": "2021-10-06",
-      "updateDate": "2023-06-16"
+      "updateDate": "2021-10-06",
+      "version": "1.13.0-beta.17",
+      "componentType": "adaptiveCardExtension",
+      "extensionType": null
     },
     {
       "name": "pnp-sp-fx-aces-wordoftheday",
@@ -1113,26 +1017,10 @@
         "Viva"
       ],
       "createDate": "2022-04-14",
-      "updateDate": "2022-04-14"
-    },
-    {
-      "name": "pnp-sp-fx-aces-searchcard-samples-gallery",
-      "title": "Search Samples Gallery ACE",
-      "url": "https://github.com/pnp/sp-dev-fx-aces/tree/main/samples/SearchCard-SamplesGallerySearch",
-      "description": "Viva Connection Adaptive Card Extension (ACE) that shows how to create a search card.",
-      "image": "https://raw.githubusercontent.com/pnp/sp-dev-fx-aces/main/samples/SearchCard-SamplesGallerySearch/assets/search-cardview.png",
-      "authors": [
-        {
-          "name": "Paolo Pialorsi",
-          "pictureUrl": "https://github.com/paolopia.png"
-        }
-      ],
-      "tags": [
-        "SharePoint",
-        "Viva"
-      ],
-      "createDate": "2023-10-31",
-      "updateDate": "2023-10-31"
+      "updateDate": "2022-04-14",
+      "version": "1.13.0",
+      "componentType": "adaptiveCardExtension",
+      "extensionType": null
     }
   ]
 }

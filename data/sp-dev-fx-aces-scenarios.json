@@ -24,7 +24,10 @@
         "Microsoft Graph"
       ],
       "createDate": "2023-04-04",
-      "updateDate": "2023-04-04"
+      "updateDate": "2023-04-04",
+      "version": "1.16.1",
+      "componentType": "adaptiveCardExtension",
+      "extensionType": null
     },
     {
       "name": "pnp-sp-fx-aces-scenario-ace-lob",
@@ -43,7 +46,10 @@
         "Viva"
       ],
       "createDate": "2021-06-10",
-      "updateDate": "2022-12-09"
+      "updateDate": "2022-12-09",
+      "version": "1.14.0",
+      "componentType": "adaptiveCardExtension",
+      "extensionType": null
     },
     {
       "name": "pnp-sp-fx-aces-scenario-ace-microsoftgraph",
@@ -62,7 +68,10 @@
         "Viva"
       ],
       "createDate": "2021-06-10",
-      "updateDate": "2022-12-09"
+      "updateDate": "2022-12-09",
+      "version": "1.14.0",
+      "componentType": "adaptiveCardExtension",
+      "extensionType": null
     }
   ]
 }

@@ -17,6 +17,37 @@ function Parse-SampleJsonFiles {
         try {
             $sampleContent = Get-Content -Path $sample.FullName -Raw
             $sampleJson = ConvertFrom-Json -InputObject $sampleContent
+            
+            $yoRcPath = $sample.FullName.Replace("assets\sample.json", ".yo-rc.json")
+
+            if (-not (Test-Path -Path $yoRcPath)) {
+                Continue
+            }
+
+            $yoRcContent = Get-Content -Path $yoRcPath -Raw
+            $yoRcJson = ConvertFrom-Json -InputObject $yoRcContent
+            $yoRcJson = $yoRcJson.PSObject.Properties.Value
+
+            $version = $null
+            if ($null -ne $yoRcJson.version -and $yoRcJson.version.GetType().BaseType -eq [System.Array]) {
+                $version = $yoRcJson.version[$yoRcJson.version.Length - 1]
+            } else {
+                $version = $yoRcJson.version
+            }
+
+            $componentType = $null
+            if ($null -ne $yoRcJson.componentType -and $yoRcJson.componentType.GetType().BaseType -eq [System.Array]) {
+                $componentType = $yoRcJson.componentType[$yoRcJson.componentType.Length - 1]
+            } else {
+                $componentType = $yoRcJson.componentType
+            }
+
+            $extensionType = $null
+            if ($null -ne $yoRcJson.extensionType -and $yoRcJson.extensionType.GetType().BaseType -eq [System.Array]) {
+                $extensionType = $yoRcJson.extensionType[$yoRcJson.extensionType.Length - 1]
+            } else {
+                $extensionType = $yoRcJson.extensionType
+            }
 
             $sampleAuthors = @()
             foreach ($author in $sampleJson.authors) {
@@ -36,6 +67,9 @@ function Parse-SampleJsonFiles {
                 tags            = $sampleJson.products;
                 createDate      = $sampleJson.creationDateTime;
                 updateDate      = $sampleJson.updateDateTime;
+                version         = $version;  
+                componentType   = $componentType;
+                extensionType   = $extensionType;              
             }
         }
         catch {
@@ -49,7 +83,8 @@ function Parse-SampleJsonFiles {
     foreach ($Item in ($sampleModel.GetEnumerator() | Sort-Object -Property Key)) {
         $orderedSampleModel[$Item.Key] = $Item.Value
     }
-    New-Object -TypeName psobject -Property $orderedSampleModel | ConvertTo-Json -Depth 10 | Out-File "$workspacePath\data\$sampleRepo-$folder.json"
+    #New-Object -TypeName psobject -Property $orderedSampleModel | ConvertTo-Json -Depth 10 | Out-File "$workspacePath\data\$sampleRepo-$folder.json"
+    New-Object -TypeName psobject -Property $orderedSampleModel | ConvertTo-Json -Depth 10 | Out-File "$workspacePath\vscode-viva\data\$sampleRepo-$folder.json"
 }
 
 foreach ($sampleRepo in $sampleRepos) {

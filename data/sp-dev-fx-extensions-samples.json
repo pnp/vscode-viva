@@ -16,7 +16,10 @@
         "SharePoint"
       ],
       "createDate": "2018-02-01",
-      "updateDate": "2018-02-01"
+      "updateDate": "2018-02-01",
+      "version": "1.4.1",
+      "componentType": null,
+      "extensionType": null
     },
     {
       "name": "pnp-sp-dev-spfx-extensions-jquery-field-itemorder",
@@ -34,7 +37,10 @@
         "SharePoint"
       ],
       "createDate": "2019-10-10",
-      "updateDate": "2019-10-10"
+      "updateDate": "2019-10-10",
+      "version": "1.4.1",
+      "componentType": null,
+      "extensionType": null
     },
     {
       "name": "pnp-sp-dev-spfx-extensions-js-application-alert-message",
@@ -52,7 +58,10 @@
         "SharePoint"
       ],
       "createDate": "2020-07-09",
-      "updateDate": "2020-07-09"
+      "updateDate": "2020-07-09",
+      "version": "1.10.0",
+      "componentType": "extension",
+      "extensionType": "ApplicationCustomizer"
     },
     {
       "name": "pnp-sp-dev-spfx-extensions-js-application-analytics",
@@ -74,7 +83,10 @@
         "SharePoint"
       ],
       "createDate": "2020-10-07",
-      "updateDate": "2021-07-01"
+      "updateDate": "2021-07-01",
+      "version": "1.11.0",
+      "componentType": "extension",
+      "extensionType": "ApplicationCustomizer"
     },
     {
       "name": "pnp-sp-dev-spfx-extensions-js-application-appinsights",
@@ -100,7 +112,10 @@
         "SharePoint"
       ],
       "createDate": "2019-08-29",
-      "updateDate": "2019-08-29"
+      "updateDate": "2019-08-29",
+      "version": "1.8.2",
+      "componentType": "extension",
+      "extensionType": "ApplicationCustomizer"
     },
     {
       "name": "pnp-sp-dev-spfx-extensions-js-application-appinsights-advanced",
@@ -122,7 +137,10 @@
         "SharePoint"
       ],
       "createDate": "2020-09-23",
-      "updateDate": "2020-09-23"
+      "updateDate": "2020-09-23",
+      "version": "1.12.1",
+      "componentType": "extension",
+      "extensionType": "ApplicationCustomizer"
     },
     {
       "name": "pnp-sp-dev-spfx-extensions-js-application-dynamically-importing-styles",
@@ -140,7 +158,10 @@
         "SharePoint"
       ],
       "createDate": "2019-01-21",
-      "updateDate": "2019-01-21"
+      "updateDate": "2019-01-21",
+      "version": "1.7.1",
+      "componentType": "extension",
+      "extensionType": "ApplicationCustomizer"
     },
     {
       "name": "pnp-sp-dev-spfx-extensions-js-application-graph-client",
@@ -158,7 +179,10 @@
         "SharePoint"
       ],
       "createDate": "2017-06-09",
-      "updateDate": "2017-06-09"
+      "updateDate": "2017-06-09",
+      "version": "1.1.0",
+      "componentType": null,
+      "extensionType": null
     },
     {
       "name": "pnp-sp-dev-spfx-extensions-js-application-header-toggler",
@@ -176,25 +200,10 @@
         "SharePoint"
       ],
       "createDate": "2019-09-19",
-      "updateDate": "2019-09-19"
-    },
-    {
-      "name": "pnp-sp-dev-spfx-extensions-js-application-intranet-searchbox",
-      "title": "Intranet Search Box",
-      "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/js-application-intranet-searchbox",
-      "description": "This demonstrates how to use an SPFx Application Customiser to inject an additional search box into the header of each page, which uses the \"Search Settings\" (at either the Site Collection or Sub-Site level) to determine the redirect page.",
-      "image": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/js-application-intranet-searchbox/assets/IntranetSearchBox.gif",
-      "authors": [
-        {
-          "name": "Martin Hatch",
-          "pictureUrl": "https://github.com/MartinHatch.png"
-        }
-      ],
-      "tags": [
-        "SharePoint"
-      ],
-      "createDate": "2019-05-16",
-      "updateDate": "2019-05-16"
+      "updateDate": "2019-09-19",
+      "version": "1.9.1",
+      "componentType": "extension",
+      "extensionType": "ApplicationCustomizer"
     },
     {
       "name": "pnp-sp-dev-spfx-extensions-js-application-listdrivenplaceholders",
@@ -212,47 +221,10 @@
         "SharePoint"
       ],
       "createDate": "2017-09-05",
-      "updateDate": "2017-09-05"
-    },
-    {
-      "name": "pnp-sp-dev-spfx-extensions-js-application-microsoft-clarity",
-      "title": "Microsoft Clarity for modern SharePoint",
-      "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/js-application-microsoft-clarity",
-      "description": "Microsoft Clarity will gives you the recording of the sessions and heat maps of the user interaction with the site, this will help to find and fix the areas of your pages that are not working as you expect",
-      "image": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/js-application-microsoft-clarity/assets/dashboard.gif",
-      "authors": [
-        {
-          "name": "João Ferreira",
-          "pictureUrl": "https://github.com/joaoferreira.png"
-        }
-      ],
-      "tags": [
-        "SharePoint"
-      ],
-      "createDate": "2021-11-23",
-      "updateDate": "2021-11-23"
-    },
-    {
-      "name": "pnp-sp-dev-spfx-extensions-js-application-redirect",
-      "title": "Redirect Application Customizers",
-      "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/js-application-redirect",
-      "description": "Redirect from URL based on mapping from a list on the site. Can be used to automatically redirect from pages to other locations.",
-      "image": "https://github.com/pnp/sp-starter-kit/raw/main/assets/images/components/ext-redirects.gif?raw=true",
-      "authors": [
-        {
-          "name": "Paolo Pialorsi",
-          "pictureUrl": "https://github.com/PaoloPia.png"
-        },
-        {
-          "name": "Sébastien Levert",
-          "pictureUrl": "https://github.com/sebastienlevert.png"
-        }
-      ],
-      "tags": [
-        "SharePoint"
-      ],
-      "createDate": "2019-12-29",
-      "updateDate": "2019-12-29"
+      "updateDate": "2017-09-05",
+      "version": "1.2.0",
+      "componentType": null,
+      "extensionType": null
     },
     {
       "name": "pnp-sp-dev-spfx-extensions-js-application-run-once",
@@ -270,7 +242,10 @@
         "SharePoint"
       ],
       "createDate": "2017-10-10",
-      "updateDate": "2017-10-10"
+      "updateDate": "2017-10-10",
+      "version": "1.3.1",
+      "componentType": null,
+      "extensionType": null
     },
     {
       "name": "pnp-sp-dev-spfx-extensions-js-command-clone",
@@ -288,25 +263,10 @@
         "SharePoint"
       ],
       "createDate": "2019-05-27",
-      "updateDate": "2019-05-27"
-    },
-    {
-      "name": "pnp-sp-dev-spfx-extensions-js-command-convert-to-pdf",
-      "title": "Convert documents to PDF using Azure function",
-      "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/js-command-convert-to-pdf",
-      "description": "Sample SPFx list view command set extension that converts the selected documents to PDF using Microsoft Graph.",
-      "image": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/js-command-convert-to-pdf/demo/convert-docs-to-pdf.gif",
-      "authors": [
-        {
-          "name": "Anoop Tatti",
-          "pictureUrl": "https://avatars.githubusercontent.com/u/9694225?s=460&u=fbb4b27ed944935800d5f6dbc91e71911ce0d4ec&v=4"
-        }
-      ],
-      "tags": [
-        "SharePoint"
-      ],
-      "createDate": "2018-10-29",
-      "updateDate": "2018-10-29"
+      "updateDate": "2019-05-27",
+      "version": "1.4.0",
+      "componentType": null,
+      "extensionType": null
     },
     {
       "name": "pnp-sp-dev-spfx-extensions-js-command-copy-classic-link",
@@ -328,7 +288,10 @@
         "SharePoint"
       ],
       "createDate": "2021-01-03",
-      "updateDate": "2021-01-03"
+      "updateDate": "2021-01-03",
+      "version": "1.11.0",
+      "componentType": "extension",
+      "extensionType": "ListViewCommandSet"
     },
     {
       "name": "pnp-sp-dev-spfx-extensions-js-command-hide-commands",
@@ -346,7 +309,10 @@
         "SharePoint"
       ],
       "createDate": "2020-04-27",
-      "updateDate": "2020-04-27"
+      "updateDate": "2020-04-27",
+      "version": "1.10.0",
+      "componentType": "extension",
+      "extensionType": "ListViewCommandSet"
     },
     {
       "name": "pnp-sp-dev-spfx-extensions-js-command-item-permissions",
@@ -364,7 +330,10 @@
         "SharePoint"
       ],
       "createDate": "2017-10-15",
-      "updateDate": "2017-10-15"
+      "updateDate": "2017-10-15",
+      "version": "1.3.2",
+      "componentType": null,
+      "extensionType": null
     },
     {
       "name": "pnp-sp-dev-spfx-extensions-js-command-lock-item",
@@ -382,25 +351,10 @@
         "SharePoint"
       ],
       "createDate": "2017-12-20",
-      "updateDate": "2017-12-20"
-    },
-    {
-      "name": "pnp-sp-dev-spfx-extensions-js-command-selecteditems-export",
-      "title": "Export Selected Items to Excel",
-      "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/js-command-selecteditems-export",
-      "description": "Exports selected items to excel spreadsheet in xlsx format, with the columns from the current modern list view.",
-      "image": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/js-command-selecteditems-export/assets/excel-export-preview.png",
-      "authors": [
-        {
-          "name": "Rajesh Sitaraman",
-          "pictureUrl": "https://github.com/rjesh-git.png"
-        }
-      ],
-      "tags": [
-        "SharePoint"
-      ],
-      "createDate": "2018-02-16",
-      "updateDate": "2018-02-16"
+      "updateDate": "2017-12-20",
+      "version": "1.4.0",
+      "componentType": null,
+      "extensionType": null
     },
     {
       "name": "pnp-sp-dev-spfx-extensions-js-field-animated-progress",
@@ -418,7 +372,10 @@
         "SharePoint"
       ],
       "createDate": "2021-10-10",
-      "updateDate": "2021-10-10"
+      "updateDate": "2021-10-10",
+      "version": "1.12.1",
+      "componentType": "extension",
+      "extensionType": "FieldCustomizer"
     },
     {
       "name": "pnp-sp-dev-spfx-extensions-js-field-conditionalformatting",
@@ -436,7 +393,10 @@
         "SharePoint"
       ],
       "createDate": "2017-06-29",
-      "updateDate": "2017-06-29"
+      "updateDate": "2017-06-29",
+      "version": "1.1.1",
+      "componentType": null,
+      "extensionType": null
     },
     {
       "name": "pnp-sp-dev-spfx-extensions-js-field-taskpriority",
@@ -454,7 +414,10 @@
         "SharePoint"
       ],
       "createDate": "2017-08-24",
-      "updateDate": "2017-08-24"
+      "updateDate": "2017-08-24",
+      "version": "1.1.3",
+      "componentType": null,
+      "extensionType": null
     },
     {
       "name": "pnp-sp-dev-spfx-extensions-js-field-weather",
@@ -472,7 +435,10 @@
         "SharePoint"
       ],
       "createDate": "2018-01-20",
-      "updateDate": "2018-01-20"
+      "updateDate": "2018-01-20",
+      "version": "1.4.0",
+      "componentType": null,
+      "extensionType": null
     },
     {
       "name": "pnp-sp-dev-spfx-extensions-js-guest-message",
@@ -490,7 +456,10 @@
         "SharePoint"
       ],
       "createDate": "2019-09-22",
-      "updateDate": "2019-09-22"
+      "updateDate": "2019-09-22",
+      "version": "1.8.2",
+      "componentType": "extension",
+      "extensionType": "ApplicationCustomizer"
     },
     {
       "name": "pnp-sp-dev-spfx-extensions-react-js-share-to-teams",
@@ -508,25 +477,10 @@
         "SharePoint"
       ],
       "createDate": "2021-08-14",
-      "updateDate": "2021-08-14"
-    },
-    {
-      "name": "pnp-sp-dev-spfx-extensions-react-aadtokenprovider-bot",
-      "title": "AAD Token Provider Bot Extension",
-      "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-aadtokenprovider-bot",
-      "description": "This sample demonstrates how to integrate a bot within a SharePoint Online portal supporting authentication to access Azure AD protected APIs like Microsoft graph resources. Behind the scenes, this sample uses the AADTokenProvider utility class provided with SPFx > 1.6.0 to seamlessly get an access token for the current user and send it to the bot. This way, the user is not prompted anymore for login to interact with the bot, improving overall experience.",
-      "image": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-aadtokenprovider-bot/images/react-aadtokenprovider-bot.gif",
-      "authors": [
-        {
-          "name": "Franck Cornu",
-          "pictureUrl": "https://github.com/FranckyC.png"
-        }
-      ],
-      "tags": [
-        "SharePoint"
-      ],
-      "createDate": "2018-11-05",
-      "updateDate": "2018-11-05"
+      "updateDate": "2021-08-14",
+      "version": "1.11.0",
+      "componentType": "extension",
+      "extensionType": "ListViewCommandSet"
     },
     {
       "name": "pnp-sp-dev-spfx-extensions-react-app-announcements",
@@ -544,29 +498,10 @@
         "SharePoint"
       ],
       "createDate": "2017-06-30",
-      "updateDate": "2017-06-30"
-    },
-    {
-      "name": "pnp-sp-dev-spfx-extensions-react-application-alerts",
-      "title": "Alerts Application Customizers",
-      "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-application-alerts",
-      "description": "This application customizer provides you the ability to show notifications on the pages in the top / header area.",
-      "image": "https://github.com/pnp/sp-starter-kit/raw/master/assets/images/components/ext-alert.gif",
-      "authors": [
-        {
-          "name": "Waldek Mastykarz",
-          "pictureUrl": "https://github.com/waldekmastykarz.png"
-        },
-        {
-          "name": "Robert Schouten",
-          "pictureUrl": "https://github.com/rfjschouten.png"
-        }
-      ],
-      "tags": [
-        "SharePoint"
-      ],
-      "createDate": "2019-12-25",
-      "updateDate": "2019-12-25"
+      "updateDate": "2017-06-30",
+      "version": "1.1.1",
+      "componentType": null,
+      "extensionType": null
     },
     {
       "name": "pnp-sp-dev-spfx-extensions-react-application-announcements",
@@ -584,87 +519,10 @@
         "SharePoint"
       ],
       "createDate": "2020-06-18",
-      "updateDate": "2020-06-18"
-    },
-    {
-      "name": "pnp-sp-dev-spfx-extensions-react-application-botframework-chat",
-      "title": "Bot Framework Chat App Customizer",
-      "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-application-botframework-chat",
-      "description": "SPFx application extension that uses the Bot Framework React Webchat Component to render a Bot Framework chat window",
-      "image": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-botframework-chat/assets/bf_app_customizer01.png",
-      "authors": [
-        {
-          "name": "Stephan Bisser",
-          "pictureUrl": "https://github.com/stephanbisser.png"
-        }
-      ],
-      "tags": [
-        "SharePoint"
-      ],
-      "createDate": "2019-10-19",
-      "updateDate": "2019-10-19"
-    },
-    {
-      "name": "pnp-sp-dev-spfx-extensions-react-application-breadcrumb",
-      "title": "Breadcrumb application customizer",
-      "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-application-breadcrumb",
-      "description": "This sample shows how to create a breadcrumb element and append it to your site via the SharePoint Framework Application Customizer extension.",
-      "image": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-breadcrumb/assets/breadcrumb-sample.png",
-      "authors": [
-        {
-          "name": "Elio Struyf",
-          "pictureUrl": "https://github.com/estruyf.png"
-        },
-        {
-          "name": "Swaminathan Sriram",
-          "pictureUrl": "https://github.com/Swaminathan-Sriram.png"
-        }
-      ],
-      "tags": [
-        "SharePoint"
-      ],
-      "createDate": "2020-10-03",
-      "updateDate": "2020-10-03"
-    },
-    {
-      "name": "pnp-sp-dev-spfx-extensions-react-application-collab-footer",
-      "title": "Collaboration Footer Application Customizers",
-      "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-application-collab-footer",
-      "description": "This application customizer provides you the ability to include a footer designed for normal and group associated teams sites.",
-      "image": "https://github.com/pnp/sp-starter-kit/raw/master/assets/images/components/ext-collab-footer.gif",
-      "authors": [
-        {
-          "name": "Paolo Pialorsi",
-          "pictureUrl": "https://github.com/PaoloPia.png"
-        },
-        {
-          "name": "David Opdendries",
-          "pictureUrl": "https://github.com/spdavid.png"
-        }
-      ],
-      "tags": [
-        "SharePoint"
-      ],
-      "createDate": "2020-01-01",
-      "updateDate": "2020-01-01"
-    },
-    {
-      "name": "pnp-sp-dev-spfx-extensions-react-react-application-customizer-feedback-widget",
-      "title": "Sticky Feedback Widget Application Customizer",
-      "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-application-customizer-feedback-widget",
-      "description": "An SPFx Application Customizer Extension placed in the bottom placeholder which allows users to input their feedbacks without scrolling down to the end of the page.",
-      "image": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-customizer-feedback-widget/assets/Feedback_Widget1.png",
-      "authors": [
-        {
-          "name": "Sandeep P S",
-          "pictureUrl": "https://github.com/Sandeep-FED.png"
-        }
-      ],
-      "tags": [
-        "SharePoint"
-      ],
-      "createDate": "2023-07-02",
-      "updateDate": "2023-07-02"
+      "updateDate": "2020-06-18",
+      "version": "1.10.0",
+      "componentType": "extension",
+      "extensionType": "ApplicationCustomizer"
     },
     {
       "name": "pnp-sp-dev-spfx-extensions-react-application-duetasks",
@@ -682,7 +540,10 @@
         "SharePoint"
       ],
       "createDate": "2017-12-26",
-      "updateDate": "2017-12-26"
+      "updateDate": "2017-12-26",
+      "version": "1.1.1",
+      "componentType": null,
+      "extensionType": null
     },
     {
       "name": "pnp-sp-dev-spfx-extensions-react-application-festivals",
@@ -700,7 +561,10 @@
         "SharePoint"
       ],
       "createDate": "2020-05-19",
-      "updateDate": "2020-05-19"
+      "updateDate": "2020-05-19",
+      "version": "1.10.0",
+      "componentType": "extension",
+      "extensionType": "ApplicationCustomizer"
     },
     {
       "name": "pnp-sp-dev-spfx-extensions-react-application-grouplinks",
@@ -718,7 +582,10 @@
         "SharePoint"
       ],
       "createDate": "2018-02-16",
-      "updateDate": "2018-02-16"
+      "updateDate": "2018-02-16",
+      "version": "1.4.1",
+      "componentType": null,
+      "extensionType": null
     },
     {
       "name": "pnp-sp-dev-spfx-extensions-react-application-injectcss",
@@ -736,25 +603,10 @@
         "SharePoint"
       ],
       "createDate": "2018-03-28",
-      "updateDate": "2018-03-28"
-    },
-    {
-      "name": "pnp-sp-dev-spfx-extensions-react-application-logo-festoon",
-      "title": "Logo Festoon",
-      "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-application-logo-festoon",
-      "description": "This simple SPFx extension can be used to decorate you SPO site logo with a festoon image of your choice. Keep users engaged by adding a personal touch to your site.",
-      "image": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-logo-festoon/assets/festoon-shot.png",
-      "authors": [
-        {
-          "name": "Rabia Williams",
-          "pictureUrl": "https://github.com/rabwill.png"
-        }
-      ],
-      "tags": [
-        "SharePoint"
-      ],
-      "createDate": "2019-03-17",
-      "updateDate": "2019-03-17"
+      "updateDate": "2018-03-28",
+      "version": "1.8.0",
+      "componentType": "extension",
+      "extensionType": "ApplicationCustomizer"
     },
     {
       "name": "pnp-sp-dev-spfx-extensions-react-application-machine-translations",
@@ -776,7 +628,10 @@
         "SharePoint"
       ],
       "createDate": "2021-01-20",
-      "updateDate": "2021-07-22"
+      "updateDate": "2021-07-22",
+      "version": "1.12.1",
+      "componentType": "extension",
+      "extensionType": "ApplicationCustomizer"
     },
     {
       "name": "pnp-sp-dev-fx-extensions-react-application-messagebanner",
@@ -798,7 +653,10 @@
         "SharePoint"
       ],
       "createDate": "2022-11-09",
-      "updateDate": "2022-11-09"
+      "updateDate": "2022-11-09",
+      "version": "1.15.2",
+      "componentType": "extension",
+      "extensionType": "ApplicationCustomizer"
     },
     {
       "name": "pnp-sp-dev-spfx-extensions-react-react-application-my-flows-list",
@@ -817,25 +675,10 @@
         "Office"
       ],
       "createDate": "2021-10-03",
-      "updateDate": "2021-10-03"
-    },
-    {
-      "name": "pnp-sp-dev-spfx-extensions-react-react-application-my-lists-notifications",
-      "title": "My Lists Notifications",
-      "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-application-my-lists-notifications",
-      "description": "This application extension alows user receive notifications from selected lists or libraries",
-      "image": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-my-lists-notifications/assets/myListsNotifications.gif",
-      "authors": [
-        {
-          "name": "João Mendes",
-          "pictureUrl": "https://github.com/joaojmendes.png"
-        }
-      ],
-      "tags": [
-        "SharePoint"
-      ],
-      "createDate": "2021-07-08",
-      "updateDate": "2021-07-08"
+      "updateDate": "2021-10-03",
+      "version": "1.12.1",
+      "componentType": "extension",
+      "extensionType": "ApplicationCustomizer"
     },
     {
       "name": "pnp-sp-dev-spfx-extensions-react-application-myfavourites",
@@ -853,7 +696,10 @@
         "SharePoint"
       ],
       "createDate": "2020-04-14",
-      "updateDate": "2020-11-11"
+      "updateDate": "2020-11-11",
+      "version": "1.12.1",
+      "componentType": "extension",
+      "extensionType": "ApplicationCustomizer"
     },
     {
       "name": "pnp-sp-dev-spfx-extensions-react-application-myfollowedsites",
@@ -871,25 +717,10 @@
         "SharePoint"
       ],
       "createDate": "2020-06-12",
-      "updateDate": "2020-06-12"
-    },
-    {
-      "name": "pnp-sp-dev-spfx-extensions-react-application-nav-search-driven",
-      "title": "Search driven navigation",
-      "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-application-qna-chat",
-      "description": "SPFx application search driven navigation and permission side panel.",
-      "image": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-nav-search-driven/assets/01SearchDrivenNavigation.png",
-      "authors": [
-        {
-          "name": "Markus Moeller",
-          "pictureUrl": "https://github.com/mmsharepoint.png"
-        }
-      ],
-      "tags": [
-        "SharePoint"
-      ],
-      "createDate": "2023-07-27",
-      "updateDate": "2023-07-27"
+      "updateDate": "2020-06-12",
+      "version": "1.12.1",
+      "componentType": "extension",
+      "extensionType": "ApplicationCustomizer"
     },
     {
       "name": "pnp-sp-dev-spfx-extensions-react-application-news-ticker",
@@ -907,7 +738,10 @@
         "SharePoint"
       ],
       "createDate": "2021-04-19",
-      "updateDate": "2022-11-11"
+      "updateDate": "2022-11-11",
+      "version": "1.15.2",
+      "componentType": "extension",
+      "extensionType": "ApplicationCustomizer"
     },
     {
       "name": "pnp-sp-dev-spfx-extensions-react-application-office-groups-nav",
@@ -925,7 +759,10 @@
         "SharePoint"
       ],
       "createDate": "2018-02-17",
-      "updateDate": "2018-02-17"
+      "updateDate": "2018-02-17",
+      "version": "1.4.1",
+      "componentType": null,
+      "extensionType": null
     },
     {
       "name": "pnp-sp-dev-spfx-extensions-react-application-page-comments-sentiment",
@@ -943,7 +780,10 @@
         "SharePoint"
       ],
       "createDate": "2020-03-06",
-      "updateDate": "2020-03-06"
+      "updateDate": "2020-03-06",
+      "version": "1.10.0",
+      "componentType": "extension",
+      "extensionType": "ApplicationCustomizer"
     },
     {
       "name": "pnp-sp-dev-spfx-extensions-react-application-page-related-bing-news",
@@ -961,51 +801,10 @@
         "SharePoint"
       ],
       "createDate": "2019-10-25",
-      "updateDate": "2019-10-25"
-    },
-    {
-      "name": "pnp-sp-dev-spfx-extensions-react-application-personal-assistant",
-      "title": "Personal Assistant - OpenAI Function Calling with Microsoft Graph",
-      "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-application-personal-assistant",
-      "description": "This sample is chatbot that provides information to the current logged in user.",
-      "image": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-personal-assistant/assets/demo.gif",
-      "authors": [
-        {
-          "name": "Anoop Tatti",
-          "pictureUrl": "https://github.com/anoopt.png"
-        }
-      ],
-      "tags": [
-        "SharePoint"
-      ],
-      "createDate": "2023-06-23",
-      "updateDate": "2023-06-23"
-    },
-    {
-      "name": "pnp-sp-dev-spfx-extensions-react-application-portal-footer",
-      "title": "Portal Footer Application Customizers",
-      "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-application-portal-footer",
-      "description": "This application customizer provides you the ability to include a footer designed for communication sites.",
-      "image": "https://github.com/pnp/sp-starter-kit/raw/master/assets/images/components/ext-portal-footer.gif",
-      "authors": [
-        {
-          "name": "Waldek Mastykarz",
-          "pictureUrl": "https://github.com/waldekmastykarz.png"
-        },
-        {
-          "name": "Paolo Pialorsi",
-          "pictureUrl": "https://github.com/PaoloPia.png"
-        },
-        {
-          "name": "David Opdendries",
-          "pictureUrl": "https://github.com/spdavid.png"
-        }
-      ],
-      "tags": [
-        "SharePoint"
-      ],
-      "createDate": "2019-01-12",
-      "updateDate": "2019-01-12"
+      "updateDate": "2019-10-25",
+      "version": "1.9.1",
+      "componentType": "extension",
+      "extensionType": "ApplicationCustomizer"
     },
     {
       "name": "pnp-sp-dev-spfx-extensions-react-application-pva-bot",
@@ -1032,7 +831,10 @@
         "Power Virtual Agents"
       ],
       "createDate": "2021-06-06",
-      "updateDate": "2021-06-06"
+      "updateDate": "2021-06-06",
+      "version": "1.11.0",
+      "componentType": "extension",
+      "extensionType": "ApplicationCustomizer"
     },
     {
       "name": "pnp-sp-dev-spfx-extensions-react-application-qna-chat",
@@ -1043,14 +845,17 @@
       "authors": [
         {
           "name": "Rodrigo Silva",
-          "pictureUrl": "https://github.com/RodrigoSilva.png"
+          "pictureUrl": "https://githob.com/Rodrigo Silva.png"
         }
       ],
       "tags": [
         "SharePoint"
       ],
       "createDate": "2017-02-23",
-      "updateDate": "2017-02-23"
+      "updateDate": "2017-02-23",
+      "version": "1.4.1",
+      "componentType": null,
+      "extensionType": null
     },
     {
       "name": "pnp-sp-dev-spfx-extensions-react-application-regions-footer",
@@ -1068,7 +873,10 @@
         "SharePoint"
       ],
       "createDate": "2017-09-28",
-      "updateDate": "2017-09-28"
+      "updateDate": "2017-09-28",
+      "version": "1.2.0",
+      "componentType": null,
+      "extensionType": null
     },
     {
       "name": "pnp-sp-dev-spfx-extensions-react-application-search-dynamicdata",
@@ -1086,7 +894,10 @@
         "SharePoint"
       ],
       "createDate": "2018-07-15",
-      "updateDate": "2018-07-15"
+      "updateDate": "2018-07-15",
+      "version": "1.5.0",
+      "componentType": "extension",
+      "extensionType": "ApplicationCustomizer"
     },
     {
       "name": "pnp-sp-dev-spfx-extensions-react-application-sitepagecoremetadata",
@@ -1104,7 +915,10 @@
         "SharePoint"
       ],
       "createDate": "2018-08-15",
-      "updateDate": "2018-08-15"
+      "updateDate": "2018-08-15",
+      "version": "1.5.0",
+      "componentType": "extension",
+      "extensionType": "ApplicationCustomizer"
     },
     {
       "name": "pnp-sp-dev-spfx-extensions-react-application-sites-hubsite-switcher",
@@ -1122,7 +936,10 @@
         "SharePoint"
       ],
       "createDate": "2018-04-24",
-      "updateDate": "2018-04-24"
+      "updateDate": "2018-04-24",
+      "version": "1.4.1",
+      "componentType": null,
+      "extensionType": null
     },
     {
       "name": "pnp-sp-dev-spfx-extensions-react-application-team-archived-notification",
@@ -1140,7 +957,10 @@
         "SharePoint"
       ],
       "createDate": "2019-01-02",
-      "updateDate": "2019-01-02"
+      "updateDate": "2019-01-02",
+      "version": "1.5.1",
+      "componentType": null,
+      "extensionType": null
     },
     {
       "name": "pnp-sp-dev-spfx-extensions-react-application-tenant-global-navbar",
@@ -1158,25 +978,10 @@
         "SharePoint"
       ],
       "createDate": "2017-09-28",
-      "updateDate": "2017-09-28"
-    },
-    {
-      "name": "pnp-sp-dev-spfx-extensions-react-application-tfl-status",
-      "title": "Transport for London (TfL) Status",
-      "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-application-tfl-status",
-      "description": "This sample is chatbot that provides information about Transport for London (TfL) status.",
-      "image": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-tfl-status/assets/demo.gif",
-      "authors": [
-        {
-          "name": "anoopt",
-          "pictureUrl": "https://github.com/anoopt.png"
-        }
-      ],
-      "tags": [
-        "SharePoint"
-      ],
-      "createDate": "2023-06-23",
-      "updateDate": "2023-06-23"
+      "updateDate": "2017-09-28",
+      "version": "1.2.0",
+      "componentType": null,
+      "extensionType": null
     },
     {
       "name": "pnp-sp-dev-spfx-extensions-react-application-weather-widget",
@@ -1194,7 +999,10 @@
         "SharePoint"
       ],
       "createDate": "2023-03-12",
-      "updateDate": "2023-03-12"
+      "updateDate": "2023-03-12",
+      "version": "1.16.1",
+      "componentType": "extension",
+      "extensionType": "ApplicationCustomizer"
     },
     {
       "name": "pnp-sp-dev-spfx-extensions-react-application-webhooks-notification",
@@ -1212,43 +1020,10 @@
         "SharePoint"
       ],
       "createDate": "2017-11-05",
-      "updateDate": "2017-11-05"
-    },
-    {
-      "name": "pnp-sp-dev-spfx-extensions-react-bot-framework-secure",
-      "title": "Bot Framework Secure",
-      "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-bot-framework-secure",
-      "description": "This sample will show you how to embed a Bot Framework bot into a SharePoint web site with security consideration.",
-      "image": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-bot-framework-secure/assets/sp-ex-secure.gif",
-      "authors": [
-        {
-          "name": "Qiong Wu",
-          "pictureUrl": "https://github.com/DingmaomaoBJTU.png"
-        }
-      ],
-      "tags": [
-        "SharePoint"
-      ],
-      "createDate": "2020-11-10",
-      "updateDate": "2020-11-10"
-    },
-    {
-      "name": "pnp-sp-dev-spfx-extensions-react-bot-framework-sso",
-      "title": "Bot Framework SSO",
-      "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-bot-framework-sso",
-      "description": "This sample will show you how to embed a Bot Framework bot into a SharePoint web site with SSO.",
-      "image": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-bot-framework-sso/assets/sp-ex-sso.gif",
-      "authors": [
-        {
-          "name": "Qiong Wu",
-          "pictureUrl": "https://github.com/DingmaomaoBJTU.png"
-        }
-      ],
-      "tags": [
-        "SharePoint"
-      ],
-      "createDate": "2020-11-10",
-      "updateDate": "2020-11-10"
+      "updateDate": "2017-11-05",
+      "version": "1.3.4",
+      "componentType": null,
+      "extensionType": null
     },
     {
       "name": "pnp-sp-dev-spfx-extensions-react-command-addfolders",
@@ -1266,7 +1041,10 @@
         "SharePoint"
       ],
       "createDate": "2021-01-17",
-      "updateDate": "2021-01-17"
+      "updateDate": "2021-01-17",
+      "version": "1.11.0",
+      "componentType": "extension",
+      "extensionType": "ListViewCommandSet"
     },
     {
       "name": "pnp-sp-dev-spfx-extensions-react-react-command-change-page-layouttype",
@@ -1284,7 +1062,10 @@
         "SharePoint"
       ],
       "createDate": "2021-10-25",
-      "updateDate": "2021-10-25"
+      "updateDate": "2021-10-25",
+      "version": "1.12.1",
+      "componentType": "extension",
+      "extensionType": "ListViewCommandSet"
     },
     {
       "name": "pnp-sp-dev-spfx-extensions-react-command-convert-to-pdf",
@@ -1302,7 +1083,10 @@
         "SharePoint"
       ],
       "createDate": "2021-02-23",
-      "updateDate": "2021-11-11"
+      "updateDate": "2021-11-11",
+      "version": "1.12.1",
+      "componentType": "extension",
+      "extensionType": "ListViewCommandSet"
     },
     {
       "name": "pnp-sp-dev-spfx-extensions-react-react-command-copy-move-items",
@@ -1320,7 +1104,10 @@
         "SharePoint"
       ],
       "createDate": "2021-09-13",
-      "updateDate": "2021-09-13"
+      "updateDate": "2021-09-13",
+      "version": "1.11.0",
+      "componentType": "extension",
+      "extensionType": "ListViewCommandSet"
     },
     {
       "name": "pnp-sp-dev-spfx-extensions-react-react-command-copy-pnp-search-webpart-settings",
@@ -1338,7 +1125,10 @@
         "SharePoint"
       ],
       "createDate": "2021-06-11",
-      "updateDate": "2021-07-02"
+      "updateDate": "2021-07-02",
+      "version": "1.12.1",
+      "componentType": "extension",
+      "extensionType": "ListViewCommandSet"
     },
     {
       "name": "pnp-sp-dev-spfx-extensions-react-command-custom-command-bar",
@@ -1356,7 +1146,10 @@
         "SharePoint"
       ],
       "createDate": "2017-09-27",
-      "updateDate": "2017-09-27"
+      "updateDate": "2017-09-27",
+      "version": "1.1.1",
+      "componentType": null,
+      "extensionType": null
     },
     {
       "name": "pnp-sp-dev-spfx-extensions-react-command-demote-news",
@@ -1374,7 +1167,10 @@
         "SharePoint"
       ],
       "createDate": "2021-02-22",
-      "updateDate": "2021-02-22"
+      "updateDate": "2021-02-22",
+      "version": "1.11.0",
+      "componentType": "extension",
+      "extensionType": "ListViewCommandSet"
     },
     {
       "name": "pnp-sp-dev-spfx-extensions-react-command-dialog",
@@ -1392,7 +1188,10 @@
         "SharePoint"
       ],
       "createDate": "2019-09-01",
-      "updateDate": "2019-09-01"
+      "updateDate": "2019-09-01",
+      "version": "1.2.0",
+      "componentType": null,
+      "extensionType": null
     },
     {
       "name": "pnp-sp-dev-spfx-extensions-react-command-direct-link",
@@ -1400,17 +1199,15 @@
       "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-command-direct-link",
       "description": "Sample SharePoint Framework (SPFx) solution which gives the end-user the ability to just get a regular, simple link to a document or folder in the modern SharePoint document libraries. This is done using a CommandSet.",
       "image": "https://camo.githubusercontent.com/b65cbd290ecf800f79481174196e527ccb36aa15/68747470733a2f2f6a6f6e6173626a65726b652e66696c65732e776f726470726573732e636f6d2f323031392f30312f636f70796469726563746c696e6b2e706e673f773d343530",
-      "authors": [
-        {
-          "name": "Jonas Bjerke Hansen",
-          "pictureUrl": "https://github.com/JonasBjerke89.png"
-        }
-      ],
+      "authors": [],
       "tags": [
         "SharePoint"
       ],
       "createDate": "2019-01-06",
-      "updateDate": "2019-01-06"
+      "updateDate": "2019-01-06",
+      "version": "1.7.1",
+      "componentType": "extension",
+      "extensionType": "ListViewCommandSet"
     },
     {
       "name": "pnp-sp-dev-spfx-extensions-react-command-directions",
@@ -1428,7 +1225,10 @@
         "SharePoint"
       ],
       "createDate": "2017-06-29",
-      "updateDate": "2017-06-29"
+      "updateDate": "2017-06-29",
+      "version": "1.1.1",
+      "componentType": null,
+      "extensionType": null
     },
     {
       "name": "pnp-sp-dev-spfx-extensions-react-command-discuss-now",
@@ -1446,7 +1246,10 @@
         "SharePoint"
       ],
       "createDate": "2018-07-18",
-      "updateDate": "2018-07-18"
+      "updateDate": "2018-07-18",
+      "version": "1.4.1",
+      "componentType": null,
+      "extensionType": null
     },
     {
       "name": "pnp-sp-dev-spfx-extensions-react-command-file-size-viewer",
@@ -1468,7 +1271,10 @@
         "SharePoint"
       ],
       "createDate": "2021-02-21",
-      "updateDate": "2021-02-21"
+      "updateDate": "2021-02-21",
+      "version": "1.11.0",
+      "componentType": "extension",
+      "extensionType": null
     },
     {
       "name": "pnp-sp-dev-spfx-extensions-react-command-folder-select",
@@ -1486,7 +1292,10 @@
         "SharePoint"
       ],
       "createDate": "2020-01-03",
-      "updateDate": "2020-01-03"
+      "updateDate": "2020-01-03",
+      "version": "1.9.1",
+      "componentType": "extension",
+      "extensionType": "ListViewCommandSet"
     },
     {
       "name": "pnp-sp-dev-spfx-extensions-react-react-command-follow-document",
@@ -1504,7 +1313,10 @@
         "SharePoint"
       ],
       "createDate": "2021-06-13",
-      "updateDate": "2021-11-25"
+      "updateDate": "2021-11-25",
+      "version": null,
+      "componentType": null,
+      "extensionType": null
     },
     {
       "name": "pnp-sp-dev-spfx-extensions-react-command-form-settings",
@@ -1522,7 +1334,10 @@
         "SharePoint"
       ],
       "createDate": "2019-06-30",
-      "updateDate": "2019-06-30"
+      "updateDate": "2019-06-30",
+      "version": "1.8.2",
+      "componentType": "extension",
+      "extensionType": "ListViewCommandSet"
     },
     {
       "name": "pnp-sp-dev-spfx-extensions-react-command-get-thumbnail",
@@ -1540,7 +1355,10 @@
         "SharePoint"
       ],
       "createDate": "2019-10-25",
-      "updateDate": "2019-10-25"
+      "updateDate": "2019-10-25",
+      "version": "1.9.1",
+      "componentType": "extension",
+      "extensionType": "ListViewCommandSet"
     },
     {
       "name": "pnp-sp-dev-spfx-extensions-react-command-image-editor",
@@ -1558,7 +1376,10 @@
         "SharePoint"
       ],
       "createDate": "2020-06-16",
-      "updateDate": "2020-06-16"
+      "updateDate": "2020-06-16",
+      "version": "1.10.0",
+      "componentType": "webpart",
+      "extensionType": null
     },
     {
       "name": "pnp-sp-dev-spfx-extensions-react-command-mail-view-as-image",
@@ -1576,25 +1397,10 @@
         "SharePoint"
       ],
       "createDate": "2018-11-13",
-      "updateDate": "2018-11-13"
-    },
-    {
-      "name": "pnp-sp-dev-spfx-extensions-react-command-manage-list-subscriptions",
-      "title": "React-Manage-List-Subscriptions",
-      "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-command-manage-list-subscriptions",
-      "description": "Demonstrates managing the list subscriptions (sharepoint webhooks) and action to renew the webhook expiration date using Rest calls.",
-      "image": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-command-manage-list-subscriptions/assets/ManageSubscription.png",
-      "authors": [
-        {
-          "name": "NIshkalank Bezawada",
-          "pictureUrl": "https://github.com/NishkalankBezawada.png"
-        }
-      ],
-      "tags": [
-        "SharePoint"
-      ],
-      "createDate": "2023-09-12",
-      "updateDate": "2023-09-12"
+      "updateDate": "2018-11-13",
+      "version": "1.6.0",
+      "componentType": "extension",
+      "extensionType": "ListViewCommandSet"
     },
     {
       "name": "pnp-sp-dev-spfx-extensions-react-command-page-model-pnpjs",
@@ -1616,7 +1422,10 @@
         "SharePoint"
       ],
       "createDate": "2019-03-23",
-      "updateDate": "2023-02-15"
+      "updateDate": "2023-02-15",
+      "version": "1.12.1",
+      "componentType": "extension",
+      "extensionType": "ListViewCommandSet"
     },
     {
       "name": "pnp-sp-dev-spfx-extensions-react-command-print",
@@ -1634,7 +1443,10 @@
         "SharePoint"
       ],
       "createDate": "2018-12-05",
-      "updateDate": "2018-12-05"
+      "updateDate": "2018-12-05",
+      "version": "1.7.0",
+      "componentType": "extension",
+      "extensionType": "ListViewCommandSet"
     },
     {
       "name": "pnp-sp-dev-spfx-extensions-react-command-qrcode",
@@ -1652,7 +1464,10 @@
         "SharePoint"
       ],
       "createDate": "2019-09-01",
-      "updateDate": "2019-09-01"
+      "updateDate": "2019-09-01",
+      "version": "1.9.1",
+      "componentType": "extension",
+      "extensionType": "ListViewCommandSet"
     },
     {
       "name": "pnp-sp-dev-spfx-extensions-react-command-share-pnpjs",
@@ -1670,7 +1485,10 @@
         "SharePoint"
       ],
       "createDate": "2018-09-19",
-      "updateDate": "2018-09-19"
+      "updateDate": "2018-09-19",
+      "version": "1.6.0",
+      "componentType": "extension",
+      "extensionType": "ListViewCommandSet"
     },
     {
       "name": "pnp-sp-dev-fx-extensions-react-command-share-to-teams",
@@ -1688,7 +1506,10 @@
         "SharePoint"
       ],
       "createDate": "2021-04-19",
-      "updateDate": "2022-11-11"
+      "updateDate": "2022-11-11",
+      "version": "1.14.0",
+      "componentType": "extension",
+      "extensionType": "ListViewCommandSet"
     },
     {
       "name": "pnp-sp-dev-spfx-extensions-react-command-singlepartapppage",
@@ -1706,7 +1527,10 @@
         "SharePoint"
       ],
       "createDate": "2019-01-29",
-      "updateDate": "2022-01-12"
+      "updateDate": "2022-01-12",
+      "version": "1.7.1",
+      "componentType": "extension",
+      "extensionType": "ListViewCommandSet"
     },
     {
       "name": "pnp-sp-dev-spfx-extensions-react-command-vision-api",
@@ -1724,43 +1548,10 @@
         "SharePoint"
       ],
       "createDate": "2019-09-01",
-      "updateDate": "2019-09-01"
-    },
-    {
-      "name": "pnp-sp-dev-spfx-extensions-react-dynamic-form-with-location-picker",
-      "title": "Dynamic Form with location picker",
-      "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-dynamic-form-with-location-picker",
-      "description": "This solution implements a simple Form Customizer with a Dynamic Form with a location picker, to demonstrate the many usages of a Dynamic Form.",
-      "image": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-dynamic-form-with-location-picker/assets/dynamic-form-with-location-picker.gif",
-      "authors": [
-        {
-          "name": "Martin Lingstuyl",
-          "pictureUrl": "https://github.com/martinlingstuyl.png"
-        }
-      ],
-      "tags": [
-        "SharePoint"
-      ],
-      "createDate": "2023-06-28",
-      "updateDate": "2023-06-28"
-    },
-    {
-      "name": "pnp-sp-dev-spfx-extensions-react-dynamic-site-form",
-      "title": "Dynamic Site Form",
-      "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-dynamic-site-form",
-      "description": "The Dynamic Site Form solution implements a Form Customizer with a Dynamic Form with field overrides to look like the default SharePoint new site form.",
-      "image": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-dynamic-site-form/assets/dynamic-site-form.gif",
-      "authors": [
-        {
-          "name": "Martin Lingstuyl",
-          "pictureUrl": "https://github.com/martinlingstuyl.png"
-        }
-      ],
-      "tags": [
-        "SharePoint"
-      ],
-      "createDate": "2023-06-22",
-      "updateDate": "2023-06-22"
+      "updateDate": "2019-09-01",
+      "version": "1.9.1",
+      "componentType": "webpart",
+      "extensionType": null
     },
     {
       "name": "pnp-sp-dev-spfx-extensions-react-field-attachment-info",
@@ -1778,7 +1569,10 @@
         "SharePoint"
       ],
       "createDate": "2020-04-02",
-      "updateDate": "2020-04-02"
+      "updateDate": "2020-04-02",
+      "version": "1.10.0",
+      "componentType": "extension",
+      "extensionType": "FieldCustomizer"
     },
     {
       "name": "pnp-sp-dev-spfx-extensions-react-field-pnp-field-renderer-helper",
@@ -1796,7 +1590,10 @@
         "SharePoint"
       ],
       "createDate": "2020-09-13",
-      "updateDate": "2020-09-13"
+      "updateDate": "2020-09-13",
+      "version": "1.11.0",
+      "componentType": "extension",
+      "extensionType": "FieldCustomizer"
     },
     {
       "name": "pnp-sp-dev-spfx-extensions-react-field-pnp-file-type-renderer",
@@ -1814,7 +1611,10 @@
         "SharePoint"
       ],
       "createDate": "2020-10-01",
-      "updateDate": "2020-10-01"
+      "updateDate": "2020-10-01",
+      "version": "1.11.0",
+      "componentType": "extension",
+      "extensionType": "FieldCustomizer"
     },
     {
       "name": "pnp-sp-dev-spfx-extensions-react-field-slider",
@@ -1832,7 +1632,10 @@
         "SharePoint"
       ],
       "createDate": "2017-08-30",
-      "updateDate": "2017-08-30"
+      "updateDate": "2017-08-30",
+      "version": "1.1.0",
+      "componentType": null,
+      "extensionType": null
     },
     {
       "name": "pnp-sp-dev-spfx-extensions-react-field-text-analytics-api",
@@ -1850,7 +1653,10 @@
         "SharePoint"
       ],
       "createDate": "2018-01-18",
-      "updateDate": "2018-01-18"
+      "updateDate": "2018-01-18",
+      "version": "1.4.0",
+      "componentType": null,
+      "extensionType": null
     },
     {
       "name": "pnp-sp-dev-spfx-extensions-react-field-toggle",
@@ -1868,25 +1674,10 @@
         "SharePoint"
       ],
       "createDate": "2017-10-04",
-      "updateDate": "2017-10-04"
-    },
-    {
-      "name": "pnp-sp-dev-spfx-extensions-react-field-unique-permissions",
-      "title": "Unique permissions on list items",
-      "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-field-unique-permissions",
-      "description": "This sample demonstrates how to use field customizer to handle unique permissions on list items. ",
-      "image": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-field-unique-permissions/assets/currentUserPermissions.png",
-      "authors": [
-        {
-          "name": "Michał Kornet",
-          "pictureUrl": "https://github.com/mkm17.png"
-        }
-      ],
-      "tags": [
-        "SharePoint"
-      ],
-      "createDate": "2023-06-23",
-      "updateDate": "2023-06-23"
+      "updateDate": "2017-10-04",
+      "version": "1.3.0",
+      "componentType": null,
+      "extensionType": null
     },
     {
       "name": "pnp-sp-dev-spfx-extensions-react-field-user-permission",
@@ -1904,7 +1695,10 @@
         "SharePoint"
       ],
       "createDate": "2018-10-12",
-      "updateDate": "2018-10-12"
+      "updateDate": "2018-10-12",
+      "version": "1.6.0",
+      "componentType": "extension",
+      "extensionType": "FieldCustomizer"
     },
     {
       "name": "pnp-sp-dev-spfx-extensions-react-field-votes",
@@ -1912,17 +1706,15 @@
       "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-field-votes",
       "description": "An extension that displays Vote counter and button to vote or unvote.",
       "image": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-field-votes/assets/preview.gif",
-      "authors": [
-        {
-          "name": "Ari Gunawan",
-          "pictureUrl": "https://github.com/AriGunawan.png"
-        }
-      ],
+      "authors": [],
       "tags": [
         "SharePoint"
       ],
       "createDate": "2021-04-19",
-      "updateDate": "2023-10-08"
+      "updateDate": "2022-11-11",
+      "version": "1.15.2",
+      "componentType": "extension",
+      "extensionType": "FieldCustomizer"
     },
     {
       "name": "pnp-sp-dev-fx-extensions-react-formcustomizer-customers",
@@ -1940,7 +1732,10 @@
         "SharePoint"
       ],
       "createDate": "2022-11-09",
-      "updateDate": "2022-11-09"
+      "updateDate": "2022-11-09",
+      "version": "1.15.0",
+      "componentType": "extension",
+      "extensionType": "FormCustomizer"
     },
     {
       "name": "pnp-sp-dev-spfx-extensions-react-hidefrom-externalusers",
@@ -1950,15 +1745,18 @@
       "image": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-hidefrom-externalusers/assets/SharePoint-hidefrom-guest-user.gif",
       "authors": [
         {
-          "name": "Mohammad Mahyar Pourabdollah Khadar",
-          "pictureUrl": "https://github.com/Mahyar915.png"
+          "name": "Velin Georgiev",
+          "pictureUrl": "https://github.com/VelinGeorgiev.png"
         }
       ],
       "tags": [
         "SharePoint"
       ],
-      "createDate": "2023-09-16",
-      "updateDate": "2023-09-16"
+      "createDate": "2019-06-21",
+      "updateDate": "2019-06-21",
+      "version": "1.8.2",
+      "componentType": "extension",
+      "extensionType": "ApplicationCustomizer"
     },
     {
       "name": "pnp-sp-dev-spfx-extensions-react-item-History",
@@ -1976,7 +1774,10 @@
         "SharePoint"
       ],
       "createDate": "2018-06-15",
-      "updateDate": "2018-06-15"
+      "updateDate": "2018-06-15",
+      "version": "1.4.1",
+      "componentType": null,
+      "extensionType": null
     },
     {
       "name": "pnp-sp-dev-spfx-extensions-react-jump-to-folder",
@@ -1994,7 +1795,10 @@
         "SharePoint"
       ],
       "createDate": "2021-03-15",
-      "updateDate": "2021-03-15"
+      "updateDate": "2021-03-15",
+      "version": "1.10.0",
+      "componentType": "extension",
+      "extensionType": "ListViewCommandSet"
     },
     {
       "name": "pnp-sp-dev-spfx-extensions-react-mega-menu",
@@ -2012,69 +1816,10 @@
         "SharePoint"
       ],
       "createDate": "2018-12-10",
-      "updateDate": "2018-12-10"
-    },
-    {
-      "name": "pnp-sp-dev-spfx-extensions-react-menu-footer-classic-modern",
-      "title": "Menu Footer Classic Modern",
-      "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-menu-footer-classic-modern",
-      "description": "This is a sample showing how to create custom headers and footers that work on classic pages using JavaScript injection, and on modern pages using a SharePoint Framework Application Customizer extension.",
-      "image": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-menu-footer-classic-modern/Documentation/images/ClassicFullHeaderFooter.png",
-      "authors": [
-        {
-          "name": "Bob German",
-          "pictureUrl": "https://avatars.githubusercontent.com/u/4664072?s=460&u=29310fd67417ec5f81dc8881dc6eb5dc0065da2d&v=4"
-        }
-      ],
-      "tags": [
-        "SharePoint"
-      ],
-      "createDate": "2018-04-04",
-      "updateDate": "2018-04-04"
-    },
-    {
-      "name": "pnp-sp-dev-spfx-extensions-react-modern-version-history",
-      "title": "Modern Version History",
-      "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-modern-version-history",
-      "description": "An extension modernizing the version history experience in SharePoint Online.",
-      "image": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-modern-version-history/assets/Demo.gif",
-      "authors": [
-        {
-          "name": "Dan Toft",
-          "pictureUrl": "https://github.com/Tanddant.png"
-        },
-        {
-          "name": "Emanuele Bartolesi",
-          "pictureUrl": "https://github.com/kasuken.png"
-        },
-        {
-          "name": "Tobias Maestrini",
-          "pictureUrl": "https://github.com/tmaestrini.png"
-        }
-      ],
-      "tags": [
-        "SharePoint"
-      ],
-      "createDate": "2023-09-01",
-      "updateDate": "2023-10-02"
-    },
-    {
-      "name": "pnp-sp-dev-spfx-extensions-react-msal-bot",
-      "title": "MSAL Bot Extension",
-      "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-msal-bot",
-      "description": "This sample demonstrates how to integrate a bot within a SharePoint Online portal supporting authentication to access Azure AD protected APIs like Microsoft graph resources. Behind the scenes, this sample implements the OAuth2 implicit grant flow using the MSAL JavaScript library.",
-      "image": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-msal-bot/images/react-msal-bot.gif",
-      "authors": [
-        {
-          "name": "Franck Cornu",
-          "pictureUrl": "https://github.com/FranckyC.png"
-        }
-      ],
-      "tags": [
-        "SharePoint"
-      ],
-      "createDate": "2018-08-04",
-      "updateDate": "2018-08-04"
+      "updateDate": "2018-12-10",
+      "version": "1.12.1",
+      "componentType": "webpart",
+      "extensionType": null
     },
     {
       "name": "pnp-sp-dev-spfx-extensions-react-send-document",
@@ -2092,7 +1837,10 @@
         "SharePoint"
       ],
       "createDate": "2019-02-10",
-      "updateDate": "2019-02-10"
+      "updateDate": "2019-02-10",
+      "version": "1.7.1",
+      "componentType": "extension",
+      "extensionType": "ListViewCommandSet"
     },
     {
       "name": "pnp-sp-dev-spfx-extensions-react-send-to-teams",
@@ -2110,25 +1858,10 @@
         "SharePoint"
       ],
       "createDate": "2021-04-05",
-      "updateDate": "2021-04-05"
-    },
-    {
-      "name": "pnp-sp-dev-spfx-extensions-react-utility-extensions",
-      "title": "Copy Path and Copy Name List view command set extensions",
-      "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-utility-extensions",
-      "description": "List view command set extensions with below functionalities: Copy Path and Copy Name.",
-      "image": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-utility-extensions/assets/CopyPathCopyNameExtenstions.png",
-      "authors": [
-        {
-          "name": "Harminder Singh",
-          "pictureUrl": "https://github.com/HarminderSethi.png"
-        }
-      ],
-      "tags": [
-        "SharePoint"
-      ],
-      "createDate": "2023-10-04",
-      "updateDate": "2023-10-04"
+      "updateDate": "2021-04-05",
+      "version": "1.12.0",
+      "componentType": "extension",
+      "extensionType": "ListViewCommandSet"
     }
   ]
 }
