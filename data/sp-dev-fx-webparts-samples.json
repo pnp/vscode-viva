@@ -1049,6 +1049,42 @@
       "updateDate": "2023-03-06"
     },
     {
+      "name": "pnp-sp-dev-spfx-web-parts-react-advent-calendar",
+      "title": "Advent Calendar",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-advent-calendar",
+      "description": "This project shows how to create an Advent Calendar using SPFx and React.",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-advent-calendar/assets/adventCalendar.gif",
+      "authors": [
+        {
+          "name": "Valeras Narbutas",
+          "pictureUrl": "https://github.com/valerasnarbutas.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2023-12-01",
+      "updateDate": "2023-12-01"
+    },
+    {
+      "name": "pnp-sp-dev-spfx-web-parts-react-advent-calendar",
+      "title": "Advent Calendar",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-advent-calendar",
+      "description": "This project shows how to create an Advent Calendar using SPFx and React.",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-advent-calendar/assets/adventCalendar.gif",
+      "authors": [
+        {
+          "name": "Valeras Narbutas",
+          "pictureUrl": "https://github.com/valerasnarbutas.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2023-12-01",
+      "updateDate": "2023-12-01"
+    },
+    {
       "name": "pnp-sp-dev-spfx-web-parts-react-aggregated-calendar",
       "title": "Aggregated Calendar Web part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-aggregated-calendar",
@@ -3163,7 +3199,7 @@
         "SharePoint"
       ],
       "createDate": "2023-01-09",
-      "updateDate": "2023-01-09"
+      "updateDate": "2023-11-30"
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-hooks",
