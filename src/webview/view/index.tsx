@@ -1,24 +1,11 @@
 import * as React from 'react';
 import { createRoot } from 'react-dom/client';
 import { MemoryRouter } from 'react-router-dom';
-import { WebviewType } from '../WebviewType';
 import { App } from './components/App';
 import './index.css';
 
 
-export const paths: { [pathName: string ]: string } = {
-  aCESample: '/sp-dev-fx-aces-samples',
-  aCEScenario: '/sp-dev-fx-aces-scenarios',
-  extensionSample: '/sp-dev-fx-extensions-samples',
-  webpartSample: '/sp-dev-fx-webparts-samples'
-};
-
-export const routeEntries: { [routeKey: string]: string } = {
-  [WebviewType.ACESampleGallery]: paths.aCESample,
-  [WebviewType.ACEScenarioGallery]: paths.aCEScenario,
-  [WebviewType.ExtensionSampleGallery]: paths.extensionSample,
-  [WebviewType.WebpartSampleGallery]: paths.webpartSample
-};
+export const routeEntries: { [routeKey: string]: string } = { ['SampleGallery']: '/sp-dev-fx-samples' };
 
 const elm = document.querySelector('#root');
 if (elm) {
@@ -33,7 +20,7 @@ if (elm) {
     <MemoryRouter
       initialEntries={Object.keys(routeEntries).map(key => routeEntries[key] as string) as string[]}
       initialIndex={routeEntry || 0}>
-      <App version={version} type={type as WebviewType | null} />
+      <App version={version} />
     </MemoryRouter>
   );
 }

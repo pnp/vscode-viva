@@ -4,15 +4,15 @@ $sampleRepos = @("sp-dev-fx-aces", "sp-dev-fx-extensions", "sp-dev-fx-library-co
 
 function Parse-SampleJsonFiles {
     param (
-        [string[]]$sampleRepo,
-        [string[]]$folder
+        [string]$sampleRepo,
+        [string]$folder
     )
 
     $allSamples = Get-ChildItem -Path "$workspacePath\$sampleRepo\$folder\**\sample.json" -Recurse -Force
     $samples = @()
     foreach ($sample in $allSamples) {
 
-        Write-output $sample.FullName
+        Write-Host $sample.FullName
 
         try {
             $sampleContent = Get-Content -Path $sample.FullName -Raw
@@ -69,33 +69,40 @@ function Parse-SampleJsonFiles {
                 updateDate      = $sampleJson.updateDateTime;
                 version         = $version;  
                 componentType   = $componentType;
-                extensionType   = $extensionType;              
+                extensionType   = $extensionType;       
+                sampleGalerry   = $sampleRepo
+                sampleType      = $folder
             }
         }
         catch {
-            Write-Output "Error: $($_.Exception.Message)"
+            Write-Error "Error: $($_.Exception.Message)"
         }
     }
 
-    [hashtable]$sampleModel = @{}
-    $sampleModel.Add('samples', $samples)
-    $orderedSampleModel = [ordered]@{}
-    foreach ($Item in ($sampleModel.GetEnumerator() | Sort-Object -Property Key)) {
-        $orderedSampleModel[$Item.Key] = $Item.Value
-    }
-    #New-Object -TypeName psobject -Property $orderedSampleModel | ConvertTo-Json -Depth 10 | Out-File "$workspacePath\data\$sampleRepo-$folder.json"
-    New-Object -TypeName psobject -Property $orderedSampleModel | ConvertTo-Json -Depth 10 | Out-File "$workspacePath\vscode-viva\data\$sampleRepo-$folder.json"
+    return $samples
 }
 
+$samples = @()
 foreach ($sampleRepo in $sampleRepos) {
 
     Write-output $sampleRepo
 
     if (Test-Path -Path "$workspacePath\$sampleRepo\samples" -PathType Container) {
-        Parse-SampleJsonFiles -sampleRepo $sampleRepo -folder 'samples'
+        $output = Parse-SampleJsonFiles -sampleRepo $sampleRepo -folder 'samples'
     }
     if (Test-Path -Path "$workspacePath\$sampleRepo\scenarios" -PathType Container) {
-        Parse-SampleJsonFiles -sampleRepo $sampleRepo -folder 'scenarios'
+        $output = Parse-SampleJsonFiles -sampleRepo $sampleRepo -folder 'scenarios'
     }
+
+    $samples += $output
 }
+
+[hashtable]$sampleModel = @{}
+$sampleModel.Add('samples', $samples)
+$orderedSampleModel = [ordered]@{}
+foreach ($Item in ($sampleModel.GetEnumerator() | Sort-Object -Property Key)) {
+    $orderedSampleModel[$Item.Key] = $Item.Value
+}
+#New-Object -TypeName psobject -Property $orderedSampleModel | ConvertTo-Json -Depth 10 | Out-File "$workspacePath\data\$sampleRepo-$folder.json"
+New-Object -TypeName psobject -Property $orderedSampleModel | ConvertTo-Json -Depth 10 | Out-File "$workspacePath\vscode-viva\data\sp-dev-fx-samples.json"
 

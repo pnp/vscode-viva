@@ -2,13 +2,13 @@ import { useState, useEffect } from 'react';
 import { Messenger } from '@estruyf/vscode/dist/client';
 import { WebviewCommand } from '../../../constants';
 import { Sample } from '../../../models';
-import { GalleryType } from '../components/gallery';
 
 
-const SAMPLES_URL = 'https://raw.githubusercontent.com/pnp/vscode-viva/main/data/';
+// TODO: revert to: raw.githubusercontent.com/pnp/vscode-viva/main/data/
+const SAMPLES_URL = 'https://raw.githubusercontent.com/Adam-it/vscode-viva/improve-sample-view/data/sp-dev-fx-samples.json';
 
 // eslint-disable-next-line no-unused-vars
-export default function useSamples(type: GalleryType): [Sample[], ((query: string) => void)] {
+export default function useSamples(): [Sample[], ((query: string) => void)] {
   const [allSamples, setAllSamples] = useState<Sample[] | undefined>(undefined);
   const [samples, setSamples] = useState<Sample[] | undefined>(undefined);
   const state = Messenger.getState() as any || {};
@@ -19,14 +19,13 @@ export default function useSamples(type: GalleryType): [Sample[], ((query: strin
     }
 
     try {
-      const response = await fetch(`${SAMPLES_URL}${type}.json`);
+      const response = await fetch(SAMPLES_URL);
       const data = await response.json();
 
       setAllSamples(data.samples);
       Messenger.setState({
         ...state,
-        allSamples: data.samples,
-        type: type
+        allSamples: data.samples
       });
     } catch (e) {
       Messenger.send(WebviewCommand.toVSCode.logError, `useSamples: ${(e as Error).message}`);
@@ -35,7 +34,7 @@ export default function useSamples(type: GalleryType): [Sample[], ((query: strin
   };
 
   useEffect(() => {
-    if (!allSamples || (state['type'] && state['type'] !== type)) {
+    if (!allSamples) {
       fetchData();
       return;
     }
@@ -43,14 +42,13 @@ export default function useSamples(type: GalleryType): [Sample[], ((query: strin
     setSamples(allSamples);
     Messenger.setState({
       ...state,
-      samples: allSamples,
-      type: type
+      samples: allSamples
     });
-  }, [type, allSamples]);
+  }, [allSamples]);
 
   const search = (query: string) => {
     const currentSamples: Sample[] = state['samples'];
-    const newSamples: Sample[] = currentSamples!.filter((sample: Sample) => sample.title.toString().toLowerCase().includes(query.toLowerCase()));
+    const newSamples: Sample[] = currentSamples!.filter((sample: Sample) => sample.title.toString().toLowerCase().includes(query.toLowerCase())); //TODO: Create a search function that searches through all title, description, tags, version and author
     setSamples(newSamples);
   };
 

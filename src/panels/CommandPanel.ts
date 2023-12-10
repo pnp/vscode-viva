@@ -173,10 +173,7 @@ export class CommandPanel {
       new ActionTreeItem('Deploy project (sppkg)', '', { name: 'cloud-upload', custom: false }, undefined, Commands.deployProject),
       new ActionTreeItem('Add new component', '', { name: 'add', custom: false }, undefined, Commands.addToProject),
       new ActionTreeItem('CI/CD GitHub Workflow', '', { name: 'rocket', custom: false }, undefined, Commands.pipelineGitHub),
-      new ActionTreeItem('View SPFx web part samples', '', { name: 'library', custom: false }, undefined, Commands.showWebpartSampleGallery),
-      new ActionTreeItem('View SPFx extension samples', '', { name: 'library', custom: false }, undefined, Commands.showExtensionsSampleGallery),
-      new ActionTreeItem('View ACEs samples', '', { name: 'library', custom: false }, undefined, Commands.showACESampleGallery),
-      new ActionTreeItem('View ACEs scenarios', '', { name: 'library', custom: false }, undefined, Commands.showACEScenariosGallery),
+      new ActionTreeItem('View samples gallery', '', { name: 'library', custom: false }, undefined, Commands.samplesGallery),
     ];
 
     window.registerTreeDataProvider('pnp-view-actions', new ActionTreeviewProvider(actionCommands));

@@ -3,7 +3,6 @@ import { commands, Uri, ViewColumn, Webview, WebviewPanel, window } from 'vscode
 import { Commands, WebviewCommand } from '../constants';
 import { Extension } from '../services/Extension';
 import { Logger } from '../services/Logger';
-import { WebviewType } from './WebviewType';
 import { Scaffolder } from '../services/Scaffolder';
 
 
@@ -16,16 +15,7 @@ export class PnPWebview {
     const subscriptions = ext.subscriptions;
 
     subscriptions.push(
-      commands.registerCommand(Commands.showACESampleGallery, () => PnPWebview.open(WebviewType.ACESampleGallery))
-    );
-    subscriptions.push(
-      commands.registerCommand(Commands.showACEScenariosGallery, () => PnPWebview.open(WebviewType.ACEScenarioGallery))
-    );
-    subscriptions.push(
-      commands.registerCommand(Commands.showExtensionsSampleGallery, () => PnPWebview.open(WebviewType.ExtensionSampleGallery))
-    );
-    subscriptions.push(
-      commands.registerCommand(Commands.showWebpartSampleGallery, () => PnPWebview.open(WebviewType.WebpartSampleGallery))
+      commands.registerCommand(Commands.samplesGallery, () => PnPWebview.open())
     );
   }
 
@@ -39,32 +29,28 @@ export class PnPWebview {
   /**
    * Open or reveal the webview
    */
-  public static async open(type: WebviewType) {
+  public static async open() {
     if (PnPWebview.isOpen) {
-      PnPWebview.reveal(type);
+      PnPWebview.reveal();
     } else {
-      PnPWebview.create(type);
+      PnPWebview.create();
     }
   }
 
   /**
    * Reveal the dashboard if it is open
    */
-  public static reveal(type: WebviewType) {
+  public static reveal() {
     if (PnPWebview.webview) {
-      PnPWebview.setTitle(type);
       PnPWebview.webview.reveal();
-
-      if (type) {
-        PnPWebview.postMessage(WebviewCommand.toWebview.viewType, type);
-      }
+      PnPWebview.postMessage(WebviewCommand.toWebview.viewType);
     }
   }
 
   /**
    * Creates a new webview
    */
-  public static async create(type: WebviewType) {
+  public static async create() {
     const ext = Extension.getInstance();
 
     PnPWebview.webview = window.createWebviewPanel(
@@ -85,9 +71,9 @@ export class PnPWebview {
 
     PnPWebview.isDisposed = false;
 
-    PnPWebview.webview.webview.html = PnPWebview.getWebviewContent(PnPWebview.webview.webview, type);
+    PnPWebview.webview.webview.html = PnPWebview.getWebviewContent(PnPWebview.webview.webview);
 
-    PnPWebview.setTitle(type);
+    PnPWebview.webview.title = 'Sample Gallery';
 
     PnPWebview.webview.onDidDispose(async () => {
       PnPWebview.isDisposed = true;
@@ -107,32 +93,6 @@ export class PnPWebview {
           break;
       }
     });
-  }
-
-  /**
-   * Set the title of the webview
-   * @param type
-   * @returns
-   */
-  public static setTitle(type: WebviewType) {
-    if (!PnPWebview.webview) {
-      return;
-    }
-
-    switch (type) {
-      case WebviewType.ACESampleGallery:
-        PnPWebview.webview.title = 'ACE Sample Gallery';
-        break;
-      case WebviewType.ACEScenarioGallery:
-        PnPWebview.webview.title = 'ACE Scenario Gallery';
-        break;
-      case WebviewType.WebpartSampleGallery:
-        PnPWebview.webview.title = 'SPFx Web Parts Sample Gallery';
-        break;
-      case WebviewType.ExtensionSampleGallery:
-        PnPWebview.webview.title = 'SPFx Extensions Sample Gallery';
-        break;
-    }
   }
 
   /**
@@ -161,12 +121,11 @@ export class PnPWebview {
   /**
    * Create the webview HTML content
    * @param webView
-   * @param type
    * @param dataAttr
    * @returns
    */
   /* eslint-disable quotes */
-  private static getWebviewContent(webView: Webview, type: WebviewType, dataAttr: { [key: string]: string } = {}): string {
+  private static getWebviewContent(webView: Webview, dataAttr: { [key: string]: string } = {}): string {
     const localServer = 'http://localhost';
     const devPort = 9000;
     const bundleName = 'vscode-webview';
@@ -190,12 +149,11 @@ export class PnPWebview {
       `script-src http: https: 'self' 'unsafe-inline' 'unsafe-eval'`,
       `img-src http: https: blob: data: 'self'`,
       `font-src 'self' https: ${isProd ? `` : `${localServer}:${devPort}`}`,
-      `connect-src https://raw.githubusercontent.com/pnp/vscode-viva/main/data/sp-dev-fx-aces-samples.json https://raw.githubusercontent.com/pnp/vscode-viva/main/data/sp-dev-fx-aces-scenarios.json https://raw.githubusercontent.com/pnp/vscode-viva/main/data/sp-dev-fx-extensions-samples.json https://raw.githubusercontent.com/pnp/vscode-viva/main/data/sp-dev-fx-webparts-samples.json ${isProd ? `` : `ws://localhost:${devPort} ws://0.0.0.0:${devPort} ${localServer}:${devPort} http://0.0.0.0:${devPort}`}`,
+      `connect-src https://raw.githubusercontent.com/Adam-it/vscode-viva/improve-sample-view/data/sp-dev-fx-aces-samples.json https://raw.githubusercontent.com/Adam-it/vscode-viva/improve-sample-view/data/sp-dev-fx-aces-scenarios.json https://raw.githubusercontent.com/Adam-it/vscode-viva/improve-sample-view/data/sp-dev-fx-extensions-samples.json https://raw.githubusercontent.com/Adam-it/vscode-viva/improve-sample-view/data/sp-dev-fx-webparts-samples.json ${isProd ? `` : `ws://localhost:${devPort} ws://0.0.0.0:${devPort} ${localServer}:${devPort} http://0.0.0.0:${devPort}`}`,
     ];
 
     // Provide additional data attributes for the webview
     dataAttr['version'] = version;
-    dataAttr['type'] = type;
 
     const dataAttributes = Object.keys(dataAttr).map(key => `data-${key}='${dataAttr[key]}'`).join(' ');
 

@@ -39,10 +39,7 @@ export const Commands = {
   pipelineGitHub: `${EXTENSION_NAME}.pipelineGitHub`,
 
   // Webviews
-  showACESampleGallery: `${EXTENSION_NAME}.showACESampleGallery`,
-  showACEScenariosGallery: `${EXTENSION_NAME}.showACEScenariosGallery`,
-  showExtensionsSampleGallery: `${EXTENSION_NAME}.showExtensionsSampleGallery`,
-  showWebpartSampleGallery: `${EXTENSION_NAME}.showWebpartSampleGallery`,
+  samplesGallery: `${EXTENSION_NAME}.samplesGallery`,
 
   // Serving
   serveProject: `${EXTENSION_NAME}.serveProject`,
