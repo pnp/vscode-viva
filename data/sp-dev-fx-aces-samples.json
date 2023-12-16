@@ -210,6 +210,44 @@
       "updateDate": "2023-01-22"
     },
     {
+      "name": "pnp-sp-fx-aces-botpowered-basicace-collect-feedback",
+      "title": "Bot-Powered-ACE Collect Feedback",
+      "url": "https://github.com/pnp/sp-dev-fx-aces/tree/main/samples/BotPowered-BasicAce-CollectFeedback",
+      "description": "Viva Connection Adaptive Card Extension (ACE) that shows how to collect feedback from users using a Bot-Powered-ACE implemented with .NET.",
+      "image": "https://raw.githubusercontent.com/pnp/sp-dev-fx-aces/main/samples/BotPowered-BasicAce-CollectFeedback/assets/feedback-ace-01.png",
+      "authors": [
+        {
+          "name": "Paolo Pialorsi",
+          "pictureUrl": "https://github.com/paolopia.png"
+        }
+      ],
+      "tags": [
+        "SharePoint",
+        "Viva"
+      ],
+      "createDate": "2023-12-14",
+      "updateDate": "2023-12-14"
+    },
+    {
+      "name": "pnp-sp-fx-aces-botpowered-basicace-tasks",
+      "title": "Bot-Powered-ACE Tasks",
+      "url": "https://github.com/pnp/sp-dev-fx-aces/tree/main/samples/BotPowered-BasicAce-Tasks",
+      "description": "Viva Connection Adaptive Card Extension (ACE) that shows how to show hypothetical tasks for the current user using a Bot-Powered-ACE implemented with .NET.",
+      "image": "https://raw.githubusercontent.com/pnp/sp-dev-fx-aces/main/samples/BotPowered-BasicAce-Tasks/assets/tasks-ace-01.png",
+      "authors": [
+        {
+          "name": "Paolo Pialorsi",
+          "pictureUrl": "https://github.com/paolopia.png"
+        }
+      ],
+      "tags": [
+        "SharePoint",
+        "Viva"
+      ],
+      "createDate": "2023-12-14",
+      "updateDate": "2023-12-14"
+    },
+    {
       "name": "pnp-sp-fx-aces-ace-articlecontent",
       "title": "Article Content at a glance",
       "url": "https://github.com/pnp/sp-dev-fx-aces/tree/main/samples/ImageCard-At-a-glance",

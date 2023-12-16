@@ -4710,6 +4710,24 @@
       "updateDate": "2017-12-06"
     },
     {
+      "name": "pnp-sp-dev-spfx-web-parts-react-personal-anniversary-counter",
+      "title": "Personal Anniversary",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-personal-anniversary-counter",
+      "description": "A web part to help you notice those special days",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-personal-anniversary-counter/assets/demo.gif",
+      "authors": [
+        {
+          "name": "Dan Toft",
+          "pictureUrl": "https://github.com/Tanddant.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2023-12-09",
+      "updateDate": "2023-12-09"
+    },
+    {
       "name": "pnp-sp-dev-spfx-web-parts-react-personal-calendar",
       "title": "Personal Calendar",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-personal-calendar",
