@@ -1,5 +1,5 @@
 import { join } from 'path';
-import { commands, Uri, ViewColumn, Webview, WebviewPanel, window } from 'vscode';
+import { commands, Uri, ViewColumn, Webview, WebviewPanel, window, env } from 'vscode';
 import { Commands, WebviewCommand } from '../constants';
 import { Extension } from '../services/Extension';
 import { Logger } from '../services/Logger';
@@ -91,6 +91,9 @@ export class PnPWebview {
         case WebviewCommand.toVSCode.useSample:
           Scaffolder.useSample(payload);
           break;
+        case WebviewCommand.toVSCode.redirectTo:
+          env.openExternal(Uri.parse(payload));
+          break;
       }
     });
   }
@@ -149,7 +152,7 @@ export class PnPWebview {
       `script-src http: https: 'self' 'unsafe-inline' 'unsafe-eval'`,
       `img-src http: https: blob: data: 'self'`,
       `font-src 'self' https: ${isProd ? `` : `${localServer}:${devPort}`}`,
-      `connect-src https://raw.githubusercontent.com/Adam-it/vscode-viva/improve-sample-view/data/sp-dev-fx-aces-samples.json https://raw.githubusercontent.com/Adam-it/vscode-viva/improve-sample-view/data/sp-dev-fx-aces-scenarios.json https://raw.githubusercontent.com/Adam-it/vscode-viva/improve-sample-view/data/sp-dev-fx-extensions-samples.json https://raw.githubusercontent.com/Adam-it/vscode-viva/improve-sample-view/data/sp-dev-fx-webparts-samples.json ${isProd ? `` : `ws://localhost:${devPort} ws://0.0.0.0:${devPort} ${localServer}:${devPort} http://0.0.0.0:${devPort}`}`,
+      `connect-src https: https://raw.githubusercontent.com/Adam-it/vscode-viva/improve-sample-view/data/sp-dev-fx-samples.json ${isProd ? `` : `ws://localhost:${devPort} ws://0.0.0.0:${devPort} ${localServer}:${devPort} http://0.0.0.0:${devPort}`}`,
     ];
 
     // Provide additional data attributes for the webview

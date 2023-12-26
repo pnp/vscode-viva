@@ -91,7 +91,7 @@
 		"viewsWelcome": [
 			{
 				"view": "pnp-view-empty",
-				"contents": "Welcome to Viva Connections Toolkit\n\n\nTo start create a new SharePoint Framework project. \n[Create a new project](command:viva-connections-toolkit.createProject)\n\n\n\n\n\nUse a sample to kick off a new project and boost your development.\n[View Samples](command:viva-connections-toolkit.samplesGallery)\n\n\n\n\n\nYou can also open an existing app.\n[Open folder](command:vscode.openFolder)\n\n\n\n\n\nValidate your local workspace and check if you have the required dependencies.\n[Check dependencies](command:viva-connections-toolkit.checkDependencies)\n\n\n\n\n\nInstall the required dependencies.\n[Install dependencies](command:viva-connections-toolkit.installDependencies)\n\n\n\nIf you need  additional help or resources visit the [extension wiki](https://github.com/pnp/vscode-viva/wiki) for more information."
+				"contents": "Welcome to Viva Connections Toolkit\n\n\nTo start create a new SharePoint Framework project. \n[Create a new project](command:viva-connections-toolkit.createProject)\n\n\n\n\n\nUse a sample to kick off a new project and boost your development.\n[View samples](command:viva-connections-toolkit.samplesGallery)\n\n\n\n\n\nYou can also open an existing app.\n[Open folder](command:vscode.openFolder)\n\n\n\n\n\nValidate your local workspace and check if you have the required dependencies.\n[Check dependencies](command:viva-connections-toolkit.checkDependencies)\n\n\n\n\n\nInstall the required dependencies.\n[Install dependencies](command:viva-connections-toolkit.installDependencies)\n\n\n\nIf you need  additional help or resources visit the [extension wiki](https://github.com/pnp/vscode-viva/wiki) for more information."
 			}
 		],
 		"commands": [
@@ -270,6 +270,8 @@
 		"webpack-dev-server": "^4.8.1"
 	},
 	"dependencies": {
-		"@pnp/cli-microsoft365": "6.11.0"
+		"@pnp/cli-microsoft365": "6.11.0",
+		"react-markdown": "^9.0.1",
+		"remark-gfm": "^4.0.0"
 	}
 }

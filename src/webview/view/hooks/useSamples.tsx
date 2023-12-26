@@ -21,11 +21,11 @@ export default function useSamples(): [Sample[], ((query: string) => void)] {
     try {
       const response = await fetch(SAMPLES_URL);
       const data = await response.json();
-
-      setAllSamples(data.samples);
+      const sortedSamples = data.samples.sort((a: Sample, b: Sample) => Date.parse(b.createDate) - Date.parse(a.createDate));
+      setAllSamples(sortedSamples);
       Messenger.setState({
         ...state,
-        allSamples: data.samples
+        allSamples: sortedSamples
       });
     } catch (e) {
       Messenger.send(WebviewCommand.toVSCode.logError, `useSamples: ${(e as Error).message}`);
@@ -48,8 +48,14 @@ export default function useSamples(): [Sample[], ((query: string) => void)] {
 
   const search = (query: string) => {
     const currentSamples: Sample[] = state['samples'];
-    const newSamples: Sample[] = currentSamples!.filter((sample: Sample) => sample.title.toString().toLowerCase().includes(query.toLowerCase())); //TODO: Create a search function that searches through all title, description, tags, version and author
-    setSamples(newSamples);
+    const samplesByTitle: Sample[] = currentSamples!.filter((sample: Sample) => sample.title.toString().toLowerCase().includes(query.toLowerCase()));
+    const samplesByTag: Sample[] = currentSamples!.filter((sample: Sample) => sample.tags.some(tag => tag.toString().toLowerCase().includes(query.toLowerCase())));
+    const samplesByAuthor: Sample[] = currentSamples!.filter((sample: Sample) => sample.authors.some(author => author.name.toString().toLowerCase().includes(query.toLowerCase())));
+    const newSamples: Sample[] = samplesByTitle.concat(samplesByTag).concat(samplesByAuthor);
+    const distinctSamples = newSamples.filter((value, index, self) =>
+      index === self.findIndex((v) => v.name === value.name)
+    );
+    setSamples(distinctSamples);
   };
 
   return [samples!, search];

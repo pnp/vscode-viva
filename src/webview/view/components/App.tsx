@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Route, Routes, useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
-import { GalleryView } from './gallery';
+import { GalleryView, DetailsView } from './gallery';
 import { Messenger } from '@estruyf/vscode/dist/client';
 import { EventData } from '@estruyf/vscode/dist/models/EventData';
 import { WebviewCommand } from '../../../constants';
@@ -34,7 +34,8 @@ export const App: React.FunctionComponent<IAppProps> = ({ version }: React.Props
 
   return (
     <Routes>
-      <Route path={'SampleGallery'} element={<GalleryView />} />
+      <Route path={'/sp-dev-fx-samples'} element={<GalleryView />} />
+      <Route path={'/sp-dev-fx-sample-details-view'} element={<DetailsView />} />
     </Routes>
   );
 };

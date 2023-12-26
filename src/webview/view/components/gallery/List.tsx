@@ -3,6 +3,7 @@ import * as React from 'react';
 import { useEffect, useState } from 'react';
 import { Sample } from '../../../../models';
 import { Card } from './Card';
+import { Counter } from './Counter';
 
 
 export interface IListProps {
@@ -10,7 +11,7 @@ export interface IListProps {
 }
 
 const INITIAL_PAGE = 0;
-const NR_OF_ITEMS = 12;
+const NR_OF_ITEMS = 80;
 
 export const List: React.FunctionComponent<IListProps> = ({ items }: React.PropsWithChildren<IListProps>) => {
   const [page, setPage] = useState<number>(0);
@@ -38,7 +39,8 @@ export const List: React.FunctionComponent<IListProps> = ({ items }: React.Props
 
   return (
     <div className={'w-full flex justify-between flex-col flex-grow max-w-7xl mx-auto pt-6'}>
-      <ul role="list" className={'grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 sm:gap-x-6 lg:grid-cols-4 xl:gap-x-8'}>
+      <Counter itemsCount={items.length} />
+      <ul role="list" className={'grid grid-cols-2 gap-x-3 gap-y-8 sm:grid-cols-3 sm:gap-x-3 lg:grid-cols-4 xl:gap-x-2'}>
         {
           pagedItems.map((item, index) => (
             <Card key={`${index}-${item.name}`} item={item} />
