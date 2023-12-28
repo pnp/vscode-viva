@@ -230,6 +230,7 @@
 	},
 	"devDependencies": {
 		"@actions/core": "^1.8.2",
+		"@fluentui/react": "^8.114.0",
 		"@estruyf/vscode": "1.0.0",
 		"@types/glob": "^7.2.0",
 		"@types/mocha": "^9.0.0",

@@ -8,10 +8,11 @@ import { Sample } from '../../../models';
 const SAMPLES_URL = 'https://raw.githubusercontent.com/Adam-it/vscode-viva/improve-sample-view/data/sp-dev-fx-samples.json';
 
 // eslint-disable-next-line no-unused-vars
-export default function useSamples(): [Sample[], ((query: string) => void)] {
+export default function useSamples(): [Sample[], string[], ((query: string, componentTypes: string[], spfxVersions: string[]) => void)] {
   const [allSamples, setAllSamples] = useState<Sample[] | undefined>(undefined);
   const [samples, setSamples] = useState<Sample[] | undefined>(undefined);
   const state = Messenger.getState() as any || {};
+  const [versions, setVersions] = useState<string[]>([]);
 
   const fetchData = async () => {
     if (state['allSamples']) {
@@ -22,6 +23,28 @@ export default function useSamples(): [Sample[], ((query: string) => void)] {
       const response = await fetch(SAMPLES_URL);
       const data = await response.json();
       const sortedSamples = data.samples.sort((a: Sample, b: Sample) => Date.parse(b.createDate) - Date.parse(a.createDate));
+
+      const samplesVersions = (data.samples.map((sample: Sample) => sample.version) as string[])
+        .filter((value, index, self) => value !== null && index === self.findIndex((v) => v === value))
+        .sort((a, b) => {
+          const aNumericPart = a.split('-')[0];
+          const bNumericPart = b.split('-')[0];
+
+          const parts1 = aNumericPart.split('.').map(Number);
+          const parts2 = bNumericPart.split('.').map(Number);
+
+          for (let i = 0; i < parts1.length; i++) {
+            if (parts1[i] > parts2[i]) {
+              return -1;
+            } else if (parts1[i] < parts2[i]) {
+              return 1;
+            }
+          }
+
+          return 0;
+        });
+
+      setVersions(samplesVersions);
       setAllSamples(sortedSamples);
       Messenger.setState({
         ...state,
@@ -46,7 +69,7 @@ export default function useSamples(): [Sample[], ((query: string) => void)] {
     });
   }, [allSamples]);
 
-  const search = (query: string) => {
+  const search = (query: string, componentTypes: string[], spfxVersions: string[]) => {
     const currentSamples: Sample[] = state['samples'];
     const samplesByTitle: Sample[] = currentSamples!.filter((sample: Sample) => sample.title.toString().toLowerCase().includes(query.toLowerCase()));
     const samplesByTag: Sample[] = currentSamples!.filter((sample: Sample) => sample.tags.some(tag => tag.toString().toLowerCase().includes(query.toLowerCase())));
@@ -55,8 +78,19 @@ export default function useSamples(): [Sample[], ((query: string) => void)] {
     const distinctSamples = newSamples.filter((value, index, self) =>
       index === self.findIndex((v) => v.name === value.name)
     );
-    setSamples(distinctSamples);
+
+    let filteredSamplesByComponentType = distinctSamples;
+    if (componentTypes.length > 0) {
+      filteredSamplesByComponentType = distinctSamples.filter((sample: Sample) => componentTypes.includes(sample.componentType));
+    }
+
+    let filteredSamplesBySPFxVersion = filteredSamplesByComponentType;
+    if (spfxVersions.length > 0) {
+      filteredSamplesBySPFxVersion = filteredSamplesByComponentType.filter((sample: Sample) => spfxVersions.includes(sample.version));
+    }
+
+    setSamples(filteredSamplesBySPFxVersion);
   };
 
-  return [samples!, search];
+  return [samples!, versions, search];
 }

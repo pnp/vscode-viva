@@ -4,3 +4,5 @@ export * from './LibraryIcon';
 export * from './PreviewIcon';
 export * from './SearchIcon';
 export * from './BackIcon';
+export * from './ChevronDownIcon';
+export * from './ClearIcon';

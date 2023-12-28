@@ -6,18 +6,56 @@ import { SearchBar } from './SearchBar';
 import { NoResults } from './NoResults';
 import { GalleryHeader } from './GalleryHeader';
 import { GalleryLoader } from './GalleryLoader';
+import { IDropdownOption } from '@fluentui/react';
 
 
 export interface IGalleryViewProps { }
 
 export const GalleryView: React.FunctionComponent<IGalleryViewProps> = ({ }: React.PropsWithChildren<IGalleryViewProps>) => {
-  const [samples, search] = useSamples();
+  const [samples, versions, search] = useSamples();
   const [query, setQuery] = useState<string>('');
+  const [spfxVersions, setSPFxVersions] = useState<string[]>();
+  const [componentTypes, setComponentTypes] = useState<string[]>();
 
-  const onSampleSearch = (event: any) => {
+  const onSearchTextboxChange = (event: any) => {
     const input: string = event.target.value;
     setQuery(input);
-    search(input);
+    search(input, componentTypes ?? [], spfxVersions ?? []);
+  };
+
+  const onFilterBySPFxVersionChange = (event: any, option?: IDropdownOption) => {
+    let spfxVersionsInput: string[] = [];
+    if (option?.selected) {
+      spfxVersionsInput = [...spfxVersions ?? [], option.key as string];
+    } else {
+      spfxVersionsInput = spfxVersions?.filter(componentType => componentType !== option?.key) ?? [];
+    }
+
+    setSPFxVersions(spfxVersionsInput);
+    search(query, componentTypes ?? [], spfxVersionsInput);
+  };
+
+  const onFilterByComponentTypeChange = (event: any, option?: IDropdownOption) => {
+    let componentTypesInput: string[] = [];
+    if (option?.selected) {
+      componentTypesInput = [...componentTypes ?? [], option.key as string];
+    } else {
+      componentTypesInput = componentTypes?.filter(componentType => componentType !== option?.key) ?? [];
+    }
+
+    setComponentTypes(componentTypesInput);
+    search(query, componentTypesInput, spfxVersions ?? []);
+  };
+
+  const getSPFxVersions = (): IDropdownOption[] => {
+    const dropdownOptions: IDropdownOption[] = versions.map(version => ({
+      key: version,
+      text: version,
+    })).filter((value, index, self) =>
+      value.key !== null &&
+      index === self.findIndex((v) => v.key === value.key)
+    );
+    return dropdownOptions;
   };
 
   return (
@@ -32,7 +70,12 @@ export const GalleryView: React.FunctionComponent<IGalleryViewProps> = ({ }: Rea
         samples !== undefined && (
           <div className='pb-16'>
             <GalleryHeader />
-            <SearchBar onSearch={(event) => onSampleSearch(event)} initialQuery={query} />
+            <SearchBar
+              onSearchTextboxChange={(event) => onSearchTextboxChange(event)}
+              onFilterBySPFxVersionChange={(event, option) => onFilterBySPFxVersionChange(event, option)}
+              onFilterByComponentTypeChange={(event, option) => onFilterByComponentTypeChange(event, option)}
+              initialQuery={query}
+              spfxVersions={getSPFxVersions()} />
 
             {
               samples.length === 0 && (
