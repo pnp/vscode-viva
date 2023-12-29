@@ -1,5 +1,8 @@
 {
   "samples": [
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-aces\\scenarios\\ace-data-api-builder\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-aces\\scenarios\\ace-lob\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-aces\\scenarios\\ace-microsoftgraph\\assets\\sample.json",
     {
       "name": "pnp-sp-dev-fx-aces-scenarios-ace-data-api-builder",
       "title": "Exposing business data in Microsoft 365 using Azure Data API builder",
@@ -79,6 +82,120 @@
       "sampleGalerry": "sp-dev-fx-aces",
       "sampleType": "scenarios"
     },
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-extensions\\samples\\jquery-application-toastr\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-extensions\\samples\\jquery-field-itemorder\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-extensions\\samples\\js-application-alert-message\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-extensions\\samples\\js-application-analytics\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-extensions\\samples\\js-application-appinsights\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-extensions\\samples\\js-application-appinsights-advanced\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-extensions\\samples\\js-application-dynamically-importing-styles\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-extensions\\samples\\js-application-graph-client\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-extensions\\samples\\js-application-header-toggler\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-extensions\\samples\\js-application-intranet-searchbox\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-extensions\\samples\\js-application-listdrivenplaceholders\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-extensions\\samples\\js-application-microsoft-clarity\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-extensions\\samples\\js-application-redirect\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-extensions\\samples\\js-application-run-once\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-extensions\\samples\\js-command-clone\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-extensions\\samples\\js-command-convert-to-pdf\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-extensions\\samples\\js-command-copy-classic-link\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-extensions\\samples\\js-command-hide-commands\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-extensions\\samples\\js-command-item-permissions\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-extensions\\samples\\js-command-lock-item\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-extensions\\samples\\js-command-selecteditems-export\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-extensions\\samples\\js-field-animated-progress\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-extensions\\samples\\js-field-conditionalformatting\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-extensions\\samples\\js-field-taskpriority\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-extensions\\samples\\js-field-weather\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-extensions\\samples\\js-guest-message\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-extensions\\samples\\js-share-to-teams\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-extensions\\samples\\react-aadtokenprovider-bot\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-extensions\\samples\\react-app-announcements\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-extensions\\samples\\react-application-alerts\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-extensions\\samples\\react-application-announcements\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-extensions\\samples\\react-application-botframework-chat\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-extensions\\samples\\react-application-breadcrumb\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-extensions\\samples\\react-application-collab-footer\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-extensions\\samples\\react-application-customizer-feedback-widget\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-extensions\\samples\\react-application-duetasks\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-extensions\\samples\\react-application-festivals\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-extensions\\samples\\react-application-grouplinks\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-extensions\\samples\\react-application-injectcss\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-extensions\\samples\\react-application-logo-festoon\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-extensions\\samples\\react-application-machine-translations\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-extensions\\samples\\react-application-messagebanner\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-extensions\\samples\\react-application-my-flows-list\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-extensions\\samples\\react-application-my-lists-notifications\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-extensions\\samples\\react-application-myfavourites\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-extensions\\samples\\react-application-myfollowedsites\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-extensions\\samples\\react-application-nav-search-driven\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-extensions\\samples\\react-application-news-ticker\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-extensions\\samples\\react-application-office-groups-nav\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-extensions\\samples\\react-application-page-comments-sentiment\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-extensions\\samples\\react-application-page-related-bing-news\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-extensions\\samples\\react-application-personal-assistant\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-extensions\\samples\\react-application-portal-footer\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-extensions\\samples\\react-application-pva-bot\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-extensions\\samples\\react-application-qna-chat\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-extensions\\samples\\react-application-regions-footer\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-extensions\\samples\\react-application-search-dynamicdata\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-extensions\\samples\\react-application-sitepagecoremetadata\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-extensions\\samples\\react-application-sites-hubsite-switcher\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-extensions\\samples\\react-application-team-archived-notification\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-extensions\\samples\\react-application-tenant-global-navbar\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-extensions\\samples\\react-application-tfl-status\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-extensions\\samples\\react-application-weather-widget\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-extensions\\samples\\react-application-webhooks-notification\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-extensions\\samples\\react-bot-framework-secure\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-extensions\\samples\\react-bot-framework-sso\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-extensions\\samples\\react-command-addfolders\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-extensions\\samples\\react-command-change-page-layouttype\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-extensions\\samples\\react-command-convert-to-pdf\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-extensions\\samples\\react-command-copy-move-items\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-extensions\\samples\\react-command-copy-pnp-search-webpart-settings\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-extensions\\samples\\react-command-custom-command-bar\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-extensions\\samples\\react-command-demote-news\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-extensions\\samples\\react-command-dialog\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-extensions\\samples\\react-command-direct-link\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-extensions\\samples\\react-command-directions\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-extensions\\samples\\react-command-discuss-now\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-extensions\\samples\\react-command-file-size-viewer\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-extensions\\samples\\react-command-folder-select\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-extensions\\samples\\react-command-follow-document\\Assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-extensions\\samples\\react-command-form-settings\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-extensions\\samples\\react-command-get-thumbnail\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-extensions\\samples\\react-command-image-editor\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-extensions\\samples\\react-command-mail-view-as-image\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-extensions\\samples\\react-command-manage-list-subscriptions\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-extensions\\samples\\react-command-page-model-pnpjs\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-extensions\\samples\\react-command-print\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-extensions\\samples\\react-command-qrcode\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-extensions\\samples\\react-command-share-pnpjs\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-extensions\\samples\\react-command-share-to-teams\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-extensions\\samples\\react-command-singlepartapppage\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-extensions\\samples\\react-command-vision-api\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-extensions\\samples\\react-dynamic-form-with-location-picker\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-extensions\\samples\\react-dynamic-site-form\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-extensions\\samples\\react-field-attachment-info\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-extensions\\samples\\react-field-pnp-field-renderer-helper\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-extensions\\samples\\react-field-pnp-file-type-renderer\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-extensions\\samples\\react-field-slider\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-extensions\\samples\\react-field-text-analytics-api\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-extensions\\samples\\react-field-toggle\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-extensions\\samples\\react-field-unique-permissions\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-extensions\\samples\\react-field-user-permission\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-extensions\\samples\\react-field-votes\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-extensions\\samples\\react-formcustomizer-customers\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-extensions\\samples\\react-hidefrom-externalusers\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-extensions\\samples\\react-item-History\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-extensions\\samples\\react-jump-to-folder\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-extensions\\samples\\react-mega-menu\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-extensions\\samples\\react-menu-footer-classic-modern\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-extensions\\samples\\react-modern-version-history\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-extensions\\samples\\react-msal-bot\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-extensions\\samples\\react-send-document\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-extensions\\samples\\react-send-to-teams\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-extensions\\samples\\react-utility-extensions\\assets\\sample.json",
     {
       "name": "pnp-sp-dev-spfx-extensions-jquery-application-toastr",
       "title": "Toastr Application Customizer",
@@ -652,6 +769,29 @@
       "sampleType": "samples"
     },
     {
+      "name": "pnp-sp-dev-spfx-extensions-react-react-application-customizer-feedback-widget",
+      "title": "Sticky Feedback Widget Application Customizer",
+      "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-application-customizer-feedback-widget",
+      "description": "An SPFx Application Customizer Extension placed in the bottom placeholder which allows users to input their feedbacks without scrolling down to the end of the page.",
+      "image": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-customizer-feedback-widget/assets/Feedback_Widget1.png",
+      "authors": [
+        {
+          "name": "Sandeep P S",
+          "pictureUrl": "https://github.com/Sandeep-FED.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2023-07-02",
+      "updateDate": "2023-07-02",
+      "version": "1.16.1",
+      "componentType": "extension",
+      "extensionType": "ApplicationCustomizer",
+      "sampleGalerry": "sp-dev-fx-extensions",
+      "sampleType": "samples"
+    },
+    {
       "name": "pnp-sp-dev-spfx-extensions-react-application-duetasks",
       "title": "Overdue Tasks Application Customizer",
       "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-application-duetasks",
@@ -868,6 +1008,29 @@
       "sampleType": "samples"
     },
     {
+      "name": "pnp-sp-dev-spfx-extensions-react-application-nav-search-driven",
+      "title": "Search driven navigation",
+      "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-application-qna-chat",
+      "description": "SPFx application search driven navigation and permission side panel.",
+      "image": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-nav-search-driven/assets/01SearchDrivenNavigation.png",
+      "authors": [
+        {
+          "name": "Markus Moeller",
+          "pictureUrl": "https://github.com/mmsharepoint.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2023-07-27",
+      "updateDate": "2023-07-27",
+      "version": "1.17.4",
+      "componentType": "extension",
+      "extensionType": "ApplicationCustomizer",
+      "sampleGalerry": "sp-dev-fx-extensions",
+      "sampleType": "samples"
+    },
+    {
       "name": "pnp-sp-dev-spfx-extensions-react-application-news-ticker",
       "title": "News Ticker",
       "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-application-news-ticker",
@@ -960,6 +1123,29 @@
       "sampleType": "samples"
     },
     {
+      "name": "pnp-sp-dev-spfx-extensions-react-application-personal-assistant",
+      "title": "Personal Assistant - OpenAI Function Calling with Microsoft Graph",
+      "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-application-personal-assistant",
+      "description": "This sample is chatbot that provides information to the current logged in user.",
+      "image": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-personal-assistant/assets/demo.gif",
+      "authors": [
+        {
+          "name": "Anoop Tatti",
+          "pictureUrl": "https://github.com/anoopt.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2023-06-23",
+      "updateDate": "2023-06-23",
+      "version": "1.17.3",
+      "componentType": "extension",
+      "extensionType": "ApplicationCustomizer",
+      "sampleGalerry": "sp-dev-fx-extensions",
+      "sampleType": "samples"
+    },
+    {
       "name": "pnp-sp-dev-spfx-extensions-react-application-pva-bot",
       "title": "Power Virtual Agents Bot Host",
       "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-application-pva-bot",
@@ -1000,7 +1186,7 @@
       "authors": [
         {
           "name": "Rodrigo Silva",
-          "pictureUrl": "https://githob.com/Rodrigo Silva.png"
+          "pictureUrl": "https://github.com/RodrigoSilva.png"
         }
       ],
       "tags": [
@@ -1149,6 +1335,29 @@
       "version": "1.2.0",
       "componentType": null,
       "extensionType": null,
+      "sampleGalerry": "sp-dev-fx-extensions",
+      "sampleType": "samples"
+    },
+    {
+      "name": "pnp-sp-dev-spfx-extensions-react-application-tfl-status",
+      "title": "Transport for London (TfL) Status",
+      "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-application-tfl-status",
+      "description": "This sample is chatbot that provides information about Transport for London (TfL) status.",
+      "image": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-tfl-status/assets/demo.gif",
+      "authors": [
+        {
+          "name": "anoopt",
+          "pictureUrl": "https://github.com/anoopt.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2023-06-23",
+      "updateDate": "2023-06-23",
+      "version": "1.17.3",
+      "componentType": "extension",
+      "extensionType": "ApplicationCustomizer",
       "sampleGalerry": "sp-dev-fx-extensions",
       "sampleType": "samples"
     },
@@ -1388,7 +1597,12 @@
       "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-command-direct-link",
       "description": "Sample SharePoint Framework (SPFx) solution which gives the end-user the ability to just get a regular, simple link to a document or folder in the modern SharePoint document libraries. This is done using a CommandSet.",
       "image": "https://camo.githubusercontent.com/b65cbd290ecf800f79481174196e527ccb36aa15/68747470733a2f2f6a6f6e6173626a65726b652e66696c65732e776f726470726573732e636f6d2f323031392f30312f636f70796469726563746c696e6b2e706e673f773d343530",
-      "authors": [],
+      "authors": [
+        {
+          "name": "Jonas Bjerke Hansen",
+          "pictureUrl": "https://github.com/JonasBjerke89.png"
+        }
+      ],
       "tags": [
         "SharePoint"
       ],
@@ -1612,6 +1826,29 @@
       "sampleType": "samples"
     },
     {
+      "name": "pnp-sp-dev-spfx-extensions-react-command-manage-list-subscriptions",
+      "title": "React-Manage-List-Subscriptions",
+      "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-command-manage-list-subscriptions",
+      "description": "Demonstrates managing the list subscriptions (sharepoint webhooks) and action to renew the webhook expiration date using Rest calls.",
+      "image": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-command-manage-list-subscriptions/assets/ManageSubscription.png",
+      "authors": [
+        {
+          "name": "NIshkalank Bezawada",
+          "pictureUrl": "https://github.com/NishkalankBezawada.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2023-09-12",
+      "updateDate": "2023-09-12",
+      "version": "1.17.4",
+      "componentType": "extension",
+      "extensionType": "ListViewCommandSet",
+      "sampleGalerry": "sp-dev-fx-extensions",
+      "sampleType": "samples"
+    },
+    {
       "name": "pnp-sp-dev-spfx-extensions-react-command-page-model-pnpjs",
       "title": "Modern Page Model with PnP/PnPjs",
       "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-command-page-model-pnpjs",
@@ -1777,6 +2014,52 @@
       "sampleType": "samples"
     },
     {
+      "name": "pnp-sp-dev-spfx-extensions-react-dynamic-form-with-location-picker",
+      "title": "Dynamic Form with location picker",
+      "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-dynamic-form-with-location-picker",
+      "description": "This solution implements a simple Form Customizer with a Dynamic Form with a location picker, to demonstrate the many usages of a Dynamic Form.",
+      "image": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-dynamic-form-with-location-picker/assets/dynamic-form-with-location-picker.gif",
+      "authors": [
+        {
+          "name": "Martin Lingstuyl",
+          "pictureUrl": "https://github.com/martinlingstuyl.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2023-06-28",
+      "updateDate": "2023-06-28",
+      "version": "1.17.3",
+      "componentType": "extension",
+      "extensionType": "FormCustomizer",
+      "sampleGalerry": "sp-dev-fx-extensions",
+      "sampleType": "samples"
+    },
+    {
+      "name": "pnp-sp-dev-spfx-extensions-react-dynamic-site-form",
+      "title": "Dynamic Site Form",
+      "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-dynamic-site-form",
+      "description": "The Dynamic Site Form solution implements a Form Customizer with a Dynamic Form with field overrides to look like the default SharePoint new site form.",
+      "image": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-dynamic-site-form/assets/dynamic-site-form.gif",
+      "authors": [
+        {
+          "name": "Martin Lingstuyl",
+          "pictureUrl": "https://github.com/martinlingstuyl.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2023-06-22",
+      "updateDate": "2023-06-22",
+      "version": "1.17.3",
+      "componentType": "extension",
+      "extensionType": "FormCustomizer",
+      "sampleGalerry": "sp-dev-fx-extensions",
+      "sampleType": "samples"
+    },
+    {
       "name": "pnp-sp-dev-spfx-extensions-react-field-attachment-info",
       "title": "Field Attachment Info",
       "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-field-attachment-info",
@@ -1915,6 +2198,29 @@
       "sampleType": "samples"
     },
     {
+      "name": "pnp-sp-dev-spfx-extensions-react-field-unique-permissions",
+      "title": "Unique permissions on list items",
+      "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-field-unique-permissions",
+      "description": "This sample demonstrates how to use field customizer to handle unique permissions on list items. ",
+      "image": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-field-unique-permissions/assets/currentUserPermissions.png",
+      "authors": [
+        {
+          "name": "Michał Kornet",
+          "pictureUrl": "https://github.com/mkm17.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2023-06-23",
+      "updateDate": "2023-06-23",
+      "version": "1.17.2",
+      "componentType": "extension",
+      "extensionType": "FieldCustomizer",
+      "sampleGalerry": "sp-dev-fx-extensions",
+      "sampleType": "samples"
+    },
+    {
       "name": "pnp-sp-dev-spfx-extensions-react-field-user-permission",
       "title": "Displaying the current user permission with PNPJs",
       "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-field-user-permission",
@@ -1943,12 +2249,17 @@
       "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-field-votes",
       "description": "An extension that displays Vote counter and button to vote or unvote.",
       "image": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-field-votes/assets/preview.gif",
-      "authors": [],
+      "authors": [
+        {
+          "name": "Ari Gunawan",
+          "pictureUrl": "https://github.com/AriGunawan.png"
+        }
+      ],
       "tags": [
         "SharePoint"
       ],
       "createDate": "2021-04-19",
-      "updateDate": "2022-11-11",
+      "updateDate": "2023-10-08",
       "version": "1.15.2",
       "componentType": "extension",
       "extensionType": "FieldCustomizer",
@@ -1986,15 +2297,15 @@
       "image": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-hidefrom-externalusers/assets/SharePoint-hidefrom-guest-user.gif",
       "authors": [
         {
-          "name": "Velin Georgiev",
-          "pictureUrl": "https://github.com/VelinGeorgiev.png"
+          "name": "Mohammad Mahyar Pourabdollah Khadar",
+          "pictureUrl": "https://github.com/Mahyar915.png"
         }
       ],
       "tags": [
         "SharePoint"
       ],
-      "createDate": "2019-06-21",
-      "updateDate": "2019-06-21",
+      "createDate": "2023-09-16",
+      "updateDate": "2023-09-16",
       "version": "1.8.2",
       "componentType": "extension",
       "extensionType": "ApplicationCustomizer",
@@ -2071,6 +2382,37 @@
       "sampleType": "samples"
     },
     {
+      "name": "pnp-sp-dev-spfx-extensions-react-modern-version-history",
+      "title": "Modern Version History",
+      "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-modern-version-history",
+      "description": "An extension modernizing the version history experience in SharePoint Online.",
+      "image": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-modern-version-history/assets/Demo.gif",
+      "authors": [
+        {
+          "name": "Dan Toft",
+          "pictureUrl": "https://github.com/Tanddant.png"
+        },
+        {
+          "name": "Emanuele Bartolesi",
+          "pictureUrl": "https://github.com/kasuken.png"
+        },
+        {
+          "name": "Tobias Maestrini",
+          "pictureUrl": "https://github.com/tmaestrini.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2023-09-01",
+      "updateDate": "2023-10-02",
+      "version": "1.17.4",
+      "componentType": "extension",
+      "extensionType": "ListViewCommandSet",
+      "sampleGalerry": "sp-dev-fx-extensions",
+      "sampleType": "samples"
+    },
+    {
       "name": "pnp-sp-dev-spfx-extensions-react-send-document",
       "title": "Send Document With E-Mail",
       "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-send-document",
@@ -2116,6 +2458,392 @@
       "sampleGalerry": "sp-dev-fx-extensions",
       "sampleType": "samples"
     },
+    {
+      "name": "pnp-sp-dev-spfx-extensions-react-utility-extensions",
+      "title": "Copy Path and Copy Name List view command set extensions",
+      "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-utility-extensions",
+      "description": "List view command set extensions with below functionalities: Copy Path and Copy Name.",
+      "image": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-utility-extensions/assets/CopyPathCopyNameExtenstions.png",
+      "authors": [
+        {
+          "name": "Harminder Singh",
+          "pictureUrl": "https://github.com/HarminderSethi.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2023-10-04",
+      "updateDate": "2023-10-04",
+      "version": "1.18.0",
+      "componentType": "extension",
+      "extensionType": "ListViewCommandSet",
+      "sampleGalerry": "sp-dev-fx-extensions",
+      "sampleType": "samples"
+    },
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\aad-api-spo-cookie\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\angular-aad-webapi\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\angular-greeting\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\angular-migration\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\angular-msgraph\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\angular-multipage\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\angular-ngofficeuifabric-file-upload\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\angular-ngofficeuifabric-todo\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\angular-search\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\angular-todo\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\angular2-prototype\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\angularelements-helloworld\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\angularelements-html-templatefile\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\bootstrap-slider\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\handlebarsjs-webpack-loader\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\jquery-cdn\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\jquery-photopile\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\js-advanced-commenting\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\js-display-list\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\js-dynamic-bundling-libraries\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\js-employee-spotlight\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\js-extend-gulp\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\js-extend-webpack\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\js-gitHubBadge\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\js-modern-calendar\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\js-msgraph-thumbnail\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\js-myflows\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\js-powerbi-embedded\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\js-propertycontrols-svg\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\js-public-unjoined-teams\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\js-skype-status\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\js-solution-editions\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\js-theme-manager\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\js-theme-manager-2019\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\js-workbench-customizer\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\knockout-dependent-properties\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\knockout-sp-pnp-js\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\knockout-taxonomy\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-3rd-party-api\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-aad-implicitflow\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-aad-webapi\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-accordion\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-accordion-dynamic-section\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-accordion-section\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-accordion-with-richtext\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-adaptive-card-host-control\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-adaptive-cards-image-gallery\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-adaptivecards\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-adaptivecards-hooks\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-add-formcustomizer-to-list\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-add-js-css-ref\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-admin-sc-catalog-pnpjs\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-advanced-iframe\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-advanced-page-properties\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-advent-calendar\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-advent-calendar\\src\\webparts\\adventCalendar\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-aggregated-calendar\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-apim-tablestorage\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-app-settings\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-appinsights-dashboard\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-associated-sites-links\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-async-await-sp-pnp-js\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-at-a-glance\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-avatar\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-azfunc-vimeo\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-azure-devops-tasks\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-azure-openai-connector\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-azurefunction-northwind2\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-banner\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-birthdays\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-birthdays-per-month\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-bot-framework\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-bot-framework-secure\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-bot-framework-sso\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-calendar\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-calendar-feed\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-caml2table\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-carousel\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-cascadingdropdowns\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-chartcontrol\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-chat-gpt\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-chatgpt-app\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-check-flows\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-check-user-group\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-cherry-picked-content\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-company-stories\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-comparer\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-components-dynamicloading\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-content-query-online\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-content-query-onprem\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-copy-views\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-covid19-info\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-cross-device-data\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-css-in-js-typestyle\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-custom-links\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-custompropertypanecontrols\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-dall-e-image-generation\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-dashboards\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-datatable\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-datatable-using-mui-tables\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-daterangepicker\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-designpatterns-typescript\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-dev-radar\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-directory\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-display-hierarchy\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-doccard-faq\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-document-links-accordion\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-documents-detailslist\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-download-multiple-documents\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-dynamics-crm-api\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-edit-applicationcustomizer\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-emoji-ratings\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-enhanced-list-formatting\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-enhanced-page-properties\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-enhanced-powerapps\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-environment-settings\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-events-aggregator\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-events-dynamicdata\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-extension-manager\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-facebook-plugin\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-faqapp\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-faqs\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-feature-framework\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-feedback\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-feedback-sidebar\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-file-upload\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-find-parker\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-flighttracker\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-flow-button\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-flow-dashboard\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-fluentui-9\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-fluentui-theme-variant\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-follow-document\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-followed-drag-and-drop-grid\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-followedsites\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-functional-component\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-functional-component-with-data-fetch\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-functional-servicescope-hooks\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-functional-stateful-component\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-github-badge\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-global-news\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-global-news-sp2019\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-google-fit\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-governor-sharing\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-graph-app-secret-expiration\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-graph-auto-batching\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-graph-azureapps\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-graph-calendar\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-graph-cascading-managed-metadata\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-graph-evalurl\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-graph-feedback-form\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-graph-groupviewer\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-graph-mgt-client\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-graph-personalemail\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-graph-pnpjs\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-graph-profile-awards\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-graph-reports\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-graph-schema-extensions\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-graph-telephonedirectory\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-graph-webpart-report\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-group-membership-manager\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-groups-teams\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-hero-webpart\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-holidays-calendar\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-hooks\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-htm-templating\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-image-editor\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-image-gallery\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-image-magnifier\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-image-slider-list-taxonomy-filter\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-instagram\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-interactive-map\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-invitation-manager\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-invoice-generator\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-ioc-tests\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-item-History\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-jest-testing\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-json-form\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-kanban-board\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-kiota-custom-api-client\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-links\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-list-form\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-list-items-menu\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-list-items-menu-sp2019\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-list-search\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-lists-hide\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-listview-context-ecb\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-lob-integration\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-m365-services-health\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-manage-hublevel-subscriptions\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-manage-o365-groups\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-manage-profile-card-properties\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-manage-sitedesigns\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-manage-spfx-solutions-alm\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-material-ui\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-members-with-presence\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-mgtevents\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-minesweeper\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-mobx\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-mobx-multiple-stores\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-modern-birthdays\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-modern-charts\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-modern-organization-chart\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-msal-msgraph\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-msgraph-extension\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-msgraph-peoplesearch\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-multilist-grid\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-multimedia-gallery\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-multipage\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-multiscreen-webpart\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-my-approvals\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-my-dashboard\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-my-events\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-my-groups\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-my-onedrive-info\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-my-personal-apps\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-my-sites\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-my-teams\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-myonedrive\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-mytasks\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-news\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-news-banner\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-news-extension\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-office-offer-creation\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-officegraph\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-offline-first\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-onedrive-finder\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-openai-devops\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-openai-summarise-page-content\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-organisationchart\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-organization-chart\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-outlook-add-todo-task\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-outlook-copy2teams\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-page-navigator\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-page-sections-navigation\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-pagecontributors\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-pages-hierarchy\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-palette-picker\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-password-vault\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-people-directory\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-peoplepicker\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-personal-anniversary-counter\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-personal-calendar\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-personal-contacts\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-personal-email\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-personal-greeting\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-personal-tasks\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-photo-sync\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-pnp-controls\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-pnp-controls-list-view-fields\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-pnp-js-hooks\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-pnp-js-sample\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-pnpjs-http-client\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-pnpjs-project-online\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-pnpjs-spsite-er-diagram\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-pnpjsexplorer\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-ppp-pnp-controls\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-ppw-html\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-private-libraries\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-project-online\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-property-bag-editor\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-provision-assets\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-questions-and-answers\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-quick-links\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-quick-poll\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-quotes\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-react-query\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-real-time\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-realtime-documents\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-realtime-incidentdashboard\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-recaptcha\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-recent-contacts\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-recently-used-documents\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-recently-visited-sites\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-redux\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-redux-async-immutablejs\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-reduxform\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-remote-event-receiver-manager\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-restaurant-menu\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-rhythm-of-business-calendar\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-roomchat\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-rss-reader\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-rxjs-event-emitter\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-sales-orders\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-save-attachments\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-save-to-onedrive-app-personal-folder\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-script-editor\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-script-editor-onprem\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-search\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-securitygrid\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-side-panel\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-site-information\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-site-provisioning-manager\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-sitepages-metadata\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-sites-selected-admin\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-skype-status\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-slide-swiper\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-smart-profile-photo-editor\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-soccer-highlights\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-sp-elevatedprivileges\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-sp-pnp-js-property-decorators\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-sp-site-user-groups\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-sp-tinymce\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-spfx-control-iframepanel\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-spupsproperty-sync\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-staffdirectory\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-star-ratings\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-stock-information\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-tabacordion\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-tailwindcss\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-tailwindcss3\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-target-audience\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-taxonomy-file-explorer\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-taxonomypicker\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-taxonomypicker-panel\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-team-creator\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-teams-configure-tab\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-teams-conversationview\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-teams-graph-upload-as-pdf\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-teams-lead-dashboard\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-teams-meeting-app-questionnaire\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-teams-membership-updater\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-teams-message\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-teams-message-user\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-teams-my-webinars\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-teams-personal-app-settings\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-teams-send-notification\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-teams-tab-field-visit-mashup\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-teams-tab-suggested-members\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-teams-tabs-pnpjs\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-teams-tagging\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-tenant-properties\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-themes\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-tiles\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-tiles-v2\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-timeline\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-tinymce\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-todo-basic\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-tour-pnpjs\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-tree-orgchart\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-twitter\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-upgrade-me\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-versiondisplay\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-video-banner\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-videolibrary\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-visio\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-weather-information\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-webcam\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-webhooks-realtime\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-webpartdetails\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-word-game\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-world-clocks\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-world-time\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-yammer-api\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-yammer-praise\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-youtube\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-zod\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\react-zpl-viewer\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\riot-list\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\section-backgrounds\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\sharepoint-crud\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\vue-js-org-chart\\assets\\sample.json",
+    "D:\\a\\vscode-viva\\vscode-viva\\sp-dev-fx-webparts\\samples\\vuejs-todo-single-file-component\\assets\\sample.json",
     {
       "name": "pnp-sp-dev-spfx-web-parts-angular-aad-webapi",
       "title": "Call custom Web API secured with AAD from SharePoint Framework client-side web part using Angular v1.x",
@@ -2716,8 +3444,8 @@
         "SharePoint"
       ],
       "createDate": "2020-11-02",
-      "updateDate": "2020-11-02",
-      "version": "1.10.0",
+      "updateDate": "2023-12-21",
+      "version": "1.18.2",
       "componentType": "webpart",
       "extensionType": null,
       "sampleGalerry": "sp-dev-fx-webparts",
@@ -3139,6 +3867,29 @@
       "sampleType": "samples"
     },
     {
+      "name": "pnp-sp-dev-spfx-web-parts-react-advent-calendar",
+      "title": "Advent Calendar",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-advent-calendar",
+      "description": "This project shows how to create an Advent Calendar using SPFx and React.",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-advent-calendar/assets/adventCalendar.gif",
+      "authors": [
+        {
+          "name": "Valeras Narbutas",
+          "pictureUrl": "https://github.com/valerasnarbutas.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2023-12-01",
+      "updateDate": "2023-12-01",
+      "version": "1.17.3",
+      "componentType": "webpart",
+      "extensionType": null,
+      "sampleGalerry": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
       "name": "pnp-sp-dev-spfx-web-parts-react-aggregated-calendar",
       "title": "Aggregated Calendar Web part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-aggregated-calendar",
@@ -3365,7 +4116,7 @@
         "SharePoint"
       ],
       "createDate": "2023-07-26",
-      "updateDate": "2023-07-26",
+      "updateDate": "2023-10-06",
       "version": "1.17.4",
       "componentType": "webpart",
       "extensionType": null,
@@ -3520,7 +4271,7 @@
         "SharePoint"
       ],
       "createDate": "2020-12-04",
-      "updateDate": "2022-10-25",
+      "updateDate": "2023-12-29",
       "version": "1.12.1",
       "componentType": "webpart",
       "extensionType": null,
@@ -3926,8 +4677,8 @@
       "createDate": "2020-03-25",
       "updateDate": "2020-03-25",
       "version": "1.10.0",
-      "componentType": "extension",
-      "extensionType": "SearchQueryModifier",
+      "componentType": "webpart",
+      "extensionType": null,
       "sampleGalerry": "sp-dev-fx-webparts",
       "sampleType": "samples"
     },
@@ -4362,8 +5113,8 @@
         "SharePoint"
       ],
       "createDate": "2023-09-23",
-      "updateDate": "2023-09-23",
-      "version": "1.17.4",
+      "updateDate": "2023-10-28",
+      "version": "1.18.0",
       "componentType": "webpart",
       "extensionType": null,
       "sampleGalerry": "sp-dev-fx-webparts",
@@ -4395,6 +5146,29 @@
       "createDate": "2020-07-26",
       "updateDate": "2023-06-27",
       "version": "1.11.0",
+      "componentType": "webpart",
+      "extensionType": null,
+      "sampleGalerry": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
+      "name": "pnp-sp-dev-spfx-web-parts-react-environment-settings",
+      "title": "SPFx environment settings management",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-environment-settings",
+      "description": "Easily swap between environments when building SPFx solutions",
+      "image": "https://raw.githubusercontent.com/pnp/sp-dev-fx-webparts/main/samples/react-environment-settings/assets/demo.gif",
+      "authors": [
+        {
+          "name": "Dan Toft",
+          "pictureUrl": "https://github.com/Tanddant.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2023-11-14",
+      "updateDate": "2023-11-14",
+      "version": "1.18.1",
       "componentType": "webpart",
       "extensionType": null,
       "sampleGalerry": "sp-dev-fx-webparts",
@@ -4867,8 +5641,8 @@
         "SharePoint"
       ],
       "createDate": "2019-06-14",
-      "updateDate": "2022-02-21",
-      "version": "1.14.0",
+      "updateDate": "2023-10-10",
+      "version": "1.18.0",
       "componentType": "webpart",
       "extensionType": null,
       "sampleGalerry": "sp-dev-fx-webparts",
@@ -4984,6 +5758,29 @@
       "createDate": "2019-01-14",
       "updateDate": "2019-01-14",
       "version": "1.7.1",
+      "componentType": "webpart",
+      "extensionType": null,
+      "sampleGalerry": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
+      "name": "pnp-sp-dev-spfx-web-parts-react-governor-sharing",
+      "title": "Governor Sharing",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-governor-sharing",
+      "description": "Shows documents which have been (explicitly) shared within a SharePoint site or Team.",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-governor-sharing/assets/Govenor_Sharing_SharedItemsExample.png",
+      "authors": [
+        {
+          "name": "Robin Meure",
+          "pictureUrl": "https://github.com/robinmeure.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2023-11-24",
+      "updateDate": "2023-11-24",
+      "version": "1.18.0",
       "componentType": "webpart",
       "extensionType": null,
       "sampleGalerry": "sp-dev-fx-webparts",
@@ -5458,8 +6255,8 @@
         "SharePoint"
       ],
       "createDate": "2023-01-09",
-      "updateDate": "2023-01-09",
-      "version": "1.16.1",
+      "updateDate": "2023-11-30",
+      "version": "1.18.2",
       "componentType": "adaptiveCardExtension",
       "extensionType": null,
       "sampleGalerry": "sp-dev-fx-webparts",
@@ -7122,6 +7919,29 @@
       "sampleType": "samples"
     },
     {
+      "name": "pnp-sp-dev-spfx-web-parts-react-password-vault",
+      "title": "Password Vault",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-password-vault",
+      "description": "This web part allows you to protect your data, such as the username, password or even just a text note (rich text). This data is protected with a master password that you can choose yourself.",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-password-vault/assets/PasswordVaultDisplayMode.png",
+      "authors": [
+        {
+          "name": "Sergej Schwabauer",
+          "pictureUrl": "https://github.com/SPFxAppDev.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2023-10-27",
+      "updateDate": "2023-10-27",
+      "version": "1.16.1",
+      "componentType": "webpart",
+      "extensionType": null,
+      "sampleGalerry": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
       "name": "pnp-sp-dev-spfx-web-parts-react-peoplepicker",
       "title": "People Picker",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-peoplepicker",
@@ -7140,6 +7960,29 @@
       "updateDate": "2017-12-06",
       "version": "1.3.0",
       "componentType": null,
+      "extensionType": null,
+      "sampleGalerry": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
+      "name": "pnp-sp-dev-spfx-web-parts-react-personal-anniversary-counter",
+      "title": "Personal Anniversary",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-personal-anniversary-counter",
+      "description": "A web part to help you notice those special days",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-personal-anniversary-counter/assets/demo.gif",
+      "authors": [
+        {
+          "name": "Dan Toft",
+          "pictureUrl": "https://github.com/Tanddant.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2023-12-09",
+      "updateDate": "2023-12-09",
+      "version": "1.18.2",
+      "componentType": "webpart",
       "extensionType": null,
       "sampleGalerry": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -7677,6 +8520,29 @@
       "createDate": "2018-11-09",
       "updateDate": "2018-11-09",
       "version": "1.7.0-pr.3",
+      "componentType": "webpart",
+      "extensionType": null,
+      "sampleGalerry": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
+      "name": "pnp-sp-dev-spfx-web-parts-react-realtime-incidentdashboard",
+      "title": "List notifications + Microsoft Teams Integrations",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-realtime-incidentdashboard",
+      "description": "Illustrating using the SharePoint Framework List subscription capability, which allows you to get notified of changes to custom list refresh the displayed data",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-realtime-incidentdashboard/assets/list-notification-dashboard.jpg",
+      "authors": [
+        {
+          "name": "Ejaz Hussain",
+          "pictureUrl": "https://github.com/ejazhussain.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2023-10-23",
+      "updateDate": "2023-10-23",
+      "version": "1.18.0",
       "componentType": "webpart",
       "extensionType": null,
       "sampleGalerry": "sp-dev-fx-webparts",
@@ -8298,7 +9164,7 @@
       "name": "pnp-sp-dev-spfx-web-parts-react-star-ratings",
       "title": "Star Ratings",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-star-ratings",
-      "description": "Demonstrates Star Ratings capablities to SharePoint News.",
+      "description": "Demonstrates Star Ratings capabilities to SharePoint News.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-star-ratings/assets/react-star-ratings.png",
       "authors": [
         {
@@ -8310,8 +9176,8 @@
         "SharePoint"
       ],
       "createDate": "2021-10-07",
-      "updateDate": "2022-03-28",
-      "version": "1.12.1",
+      "updateDate": "2023-11-09",
+      "version": "1.18.0",
       "componentType": "webpart",
       "extensionType": null,
       "sampleGalerry": "sp-dev-fx-webparts",
@@ -8656,6 +9522,29 @@
       "createDate": "2021-02-28",
       "updateDate": "2021-02-28",
       "version": "1.11.0",
+      "componentType": "webpart",
+      "extensionType": null,
+      "sampleGalerry": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
+      "name": "pnp-sp-dev-spfx-web-parts-react-teams-my-webinars",
+      "title": "Teams My Webinars",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-teams-my-webinars",
+      "description": "Displays a list of Teams Webinars you are an organizer of, allows you to sync those webinars to a SharePoint list, to share within a Team and cross check pending registrants against membership of a team.",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-teams-my-webinars/assets/Screenshot 2023-12-25-main.png",
+      "authors": [
+        {
+          "name": "Nick Brown",
+          "pictureUrl": "https://github.com/techienickb.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2023-12-25",
+      "updateDate": "2023-12-31",
+      "version": "1.18.1",
       "componentType": "webpart",
       "extensionType": null,
       "sampleGalerry": "sp-dev-fx-webparts",
