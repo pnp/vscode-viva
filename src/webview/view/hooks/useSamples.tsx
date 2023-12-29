@@ -4,8 +4,7 @@ import { WebviewCommand } from '../../../constants';
 import { Sample } from '../../../models';
 
 
-// TODO: revert to: raw.githubusercontent.com/pnp/vscode-viva/main/data/
-const SAMPLES_URL = 'https://raw.githubusercontent.com/Adam-it/vscode-viva/improve-sample-view/data/sp-dev-fx-samples.json';
+const SAMPLES_URL = 'https://raw.githubusercontent.com/pnp/vscode-viva/dev/data/sp-dev-fx-samples.json';
 
 // eslint-disable-next-line no-unused-vars
 export default function useSamples(): [Sample[], string[], ((query: string, componentTypes: string[], spfxVersions: string[]) => void)] {
