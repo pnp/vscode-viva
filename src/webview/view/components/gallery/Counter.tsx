@@ -6,9 +6,5 @@ export interface ICounterProps {
 }
 
 export const Counter: React.FunctionComponent<ICounterProps> = ({ itemsCount }: React.PropsWithChildren<ICounterProps>) => {
-  return (
-    <div className={'text-right w-full mb-1'}>
-      { itemsCount } samples found
-    </div>
-  );
+  return (<label className={'float-right mt-1'}>{ itemsCount } samples found</label>);
 };

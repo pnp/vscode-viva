@@ -73,9 +73,15 @@
   color: var(--vscode-textLink-foreground)
 }
 
-.sample_card {
+.sample_card, .sample_row {
   background: var(--vscode-editorWidget-background);
   border: 1px solid var(--vscode-editorWidget-border);
+  transition: all 0.2s ease-in-out;
+}
+
+
+.sample_card:hover, .sample_row:hover {
+  box-shadow: 0 0 6px var(--vscode-editorWidget-border);
 }
 
 .sample_card img {

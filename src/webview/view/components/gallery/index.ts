@@ -7,3 +7,4 @@ export * from './GalleryView';
 export * from './List';
 export * from './NoResults';
 export * from './SearchBar';
+export * from './Row';

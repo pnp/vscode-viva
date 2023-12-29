@@ -52,8 +52,6 @@ export const SearchBar: React.FunctionComponent<ISearchBarProps> = ({ onSearchTe
         <div>
           <MultiSelect options={componentTypes} label="Component Type" onChange={onFilterByComponentTypeChange}/>
         </div>
-        <div>
-        </div>
       </div>
     </div>
   );
