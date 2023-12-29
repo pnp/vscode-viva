@@ -12,8 +12,6 @@ function Parse-SampleJsonFiles {
     $samples = @()
     foreach ($sample in $allSamples) {
 
-        Write-Output $sample.FullName
-
         try {
             $sampleContent = Get-Content -Path $sample.FullName -Raw
             $sampleJson = ConvertFrom-Json -InputObject $sampleContent
@@ -85,7 +83,7 @@ function Parse-SampleJsonFiles {
 $samples = @()
 foreach ($sampleRepo in $sampleRepos) {
 
-    Write-output $sampleRepo
+    Write-Output $sampleRepo
 
     if (Test-Path -Path "$workspacePath\$sampleRepo\samples" -PathType Container) {
         $output = Parse-SampleJsonFiles -sampleRepo $sampleRepo -folder 'samples'
