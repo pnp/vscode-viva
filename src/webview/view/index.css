@@ -79,7 +79,6 @@
   transition: all 0.2s ease-in-out;
 }
 
-
 .sample_card:hover, .sample_row:hover {
   box-shadow: 0 0 6px var(--vscode-editorWidget-border);
 }

@@ -12,7 +12,7 @@ function Parse-SampleJsonFiles {
     $samples = @()
     foreach ($sample in $allSamples) {
 
-        Write-Host $sample.FullName
+        Write-Output $sample.FullName
 
         try {
             $sampleContent = Get-Content -Path $sample.FullName -Raw
@@ -75,7 +75,7 @@ function Parse-SampleJsonFiles {
             }
         }
         catch {
-            Write-Error "Error: $($_.Exception.Message)"
+            Write-Output "Error: $($_.Exception.Message)"
         }
     }
 
@@ -103,6 +103,5 @@ $orderedSampleModel = [ordered]@{}
 foreach ($Item in ($sampleModel.GetEnumerator() | Sort-Object -Property Key)) {
     $orderedSampleModel[$Item.Key] = $Item.Value
 }
-#New-Object -TypeName psobject -Property $orderedSampleModel | ConvertTo-Json -Depth 10 | Out-File "$workspacePath\data\$sampleRepo-$folder.json"
-New-Object -TypeName psobject -Property $orderedSampleModel | ConvertTo-Json -Depth 10 | Out-File "$workspacePath\vscode-viva\data\sp-dev-fx-samples.json"
+New-Object -TypeName psobject -Property $orderedSampleModel | ConvertTo-Json -Depth 10 | Out-File "$workspacePath\data\$sampleRepo-$folder.json"
 
