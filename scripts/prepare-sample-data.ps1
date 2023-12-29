@@ -103,5 +103,5 @@ $orderedSampleModel = [ordered]@{}
 foreach ($Item in ($sampleModel.GetEnumerator() | Sort-Object -Property Key)) {
     $orderedSampleModel[$Item.Key] = $Item.Value
 }
-New-Object -TypeName psobject -Property $orderedSampleModel | ConvertTo-Json -Depth 10 | Out-File "$workspacePath\vscode-viva\data\sp-dev-fx-samples.json"
+New-Object -TypeName psobject -Property $orderedSampleModel | ConvertTo-Json -Depth 10 | Out-File "$workspacePath\data\sp-dev-fx-samples.json"
 
