@@ -152,7 +152,7 @@ export class PnPWebview {
       `script-src http: https: 'self' 'unsafe-inline' 'unsafe-eval'`,
       `img-src http: https: blob: data: 'self'`,
       `font-src 'self' https: ${isProd ? `` : `${localServer}:${devPort}`}`,
-      `connect-src https: https://raw.githubusercontent.com/Adam-it/vscode-viva/improve-sample-view/data/sp-dev-fx-samples.json ${isProd ? `` : `ws://localhost:${devPort} ws://0.0.0.0:${devPort} ${localServer}:${devPort} http://0.0.0.0:${devPort}`}`,
+      `connect-src https: https://raw.githubusercontent.com/pnp/vscode-viva/dev/data/sp-dev-fx-samples.json ${isProd ? `` : `ws://localhost:${devPort} ws://0.0.0.0:${devPort} ${localServer}:${devPort} http://0.0.0.0:${devPort}`}`,
     ];
 
     // Provide additional data attributes for the webview
