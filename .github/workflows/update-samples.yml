@@ -20,7 +20,7 @@ jobs:
           repository: pnp/sp-dev-fx-aces
           path: sp-dev-fx-aces
 
-      - name: Checkout sp-dev-fx-library-components
+      - name: Checkout sp-dev-fx-extensions
         uses: actions/checkout@v3
         with:
           repository: pnp/sp-dev-fx-extensions
