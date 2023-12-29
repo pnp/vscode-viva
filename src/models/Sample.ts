@@ -9,6 +9,7 @@ export interface Sample {
   version: string;
   componentType: string;
   extensionType: string;
+  sampleType: string;
   createDate: string;
   updateDate: string;
 }

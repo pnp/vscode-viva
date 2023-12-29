@@ -58,6 +58,7 @@ export const Row: React.FunctionComponent<IRowProps> = ({ item }: React.PropsWit
 
   const componentType = getComponentType(item.componentType);
   const extensionType = getExtensionType(item.extensionType);
+  const sampleType = item.sampleType === 'scenarios' ? 'scenario' : '';
 
   return (
     <li className={'sample_row mb-3 px-2 py-1'}>
@@ -76,6 +77,10 @@ export const Row: React.FunctionComponent<IRowProps> = ({ item }: React.PropsWit
               {
                 extensionType &&
                 <VSCodeTag className={'sample_row__extension_type ml-1'} key={`${item.title}_${extensionType}`}>{extensionType}</VSCodeTag>
+              }
+              {
+                sampleType &&
+                  <VSCodeTag className={'sample_card__extension_type ml-1'} key={`${item.title}_${sampleType}`}>{sampleType}</VSCodeTag>
               }
             </div>
           }

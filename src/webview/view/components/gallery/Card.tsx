@@ -86,6 +86,7 @@ export const Card: React.FunctionComponent<ICardProps> = ({ item }: React.PropsW
 
   const componentType = getComponentType(item.componentType);
   const extensionType = getExtensionType(item.extensionType);
+  const sampleType = item.sampleType === 'scenarios' ? 'scenario' : '';
 
   return (
     <li className={'sample_card'}>
@@ -98,6 +99,10 @@ export const Card: React.FunctionComponent<ICardProps> = ({ item }: React.PropsW
               {
                 extensionType &&
                   <VSCodeTag className={'sample_card__extension_type mt-1'} key={`${item.title}_${extensionType}`}>{extensionType}</VSCodeTag>
+              }
+              {
+                sampleType &&
+                  <VSCodeTag className={'sample_card__extension_type mt-1'} key={`${item.title}_${sampleType}`}>{sampleType}</VSCodeTag>
               }
             </div>
         }
