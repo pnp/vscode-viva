@@ -4,6 +4,7 @@ export const WebviewCommand = {
   },
   toVSCode: {
     useSample: 'use-sample',
+    redirectTo: 'redirect-to',
     logError: 'log-error',
   }
 };

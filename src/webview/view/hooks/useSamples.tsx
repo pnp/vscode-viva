@@ -2,16 +2,16 @@ import { useState, useEffect } from 'react';
 import { Messenger } from '@estruyf/vscode/dist/client';
 import { WebviewCommand } from '../../../constants';
 import { Sample } from '../../../models';
-import { GalleryType } from '../components/gallery';
 
 
-const SAMPLES_URL = 'https://raw.githubusercontent.com/pnp/vscode-viva/main/data/';
+const SAMPLES_URL = 'https://raw.githubusercontent.com/pnp/vscode-viva/dev/data/sp-dev-fx-samples.json';
 
 // eslint-disable-next-line no-unused-vars
-export default function useSamples(type: GalleryType): [Sample[], ((query: string) => void)] {
+export default function useSamples(): [Sample[], string[], ((query: string, componentTypes: string[], spfxVersions: string[]) => void)] {
   const [allSamples, setAllSamples] = useState<Sample[] | undefined>(undefined);
   const [samples, setSamples] = useState<Sample[] | undefined>(undefined);
   const state = Messenger.getState() as any || {};
+  const [versions, setVersions] = useState<string[]>([]);
 
   const fetchData = async () => {
     if (state['allSamples']) {
@@ -19,14 +19,35 @@ export default function useSamples(type: GalleryType): [Sample[], ((query: strin
     }
 
     try {
-      const response = await fetch(`${SAMPLES_URL}${type}.json`);
+      const response = await fetch(SAMPLES_URL);
       const data = await response.json();
+      const sortedSamples = data.samples.sort((a: Sample, b: Sample) => Date.parse(b.createDate) - Date.parse(a.createDate));
 
-      setAllSamples(data.samples);
+      const samplesVersions = (data.samples.map((sample: Sample) => sample.version) as string[])
+        .filter((value, index, self) => value !== null && index === self.findIndex((v) => v === value))
+        .sort((a, b) => {
+          const aNumericPart = a.split('-')[0];
+          const bNumericPart = b.split('-')[0];
+
+          const parts1 = aNumericPart.split('.').map(Number);
+          const parts2 = bNumericPart.split('.').map(Number);
+
+          for (let i = 0; i < parts1.length; i++) {
+            if (parts1[i] > parts2[i]) {
+              return -1;
+            } else if (parts1[i] < parts2[i]) {
+              return 1;
+            }
+          }
+
+          return 0;
+        });
+
+      setVersions(samplesVersions);
+      setAllSamples(sortedSamples);
       Messenger.setState({
         ...state,
-        allSamples: data.samples,
-        type: type
+        allSamples: sortedSamples
       });
     } catch (e) {
       Messenger.send(WebviewCommand.toVSCode.logError, `useSamples: ${(e as Error).message}`);
@@ -35,7 +56,7 @@ export default function useSamples(type: GalleryType): [Sample[], ((query: strin
   };
 
   useEffect(() => {
-    if (!allSamples || (state['type'] && state['type'] !== type)) {
+    if (!allSamples) {
       fetchData();
       return;
     }
@@ -43,16 +64,32 @@ export default function useSamples(type: GalleryType): [Sample[], ((query: strin
     setSamples(allSamples);
     Messenger.setState({
       ...state,
-      samples: allSamples,
-      type: type
+      samples: allSamples
     });
-  }, [type, allSamples]);
+  }, [allSamples]);
 
-  const search = (query: string) => {
+  const search = (query: string, componentTypes: string[], spfxVersions: string[]) => {
     const currentSamples: Sample[] = state['samples'];
-    const newSamples: Sample[] = currentSamples!.filter((sample: Sample) => sample.title.toString().toLowerCase().includes(query.toLowerCase()));
-    setSamples(newSamples);
+    const samplesByTitle: Sample[] = currentSamples!.filter((sample: Sample) => sample.title.toString().toLowerCase().includes(query.toLowerCase()));
+    const samplesByTag: Sample[] = currentSamples!.filter((sample: Sample) => sample.tags.some(tag => tag.toString().toLowerCase().includes(query.toLowerCase())));
+    const samplesByAuthor: Sample[] = currentSamples!.filter((sample: Sample) => sample.authors.some(author => author.name.toString().toLowerCase().includes(query.toLowerCase())));
+    const newSamples: Sample[] = samplesByTitle.concat(samplesByTag).concat(samplesByAuthor);
+    const distinctSamples = newSamples.filter((value, index, self) =>
+      index === self.findIndex((v) => v.name === value.name)
+    );
+
+    let filteredSamplesByComponentType = distinctSamples;
+    if (componentTypes.length > 0) {
+      filteredSamplesByComponentType = distinctSamples.filter((sample: Sample) => componentTypes.includes(sample.componentType));
+    }
+
+    let filteredSamplesBySPFxVersion = filteredSamplesByComponentType;
+    if (spfxVersions.length > 0) {
+      filteredSamplesBySPFxVersion = filteredSamplesByComponentType.filter((sample: Sample) => spfxVersions.includes(sample.version));
+    }
+
+    setSamples(filteredSamplesBySPFxVersion);
   };
 
-  return [samples!, search];
+  return [samples!, versions, search];
 }

@@ -91,7 +91,7 @@
 		"viewsWelcome": [
 			{
 				"view": "pnp-view-empty",
-				"contents": "To start create a new SPFx project. \n[Create a new project](command:viva-connections-toolkit.createProject)\n\n\n\n\n\nUse one of our samples to boost your development.\n[SharePoint Framework Client-Side Web Part Samples](command:viva-connections-toolkit.showWebpartSampleGallery)\n[SharePoint Framework Extensions Samples](command:viva-connections-toolkit.showExtensionsSampleGallery)\n[Viva Connection Adaptive Card Extensions (ACEs) Scenarios](command:viva-connections-toolkit.showACEScenariosGallery)\n[Viva Connection Adaptive Card Extensions (ACEs) Samples](command:viva-connections-toolkit.showACESampleGallery)\n\n\n\n\n\nYou can also open an existing app.\n[Open folder](command:vscode.openFolder)\n\n\n\n\n\nIf you want to make sure you are having the required dependencies, you can run our validation script.\n[Check dependencies](command:viva-connections-toolkit.checkDependencies)\n\n\n\n\n\nIf you want to install the dependencies, you can run our installation script.\n[Install dependencies](command:viva-connections-toolkit.installDependencies)"
+				"contents": "Welcome to Viva Connections Toolkit\n\n\nTo start create a new SharePoint Framework project. \n[Create a new project](command:viva-connections-toolkit.createProject)\n\n\n\n\n\nUse a sample to kick off a new project and boost your development.\n[View samples](command:viva-connections-toolkit.samplesGallery)\n\n\n\n\n\nYou can also open an existing app.\n[Open folder](command:vscode.openFolder)\n\n\n\n\n\nValidate your local workspace and check if you have the required dependencies.\n[Check dependencies](command:viva-connections-toolkit.checkDependencies)\n\n\n\n\n\nInstall the required dependencies.\n[Install dependencies](command:viva-connections-toolkit.installDependencies)\n\n\n\nIf you need  additional help or resources visit the [extension wiki](https://github.com/pnp/vscode-viva/wiki) for more information."
 			}
 		],
 		"commands": [
@@ -131,23 +131,8 @@
 				"category": "Viva Connections Toolkit"
 			},
 			{
-				"command": "viva-connections-toolkit.showACESampleGallery",
-				"title": "Open the Adaptive Card Extensions (ACEs) Samples gallery",
-				"category": "Viva Connections Toolkit"
-			},
-			{
-				"command": "viva-connections-toolkit.showACEScenariosGallery",
-				"title": "Open the Adaptive Card Extensions (ACEs) Scenarios gallery",
-				"category": "Viva Connections Toolkit"
-			},
-			{
-				"command": "viva-connections-toolkit.showExtensionsSampleGallery",
-				"title": "Open the SharePoint Framework Client-Side Web Part Samples gallery",
-				"category": "Viva Connections Toolkit"
-			},
-			{
-				"command": "viva-connections-toolkit.showWebpartSampleGallery",
-				"title": "Open the SharePoint Framework Extensions Samples gallery",
+				"command": "viva-connections-toolkit.samplesGallery",
+				"title": "Open SharePoint Framework Samples gallery",
 				"category": "Viva Connections Toolkit"
 			},
 			{
@@ -245,6 +230,7 @@
 	},
 	"devDependencies": {
 		"@actions/core": "^1.8.2",
+		"@fluentui/react": "^8.114.0",
 		"@estruyf/vscode": "1.0.0",
 		"@types/glob": "^7.2.0",
 		"@types/mocha": "^9.0.0",
@@ -285,6 +271,8 @@
 		"webpack-dev-server": "^4.8.1"
 	},
 	"dependencies": {
-		"@pnp/cli-microsoft365": "6.11.0"
+		"@pnp/cli-microsoft365": "6.11.0",
+		"react-markdown": "^9.0.1",
+		"remark-gfm": "^4.0.0"
 	}
 }
