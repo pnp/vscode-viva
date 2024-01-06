@@ -672,7 +672,7 @@
         "SharePoint"
       ],
       "createDate": "2020-11-02",
-      "updateDate": "2020-11-02"
+      "updateDate": "2023-12-21"
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-knockout-dependent-properties",
@@ -1468,7 +1468,7 @@
         "SharePoint"
       ],
       "createDate": "2020-12-04",
-      "updateDate": "2023-10-05"
+      "updateDate": "2023-12-29"
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-calendar-feed",
@@ -6293,6 +6293,24 @@
       ],
       "createDate": "2021-02-28",
       "updateDate": "2021-02-28"
+    },
+    {
+      "name": "pnp-sp-dev-spfx-web-parts-react-teams-my-webinars",
+      "title": "Teams My Webinars",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-teams-my-webinars",
+      "description": "Displays a list of Teams Webinars you are an organizer of, allows you to sync those webinars to a SharePoint list, to share within a Team and cross check pending registrants against membership of a team.",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-teams-my-webinars/assets/Screenshot 2023-12-25-main.png",
+      "authors": [
+        {
+          "name": "Nick Brown",
+          "pictureUrl": "https://github.com/techienickb.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2023-12-25",
+      "updateDate": "2023-12-31"
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-teams-personal-app-settings",

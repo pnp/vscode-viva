@@ -1143,6 +1143,24 @@
       "updateDate": "2019-01-02"
     },
     {
+      "name": "pnp-sp-dev-spfx-extensions-react-application-teams-chats-sharepoint",
+      "title": "Embed Microsoft Teams chats in SharePoint pages",
+      "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-application-teams-chats-sharepoint",
+      "description": "Embed Microsoft Teams chats within SharePoint pages to streamline collaboration and information access for users.",
+      "image": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-teams-chats-sharepoint/assets/assets/Microsoft Teams chat in SharePoint sites.gif",
+      "authors": [
+        {
+          "name": "João Ferreira",
+          "pictureUrl": "https://github.com/joaoferreira.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2023-10-19",
+      "updateDate": "2023-10-19"
+    },
+    {
       "name": "pnp-sp-dev-spfx-extensions-react-application-tenant-global-navbar",
       "title": "Tenant Global NavBar Application Customizer",
       "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-application-tenant-global-navbar",
