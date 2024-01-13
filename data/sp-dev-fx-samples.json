@@ -113,7 +113,7 @@
       "title": "File Upload using AngularJs",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/angular-ngofficeuifabric-file-upload",
       "description": "File Update/Delete web part using AngularJs and ngOfficeUIFabric with the SharePoint Framework.",
-      "image": "https://camo.githubusercontent.com/674cb6e830d597e1ab9bb89992b6fe7f0359b80f/687474703a2f2f692e696d6775722e636f6d2f553571673449492e706e67",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/angular-ngofficeuifabric-file-upload/assets/NG%20File%20Upload.png",
       "authors": [
         {
           "name": "Atish Kumar Dipongkor",
@@ -1231,6 +1231,24 @@
       ],
       "createDate": "2023-03-19",
       "updateDate": "2023-03-19"
+    },
+    {
+      "name": "pnp-sp-dev-spfx-web-parts-react-azure-openai-api-stream",
+      "title": "Calling Azure OpenAI API in stream mode",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-azure-openai-api-stream",
+      "description": "This web part shows how you can call Azure OpenAI API in Streaming mode",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-azure-openai-api-stream/assets/react-azure-openai-api-stream.gif",
+      "authors": [
+        {
+          "name": "Luis Mañez",
+          "pictureUrl": "https://github.com/luismanez.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2024-01-02",
+      "updateDate": "2024-01-02"
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-azure-openai-connector",
@@ -2545,7 +2563,7 @@
         "SharePoint"
       ],
       "createDate": "2022-04-20",
-      "updateDate": "2023-05-15"
+      "updateDate": "2024-01-06"
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-fluentui-theme-variant",
