@@ -237,7 +237,7 @@
       "title": "Redirect Application Customizers",
       "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/js-application-redirect",
       "description": "Redirect from URL based on mapping from a list on the site. Can be used to automatically redirect from pages to other locations.",
-      "image": "https://github.com/pnp/sp-starter-kit/raw/main/assets/images/components/ext-redirects.gif?raw=true",
+      "image": "https://github.com/pnp/sp-starter-kit/blob/master/assets/images/components/ext-redirects.gif",
       "authors": [
         {
           "name": "Paolo Pialorsi",
@@ -1147,7 +1147,7 @@
       "title": "Embed Microsoft Teams chats in SharePoint pages",
       "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-application-teams-chats-sharepoint",
       "description": "Embed Microsoft Teams chats within SharePoint pages to streamline collaboration and information access for users.",
-      "image": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-teams-chats-sharepoint/assets/assets/Microsoft Teams chat in SharePoint sites.gif",
+      "image": "https://github.com/pnp/sp-dev-fx-extensions/blob/main/samples/react-application-teams-chats-sharepoint/assets/Microsoft%20Teams%20chat%20in%20SharePoint%20sites.gif",
       "authors": [
         {
           "name": "João Ferreira",
