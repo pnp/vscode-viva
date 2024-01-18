@@ -15,12 +15,18 @@ export const GalleryView: React.FunctionComponent<IGalleryViewProps> = ({ }: Rea
   const [samples, versions, search] = useSamples();
   const [query, setQuery] = useState<string>('');
   const [spfxVersions, setSPFxVersions] = useState<string[]>();
+  const [showOnlyScenarios, setShowOnlyScenarios] = useState<boolean>(false);
   const [componentTypes, setComponentTypes] = useState<string[]>();
 
   const onSearchTextboxChange = (event: any) => {
     const input: string = event.target.value;
     setQuery(input);
-    search(input, componentTypes ?? [], spfxVersions ?? []);
+    search(input, componentTypes ?? [], spfxVersions ?? [], showOnlyScenarios);
+  };
+
+  const onFilterOnlyScenariosChange = () => {
+    setShowOnlyScenarios(!showOnlyScenarios);
+    search(query, componentTypes ?? [], spfxVersions ?? [], !showOnlyScenarios);
   };
 
   const onFilterBySPFxVersionChange = (event: any, option?: IDropdownOption) => {
@@ -32,7 +38,7 @@ export const GalleryView: React.FunctionComponent<IGalleryViewProps> = ({ }: Rea
     }
 
     setSPFxVersions(spfxVersionsInput);
-    search(query, componentTypes ?? [], spfxVersionsInput);
+    search(query, componentTypes ?? [], spfxVersionsInput, showOnlyScenarios);
   };
 
   const onFilterByComponentTypeChange = (event: any, option?: IDropdownOption) => {
@@ -44,7 +50,7 @@ export const GalleryView: React.FunctionComponent<IGalleryViewProps> = ({ }: Rea
     }
 
     setComponentTypes(componentTypesInput);
-    search(query, componentTypesInput, spfxVersions ?? []);
+    search(query, componentTypesInput, spfxVersions ?? [], showOnlyScenarios);
   };
 
   const getSPFxVersions = (): IDropdownOption[] => {
@@ -74,6 +80,7 @@ export const GalleryView: React.FunctionComponent<IGalleryViewProps> = ({ }: Rea
               onSearchTextboxChange={(event) => onSearchTextboxChange(event)}
               onFilterBySPFxVersionChange={(event, option) => onFilterBySPFxVersionChange(event, option)}
               onFilterByComponentTypeChange={(event, option) => onFilterByComponentTypeChange(event, option)}
+              onFilterOnlyScenariosChange={() => onFilterOnlyScenariosChange()}
               initialQuery={query}
               spfxVersions={getSPFxVersions()} />
 

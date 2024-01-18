@@ -1,4 +1,4 @@
-import { VSCodeTextField } from '@vscode/webview-ui-toolkit/react';
+import { VSCodeCheckbox, VSCodeTextField } from '@vscode/webview-ui-toolkit/react';
 import * as React from 'react';
 import { useEffect, useState } from 'react';
 import { SearchIcon } from '../icons';
@@ -13,11 +13,13 @@ export interface ISearchBarProps {
   onFilterBySPFxVersionChange: (event: any, option?: IDropdownOption) => void;
   // eslint-disable-next-line no-unused-vars
   onFilterByComponentTypeChange: (event: any, option?: IDropdownOption) => void;
+  // eslint-disable-next-line no-unused-vars
+  onFilterOnlyScenariosChange: (event: any) => void;
   initialQuery?: string;
   spfxVersions: IDropdownOption[];
 }
 
-export const SearchBar: React.FunctionComponent<ISearchBarProps> = ({ onSearchTextboxChange, onFilterBySPFxVersionChange, onFilterByComponentTypeChange, initialQuery, spfxVersions }: React.PropsWithChildren<ISearchBarProps>) => {
+export const SearchBar: React.FunctionComponent<ISearchBarProps> = ({ onSearchTextboxChange, onFilterBySPFxVersionChange, onFilterByComponentTypeChange, onFilterOnlyScenariosChange, initialQuery, spfxVersions }: React.PropsWithChildren<ISearchBarProps>) => {
   const [query, setQuery] = useState<string>('');
 
   useEffect(() => {
@@ -51,6 +53,9 @@ export const SearchBar: React.FunctionComponent<ISearchBarProps> = ({ onSearchTe
         </div>
         <div>
           <MultiSelect options={componentTypes} label="Component Type" onChange={onFilterByComponentTypeChange}/>
+        </div>
+        <div>
+          <VSCodeCheckbox onChange={onFilterOnlyScenariosChange}>show only scenarios</VSCodeCheckbox>
         </div>
       </div>
     </div>

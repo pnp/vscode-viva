@@ -7,7 +7,7 @@ import { Sample } from '../../../models';
 const SAMPLES_URL = 'https://raw.githubusercontent.com/pnp/vscode-viva/dev/data/sp-dev-fx-samples.json';
 
 // eslint-disable-next-line no-unused-vars
-export default function useSamples(): [Sample[], string[], ((query: string, componentTypes: string[], spfxVersions: string[]) => void)] {
+export default function useSamples(): [Sample[], string[], ((query: string, componentTypes: string[], spfxVersions: string[], showOnlyScenarios: boolean) => void)] {
   const [allSamples, setAllSamples] = useState<Sample[] | undefined>(undefined);
   const [samples, setSamples] = useState<Sample[] | undefined>(undefined);
   const state = Messenger.getState() as any || {};
@@ -68,12 +68,15 @@ export default function useSamples(): [Sample[], string[], ((query: string, comp
     });
   }, [allSamples]);
 
-  const search = (query: string, componentTypes: string[], spfxVersions: string[]) => {
+  const search = (query: string, componentTypes: string[], spfxVersions: string[], showOnlyScenarios: boolean) => {
     const currentSamples: Sample[] = state['samples'];
     const samplesByTitle: Sample[] = currentSamples!.filter((sample: Sample) => sample.title.toString().toLowerCase().includes(query.toLowerCase()));
     const samplesByTag: Sample[] = currentSamples!.filter((sample: Sample) => sample.tags.some(tag => tag.toString().toLowerCase().includes(query.toLowerCase())));
     const samplesByAuthor: Sample[] = currentSamples!.filter((sample: Sample) => sample.authors.some(author => author.name.toString().toLowerCase().includes(query.toLowerCase())));
-    const newSamples: Sample[] = samplesByTitle.concat(samplesByTag).concat(samplesByAuthor);
+    let newSamples: Sample[] = samplesByTitle.concat(samplesByTag).concat(samplesByAuthor);
+    if (showOnlyScenarios){
+      newSamples = newSamples.filter((sample: Sample) => sample.sampleType === 'scenarios');
+    }
     const distinctSamples = newSamples.filter((value, index, self) =>
       index === self.findIndex((v) => v.name === value.name)
     );
