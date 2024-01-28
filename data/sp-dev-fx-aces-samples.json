@@ -58,6 +58,25 @@
       "updateDate": "2021-11-29"
     },
     {
+      "name": "pnp-sp-fx-aces-basiccard-helpdesk",
+      "title": "Basic Card Help Desk",
+      "url": "https://github.com/pnp/sp-dev-fx-aces/tree/main/samples/BasicCard-HelpDesk",
+      "description": "This solution uses a help desk scenaio to demonstrate how to use the geolocation features and image upload functionality in Adaptive Card Extensions.",
+      "image": "https://raw.githubusercontent.com/pnp/sp-dev-fx-aces/main/samples/BasicCard-HelpDesk/assets/demo1.png",
+      "authors": [
+        {
+          "name": "Derek Cash-Peterson",
+          "pictureUrl": "https://github.com/dcashpeterson.png"
+        }
+      ],
+      "tags": [
+        "SharePoint",
+        "Viva"
+      ],
+      "createDate": "2024-01-25",
+      "updateDate": "2024-01-25"
+    },
+    {
       "name": "pnp-sp-fx-aces-monitorsecurity",
       "title": "Monitor Security ACE",
       "url": "https://github.com/pnp/sp-dev-fx-aces/tree/main/samples/BasicCard-MonitorSecurity",
@@ -246,6 +265,25 @@
       ],
       "createDate": "2023-12-14",
       "updateDate": "2023-12-14"
+    },
+    {
+      "name": "pnp-sp-fx-aces-design-card",
+      "title": "Designing Card Templates",
+      "url": "https://github.com/pnp/sp-dev-fx-aces/tree/main/samples/design-card",
+      "description": "This sample application shows how to implement all of the layout options that are available in the component base model of the SharePoint Framework (SPFx) Adaptive Card Extensions (ACEs) Card Views, accordingly to the documentation available.",
+      "image": "https://raw.github.com/pnp/sp-dev-fx-aces/main/samples/design-card/assets/Benefits.png",
+      "authors": [
+        {
+          "name": "Paolo Pialorsi",
+          "pictureUrl": "https://github.com/paolopia.png"
+        }
+      ],
+      "tags": [
+        "SharePoint",
+        "Viva"
+      ],
+      "createDate": "2024-01-24",
+      "updateDate": "2024-01-24"
     },
     {
       "name": "pnp-sp-fx-aces-ace-articlecontent",
