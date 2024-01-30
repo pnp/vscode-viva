@@ -3,16 +3,31 @@ import { createRoot } from 'react-dom/client';
 import { MemoryRouter } from 'react-router-dom';
 import { App } from './components/App';
 import './index.css';
+import { WebViewType, WebViewTypes } from '../../constants';
 
 
-export const routeEntries: { [routeKey: string]: string } = { ['SampleGallery']: '/sp-dev-fx-samples' };
+export const routeEntries: { [routeKey: string]: string } = {
+  [WebViewType.samplesGallery]: WebViewTypes.find(type => type.value === WebViewType.samplesGallery)?.homePageUrl as string,
+  [WebViewType.workflowForm]: WebViewTypes.find(type => type.value === WebViewType.workflowForm)?.homePageUrl as string,
+};
 
 const elm = document.querySelector('#root');
 if (elm) {
   const root = createRoot(elm);
 
-  const version = elm.getAttribute('data-version');
+  const homePageUrl = elm.getAttribute('data-homePageUrl');
+  const spfxPackageName = elm.getAttribute('data-spfxPackageName');
+  const appCatalogUrls = elm.getAttribute('data-appCatalogUrls');
   const type = elm.getAttribute('data-type');
+  const data: any = {};
+
+  if (spfxPackageName) {
+    data.spfxPackageName = spfxPackageName;
+  }
+
+  if (appCatalogUrls) {
+    data.appCatalogUrls = appCatalogUrls;
+  }
 
   const routeEntry = Object.keys(routeEntries).findIndex(key => key === type);
 
@@ -20,7 +35,7 @@ if (elm) {
     <MemoryRouter
       initialEntries={Object.keys(routeEntries).map(key => routeEntries[key] as string) as string[]}
       initialIndex={routeEntry || 0}>
-      <App version={version} />
+      <App url={homePageUrl} data={data} />
     </MemoryRouter>
   );
 }

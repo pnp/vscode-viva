@@ -35,8 +35,8 @@ export const Commands = {
   // Grant API permissions
   grantAPIPermissions: `${EXTENSION_NAME}.grantAPIPermissions`,
 
-  // Generate a CI/CD GitHub workflow
-  pipelineGitHub: `${EXTENSION_NAME}.pipelineGitHub`,
+  // Generate a CI/CD workflow
+  pipeline: `${EXTENSION_NAME}.pipeline`,
 
   // Webviews
   samplesGallery: `${EXTENSION_NAME}.samplesGallery`,

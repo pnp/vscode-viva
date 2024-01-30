@@ -53,10 +53,10 @@ export const DetailsView: React.FunctionComponent<IDetailsViewProps> = ({ }: Rea
   };
 
   return (
-    <div className='sample_details w-full h-full max-w-7xl mx-auto px-6'>
-      <div className='sample_details_controls fixed w-full top-0 left-0 px-4 py-2'>
-        <div className="flex w-full px-4">
-          <div className="w-1/2">
+    <div className={'sample_details w-full h-full max-w-7xl mx-auto px-6'}>
+      <div className={'sample_details_controls fixed w-full top-0 left-0 px-4 py-2'}>
+        <div className={'flex w-full px-4'}>
+          <div className={'w-1/2'}>
             <VSCodeButton className={'mb-2'} onClick={onBackClick} title={'Back'}>
               <span slot={'start'}><BackIcon /></span>
               Back
@@ -74,7 +74,7 @@ export const DetailsView: React.FunctionComponent<IDetailsViewProps> = ({ }: Rea
           </div>
         </div>
       </div>
-      <div className='sample_details_md mt-16 pb-10'>
+      <div className={'sample_details_md mt-16 pb-10'}>
         <ReactMarkdown remarkPlugins={[remarkGfm]}>{docs}</ReactMarkdown>
       </div>
     </div>

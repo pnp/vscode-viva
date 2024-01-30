@@ -65,7 +65,7 @@ export const GalleryView: React.FunctionComponent<IGalleryViewProps> = ({ }: Rea
   };
 
   return (
-    <div className="w-full h-full max-w-7xl mx-auto sm:px-6 lg:px-8 py-16">
+    <div className={'w-full h-full max-w-7xl mx-auto sm:px-6 lg:px-8 py-16'}>
       {
         samples === undefined && (
           <GalleryLoader />
@@ -74,7 +74,7 @@ export const GalleryView: React.FunctionComponent<IGalleryViewProps> = ({ }: Rea
 
       {
         samples !== undefined && (
-          <div className='pb-16'>
+          <div className={'pb-16'}>
             <GalleryHeader />
             <SearchBar
               onSearchTextboxChange={(event) => onSearchTextboxChange(event)}

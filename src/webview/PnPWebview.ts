@@ -1,9 +1,10 @@
 import { join } from 'path';
 import { commands, Uri, ViewColumn, Webview, WebviewPanel, window, env } from 'vscode';
-import { Commands, WebviewCommand } from '../constants';
+import { Commands, WebViewType, WebViewTypes, WebviewCommand } from '../constants';
 import { Extension } from '../services/Extension';
 import { Logger } from '../services/Logger';
 import { Scaffolder } from '../services/Scaffolder';
+import { CliActions } from '../services/CliActions';
 
 
 export class PnPWebview {
@@ -15,7 +16,7 @@ export class PnPWebview {
     const subscriptions = ext.subscriptions;
 
     subscriptions.push(
-      commands.registerCommand(Commands.samplesGallery, () => PnPWebview.open())
+      commands.registerCommand(Commands.samplesGallery, () => PnPWebview.open(WebViewType.samplesGallery))
     );
   }
 
@@ -29,28 +30,40 @@ export class PnPWebview {
   /**
    * Open or reveal the webview
    */
-  public static async open() {
+  public static async open(type: WebViewType, data?: any) {
     if (PnPWebview.isOpen) {
-      PnPWebview.reveal();
+      PnPWebview.reveal(type, data);
     } else {
-      PnPWebview.create();
+      PnPWebview.create(type, data);
     }
   }
 
   /**
    * Reveal the dashboard if it is open
    */
-  public static reveal() {
+  public static reveal(type: WebViewType, data?: any) {
     if (PnPWebview.webview) {
+      const webViewType = WebViewTypes.find(viewType => viewType.value === type);
       PnPWebview.webview.reveal();
-      PnPWebview.postMessage(WebviewCommand.toWebview.viewType);
+      PnPWebview.webview.title = webViewType?.Title as string;
+      const messageData: any = { 'webViewType': type };
+
+      if (data && data.spfxPackageName) {
+        messageData.spfxPackageName = data.spfxPackageName;
+      }
+
+      if (data && data.appCatalogUrls) {
+        messageData.appCatalogUrls = data.appCatalogUrls;
+      }
+
+      PnPWebview.postMessage(WebviewCommand.toWebview.viewType, messageData);
     }
   }
 
   /**
    * Creates a new webview
    */
-  public static async create() {
+  public static async create(type: WebViewType, data?: any) {
     const ext = Extension.getInstance();
 
     PnPWebview.webview = window.createWebviewPanel(
@@ -71,9 +84,20 @@ export class PnPWebview {
 
     PnPWebview.isDisposed = false;
 
-    PnPWebview.webview.webview.html = PnPWebview.getWebviewContent(PnPWebview.webview.webview);
+    const webViewType = WebViewTypes.find(viewType => viewType.value === type);
+    const webViewData: any = { homePageUrl: webViewType?.homePageUrl as string };
 
-    PnPWebview.webview.title = 'Sample Gallery';
+    if (data && data.spfxPackageName) {
+      webViewData.spfxPackageName = data['spfxPackageName'];
+    }
+
+    if (data && data.appCatalogUrls) {
+      webViewData.appCatalogUrls = data.appCatalogUrls;
+    }
+
+    PnPWebview.webview.webview.html = PnPWebview.getWebviewContent(PnPWebview.webview.webview, webViewData);
+
+    PnPWebview.webview.title = webViewType?.Title as string;
 
     PnPWebview.webview.onDidDispose(async () => {
       PnPWebview.isDisposed = true;
@@ -93,6 +117,9 @@ export class PnPWebview {
           break;
         case WebviewCommand.toVSCode.redirectTo:
           env.openExternal(Uri.parse(payload));
+          break;
+        case WebviewCommand.toVSCode.createWorkFlow:
+          CliActions.generateWorkflowForm(payload);
           break;
       }
     });

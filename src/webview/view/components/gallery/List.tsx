@@ -36,8 +36,6 @@ export const List: React.FunctionComponent<IListProps> = ({ items }: React.Props
 
   const getNewSet = (pageNumber: number): Sample[] => items.slice(pageNumber * NR_OF_ITEMS, page * NR_OF_ITEMS + NR_OF_ITEMS);
 
-  const toggleView = () => setIsCardView(!isCardView);
-
   if (!pagedItems || pagedItems.length === 0) {
     return null;
   }
@@ -45,10 +43,10 @@ export const List: React.FunctionComponent<IListProps> = ({ items }: React.Props
   return (
     <div className={'w-full flex justify-between flex-col flex-grow max-w-7xl mx-auto pt-6'}>
       <div className={'text-right w-full mb-2'}>
-        <VSCodeButton onClick={toggleView} appearance={isCardView ? '' : 'secondary'} className={'float-right ml-1'}>
+        <VSCodeButton onClick={() => setIsCardView(!isCardView)} appearance={isCardView ? '' : 'secondary'} className={'float-right ml-1'}>
           <span><CardIcon /></span>
         </VSCodeButton>
-        <VSCodeButton onClick={toggleView} appearance={!isCardView ? '' : 'secondary'} className={'float-right ml-1'}>
+        <VSCodeButton onClick={() => setIsCardView(!isCardView)} appearance={!isCardView ? '' : 'secondary'} className={'float-right ml-1'}>
           <span><ListIcon /></span>
         </VSCodeButton>
         <Counter itemsCount={items.length} />
