@@ -8,3 +8,4 @@ export * from './ChevronDownIcon';
 export * from './ClearIcon';
 export * from './ListIcon';
 export * from './CardIcon';
+export * from './RocketIcon';

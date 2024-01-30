@@ -108,3 +108,7 @@
 .sample_card__author_avatar:nth-of-type(5) {
   @apply -ml-3;
 }
+
+.bg-vscode{
+  background: var(--vscode-editor-background);
+}

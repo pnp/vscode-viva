@@ -6,25 +6,31 @@ import { Messenger } from '@estruyf/vscode/dist/client';
 import { EventData } from '@estruyf/vscode/dist/models/EventData';
 import { WebviewCommand } from '../../../constants';
 import { routeEntries } from '..';
+import { ScaffoldWorkflowView } from './forms/workflow/ScaffoldWorkflowView';
 
 
 export interface IAppProps {
-  version: string | null;
+  url: string | null;
+  data: any | null
 }
 
 // eslint-disable-next-line no-unused-vars
-export const App: React.FunctionComponent<IAppProps> = ({ version }: React.PropsWithChildren<IAppProps>) => {
+export const App: React.FunctionComponent<IAppProps> = ({ url, data }: React.PropsWithChildren<IAppProps>) => {
   const navigate = useNavigate();
 
   const messageListener = (event: MessageEvent<EventData<any>>) => {
     const { command, payload } = event.data;
 
     if (command === WebviewCommand.toWebview.viewType) {
-      navigate(routeEntries[payload]);
+      navigate(routeEntries[payload.webViewType], { state: payload });
     }
   };
 
   useEffect(() => {
+    if (url) {
+      navigate(url, { state: data });
+    }
+
     Messenger.listen(messageListener);
 
     return () => {
@@ -36,6 +42,7 @@ export const App: React.FunctionComponent<IAppProps> = ({ version }: React.Props
     <Routes>
       <Route path={'/sp-dev-fx-samples'} element={<GalleryView />} />
       <Route path={'/sp-dev-fx-sample-details-view'} element={<DetailsView />} />
+      <Route path={'/scaffold-workflow'} element={<ScaffoldWorkflowView />} />
     </Routes>
   );
 };

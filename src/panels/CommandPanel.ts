@@ -172,7 +172,7 @@ export class CommandPanel {
       new ActionTreeItem('Grant API permissions', '', { name: 'workspace-trusted', custom: false }, undefined, Commands.grantAPIPermissions),
       new ActionTreeItem('Deploy project (sppkg)', '', { name: 'cloud-upload', custom: false }, undefined, Commands.deployProject),
       new ActionTreeItem('Add new component', '', { name: 'add', custom: false }, undefined, Commands.addToProject),
-      new ActionTreeItem('CI/CD GitHub Workflow', '', { name: 'rocket', custom: false }, undefined, Commands.pipelineGitHub),
+      new ActionTreeItem('CI/CD Workflow', '', { name: 'rocket', custom: false }, undefined, Commands.pipeline),
       new ActionTreeItem('View samples', '', { name: 'library', custom: false }, undefined, Commands.samplesGallery),
     ];
 
