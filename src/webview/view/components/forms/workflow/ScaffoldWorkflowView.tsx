@@ -1,7 +1,7 @@
-import { VSCodeButton, VSCodeCheckbox, VSCodeDropdown, VSCodeOption, VSCodeProgressRing, VSCodeTextField } from '@vscode/webview-ui-toolkit/react';
+import { VSCodeButton, VSCodeCheckbox, VSCodeDropdown, VSCodeLink, VSCodeOption, VSCodeProgressRing, VSCodeTextField } from '@vscode/webview-ui-toolkit/react';
 import * as React from 'react';
 import { useEffect, useState } from 'react';
-import { RocketIcon } from '../../icons';
+import { CopyIcon, RocketIcon } from '../../icons';
 import { useLocation } from 'react-router-dom';
 import { Messenger } from '@estruyf/vscode/dist/client';
 import { GenerateWorkflowCommandInput, WebviewCommand } from '../../../../../constants';
@@ -21,11 +21,19 @@ export const ScaffoldWorkflowView: React.FunctionComponent<IScaffoldWorkflowView
   const [siteAppCatalogUrls, setSiteAppCatalogUrls] = useState<string[]>([]);
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
   const [isWorkflowCreated, setIsWorkflowCreated] = useState<boolean>(false);
+  const [shouldCreateAppRegistrationForm, setShouldCreateAppRegistrationForm] = useState<boolean>(false);
+  const [certPassword, setCertPassword] = useState<string>('');
+  const [appRegistrationName, setAppRegistrationName] = useState<string>('CI/CD Application');
+  const [appId, setAppId] = useState<string>('');
+  const [base64CertPrivateKey, setBase64CertPrivateKey] = useState<string>('');
+  const [isBase64CertPrivateKeyTrimmed, setIsBase64CertPrivateKeyTrimmed] = useState<boolean>(true);
+  const [tenantId, setTenantId] = useState<string>('');
   const location: any = useLocation();
 
   useEffect(() => {
     if (location.state.spfxPackageName) {
       setName(`Deploy Solution ${location.state.spfxPackageName}`);
+      setAppRegistrationName(`CI/CD Application for ${location.state.spfxPackageName}`);
     }
 
     if (location.state.appCatalogUrls) {
@@ -53,10 +61,22 @@ export const ScaffoldWorkflowView: React.FunctionComponent<IScaffoldWorkflowView
   }, [isWorkflowCreated]);
 
   const messageListener = (event: MessageEvent<EventData<any>>) => {
-    const { command } = event.data;
+    const { command, payload } = event.data;
 
     if (command === WebviewCommand.toWebview.WorkflowCreated) {
-      setIsWorkflowCreated(true);
+      if (payload.success && payload.appId) {
+        setAppId(payload.appId);
+      }
+
+      if (payload.success && payload.tenantId) {
+        setTenantId(payload.tenantId);
+      }
+
+      if (payload.success && payload.pfxBase64) {
+        setBase64CertPrivateKey(payload.pfxBase64);
+      }
+
+      setIsWorkflowCreated(payload.success);
       setIsSubmitting(false);
     }
   };
@@ -71,7 +91,10 @@ export const ScaffoldWorkflowView: React.FunctionComponent<IScaffoldWorkflowView
       isApplicationAuthentication,
       isTenantScope,
       siteUrl,
-      shouldSkipFeatureDeployment
+      shouldSkipFeatureDeployment,
+      shouldCreateAppRegistrationForm,
+      certPassword,
+      appRegistrationName
     } as GenerateWorkflowCommandInput);
   };
 
@@ -145,9 +168,34 @@ export const ScaffoldWorkflowView: React.FunctionComponent<IScaffoldWorkflowView
                   <p className={'mb-1'}>👉 This method will require you to create the following secrets in your GitHub repository:</p>
                   <ul>
                     <li><code>APP_ID</code> - client id of the registered Entra ID application</li>
-                    <li><code>CERTIFICATE_ENCODED</code> - application's encoded certificate</li>
+                    <li><code>CERTIFICATE_ENCODED</code> - application's encoded certificate string</li>
                     <li><code>CERTIFICATE_PASSWORD</code> - certificate password. This applies only if the certificate is encoded which is the recommended approach</li>
+                    <li><code>TENANT_ID</code> - tenant Id</li>
                   </ul>
+                  <div>
+                    <div className={'mt-2'}>
+                      <p className={'mb-1'}><strong>Don't have an app registration yet?</strong></p>
+                      <p className={'mb-2'}>👇 No problem, generate all that you need for your workflow 👇</p>
+                      <VSCodeCheckbox checked={shouldCreateAppRegistrationForm} onChange={() => setShouldCreateAppRegistrationForm(!shouldCreateAppRegistrationForm)}>
+                        Generate a certificate and create an app registration
+                      </VSCodeCheckbox>
+                    </div>
+                    <div className={shouldCreateAppRegistrationForm ? '' : 'hidden'}>
+                      <p className={'mt-1 mb-1'}>Here you may generate a new certificate and register a new app registration with a single click 🤩</p>
+                      <div className={'mb-2'}>
+                        <label className={'block mb-1'}>
+                          What should be the certificate password?
+                        </label>
+                        <VSCodeTextField className={'w-full'} value={certPassword} type={'password'} onChange={(e: any) => setCertPassword(e.target.value)} />
+                      </div>
+                      <div className={'mb-2'}>
+                        <label className={'block mb-1'}>
+                          What should be the Entra ID app name?
+                        </label>
+                        <VSCodeTextField className={'w-full'} value={appRegistrationName} onChange={(e: any) => setAppRegistrationName(e.target.value)} />
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -196,7 +244,10 @@ export const ScaffoldWorkflowView: React.FunctionComponent<IScaffoldWorkflowView
         </div>
       </div>
       <div className={'workflow__action mb-3 pb-3 border-b pl-10'}>
-        <VSCodeButton className={isSubmitting ? 'w-full hidden' : 'w-full'} onClick={submit}>
+        {shouldCreateAppRegistrationForm && certPassword.length < 5 ?
+          <p><strong>Please provide a password for your certificate which is at least 6 characters long</strong></p> :
+          ''}
+        <VSCodeButton disabled={shouldCreateAppRegistrationForm && certPassword.length < 5 ? true : null} className={isSubmitting ? 'w-full hidden' : 'w-full'} onClick={submit}>
           <span slot={'start'}><RocketIcon /></span>
           Create workflow
         </VSCodeButton>
@@ -227,9 +278,53 @@ export const ScaffoldWorkflowView: React.FunctionComponent<IScaffoldWorkflowView
                   </ul>
                   <ul className={isApplicationAuthentication ? 'pl-9' : 'hidden'}>
                     <li><code>APP_ID</code> - client id of the registered Entra ID application</li>
-                    <li><code>CERTIFICATE_ENCODED</code> - application's encoded certificate</li>
+                    <li><code>CERTIFICATE_ENCODED</code> - application's encoded certificate string</li>
                     <li><code>CERTIFICATE_PASSWORD</code> - certificate password. This applies only if the certificate is encoded which is the recommended approach</li>
+                    <li><code>TENANT_ID</code> - tenant Id</li>
                   </ul>
+                  <div className={isApplicationAuthentication && shouldCreateAppRegistrationForm && appId && base64CertPrivateKey ? '' : 'hidden'}>
+                    <p className={'pl-9 mt-2'}><strong>Your certificate and app registration are ready as well!</strong></p>
+                    <p className={'pl-9'}>You may find your generated certificate in the temp folder in your solution.</p>
+                    <p className={'pl-9'}>Use the below values for your secrets: </p>
+                    <table>
+                      <tr>
+                        <td className={'border p-1'}><code>APP_ID</code></td>
+                        <td className={'border p-1'}>{appId}</td>
+                        <td className={'border'}>
+                          <VSCodeButton appearance={'secondary'} onClick={() => navigator.clipboard.writeText(appId)}>
+                            <span><CopyIcon /></span>
+                          </VSCodeButton>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td className={'border p-1'}><code>CERTIFICATE_ENCODED</code></td>
+                        <td className={'border p-1 text-wrap break-all text-xs'}>
+                          <div className={isBase64CertPrivateKeyTrimmed ? '' : 'hidden'}>
+                            <span>{base64CertPrivateKey.substring(0, 100)}...</span>
+                            <span><VSCodeLink onClick={() => setIsBase64CertPrivateKeyTrimmed(false)}>Show more</VSCodeLink></span>
+                          </div>
+                          <div className={!isBase64CertPrivateKeyTrimmed ? '' : 'hidden'}>
+                            <span>{base64CertPrivateKey}</span>
+                            <span><VSCodeLink onClick={() => setIsBase64CertPrivateKeyTrimmed(true)}>Show less</VSCodeLink></span>
+                          </div>
+                        </td>
+                        <td className={'border'}>
+                          <VSCodeButton appearance={'secondary'} onClick={() => navigator.clipboard.writeText(base64CertPrivateKey)}>
+                            <span><CopyIcon /></span>
+                          </VSCodeButton>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td className={'border p-1'}><code>TENANT_ID</code></td>
+                        <td className={'border p-1'}>{tenantId}</td>
+                        <td className={'border'}>
+                          <VSCodeButton appearance={'secondary'} onClick={() => navigator.clipboard.writeText(tenantId)}>
+                            <span><CopyIcon /></span>
+                          </VSCodeButton>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
                 </li>
               </ul>
             </li>
