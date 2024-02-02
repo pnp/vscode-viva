@@ -9,3 +9,4 @@ export * from './ClearIcon';
 export * from './ListIcon';
 export * from './CardIcon';
 export * from './RocketIcon';
+export * from './CopyIcon';
