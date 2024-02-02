@@ -113,9 +113,8 @@ export class CliActions {
 
           const result = await CliExecuter.execute('aad app add', 'json', commandOptions);
           const output = JSON.parse(result.stdout);
-
-          appId = result.stdout ? output.appId : '';
-          tenantId = result.stdout ? output.tenantId : '';
+          appId = output.appId;
+          tenantId = output.tenantId;
 
           if (result.stderr) {
             Notifications.error(result.stderr);
