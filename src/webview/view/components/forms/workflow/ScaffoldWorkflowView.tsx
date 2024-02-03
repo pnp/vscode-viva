@@ -249,7 +249,7 @@ export const ScaffoldWorkflowView: React.FunctionComponent<IScaffoldWorkflowView
           ''}
         <VSCodeButton disabled={shouldCreateAppRegistrationForm && certPassword.length < 5 ? true : null} className={isSubmitting ? 'w-full hidden' : 'w-full'} onClick={submit}>
           <span slot={'start'}><RocketIcon /></span>
-          Create workflow
+          {shouldCreateAppRegistrationForm ? 'Create workflow & new app registration' : 'Create workflow'}
         </VSCodeButton>
         <div className={isSubmitting ? '' : 'hidden'}>
           <div className={'text-center h-5'}>
@@ -285,6 +285,9 @@ export const ScaffoldWorkflowView: React.FunctionComponent<IScaffoldWorkflowView
                   <div className={isApplicationAuthentication && shouldCreateAppRegistrationForm && appId && base64CertPrivateKey ? '' : 'hidden'}>
                     <p className={'pl-9 mt-2'}><strong>Your certificate and app registration are ready as well!</strong></p>
                     <p className={'pl-9'}>You may find your generated certificate in the temp folder in your solution.</p>
+                    <p className={'pl-9'}>Check out your new app registration:
+                      <VSCodeLink href={`https://portal.azure.com/#view/Microsoft_AAD_RegisteredApps/ApplicationMenuBlade/~/Overview/appId/${appId}`}>{appRegistrationName}</VSCodeLink>
+                    </p>
                     <p className={'pl-9'}>Use the below values for your secrets: </p>
                     <table>
                       <tr>
