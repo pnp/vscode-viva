@@ -1,5 +1,15 @@
 # Change Log
 
+## [2.5.0] - 2024-02-05
+
+- Refactored sample galleries to a single sample gallery
+- Added detail view for sample
+- Added filters to the sample gallery
+- Added list view to sample gallery
+- Added SharePoint Embedded VS Code extension to help and feedback links
+- Refactored CI/CD action to be form based 
+- Added the possibility to generate certificate and create a Entra ID app for the CI/CD pipeline
+
 ## [2.4.0] - 2023-11-29
 
 - Added support for SPFx v1.18.2
