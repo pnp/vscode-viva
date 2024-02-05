@@ -5,5 +5,7 @@ export * from './ContextKeys';
 export * from './ExtensionTypes';
 export * from './FrameworkTypes';
 export * from './General';
+export * from './GenerateWorkflowCommandInput';
 export * from './ProjectFileContent';
 export * from './WebviewCommand';
+export * from './WebViewTypes';

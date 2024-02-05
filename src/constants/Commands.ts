@@ -35,14 +35,11 @@ export const Commands = {
   // Grant API permissions
   grantAPIPermissions: `${EXTENSION_NAME}.grantAPIPermissions`,
 
-  // Generate a CI/CD GitHub workflow
-  pipelineGitHub: `${EXTENSION_NAME}.pipelineGitHub`,
+  // Generate a CI/CD workflow
+  pipeline: `${EXTENSION_NAME}.pipeline`,
 
   // Webviews
-  showACESampleGallery: `${EXTENSION_NAME}.showACESampleGallery`,
-  showACEScenariosGallery: `${EXTENSION_NAME}.showACEScenariosGallery`,
-  showExtensionsSampleGallery: `${EXTENSION_NAME}.showExtensionsSampleGallery`,
-  showWebpartSampleGallery: `${EXTENSION_NAME}.showWebpartSampleGallery`,
+  samplesGallery: `${EXTENSION_NAME}.samplesGallery`,
 
   // Serving
   serveProject: `${EXTENSION_NAME}.serveProject`,
