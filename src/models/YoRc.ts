@@ -4,4 +4,5 @@ export interface YoRc {
 
 export interface GeneratorSharePoint {
   aceTemplateType?: string;
+  solutionName?: string;
 }

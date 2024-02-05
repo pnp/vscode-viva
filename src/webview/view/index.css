@@ -2,13 +2,85 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  .sample_details h1 {
+    @apply text-3xl;
+    @apply mb-2;
+  }
+
+  .sample_details h2 {
+    @apply text-2xl;
+    @apply mb-2;
+  }
+
+  .sample_details h3 {
+    @apply text-xl;
+    @apply mb-2;
+  }
+
+  .sample_details h4 {
+    @apply text-lg;
+    @apply mb-2;
+  }
+
+  .sample_details h5, .sample_details h6, .sample_details p {
+    @apply mb-2;
+  }
+
+  .sample_details a {
+    color: var(--vscode-textLink-foreground);
+    @apply hover:underline;
+  }
+
+  .sample_details ul {
+    display: block;
+    list-style-type: disc;
+  }
+
+  .sample_details ol {
+    display: block;
+    list-style-type: decimal;
+  }
+
+  .sample_details li {
+    display: list-item;
+    @apply ml-4;
+  }
+
+  .sample_details ul ul li {
+    @apply ml-8;
+  }
+
+  .sample_details table th, .sample_details table td {
+    @apply border-collapse;
+    @apply px-2;
+    @apply py-2;
+    border: 1px solid var(--vscode-editorWidget-border);
+  }
+
+  .sample_details img {
+    @apply inline-block;
+    @apply mb-2;
+    @apply mr-2;
+  }
+}
+
+.sample_details_controls{
+  background: var(--vscode-editor-background);
+}
+
 .sample__icon {
   color: var(--vscode-textLink-foreground)
 }
 
-.sample_card {
+.sample_card, .sample_row {
   background: var(--vscode-editorWidget-background);
   border: 1px solid var(--vscode-editorWidget-border);
+  transition: all 0.2s ease-in-out;
+}
+
+.sample_card:hover, .sample_row:hover {
+  box-shadow: 0 0 6px var(--vscode-editorWidget-border);
 }
 
 .sample_card img {
@@ -35,4 +107,8 @@
 .sample_card__author_avatar:nth-of-type(4), 
 .sample_card__author_avatar:nth-of-type(5) {
   @apply -ml-3;
+}
+
+.bg-vscode{
+  background: var(--vscode-editor-background);
 }

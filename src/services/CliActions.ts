@@ -2,7 +2,7 @@ import { ServeConfig } from './../models/ServeConfig';
 import { readFileSync, writeFileSync } from 'fs';
 import { Folders } from './Folders';
 import { commands, Progress, ProgressLocation, Uri, window, workspace } from 'vscode';
-import { Commands } from '../constants';
+import { Commands, GenerateWorkflowCommandInput, WebViewType, WebviewCommand } from '../constants';
 import { SiteAppCatalog, SolutionAddResult, Subscription } from '../models';
 import { Extension } from './Extension';
 import { CliExecuter } from './CliCommandExecuter';
@@ -12,6 +12,10 @@ import { EnvironmentInformation } from './EnvironmentInformation';
 import { AuthProvider } from '../providers/AuthProvider';
 import { CommandOutput } from '@pnp/cli-microsoft365';
 import { TeamsToolkitIntegration } from './TeamsToolkitIntegration';
+import { PnPWebview } from '../webview/PnPWebview';
+import { parseYoRc } from '../utils/parseYoRc';
+import { CertificateActions } from './CertificateActions';
+import path = require('path');
 
 
 export class CliActions {
@@ -35,16 +39,13 @@ export class CliActions {
       commands.registerCommand(Commands.grantAPIPermissions, CliActions.grantAPIPermissions)
     );
     subscriptions.push(
-      commands.registerCommand(Commands.pipelineGitHub, CliActions.generateGitHubWorkflow)
+      commands.registerCommand(Commands.pipeline, CliActions.showGenerateWorkflowForm)
     );
     subscriptions.push(
       commands.registerCommand(Commands.serveProject, CliActions.serveProject)
     );
   }
 
-  /**
-   * Get the root SPO URL
-   */
   public static async appCatalogUrlsGet(): Promise<string[] | undefined> {
     const appCatalogUrls: string[] = [];
     const tenantAppCatalog = (await CliExecuter.execute('spo tenant appcatalogurl get', 'json')).stdout || undefined;
@@ -63,20 +64,136 @@ export class CliActions {
     return EnvironmentInformation.appCatalogUrls;
   }
 
-  /**
-   * Upgrade the Project
-   */
+  public static async generateWorkflowForm(input: GenerateWorkflowCommandInput) {
+    // Change the current working directory to the root of the Project
+    const wsFolder = await Folders.getWorkspaceFolder();
+    if (wsFolder) {
+      let fsPath = wsFolder.uri.fsPath;
+
+      if (TeamsToolkitIntegration.isTeamsToolkitProject) {
+        fsPath = join(fsPath, 'src');
+      }
+
+      process.chdir(fsPath);
+    }
+
+    let pfxBase64: string = '';
+    let appId: string = '';
+    let tenantId: string = '';
+    if (input.shouldCreateAppRegistrationForm && input.isApplicationAuthentication) {
+      pfxBase64 = await CertificateActions.generateCertificate(input.certPassword);
+
+      if (!pfxBase64) {
+        Notifications.error('Error generating certificate.');
+        PnPWebview.postMessage(WebviewCommand.toWebview.WorkflowCreated, {success: false});
+        return;
+      }
+
+      await window.withProgress({
+        location: ProgressLocation.Notification,
+        title: 'Creating app registration...',
+        cancellable: true
+        // eslint-disable-next-line no-unused-vars
+      }, async (progress: Progress<{ message?: string; increment?: number }>) => {
+        try {
+          const commandOptions: any = {};
+
+          commandOptions.name = input.appRegistrationName;
+
+          commandOptions.apisApplication = 'https://microsoft.sharepoint-df.com/Sites.FullControl.All,https://graph.microsoft.com/Sites.Read.All';
+
+          const workspaceFolder = workspace.workspaceFolders?.[0];
+          const workspacePath = workspaceFolder?.uri.fsPath;
+          const certPath = path.join(workspacePath!, 'temp', 'certificate.cer');
+          commandOptions.certificateFile = certPath;
+
+          commandOptions.certificateDisplayName = 'CICD Certificate';
+
+          commandOptions.grantAdminConsent = true;
+
+          const result = await CliExecuter.execute('aad app add', 'json', commandOptions);
+          const output = JSON.parse(result.stdout);
+          appId = output.appId;
+          tenantId = output.tenantId;
+
+          if (result.stderr) {
+            Notifications.error(result.stderr);
+          }
+          Notifications.info('New Entra ID app registered successfully.');
+        } catch (e: any) {
+          const message = e?.error?.message;
+          Notifications.error(message);
+          PnPWebview.postMessage(WebviewCommand.toWebview.WorkflowCreated, {success: false});
+        }
+      });
+    }
+
+    await window.withProgress({
+      location: ProgressLocation.Notification,
+      title: 'Generating GitHub CI/CD workflow...',
+      cancellable: true
+      // eslint-disable-next-line no-unused-vars
+    }, async (progress: Progress<{ message?: string; increment?: number }>) => {
+      try {
+        const commandOptions: any = {};
+
+        if (input.name) {
+          commandOptions.name = input.name;
+        }
+
+        if (input.branch) {
+          commandOptions.branchName = input.branch;
+        }
+
+        if (input.shouldTriggerManually) {
+          commandOptions.manuallyTrigger = input.shouldTriggerManually;
+        }
+
+        commandOptions.loginMethod = input.isApplicationAuthentication ? 'application' : 'user';
+
+        commandOptions.scope = input.isTenantScope ? 'tenant' : 'sitecollection';
+
+        if (commandOptions.scope === 'sitecollection' && input.siteUrl) {
+          commandOptions.siteUrl = input.siteUrl;
+        }
+
+        if (input.shouldSkipFeatureDeployment) {
+          commandOptions.skipFeatureDeployment = input.shouldSkipFeatureDeployment;
+        }
+
+        commandOptions.overwrite = true;
+
+        const result = await CliExecuter.execute('spfx project github workflow add', 'json', commandOptions);
+
+        if (result.stderr) {
+          Notifications.error(result.stderr);
+        }
+        Notifications.info('Workflow generated successfully.');
+        PnPWebview.postMessage(WebviewCommand.toWebview.WorkflowCreated, {
+          success: true,
+          appId: appId,
+          pfxBase64: pfxBase64,
+          tenantId: tenantId
+        });
+      } catch (e: any) {
+        const message = e?.error?.message;
+        Notifications.error(message);
+        PnPWebview.postMessage(WebviewCommand.toWebview.WorkflowCreated, {success: false});
+      }
+    });
+  }
+
   private static async upgrade() {
     // Change the current working directory to the root of the Project
     const wsFolder = await Folders.getWorkspaceFolder();
     if (wsFolder) {
-      let path = wsFolder.uri.fsPath;
+      let fsPath = wsFolder.uri.fsPath;
 
       if (TeamsToolkitIntegration.isTeamsToolkitProject) {
-        path = join(path, 'src');
+        fsPath = join(fsPath, 'src');
       }
 
-      process.chdir(path);
+      process.chdir(fsPath);
     }
 
     await window.withProgress({
@@ -109,20 +226,17 @@ export class CliActions {
     });
   }
 
-  /**
-     * Renames the current Project
-     */
   private static async renameProject() {
     // Change the current working directory to the root of the Project
     const wsFolder = await Folders.getWorkspaceFolder();
     if (wsFolder) {
-      let path = wsFolder.uri.fsPath;
+      let fsPath = wsFolder.uri.fsPath;
 
       if (TeamsToolkitIntegration.isTeamsToolkitProject) {
-        path = join(path, 'src');
+        fsPath = join(fsPath, 'src');
       }
 
-      process.chdir(path);
+      process.chdir(fsPath);
     }
 
     const newName = await window.showInputBox({
@@ -174,20 +288,17 @@ export class CliActions {
     });
   }
 
-  /**
-     * grant API permissions for the current Project
-     */
   private static async grantAPIPermissions() {
     // Change the current working directory to the root of the Project
     const wsFolder = await Folders.getWorkspaceFolder();
     if (wsFolder) {
-      let path = wsFolder.uri.fsPath;
+      let fsPath = wsFolder.uri.fsPath;
 
       if (TeamsToolkitIntegration.isTeamsToolkitProject) {
-        path = join(path, 'src');
+        fsPath = join(fsPath, 'src');
       }
 
-      process.chdir(path);
+      process.chdir(fsPath);
     }
 
     await window.withProgress({
@@ -211,166 +322,27 @@ export class CliActions {
     });
   }
 
-  /**
-     * generate a GitHub CI/CD workflow for the current Project
-     */
-  private static async generateGitHubWorkflow() {
-    // Change the current working directory to the root of the Project
-    const wsFolder = await Folders.getWorkspaceFolder();
-    if (wsFolder) {
-      let path = wsFolder.uri.fsPath;
+  private static async showGenerateWorkflowForm() {
+    const content = await parseYoRc();
+    const data = {
+      spfxPackageName: content ? content['@microsoft/generator-sharepoint'].solutionName : '',
+      appCatalogUrls: EnvironmentInformation.appCatalogUrls && EnvironmentInformation.appCatalogUrls.length > 1 ? EnvironmentInformation.appCatalogUrls : []
+    };
 
-      if (TeamsToolkitIntegration.isTeamsToolkitProject) {
-        path = join(path, 'src');
-      }
-
-      process.chdir(path);
-    }
-
-    const name = await window.showInputBox({
-      title: 'What should be the name of the workflow? (default: Deploy Solution ${name of sppkg file})',
-      ignoreFocusOut: true
-    });
-
-    const branchName = await window.showInputBox({
-      title: 'What should be the branch name which should trigger the workflow on push? (default: main)',
-      value: 'main',
-      ignoreFocusOut: true
-    });
-
-    const shouldManuallyTriggerAnswer = await window.showQuickPick(['Yes', 'No'], {
-      title: 'Should it be possible to trigger the workflow manually?',
-      ignoreFocusOut: true,
-      canPickMany: false
-    });
-    const shouldManuallyTrigger = shouldManuallyTriggerAnswer === 'Yes';
-
-    const loginMethod = await window.showQuickPick(['application', 'user'], {
-      title: 'Specify the login method used for the login action. (default: application)',
-      ignoreFocusOut: true,
-      canPickMany: false
-    });
-
-    const scope = await window.showQuickPick(['tenant', 'sitecollection'], {
-      title: 'Specify the scope of the app catalog. (default: tenant)',
-      ignoreFocusOut: true,
-      canPickMany: false
-    });
-
-    let siteUrl: string | undefined;
-    if (scope === 'sitecollection') {
-      if (EnvironmentInformation.appCatalogUrls && EnvironmentInformation.appCatalogUrls.length > 1) {
-        siteUrl = await window.showQuickPick(EnvironmentInformation.appCatalogUrls.map(url => url, {
-          placeHolder: 'Select the App Catalog',
-          ignoreFocusOut: true,
-          canPickMany: false,
-          title: 'Select the App Catalog'
-        }));
-      } else {
-        siteUrl = await window.showInputBox({
-          title: 'Specify the URL of the site collection where the solution package will be added',
-          ignoreFocusOut: true,
-          validateInput: async (value) => {
-            if (!value) {
-              return 'Site app catalog url is required';
-            }
-
-            if (value.toLowerCase().indexOf('https://') < 0 || value.toLowerCase().indexOf('appcatalog') < 0) {
-              return `${value} is not a valid SharePoint Online site app catalog URL`;
-            }
-
-            return undefined;
-          }
-        });
-      }
-
-      if (!siteUrl) {
-        return;
-      }
-    }
-
-    const skipFeatureDeploymentAnswer = await window.showQuickPick(['Yes', 'No'], {
-      title: 'Should the solution be deployed to the whole tenant? (applies when app supports tenant-wide deployment)',
-      ignoreFocusOut: true,
-      canPickMany: false
-    });
-    const skipFeatureDeployment = skipFeatureDeploymentAnswer === 'Yes';
-
-    const overwriteAnswer = await window.showQuickPick(['Yes', 'No'], {
-      title: 'Should overwrite the solution package if it already exists in the app catalog?',
-      ignoreFocusOut: true,
-      canPickMany: false
-    });
-    const overwrite = overwriteAnswer === 'Yes';
-
-    await window.withProgress({
-      location: ProgressLocation.Notification,
-      title: 'Generating GitHub CI/CD workflow...',
-      cancellable: true
-      // eslint-disable-next-line no-unused-vars
-    }, async (progress: Progress<{ message?: string; increment?: number }>) => {
-      try {
-        const commandOptions: any = {};
-
-        if (name) {
-          commandOptions.name = name;
-        }
-
-        if (branchName) {
-          commandOptions.branchName = branchName;
-        }
-
-        if (shouldManuallyTrigger) {
-          commandOptions.manuallyTrigger = shouldManuallyTrigger;
-        }
-
-        if (loginMethod) {
-          commandOptions.loginMethod = loginMethod;
-        }
-
-        if (scope) {
-          commandOptions.scope = scope;
-
-          if (scope === 'sitecollection' && siteUrl) {
-            commandOptions.siteUrl = siteUrl;
-          }
-        }
-
-        if (skipFeatureDeployment) {
-          commandOptions.skipFeatureDeployment = skipFeatureDeployment;
-        }
-
-        if (overwrite) {
-          commandOptions.overwrite = overwrite;
-        }
-
-        const result = await CliExecuter.execute('spfx project github workflow add', 'json', commandOptions);
-
-        if (result.stderr) {
-          Notifications.error(result.stderr);
-        }
-        Notifications.info('Workflow generated successfully.');
-      } catch (e: any) {
-        const message = e?.error?.message;
-        Notifications.error(message);
-      }
-    });
+    PnPWebview.open(WebViewType.workflowForm, data);
   }
 
-  /**
-   * Validates the current Project
-   */
   private static async validateProject() {
     // Change the current working directory to the root of the Project
     const wsFolder = await Folders.getWorkspaceFolder();
     if (wsFolder) {
-      let path = wsFolder.uri.fsPath;
+      let fsPath = wsFolder.uri.fsPath;
 
       if (TeamsToolkitIntegration.isTeamsToolkitProject) {
-        path = join(path, 'src');
+        fsPath = join(fsPath, 'src');
       }
 
-      process.chdir(path);
+      process.chdir(fsPath);
     }
 
     await window.withProgress({
@@ -403,9 +375,6 @@ export class CliActions {
     });
   }
 
-  /**
-   * Deploy the Project
-   */
   private static async deploy(file: Uri | undefined) {
     const authInstance = AuthProvider.getInstance();
     const account = await authInstance.getAccount();
@@ -511,9 +480,6 @@ export class CliActions {
     });
   }
 
-  /**
-   * Serve the Project
-   */
   public static async serveProject() {
     const wsFolder = Folders.getWorkspaceFolder();
     if (!wsFolder) {

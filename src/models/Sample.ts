@@ -6,6 +6,10 @@ export interface Sample {
   image: string;
   authors: Author[];
   tags: string[];
+  version: string;
+  componentType: string;
+  extensionType: string;
+  sampleType: string;
   createDate: string;
   updateDate: string;
 }

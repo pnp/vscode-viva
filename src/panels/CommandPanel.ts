@@ -172,11 +172,8 @@ export class CommandPanel {
       new ActionTreeItem('Grant API permissions', '', { name: 'workspace-trusted', custom: false }, undefined, Commands.grantAPIPermissions),
       new ActionTreeItem('Deploy project (sppkg)', '', { name: 'cloud-upload', custom: false }, undefined, Commands.deployProject),
       new ActionTreeItem('Add new component', '', { name: 'add', custom: false }, undefined, Commands.addToProject),
-      new ActionTreeItem('CI/CD GitHub Workflow', '', { name: 'rocket', custom: false }, undefined, Commands.pipelineGitHub),
-      new ActionTreeItem('View SPFx web part samples', '', { name: 'library', custom: false }, undefined, Commands.showWebpartSampleGallery),
-      new ActionTreeItem('View SPFx extension samples', '', { name: 'library', custom: false }, undefined, Commands.showExtensionsSampleGallery),
-      new ActionTreeItem('View ACEs samples', '', { name: 'library', custom: false }, undefined, Commands.showACESampleGallery),
-      new ActionTreeItem('View ACEs scenarios', '', { name: 'library', custom: false }, undefined, Commands.showACEScenariosGallery),
+      new ActionTreeItem('CI/CD Workflow', '', { name: 'rocket', custom: false }, undefined, Commands.pipeline),
+      new ActionTreeItem('View samples', '', { name: 'library', custom: false }, undefined, Commands.samplesGallery),
     ];
 
     window.registerTreeDataProvider('pnp-view-actions', new ActionTreeviewProvider(actionCommands));
@@ -199,6 +196,7 @@ export class CommandPanel {
         new ActionTreeItem('Microsoft Graph Explorer', '', { name: 'globe', custom: false }, undefined, 'vscode.open', Uri.parse('https://developer.microsoft.com/en-us/graph/graph-explorer')),
         new ActionTreeItem('Teams Toolkit', '', { name: 'tools', custom: false }, undefined, 'vscode.open', Uri.parse('https://marketplace.visualstudio.com/items?itemName=TeamsDevApp.ms-teams-vscode-extension')),
         new ActionTreeItem('Adaptive Card Previewer', '', { name: 'tools', custom: false }, undefined, 'vscode.open', Uri.parse('https://marketplace.visualstudio.com/items?itemName=TeamsDevApp.vscode-adaptive-cards')),
+        new ActionTreeItem('SharePoint Embedded', '', { name: 'tools', custom: false }, undefined, 'vscode.open', Uri.parse('https://marketplace.visualstudio.com/items?itemName=SharepointEmbedded.ms-sharepoint-embedded-vscode-extension')),
         new ActionTreeItem('Adaptive Card Designer', '', { name: 'globe', custom: false }, undefined, 'vscode.open', Uri.parse('https://adaptivecards.io/designer/')),
         new ActionTreeItem('Join the Microsoft 365 Developer Program', '', { name: 'star-empty', custom: false }, undefined, 'vscode.open', Uri.parse('https://developer.microsoft.com/en-us/microsoft-365/dev-program')),
         new ActionTreeItem('Sample Solution Gallery', '', { name: 'library', custom: false }, undefined, 'vscode.open', Uri.parse('https://adoption.microsoft.com/en-us/sample-solution-gallery/'))

@@ -1,32 +1,36 @@
 import * as React from 'react';
-import { WebviewType } from '../../WebviewType';
 import { Route, Routes, useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
-import { GalleryView } from './gallery';
+import { GalleryView, DetailsView } from './gallery';
 import { Messenger } from '@estruyf/vscode/dist/client';
 import { EventData } from '@estruyf/vscode/dist/models/EventData';
 import { WebviewCommand } from '../../../constants';
-import { paths, routeEntries } from '..';
+import { routeEntries } from '..';
+import { ScaffoldWorkflowView } from './forms/workflow/ScaffoldWorkflowView';
 
 
 export interface IAppProps {
-  version: string | null;
-  type: WebviewType | null;
+  url: string | null;
+  data: any | null
 }
 
 // eslint-disable-next-line no-unused-vars
-export const App: React.FunctionComponent<IAppProps> = ({ version, type }: React.PropsWithChildren<IAppProps>) => {
+export const App: React.FunctionComponent<IAppProps> = ({ url, data }: React.PropsWithChildren<IAppProps>) => {
   const navigate = useNavigate();
 
   const messageListener = (event: MessageEvent<EventData<any>>) => {
     const { command, payload } = event.data;
 
     if (command === WebviewCommand.toWebview.viewType) {
-      navigate(routeEntries[payload]);
+      navigate(routeEntries[payload.webViewType], { state: payload });
     }
   };
 
   useEffect(() => {
+    if (url) {
+      navigate(url, { state: data });
+    }
+
     Messenger.listen(messageListener);
 
     return () => {
@@ -36,10 +40,9 @@ export const App: React.FunctionComponent<IAppProps> = ({ version, type }: React
 
   return (
     <Routes>
-      <Route path={paths.aCESample} element={<GalleryView type={'sp-dev-fx-aces-samples'} />} />
-      <Route path={paths.aCEScenario} element={<GalleryView type={'sp-dev-fx-aces-scenarios'} />} />
-      <Route path={paths.extensionSample} element={<GalleryView type={'sp-dev-fx-extensions-samples'} />} />
-      <Route path={paths.webpartSample} element={<GalleryView type={'sp-dev-fx-webparts-samples'} />} />
+      <Route path={'/sp-dev-fx-samples'} element={<GalleryView />} />
+      <Route path={'/sp-dev-fx-sample-details-view'} element={<DetailsView />} />
+      <Route path={'/scaffold-workflow'} element={<ScaffoldWorkflowView />} />
     </Routes>
   );
 };
