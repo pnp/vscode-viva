@@ -56,6 +56,14 @@ export class PnPWebview {
         messageData.appCatalogUrls = data.appCatalogUrls;
       }
 
+      if (data && data.isNewProject) {
+        messageData.isNewProject = data.isNewProject;
+      }
+
+      if (data && data.nodeVersion) {
+        messageData.nodeVersion = data.nodeVersion;
+      }
+
       PnPWebview.postMessage(WebviewCommand.toWebview.viewType, messageData);
     }
   }
@@ -95,6 +103,14 @@ export class PnPWebview {
       webViewData.appCatalogUrls = data.appCatalogUrls;
     }
 
+    if (data && data.isNewProject) {
+      webViewData.isNewProject = data.isNewProject;
+    }
+
+    if (data && data.nodeVersion) {
+      webViewData.nodeVersion = data.nodeVersion;
+    }
+
     PnPWebview.webview.webview.html = PnPWebview.getWebviewContent(PnPWebview.webview.webview, webViewData);
 
     PnPWebview.webview.title = webViewType?.Title as string;
@@ -120,6 +136,15 @@ export class PnPWebview {
           break;
         case WebviewCommand.toVSCode.createWorkFlow:
           CliActions.generateWorkflowForm(payload);
+          break;
+        case WebviewCommand.toVSCode.pickFolder:
+          Scaffolder.pickFolder();
+          break;
+        case WebviewCommand.toVSCode.validateSolutionName:
+          Scaffolder.validateSolutionName(payload.folderPath, payload.solutionName);
+          break;
+        case WebviewCommand.toVSCode.createSpfxProject:
+          Scaffolder.createProject(payload);
           break;
       }
     });

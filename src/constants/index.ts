@@ -7,5 +7,6 @@ export * from './FrameworkTypes';
 export * from './General';
 export * from './GenerateWorkflowCommandInput';
 export * from './ProjectFileContent';
+export * from './SpfxScaffoldCommandInput';
 export * from './WebviewCommand';
 export * from './WebViewTypes';
