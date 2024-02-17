@@ -3645,21 +3645,25 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-azure-openai-api-stream",
-      "title": "Calling Azure OpenAI API in stream mode",
+      "title": "Calling Azure OpenAI API in streaming mode",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-azure-openai-api-stream",
       "description": "This web part shows how you can call Azure OpenAI API in Streaming mode",
-      "image": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-azure-openai-api-stream/assets/react-azure-openai-api-stream.gif",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-azure-openai-api-stream/assets/screenshot.gif",
       "authors": [
         {
           "name": "Luis Mañez",
           "pictureUrl": "https://github.com/luismanez.png"
+        },
+        {
+          "name": "Chris Kent",
+          "pictureUrl": "https://github.com/thechriskent.png"
         }
       ],
       "tags": [
         "SharePoint"
       ],
       "createDate": "2024-01-02",
-      "updateDate": "2024-01-02",
+      "updateDate": "2024-02-08",
       "version": "1.18.2",
       "componentType": "webpart",
       "extensionType": null,
@@ -6348,29 +6352,6 @@
       "sampleType": "samples"
     },
     {
-      "name": "pnp-sp-dev-spfx-web-parts-react-m365-services-health",
-      "title": "Service Health for Microsoft 365",
-      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-m365-services-health",
-      "description": "Service Health for Microsoft 365 solution show the health status for all the Microsoft 365 services",
-      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-m365-services-health/assets/M365ServiceHealthDetail.png",
-      "authors": [
-        {
-          "name": "Harminder Singh",
-          "pictureUrl": "https://github.com/HarminderSethi.png"
-        }
-      ],
-      "tags": [
-        "SharePoint"
-      ],
-      "createDate": "2023-02-03",
-      "updateDate": "2023-02-03",
-      "version": "1.16.1",
-      "componentType": "webpart",
-      "extensionType": null,
-      "sampleGalerry": "sp-dev-fx-webparts",
-      "sampleType": "samples"
-    },
-    {
       "name": "pnp-sp-dev-spfx-web-parts-react-manage-hublevel-subscriptions",
       "title": "Subscription Manager",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-manage-hublevel-subscriptions",
@@ -7577,6 +7558,29 @@
       "sampleType": "samples"
     },
     {
+      "name": "pnp-sp-dev-spfx-web-parts-react-personal-tools-list",
+      "title": "Personal tools list",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-personal-tools-list",
+      "description": "Allows users to select tools from a predefined list and save them in their own personalized view.",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-personal-tools-list/assets/MyToolsDemo1.gif",
+      "authors": [
+        {
+          "name": "Eli Schei",
+          "pictureUrl": "https://github.com/Eli-Schei.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2024-02-08",
+      "updateDate": "2024-02-08",
+      "version": "1.18.0",
+      "componentType": "webpart",
+      "extensionType": null,
+      "sampleGalerry": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
       "name": "pnp-sp-dev-spfx-web-parts-react-photo-sync",
       "title": "SPUPS Photo Sync",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-photo-sync",
@@ -8328,7 +8332,7 @@
       ],
       "createDate": "2020-11-22",
       "updateDate": "2023-08-18",
-      "version": "1.11.0",
+      "version": "1.18.2",
       "componentType": "webpart",
       "extensionType": null,
       "sampleGalerry": "sp-dev-fx-webparts",
