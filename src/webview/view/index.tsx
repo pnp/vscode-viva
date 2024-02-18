@@ -32,7 +32,7 @@ if (elm) {
     data.appCatalogUrls = appCatalogUrls;
   }
 
-  if (isNewProject) {
+  if (isNewProject !== undefined) {
     data.isNewProject = isNewProject;
   }
 

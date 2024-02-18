@@ -1,12 +1,6 @@
-import { ComponentType } from './ComponentTypes';
-import { ExtensionType } from './ExtensionTypes';
+import { SpfxAddComponentCommandInput } from './SpfxAddComponentCommandInput';
 
-export interface SpfxScaffoldCommandInput {
+export interface SpfxScaffoldCommandInput extends SpfxAddComponentCommandInput {
   folderPath: string;
-  name: string;
-  componentType: ComponentType;
-  componentName: string;
-  frameworkType: string;
-  extensionType: ExtensionType;
-  aceType: string;
+  solutionName: string;
 }
