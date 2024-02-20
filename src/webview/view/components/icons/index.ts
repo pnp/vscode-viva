@@ -10,3 +10,5 @@ export * from './ListIcon';
 export * from './CardIcon';
 export * from './RocketIcon';
 export * from './CopyIcon';
+export * from './AddIcon';
+export * from './FolderIcon';
