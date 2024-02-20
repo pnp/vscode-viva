@@ -1,30 +1,25 @@
 import { parseWinPath } from './../utils/parseWinPath';
-import { Executer } from './CommandExecuter';
 import { Folders } from './Folders';
 import { Notifications } from './Notifications';
 import { Logger } from './Logger';
 import { commands, ProgressLocation, QuickPickItem, Uri, window } from 'vscode';
-import { AdaptiveCardTypesNode16, AdaptiveCardTypesNode18, Commands, ComponentType, ComponentTypes, FrameworkTypes, ProjectFileContent } from '../constants';
+import { Commands, ComponentType, ProjectFileContent, SpfxAddComponentCommandInput, SpfxScaffoldCommandInput, WebviewCommand, WebViewType } from '../constants';
 import { Sample, Subscription } from '../models';
 import { join } from 'path';
 import { existsSync, mkdirSync, writeFileSync } from 'fs';
 import * as glob from 'fast-glob';
-import { ExtensionTypes } from '../constants/ExtensionTypes';
 import { Extension } from './Extension';
 import download from 'github-directory-downloader/esm';
 import { CliExecuter } from './CliCommandExecuter';
 import { getPlatform } from '../utils';
 import { TerminalCommandExecuter } from './TerminalCommandExecuter';
 import { execSync } from 'child_process';
+import { PnPWebview } from '../webview/PnPWebview';
+import { Executer } from './CommandExecuter';
 import { TeamsToolkitIntegration } from './TeamsToolkitIntegration';
 
 
 export const PROJECT_FILE = 'project.pnp';
-
-interface NameValue {
-  name: string;
-  value: string;
-}
 
 export class Scaffolder {
 
@@ -32,39 +27,21 @@ export class Scaffolder {
     const subscriptions: Subscription[] = Extension.getInstance().subscriptions;
 
     subscriptions.push(
-      commands.registerCommand(Commands.createProject, Scaffolder.createProject)
+      commands.registerCommand(Commands.createProject, Scaffolder.showCreateProjectForm)
     );
     subscriptions.push(
-      commands.registerCommand(Commands.addToProject, Scaffolder.addProject)
+      commands.registerCommand(Commands.addToProject, Scaffolder.showAddProjectForm)
     );
   }
 
-  /**
-   * Create a new project
-   * @returns
-   */
-  public static async createProject() {
-    Logger.info('Start creating a new project');
-
-    const folderPath = await Scaffolder.getFolderPath();
-    if (!folderPath) {
-      Notifications.warning('You must select the parent folder to create the project in');
-      return;
-    }
-
-    const solutionName = await Scaffolder.getSolutionName(folderPath);
-    if (!solutionName) {
-      Logger.warning('Cancelled solution name input');
-      return;
-    }
-
-    Scaffolder.addProject(solutionName, folderPath);
+  public static async createProject(input: SpfxScaffoldCommandInput) {
+    Scaffolder.scaffold(input, true);
   }
 
-  /**
-   * Start from a sample
-   * @param sample
-   */
+  public static async addComponentToProject(input: SpfxAddComponentCommandInput) {
+    Scaffolder.scaffold(input, false);
+  }
+
   public static async useSample(sample: Sample) {
     Logger.info(`Start using sample ${sample.name}`);
 
@@ -115,49 +92,108 @@ export class Scaffolder {
     });
   }
 
-  /**
-   * Create project file and open it in VS Code
-   * @param folderPath
-   * @param content
-   */
-  private static async createProjectFileAndOpen(folderPath: string, content: any) {
-    writeFileSync(join(folderPath, PROJECT_FILE), content, { encoding: 'utf8' });
-
-    if (getPlatform() === 'windows') {
-      await commands.executeCommand('vscode.openFolder', Uri.file(parseWinPath(folderPath)));
-    } else {
-      await commands.executeCommand('vscode.openFolder', Uri.parse(folderPath));
+  public static async pickFolder() {
+    const folder = await window.showOpenDialog({
+      canSelectFolders: true,
+      canSelectFiles: false,
+      canSelectMany: false,
+      openLabel: 'Select',
+      title: 'Select the parent folder where you want to create the project',
+    });
+    if (folder?.length) {
+      PnPWebview.postMessage(WebviewCommand.toWebview.folderPath, folder[0].fsPath);
     }
   }
 
-  /**
-   * Get the name of the solution to create
-   * @returns
-   */
-  private static async getSolutionName(folderPath: string): Promise<string | undefined> {
-    return await window.showInputBox({
-      title: 'What is your solution name?',
-      placeHolder: 'Enter your solution name',
-      ignoreFocusOut: true,
-      validateInput: (value) => {
-        if (!value) {
-          return 'Solution name is required';
+  public static validateSolutionName(folderPath: string, solutionNameInput: string) {
+    if (existsSync(join(folderPath, solutionNameInput))) {
+      PnPWebview.postMessage(WebviewCommand.toWebview.validateSolutionName, false);
+      return;
+    }
+
+    PnPWebview.postMessage(WebviewCommand.toWebview.validateSolutionName, true);
+  }
+
+  public static async validateComponentName(componentType: ComponentType, componentNameInput: string) {
+    if (await Scaffolder.componentFolderExists(componentType, componentNameInput)) {
+      PnPWebview.postMessage(WebviewCommand.toWebview.validateComponentName, false);
+      return;
+    }
+
+    PnPWebview.postMessage(WebviewCommand.toWebview.validateComponentName, true);
+  }
+
+  private static async scaffold(input: SpfxScaffoldCommandInput | SpfxAddComponentCommandInput, isNewProject: boolean) {
+    Logger.info('Start creating a new project');
+
+    let yoCommand = '';
+
+    const yoCommandSolutionName = isNewProject ? ` --solution-name "${(input as SpfxScaffoldCommandInput).solutionName}"` : '';
+
+    // Ask questions per component type
+    if (input.componentType === ComponentType.adaptiveCardExtension) {
+      yoCommand = `yo @microsoft/sharepoint ${yoCommandSolutionName} --component-type ${input.componentType} --aceTemplateType ${input.aceType} --component-name "${input.componentName}" --skip-install`;
+    } else if (input.componentType === ComponentType.extension) {
+      yoCommand = `yo @microsoft/sharepoint ${yoCommandSolutionName} --component-type ${input.componentType} --extension-type ${input.extensionType} --component-name "${input.componentName}" --skip-install`;
+
+      if (input.frameworkType) {
+        yoCommand += ` --framework ${input.frameworkType}`;
+      } else {
+        // To prevent the 'templates/react' scandir issue
+        yoCommand += ' --template ""';
+      }
+    } else if (input.componentType === ComponentType.webPart) {
+      yoCommand = `yo @microsoft/sharepoint ${yoCommandSolutionName} --component-type ${input.componentType} --component-name "${input.componentName}" --framework ${input.frameworkType} --skip-install`;
+    } else if (input.componentType === ComponentType.library) {
+      yoCommand = `yo @microsoft/sharepoint ${yoCommandSolutionName} --component-type ${input.componentType} --component-name "${input.componentName}" --skip-install`;
+    }
+
+    if (!yoCommand) {
+      return;
+    }
+
+    Logger.info(`Command to execute: ${yoCommand}`);
+
+    await window.withProgress({
+      location: ProgressLocation.Notification,
+      title: `Generating project... Check [output window](command:${Commands.showOutputChannel}) for more details`,
+      cancellable: false
+    }, async () => {
+      try {
+        let folderPath = isNewProject ? (input as SpfxScaffoldCommandInput).folderPath : '';
+        if (!folderPath) {
+          const wsFolder = await Folders.getWorkspaceFolder();
+          let path = wsFolder?.uri.fsPath;
+
+          if (path && TeamsToolkitIntegration.isTeamsToolkitProject) {
+            path = join(path, 'src');
+          }
+
+          folderPath = path || '';
         }
 
-        const solutionPath = join(folderPath, value);
-        if (existsSync(solutionPath)) {
-          return `Folder with '${value}' already exists`;
+        const result = await Executer.executeCommand(folderPath, yoCommand);
+        if (result !== 0) {
+          Notifications.errorNoLog(`Error creating the component. Check [output window](command:${Commands.showOutputChannel}) for more details.`);
+          return;
         }
 
-        return undefined;
+        if (isNewProject) {
+          const newSolutionInput = input as SpfxScaffoldCommandInput;
+          const newFolderPath = join(newSolutionInput.folderPath, newSolutionInput.solutionName!);
+          Scaffolder.createProjectFileAndOpen(newFolderPath, 'init');
+        } else {
+          PnPWebview.close();
+        }
+
+        Notifications.info('Component successfully created.');
+      } catch (e) {
+        Logger.error((e as Error).message);
+        Notifications.errorNoLog(`Error creating the component. Check [output window](command:${Commands.showOutputChannel}) for more details.`);
       }
     });
   }
 
-  /**
-   * Select the path to create the project in
-   * @returns
-   */
   private static async getFolderPath(): Promise<string | undefined> {
     const wsFolder = await Folders.getWorkspaceFolder();
     const folderOptions: QuickPickItem[] = [{
@@ -198,315 +234,57 @@ export class Scaffolder {
     return folderPath;
   }
 
-  /**
-   * Add a new component to the project
-   */
-  private static async addProject(solutionName?: string | undefined, folderPath?: string | undefined) {
-    const componentTypeChoice = await window.showQuickPick(ComponentTypes.map(ct => ct.name), {
-      title: 'Which type of client-side component to create?',
-      ignoreFocusOut: true,
-      canPickMany: false
-    });
-
-    if (!componentTypeChoice) {
-      Logger.warning('Cancelled client-side component input');
-      return;
-    }
-
-    const componentType = ComponentTypes.find(ct => ct.name === componentTypeChoice);
-
-    if (!componentType) {
-      Logger.error(`Unknown component type: ${componentTypeChoice}`);
-      return;
-    }
-
-    let yoCommand = '';
-
-    const yoCommandSolutionName = solutionName ? ` --solution-name "${solutionName}"` : '';
-
-    // Ask questions per component type
-    if (componentType.value === ComponentType.adaptiveCardExtension) {
-      const componentAnswers = await Scaffolder.aceComponent();
-      if (!componentAnswers) {
-        return;
-      }
-
-      const { aceTemplateType, componentName } = componentAnswers;
-
-      yoCommand = `yo @microsoft/sharepoint ${yoCommandSolutionName} --component-type ${componentType.value} --aceTemplateType ${aceTemplateType?.value} --component-name "${componentName}" --skip-install`;
-    } else if (componentType.value === ComponentType.extension) {
-      const componentAnswers = await Scaffolder.extensionComponent();
-      if (!componentAnswers) {
-        return;
-      }
-
-      const { componentName, extensionType, framework } = componentAnswers;
-
-      yoCommand = `yo @microsoft/sharepoint ${yoCommandSolutionName} --component-type ${componentType.value} --extension-type ${extensionType} --component-name "${componentName}" --skip-install`;
-
-      if (framework) {
-        yoCommand += ` --framework ${framework}`;
-      } else {
-        // To prevent the 'templates/react' scandir issue
-        yoCommand += ' --template ""';
-      }
-    } else if (componentType.value === ComponentType.webPart) {
-      const componentAnswers = await Scaffolder.webpartComponent();
-      if (!componentAnswers) {
-        return;
-      }
-
-      const { componentName, framework } = componentAnswers;
-
-      yoCommand = `yo @microsoft/sharepoint ${yoCommandSolutionName} --component-type ${componentType.value} --component-name "${componentName}" --framework ${framework} --skip-install`;
-    } else if (componentType.value === ComponentType.library) {
-      const componentAnswers = await Scaffolder.libraryComponent();
-      if (!componentAnswers) {
-        return;
-      }
-
-      const { componentName } = componentAnswers;
-
-      yoCommand = `yo @microsoft/sharepoint ${yoCommandSolutionName} --component-type ${componentType.value} --component-name "${componentName}" --skip-install`;
-    }
-
-    if (!yoCommand) {
-      return;
-    }
-
-    Logger.info(`Command to execute: ${yoCommand}`);
-
-    await window.withProgress({
-      location: ProgressLocation.Notification,
-      title: `Generating project... Check [output window](command:${Commands.showOutputChannel}) for more details`,
-      cancellable: false
-    }, async () => {
-      try {
-        if (!folderPath) {
-          const wsFolder = await Folders.getWorkspaceFolder();
-          let path = wsFolder?.uri.fsPath;
-
-          if (path && TeamsToolkitIntegration.isTeamsToolkitProject) {
-            path = join(path, 'src');
-          }
-
-          folderPath = path || '';
-        }
-
-        const result = await Executer.executeCommand(folderPath, yoCommand);
-        if (result !== 0) {
-          Notifications.errorNoLog(`Error creating the component. Check [output window](command:${Commands.showOutputChannel}) for more details.`);
-          return;
-        }
-
-        if (solutionName) {
-          const newFolderPath = join(folderPath, solutionName!);
-          Scaffolder.createProjectFileAndOpen(newFolderPath, 'init');
-        }
-
-        Notifications.info('Component successfully created.');
-      } catch (e) {
-        Logger.error((e as Error).message);
-        Notifications.errorNoLog(`Error creating the component. Check [output window](command:${Commands.showOutputChannel}) for more details.`);
-      }
+  private static async showCreateProjectForm() {
+    PnPWebview.open(WebViewType.scaffoldForm, {
+      isNewProject: true,
+      nodeVersion: Scaffolder.getNodeVersion()
     });
   }
 
-  /**
-   * Questions to create a new ACE component
-   * @returns
-   */
-  private static async aceComponent(): Promise<{ aceTemplateType: NameValue, componentName: string } | undefined> {
+  private static async showAddProjectForm() {
+    PnPWebview.open(WebViewType.scaffoldForm, {
+      isNewProject: false,
+      nodeVersion: Scaffolder.getNodeVersion()
+    });
+  }
+
+  private static getNodeVersion(): string {
     const output = execSync('node --version', { shell: TerminalCommandExecuter.shell });
     const match = /v(?<major_version>\d+)\.(?<minor_version>\d+)\.(?<patch_version>\d+)/gm.exec(output.toString());
     const nodeVersion = null === match ? '18' : match.groups?.major_version!;
-    const adaptiveCardTypes = nodeVersion === '16' ? AdaptiveCardTypesNode16 : AdaptiveCardTypesNode18;
+    return nodeVersion;
+  }
 
-    const aceTemplateTypeChoice = await window.showQuickPick(adaptiveCardTypes.map(ace => ace.name), {
-      title: 'Which adaptive card extension template do you want to use?',
-      ignoreFocusOut: true,
-      canPickMany: false
-    });
+  private static async createProjectFileAndOpen(folderPath: string, content: any) {
+    writeFileSync(join(folderPath, PROJECT_FILE), content, { encoding: 'utf8' });
 
-    if (!aceTemplateTypeChoice) {
-      Logger.warning('Cancelled ACE template input');
-      return;
+    if (getPlatform() === 'windows') {
+      await commands.executeCommand('vscode.openFolder', Uri.file(parseWinPath(folderPath)));
+    } else {
+      await commands.executeCommand('vscode.openFolder', Uri.parse(folderPath));
     }
+  }
 
-    const aceTemplateType = adaptiveCardTypes.find(ace => ace.name === aceTemplateTypeChoice);
-
-    const componentName = await window.showInputBox({
-      title: 'What is your Adaptive Card Extension name?',
-      value: 'HelloWorld',
+  private static async getSolutionName(folderPath: string): Promise<string | undefined> {
+    return await window.showInputBox({
+      title: 'What is your solution name?',
+      placeHolder: 'Enter your solution name',
       ignoreFocusOut: true,
-      validateInput: async (value) => {
+      validateInput: (value) => {
         if (!value) {
-          return 'Component name is required';
+          return 'Solution name is required';
         }
 
-        if (await Scaffolder.componentFolderExists(ComponentType.adaptiveCardExtension, value)) {
-          return 'Component name already exists';
+        const solutionPath = join(folderPath, value);
+        if (existsSync(solutionPath)) {
+          return `Folder with '${value}' already exists`;
         }
 
         return undefined;
       }
     });
-
-    if (!componentName) {
-      Logger.warning('Cancelled component name input');
-      return;
-    }
-
-    return {
-      aceTemplateType: aceTemplateType as NameValue,
-      componentName
-    };
   }
 
-  /**
-   * Questions to create a new library component
-   * @returns
-   */
-  private static async libraryComponent(): Promise<{ componentName: string } | undefined> {
-    const componentName = await window.showInputBox({
-      title: 'What is your library name?',
-      value: 'HelloWorld',
-      ignoreFocusOut: true,
-      validateInput: async (value) => {
-        if (!value) {
-          return 'Component name is required';
-        }
-
-        if (await Scaffolder.componentFolderExists(ComponentType.library, value)) {
-          return 'Component name already exists';
-        }
-
-        return undefined;
-      }
-    });
-
-    if (!componentName) {
-      Logger.warning('Cancelled component name input');
-      return;
-    }
-
-    return {
-      componentName
-    };
-  }
-
-  /**
-   * Questions to create a new web part component
-   * @returns
-   */
-  private static async webpartComponent(): Promise<{ componentName: string, framework: string } | undefined> {
-    const componentName = await window.showInputBox({
-      title: 'What is your web part name?',
-      value: 'HelloWorld',
-      ignoreFocusOut: true,
-      validateInput: async (value) => {
-        if (!value) {
-          return 'Component name is required';
-        }
-
-        if (await Scaffolder.componentFolderExists(ComponentType.webPart, value)) {
-          return 'Component name already exists';
-        }
-
-        return undefined;
-      }
-    });
-
-    if (!componentName) {
-      Logger.warning('Cancelled component name input');
-      return;
-    }
-
-    const frameworkChoice = await window.showQuickPick(FrameworkTypes.map(type => type.name), {
-      title: 'Which template would you like to use?',
-      ignoreFocusOut: true,
-      canPickMany: false
-    });
-
-    if (!frameworkChoice) {
-      Logger.warning('Cancelled template input');
-      return;
-    }
-
-    const framework = FrameworkTypes.find(type => type.name === frameworkChoice);
-
-    return {
-      componentName,
-      framework: framework?.value as string
-    };
-  }
-
-  /**
-   * Questions to create a new extension component
-   * @returns
-   */
-  private static async extensionComponent(): Promise<{ componentName: string, extensionType: string, framework: string | undefined } | undefined> {
-    const componentName = await window.showInputBox({
-      title: 'What is your extension name?',
-      value: 'HelloWorld',
-      ignoreFocusOut: true,
-      validateInput: async (value) => {
-        if (!value) {
-          return 'Component name is required';
-        }
-
-        if (await Scaffolder.componentFolderExists(ComponentType.extension, value)) {
-          return 'Component name already exists';
-        }
-
-        return undefined;
-      }
-    });
-
-    if (!componentName) {
-      Logger.warning('Cancelled component name input');
-      return;
-    }
-
-    const extensionChoice = await window.showQuickPick(ExtensionTypes.map(type => type.name), {
-      title: 'Which extension type would you like to create?',
-      ignoreFocusOut: true,
-      canPickMany: false
-    });
-
-    if (!extensionChoice) {
-      Logger.warning('Cancelled extension type input');
-      return;
-    }
-
-    const extension = ExtensionTypes.find(type => type.name === extensionChoice);
-
-    let framework: string | undefined = undefined;
-    if (extension && extension.templates.length > 0) {
-      const frameworkChoice = await window.showQuickPick(extension.templates, {
-        title: 'Which template would you like to use?',
-        ignoreFocusOut: true,
-        canPickMany: false
-      });
-
-      if (!frameworkChoice) {
-        Logger.warning('Cancelled template input');
-        return;
-      }
-
-      framework = frameworkChoice;
-    }
-
-    return {
-      componentName,
-      extensionType: extension?.value as string,
-      framework
-    };
-  }
-
-  /**
-   * Check if a component folder exists
-   */
   private static async componentFolderExists(type: ComponentType, value: string) {
     let componentFolder = '';
     switch (type) {
