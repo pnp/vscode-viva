@@ -181,7 +181,21 @@ export class Scaffolder {
         if (isNewProject) {
           const newSolutionInput = input as SpfxScaffoldCommandInput;
           const newFolderPath = join(newSolutionInput.folderPath, newSolutionInput.solutionName!);
-          Scaffolder.createProjectFileAndOpen(newFolderPath, 'init');
+
+          let content = newSolutionInput.shouldRunInit ? ProjectFileContent.init : '';
+          if (newSolutionInput.shouldInstallReusablePropertyPaneControls) {
+            content += ` ${ProjectFileContent.installReusablePropertyPaneControls}`;
+          }
+
+          if (newSolutionInput.shouldInstallReusableReactControls) {
+            content += ` ${ProjectFileContent.installReusableReactControls}`;
+          }
+
+          if (newSolutionInput.shouldInstallPnPJs) {
+            content += ` ${ProjectFileContent.installPnPJs}`;
+          }
+
+          Scaffolder.createProjectFileAndOpen(newFolderPath, content);
         } else {
           PnPWebview.close();
         }
@@ -256,7 +270,9 @@ export class Scaffolder {
   }
 
   private static async createProjectFileAndOpen(folderPath: string, content: any) {
-    writeFileSync(join(folderPath, PROJECT_FILE), content, { encoding: 'utf8' });
+    if (content) {
+      writeFileSync(join(folderPath, PROJECT_FILE), content, { encoding: 'utf8' });
+    }
 
     if (getPlatform() === 'windows') {
       await commands.executeCommand('vscode.openFolder', Uri.file(parseWinPath(folderPath)));

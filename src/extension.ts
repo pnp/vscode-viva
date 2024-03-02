@@ -30,7 +30,7 @@ export async function activate(context: ExtensionContext) {
 		if (files.length > 0) {
 			const fileContents = readFileSync(files[0].fsPath, 'utf8');
 
-			if (fileContents && (fileContents === ProjectFileContent.init || fileContents === ProjectFileContent.initScenario)) {
+			if (fileContents) {
 				unlinkSync(files[0].fsPath);
 
 				const terminal = window.createTerminal({
@@ -38,14 +38,27 @@ export async function activate(context: ExtensionContext) {
 					iconPath: new ThemeIcon('cloud-download')
 				});
 
-				if (terminal) {
+				if (fileContents.indexOf(ProjectFileContent.init) > -1 || fileContents.indexOf(ProjectFileContent.initScenario) > -1) {
 					terminal.sendText('npm i');
-					terminal.show(true);
 				}
 
-				if (fileContents === ProjectFileContent.initScenario) {
+				if (fileContents.indexOf(ProjectFileContent.initScenario) > -1) {
 					commands.executeCommand('codetour.startTour');
 				}
+
+				if (fileContents.indexOf(ProjectFileContent.installReusablePropertyPaneControls) > -1) {
+					terminal.sendText('npm install @pnp/spfx-property-controls --save --save-exact');
+				}
+
+				if (fileContents.indexOf(ProjectFileContent.installReusableReactControls) > -1) {
+					terminal.sendText('npm install @pnp/spfx-controls-react --save --save-exact');
+				}
+
+				if (fileContents.indexOf(ProjectFileContent.installPnPJs) > -1) {
+					terminal.sendText('npm install @pnp/sp @pnp/graph --save');
+				}
+
+				terminal.show(true);
 			}
 		}
 	});
