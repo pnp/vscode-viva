@@ -1,4 +1,4 @@
-import { VSCodeButton, VSCodeDropdown, VSCodeOption, VSCodeProgressRing, VSCodeTextField } from '@vscode/webview-ui-toolkit/react';
+import { VSCodeButton, VSCodeCheckbox, VSCodeDropdown, VSCodeOption, VSCodeProgressRing, VSCodeTextField } from '@vscode/webview-ui-toolkit/react';
 import * as React from 'react';
 import { useEffect, useState } from 'react';
 import { AdaptiveCardTypesNode16, AdaptiveCardTypesNode18, ComponentType, ComponentTypes, ExtensionType, ExtensionTypes, FrameworkType, FrameworkTypes, SpfxAddComponentCommandInput, SpfxScaffoldCommandInput, WebviewCommand } from '../../../../../constants';
@@ -24,6 +24,10 @@ export const ScaffoldSpfxProjectView: React.FunctionComponent<IScaffoldSpfxProje
   const [aceType, setAceType] = useState<string>(AdaptiveCardTypesNode18[0].value);
   const [isFormValid, setIsFormValid] = useState<boolean>(false);
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
+  const [shouldRunInit, setShouldRunInit] = useState<boolean>(true);
+  const [shouldInstallReusablePropertyPaneControls, setShouldInstallReusablePropertyPaneControls] = useState<boolean>(false);
+  const [shouldInstallReusableReactControls, setShouldInstallReusableReactControls] = useState<boolean>(false);
+  const [shouldInstallPnPJs, setShouldInstallPnPJs] = useState<boolean>(false);
   const location: any = useLocation();
   const componentTypeName = ComponentTypes.find((component) => component.value === componentType)?.name;
 
@@ -139,7 +143,11 @@ export const ScaffoldSpfxProjectView: React.FunctionComponent<IScaffoldSpfxProje
         componentName,
         frameworkType,
         extensionType,
-        aceType
+        aceType,
+        shouldRunInit,
+        shouldInstallReusablePropertyPaneControls,
+        shouldInstallReusableReactControls,
+        shouldInstallPnPJs
       } as SpfxScaffoldCommandInput);
     }
   };
@@ -276,6 +284,58 @@ export const ScaffoldSpfxProjectView: React.FunctionComponent<IScaffoldSpfxProje
             }
           </div>
         </div>
+        {
+              isNewProject &&
+          <div className={'spfx__form__step'}>
+            <div className={'border-b pb-2 mb-6'}>
+              <label className={'text-xl border mt-4 rounded-full px-3 py-1 bg-vscode absolute'}>3</label>
+              <div className={'pl-10'}>
+                <p className={'text-lg'}>Additional steps</p>
+              </div>
+            </div>
+            <div className={'spfx__form__step__content ml-10'}>
+                <div className={'mb-2'}>
+                  <label className={'block mb-1'}>
+                    Run <code>npm install</code> after the project is created?
+                  </label>
+                  <VSCodeCheckbox checked={shouldRunInit} onChange={() => setShouldRunInit(!shouldRunInit)} />
+                </div>
+                <div className={'mb-3'}>
+                  <VSCodeButton onClick={() => setShouldInstallReusablePropertyPaneControls(!shouldInstallReusablePropertyPaneControls)} appearance={shouldInstallReusablePropertyPaneControls ? '' : 'secondary'} className={'float-left'}>
+                    Yes
+                  </VSCodeButton>
+                  <VSCodeButton onClick={() => setShouldInstallReusablePropertyPaneControls(!shouldInstallReusablePropertyPaneControls)} appearance={!shouldInstallReusablePropertyPaneControls ? '' : 'secondary'} className={'float-left'}>
+                    No
+                  </VSCodeButton>
+                  <label className={'ml-2 pt-1 inline-block'}>
+                    Install reusable property pane controls
+                  </label>
+               </div>
+               <div className={'mb-3'}>
+                  <VSCodeButton onClick={() => setShouldInstallReusableReactControls(!shouldInstallReusableReactControls)} appearance={shouldInstallReusableReactControls ? '' : 'secondary'} className={'float-left'}>
+                    Yes
+                  </VSCodeButton>
+                  <VSCodeButton onClick={() => setShouldInstallReusableReactControls(!shouldInstallReusableReactControls)} appearance={!shouldInstallReusableReactControls ? '' : 'secondary'} className={'float-left'}>
+                    No
+                  </VSCodeButton>
+                  <label className={'ml-2 pt-1 inline-block'}>
+                    Install reusable React controls
+                  </label>
+               </div>
+               <div className={'mb-3'}>
+                  <VSCodeButton onClick={() => setShouldInstallPnPJs(!shouldInstallPnPJs)} appearance={shouldInstallPnPJs ? '' : 'secondary'} className={'float-left'}>
+                    Yes
+                  </VSCodeButton>
+                  <VSCodeButton onClick={() => setShouldInstallPnPJs(!shouldInstallPnPJs)} appearance={!shouldInstallPnPJs ? '' : 'secondary'} className={'float-left'}>
+                    No
+                  </VSCodeButton>
+                  <label className={'ml-2 pt-1 inline-block'}>
+                    Install PnPjs (@pnp/sp, @pnp/graph)
+                  </label>
+               </div>
+            </div>
+          </div>
+        }
       </div>
       <div className={'spfx__action mb-3 pb-3 border-b pl-10'}>
         {!isFormValid ?
