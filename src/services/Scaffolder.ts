@@ -186,9 +186,11 @@ export class Scaffolder {
           if (newSolutionInput.shouldInstallReusablePropertyPaneControls) {
             content += ` ${ProjectFileContent.installReusablePropertyPaneControls}`;
           }
+
           if (newSolutionInput.shouldInstallReusableReactControls) {
             content += ` ${ProjectFileContent.installReusableReactControls}`;
           }
+
           if (newSolutionInput.shouldInstallPnPJs) {
             content += ` ${ProjectFileContent.installPnPJs}`;
           }
