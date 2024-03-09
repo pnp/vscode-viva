@@ -7923,6 +7923,29 @@
       "sampleType": "samples"
     },
     {
+      "name": "pnp-sp-dev-spfx-web-parts-react-property-pane-navigation",
+      "title": "React Property Pane Navigation",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-property-pane-navigation",
+      "description": "This sample showcase how to handle the navigation between property pane pages.",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-property-pane-navigation/assets/navigation_in_action.gif?raw=true",
+      "authors": [
+        {
+          "name": "Guido Zambarda",
+          "pictureUrl": "https://github.com/guidozam.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2024-02-22",
+      "updateDate": "2024-02-22",
+      "version": "1.18.2",
+      "componentType": "webpart",
+      "extensionType": null,
+      "sampleGalerry": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
       "name": "pnp-sp-dev-spfx-web-parts-react-provision-assets",
       "title": "Provision SharePoint Assets with the SPFx solution package",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-provision-assets",
@@ -8390,7 +8413,7 @@
       ],
       "createDate": "2019-10-13",
       "updateDate": "2023-04-24",
-      "version": "1.17.4",
+      "version": "1.18.2",
       "componentType": "webpart",
       "extensionType": null,
       "sampleGalerry": "sp-dev-fx-webparts",
