@@ -3,7 +3,7 @@ import { Event, ProviderResult, ThemeIcon, TreeDataProvider, TreeItem, TreeItemC
 import { Extension } from '../services/Extension';
 
 
-export class ActionTreeviewProvider implements TreeDataProvider<any> {
+export class ActionTreeDataProvider implements TreeDataProvider<any> {
   onDidChangeTreeData?: Event<TreeItem | null | undefined> | undefined;
 
   actions: ActionTreeItem[];
@@ -23,7 +23,9 @@ export class ActionTreeviewProvider implements TreeDataProvider<any> {
 
 export class ActionTreeItem extends TreeItem {
 
-  constructor(label: string, description?: string, image?: { name: string; custom: boolean }, collapsibleState?: TreeItemCollapsibleState, command?: any, args?: any, contextValue?: string, private children?: ActionTreeItem[]) {
+  children: ActionTreeItem[] = [];
+
+  constructor(label: string, description?: string, image?: { name: string; custom: boolean }, collapsibleState?: TreeItemCollapsibleState, command?: any, args?: any, contextValue?: string, children?: ActionTreeItem[]) {
     super(label, children ? TreeItemCollapsibleState.Expanded : TreeItemCollapsibleState.None);
 
     const ext = Extension.getInstance();
@@ -47,6 +49,8 @@ export class ActionTreeItem extends TreeItem {
 
     this.contextValue = contextValue;
 
-    this.children = children;
+    if (children) {
+      this.children = children;
+    }
   }
 }

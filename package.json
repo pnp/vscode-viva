@@ -68,7 +68,7 @@
 				},
 				{
 					"id": "pnp-view-environment",
-					"name": "Environment details",
+					"name": "App Catalog details",
 					"when": "pnp.project.isSPFxProject && pnp.project.isLoggedIn"
 				},
 				{
@@ -166,6 +166,18 @@
 				"title": "Sign out from M365",
 				"category": "Viva Connections Toolkit",
 				"icon": "$(sign-out)"
+			},
+			{
+				"command": "viva-connections-toolkit.refreshAppCatalogTreeView",
+				"title": "Refresh App Catalog list",
+				"category": "Viva Connections Toolkit",
+				"icon": "$(refresh)"
+			},
+			{
+				"command": "viva-connections-toolkit.refreshAccountTreeView",
+				"title": "Refresh Account view",
+				"category": "Viva Connections Toolkit",
+				"icon": "$(refresh)"
 			}
 		],
 		"menus": {
@@ -185,6 +197,18 @@
 				{
 					"command": "viva-connections-toolkit.validateProject",
 					"when": "pnp.project.isSPFxProject"
+				}
+			],
+			"view/title": [
+				{
+					"command": "viva-connections-toolkit.refreshAppCatalogTreeView",
+					"when": "view == pnp-view-environment",
+					"group": "navigation"
+				},
+				{
+					"command": "viva-connections-toolkit.refreshAccountTreeView",
+					"when": "view == pnp-view-account",
+					"group": "navigation"
 				}
 			],
 			"view/item/context": [
