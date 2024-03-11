@@ -1,5 +1,5 @@
-import { ComponentType } from './ComponentTypes';
-import { ExtensionType } from './ExtensionTypes';
+import { ComponentType } from '../constants/ComponentTypes';
+import { ExtensionType } from '../constants/ExtensionTypes';
 
 export interface SpfxAddComponentCommandInput {
   componentType: ComponentType;
