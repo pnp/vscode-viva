@@ -1,11 +1,12 @@
 import { VSCodeButton, VSCodeCheckbox, VSCodeDropdown, VSCodeLink, VSCodeOption, VSCodeProgressRing, VSCodeTextField } from '@vscode/webview-ui-toolkit/react';
 import * as React from 'react';
 import { useEffect, useState } from 'react';
-import { AdaptiveCardTypesNode16, AdaptiveCardTypesNode18, ComponentType, ComponentTypes, ExtensionType, ExtensionTypes, FrameworkType, FrameworkTypes, SpfxAddComponentCommandInput, SpfxScaffoldCommandInput, WebviewCommand } from '../../../../../constants';
+import { AdaptiveCardTypesNode16, AdaptiveCardTypesNode18, ComponentType, ComponentTypes, ExtensionType, ExtensionTypes, FrameworkType, FrameworkTypes, WebviewCommand } from '../../../../../constants';
 import { useLocation } from 'react-router-dom';
 import { AddIcon, FolderIcon } from '../../icons';
 import { Messenger } from '@estruyf/vscode/dist/client';
 import { EventData } from '@estruyf/vscode/dist/models/EventData';
+import { SpfxAddComponentCommandInput, SpfxScaffoldCommandInput } from '../../../../../models';
 
 
 export interface IScaffoldSpfxProjectViewProps { }
