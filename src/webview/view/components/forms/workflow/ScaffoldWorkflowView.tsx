@@ -214,7 +214,7 @@ export const ScaffoldWorkflowView: React.FunctionComponent<IScaffoldWorkflowView
                           <li><code>CertificatePassword</code> - certificate password. This applies only if the certificate is encoded which is the recommended approach</li>
                           <li><code>CertificateBase64Encoded</code> - base 64 encoded certificate. Use either <code>CertificateBase64Encoded</code> or <code>CertificateSecureFileId</code> but not both</li>
                           <li><code>CertificateSecureFileId</code> - id of a certificate file in the secure files section of the DevOps library. .pfx file. Use either <code>CertificateBase64Encoded</code> or <code>CertificateSecureFileId</code> but not both</li>
-                          <li><code>TENANT_ID</code> - tenant Id</li>
+                          <li><code>TenantId</code> - tenant Id</li>
                         </ul>
                       </>
                   }
@@ -397,7 +397,7 @@ export const ScaffoldWorkflowView: React.FunctionComponent<IScaffoldWorkflowView
                         <li><code>CertificatePassword</code> - certificate password. This applies only if the certificate is encoded which is the recommended approach</li>
                         <li><code>CertificateBase64Encoded</code> - base 64 encoded certificate. Use either <code>CertificateBase64Encoded</code> or <code>CertificateSecureFileId</code> but not both</li>
                         <li><code>CertificateSecureFileId</code> - id of a certificate file in the secure files section of the DevOps library. .pfx file. Use either <code>CertificateBase64Encoded</code> or <code>CertificateSecureFileId</code> but not both</li>
-                        <li><code>TENANT_ID</code> - tenant Id</li>
+                        <li><code>TenantId</code> - tenant Id</li>
                         <li><code>SharePointBaseUrl</code> - URL of the root SharePoint site collection</li>
                       </ul>
                       <div className={isApplicationAuthentication && shouldCreateAppRegistrationForm && appId && base64CertPrivateKey ? '' : 'hidden'}>
@@ -436,7 +436,7 @@ export const ScaffoldWorkflowView: React.FunctionComponent<IScaffoldWorkflowView
                             </td>
                           </tr>
                           <tr>
-                            <td className={'border p-1'}><code>TENANT_ID</code></td>
+                            <td className={'border p-1'}><code>TenantId</code></td>
                             <td className={'border p-1'}>{tenantId}</td>
                             <td className={'border'}>
                               <VSCodeButton appearance={'secondary'} onClick={() => navigator.clipboard.writeText(tenantId)}>
