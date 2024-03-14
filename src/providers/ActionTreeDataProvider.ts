@@ -1,6 +1,4 @@
-import { join } from 'path';
 import { Event, ProviderResult, ThemeIcon, TreeDataProvider, TreeItem, TreeItemCollapsibleState } from 'vscode';
-import { Extension } from '../services/Extension';
 
 
 export class ActionTreeDataProvider implements TreeDataProvider<any> {
@@ -28,18 +26,10 @@ export class ActionTreeItem extends TreeItem {
   constructor(label: string, description?: string, image?: { name: string; custom: boolean }, collapsibleState?: TreeItemCollapsibleState, command?: any, args?: any, contextValue?: string, children?: ActionTreeItem[]) {
     super(label, children ? TreeItemCollapsibleState.Expanded : TreeItemCollapsibleState.None);
 
-    const ext = Extension.getInstance();
-    const extPath = ext.extensionPath;
-
     this.label = label;
     this.description = description;
 
-    this.iconPath = image ?
-      !image.custom ? new ThemeIcon(image.name) : {
-        light: join(extPath, 'assets', 'icons', 'light', `${image.name}.svg`),
-        dark: join(extPath, 'assets', 'icons', 'dark', `${image.name}.svg`),
-      }
-      : undefined;
+    this.iconPath = image ? new ThemeIcon(image.name) : undefined;
 
     this.command = command ? {
       command: command,

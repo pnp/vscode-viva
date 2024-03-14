@@ -45,6 +45,50 @@
 	"license": "MIT",
 	"main": "./dist/extension.js",
 	"contributes": {
+		"icons": {
+			"spo-m365": {
+				"description": "Microsoft 365 icon",
+				"default": {
+					"fontPath": "./assets/fonts/fabric-icons.woff",
+					"fontCharacter": "\\ED72"
+				}
+			},
+			"spo-logo": {
+				"description": "SharePoint Online icon",
+				"default": {
+					"fontPath": "./assets/fonts/fabric-icons.woff",
+					"fontCharacter": "\\ED18"
+				}
+			},
+			"spo-app-list": {
+				"description": "Tenant-Wide extension list icon",
+				"default": {
+					"fontPath": "./assets/fonts/fabric-icons.woff",
+					"fontCharacter": "\\E31E"
+				}
+			},
+			"spo-app": {
+				"description": "App icon",
+				"default": {
+					"fontPath": "./assets/fonts/fabric-icons.woff",
+					"fontCharacter": "\\ECDC"
+				}
+			},
+			"m365-warning": {
+				"description": "Warning icon",
+				"default": {
+					"fontPath": "./assets/fonts/fabric-icons.woff",
+					"fontCharacter": "\\E7BA"
+				}
+			},
+			"m365-health": {
+				"description": "Health icon",
+				"default": {
+					"fontPath": "./assets/fonts/fabric-icons.woff",
+					"fontCharacter": "\\E95E"
+				}
+			}
+		},
 		"viewsContainers": {
 			"activitybar": [
 				{
