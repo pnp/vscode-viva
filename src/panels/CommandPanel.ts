@@ -96,24 +96,33 @@ export class CommandPanel {
     if (session) {
       commands.executeCommand('setContext', ContextKeys.isLoggedIn, true);
 
-      accountCommands.push(new ActionTreeItem(session.account.label, '', { name: 'M365', custom: true }, undefined, undefined, undefined, 'm365Account', []));
+      accountCommands.push(new ActionTreeItem(session.account.label, '', { name: 'spo-m365', custom: true }, undefined, undefined, undefined, 'm365Account', []));
 
       const appCatalogUrls = await CliActions.appCatalogUrlsGet();
       if (appCatalogUrls?.some) {
         const url = new URL(appCatalogUrls[0]);
         const originUrl = url.origin;
-        const adminOriginUrl = origin.replace('.sharepoint.com', '-admin.sharepoint.com');
+        const adminOriginUrl = originUrl.replace('.sharepoint.com', '-admin.sharepoint.com');
         const webApiPermissionManagementUrl = `${adminOriginUrl}/_layouts/15/online/AdminHome.aspx#/webApiPermissionManagement`;
-        DebuggerCheck.validateUrl(origin);
+        DebuggerCheck.validateUrl(originUrl);
 
-        accountCommands[0].children.push(new ActionTreeItem('SharePoint', '', { name: 'sharepoint', custom: true }, undefined, undefined, undefined, undefined, [
-          new ActionTreeItem(originUrl, '', { name: 'globe', custom: false }, undefined, 'vscode.open', Uri.parse(originUrl), 'sp-url'),
-          new ActionTreeItem(adminOriginUrl, '', { name: 'globe', custom: false }, undefined, 'vscode.open', Uri.parse(adminOriginUrl), 'sp-admin-url'),
-          new ActionTreeItem(webApiPermissionManagementUrl, '', { name: 'globe', custom: false }, undefined, 'vscode.open', Uri.parse(webApiPermissionManagementUrl), 'sp-admin-api-url')
+        accountCommands[0].children.push(new ActionTreeItem('SharePoint', '', { name: 'spo-logo', custom: true }, undefined, undefined, undefined, undefined, [
+          new ActionTreeItem(originUrl.replace('https://',''), '', { name: 'globe', custom: false }, undefined, 'vscode.open', Uri.parse(originUrl), 'sp-url'),
+          new ActionTreeItem(adminOriginUrl.replace('https://',''), '', { name: 'globe', custom: false }, undefined, 'vscode.open', Uri.parse(adminOriginUrl), 'sp-admin-url'),
+          new ActionTreeItem(webApiPermissionManagementUrl.replace(`${adminOriginUrl}/_layouts/15/online/AdminHome.aspx#/`, '...'), '', { name: 'globe', custom: false }, undefined, 'vscode.open', Uri.parse(webApiPermissionManagementUrl), 'sp-admin-api-url')
         ]));
-        accountCommands[0].children.push(
-          new ActionTreeItem(originUrl, '', { name: 'globe', custom: false }, undefined, 'vscode.open', Uri.parse(originUrl), 'sp-url')
-        );
+
+        const healthInfoList = await CliActions.getTenantHealthInfo();
+        if (healthInfoList)
+        {
+          const healthInfoItems: ActionTreeItem[] = [];
+          for (let i = 0; i < healthInfoList.length; i++) {
+            healthInfoItems.push(new ActionTreeItem(healthInfoList[i].Title, '', { name: 'm365-warning', custom: true } , undefined, 'vscode.open', Uri.parse(healthInfoList[i].Url), 'm365-health-service-url'));
+          }
+          if (healthInfoItems.length > 0) {
+            accountCommands[0].children.push(new ActionTreeItem('Service health incidents', '', { name: 'm365-health', custom: true }, undefined, undefined, undefined, undefined, healthInfoItems));
+          }
+        }
       }
 
       accountCommands[0].children.push(new ActionTreeItem('Sign out', '', { name: 'sign-out', custom: false }, undefined, Commands.logout));
@@ -133,7 +142,7 @@ export class CommandPanel {
     CommandPanel.environmentTreeView(appCatalogUrls);
   }
 
-  private static environmentTreeView(appCatalogUrls: string[] | undefined) {
+  private static async environmentTreeView(appCatalogUrls: string[] | undefined) {
     const environmentCommands: ActionTreeItem[] = [];
 
     if (!appCatalogUrls) {
@@ -143,9 +152,18 @@ export class CommandPanel {
       const origin = new URL(tenantAppCatalogUrl).origin;
       commands.executeCommand('setContext', ContextKeys.hasAppCatalog, true);
 
+      const tenantWideExtensions = await CliActions.getTenantWideExtensions(origin);
+      const tenantWideExtensionsList: ActionTreeItem[] = [];
+      if (tenantWideExtensions && tenantWideExtensions?.length > 0) {
+        tenantWideExtensions.forEach((extension) => {
+          tenantWideExtensionsList.push(new ActionTreeItem(extension.Title, '', { name: 'spo-app', custom: true }, undefined, 'vscode.open', Uri.parse(extension.Url), 'sp-app-catalog-tenant-wide-extensions-url'));
+        });
+      }
+
       environmentCommands.push(
-        new ActionTreeItem('SharePoint Tenant App Catalog', '', { name: 'sharepoint', custom: true }, undefined, undefined, undefined, undefined, [
-          new ActionTreeItem(tenantAppCatalogUrl.replace(origin, '...'), '', { name: 'globe', custom: false }, undefined, 'vscode.open', Uri.parse(tenantAppCatalogUrl), 'sp-app-catalog-url')
+        new ActionTreeItem('Tenant App Catalog', '', { name: 'spo-logo', custom: true }, undefined, undefined, undefined, undefined, [
+          new ActionTreeItem(tenantAppCatalogUrl.replace(origin, '...'), '', { name: 'globe', custom: false }, undefined, 'vscode.open', Uri.parse(tenantAppCatalogUrl), 'sp-app-catalog-url'),
+          new ActionTreeItem('Tenant-wide Extensions', '', { name: 'spo-app-list', custom: true }, undefined, undefined, undefined, 'sp-app-catalog-tenant-wide-extensions', tenantWideExtensionsList)
         ]),
       );
 
@@ -154,7 +172,7 @@ export class CommandPanel {
         siteAppCatalogActionItems.push(new ActionTreeItem(appCatalogUrls[i].replace(origin, '...'), '', { name: 'globe', custom: false }, undefined, 'vscode.open', Uri.parse(appCatalogUrls[i]), 'sp-app-catalog-url'));
       }
       if (siteAppCatalogActionItems.length > 0) {
-        environmentCommands.push(new ActionTreeItem('SharePoint Site App Catalogs', '', { name: 'sharepoint', custom: true }, undefined, undefined, undefined, undefined, siteAppCatalogActionItems));
+        environmentCommands.push(new ActionTreeItem('Site App Catalogs', '', { name: 'spo-logo', custom: true }, undefined, undefined, undefined, undefined, siteAppCatalogActionItems));
       }
     }
 
