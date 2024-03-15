@@ -152,7 +152,7 @@ export class CommandPanel {
       const origin = new URL(tenantAppCatalogUrl).origin;
       commands.executeCommand('setContext', ContextKeys.hasAppCatalog, true);
 
-      const tenantWideExtensions = await CliActions.getTenantWideExtensions(origin);
+      const tenantWideExtensions = await CliActions.getTenantWideExtensions(tenantAppCatalogUrl);
       const tenantWideExtensionsList: ActionTreeItem[] = [];
       if (tenantWideExtensions && tenantWideExtensions?.length > 0) {
         tenantWideExtensions.forEach((extension) => {

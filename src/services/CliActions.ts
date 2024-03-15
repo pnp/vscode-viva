@@ -64,10 +64,11 @@ export class CliActions {
     return EnvironmentInformation.appCatalogUrls;
   }
 
-  public static async getTenantWideExtensions(originUrl: string): Promise<{Url: string, Title: string}[] | undefined> {
+  public static async getTenantWideExtensions(tenantAppCatalogUrl: string): Promise<{Url: string, Title: string}[] | undefined> {
+    const origin = new URL(tenantAppCatalogUrl).origin;
     const commandOptions: any = {
-      listUrl: '/sites/AppCatalog/Lists/TenantWideExtensions',
-      webUrl: `${originUrl}/sites/AppCatalog`
+      listUrl: `${tenantAppCatalogUrl.replace(origin, '')}/Lists/TenantWideExtensions`,
+      webUrl: tenantAppCatalogUrl
     };
     const tenantWideExtensions = (await CliExecuter.execute('spo listitem list', 'json', commandOptions)).stdout || undefined;
 
@@ -78,7 +79,7 @@ export class CliActions {
     const tenantWideExtensionsJson: any[] = JSON.parse(tenantWideExtensions);
     const tenantWideExtensionList = tenantWideExtensionsJson.map((extension) => {
       return {
-        Url: `${originUrl}/sites/AppCatalog/Lists/TenantWideExtensions/DispForm.aspx?ID=${extension.Id}`,
+        Url: `${tenantAppCatalogUrl}/Lists/TenantWideExtensions/DispForm.aspx?ID=${extension.Id}`,
         Title: extension.Title
       };
     });
