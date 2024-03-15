@@ -45,6 +45,50 @@
 	"license": "MIT",
 	"main": "./dist/extension.js",
 	"contributes": {
+		"icons": {
+			"spo-m365": {
+				"description": "Microsoft 365 icon",
+				"default": {
+					"fontPath": "./assets/fonts/fabric-icons.woff",
+					"fontCharacter": "\\ED72"
+				}
+			},
+			"spo-logo": {
+				"description": "SharePoint Online icon",
+				"default": {
+					"fontPath": "./assets/fonts/fabric-icons.woff",
+					"fontCharacter": "\\ED18"
+				}
+			},
+			"spo-app-list": {
+				"description": "Tenant-Wide extension list icon",
+				"default": {
+					"fontPath": "./assets/fonts/fabric-icons.woff",
+					"fontCharacter": "\\E31E"
+				}
+			},
+			"spo-app": {
+				"description": "App icon",
+				"default": {
+					"fontPath": "./assets/fonts/fabric-icons.woff",
+					"fontCharacter": "\\ECDC"
+				}
+			},
+			"m365-warning": {
+				"description": "Warning icon",
+				"default": {
+					"fontPath": "./assets/fonts/fabric-icons.woff",
+					"fontCharacter": "\\E7BA"
+				}
+			},
+			"m365-health": {
+				"description": "Health icon",
+				"default": {
+					"fontPath": "./assets/fonts/fabric-icons.woff",
+					"fontCharacter": "\\E95E"
+				}
+			}
+		},
 		"viewsContainers": {
 			"activitybar": [
 				{
@@ -68,7 +112,7 @@
 				},
 				{
 					"id": "pnp-view-environment",
-					"name": "Environment details",
+					"name": "App Catalog details",
 					"when": "pnp.project.isSPFxProject && pnp.project.isLoggedIn"
 				},
 				{
@@ -166,6 +210,18 @@
 				"title": "Sign out from M365",
 				"category": "Viva Connections Toolkit",
 				"icon": "$(sign-out)"
+			},
+			{
+				"command": "viva-connections-toolkit.refreshAppCatalogTreeView",
+				"title": "Refresh App Catalog list",
+				"category": "Viva Connections Toolkit",
+				"icon": "$(refresh)"
+			},
+			{
+				"command": "viva-connections-toolkit.refreshAccountTreeView",
+				"title": "Refresh Account view",
+				"category": "Viva Connections Toolkit",
+				"icon": "$(refresh)"
 			}
 		],
 		"menus": {
@@ -185,6 +241,18 @@
 				{
 					"command": "viva-connections-toolkit.validateProject",
 					"when": "pnp.project.isSPFxProject"
+				}
+			],
+			"view/title": [
+				{
+					"command": "viva-connections-toolkit.refreshAppCatalogTreeView",
+					"when": "view == pnp-view-environment",
+					"group": "navigation"
+				},
+				{
+					"command": "viva-connections-toolkit.refreshAccountTreeView",
+					"when": "view == pnp-view-account",
+					"group": "navigation"
 				}
 			],
 			"view/item/context": [
