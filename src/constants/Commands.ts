@@ -43,4 +43,8 @@ export const Commands = {
 
   // Serving
   serveProject: `${EXTENSION_NAME}.serveProject`,
+
+  // TreeViews
+  refreshAppCatalogTreeView: `${EXTENSION_NAME}.refreshAppCatalogTreeView`,
+  refreshAccountTreeView: `${EXTENSION_NAME}.refreshAccountTreeView`,
 };

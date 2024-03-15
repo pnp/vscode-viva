@@ -64,6 +64,45 @@ export class CliActions {
     return EnvironmentInformation.appCatalogUrls;
   }
 
+  public static async getTenantWideExtensions(tenantAppCatalogUrl: string): Promise<{Url: string, Title: string}[] | undefined> {
+    const origin = new URL(tenantAppCatalogUrl).origin;
+    const commandOptions: any = {
+      listUrl: `${tenantAppCatalogUrl.replace(origin, '')}/Lists/TenantWideExtensions`,
+      webUrl: tenantAppCatalogUrl
+    };
+    const tenantWideExtensions = (await CliExecuter.execute('spo listitem list', 'json', commandOptions)).stdout || undefined;
+
+    if (!tenantWideExtensions) {
+      return undefined;
+    }
+
+    const tenantWideExtensionsJson: any[] = JSON.parse(tenantWideExtensions);
+    const tenantWideExtensionList = tenantWideExtensionsJson.map((extension) => {
+      return {
+        Url: `${tenantAppCatalogUrl}/Lists/TenantWideExtensions/DispForm.aspx?ID=${extension.Id}`,
+        Title: extension.Title
+      };
+    });
+    return tenantWideExtensionList;
+  }
+
+  public static async getTenantHealthInfo(): Promise<{Title: string, Url: string}[] | undefined> {
+    const healthInfo = (await CliExecuter.execute('tenant serviceannouncement health list', 'json')).stdout || undefined;
+
+    if (!healthInfo) {
+      return undefined;
+    }
+
+    const healthInfoJson: any[] = JSON.parse(healthInfo);
+    const healthInfoList = healthInfoJson.filter(service => service.status !== 'serviceOperational').map((service) => {
+      return {
+        Url: `https://admin.microsoft.com/#/servicehealth/:/currentIssues/${encodeURIComponent(service.service)}/`,
+        Title: service.service
+      };
+    });
+    return healthInfoList;
+  }
+
   public static async generateWorkflowForm(input: GenerateWorkflowCommandInput) {
     // Change the current working directory to the root of the Project
     const wsFolder = await Folders.getWorkspaceFolder();
@@ -85,7 +124,7 @@ export class CliActions {
 
       if (!pfxBase64) {
         Notifications.error('Error generating certificate.');
-        PnPWebview.postMessage(WebviewCommand.toWebview.WorkflowCreated, {success: false});
+        PnPWebview.postMessage(WebviewCommand.toWebview.WorkflowCreated, { success: false });
         return;
       }
 
@@ -123,7 +162,7 @@ export class CliActions {
         } catch (e: any) {
           const message = e?.error?.message;
           Notifications.error(message);
-          PnPWebview.postMessage(WebviewCommand.toWebview.WorkflowCreated, {success: false});
+          PnPWebview.postMessage(WebviewCommand.toWebview.WorkflowCreated, { success: false });
         }
       });
     }
@@ -180,7 +219,7 @@ export class CliActions {
       } catch (e: any) {
         const message = e?.error?.message;
         Notifications.error(message);
-        PnPWebview.postMessage(WebviewCommand.toWebview.WorkflowCreated, {success: false});
+        PnPWebview.postMessage(WebviewCommand.toWebview.WorkflowCreated, { success: false });
       }
     });
   }
