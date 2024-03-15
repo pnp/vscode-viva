@@ -1,11 +1,12 @@
-import { VSCodeButton, VSCodeCheckbox, VSCodeDropdown, VSCodeOption, VSCodeProgressRing, VSCodeTextField } from '@vscode/webview-ui-toolkit/react';
+import { VSCodeButton, VSCodeCheckbox, VSCodeDropdown, VSCodeLink, VSCodeOption, VSCodeProgressRing, VSCodeTextField } from '@vscode/webview-ui-toolkit/react';
 import * as React from 'react';
 import { useEffect, useState } from 'react';
-import { AdaptiveCardTypesNode16, AdaptiveCardTypesNode18, ComponentType, ComponentTypes, ExtensionType, ExtensionTypes, FrameworkType, FrameworkTypes, SpfxAddComponentCommandInput, SpfxScaffoldCommandInput, WebviewCommand } from '../../../../../constants';
+import { AdaptiveCardTypesNode16, AdaptiveCardTypesNode18, ComponentType, ComponentTypes, ExtensionType, ExtensionTypes, FrameworkType, FrameworkTypes, WebviewCommand } from '../../../../../constants';
 import { useLocation } from 'react-router-dom';
 import { AddIcon, FolderIcon } from '../../icons';
 import { Messenger } from '@estruyf/vscode/dist/client';
 import { EventData } from '@estruyf/vscode/dist/models/EventData';
+import { SpfxAddComponentCommandInput, SpfxScaffoldCommandInput } from '../../../../../models';
 
 
 export interface IScaffoldSpfxProjectViewProps { }
@@ -308,7 +309,7 @@ export const ScaffoldSpfxProjectView: React.FunctionComponent<IScaffoldSpfxProje
                     No
                   </VSCodeButton>
                   <label className={'ml-2 pt-1 inline-block'}>
-                    Install reusable property pane controls
+                    Install <VSCodeLink href='https://pnp.github.io/sp-dev-fx-property-controls/'>reusable property pane controls</VSCodeLink>
                   </label>
                </div>
                <div className={'mb-3'}>
@@ -319,7 +320,7 @@ export const ScaffoldSpfxProjectView: React.FunctionComponent<IScaffoldSpfxProje
                     No
                   </VSCodeButton>
                   <label className={'ml-2 pt-1 inline-block'}>
-                    Install reusable React controls
+                    Install <VSCodeLink href='https://pnp.github.io/sp-dev-fx-controls-react/'>reusable React controls</VSCodeLink>
                   </label>
                </div>
                <div className={'mb-3'}>
@@ -330,7 +331,7 @@ export const ScaffoldSpfxProjectView: React.FunctionComponent<IScaffoldSpfxProje
                     No
                   </VSCodeButton>
                   <label className={'ml-2 pt-1 inline-block'}>
-                    Install PnPjs (@pnp/sp, @pnp/graph)
+                    Install <VSCodeLink href='https://pnp.github.io/pnpjs/'>PnPjs</VSCodeLink> (@pnp/sp, @pnp/graph)
                   </label>
                </div>
             </div>
