@@ -1,7 +1,7 @@
 {
   "samples": [
     {
-      "name": "pnp-sp-dev-fx-aces-scenarios-ace-data-api-builder",
+      "name": "pnp-sp-fx-aces-scenarios-ace-data-api-builder",
       "title": "Exposing business data in Microsoft 365 using Azure Data API builder",
       "url": "https://github.com/pnp/sp-dev-fx-aces/tree/main/scenarios/ace-data-api-builder/",
       "description": "This is a sample application that shows you how to expose business data in Microsoft Viva Connections consuming a back-end API implemented with the preview version of Azure Data API builder.",
@@ -813,8 +813,8 @@
         "SharePoint"
       ],
       "createDate": "2022-11-09",
-      "updateDate": "2022-11-09",
-      "version": "1.15.2",
+      "updateDate": "2024-01-10",
+      "version": "1.18.2",
       "componentType": "extension",
       "extensionType": "ApplicationCustomizer",
       "sampleGalerry": "sp-dev-fx-extensions",
@@ -906,8 +906,8 @@
         "SharePoint"
       ],
       "createDate": "2023-07-27",
-      "updateDate": "2023-07-27",
-      "version": "1.17.4",
+      "updateDate": "2024-01-20",
+      "version": "1.18.2",
       "componentType": "extension",
       "extensionType": "ApplicationCustomizer",
       "sampleGalerry": "sp-dev-fx-extensions",
@@ -2612,13 +2612,17 @@
         {
           "name": "Aimery Thomas",
           "pictureUrl": "https://github.com/a1mery.png"
+        },
+        {
+          "name": "Sergey Shiroky",
+          "pictureUrl": "https://github.com/wideserg.png"
         }
       ],
       "tags": [
         "SharePoint"
       ],
       "createDate": "2020-02-05",
-      "updateDate": "2023-06-09",
+      "updateDate": "2024-03-11",
       "version": "1.17.0",
       "componentType": "webpart",
       "extensionType": null,
@@ -5730,7 +5734,7 @@
       ],
       "createDate": "2023-05-13",
       "updateDate": "2023-07-11",
-      "version": "1.16.1",
+      "version": "1.18.2",
       "componentType": "webpart",
       "extensionType": null,
       "sampleGalerry": "sp-dev-fx-webparts",
@@ -7039,7 +7043,7 @@
         "SharePoint"
       ],
       "createDate": "2021-08-12",
-      "updateDate": "2021-08-12",
+      "updateDate": "2024-02-27",
       "version": "1.11.0",
       "componentType": "webpart",
       "extensionType": null,
@@ -7267,14 +7271,18 @@
         {
           "name": "João Mendes",
           "pictureUrl": "https://github.com/joaojmendes.png"
+        },
+        {
+          "name": null,
+          "pictureUrl": "https://github.com/Paxol.png"
         }
       ],
       "tags": [
         "SharePoint"
       ],
       "createDate": "2021-05-03",
-      "updateDate": "2021-05-03",
-      "version": "1.12.0",
+      "updateDate": "2024-02-25",
+      "version": "1.18.2",
       "componentType": "webpart",
       "extensionType": null,
       "sampleGalerry": "sp-dev-fx-webparts",
@@ -7573,7 +7581,7 @@
         "SharePoint"
       ],
       "createDate": "2024-02-08",
-      "updateDate": "2024-02-08",
+      "updateDate": "2024-02-25",
       "version": "1.18.0",
       "componentType": "webpart",
       "extensionType": null,
