@@ -96,27 +96,45 @@ Start your solution based on the provided set of ACE scenarios with ready-to-use
 
 ### 5️⃣ Create a new project
 
-Creating a new project was never easier. Just use the **create a new project** action, and the extension will guide you through the process.
+Creating a new project was never easier. Just use the **create a new project** action, and the extension will guide you through the process with a dedicated scaffolding form.
 
-Check it out 👇.
+![Create new project](./assets/images/scaffolding.png)
 
-![Create new project](./assets/images/scaffolding.gif)
+Check it out in action 👇.
+
+![Create new project](./assets/images/scaffolding-form.gif)
 
 It's possible to scaffold any kind of SPFx project.
 
-![Create new project](./assets/images/scaffolding.png)
+![All SPFx project support](./assets/images/scaffolding-support.png)
+
+Install additional dependencies with a single click straight from the scaffolding form. Currently we support installing [PnP reusable property pane controls](https://pnp.github.io/sp-dev-fx-property-controls/), [PnP reusable React controls](https://pnp.github.io/sp-dev-fx-controls-react/), and [PnPjs](https://pnp.github.io/pnpjs/).
+
+![Additional dependency step](./assets/images/scaffolding-additional-step.png)
 
 [Check out our docs for more details](https://github.com/pnp/vscode-viva/wiki/5.2-Scaffolding#1-scaffold-a-new-spfx-project)
 
 ### 6️⃣ Login to your tenant & retrieve environment details
 
-The extension also allows you to login to your Microsoft 365 tenant using CLI for Microsoft 365.
+![tenant info](./assets/images/tenant-info.png)
+
+The extension allows you to login to your Microsoft 365 tenant using CLI for Microsoft 365.
 
 ![login](./assets/images/login.png)
 
-Thanks to that the extension will retrieve helpful URLs from your tenant like the link to SharePoint main site and tenant level as well as site level App Catalog.
+Thanks to that the extension will retrieve helpful URLs from your tenant like: 
+
+- link to SharePoint main site 
+- link to SharePoint admin site
+- link to SharePoint web API permission management page
+
+Additionally, the extension will check and retrieve tenant service health incidents that are currently happening in your tenant so that you gain quick insights on your tenant health.
 
 ![tenant details](./assets/images/tenant-links.png)
+
+After successful login an additional view is presented that shows list links to app catalogs available in the tenant, both tenant-level and all site-level app catalogs. Additionally it will show you all tenant-wide extensions installed on your tenant with.
+
+![tenant details](./assets/images/app-catalog-list.png)
 
 Login-in is also required for some actions to work properly like the deploy action which allows you to upload of the .sppkg file to the tenant or site-level App Catalog.
 
@@ -142,13 +160,13 @@ The actions section allows unique functionalities that may significantly boost p
 
 Currently the extension allows you to:
 
-- **CI/CD GitHub Workflow** - This action will allow you to generate yaml GitHub workflow that uses CLI for Microsoft 365 GitHub actions to bundle, package, and deploy your project to an app catalog on every code push. 
+- **CI/CD Workflow** - This action will allow you to generate yaml CI/CD GitHub Workflow or Azure DevOps Pipeline to bundle, package, and deploy your project to any app catalog on every code push. 
 
 ![CI CD pipeline](./assets/images/CICD-pipeline.png)
 
 Check it out in action 👇
 
-![CI CD pipeline](./assets/images/CICD-pipeline.gif)
+// TODO: add gif for GH and AZDO
 
 [Check out our docs for more details](https://github.com/pnp/vscode-viva/wiki/5.5-Actions#cicd-github-workflow)
 
