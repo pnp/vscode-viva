@@ -72,7 +72,7 @@ export default function useSamples(): [Sample[], string[], ((query: string, comp
     const currentSamples: Sample[] = state['samples'];
     const samplesByTitle: Sample[] = currentSamples!.filter((sample: Sample) => sample.title.toString().toLowerCase().includes(query.toLowerCase()));
     const samplesByTag: Sample[] = currentSamples!.filter((sample: Sample) => sample.tags.some(tag => tag.toString().toLowerCase().includes(query.toLowerCase())));
-    const samplesByAuthor: Sample[] = currentSamples!.filter((sample: Sample) => sample.authors.some(author => author.name.toString().toLowerCase().includes(query.toLowerCase())));
+    const samplesByAuthor: Sample[] = currentSamples!.filter((sample: Sample) => sample.authors.some(author => author.name && author.name.toString().toLowerCase().includes(query.toLowerCase())));
     let newSamples: Sample[] = samplesByTitle.concat(samplesByTag).concat(samplesByAuthor);
     if (showOnlyScenarios){
       newSamples = newSamples.filter((sample: Sample) => sample.sampleType === 'scenarios');
