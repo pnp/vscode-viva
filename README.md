@@ -164,9 +164,13 @@ Currently the extension allows you to:
 
 ![CI CD pipeline](./assets/images/CICD-pipeline.png)
 
-Check it out in action 👇
+Check it out in action for GitHub👇
 
-// TODO: add gif for GH and AZDO
+![GitHub CI CD workflow](./assets/images/gh-ci-cd.gif)
+
+And for Azure DevOps👇
+
+![Azure DevOps CI CD pipeline](./assets/images/azdo-ci-cd.gif)
 
 [Check out our docs for more details](https://github.com/pnp/vscode-viva/wiki/5.5-Actions#cicd-github-workflow)
 
