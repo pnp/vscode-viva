@@ -2,7 +2,8 @@
 // eslint-disable-next-line no-shadow
 export enum WebViewType {
   samplesGallery = 'samplesGallery',
-  workflowForm = 'workflowForm'
+  workflowForm = 'workflowForm',
+  scaffoldForm = 'scaffoldForm'
 }
 
 export const WebViewTypes = [
@@ -15,5 +16,10 @@ export const WebViewTypes = [
     Title: 'Sample Gallery',
     homePageUrl: '/sp-dev-fx-samples',
     value: WebViewType.samplesGallery
+  },
+  {
+    Title: 'Scaffold Form',
+    homePageUrl: '/scaffold-form',
+    value: WebViewType.scaffoldForm
   }
 ];

@@ -1,25 +1,32 @@
 import { readFileSync } from 'fs';
 import { commands, workspace, window, Uri } from 'vscode';
 import { Commands, ContextKeys } from '../constants';
-import { ActionTreeItem, ActionTreeviewProvider } from '../providers/ActionTreeviewProvider';
+import { ActionTreeItem, ActionTreeDataProvider } from '../providers/ActionTreeDataProvider';
 import { AuthProvider, M365AuthenticationSession } from '../providers/AuthProvider';
 import { CliActions } from '../services/CliActions';
 import { DebuggerCheck } from '../services/DebuggerCheck';
 import { EnvironmentInformation } from '../services/EnvironmentInformation';
 import { TeamsToolkitIntegration } from '../services/TeamsToolkitIntegration';
 import { AdaptiveCardCheck } from '../services/AdaptiveCardCheck';
+import { Subscription } from '../models';
+import { Extension } from '../services/Extension';
 
 
 export class CommandPanel {
 
   public static register() {
+    const subscriptions: Subscription[] = Extension.getInstance().subscriptions;
+
+    subscriptions.push(
+      commands.registerCommand(Commands.refreshAppCatalogTreeView, CommandPanel.refreshEnvironmentTreeView)
+    );
+    subscriptions.push(
+      commands.registerCommand(Commands.refreshAccountTreeView, CommandPanel.refreshAccountTreeView)
+    );
+
     CommandPanel.init();
   }
 
-  /**
-   * Initialize the command panel
-   * @returns
-   */
   private static async init() {
     let isTeamsToolkitProject = false;
     let files = await workspace.findFiles('.yo-rc.json', '**/node_modules/**');
@@ -52,13 +59,11 @@ export class CommandPanel {
 
     TeamsToolkitIntegration.isTeamsToolkitProject = isTeamsToolkitProject;
 
+    AdaptiveCardCheck.validateACEComponent();
     CommandPanel.registerTreeView();
     AuthProvider.verify();
   }
 
-  /**
-   * Register all the treeviews
-   */
   private static registerTreeView() {
     const authInstance = AuthProvider.getInstance();
     if (authInstance) {
@@ -78,20 +83,50 @@ export class CommandPanel {
     CommandPanel.helpTreeView();
   }
 
-  /**
-   * Provide the actions for the account treeview
-   * @param session
-   */
-  private static accountTreeView(session: M365AuthenticationSession | undefined) {
+  private static refreshAccountTreeView(){
+    const authInstance = AuthProvider.getInstance();
+    if (authInstance) {
+      authInstance.getAccount().then(account => CommandPanel.accountTreeView(account));
+    }
+  }
+
+  private static async accountTreeView(session: M365AuthenticationSession | undefined) {
     const accountCommands: ActionTreeItem[] = [];
 
     if (session) {
       commands.executeCommand('setContext', ContextKeys.isLoggedIn, true);
-      accountCommands.push(new ActionTreeItem(session.account.label, '', { name: 'M365', custom: true }, undefined, undefined, undefined, 'm365Account', [
-        new ActionTreeItem('Sign out', '', { name: 'sign-out', custom: false }, undefined, Commands.logout)
-      ]));
 
-      CommandPanel.environmentTreeView();
+      accountCommands.push(new ActionTreeItem(session.account.label, '', { name: 'spo-m365', custom: true }, undefined, undefined, undefined, 'm365Account', []));
+
+      const appCatalogUrls = await CliActions.appCatalogUrlsGet();
+      if (appCatalogUrls?.some) {
+        const url = new URL(appCatalogUrls[0]);
+        const originUrl = url.origin;
+        const adminOriginUrl = originUrl.replace('.sharepoint.com', '-admin.sharepoint.com');
+        const webApiPermissionManagementUrl = `${adminOriginUrl}/_layouts/15/online/AdminHome.aspx#/webApiPermissionManagement`;
+        DebuggerCheck.validateUrl(originUrl);
+
+        accountCommands[0].children.push(new ActionTreeItem('SharePoint', '', { name: 'spo-logo', custom: true }, undefined, undefined, undefined, undefined, [
+          new ActionTreeItem(originUrl.replace('https://',''), '', { name: 'globe', custom: false }, undefined, 'vscode.open', Uri.parse(originUrl), 'sp-url'),
+          new ActionTreeItem(adminOriginUrl.replace('https://',''), '', { name: 'globe', custom: false }, undefined, 'vscode.open', Uri.parse(adminOriginUrl), 'sp-admin-url'),
+          new ActionTreeItem(webApiPermissionManagementUrl.replace(`${adminOriginUrl}/_layouts/15/online/AdminHome.aspx#/`, '...'), '', { name: 'globe', custom: false }, undefined, 'vscode.open', Uri.parse(webApiPermissionManagementUrl), 'sp-admin-api-url')
+        ]));
+
+        const healthInfoList = await CliActions.getTenantHealthInfo();
+        if (healthInfoList)
+        {
+          const healthInfoItems: ActionTreeItem[] = [];
+          for (let i = 0; i < healthInfoList.length; i++) {
+            healthInfoItems.push(new ActionTreeItem(healthInfoList[i].Title, '', { name: 'm365-warning', custom: true } , undefined, 'vscode.open', Uri.parse(healthInfoList[i].Url), 'm365-health-service-url'));
+          }
+          if (healthInfoItems.length > 0) {
+            accountCommands[0].children.push(new ActionTreeItem('Service health incidents', '', { name: 'm365-health', custom: true }, undefined, undefined, undefined, undefined, healthInfoItems));
+          }
+        }
+      }
+
+      accountCommands[0].children.push(new ActionTreeItem('Sign out', '', { name: 'sign-out', custom: false }, undefined, Commands.logout));
+      CommandPanel.environmentTreeView(appCatalogUrls);
     } else {
       EnvironmentInformation.reset();
       commands.executeCommand('setContext', ContextKeys.isLoggedIn, false);
@@ -99,35 +134,36 @@ export class CommandPanel {
       accountCommands.push(new ActionTreeItem('Sign in to M365', '', { name: 'M365', custom: true }, undefined, Commands.login));
     }
 
-    window.registerTreeDataProvider('pnp-view-account', new ActionTreeviewProvider(accountCommands));
+    window.createTreeView('pnp-view-account', { treeDataProvider: new ActionTreeDataProvider(accountCommands), showCollapseAll: true });
   }
 
-  /**
-   * Provide the actions for the environment treeview
-   */
-  private static async environmentTreeView() {
+  private static async refreshEnvironmentTreeView(){
     const appCatalogUrls = await CliActions.appCatalogUrlsGet();
+    CommandPanel.environmentTreeView(appCatalogUrls);
+  }
 
+  private static async environmentTreeView(appCatalogUrls: string[] | undefined) {
     const environmentCommands: ActionTreeItem[] = [];
 
     if (!appCatalogUrls) {
       environmentCommands.push(new ActionTreeItem('No app catalog found', ''));
     } else {
-      const tenantAppCatalogUrl = appCatalogUrls[0]!;
-      const url = new URL(tenantAppCatalogUrl);
+      const tenantAppCatalogUrl = appCatalogUrls[0];
+      const origin = new URL(tenantAppCatalogUrl).origin;
       commands.executeCommand('setContext', ContextKeys.hasAppCatalog, true);
 
-      const origin = url.origin;
-      DebuggerCheck.validateUrl(origin);
-
-      AdaptiveCardCheck.validateACEComponent();
+      const tenantWideExtensions = await CliActions.getTenantWideExtensions(tenantAppCatalogUrl);
+      const tenantWideExtensionsList: ActionTreeItem[] = [];
+      if (tenantWideExtensions && tenantWideExtensions?.length > 0) {
+        tenantWideExtensions.forEach((extension) => {
+          tenantWideExtensionsList.push(new ActionTreeItem(extension.Title, '', { name: 'spo-app', custom: true }, undefined, 'vscode.open', Uri.parse(extension.Url), 'sp-app-catalog-tenant-wide-extensions-url'));
+        });
+      }
 
       environmentCommands.push(
-        new ActionTreeItem('SharePoint', '', { name: 'sharepoint', custom: true }, undefined, undefined, undefined, undefined, [
-          new ActionTreeItem(origin, '', { name: 'globe', custom: false }, undefined, 'vscode.open', Uri.parse(origin), 'sp-url')
-        ]),
-        new ActionTreeItem('SharePoint Tenant App Catalog', '', { name: 'sharepoint', custom: true }, undefined, undefined, undefined, undefined, [
-          new ActionTreeItem(tenantAppCatalogUrl.replace(origin, '...'), '', { name: 'globe', custom: false }, undefined, 'vscode.open', Uri.parse(tenantAppCatalogUrl), 'sp-app-catalog-url')
+        new ActionTreeItem('Tenant App Catalog', '', { name: 'spo-logo', custom: true }, undefined, undefined, undefined, undefined, [
+          new ActionTreeItem(tenantAppCatalogUrl.replace(origin, '...'), '', { name: 'globe', custom: false }, undefined, 'vscode.open', Uri.parse(tenantAppCatalogUrl), 'sp-app-catalog-url'),
+          new ActionTreeItem('Tenant-wide Extensions', '', { name: 'spo-app-list', custom: true }, undefined, undefined, undefined, 'sp-app-catalog-tenant-wide-extensions', tenantWideExtensionsList)
         ]),
       );
 
@@ -136,16 +172,13 @@ export class CommandPanel {
         siteAppCatalogActionItems.push(new ActionTreeItem(appCatalogUrls[i].replace(origin, '...'), '', { name: 'globe', custom: false }, undefined, 'vscode.open', Uri.parse(appCatalogUrls[i]), 'sp-app-catalog-url'));
       }
       if (siteAppCatalogActionItems.length > 0) {
-        environmentCommands.push(new ActionTreeItem('SharePoint Site App Catalogs', '', { name: 'sharepoint', custom: true }, undefined, undefined, undefined, undefined, siteAppCatalogActionItems));
+        environmentCommands.push(new ActionTreeItem('Site App Catalogs', '', { name: 'spo-logo', custom: true }, undefined, undefined, undefined, undefined, siteAppCatalogActionItems));
       }
     }
 
-    window.createTreeView('pnp-view-environment', { treeDataProvider: new ActionTreeviewProvider(environmentCommands), showCollapseAll: true });
+    window.createTreeView('pnp-view-environment', { treeDataProvider: new ActionTreeDataProvider(environmentCommands), showCollapseAll: true });
   }
 
-  /**
-   * Provide the actions for the task treeview
-   */
   private static taskTreeView() {
     const taskCommands: ActionTreeItem[] = [
       new ActionTreeItem('Clean project', '', { name: 'debug-start', custom: false }, undefined, Commands.executeTerminalCommand, 'gulp clean'),
@@ -158,12 +191,9 @@ export class CommandPanel {
       new ActionTreeItem('Serve from configuration', '', { name: 'debug-start', custom: false }, undefined, Commands.serveProject),
     ];
 
-    window.registerTreeDataProvider('pnp-view-tasks', new ActionTreeviewProvider(taskCommands));
+    window.registerTreeDataProvider('pnp-view-tasks', new ActionTreeDataProvider(taskCommands));
   }
 
-  /**
-   * Provide the actions for the actions treeview
-   */
   private static async actionsTreeView() {
     const actionCommands: ActionTreeItem[] = [
       new ActionTreeItem('Upgrade project', '', { name: 'arrow-up', custom: false }, undefined, Commands.upgradeProject),
@@ -176,12 +206,9 @@ export class CommandPanel {
       new ActionTreeItem('View samples', '', { name: 'library', custom: false }, undefined, Commands.samplesGallery),
     ];
 
-    window.registerTreeDataProvider('pnp-view-actions', new ActionTreeviewProvider(actionCommands));
+    window.registerTreeDataProvider('pnp-view-actions', new ActionTreeDataProvider(actionCommands));
   }
 
-  /**
-   * Provide the actions for the help treeview
-   */
   private static helpTreeView() {
     const helpCommands: ActionTreeItem[] = [
       new ActionTreeItem('Docs & Learning', '', undefined, undefined, undefined, undefined, undefined, [
@@ -211,12 +238,9 @@ export class CommandPanel {
       ])
     ];
 
-    window.createTreeView('pnp-view-help', { treeDataProvider: new ActionTreeviewProvider(helpCommands), showCollapseAll: true });
+    window.createTreeView('pnp-view-help', { treeDataProvider: new ActionTreeDataProvider(helpCommands), showCollapseAll: true });
   }
 
-  /**
-   * Set the welcome view its context
-   */
   private static showWelcome() {
     commands.executeCommand('setContext', ContextKeys.showWelcome, true);
   }

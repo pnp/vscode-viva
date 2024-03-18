@@ -7,6 +7,7 @@ import { EventData } from '@estruyf/vscode/dist/models/EventData';
 import { WebviewCommand } from '../../../constants';
 import { routeEntries } from '..';
 import { ScaffoldWorkflowView } from './forms/workflow/ScaffoldWorkflowView';
+import { ScaffoldSpfxProjectView } from './forms/spfxProject/ScaffoldSpfxProjectView';
 
 
 export interface IAppProps {
@@ -43,6 +44,7 @@ export const App: React.FunctionComponent<IAppProps> = ({ url, data }: React.Pro
       <Route path={'/sp-dev-fx-samples'} element={<GalleryView />} />
       <Route path={'/sp-dev-fx-sample-details-view'} element={<DetailsView />} />
       <Route path={'/scaffold-workflow'} element={<ScaffoldWorkflowView />} />
+      <Route path={'/scaffold-form'} element={<ScaffoldSpfxProjectView />} />
     </Routes>
   );
 };

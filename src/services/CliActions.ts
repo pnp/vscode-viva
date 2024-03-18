@@ -2,8 +2,8 @@ import { ServeConfig } from './../models/ServeConfig';
 import { readFileSync, writeFileSync } from 'fs';
 import { Folders } from './Folders';
 import { commands, Progress, ProgressLocation, Uri, window, workspace } from 'vscode';
-import { Commands, GenerateWorkflowCommandInput, WebViewType, WebviewCommand } from '../constants';
-import { SiteAppCatalog, SolutionAddResult, Subscription } from '../models';
+import { Commands, WebViewType, WebviewCommand, WorkflowType } from '../constants';
+import { GenerateWorkflowCommandInput, SiteAppCatalog, SolutionAddResult, Subscription } from '../models';
 import { Extension } from './Extension';
 import { CliExecuter } from './CliCommandExecuter';
 import { Notifications } from './Notifications';
@@ -64,6 +64,45 @@ export class CliActions {
     return EnvironmentInformation.appCatalogUrls;
   }
 
+  public static async getTenantWideExtensions(tenantAppCatalogUrl: string): Promise<{Url: string, Title: string}[] | undefined> {
+    const origin = new URL(tenantAppCatalogUrl).origin;
+    const commandOptions: any = {
+      listUrl: `${tenantAppCatalogUrl.replace(origin, '')}/Lists/TenantWideExtensions`,
+      webUrl: tenantAppCatalogUrl
+    };
+    const tenantWideExtensions = (await CliExecuter.execute('spo listitem list', 'json', commandOptions)).stdout || undefined;
+
+    if (!tenantWideExtensions) {
+      return undefined;
+    }
+
+    const tenantWideExtensionsJson: any[] = JSON.parse(tenantWideExtensions);
+    const tenantWideExtensionList = tenantWideExtensionsJson.map((extension) => {
+      return {
+        Url: `${tenantAppCatalogUrl}/Lists/TenantWideExtensions/DispForm.aspx?ID=${extension.Id}`,
+        Title: extension.Title
+      };
+    });
+    return tenantWideExtensionList;
+  }
+
+  public static async getTenantHealthInfo(): Promise<{Title: string, Url: string}[] | undefined> {
+    const healthInfo = (await CliExecuter.execute('tenant serviceannouncement health list', 'json')).stdout || undefined;
+
+    if (!healthInfo) {
+      return undefined;
+    }
+
+    const healthInfoJson: any[] = JSON.parse(healthInfo);
+    const healthInfoList = healthInfoJson.filter(service => service.status !== 'serviceOperational').map((service) => {
+      return {
+        Url: `https://admin.microsoft.com/#/servicehealth/:/currentIssues/${encodeURIComponent(service.service)}/`,
+        Title: service.service
+      };
+    });
+    return healthInfoList;
+  }
+
   public static async generateWorkflowForm(input: GenerateWorkflowCommandInput) {
     // Change the current working directory to the root of the Project
     const wsFolder = await Folders.getWorkspaceFolder();
@@ -85,7 +124,7 @@ export class CliActions {
 
       if (!pfxBase64) {
         Notifications.error('Error generating certificate.');
-        PnPWebview.postMessage(WebviewCommand.toWebview.WorkflowCreated, {success: false});
+        PnPWebview.postMessage(WebviewCommand.toWebview.WorkflowCreated, { success: false });
         return;
       }
 
@@ -123,14 +162,14 @@ export class CliActions {
         } catch (e: any) {
           const message = e?.error?.message;
           Notifications.error(message);
-          PnPWebview.postMessage(WebviewCommand.toWebview.WorkflowCreated, {success: false});
+          PnPWebview.postMessage(WebviewCommand.toWebview.WorkflowCreated, { success: false });
         }
       });
     }
 
     await window.withProgress({
       location: ProgressLocation.Notification,
-      title: 'Generating GitHub CI/CD workflow...',
+      title: `Generating ${input.workflowType === WorkflowType.gitHub ? 'GitHub Workflow' : 'Azure DevOps Pipeline'}...`,
       cancellable: true
       // eslint-disable-next-line no-unused-vars
     }, async (progress: Progress<{ message?: string; increment?: number }>) => {
@@ -145,7 +184,7 @@ export class CliActions {
           commandOptions.branchName = input.branch;
         }
 
-        if (input.shouldTriggerManually) {
+        if (input.shouldTriggerManually && input.workflowType === WorkflowType.gitHub) {
           commandOptions.manuallyTrigger = input.shouldTriggerManually;
         }
 
@@ -161,14 +200,16 @@ export class CliActions {
           commandOptions.skipFeatureDeployment = input.shouldSkipFeatureDeployment;
         }
 
-        commandOptions.overwrite = true;
+        if (input.workflowType === WorkflowType.gitHub) {
+          commandOptions.overwrite = true;
+        }
 
-        const result = await CliExecuter.execute('spfx project github workflow add', 'json', commandOptions);
+        const result = await CliExecuter.execute(`${input.workflowType === WorkflowType.gitHub ? 'spfx project github workflow add' : 'spfx project azuredevops pipeline add'}`, 'json', commandOptions);
 
         if (result.stderr) {
           Notifications.error(result.stderr);
         }
-        Notifications.info('Workflow generated successfully.');
+        Notifications.info('Generated successfully.');
         PnPWebview.postMessage(WebviewCommand.toWebview.WorkflowCreated, {
           success: true,
           appId: appId,
@@ -178,7 +219,7 @@ export class CliActions {
       } catch (e: any) {
         const message = e?.error?.message;
         Notifications.error(message);
-        PnPWebview.postMessage(WebviewCommand.toWebview.WorkflowCreated, {success: false});
+        PnPWebview.postMessage(WebviewCommand.toWebview.WorkflowCreated, { success: false });
       }
     });
   }
