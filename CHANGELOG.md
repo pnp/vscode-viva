@@ -1,5 +1,15 @@
 # Change Log
 
+## [2.6.0] - 2024-03-18
+
+- Refactored and rebuilt the scaffolding process
+- Added an additional dependency step in the scaffolding form
+- Fixed bug in sample gallery filters
+- Added Azure DevOps pipeline support
+- Updated account and app catalog view
+- Added tenant health information 
+- Added tenant-wide extensions list
+
 ## [2.5.0] - 2024-02-05
 
 - Refactored sample galleries to a single sample gallery

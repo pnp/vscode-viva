@@ -17,7 +17,7 @@ export const ExtensionTypes = [
   {
     name: 'Field Customizer',
     value: ExtensionType.field,
-    templates: ['React', 'Minimal', 'No framework']
+    templates: ['No framework', 'React', 'Minimal']
   },
   {
     name: 'ListView Command Set',
@@ -27,7 +27,7 @@ export const ExtensionTypes = [
   {
     name: 'Form Customizer',
     value: ExtensionType.formCustomizer,
-    templates: ['React', 'No framework']
+    templates: ['No framework', 'React']
   },
   {
     name: 'Search Query Modifier',
