@@ -74,14 +74,38 @@ export class TerminalCommandExecuter {
         iconPath: icon ? new ThemeIcon(icon) : undefined
       });
 
+      // Check the user's settings to see if they want to use nvm or nvs
+      // Get the user's preferred node version manager -- nvm or nvs or none, if they don't want to use either
+      const nodeVersionManager: string = TerminalCommandExecuter.getExtensionSettings('nodeVersionManager', 'nvm');
+
       // Check if nvm is used
       const nvmFiles = await workspace.findFiles('.nvmrc', '**/node_modules/**');
-      if (nvmFiles.length > 0) {
-        terminal.sendText('nvm use');
+
+      // If there are .nvmrc files and the user wants to use nvm, then use their preferred node version manager
+      if (nvmFiles.length > 0 && nodeVersionManager !== 'none') {
+
+        // Launch the command to use the node version specified in the .nvmrc file
+        if (nodeVersionManager === 'nvs') {
+          // Use nvs
+          terminal.sendText('nvs use');
+        } else {
+          // Default to nvm
+          terminal.sendText('nvm use');
+        }
       }
     }
 
     return terminal;
+  }
+
+  private static getExtensionSettings<T>(setting: string, defaultValue: T): T {
+    // Replace 'myExtension' with the name of your extension's configuration section
+    const configuration = workspace.getConfiguration('viva-connections-toolkit');
+
+    // Now you can access your settings
+    const extensionSetting = configuration.get<T>(setting, defaultValue);
+
+    return extensionSetting;
   }
 
   private static async runInTerminal(command: string, terminal?: Terminal | undefined) {

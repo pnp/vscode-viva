@@ -45,6 +45,22 @@
 	"license": "MIT",
 	"main": "./dist/extension.js",
 	"contributes": {
+		"configuration": {
+			"title": "Viva Connections Toolkit",
+			"properties": {
+				"viva-connections-toolkit.nodeVersionManager": {
+					"title": "Node.js Version Manager",
+					"type": "string",
+					"default": "nvm",
+					"enum": [
+						"nvm",
+						"nvs",
+						"none"
+					],
+					"description": "Choose your preferred Node.js version manager. Choose between `nvs`, `nvm`, or `none`."
+				}
+			}
+		},
 		"icons": {
 			"spo-m365": {
 				"description": "Microsoft 365 icon",
