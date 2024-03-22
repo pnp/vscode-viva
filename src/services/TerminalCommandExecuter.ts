@@ -1,5 +1,5 @@
 import { commands, ThemeIcon, workspace, window, Terminal } from 'vscode';
-import { Commands } from '../constants';
+import { Commands, EXTENSION_NAME, NodeVersionManagers } from '../constants';
 import { Subscription } from '../models';
 import { Extension } from './Extension';
 import { getPlatform } from '../utils';
@@ -88,7 +88,6 @@ export class TerminalCommandExecuter {
         } else {
           terminal.sendText('nvm use');
         }
-      }
       }
     }
 
