@@ -96,13 +96,7 @@ export class TerminalCommandExecuter {
   }
 
   private static getExtensionSettings<T>(setting: string, defaultValue: T): T {
-    // Replace 'myExtension' with the name of your extension's configuration section
-    const configuration = workspace.getConfiguration('viva-connections-toolkit');
-
-    // Now you can access your settings
-    const extensionSetting = configuration.get<T>(setting, defaultValue);
-
-    return extensionSetting;
+      return workspace.getConfiguration(EXTENSION_NAME).get<T>(setting, defaultValue);
   }
 
   private static async runInTerminal(command: string, terminal?: Terminal | undefined) {
