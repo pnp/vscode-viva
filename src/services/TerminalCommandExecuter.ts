@@ -1,5 +1,5 @@
 import { commands, ThemeIcon, workspace, window, Terminal } from 'vscode';
-import { Commands } from '../constants';
+import { Commands, EXTENSION_NAME, NodeVersionManagers } from '../constants';
 import { Subscription } from '../models';
 import { Extension } from './Extension';
 import { getPlatform } from '../utils';
@@ -74,14 +74,28 @@ export class TerminalCommandExecuter {
         iconPath: icon ? new ThemeIcon(icon) : undefined
       });
 
+      // Check the user's settings to see if they want to use nvm or nvs
+      // Get the user's preferred node version manager -- nvm or nvs or none, if they don't want to use either
+      const nodeVersionManager: string = TerminalCommandExecuter.getExtensionSettings('nodeVersionManager', 'nvm');
+
       // Check if nvm is used
       const nvmFiles = await workspace.findFiles('.nvmrc', '**/node_modules/**');
-      if (nvmFiles.length > 0) {
-        terminal.sendText('nvm use');
+
+      // If there are .nvmrc files and the user wants to use nvm, then use their preferred node version manager
+      if (nvmFiles.length > 0 && nodeVersionManager !== NodeVersionManagers.none) {
+        if (nodeVersionManager === NodeVersionManagers.nvs) {
+          terminal.sendText('nvs use');
+        } else {
+          terminal.sendText('nvm use');
+        }
       }
     }
 
     return terminal;
+  }
+
+  private static getExtensionSettings<T>(setting: string, defaultValue: T): T {
+      return workspace.getConfiguration(EXTENSION_NAME).get<T>(setting, defaultValue);
   }
 
   private static async runInTerminal(command: string, terminal?: Terminal | undefined) {
