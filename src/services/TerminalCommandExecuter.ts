@@ -82,16 +82,13 @@ export class TerminalCommandExecuter {
       const nvmFiles = await workspace.findFiles('.nvmrc', '**/node_modules/**');
 
       // If there are .nvmrc files and the user wants to use nvm, then use their preferred node version manager
-      if (nvmFiles.length > 0 && nodeVersionManager !== 'none') {
-
-        // Launch the command to use the node version specified in the .nvmrc file
-        if (nodeVersionManager === 'nvs') {
-          // Use nvs
+      if (nvmFiles.length > 0 && nodeVersionManager !== NodeVersionManagers.none) {
+        if (nodeVersionManager === NodeVersionManagers.nvs) {
           terminal.sendText('nvs use');
         } else {
-          // Default to nvm
           terminal.sendText('nvm use');
         }
+      }
       }
     }
 
