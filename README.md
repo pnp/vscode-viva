@@ -254,7 +254,7 @@ Check it out in action 👇
 
 ### 1️⃣2️⃣ Node.js Version Manager Support
 
-By default, the Viva Connections Toolkit will use the Node.js version that is installed on your machine. If you want to use a different version, you can use a Node.js Version Manager such as [nvm](https://github.com/nvm-sh/nvm) or [nvs](https://github.com/jasongin/nvs). The Viva Connections Toolkit will detect preferred version of Node.js if an `.nvmrc` file is present in the root of your project, and will use that version for all the actions.
+By default, the Viva Connections Toolkit will use the Node.js version that is installed on your machine. If you want to use a different version, you can use a Node.js Version Manager such as [nvm](https://github.com/nvm-sh/nvm) or [nvs](https://github.com/jasongin/nvs). The Viva Connections Toolkit will detect the preferred version of Node.js if a `.nvmrc` file is present in the root of your project, and will use that version for all the actions.
 
 You can use the settings to change which Node.js version manager you want to use. You may choose between `nvm` and `nvs`. If you wish to avoid using a Node.js version manager, you can set the value to `none`
 
