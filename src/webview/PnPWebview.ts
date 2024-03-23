@@ -75,7 +75,7 @@ export class PnPWebview {
     const ext = Extension.getInstance();
 
     PnPWebview.webview = window.createWebviewPanel(
-      'viva-connections-toolkit.webview',
+      'spfx-toolkit.webview',
       'PnP',
       ViewColumn.One,
       {
