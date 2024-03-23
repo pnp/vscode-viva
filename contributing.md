@@ -1,6 +1,6 @@
 # Contribution guidelines
 
-Thank you for your interest in contributing to the Viva Connections Toolkit extension. In this guide, we will walk you through the steps to get started.
+Thank you for your interest in contributing to the SharePoint Framework Toolkit extension. In this guide, we will walk you through the steps to get started.
 
 ## Before you start
 
