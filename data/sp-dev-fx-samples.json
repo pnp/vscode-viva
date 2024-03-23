@@ -4149,6 +4149,29 @@
       "sampleType": "samples"
     },
     {
+      "name": "pnp-sp-dev-spfx-web-parts-react-connected-web-parts",
+      "title": "Connected web parts",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-connected-web-parts",
+      "description": "This samples showcase how to connect two web parts together.",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-connected-web-parts/assets/connected-web-parts.gif?raw=true",
+      "authors": [
+        {
+          "name": "Guido Zambarda",
+          "pictureUrl": "https://github.com/guidozam.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2024-03-16",
+      "updateDate": "2024-03-16",
+      "version": "1.18.2",
+      "componentType": "webpart",
+      "extensionType": null,
+      "sampleGalerry": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
       "name": "pnp-sp-dev-spfx-web-parts-react-content-query-online",
       "title": "Content Query Web Part (SharePoint Online)",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-content-query-online",
@@ -7909,10 +7932,10 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-property-bag-editor",
-      "title": "Property Bag Navigation Webparts",
+      "title": "Property Bag Navigation Web parts",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-property-bag-editor",
-      "description": "A set of webparts that lets you set property bag settings on site collections and enable navigation using those properties.",
-      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-property-bag-editor/src/images/PropertyBagEditorDisplay.PNG",
+      "description": "A set of web parts that lets you set property bag settings on site collections and enable navigation using those properties.",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-property-bag-editor/assets/PropertyBagEditorDisplay.PNG",
       "authors": [
         {
           "name": "Russell Gove",
@@ -7923,9 +7946,9 @@
         "SharePoint"
       ],
       "createDate": "2017-03-19",
-      "updateDate": "2017-03-19",
-      "version": null,
-      "componentType": null,
+      "updateDate": "2024-02-21",
+      "version": "1.17.1",
+      "componentType": "webpart",
       "extensionType": null,
       "sampleGalerry": "sp-dev-fx-webparts",
       "sampleType": "samples"
