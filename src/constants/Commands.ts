@@ -47,4 +47,7 @@ export const Commands = {
   // TreeViews
   refreshAppCatalogTreeView: `${EXTENSION_NAME}.refreshAppCatalogTreeView`,
   refreshAccountTreeView: `${EXTENSION_NAME}.refreshAccountTreeView`,
+
+  // Welcome
+  welcome: `${EXTENSION_NAME}.welcome`,
 };
