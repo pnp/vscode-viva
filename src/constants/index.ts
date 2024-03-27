@@ -5,6 +5,7 @@ export * from './ContextKeys';
 export * from './ExtensionTypes';
 export * from './FrameworkTypes';
 export * from './General';
+export * from './NodeVersionManagers';
 export * from './ProjectFileContent';
 export * from './WebviewCommand';
 export * from './WebViewTypes';

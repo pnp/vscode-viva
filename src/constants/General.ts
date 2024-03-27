@@ -1,1 +1,1 @@
-export const EXTENSION_NAME = 'viva-connections-toolkit';
+export const EXTENSION_NAME = 'spfx-toolkit';
