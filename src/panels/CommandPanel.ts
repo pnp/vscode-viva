@@ -23,6 +23,9 @@ export class CommandPanel {
     subscriptions.push(
       commands.registerCommand(Commands.refreshAccountTreeView, CommandPanel.refreshAccountTreeView)
     );
+    subscriptions.push(
+      commands.registerCommand(Commands.welcome, () => commands.executeCommand('workbench.action.openWalkthrough', 'm365pnp.viva-connections-toolkit#spfx-toolkit-intro', false))
+    );
 
     CommandPanel.init();
   }
@@ -234,7 +237,8 @@ export class CommandPanel {
       ]),
       new ActionTreeItem('Support', '', undefined, undefined, undefined, undefined, undefined, [
         new ActionTreeItem('Wiki', '', { name: 'question', custom: false }, undefined, 'vscode.open', Uri.parse('https://github.com/pnp/vscode-viva/wiki')),
-        new ActionTreeItem('Report an issue', '', { name: 'github', custom: false }, undefined, 'vscode.open', Uri.parse('https://github.com/pnp/vscode-viva/issues/new/choose'))
+        new ActionTreeItem('Report an issue', '', { name: 'github', custom: false }, undefined, 'vscode.open', Uri.parse('https://github.com/pnp/vscode-viva/issues/new/choose')),
+        new ActionTreeItem('Start Walkthrough', '', { name: 'info', custom: false }, undefined, Commands.welcome)
       ])
     ];
 
