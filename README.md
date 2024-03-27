@@ -1,9 +1,9 @@
 <h1 align="center">
-  <img alt="Viva Connections Toolkit for Visual Studio Code" src="./assets/logo-large.png" width="150px" />
+  <img alt="SharePoint Framework Toolkit for Visual Studio Code" src="./assets/logo-large.png" width="150px" />
 </h1>
 
 <h1 align="center">
-  Viva Connections Toolkit for Visual Studio Code
+  SharePoint Framework Toolkit for Visual Studio Code
 </h1>
 
 <p align="center">
@@ -18,7 +18,7 @@
   </a>
 </p>
 
-<p align="center">Viva Connections Toolkit (SPFx Toolkit) is a Visual Studio Code extension that aims to boost your productivity in developing and managing SharePoint Framework solutions helping at every stage of your development flow, from setting up your development workspace to deploying a solution straight to your tenant without the need to leave VS Code. With SharePoint Framework, you can use modern web technologies and tools in your preferred development environment to build productive experiences and apps that are responsive and mobile-ready allowing you to create solutions to extend SharePoint, Microsoft Teams, Microsoft Viva Connections, Outlook and Microsoft365.com.</p>
+<p align="center">SharePoint Framework Toolkit is a Visual Studio Code extension that aims to boost your productivity in developing and managing SharePoint Framework solutions helping at every stage of your development flow, from setting up your development workspace to deploying a solution straight to your tenant without the need to leave VS Code. With SharePoint Framework, you can use modern web technologies and tools in your preferred development environment to build productive experiences and apps that are responsive and mobile-ready allowing you to create solutions to extend SharePoint, Microsoft Teams, Microsoft Viva Connections, Outlook and Microsoft365.com.</p>
 
 <p align="center">
   <a href="#-capabilities">Capabilities</a> |
@@ -210,7 +210,7 @@ And for Azure DevOps👇
 
 [Check out our docs for more details](https://github.com/pnp/vscode-viva/wiki/5.5-Actions#add-new-component)
 
-- **Open sample/scenario galleries of the SPFx web part, extensions, or ACEs projects** - Viva Connections Toolkit supports a couple of sample galleries that may be used to scaffold a new SPFx project. 
+- **Open sample/scenario galleries of the SPFx web part, extensions, or ACEs projects** - SharePoint Framework Toolkit supports a couple of sample galleries that may be used to scaffold a new SPFx project. 
 
 [Check out our docs for more details](https://github.com/pnp/vscode-viva/wiki/5.5-Actions#open-samplescenario-galleries-of-the-spfx-web-part-extensions-or-aces-projects)
 
@@ -224,7 +224,7 @@ The help and feedback section is a group of links that will direct you to the ri
 
 ### 1️⃣0️⃣ Coding Snippets
 
-The Viva Connections Toolkit comes together as a bundle with two other extensions. One of them is [SPFx Snippets](https://marketplace.visualstudio.com/items?itemName=eliostruyf.spfx-snippets) created by [Elit Struyf](https://www.eliostruyf.com/). 
+The SharePoint Framework Toolkit comes together as a bundle with two other extensions. One of them is [SPFx Snippets](https://marketplace.visualstudio.com/items?itemName=eliostruyf.spfx-snippets) created by [Elit Struyf](https://www.eliostruyf.com/). 
 
 It contains snippets for working in:
 
@@ -246,15 +246,21 @@ Check it out in action 👇
 
 ### 1️⃣1️⃣ Teams Toolkit Integration
 
-[Teams Toolkit](https://marketplace.visualstudio.com/items?itemName=TeamsDevApp.ms-teams-vscode-extension) is a widely used VS Code extension that aims to help you develop solutions that will allow you to extend Microsoft Teams. Viva Connection Toolkit aims to boost your productivity in SharePoint Framework solutions that may be used to extend SharePoint, Microsoft Teams, Microsoft Viva Connections, Outlook, and Microsoft365.com. Among many awesome functionalities, Teams Toolkit allows you to create a project to extend Teams Tab with SPFx project, and that’s where both of those extensions may cooperate.
+[Teams Toolkit](https://marketplace.visualstudio.com/items?itemName=TeamsDevApp.ms-teams-vscode-extension) is a widely used VS Code extension that aims to help you develop solutions that will allow you to extend Microsoft Teams. SharePoint Framework Toolkit aims to boost your productivity in SharePoint Framework solutions that may be used to extend SharePoint, Microsoft Teams, Microsoft Viva Connections, Outlook, and Microsoft365.com. Among many awesome functionalities, Teams Toolkit allows you to create a project to extend Teams Tab with SPFx project, and that’s where both of those extensions may cooperate.
 
 ![Teams Toolkit integration](./assets/images/better-together.png)
 
 [Check out our docs for more details](https://github.com/pnp/vscode-viva/wiki/6-Teams-Toolkit-Integration)
 
+### 1️⃣2️⃣ Node.js Version Manager Support
+
+By default, the SharePoint Framework Toolkit will use the Node.js version that is installed on your machine. If you want to use a different version, you can use a Node.js Version Manager such as [nvm](https://github.com/nvm-sh/nvm) or [nvs](https://github.com/jasongin/nvs). The SharePoint Framework Toolkit will detect the preferred version of Node.js if a `.nvmrc` file is present in the root of your project, and will use that version for all the actions.
+
+You can use the settings to change which Node.js version manager you want to use. You may choose between `nvm` and `nvs`. If you wish to avoid using a Node.js version manager, you can set the value to `none`
+
 ## ⚙️ Architecture
 
-Viva Connections Toolkit for Visual Studio Code is an abstraction layer on top of the [SPFx](https://aka.ms/spfx) Yeoman generator and [CLI for Microsoft 365](https://pnp.github.io/cli-microsoft365/). 
+SharePoint Framework Toolkit for Visual Studio Code is an abstraction layer on top of the [SPFx](https://aka.ms/spfx) Yeoman generator and [CLI for Microsoft 365](https://pnp.github.io/cli-microsoft365/). 
 
 This means that the features and capabilities provided through this tool are available for any solution which has been built with SPFx.
 

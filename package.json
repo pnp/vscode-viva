@@ -1,8 +1,8 @@
 {
 	"name": "viva-connections-toolkit",
-	"displayName": "Viva Connections Toolkit",
-	"description": "Viva Connections Toolkit aims to boost your productivity in developing and managing SharePoint Framework solutions helping at every stage of your development flow, from setting up your development workspace to deploying a solution straight to your tenant without the need to leave VS Code and now even create a CI/CD pipeline to introduce automate deployment of your app. This toolkit is provided by the community.",
-	"version": "2.6.0",
+	"displayName": "SharePoint Framework Toolkit",
+	"description": "SharePoint Framework Toolkit aims to boost your productivity in developing and managing SharePoint Framework solutions helping at every stage of your development flow, from setting up your development workspace to deploying a solution straight to your tenant without the need to leave VS Code and now even create a CI/CD pipeline to introduce automate deployment of your app. This toolkit is provided by the community.",
+	"version": "3.0.0",
 	"publisher": "m365pnp",
 	"preview": false,
 	"homepage": "https://github.com/pnp/vscode-viva",
@@ -45,6 +45,106 @@
 	"license": "MIT",
 	"main": "./dist/extension.js",
 	"contributes": {
+		"walkthroughs": [
+			{
+				"id": "spfx-toolkit-intro",
+				"title": "SharePoint Framework Toolkit Introduction",
+				"description": "Learn how to boost your productivity in developing and managing SharePoint Framework solutions.",
+				"steps": [
+					{
+						"id": "intro-to-spfx",
+						"title": "Introduction to SharePoint Framework",
+						"description": "Set up your Microsoft 365 tenant \n[Join the Microsoft 365 Developer Program](https://developer.microsoft.com/en-us/microsoft-365/dev-program)",
+						"media": {
+							"markdown": "assets/walkthrough/spfx-intro.md"
+						}
+					},
+					{
+						"id": "set-up-local-workspace",
+						"title": "Check and get required dependencies",
+						"description": "Validate if your local workspace is ready for SharePoint Framework development. \n[Check dependencies](command:spfx-toolkit.checkDependencies)",
+						"media": {
+							"image": "assets/images/validate-dependency.png", 
+							"altText": "Validate dependencies" 
+						}
+					},
+					{
+						"id": "create-new-project",
+						"title": "Create new project",
+						"description": "Use the scaffolding form to create a new project or use one of the existing samples to kick off a new project and boost your development.\n[Create a new project](command:spfx-toolkit.createProject)\n[View samples](command:spfx-toolkit.samplesGallery)",
+						"media": {
+							"markdown": "assets/walkthrough/create-new-project.md"
+						}
+					},
+					{
+						"id": "tenant-details",
+						"title": "Login to Microsoft 365",
+						"description": "Retrieve tenant helpful information and Manage your SPFx projects. \nLogin to your tenant to get started. \n[Sign in to Microsoft 365](command:spfx-toolkit.login)",
+						"media": {
+							"markdown": "assets/walkthrough/tenant-details.md"
+						}
+					},
+					{
+						"id": "tasks-and-actions",
+						"title": "Boost your development with actions",
+						"description": "Reduce the amount of context switching and automate your work with Tasks and Actions. \nValidate your project, rename your solution, deploy it to any app catalog, grant API permissions ... and many more all without leaving the context of your work.",
+						"media": {
+							"markdown": "assets/walkthrough/tasks-and-actions.md"
+						}
+					},
+					{
+						"id": "coding-snippets",
+						"title": "Write code faster with coding snippets",
+						"description": "Write more with less using coding snippets",
+						"media": {
+							"markdown": "assets/walkthrough/coding-snippets.md"
+						}
+					},
+					{
+						"id": "cicd-workflow",
+						"title": "Create a CI/CD workflow for your SPFx project",
+						"description": "Create a GitHub Workflow or Azure DevOps pipeline to bundle, package, and deploy your SharePoint Framework project to any App Catalog. \n[Generate CI/CD workflow](command:spfx-toolkit.pipeline)",
+						"media": {
+							"markdown": "assets/walkthrough/cicd-workflow.md"
+						}
+					},
+					{
+						"id": "help",
+						"title": "Continue your learning and get additional tooling",
+						"description": "SharePoint Framework Toolkit is your single point to get to the official Microsoft documentation and learning regarding SharePoint Framework and additional tooling that will help you create apps for Microsoft 365.",
+						"media": {
+							"image": "assets/images/help-and-feedback.png", 
+							"altText": "help and feedback section"
+						}
+					},
+					{
+						"id": "Community",
+						"title": "Connect with the Microsoft 365 and Power Platform community",
+						"description": "Stay up to date and connected. \nVisit the [Microsoft 365 and Power Platform community](https://pnp.github.io/) to get more learning materials, guidance, tooling, and engage in community calls. \nJoin the [community Discord server](https://aka.ms/community/discord) to stay connected and help out others. \n Sharing is caring!",
+						"media": {
+							"image": "assets/images/parker-pnp.png", 
+							"altText": "PnP Parker" 
+						}
+					}
+				]
+			}
+		],
+		"configuration": {
+			"title": "SharePoint Framework Toolkit",
+			"properties": {
+				"spfx-toolkit.nodeVersionManager": {
+					"title": "Node.js Version Manager",
+					"type": "string",
+					"default": "nvm",
+					"enum": [
+						"nvm",
+						"nvs",
+						"none"
+					],
+					"description": "Choose your preferred Node.js version manager. Choose between `nvs`, `nvm`, or `none`."
+				}
+			}
+		},
 		"icons": {
 			"spo-m365": {
 				"description": "Microsoft 365 icon",
@@ -93,7 +193,7 @@
 			"activitybar": [
 				{
 					"id": "pnp-view",
-					"title": "Viva Connections Toolkit",
+					"title": "SharePoint Framework Toolkit",
 					"icon": "assets/logo-light.svg"
 				}
 			]
@@ -102,7 +202,7 @@
 			"pnp-view": [
 				{
 					"id": "pnp-view-empty",
-					"name": "Viva Connections Toolkit",
+					"name": "SharePoint Framework Toolkit",
 					"when": "pnp.project.showWelcome"
 				},
 				{
@@ -135,136 +235,141 @@
 		"viewsWelcome": [
 			{
 				"view": "pnp-view-empty",
-				"contents": "Welcome to Viva Connections Toolkit\n\n\nTo start create a new SharePoint Framework project. \n[Create a new project](command:viva-connections-toolkit.createProject)\n\n\n\n\n\nUse a sample to kick off a new project and boost your development.\n[View samples](command:viva-connections-toolkit.samplesGallery)\n\n\n\n\n\nYou can also open an existing app.\n[Open folder](command:vscode.openFolder)\n\n\n\n\n\nValidate your local workspace and check if you have the required dependencies.\n[Check dependencies](command:viva-connections-toolkit.checkDependencies)\n\n\n\n\n\nInstall the required dependencies.\n[Install dependencies](command:viva-connections-toolkit.installDependencies)\n\n\n\nIf you need  additional help or resources visit the [extension wiki](https://github.com/pnp/vscode-viva/wiki) for more information."
+				"contents": "Welcome to SharePoint Framework Toolkit\n\n\nTo start create a new SharePoint Framework project. \n[Create a new project](command:spfx-toolkit.createProject)\n\n\n\n\n\nUse a sample to kick off a new project and boost your development.\n[View samples](command:spfx-toolkit.samplesGallery)\n\n\n\n\n\nYou can also open an existing app.\n[Open folder](command:vscode.openFolder)\n\n\n\n\n\nValidate your local workspace and check if you have the required dependencies.\n[Check dependencies](command:spfx-toolkit.checkDependencies)\n\n\n\n\n\nInstall the required dependencies.\n[Install dependencies](command:spfx-toolkit.installDependencies)\n\n\n\nIf you need additional help or resources visit the [extension wiki](https://github.com/pnp/vscode-viva/wiki) for more information or go over the [walkthrough](command:spfx-toolkit.welcome)."
 			}
 		],
 		"commands": [
 			{
-				"command": "viva-connections-toolkit.checkDependencies",
+				"command": "spfx-toolkit.welcome",
+				"title": "Welcome",
+				"category": "SharePoint Framework Toolkit"
+			},
+			{
+				"command": "spfx-toolkit.checkDependencies",
 				"title": "Check dependencies",
-				"category": "Viva Connections Toolkit"
+				"category": "SharePoint Framework Toolkit"
 			},
 			{
-				"command": "viva-connections-toolkit.installDependencies",
+				"command": "spfx-toolkit.installDependencies",
 				"title": "Install dependencies",
-				"category": "Viva Connections Toolkit"
+				"category": "SharePoint Framework Toolkit"
 			},
 			{
-				"command": "viva-connections-toolkit.createProject",
+				"command": "spfx-toolkit.createProject",
 				"title": "Create new project",
-				"category": "Viva Connections Toolkit"
+				"category": "SharePoint Framework Toolkit"
 			},
 			{
-				"command": "viva-connections-toolkit.addToProject",
+				"command": "spfx-toolkit.addToProject",
 				"title": "Add component to project",
-				"category": "Viva Connections Toolkit"
+				"category": "SharePoint Framework Toolkit"
 			},
 			{
-				"command": "viva-connections-toolkit.executeTerminalCommand",
+				"command": "spfx-toolkit.executeTerminalCommand",
 				"title": "Execute terminal command",
-				"category": "Viva Connections Toolkit"
+				"category": "SharePoint Framework Toolkit"
 			},
 			{
-				"command": "viva-connections-toolkit.upgradeProject",
+				"command": "spfx-toolkit.upgradeProject",
 				"title": "Upgrade project to latest SPFx version",
-				"category": "Viva Connections Toolkit"
+				"category": "SharePoint Framework Toolkit"
 			},
 			{
-				"command": "viva-connections-toolkit.deployProject",
+				"command": "spfx-toolkit.deployProject",
 				"title": "Deploy the project",
-				"category": "Viva Connections Toolkit"
+				"category": "SharePoint Framework Toolkit"
 			},
 			{
-				"command": "viva-connections-toolkit.samplesGallery",
+				"command": "spfx-toolkit.samplesGallery",
 				"title": "Open SharePoint Framework Samples gallery",
-				"category": "Viva Connections Toolkit"
+				"category": "SharePoint Framework Toolkit"
 			},
 			{
-				"command": "viva-connections-toolkit.validateProject",
+				"command": "spfx-toolkit.validateProject",
 				"title": "Validate project",
-				"category": "Viva Connections Toolkit"
+				"category": "SharePoint Framework Toolkit"
 			},
 			{
-				"command": "viva-connections-toolkit.renameProject",
+				"command": "spfx-toolkit.renameProject",
 				"title": "Rename project",
-				"category": "Viva Connections Toolkit"
+				"category": "SharePoint Framework Toolkit"
 			},
 			{
-				"command": "viva-connections-toolkit.grantAPIPermissions",
+				"command": "spfx-toolkit.grantAPIPermissions",
 				"title": "Grant API permissions",
-				"category": "Viva Connections Toolkit"
+				"category": "SharePoint Framework Toolkit"
 			},
 			{
-				"command": "viva-connections-toolkit.pipelineGitHub",
-				"title": "Generate GitHub CI/CD workflow",
-				"category": "Viva Connections Toolkit"
+				"command": "spfx-toolkit.pipeline",
+				"title": "Generate CI/CD workflow",
+				"category": "SharePoint Framework Toolkit"
 			},
 			{
-				"command": "viva-connections-toolkit.login",
+				"command": "spfx-toolkit.login",
 				"title": "Sign in to M365",
-				"category": "Viva Connections Toolkit",
+				"category": "SharePoint Framework Toolkit",
 				"icon": "$(sign-in)"
 			},
 			{
-				"command": "viva-connections-toolkit.logout",
+				"command": "spfx-toolkit.logout",
 				"title": "Sign out from M365",
-				"category": "Viva Connections Toolkit",
+				"category": "SharePoint Framework Toolkit",
 				"icon": "$(sign-out)"
 			},
 			{
-				"command": "viva-connections-toolkit.refreshAppCatalogTreeView",
+				"command": "spfx-toolkit.refreshAppCatalogTreeView",
 				"title": "Refresh App Catalog list",
-				"category": "Viva Connections Toolkit",
+				"category": "SharePoint Framework Toolkit",
 				"icon": "$(refresh)"
 			},
 			{
-				"command": "viva-connections-toolkit.refreshAccountTreeView",
+				"command": "spfx-toolkit.refreshAccountTreeView",
 				"title": "Refresh Account view",
-				"category": "Viva Connections Toolkit",
+				"category": "SharePoint Framework Toolkit",
 				"icon": "$(refresh)"
 			}
 		],
 		"menus": {
 			"commandPalette": [
 				{
-					"command": "viva-connections-toolkit.executeTerminalCommand",
+					"command": "spfx-toolkit.executeTerminalCommand",
 					"when": "false"
 				},
 				{
-					"command": "viva-connections-toolkit.addToProject",
+					"command": "spfx-toolkit.addToProject",
 					"when": "pnp.project.isSPFxProject"
 				},
 				{
-					"command": "viva-connections-toolkit.upgradeProject",
+					"command": "spfx-toolkit.upgradeProject",
 					"when": "pnp.project.isSPFxProject"
 				},
 				{
-					"command": "viva-connections-toolkit.validateProject",
+					"command": "spfx-toolkit.validateProject",
 					"when": "pnp.project.isSPFxProject"
 				}
 			],
 			"view/title": [
 				{
-					"command": "viva-connections-toolkit.refreshAppCatalogTreeView",
+					"command": "spfx-toolkit.refreshAppCatalogTreeView",
 					"when": "view == pnp-view-environment",
 					"group": "navigation"
 				},
 				{
-					"command": "viva-connections-toolkit.refreshAccountTreeView",
+					"command": "spfx-toolkit.refreshAccountTreeView",
 					"when": "view == pnp-view-account",
 					"group": "navigation"
 				}
 			],
 			"view/item/context": [
 				{
-					"command": "viva-connections-toolkit.logout",
+					"command": "spfx-toolkit.logout",
 					"when": "view == pnp-view-account && viewItem == m365Account",
 					"group": "inline@1"
 				}
 			],
 			"explorer/context": [
 				{
-					"command": "viva-connections-toolkit.deployProject",
+					"command": "spfx-toolkit.deployProject",
 					"group": "pnp.project@1",
 					"when": "resourceExtname == '.sppkg' && pnp.project.hasAppCatalog"
 				}

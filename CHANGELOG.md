@@ -1,5 +1,11 @@
 # Change Log
 
+## [3.0.0] - 2024-03-31
+
+- Added VS Code extension walkthrough
+- Rebrand the extension to SharePoint Framework Toolkit
+- Added support for picking either nvm or nvs for Node.js version management
+
 ## [2.6.0] - 2024-03-18
 
 - Refactored and rebuilt the scaffolding process
