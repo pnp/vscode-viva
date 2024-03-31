@@ -1203,7 +1203,7 @@
       "title": "Embed Microsoft Teams chats in SharePoint pages",
       "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-application-teams-chats-sharepoint",
       "description": "Embed Microsoft Teams chats within SharePoint pages to streamline collaboration and information access for users.",
-      "image": "https://github.com/pnp/sp-dev-fx-extensions/blob/main/samples/react-application-teams-chats-sharepoint/assets/Microsoft%20Teams%20chat%20in%20SharePoint%20sites.gif",
+      "image": "https://raw.githubusercontent.com/pnp/sp-dev-fx-extensions/main/samples/react-application-teams-chats-sharepoint/assets/Microsoft%20Teams%20chat%20in%20SharePoint%20sites.gif",
       "authors": [
         {
           "name": "João Ferreira",
@@ -7833,6 +7833,29 @@
       "createDate": "2020-10-30",
       "updateDate": "2020-10-30",
       "version": "1.11.0",
+      "componentType": "webpart",
+      "extensionType": null,
+      "sampleGalerry": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
+      "name": "pnp-sp-dev-spfx-web-parts-react-poll",
+      "title": "Poll",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-poll",
+      "description": "Add new poll questions and their options. End users can submit his/her response to the poll. After Submission, user can see all responses count with Bar chart.",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-poll/assets/react-poll.gif",
+      "authors": [
+        {
+          "name": "Harsh Bhavsar",
+          "pictureUrl": "https://github.com/Harsh24491.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2024-03-16",
+      "updateDate": "2024-03-16",
+      "version": "1.17.1",
       "componentType": "webpart",
       "extensionType": null,
       "sampleGalerry": "sp-dev-fx-webparts",
