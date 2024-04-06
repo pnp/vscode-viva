@@ -644,7 +644,7 @@
         "SharePoint"
       ],
       "createDate": "2020-06-18",
-      "updateDate": "2020-06-18",
+      "updateDate": "2024-03-12",
       "version": "1.10.0",
       "componentType": "extension",
       "extensionType": "ApplicationCustomizer",
@@ -1916,6 +1916,33 @@
       "version": "1.9.1",
       "componentType": "webpart",
       "extensionType": null,
+      "sampleGalerry": "sp-dev-fx-extensions",
+      "sampleType": "samples"
+    },
+    {
+      "name": "pnp-sp-dev-spfx-web-parts-react-company-templates",
+      "title": "Company Templates",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-company-templates",
+      "description": "An extension to provide a simple approach for company wide used templates in SharePoint Online.",
+      "image": "https://github.com/pnp/sp-dev-fx-extensions/blob/269ae2f269aadb35361ec657dd969bf730e79df8/samples/react-company-templates/assets/Demo.gif",
+      "authors": [
+        {
+          "name": "Tobias Maestrini",
+          "pictureUrl": "https://github.com/tmaestrini.png"
+        },
+        {
+          "name": "Dan Toft (Code Reviews)",
+          "pictureUrl": "https://github.com/Tanddant.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2023-12-22",
+      "updateDate": "2024-03-29",
+      "version": "1.17.4",
+      "componentType": "extension",
+      "extensionType": "ListViewCommandSet",
       "sampleGalerry": "sp-dev-fx-extensions",
       "sampleType": "samples"
     },
@@ -6686,6 +6713,29 @@
       "sampleType": "samples"
     },
     {
+      "name": "pnp-sp-dev-spfx-web-parts-react-modern-carousel",
+      "title": "Modern Carousel",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-modern-carousel",
+      "description": "This SharePoint Framework (SPFx) web part introduces a contemporary carousel component leveraging Swiper, facilitating seamless traversal through content housed within a SharePoint site.",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-modern-carousel/assets/AwardRecognition.png",
+      "authors": [
+        {
+          "name": "Sandeep P S",
+          "pictureUrl": "https://github.com/Sandeep-FED.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2024-12-25",
+      "updateDate": "2024-12-31",
+      "version": "1.18.2",
+      "componentType": "webpart",
+      "extensionType": null,
+      "sampleGalerry": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
       "name": "pnp-sp-dev-spfx-web-parts-react-modern-charts",
       "title": "Modern Charts",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-modern-charts",
@@ -9499,14 +9549,18 @@
         {
           "name": "Federico Porceddu",
           "pictureUrl": "https://github.com/fredupstair.png"
+        },
+        {
+          "name": "Alberto Gutierrez",
+          "pictureUrl": "https://github.com/albegut.png"
         }
       ],
       "tags": [
         "SharePoint"
       ],
       "createDate": "2019-11-23",
-      "updateDate": "2022-04-06",
-      "version": "1.9.1",
+      "updateDate": "2024-03-20",
+      "version": "1.18.2",
       "componentType": "webpart",
       "extensionType": null,
       "sampleGalerry": "sp-dev-fx-webparts",
