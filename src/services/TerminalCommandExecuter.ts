@@ -117,7 +117,7 @@ export class TerminalCommandExecuter {
         currentProjectPath = join(currentProjectPath, 'src');
       }
 
-      TerminalCommandExecuter.runInTerminal(`cd ${currentProjectPath}`, terminal);
+      TerminalCommandExecuter.runInTerminal(`cd "${currentProjectPath}"`, terminal);
     }
 
     TerminalCommandExecuter.runInTerminal(command, terminal);
