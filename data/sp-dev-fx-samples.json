@@ -1922,7 +1922,7 @@
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-company-templates",
       "title": "Company Templates",
-      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-company-templates",
+      "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-company-templates",
       "description": "An extension to provide a simple approach for company wide used templates in SharePoint Online.",
       "image": "https://github.com/pnp/sp-dev-fx-extensions/blob/269ae2f269aadb35361ec657dd969bf730e79df8/samples/react-company-templates/assets/Demo.gif",
       "authors": [
@@ -1939,7 +1939,7 @@
         "SharePoint"
       ],
       "createDate": "2023-12-22",
-      "updateDate": "2024-03-29",
+      "updateDate": "2024-04-06",
       "version": "1.17.4",
       "componentType": "extension",
       "extensionType": "ListViewCommandSet",
@@ -2508,7 +2508,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-angular-ngofficeuifabric-file-upload",
-      "title": "File Upload using AngularJs",
+      "title": "File Upload web part using AngularJs",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/angular-ngofficeuifabric-file-upload",
       "description": "File Update/Delete web part using AngularJs and ngOfficeUIFabric with the SharePoint Framework.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/angular-ngofficeuifabric-file-upload/assets/NG%20File%20Upload.png",
@@ -2581,7 +2581,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-bootstrap-slider",
-      "title": "Bootstrap Slider Built with jQuery v1.x and Boostrap v3.x",
+      "title": "Bootstrap Slider Web Part Built with jQuery v1.x and Boostrap v3.x",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/bootstrap-slider",
       "description": "Sample bootstrap slider which pulls the slides from a list inside the SharePoint site. The list is automatically deployed once the app is installed in the SharePoint site.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/bootstrap-slider/assets/slider_image_1.png",
@@ -2604,7 +2604,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-handlebarsjs-webpack-loader",
-      "title": "Sample with Handlebars.js",
+      "title": "Web Part with Handlebars.js",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/handlebarsjs-webpack-loader",
       "description": "This sample demonstrate how to set up SPFX to use Handlebars through webpack loader.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/gh-pages/img/_nopreview.png",
@@ -2627,7 +2627,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-js-advanced-commenting",
-      "title": "Advanced Comments Box",
+      "title": "Advanced Comments Box Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/js-advanced-commenting",
       "description": "This component is developed for the advanced usage of commenting the page or article etc. Page Comments lists will be created to store the comments.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/js-advanced-commenting/assets/Advanced-Comments-Box.gif",
@@ -2685,7 +2685,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-js-dynamic-bundling-libraries",
-      "title": "Dynamic Bundling & Loading of SPFx Packages",
+      "title": "Dynamic Bundling Web Parts & Loading of SPFx Packages",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/js-dynamic-bundling-libraries",
       "description": "This sample illustrates how SPFx functionality and packages can be bundled in multiple '.js' files then be dynamically & asynchronously loaded into the page at execution time, such as with a button click.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/js-dynamic-bundling-libraries/assets/WebPart-Preview-PostjQueryClick.jpg",
@@ -2731,7 +2731,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-js-extend-gulp",
-      "title": "Integrating custom gulp tasks to SharePoint Framwork toolchain",
+      "title": "Integrating custom gulp tasks to SharePoint Framework toolchain",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/js-extend-gulp",
       "description": "SharePoint client-side development tools use gulp as the build process task runner to...",
       "image": "https://avatars3.githubusercontent.com/u/7882052?s=460&v=4",
@@ -2781,7 +2781,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-js-gitHubbadge",
-      "title": "GitHub Badge",
+      "title": "GitHub Badge Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/js-gitHubbadge",
       "description": "",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/e92d0dac567cc4d59cdfc94186a52a3b776c6d21/samples/js-gitHubBadge/assets/1.png",
@@ -2804,7 +2804,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-js-msgraph-thumbnail",
-      "title": "Thumbnail/preview of pages and files",
+      "title": "Thumbnail/preview of pages and files web part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/js-msgraph-thumbnail",
       "description": "A web part showcasing how to call the Microsoft Graph Thumbnails API to generate a preview image for files and pages in SharePoint. The sample illustrates how to craft the preview URL both from a search result as well as from a SharePoint item object.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/js-msgraph-thumbnail/preview.gif",
@@ -2850,7 +2850,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-js-propertycontrols-svg",
-      "title": "JS Property Controls SVG",
+      "title": "JS Property Controls SVG Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/js-propertycontrols-svg",
       "description": "An SPFx web part that displays a Scalable Vector Graphics (SVG) image using properties to customize how it is rendered. The web part utilizes the PnP SPFx Property Controls package (specifially the SpinButton and ColorPicker) to set these properties.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/js-propertycontrols-svg/assets/js-propertycontrols-svg.gif",
@@ -2873,7 +2873,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-js-public-unjoined-teams",
-      "title": "Public teams I'm not a member of",
+      "title": "Public teams I'm not a member of Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/js-public-unjoined-teams",
       "description": "This web part lists all the public teams the current user is not yet a member of. They can then join any of those teams by clicking the button right next to the team name. This web part can also be added to Teams as a tab (built with the 1.7.1 plusbeta/preview version).",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/js-public-unjoined-teams/assets/js-public-unjoined-teams.gif",
@@ -2942,7 +2942,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-js-theme-manager",
-      "title": "Modern Experience Theme Manager",
+      "title": "Modern Experience Theme Manager Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/js-theme-manager",
       "description": "This sample web part provides a user interface for creating, updating, deleting and applying a Modern Experience SharePoint theme in SharePoint Online.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/js-theme-manager/assets/create-a-theme.png",
@@ -2973,7 +2973,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-js-theme-manager-2019",
-      "title": "Modern Experience Theme Manager 2019",
+      "title": "Modern Experience Theme Manager 2019 Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/js-theme-manager-2019",
       "description": "This sample web part provides a user interface for applying a Modern Experience theme in SharePoint 2019 on-premises.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/js-theme-manager-2019/assets/apply-a-theme.png",
@@ -3004,7 +3004,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-js-workbench-customizer",
-      "title": "Workbench customizer",
+      "title": "Workbench customizer Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/js-workbench-customizer",
       "description": "This sample shows how the Workbench page can be customized to display in a way that better mimics a modern SharePoint page.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/js-workbench-customizer/assets/Preview.png",
@@ -3050,7 +3050,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-knockout-sp-pnp-js",
-      "title": "Sample showing the use of @pnp/sp library with Knockoutjs",
+      "title": "Sample web part showing the use of @pnp/sp library with Knockoutjs",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/knockout-sp-pnp-js",
       "description": "This web part demonstrates how to integrate the @pnp/sp library into the SharePoint Framework as well as including mock data and simple list I/O.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/knockout-sp-pnp-js/assets/screenshot.png",
@@ -3096,7 +3096,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-3rd-party-api",
-      "title": "Consuming Third Party APIs secured with Azure Active Directory within SharePoint Framework",
+      "title": "Consuming Third Party APIs secured with Azure Active Directory within SharePoint Framework Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-3rd-party-api",
       "description": "This sub folders contains a client-side project that shows how to consume a 3rd party API within SharePoint Framework.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-3rd-party-api/images/react-3rd-party-api-ui-sample.gif",
@@ -3119,7 +3119,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-aad-implicitflow",
-      "title": "Azure Active Directory implicit flow authentication samples",
+      "title": "Azure Active Directory implicit flow authentication sample web parts",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-aad-implicitflow",
       "description": "Sample SharePoint Framework web parts built using React illustrating different scenarios using implicit OAuth flow with Azure Active Directory.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-aad-implicitflow/assets/upcoming-meetings-preview.png",
@@ -3169,7 +3169,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-accordion-section",
-      "title": "Accordion Section FAQ Builder",
+      "title": "Accordion Section FAQ Builder Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-accordion-section",
       "description": "Adds a collapsible accordion section to an Office 365 SharePoint page or Teams Tab. Ideal for creating FAQs.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-accordion-section/assets/react-accordion-section.gif",
@@ -3196,7 +3196,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-accordion-with-richtext",
-      "title": "Tab Accordion",
+      "title": "Tab Accordion Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-accordion-with-richtext",
       "description": "This Web Part allows users to create content as Tabbed content using Property Field Collection Data and tinyMCE for Rich Text Editing targeted for SharePoint Online",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-accordion-with-richtext/assets/TabAccordionWebpart.PNG",
@@ -3219,7 +3219,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-adaptive-card-host-control",
-      "title": "Adaptive Card Host control",
+      "title": "Adaptive Card Host control web part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-adaptive-card-host-control",
       "description": "This web part provides an example of how to use the AdaptiveCardHost component present in the PnP React Controls library.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-adaptive-card-host-control/assets/AdaptiveCardHost.gif",
@@ -3269,7 +3269,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-adaptivecards",
-      "title": "Adaptive Cards Host",
+      "title": "Adaptive Cards Host Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-adaptivecards",
       "description": "This sample creates an Adaptive Cards Host web part that you can use to display Adaptive Cards in your SharePoint applications.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-adaptivecards/assets/AdaptiveCardsHostAllSamples.gif",
@@ -3292,7 +3292,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-adaptivecards-hooks",
-      "title": "Adaptive Cards Viewer using Hooks",
+      "title": "Adaptive Cards Viewer Web Parts using Hooks",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-adaptivecards-hooks",
       "description": "A version of react-adaptivecards using React Hooks.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-adaptivecards-hooks/assets/preview.png",
@@ -3315,7 +3315,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-add-formcustomizer-to-list",
-      "title": "Add Form Customizer to List",
+      "title": "Add Form Customizer to List Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-add-formcustomizer-to-list",
       "description": "A React based SPFx utility web part which will help admins/user(s) to associate and remove association of the list form customizer extension to a particular list.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-add-formcustomizer-to-list/assets/webpartinaction-form.gif",
@@ -3338,7 +3338,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-add-js-css-ref",
-      "title": "Add JS and CSS reference on Modern Pages",
+      "title": "Add JS and CSS reference on Modern Pages Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-add-js-css-ref",
       "description": "React-based SPFx web part and extension that allows users to add/modify/delete custom js and css file references using SPFx application customizer extension all modern pages within SP online site.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-add-js-css-ref/assets/webpartinaction.gif",
@@ -3361,7 +3361,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-admin-sc-catalog-pnpjs",
-      "title": "Site Collection App Catalogs",
+      "title": "Site Collection App Catalogs Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-admin-sc-catalog-pnpjs",
       "description": "A SPFx Web Part using @pnp/sp/appcatalog and @pnp/spfx-controls-react. It allows to see in a single view all the SiteCollection catalogs and the Apps installed with some useful metadata. It needs Globlal Administrator or SharePoint Online Administrator permissions in order to access Site collection App Catalogs hidden list and each Site Collection App Catalog.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-admin-sc-catalog-pnpjs/assets/react-admin-sc-catalog-pnpjs-webpart-animated.gif",
@@ -3407,7 +3407,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-advanced-page-properties",
-      "title": "Advanced Page Properties",
+      "title": "Advanced Page Properties Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-advanced-page-properties",
       "description": "Replicates the functionality of Page Properties with improvements",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-advanced-page-properties/assets/diff-screencap.png",
@@ -3442,7 +3442,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-advent-calendar",
-      "title": "Advent Calendar",
+      "title": "Advent Calendar Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-advent-calendar",
       "description": "This project shows how to create an Advent Calendar using SPFx and React.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-advent-calendar/assets/adventCalendar.gif",
@@ -3488,7 +3488,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-apim-tablestorage",
-      "title": "Accessing Azure table storage data using Azure API Management",
+      "title": "Accessing Azure table storage data using Azure API Management Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-apim-tablestorage",
       "description": "Allows you to access securely Azure storage table data using Azure API Management (APIM)",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-apim-tablestorage/assets/demo.gif",
@@ -3534,7 +3534,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-appinsights-dashboard",
-      "title": "React AppInsights Dashboard",
+      "title": "React AppInsights Dashboard Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-appinsights-dashboard",
       "description": "This web part displays different statistics data captured in the Azure Application Insights in a graphical representation.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-appinsights-dashboard/assets/AppInsights_Dashboard.gif",
@@ -3557,7 +3557,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-associated-sites-links",
-      "title": "Associated Sites Links",
+      "title": "Associated Sites Links Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-associated-sites-links",
       "description": "Web part that will display links to all associated sites that registered to the current site. Current site should be a hub site.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-associated-sites-links/assets/result.png",
@@ -3603,7 +3603,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-at-a-glance",
-      "title": "At a Glance",
+      "title": "At a Glance Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-at-a-glance",
       "description": "This sample shows a web part to show the first few sentences of an article in a SharePoint site, so that the article can be looked at a glance.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-at-a-glance/assets/demo.gif",
@@ -3626,7 +3626,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-avatar",
-      "title": "SPFx Avatar",
+      "title": "SPFx Avatar Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-avatar",
       "description": "This is a sample web part that helps user create their avatar and save as profile picture. User can even download their avatar as PNG file. This web part can be useful in Intranet to help user create their avatar and save it as profile picture.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-avatar/assets/reactAvatarOutcome.gif",
@@ -3653,7 +3653,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-azure-devops-tasks",
-      "title": "Azure DevOps Tasks",
+      "title": "Azure DevOps Tasks Adaptive Card Extension",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-azure-devops-tasks",
       "description": "This Adaptive Card Extension demonstrates displaying the number of assigned tasks of Azure DevOps.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-azure-devops-tasks/assets/react-azure-devops-tasks.png",
@@ -3676,7 +3676,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-azure-openai-api-stream",
-      "title": "Calling Azure OpenAI API in streaming mode",
+      "title": "Calling Azure OpenAI API in streaming mode web part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-azure-openai-api-stream",
       "description": "This web part shows how you can call Azure OpenAI API in Streaming mode",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-azure-openai-api-stream/assets/screenshot.gif",
@@ -3703,7 +3703,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-azure-openai-connector",
-      "title": "Using Azure OpenAI Connectors API",
+      "title": "Using Azure OpenAI Connectors API web part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-azure-openai-connector",
       "description": "Shows how to use the new feature of Azure OpenAI Connectors API in a SharePoint Framework web part.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-azure-openai-connector/assets/react-azure-openai-connector.gif",
@@ -3803,7 +3803,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-bot-framework",
-      "title": "Microsoft Bot Framework Web Chat",
+      "title": "Microsoft Bot Framework Web Chat Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-bot-framework",
       "description": "A web part that uses the botframework-webchat module to create implement a React component to render the Bot Framework v4 webchat component. This web part is able to render Text and richt attachments (Images, Cards, Adaptive Cards, ...) and has settings for branding purposes.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-bot-framework/assets/bot-frameworkv4-webpart-preview.png",
@@ -3834,7 +3834,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-calendar",
-      "title": "Calendar",
+      "title": "Calendar Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-calendar",
       "description": "This Web Part allows you to manage events in a calendar. Uses a list of existing calendars on any website. The location and name of the list and the dates of the events to be displayed are defined in the properties of the web part.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-calendar/assets/animatevideo.gif",
@@ -3908,7 +3908,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-caml2table",
-      "title": "CAML to Table",
+      "title": "CAML to Table Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-caml2table",
       "description": "Let's the user test CAML queries at ease.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-caml2table/assets/Demo.gif",
@@ -3970,7 +3970,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-cascadingdropdowns",
-      "title": "Cascading Dropdowns",
+      "title": "Cascading Dropdowns Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-cascadingdropdowns",
       "description": "Shows how to use Cascading Dropdowns in property panes.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-cascadingdropdowns/assets/webpartpreview.png",
@@ -3993,7 +3993,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-chartcontrol",
-      "title": "Chart Control Samples",
+      "title": "Chart Control Sample Web Parts",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-chartcontrol",
       "description": "This sample contains several web parts that demonstrate how to use the ChartControl from @pnp/spfx-controls-react.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-chartcontrol/assets/WebPartList.png",
@@ -4018,7 +4018,7 @@
       "name": "pnp-sp-dev-spfx-web-parts-react-chat-gpt",
       "title": "Chat GPT inside SPFx",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-chat-gpt",
-      "description": "This webpart uses Chat GPT in an SPFx web part. You can ask questions from the web part and you will see the answers, most recent answers first.",
+      "description": "This web part uses Chat GPT in an SPFx web part. You can ask questions from the web part and you will see the answers, most recent answers first.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-chat-gpt/assets/example2.png",
       "authors": [
         {
@@ -4039,7 +4039,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-chatgpt-app",
-      "title": "Chat GPT App",
+      "title": "Chat GPT App Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-chatgpt-app",
       "description": "This App is a implementation of OpenAI ChatGPT-3. It runs on SharePoint, Teams as Personal or Teams App and Message Extension.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-chatgpt-app/assets/ChatGPT.png",
@@ -4062,7 +4062,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-check-user-group",
-      "title": "Check User Group",
+      "title": "Check User Group Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-check-user-group",
       "description": "This web part finds all the Office 365 or AAD Security groups a user is a member of or all the members present in such a group. It can be used as an admin utility to quickly check the membership of any user or group from within a SharePoint page itself. The retrieved results can also be exported to a CSV file.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-check-user-group/assets/CheckUserGroup.gif",
@@ -4085,7 +4085,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-cherry-picked-content",
-      "title": "Cherry picked content",
+      "title": "Cherry picked content web part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-cherry-picked-content",
       "description": "The Cherry-Picked Content Web Part is a modern replacement for the classic Content Editor Web Part, with a twist: code snippets can only be picked from approved document libraries.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-cherry-picked-content/assets/React-Cherry-Picked-Content-Sample.png",
@@ -4108,7 +4108,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-company-stories",
-      "title": "Company Stories",
+      "title": "Company Stories Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-company-stories",
       "description": "This web part allows you to add images to a SharePoint List, and renders them with a UX very similar to Instagram Stories (or Twitter Reels, or [Place your Social network here]). It is a way to engage employees, showing relevant content in a well-known visual appearance.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-company-stories/assets/react-company-stories.gif",
@@ -4131,7 +4131,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-comparer",
-      "title": "Comparer with File Picker",
+      "title": "Comparer Web Part with File Picker",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-comparer",
       "description": "Allows users to compare Before and After pictures, with a draggable slider. Implements a custom file picker.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-comparer/assets/ComparerWebPart.gif",
@@ -4224,14 +4224,18 @@
         {
           "name": "Chris Lizon",
           "pictureUrl": "https://github.com/ChrisLizon.png"
+        },
+        {
+          "name": "nemortu",
+          "pictureUrl": "https://github.com/nemortu.png"
         }
       ],
       "tags": [
         "SharePoint"
       ],
       "createDate": "2021-01-07",
-      "updateDate": "2023-05-04",
-      "version": "1.11.0",
+      "updateDate": "2024-03-31",
+      "version": "1.18.2",
       "componentType": "webpart",
       "extensionType": null,
       "sampleGalerry": "sp-dev-fx-webparts",
@@ -4262,7 +4266,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-copy-views",
-      "title": "Copy Views",
+      "title": "Copy Views Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-copy-views",
       "description": "The Copy Views solution enables a user to copy views from one list/library to another across site collections.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-copy-views/assets/copy-views.gif",
@@ -4308,7 +4312,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-cross-device-data",
-      "title": "Cross-Device Data",
+      "title": "Cross-Device Data Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-cross-device-data",
       "description": "This solution demonstrates how to use the OneDrive special folder Apps in order to save user's preferencies cross-device.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-cross-device-data/assets/Preview.jpg",
@@ -4354,7 +4358,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-custom-links",
-      "title": "Custom Links",
+      "title": "Custom Links Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-custom-links",
       "description": "In this web part you can full customize the background and foreground color, font size, width and height of links.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-custom-links/assets/customlinks.gif",
@@ -4377,7 +4381,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-dall-e-image-generation",
-      "title": "Image generation using DALL-E API",
+      "title": "Image Generation using DALL-E API Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-dall-e-image-generation",
       "description": "This web part allows you to generate some images using the recently released API of DALL-E image generation.",
       "image": "https://raw.githubusercontent.com/pnp/sp-dev-fx-webparts/main/samples/react-dall-e-image-generation/assets/react-dall-e-image-generation.gif",
@@ -4400,7 +4404,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-dashboards",
-      "title": "Application Insights and Cost Management Dashboards",
+      "title": "Application Insights and Cost Management Dashboards Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-dashboards",
       "description": "Sharing Application Insights and solution's cost information with your stakeholders typically requires either using _Azure Dashboards_ or using _Power BI_. This sample solution allows displaying this dashboards directly in a SharePoint site or a tab in MS Teams, moving it close to the users.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-dashboards/assets/AppInsights.png",
@@ -4423,7 +4427,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-datatable",
-      "title": "Data Table",
+      "title": "Data Table Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-datatable",
       "description": "This web part provides easy way to render SharePoint custom list in data table view with all the necessary features.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-datatable/assets/preview.png",
@@ -4446,7 +4450,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-datatable-using-mui-tables",
-      "title": "DataTable Using MUI table",
+      "title": "DataTable Web Part Using MUI table",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-datatable-using-mui-tables",
       "description": "This web part provides mui datatable features for your lists.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-datatable-using-mui-tables/assets/first.png",
@@ -4554,7 +4558,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-doccard-faq",
-      "title": "Document Card FAQ",
+      "title": "Document Card FAQ Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-doccard-faq",
       "description": "React FAQ Document Card Web Part",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-doccard-faq/assets/FAQdocCardPreview.gif",
@@ -4577,7 +4581,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-document-links-accordion",
-      "title": "Documents Links Accordion",
+      "title": "Documents Links Accordion Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-document-links-accordion",
       "description": "This web part allows user create a accordion with documents links grouped by any column of document library.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-document-links-accordion/assets/documentsLinksAccordion.gif",
@@ -4627,7 +4631,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-download-multiple-documents",
-      "title": "Download Multiple Documents",
+      "title": "Download Multiple Documents Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-download-multiple-documents",
       "description": "This sample empowers users to effortlessly download multiple documents as a single compressed ZIP file.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-download-multiple-documents/assets/MultipleDownloadsWebPartDemo.gif",
@@ -4650,7 +4654,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-dynamics-crm-api",
-      "title": "Using Dynamics CRM API",
+      "title": "Web Part Using Dynamics CRM API",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-dynamics-crm-api",
       "description": "This sample shows how to consume Dynamics CRM API using AadTokenProvider class.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-dynamics-crm-api/assets/screenshot.gif",
@@ -4673,7 +4677,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-emoji-ratings",
-      "title": "Emoji Ratings",
+      "title": "Emoji Ratings Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-emoji-ratings",
       "description": "Take emoji-based reactions or feedback for a given news/article/post",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-emoji-ratings/assets/EmojiWPinAction.gif",
@@ -4696,7 +4700,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-enhanced-list-formatting",
-      "title": "Enhanced List Formatting",
+      "title": "Enhanced List Formatting Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-enhanced-list-formatting",
       "description": "This web part allows you to add custom CSS on a page to enhance list formatting.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-enhanced-list-formatting/assets/EnhancedListFormatting.gif",
@@ -4723,7 +4727,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-enhanced-page-properties",
-      "title": "Enhanced Page Properties",
+      "title": "Enhanced Page Properties Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-enhanced-page-properties",
       "description": "Goes beyond the standard SharePoint Page Properties web part, offering expanded support for various metadata types and configurations",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-enhanced-page-properties/assets/app.png",
@@ -4746,7 +4750,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-enhanced-powerapps",
-      "title": "Enhanced Power Apps",
+      "title": "Enhanced Power Apps Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-enhanced-powerapps",
       "description": "Adds dynamic resizing, theme awareness, and dynamic data to embedded Power Apps",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-enhanced-powerapps/assets/enhanced-power-apps.gif",
@@ -4777,7 +4781,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-environment-settings",
-      "title": "SPFx environment settings management",
+      "title": "SPFx environment settings management web part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-environment-settings",
       "description": "Easily swap between environments when building SPFx solutions",
       "image": "https://raw.githubusercontent.com/pnp/sp-dev-fx-webparts/main/samples/react-environment-settings/assets/demo.gif",
@@ -4827,7 +4831,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-events-dynamicdata",
-      "title": "Dynamic data",
+      "title": "Dynamic data Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-events-dynamicdata",
       "description": "Sample web parts illustrating using the SharePoint Framework Dynamic data capability.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-events-dynamicdata/assets/dynamic-data-webparts.png",
@@ -4854,7 +4858,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-extension-manager",
-      "title": "Tenant wide extension manager",
+      "title": "Tenant wide extension manager web part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-extension-manager",
       "description": "Manage those tenant wide extensions",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-extension-manager/assets/Demo.gif",
@@ -4877,7 +4881,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-facebook-plugin",
-      "title": "SharePoint Framework Facebook Page Social Plugin web part sample",
+      "title": "SharePoint Framework Facebook Page Social Plugin web part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-facebook-plugin",
       "description": "This sample shows how to implement iFrame-based web parts with a dynamic responsive behavior on the example of Facebook Page Social Plugin.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-facebook-plugin/assets/preview.png",
@@ -4904,7 +4908,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-faqapp",
-      "title": "Frequently Asked Questions",
+      "title": "Frequently Asked Questions Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-faqapp",
       "description": "Allows users to create Frequently Asked Questions(Faq App) in modern and classic SharePoint pages.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-faqapp/assets/FAQWebpart.png",
@@ -4931,7 +4935,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-faqs",
-      "title": "Frequently Asked Questions",
+      "title": "Frequently Asked Questions Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-faqs",
       "description": "Allows users to create Frequently Asked Questions using Property Field Collection Data",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-faqs/assets/FAQWebpart.png",
@@ -4977,7 +4981,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-feedback",
-      "title": "Feedback",
+      "title": "Feedback Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-feedback",
       "description": "This is an application that supports Feedback through a web part that can be used directly on a Modern SharePoint Site page. This web part can be added to any site page or article. This allows users to send categorized feedback via email to users in the \"Feedback Owners\" group.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-feedback/assets/feedbackwebpart.gif",
@@ -5004,7 +5008,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-feedback-sidebar",
-      "title": "Feedback Sidebar",
+      "title": "Feedback Sidebar Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-feedback-sidebar",
       "description": "This web part displays a sidebar that allows users to provide feedback on various sections of your site.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-feedback-sidebar/assets/preview.gif",
@@ -5035,9 +5039,9 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-find-parker",
-      "title": "Find Parker",
+      "title": "Find Parker Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-find-parker",
-      "description": "This webpart is a simple find object game.",
+      "description": "This web part is a simple find object game.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-find-parker/assets/parker.gif",
       "authors": [
         {
@@ -5082,7 +5086,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-flow-button",
-      "title": "Flow Button",
+      "title": "Flow Button Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-flow-button",
       "description": "This web part demonstrates displaying the list of flow button of Power Automate.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-flow-button/assets/react-flow-button.gif",
@@ -5105,7 +5109,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-flow-dashboard",
-      "title": "Flow Dashboard",
+      "title": "Flow Dashboard Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-flow-dashboard",
       "description": "This web part demonstrates displaying the list of flows in different environments, ability to re-enable flows which are stopped or suspended, and the flow run history of the selected flow.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-flow-dashboard/assets/Dashboard.gif",
@@ -5151,7 +5155,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-fluentui-theme-variant",
-      "title": "Fluent UI Theme Variant",
+      "title": "Fluent UI Theme Variant Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-fluentui-theme-variant",
       "description": "An example of how to apply a custom theme or a variation of the current SharePoint theme directly to the web part",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-fluentui-theme-variant/assets/preview.gif",
@@ -5174,7 +5178,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-follow-document",
-      "title": "react-follow-document",
+      "title": "Follow Document Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-follow-document",
       "description": "react-follow-document",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-follow-document/assets/FollowDocumentSample1.gif",
@@ -5201,7 +5205,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-followed-drag-and-drop-grid",
-      "title": "Followed Drag and Drop Grid",
+      "title": "Followed Drag and Drop Grid Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-followed-drag-and-drop-grid",
       "description": "This web part is a good example (starting point) for a solution to implement alternative view for user followed sites (or any kind of links). The web part uses Microsoft Graph so it presents how to define needed web api permissions in package-solution and use MS Graph API endpoints.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-followed-drag-and-drop-grid/assets/mainImage.png",
@@ -5224,7 +5228,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-functional-component",
-      "title": "React Functional Component web part",
+      "title": "React Functional Component Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-functional-component",
       "description": "This web part is intended to be easier to understand for new developers building their first SPFx web part. It is a refactoring of the HelloWorld web part that is created by the @microsoft/generator-sharepoint Yeoman generator, and introduces React Functional Components.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-functional-component/Screenshot.png",
@@ -5297,7 +5301,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-github-badge",
-      "title": "GitHub Badge (React)",
+      "title": "GitHub Badge Web Part (React)",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-github-badge",
       "description": "Displays information about a GitHub user.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-github-badge/assets/githubbadge.png",
@@ -5320,7 +5324,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-global-news",
-      "title": "Global News",
+      "title": "Global News Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-global-news",
       "description": "This web part show a world news from various sources, it uses the API available on https://newsapi.org this collect information from news and blog sites around the world.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-global-news/assets/GlobalNews.png",
@@ -5343,7 +5347,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-global-news-sp2019",
-      "title": "Global News",
+      "title": "Global News Web Part (SP2019)",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-global-news-sp2019",
       "description": "This web part show a world news from various sources, it uses the API available on https://newsapi.org this collect information from news and blog sites around the world.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-global-news-sp2019/assets/GlobalNews02.png",
@@ -5389,7 +5393,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-governor-sharing",
-      "title": "Governor Sharing",
+      "title": "Governor Sharing Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-governor-sharing",
       "description": "Shows documents which have been (explicitly) shared within a SharePoint site or Team.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-governor-sharing/assets/Govenor_Sharing_SharedItemsExample.png",
@@ -5412,7 +5416,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-graph-app-secret-expiration",
-      "title": "Applications Secrets Expiration",
+      "title": "Applications Secrets Expiration Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-graph-app-secret-expiration",
       "description": "This sample web part shows the list of your applications registered in Azure AD along with their associated client secret/certificate expiration date.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-graph-app-secret-expiration/assets/react-graph-app-secret-expiration-animated.gif",
@@ -5435,7 +5439,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-graph-auto-batching",
-      "title": "Graph auto batching",
+      "title": "Graph Auto Batching Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-graph-auto-batching",
       "description": "This sample shows how to abstract batching graph requests",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/gh-pages/img/_nopreview.png",
@@ -5458,7 +5462,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-graph-azureapps",
-      "title": "Azure Apps",
+      "title": "Azure Apps Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-graph-azureapps",
       "description": "This sample web part shows list of Azure apps in your tenant. A new Azure application can also be registered and can be edited using this web part.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-graph-azureapps/assets/Add-New-App.gif",
@@ -5508,7 +5512,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-graph-cascading-managed-metadata",
-      "title": "Cascading managed metadata using Graph API",
+      "title": "Cascading managed metadata Web Part using Graph API",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-graph-cascading-managed-metadata",
       "description": "Shows how to use the Microsoft Graph APIs (beta) for Taxonomy to get the data.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-graph-cascading-managed-metadata/assets/cmmd.gif",
@@ -5554,7 +5558,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-graph-feedback-form",
-      "title": "Feedback Form",
+      "title": "Feedback Form Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-graph-feedback-form",
       "description": "Sample SPFx React web part which allows sending emails using Microsoft Graph.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-graph-feedback-form/assets/preview.gif",
@@ -5577,7 +5581,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-graph-groupviewer",
-      "title": "Graph Group Viewer",
+      "title": "Graph Group Viewer Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-graph-groupviewer",
       "description": "Search for groups in your tenant and allow you to view the details of the selected group as well as view a list of group members and export the list of members to a CSV file",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-graph-groupviewer/assets/preview.gif",
@@ -5600,7 +5604,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-graph-mgt-client",
-      "title": "Graph MGT Client",
+      "title": "Graph MGT Client Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-graph-mgt-client",
       "description": "This is a sample web part developed using React Framework that showcases how to use the latest `microsoft-graph-client` in order to do advanced configuration of the Microsoft Graph client. ",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-graph-mgt-client/assets/DemoGraphClient.gif",
@@ -5623,7 +5627,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-graph-personalemail",
-      "title": "Personal e-mail",
+      "title": "Personal e-mail Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-graph-personalemail",
       "description": "Sample React web part showing how to retrieve and display personal e-mail retrieved using the Microsoft Graph.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-graph-personalemail/assets/preview.png",
@@ -5646,7 +5650,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-graph-pnpjs",
-      "title": "Using PnPJS with MS Graph",
+      "title": "Web Part Using PnPJS with MS Graph",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-graph-pnpjs",
       "description": "This web part demonstrates how to use PnPJS with SharePoint Framework and how to query Microsoft Graph with PnPJS. It requests a list of Azure AD groups at your tenant and shows them using Office UI Fabric React list.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-graph-pnpjs/assets/summary.png",
@@ -5669,7 +5673,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-graph-profile-awards",
-      "title": "My Awards",
+      "title": "My Awards Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-graph-profile-awards",
       "description": "This web part is using the beta MS Graph Profile endpoint to list your awards. At the time of writing this sample (May 2022), this is a Beta endpoint, so it could change in the future. A future version of this web part could include the ability to add new awards to your profile.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-graph-profile-awards/assets/react-graph-profile-awards.gif",
@@ -5692,7 +5696,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-graph-reports",
-      "title": "Graph Usage Reports",
+      "title": "Graph Usage Reports Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-graph-reports",
       "description": "This sample describe a SPFX application which retrieves an office 365 usage reports using Microsoft Graph API. This application also use chartjs library to generate graph.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-graph-reports/assets/react-graph-reports.gif",
@@ -5715,7 +5719,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-graph-schema-extensions",
-      "title": "Read / update MS Graph Custom Schema Extensions",
+      "title": "Read / update MS Graph Custom Schema Extensions Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-graph-schema-extensions",
       "description": "This sample shows how read and update a custom Schema extension in MS Graph. It shows how to create a custom Schema extension in Graph to store custom data related to an Office 365 Group, and how we can read and update that data using an spfx web part.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-graph-schema-extensions/assets/webpart.png",
@@ -5738,7 +5742,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-graph-telephonedirectory",
-      "title": "Telephone Directory using React, Ms Graph and SPFx",
+      "title": "Telephone Directory Web Part using React, Ms Graph and SPFx",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-graph-telephonedirectory",
       "description": "This is sample web part using SPFx and MSGraph to fetch the users information based on First Name, Last Name and Email Address. web part will fetch data from directory using Graph API and display in details list.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-graph-telephonedirectory/assets/Preview.gif",
@@ -5792,7 +5796,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-group-membership-manager",
-      "title": "Group Membership Manager",
+      "title": "Group Membership Manager Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-group-membership-manager",
       "description": "This app is an example of managing the membership of a group you own including the owners of the group as well as using FluentUI v9",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-group-membership-manager/assets/group-membership-manager.gif",
@@ -5815,7 +5819,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-groups-teams",
-      "title": "All Microsoft 365 Groups and Teams",
+      "title": "All Microsoft 365 Groups and Teams Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-groups-teams",
       "description": "Web part pulls all Microsoft 365 Groups and Teams that the logged in user has access to view.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-groups-teams/assets/Card-Display.png",
@@ -5865,7 +5869,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-holidays-calendar",
-      "title": "Holiday calendar",
+      "title": "Holiday Calendar Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-holidays-calendar",
       "description": "Holiday calendar solution contains SPFx web part and Adaptive card extension for Viva connections.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-holidays-calendar/assets/209691198-4d0cbc31-f0d4-49c8-a1b5-ae8701406221.png",
@@ -5911,7 +5915,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-htm-templating",
-      "title": "HTM (Hyperscript Tagged Markup) Templating",
+      "title": "HTM (Hyperscript Tagged Markup) Templating Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-htm-templating",
       "description": "Provides an example of how to create a dynamic template system (configurable via Web Part properties) that can not only render HTML but also React controls, such as Fluent UI, without the need to use Handlebars.js + Web Components",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-htm-templating/assets/preview.gif",
@@ -5934,7 +5938,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-image-editor",
-      "title": "Image Editor",
+      "title": "Image Editor Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-image-editor",
       "description": "This solution contains an SPFx web part that shows an HTML Image Editor based on canvas and Office UI Fabric",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-image-editor/assets/react-image-editor.gif",
@@ -5980,7 +5984,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-image-magnifier",
-      "title": "Image Magnifier",
+      "title": "Image Magnifier Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-image-magnifier",
       "description": "This web part allow to magnify an image, displaying a resolution more detailed through a lens.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-image-magnifier/assets/spfx-react-image-magnifier.gif",
@@ -6003,7 +6007,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-image-slider-list-taxonomy-filter",
-      "title": "Image Slider from Photo Gallery using Taxonomy Filter",
+      "title": "Image Slider from Photo Gallery using Taxonomy Filter Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-image-slider-list-taxonomy-filter",
       "description": "This web part display the image in slider based on the filter of Taxonomy from Property panel. Images are stored in PhotoGallery and tagged with Taxonomy.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-image-slider-list-taxonomy-filter/assets/ImageSlider.gif",
@@ -6026,7 +6030,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-instagram",
-      "title": "Instagram Feed",
+      "title": "Instagram Feed Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-instagram",
       "description": "Sample web part to showcase an Instagram feed.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-instagram/assets/instagram-feed.png",
@@ -6049,7 +6053,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-interactive-map",
-      "title": "Interactive Map",
+      "title": "Interactive Map Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-interactive-map",
       "description": "This web parts displays a (world) map. An editor can set custom markers directly in the map. Each marker can configured individually.",
       "image": "https://raw.githubusercontent.com/pnp/sp-dev-fx-webparts/main/samples/react-interactive-map/assets/WPPreview.png",
@@ -6095,7 +6099,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-invoice-generator",
-      "title": "Invoice Generator",
+      "title": "Invoice Generator Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-invoice-generator",
       "description": "SPFx Invoice Generator Web part using PnP JS allows users to create invoices for different clients or customers.",
       "image": "https://raw.githubusercontent.com/pnp/sp-dev-fx-webparts/main/samples/react-invoice-generator/assets/invoice.PNG",
@@ -6141,7 +6145,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-item-History",
-      "title": "Item History",
+      "title": "Item History Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-item-History",
       "description": "This listview command is used to show the past versions of the selected list item in a grid.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-item-History/Capture.PNG",
@@ -6164,7 +6168,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-jest-testing",
-      "title": "React Jest Testing sample",
+      "title": "React Jest Testing sample Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-jest-testing",
       "description": "This sample uses the popular Jest Testing Framework with a SPFx client side solution. It is a SPFx-Jest-Enzyme-Sinon starter kit so you can start writing and debugging unit tests in typescript for your SPFx solution. The setup includes unit tests examples, code coverage reports in different formats, visual studio code unit test debug configurations for typescript, setting a coverage threshold (gates) for continuous integration and continuous deployment scenarios.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-jest-testing/assets/Jest-Typescript-VSCode-debugging.png",
@@ -6187,7 +6191,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-json-form",
-      "title": "JSON form builder",
+      "title": "JSON form builder Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-json-form",
       "description": "Build a custom form with ease",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-caml2table/assets/Demo.gif",
@@ -6288,7 +6292,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-list-items-menu",
-      "title": "List Items Menu",
+      "title": "List Items Menu Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-list-items-menu",
       "description": "Allows user create a navigation menu , grouped by any column of document library. When the user clicks on the header it dynamically load documents.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-list-items-menu/assets/ListMenuDocs.gif",
@@ -6338,7 +6342,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-list-search",
-      "title": "List Search",
+      "title": "List Search Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-list-search",
       "description": "This list search web part allows the user to show data from lists or libraries.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-list-search/assets/differentSources.gif",
@@ -6361,7 +6365,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-lists-hide",
-      "title": "Hide Lists",
+      "title": "Hide Lists Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-lists-hide",
       "description": "SPFx Web part to Hide/UnHide lists in a Site Collection's Site Contents Page.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-lists-hide/assets/ListHideWebPart.jpg",
@@ -6407,7 +6411,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-manage-hublevel-subscriptions",
-      "title": "Subscription Manager",
+      "title": "Subscription Manager Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-manage-hublevel-subscriptions",
       "description": "This sample web part demonstrates managing the list subscriptions (sharepoint webhooks) and action to renew the webhook expiration date using Rest calls.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-manage-hublevel-subscriptions/assets/SubscriptionsDashboard.gif",
@@ -6461,7 +6465,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-manage-profile-card-properties",
-      "title": "Manage Profile Card Properties",
+      "title": "Manage Profile Card Properties Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-manage-profile-card-properties",
       "description": "This web part allows tenant administrators to manage profile card properties.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-manage-profile-card-properties/assets/Screenshot5.png",
@@ -6484,7 +6488,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-manage-sitedesigns",
-      "title": "Site Designs Manager",
+      "title": "Site Designs Manager Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-manage-sitedesigns",
       "description": "This web part allows tenant administrators to manage site designs through a graphical interface.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-manage-sitedesigns/assets/screen1.jpg",
@@ -6530,7 +6534,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-material-ui",
-      "title": "Material UI",
+      "title": "Material UI Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-material-ui",
       "description": "This sample shows how you can use Material UI components in your SharePoint Framework solution. In this sample you will find some of the Material UI components like Table, Dialog, Text Field and Icon. This sample also includes RXJS DebounceTime, this feature allows you to wait for a certain amount of time before make requests to the server while user is typing to prevent to make requests for each character.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-material-ui/assets/screenshot.gif",
@@ -6553,7 +6557,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-members-with-presence",
-      "title": "Group members list with Presence information",
+      "title": "Group members list with Presence information web part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-members-with-presence",
       "description": "This sample shows how to get the members of a specific group, including their presence information (using the new Presence endpoint in the MS Graph API).",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-members-with-presence/assets/react-members-with-presence.gif",
@@ -6576,7 +6580,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-mgtevents",
-      "title": "MGT Events",
+      "title": "MGT Events Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-mgtevents",
       "description": "This sample shows how to use Microsoft Graph Toolkit in SPFx and custom with Fluent UI Fabric Controls",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-mgtevents/assets/mgtevents.jpg",
@@ -6599,7 +6603,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-minesweeper",
-      "title": "Minesweeper",
+      "title": "Minesweeper Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-minesweeper",
       "description": "This web part is the classic game Minesweeper, put in a Fluent UI powered SPFx web part!.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-minesweeper/assets/Minesweeper.gif",
@@ -6622,7 +6626,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-mobx",
-      "title": "Using React and Mobx",
+      "title": "Using React and Mobx Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-mobx",
       "description": "Sample web part implementation that uses Mobx to keep track of its state.",
       "image": "https://camo.githubusercontent.com/1bfb94ba2675eec1c794cfea81bdde41b964268f/68747470733a2f2f692e6779617a6f2e636f6d2f65366631393033623961396338323031393835636432356363316665323862632e676966",
@@ -6645,7 +6649,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-mobx-multiple-stores",
-      "title": "Using multiple stores with React and Mobx",
+      "title": "Using multiple stores with React and Mobx Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-mobx-multiple-stores",
       "description": "A sample web part that uses the Mobx library with multiple stores to keep track of the applications state.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-mobx-multiple-stores/assets/demo.gif",
@@ -6672,8 +6676,8 @@
         "pnp-sp-dev-spfx-web-parts-react-modern-birthdays"
       ],
       "title": [
-        "Birthdays Timeline",
-        "Birthdays"
+        "Birthdays Timeline Web Part",
+        "Birthdays Web Part"
       ],
       "url": [
         "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-modern-birthdays",
@@ -6856,7 +6860,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-multilist-grid",
-      "title": "Multi-list Grid",
+      "title": "Multi-list Grid Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-multilist-grid",
       "description": "React-multilist-grid is an SPFX web part that uses React, Office-UI-Fabric, and Redux to let users edit list data from lists that reside in multiple webs and multiple sites in a single grid, similar to Quick Edit mode. The lists do not to be of the same type – you just need to create column mappings to tell the web part which fields to show in which columns of the grid.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-multilist-grid/src/images/ColumnTypes.PNG",
@@ -6879,7 +6883,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-multimedia-gallery",
-      "title": "Image Gallery",
+      "title": "Image Gallery Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-multimedia-gallery",
       "description": "This web part show images and videos in responsive grid, on click it show images and videos in a carousel view.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-multimedia-gallery/assets/MultimediaGallery.gif",
@@ -6960,7 +6964,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-my-approvals",
-      "title": "My Approvals",
+      "title": "My Approvals Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-my-approvals",
       "description": "This web part demonstrates displaying the list of approval requests of Power Automate. Power Automate provides a new workflow feature that replaces SharePoint workflows, but it is a Power Platform feature, not a Microsoft 365 feature. You can display approval requests from only Power Automate site. This web part enable to display approval requests from SharePoint site.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-my-approvals/assets/react-my-approvals.gif",
@@ -6983,7 +6987,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-my-events",
-      "title": "My Events",
+      "title": "My Events Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-my-events",
       "description": "This web part provides loggedin user's outlook events with some advanced features",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-my-events/assets/preview.png",
@@ -7006,7 +7010,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-my-groups",
-      "title": "My Groups",
+      "title": "My Groups Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-my-groups",
       "description": "Using Microsoft Graph, this web part grabs the Office 365 groups the current user is a member of with links to the groups SharePoint site.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-my-groups/assets/React-MyGroups_Grid.png",
@@ -7029,7 +7033,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-my-onedrive-info",
-      "title": "My OneDrive Info",
+      "title": "My OneDrive Info Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-my-onedrive-info",
       "description": "MyOneDriveInfo solution contains Adaptive card extension for Viva connection with below functionalities",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-my-onedrive-info/assets/ACEScreenshot1.png",
@@ -7052,7 +7056,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-my-sites",
-      "title": "My Sites",
+      "title": "My Sites Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-my-sites",
       "description": "This web part shows sites that user has permissions to access. It includes Office 365 Groups, OneDrive Sites, SharePoint Sites and App Sites created by SharePoint Add-ins.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-my-sites/assets/MySites.gif",
@@ -7075,7 +7079,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-my-teams",
-      "title": "My Teams",
+      "title": "My Teams Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-my-teams",
       "description": "This sample uses Microsoft Graph to list the Teams the current user is a member of. When the user clicks on one of the teams, the web part retrieves information about the default channel (General) and opens it. The web part can be configured to open the team on the web browser or client app.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-my-teams/assets/Preview.png",
@@ -7152,7 +7156,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-news",
-      "title": "News",
+      "title": "News Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-news",
       "description": "SPFx Webpart to display News from SharePoint site(s)",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-news/assets/Single-View-Default.png",
@@ -7175,7 +7179,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-news-banner",
-      "title": "News Banner",
+      "title": "News Banner Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-news-banner",
       "description": "Shows news information as a Banner, this information come from a list defined in any site.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-news-banner/assets/NewsBanner.gif",
@@ -7198,7 +7202,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-news-extension",
-      "title": "Targeted News using Microsoft Graph Open Extension",
+      "title": "Targeted News Web Part using Microsoft Graph Open Extension",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-news-extension",
       "description": "This sample contains two SPFx web parts: User preferences web part and Curated news web part",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-news-extension/assets/curated-news.png",
@@ -7221,7 +7225,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-office-offer-creation",
-      "title": "SharePoint document generator - Offer Creation (SPFx)",
+      "title": "SharePoint document generator - Offer Creation Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-office-offer-creation",
       "description": "This sample is a Teams personal Tab to act as a Microsoft 365 across application (Teams, Outlook, Office) to generate docuemnts.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-office-offer-creation/assets/16OfferCreationDemo_SPFx.gif",
@@ -7267,7 +7271,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-onedrive-finder",
-      "title": "OneDrive Finder",
+      "title": "OneDrive Finder Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-onedrive-finder",
       "description": "This sample access drives from OneDrive and navigate between his content using Graph OneDrive and Site API and Microsoft Graph Toolkit React controls with the addition of new FileList control.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-onedrive-finder/assets/OneDrivefinderSample3.gif",
@@ -7290,7 +7294,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-openai-devops",
-      "title": "OpenAI Azure DevOps Bot",
+      "title": "OpenAI Azure DevOps Bot Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-openai-devops",
       "description": "The SPFx web part is a SharePoint Framework web part that allows users to view recent tasks, bugs, and commits assigned to them from a specific project in Azure DevOps",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-openai-devops/assets/demo.gif",
@@ -7313,7 +7317,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-organisationchart",
-      "title": "Organisation Chart",
+      "title": "Organisation Chart Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-organisationchart",
       "description": "A simple Organisation Chart web part using Office UI Fabric, React, REST API batching and ServiceScope plumbing.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-organisationchart/assets/orgchart.png",
@@ -7336,7 +7340,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-organization-chart",
-      "title": "Organization Chart (SP2019 and Online)",
+      "title": "Organization Chart Web Part (SP2019 and Online)",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-organization-chart",
       "description": "Shows an organization chart based on specified user, and user can navigate to show company organization",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-organization-chart/assets/orgchart.gif",
@@ -7386,7 +7390,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-outlook-copy2teams",
-      "title": "Outlook to Teams",
+      "title": "Outlook to Teams Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-outlook-copy2teams",
       "description": "This SPFx Outlook Add-In lets you browse your OneDrive, joined Teams or Groups and select a folder to save your complete mail in there.",
       "image": "https://camo.githubusercontent.com/a539e3ae63602becc87309ee2a965e4d5a605239/68747470733a2f2f6d6d7368617265706f696e742e66696c65732e776f726470726573732e636f6d2f323032302f30312f616464696e5f6f766572616c6c2e706e67",
@@ -7409,7 +7413,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-page-navigator",
-      "title": "Page Navigator",
+      "title": "Page Navigator Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-page-navigator",
       "description": "This web part fetches all the automatically added Header anchor tags in a SharePoint page and displays them in a Navigation component.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-page-navigator/assets/PageNavigator.gif",
@@ -7440,7 +7444,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-page-sections-navigation",
-      "title": "Page Sections Navigation",
+      "title": "Page Sections Navigation Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-page-sections-navigation",
       "description": "Sample web parts allowing to add sections navigation to the SharePoint page.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-page-sections-navigation/assets/page-nav.gif",
@@ -7490,7 +7494,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-pages-hierarchy",
-      "title": "Page Hierarchy",
+      "title": "Page Hierarchy Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-pages-hierarchy",
       "description": "This web part allows users to create a faux page hierarchy in their pages library and use it for page-to-page navigation.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-pages-hierarchy/assets/PagesHierarchy.gif",
@@ -7525,7 +7529,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-palette-picker",
-      "title": "Palette Picker",
+      "title": "Palette Picker Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-palette-picker",
       "description": "Custom Property Pane pain resolved (whew), color palette generator inspired by [Jhey](https://codepen.io/jh3y/pen/rNjbmBQ?editors=0011).",
       "image": "https://raw.githubusercontent.com/pnp/sp-dev-fx-webparts/main/samples/react-palette-picker/assets/palettePickerWebPart.gif",
@@ -7548,7 +7552,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-password-vault",
-      "title": "Password Vault",
+      "title": "Password Vault Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-password-vault",
       "description": "This web part allows you to protect your data, such as the username, password or even just a text note (rich text). This data is protected with a master password that you can choose yourself.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-password-vault/assets/PasswordVaultDisplayMode.png",
@@ -7571,7 +7575,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-peoplepicker",
-      "title": "People Picker",
+      "title": "People Picker Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-peoplepicker",
       "description": "SharePoint Framework solution with the Office UI Fabric People Picker, the client web part across the SharePoint Rest API is able to retrieve people and groups.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-peoplepicker/assets/Preview.gif",
@@ -7594,7 +7598,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-personal-anniversary-counter",
-      "title": "Personal Anniversary",
+      "title": "Personal Anniversary Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-personal-anniversary-counter",
       "description": "A web part to help you notice those special days",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-personal-anniversary-counter/assets/demo.gif",
@@ -7617,7 +7621,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-personal-greeting",
-      "title": "Personal Greeting",
+      "title": "Personal Greeting Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-personal-greeting",
       "description": "The web part pulls in the current user's name and displays it on the page. The greeting text before the name is customizable through the property pane. Additionally the position of the greeting and color of the text can be adjusted through the property pane as well.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-personal-greeting/assets/react-personal-greeting.gif",
@@ -7640,7 +7644,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-personal-tools-list",
-      "title": "Personal tools list",
+      "title": "Personal tools list Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-personal-tools-list",
       "description": "Allows users to select tools from a predefined list and save them in their own personalized view.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-personal-tools-list/assets/MyToolsDemo1.gif",
@@ -7663,7 +7667,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-photo-sync",
-      "title": "SPUPS Photo Sync",
+      "title": "SPUPS Photo Sync Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-photo-sync",
       "description": "This web part will help the administrators to synchronize the User Profile Photos from Azure AD or from the local file system to SharePoint User Profile Store.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-photo-sync/assets/SPUPS_Photo_Sync_1.gif",
@@ -7786,7 +7790,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-pnpjs-http-client",
-      "title": "GitHub Profile display via API",
+      "title": "GitHub Profile Web Part Display via API",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-pnpjs-http-client",
       "description": "This web part loads the GitHub profile using SPHttp client in PnP v3.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-pnpjs-http-client/assets/UpdateAPICall.png",
@@ -7809,7 +7813,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-pnpjs-project-online",
-      "title": "PnPjs Project Online",
+      "title": "PnPjs Project Online Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-pnpjs-project-online",
       "description": "This sample shows how to use SPFx to consume data from the Project Online REST API using a custom module for PnPjs. The web part is currently logging the data returned from the API to the browser console as a simple proof of concept.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-pnpjs-project-online/assets/Preview.gif",
@@ -7890,7 +7894,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-poll",
-      "title": "Poll",
+      "title": "Poll Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-poll",
       "description": "Add new poll questions and their options. End users can submit his/her response to the poll. After Submission, user can see all responses count with Bar chart.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-poll/assets/react-poll.gif",
@@ -7913,7 +7917,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-ppp-pnp-controls",
-      "title": "Property Pane Portal PnP Controls",
+      "title": "Property Pane Portal PnP Controls Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-ppp-pnp-controls",
       "description": "The React-PPP-PnP-Controls sample showcases the use of the Property Pane Portal to display the PnP SPFx React controls in the SPFx Property Pane.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-ppp-pnp-controls/assets/React-PPP-PnP-Controls-Sample.png",
@@ -7959,7 +7963,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-private-libraries",
-      "title": "Private Library/Folder Manager",
+      "title": "Private Library/Folder Manager Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-private-libraries",
       "description": "This sample provides a webpart that can be used to manage Document Libraries with Secured Subfolders.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-private-libraries/assets/HomeScreen.png",
@@ -7982,7 +7986,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-project-online",
-      "title": "Project Online",
+      "title": "Project Online Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-project-online",
       "description": "This sample shows how to use SPFx to consume data from the Project Online REST API.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-project-online/assets/Preview.gif",
@@ -8028,7 +8032,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-property-pane-navigation",
-      "title": "React Property Pane Navigation",
+      "title": "Property Pane Navigation Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-property-pane-navigation",
       "description": "This sample showcase how to handle the navigation between property pane pages.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-property-pane-navigation/assets/navigation_in_action.gif?raw=true",
@@ -8078,7 +8082,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-questions-and-answers",
-      "title": "React Questions and Answers",
+      "title": "Questions and Answers Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-questions-and-answers",
       "description": "This is an application that supports Questions & Answers through a web part that can be used directly on a Modern SharePoint Site without the need for Yammer or a backing Microsoft Team site.  It relies on a backing SharePoint list that is hidden and a provisioned Site Page that hosts a pre-configured version of the questions web part.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-questions-and-answers/assets/QuestionsAndAnswers.gif",
@@ -8101,7 +8105,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-quick-links",
-      "title": "Quick Links",
+      "title": "Quick Links Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-quick-links",
       "description": "A demonstration of how one could build SharePoints Quick Links web part",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-quick-links/assets/Demo.gif",
@@ -8124,7 +8128,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-quick-poll",
-      "title": "Quick Poll",
+      "title": "Quick Poll Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-quick-poll",
       "description": "This component is developed for the users who really need to create a Poll within a minute and with less maintenance.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-quick-poll/assets/react-quick-poll.gif",
@@ -8151,7 +8155,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-quotes",
-      "title": "Quote of the Day",
+      "title": "Quote of the Day Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-quotes",
       "description": "This webpart displays a quote of the day by querying a third-party api or can display a quote entered manually into the webpart property pane.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-quotes/assets/react-quotes-sample.png",
@@ -8178,7 +8182,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-react-query",
-      "title": "React Query Microsoft Graph",
+      "title": "Query Microsoft Graph Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-graph-auto-batching",
       "description": "This sample shows how you can query Microsoft Graph from React in SharePoint Framework",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/gh-pages/img/_nopreview.png",
@@ -8201,7 +8205,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-realtime-documents",
-      "title": "List subscription",
+      "title": "List Subscription Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-realtime-documents",
       "description": "Sample web part illustrating using the SharePoint Framework List subscription capability, which allows you to get notified of changes to documents in a SharePoint Document Library and refresh the displayed data.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-realtime-documents/assets/list-subscription-webpart.png",
@@ -8247,7 +8251,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-recaptcha",
-      "title": "Google reCaptcha Sample",
+      "title": "Google reCaptcha Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-recaptcha",
       "description": "This is sample web part which showcase how to implement Google reCaptcha v2 in SPFx. CAPTCHA is used to prevent bots from automatically submitting forms with SPAM or other unwanted content. If we are building a custom input form to get feedback, newsletter subscription or contact us form using SPFx web part. We might have to implement SPAM protection using some CAPTCHA resolving technique. This sample can come in handy to extend it for your business requirement if you need to implement CAPTCHA in SPFx web part.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-recaptcha/screens/WebpartInAction.gif",
@@ -8339,7 +8343,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-remote-event-receiver-manager",
-      "title": "Remote Event Receiver Manager",
+      "title": "Remote Event Receiver Manager Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-remote-event-receiver-manager",
       "description": "Lets you add and delete remote event receivers to lists",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-remote-event-receiver-manager/assets/video.gif",
@@ -8362,7 +8366,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-restaurant-menu",
-      "title": "Restaurant Menu",
+      "title": "Restaurant Menu Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-restaurant-menu",
       "description": "This web part shows a Restaurant Menu, the user can select the options to show in Menu.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-restaurant-menu/assets/restaurantmenu.gif",
@@ -8385,7 +8389,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-rhythm-of-business-calendar",
-      "title": "Rhythm of Business Calendar",
+      "title": "Rhythm of Business Calendar Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-rhythm-of-business-calendar",
       "description": "This sample is the source code for the Rhythm of Business Calendar app and is intended to demonstrate patterns and practices for building enterprise apps on the SharePoint platform.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/e92d0dac567cc4d59cdfc94186a52a3b776c6d21/samples/react-rhythm-of-business-calendar/assets/screenshot-edit-refiner.png",
@@ -8409,7 +8413,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-roomchat",
-      "title": "Room Chat",
+      "title": "Room Chat Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-roomchat",
       "description": "This web part shows how to use Azure Communications Services and React UI component to create a Room Chat.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-roomchat/assets/roomchat.gif",
@@ -8432,7 +8436,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-rss-reader",
-      "title": "SharePoint Framework RSS Reader",
+      "title": "SharePoint Framework RSS Reader Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-rss-reader",
       "description": "A RSS Reader original based on work completed by Olivier Carpentier's",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-rss-reader/assets/react-rss-reader.gif",
@@ -8467,7 +8471,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-rxjs-event-emitter",
-      "title": "ReactiveX (RxJs) Event Emitter Sample",
+      "title": "ReactiveX (RxJs) Event Emitter Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-rxjs-event-emitter",
       "description": "This sample shows how we can use the ReactiveX (RxJs) library with the SharePoint Framework to communicate between web parts through broadcasting events utilizing the Publish–subscribe pattern. It enables a web part or component to emit event (broadcast message) and that event is received by other web parts or components that have been subscribed to receive it. Please note this is custom implementation of the Publish–subscribe pattern by using the ReactiveX (RxJs) library. The SPFx will nativelly support this in future without the need of custom implementation through new SPFx api called Event Aggregator, but it is still in Alpha.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-rxjs-event-emitter/assets/spfx-event-emitter.gif",
@@ -8548,7 +8552,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-securitygrid",
-      "title": "Security Grid",
+      "title": "Security Grid Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-securitygrid",
       "description": "React-securitygrid is an SPFX web part that uses React and Office-UI-Fabric to render a grid showing which users have access to which lists/libraries/folders/files on a Web",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-securitygrid/src/images/MainDisplay.gif",
@@ -8594,7 +8598,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-sitepages-metadata",
-      "title": "Sitepages Metadata",
+      "title": "Sitepages Metadata Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-sitepages-metadata",
       "description": "Solution provides an enhancement to SitePages library that enables updating existing items with metadata, and a rollup Web Part to display them.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-sitepages-metadata/assets/demo-wp.gif",
@@ -8663,7 +8667,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-slide-swiper",
-      "title": "Slide Swiper",
+      "title": "Slide Swiper Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-slide-swiper",
       "description": "This SPFx React web part sample demonstrates mobile touch slide swiper. By default the swiper web part is responsive, has cross device and browser touch support and uses paging, but additional features like navigation, autoplay, loop of the slides and more can be enabled from the web part properties panel. The swiper web part can be used as carousel as well. The slides or cards template can easily be customized. The SPFx React swiper client side solution can easly be extended with more swiper, carousel like features because it is based on a popular feature rich JavaScript library called Swiper.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-slide-swiper/assets/SPFx-React-Slider-Swiper.gif",
@@ -8686,7 +8690,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-smart-profile-photo-editor",
-      "title": "Smart Profile Photo Editor",
+      "title": "Smart Profile Photo Editor Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-smart-profile-photo-editor",
       "description": "Uses Azure Cognitive Services to analyze and approve or reject user-submitted photos.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-smart-profile-photo-editor/assets/WebPartPreview.gif",
@@ -8732,7 +8736,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-sp-site-user-groups",
-      "title": "Site User and Group Information",
+      "title": "Site User and Group Information Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-sp-site-user-groups",
       "description": "Looks up the SharePoint site user/group ids related to a user. Azure AD groups that the user belongs to, and which are known to the SharePoint site, are also displayed.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-sp-site-user-groups/assets/screen1.png",
@@ -8755,7 +8759,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-sp-tinymce",
-      "title": "List Integration with TinyMCE Editor",
+      "title": "List Integration with TinyMCE Editor Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-sp-tinymce",
       "description": "The web part allows users to insert column data from associated SharePoint lists using a split button on the toolbar",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-sp-tinymce/assets/demo.gif",
@@ -8778,7 +8782,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-spfx-control-iframepanel",
-      "title": "IFramePanel sample",
+      "title": "IFramePanel Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-spfx-control-iframepanel",
       "description": "This sample shows how to use the IFramePanel control in a SharePoint Framework web part.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-spfx-control-iframepanel/assets/preview.png",
@@ -8801,7 +8805,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-spupsproperty-sync",
-      "title": "SPUPS Property Sync",
+      "title": "SPUPS Property Sync Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-spupsproperty-sync",
       "description": "This component will help the administrators who are currently maintaining the user profiles in their organization.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-spupsproperty-sync/assets/SPUPS-Sync.gif",
@@ -8824,7 +8828,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-staffdirectory",
-      "title": "Staff Directory",
+      "title": "Staff Directory Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-staffdirectory",
       "description": "This web part shows the current user's colleagues, and allows the user to search AD directory, The user can configure the properties to show when expand the user card.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-staffdirectory/assets/staffdirectory.gif",
@@ -8859,7 +8863,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-star-ratings",
-      "title": "Star Ratings",
+      "title": "Star Ratings Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-star-ratings",
       "description": "Demonstrates Star Ratings capabilities to SharePoint News.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-star-ratings/assets/react-star-ratings.png",
@@ -8905,7 +8909,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-tailwindcss",
-      "title": "Tailwind CSS",
+      "title": "Tailwind CSS Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-tailwindcss",
       "description": "This project shows how to integrate Tailwind CSS framework into a SPFx React project.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-tailwindcss/assets/react-tailwindcss-overview.gif",
@@ -8928,7 +8932,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-taxonomy-file-explorer",
-      "title": "Taxonomy File Explorer",
+      "title": "Taxonomy File Explorer Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-taxonomy-file-explorer",
       "description": "This solution renders a given Termset as a Tree and incorporates files similar than a folder structure in file explorer.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-taxonomy-file-explorer/assets/03Link.gif",
@@ -8951,7 +8955,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-taxonomypicker",
-      "title": "Taxonomy Picker",
+      "title": "Taxonomy Picker Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-taxonomypicker",
       "description": "A Taxonomy Picker control built with React based on react-taxonomypicker for use with SharePoint Framework client-side web parts (SPFx).",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-taxonomypicker/assets/react-taxonomy-picker-spfx.gif",
@@ -9070,7 +9074,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-teams-graph-upload-as-pdf",
-      "title": "Teams Graph Upload as PDF",
+      "title": "Teams Graph Upload as PDF Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-teams-graph-upload-as-pdf",
       "description": "This SPFx web part (or Teams Tab) enables a user to upload a supported file type via drag and drop while the uploaded file will be converted as PDF",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-teams-graph-upload-as-pdf/assets/UploadAnimated.gif",
@@ -9093,7 +9097,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-teams-lead-dashboard",
-      "title": "Lead Dashboard",
+      "title": "Lead Dashboard Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-teams-lead-dashboard",
       "description": "This sample shows how to use SPFx to create a Microsoft Teams dashboard personal app.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-teams-lead-dashboard/assets/LeadAssistDashboard_overview.png",
@@ -9157,7 +9161,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-teams-membership-updater",
-      "title": "Teams Membership Updater",
+      "title": "Teams Membership Updater Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-teams-membership-updater",
       "description": "Used to update the membership of a team based on the contents of a CSV file, can be hosted in a SharePoint site where a list can be defined for logging purposes or run inside teams as a personal app.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-teams-membership-updater/assets/Screenshot-2020-05-01.png",
@@ -9180,7 +9184,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-teams-message",
-      "title": "React Teams Messages",
+      "title": "Teams Messages Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-teams-message",
       "description": "This is a sample web part that displays currently logged in user's Microsoft Teams(user is member of), its channels and will allow sending messages to any Team's channel.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-teams-message/assets/myteamsmessage.gif",
@@ -9203,7 +9207,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-teams-message-user",
-      "title": "Message Teams User",
+      "title": "Message Teams User Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-teams-message-user",
       "description": "Sample that shows how to send a message to Microsoft Teams using a SharePoint framework solution using Microsoft Graph.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-teams-message-user/assets/webPart-preview.png",
@@ -9226,7 +9230,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-teams-my-webinars",
-      "title": "Teams My Webinars",
+      "title": "Teams My Webinars Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-teams-my-webinars",
       "description": "Displays a list of Teams Webinars you are an organizer of, allows you to sync those webinars to a SharePoint list, to share within a Team and cross check pending registrants against membership of a team.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-teams-my-webinars/assets/Screenshot 2023-12-25-main.png",
@@ -9272,7 +9276,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-teams-send-notification",
-      "title": "Send Notifications in Teams",
+      "title": "Send Notifications in Teams Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-teams-send-notification",
       "description": "This web part allows you to send MS Teams feed notifications to a selected user",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-teams-send-notification/assets/teams-notification-sender.gif",
@@ -9295,7 +9299,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-teams-tab-field-visit-mashup",
-      "title": "Teams Tab - Field Visit Demo (Mashup)",
+      "title": "Teams Tab - Field Visit Web Part (Mashup)",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-teams-tab-field-visit-mashup",
       "description": "A web part for use in Microsoft Teams that displays a mashup of information partaining to customer visits.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-teams-tab-field-visit-mashup/documentation/FieldVisitDemo.png",
@@ -9318,7 +9322,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-teams-tab-suggested-members",
-      "title": "Group members suggestion",
+      "title": "Group members suggestion Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-teams-tab-suggested-members",
       "description": "This web part uses Graph API to suggest you members to add to a group (based on People endpoint), so you can easily add those members to the Group / Teams. It can be used as a SharePoint web part or Teams tab",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-teams-tab-suggested-members/assets/SuggestedMembersTeamsTab.jpg",
@@ -9437,7 +9441,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-tiles-v2",
-      "title": "Tiles V2",
+      "title": "Tiles V2 Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-tiles-v2",
       "description": "This solution creates a customizable Tiles Web part, it uses a stored collection from the PnP `PropertyFieldCollectionData` control and allows the user to choose the color scheme (theme or custom) and to set the size of the tiles.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-tiles-v2/assets/react-tiles-v2.gif",
@@ -9468,7 +9472,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-timeline",
-      "title": "Timeline",
+      "title": "Timeline Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-timeline",
       "description": "This sample displays list of events in chronological order. It is typically a graphic design showing a long bar labelled with dates paralleling it, and coexisting events. This web part helps to draw the timeline based from SharePoint list with pre-defined schema.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-timeline/assets/webpart-preview.gif",
@@ -9518,7 +9522,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-todo-basic",
-      "title": "Todo Basic",
+      "title": "Todo Basic Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-todo-basic",
       "description": "A simple todo web part built using react to showcase some of the SharePoint Framework developer features, utilities and best practices in building react based web parts.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-todo-basic/assets/todo-basic-demo.gif",
@@ -9541,7 +9545,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-tour-pnpjs",
-      "title": "Tour Sample",
+      "title": "Tour Sample Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-tour-pnpjs",
       "description": "A SPFx WebPart using PnP/PnPjs, @pnp/spfx-property-controls and ReactTourJS.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-tour-pnpjs/assets/react-tour-pnpjs-webpart-animated.gif",
@@ -9568,7 +9572,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-twitter",
-      "title": "Twitter Timeline",
+      "title": "Twitter Timeline Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-twitter",
       "description": "Sample web part to display Twitter timeline.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-twitter/assets/twitter-timeline.png",
@@ -9595,7 +9599,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-upgrade-me",
-      "title": "Upgrade Me",
+      "title": "Upgrade Me Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-upgrade-me",
       "description": "Use this web part to test the CLI for Microsoft 365 SPFx Project Upgrade.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-upgrade-me/assets/react-upgrade-me.png",
@@ -9641,7 +9645,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-video-banner",
-      "title": "Video Banner",
+      "title": "Video Banner Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-video-banner",
       "description": "Use this Web Part to add a video banner with a text on top of it to your pages. ",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-video-banner/assets/react-video-banner-demo1.gif",
@@ -9664,7 +9668,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-videolibrary",
-      "title": "Video Library",
+      "title": "Video Library Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-videolibrary",
       "description": "A set of 3 SPFX webparts that use different open-source carousels (react-3d-carousel, reactjs-coverface, and react-slick) to display videos stored on an Office 365 Video Channel",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-videolibrary/src/assets/react-3d-carousel.PNG",
@@ -9687,7 +9691,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-visio",
-      "title": "Visio Embed",
+      "title": "Visio Embed Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-visio",
       "description": "This sample shows how the Visio JavaScript APIs can be used within a web part. For sample purposes, this web part will display the name and the hyperlinks of a Visio shape when the user selects it.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-visio/assets/Preview.PNG",
@@ -9710,7 +9714,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-webcam",
-      "title": "Web/Mobile Camera Demo",
+      "title": "Web/Mobile Camera Demo Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-webcam",
       "description": "This is sample web part to showcase how to open webcam and take photo in SPFx web part.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-webcam/assets/4.png",
@@ -9779,7 +9783,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-word-game",
-      "title": "Word Game",
+      "title": "Word Game Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-word-game",
       "description": "A fun game where you unscramble the words before the time runs out. It stores everyone's high scores in a SharePoint List on the Site.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-word-game/assets/preview.gif",
@@ -9875,7 +9879,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-zod",
-      "title": "Zod",
+      "title": "Zod Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-zod",
       "description": "This sample shows the usage of Zod to eliminate manual cast and validation of the data coming from external API.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-zod/assets/data-usage.png",
@@ -9898,7 +9902,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-zpl-viewer",
-      "title": "ZPL Viewer",
+      "title": "ZPL Viewer Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-zpl-viewer",
       "description": "This web part will allow a user to select a text file contatining zpl which is used to generate an image using the labelary web service to render the zpl and return the image.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-zpl-viewer/assets/preview.gif",
@@ -9998,7 +10002,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-vue-js-org-chart",
-      "title": "VueJS Org Chart",
+      "title": "VueJS Org Chart Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/vue-js-org-chart",
       "description": "A simple Organisation Chart web part using Office UI Fabric, VueJS, REST API.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/vue-js-org-chart/assets/preview.gif",
