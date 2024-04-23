@@ -34,13 +34,13 @@ And for Azure DevOps👇
 
 [Check out our docs for more details](https://github.com/pnp/vscode-viva/wiki/5.5-Actions#upgrade-project)
 
-- **Validate current project** - Creates a validation .md report against the currently used SPFx version in the project. The action will automatically detect the SPFx version used and will validate if the project is properly set up. 
+- **Validate project** - Creates a validation .md report against the currently used SPFx version in the project. The action will automatically detect the SPFx version used and will validate if the project is properly set up. 
 
 ![Upgrade project](../images/validate-project.png)
 
 [Check out our docs for more details](https://github.com/pnp/vscode-viva/wiki/5.5-Actions#validate-current-project)
 
-- **Rename current project** - Forget about manual work and let the extension rename your project and generate a new solution ID. 
+- **Rename project** - Forget about manual work and let the extension rename your project and generate a new solution ID. 
 
 ![Rename](../images/rename.png)
 
