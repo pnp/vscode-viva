@@ -60,7 +60,7 @@ To ensure that you can develop SPFx solutions, you may use the **check dependenc
 
 This action will check if you have the required dependencies such as:
 
-- Node version: 16 or 18
+- Node version: 18
 - NPM dependencies:
   - gulp
   - yo

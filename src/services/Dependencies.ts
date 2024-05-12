@@ -8,8 +8,8 @@ import { TerminalCommandExecuter } from './TerminalCommandExecuter';
 import { Extension } from './Extension';
 
 
-const SUPPORTED_VERSIONS = ['16.13', '18.17.1'];
-const DEPENDENCIES = ['gulp-cli', 'yo', '@microsoft/generator-sharepoint'];
+const SUPPORTED_VERSIONS = ['18.17.1'];
+const DEPENDENCIES = ['gulp-cli@3.0.0', 'yo@5.0.0', '@microsoft/generator-sharepoint@1.19.0'];
 
 export class Dependencies {
 
