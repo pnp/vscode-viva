@@ -50,6 +50,10 @@ It is also possible to open an already existing project using Open folder button
 
 Last but not least it is possible to check your local workspace for the needed global dependencies to develop the SPFx solutions, like the correct Node version, gulp, yeoman etc., and install them if needed with a single click.
 
+When running the extension for the first time it will present you a walkthrough that will give you a step-by-step guide to get started with SharePoint Framework development and will go over the main functionalities of SharePoint Framework (SPFx) Toolkit.
+
+![Walkthrough](./assets/images/walkthrough.png)
+
 [Check out our docs for more details](https://github.com/pnp/vscode-viva/wiki/4-Welcome-experience)
 
 ### 2️⃣ Set up your development environment
@@ -68,7 +72,8 @@ This action will check if you have the required dependencies such as:
 
 In case you do not have all dependencies installed, or some are incorrect version, you can use the **install dependencies** action to install them.
 
-> **Info**: The list of valid dependencies is based on [set up your development environment recommendations](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-development-environment)
+>  [!NOTE]
+>  The list of valid dependencies is based on [set up your development environment recommendations](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-development-environment)
 
 [Check out our docs for more details](https://github.com/pnp/vscode-viva/wiki/5.1-Validate-and-set-up-a-local-workspace)
 
