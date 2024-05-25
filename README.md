@@ -22,6 +22,7 @@
 
 <p align="center">
   <a href="#-capabilities">Capabilities</a> |
+  <a href="#-preview-features">Preview features</a> |
   <a href="#%EF%B8%8F-architecture">Architecture</a> |
   <a href="#-wiki">Wiki</a> |
   <a href="#-contributing">Contributing</a> |
@@ -33,7 +34,7 @@
 </p>
 
 ![Sample Gallery](./assets/images/start.png)
- 
+
 ## ⭐ Capabilities
 
 The extension provides the following capabilities:
@@ -262,6 +263,37 @@ Check it out in action 👇
 By default, the SharePoint Framework Toolkit will use the Node.js version that is installed on your machine. If you want to use a different version, you can use a Node.js Version Manager such as [nvm](https://github.com/nvm-sh/nvm) or [nvs](https://github.com/jasongin/nvs). The SharePoint Framework Toolkit will detect the preferred version of Node.js if a `.nvmrc` file is present in the root of your project, and will use that version for all the actions.
 
 You can use the settings to change which Node.js version manager you want to use. You may choose between `nvm` and `nvs`. If you wish to avoid using a Node.js version manager, you can set the value to `none`
+
+## 🧪 Preview features
+
+>  [!WARNING]
+>  Features described in this section are part of a pre-release and are considered as an early beta feature. They may change or be removed in a future major or minor release. To get the pre-release version of the extension you need to opt-in, please refer to the guidance in the [wiki](https://github.com/pnp/vscode-viva/wiki/1.-Get-started#-pre-release).
+
+### 1️⃣ SPFx Toolkit GitHub Chat Participant 
+
+![SPFx Toolkit chat](./assets/images/chat-intro.png)
+
+Now you may use SPFx Toolkit as a chat participant in GitHub Copilot chat extension. Simply, mention @spfx in the chat to ask dedicated questions regarding SharePoint Framework development. 
+
+![SPFx Toolkit chat in action](./assets/images/chat-in-action.gif)
+
+@spfx is your dedicated AI Copilot that will help you with anything that is needed to develop your SharePoint Framework project. It has predefined commands that are tailored toward a specific activity for which you require guidance.
+
+![SPFx Toolkit chat commands](./assets/images/chat-commands.png)
+
+Currently, we support the following commands:
+- `/setup` - that is dedicated to providing information on how to setup your local workspace for SharePoint Framework development
+- `/new` - that may be used to get guidance on how to create a new solution or find and reuse an existing sample from the PnP SPFx sample gallery
+- `/code` - that is fine-tuned to provide help in coding your SharePoint Framework project
+- `/action` - that will provide you additional boosters like validating the correctness of your SPFx project, scaffolding a CI/CD workflow, or renaming your project, and many more.
+
+> [!IMPORTANT]  
+> In order for this feature to work you need to meet the following requirements:
+> - Use the [Visual Studio Code Insiders](https://code.visualstudio.com/insiders/) release
+> - Use the pre-release version of the [GitHub Copilot Chat](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot-chat) extension
+> - Use pre-release of [SPFx Toolkit](https://marketplace.visualstudio.com/items?itemName=m365pnp.viva-connections-toolkit)
+
+[Check out our docs for more details](https://github.com/pnp/vscode-viva/wiki/8.-Preview-features)
 
 ## ⚙️ Architecture
 
