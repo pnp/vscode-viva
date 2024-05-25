@@ -2,14 +2,14 @@
 	"name": "viva-connections-toolkit",
 	"displayName": "SharePoint Framework Toolkit",
 	"description": "SharePoint Framework Toolkit aims to boost your productivity in developing and managing SharePoint Framework solutions helping at every stage of your development flow, from setting up your development workspace to deploying a solution straight to your tenant without the need to leave VS Code and now even create a CI/CD pipeline to introduce automate deployment of your app. This toolkit is provided by the community.",
-	"version": "3.2.0",
+	"version": "3.2.1",
 	"publisher": "m365pnp",
 	"preview": false,
 	"homepage": "https://github.com/pnp/vscode-viva",
 	"icon": "assets/logo-large.png",
 	"engines": {
-		"vscode": "^1.65.0"
-	},
+        "vscode": "^1.90.0"
+    },
 	"categories": [
 		"Snippets",
 		"Extension Packs",
@@ -45,6 +45,33 @@
 	"license": "MIT",
 	"main": "./dist/extension.js",
 	"contributes": {
+		"chatParticipants": [
+			{
+				"id": "spfx-toolkit.pnp",
+				"fullName": "SPFx Toolkit",
+				"name": "spfx",
+				"description": "How can I help you with SPFx development?",
+				"isSticky": true,
+				"commands": [
+					{
+						"name": "setup",
+						"description": "Prepare your local workspace for SharePoint Framework development"
+					}, 
+					{
+						"name": "new",
+						"description": "Create a new SharePoint Framework project."
+					}, 
+					{
+						"name": "code",
+						"description": "Let's write some SPFx code"
+					}, 
+					{
+						"name": "action",
+						"description": "Boost your SharePoint Framework project"
+					}
+				]
+			}
+		],
 		"walkthroughs": [
 			{
 				"id": "spfx-toolkit-intro",
@@ -64,8 +91,8 @@
 						"title": "Check and get required dependencies",
 						"description": "Validate if your local workspace is ready for SharePoint Framework development. \n[Check dependencies](command:spfx-toolkit.checkDependencies)",
 						"media": {
-							"image": "assets/images/validate-dependency.png", 
-							"altText": "Validate dependencies" 
+							"image": "assets/images/validate-dependency.png",
+							"altText": "Validate dependencies"
 						}
 					},
 					{
@@ -113,7 +140,7 @@
 						"title": "Continue your learning and get additional tooling",
 						"description": "SharePoint Framework Toolkit is your single point to get to the official Microsoft documentation and learning regarding SharePoint Framework and additional tooling that will help you create apps for Microsoft 365.",
 						"media": {
-							"image": "assets/images/help-and-feedback.png", 
+							"image": "assets/images/help-and-feedback.png",
 							"altText": "help and feedback section"
 						}
 					},
@@ -122,8 +149,8 @@
 						"title": "Connect with the Microsoft 365 and Power Platform community",
 						"description": "Stay up to date and connected. \nVisit the [Microsoft 365 and Power Platform community](https://pnp.github.io/) to get more learning materials, guidance, tooling, and engage in community calls. \nJoin the [community Discord server](https://aka.ms/community/discord) to stay connected and help out others. \n Sharing is caring!",
 						"media": {
-							"image": "assets/images/parker-pnp.png", 
-							"altText": "PnP Parker" 
+							"image": "assets/images/parker-pnp.png",
+							"altText": "PnP Parker"
 						}
 					}
 				]
