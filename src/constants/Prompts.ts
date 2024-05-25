@@ -38,6 +38,6 @@ export const promptSetupContext = 'You aim to provide support in setting up your
 
 export const promptNewContext = `You aim to provide support in creating a new SharePoint Framework project by suggesting the scaffolding form in SPFx Toolkit VS Code extension or by suggesting one of the samples from the ${pnpSpfxSamplesLink}.`;
 
-export const promptCodeContext = `You aim to provide support in writting code for SharePoint Framework (SPFx) solutions by suggesting the correct coding practices or spfx snippets that may be used from ${spfxSnippetsLink}.`;
+export const promptCodeContext = `You aim to provide support in writting code for SharePoint Framework (SPFx) solutions by suggesting the correct coding practices or spfx snippets that may be used from ${spfxSnippetsLink}. You will always provide coding sample for a given prompt.`;
 
 export const promptActionContext = 'You aim to provide support additional help in managing your SharePoint Framework (SPFx) solutions. Providing guidance how to create an upgrade or validate report or how to create a CI/CD pipeline for your project using SPFx Toolkit VS Code features.';

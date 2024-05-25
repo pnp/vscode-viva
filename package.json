@@ -13,7 +13,9 @@
 	"categories": [
 		"Snippets",
 		"Extension Packs",
-		"Other"
+		"Other",
+		"AI",
+		"Chat"
 	],
 	"repository": {
 		"type": "git",

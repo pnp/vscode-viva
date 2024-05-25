@@ -13,12 +13,17 @@ export class PromptHandlers {
     messages.push(vscode.LanguageModelChatMessage.User(PromptHandlers.getChatCommandPrompt(chatCommand)));
     messages.push(vscode.LanguageModelChatMessage.User(request.prompt));
     const [model] = await vscode.lm.selectChatModels(MODEL_SELECTOR);
-    const chatResponse = await model.sendRequest(messages, {}, token);
-    for await (const fragment of chatResponse.text) {
-      stream.markdown(fragment);
+    try {
+      const chatResponse = await model.sendRequest(messages, {}, token);
+      for await (const fragment of chatResponse.text) {
+        stream.markdown(fragment);
+      }
+      PromptHandlers.getChatCommandButtons(chatCommand).forEach(button => stream.button(button));
+      return { metadata: { command: chatCommand } };
+    } catch (err) {
+      stream.markdown('...It seems that something is not working as expected. Please try again later.');
+      return { metadata: { command: '' } };
     }
-    PromptHandlers.getChatCommandButtons(chatCommand).forEach(button => stream.button(button));
-    return { metadata: { command: chatCommand } };
   }
 
   private static getChatCommandButtons(chatCommand: string) {
