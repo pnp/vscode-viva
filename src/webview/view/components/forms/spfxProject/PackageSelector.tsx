@@ -4,7 +4,6 @@ import { VSCodeButton, VSCodeLink } from '@vscode/webview-ui-toolkit/react';
 
 interface PackageSelectorProps {
     value: boolean;
-    // eslint-disable-next-line no-unused-vars
     setValue: (value: boolean) => void,
     label: string,
     link?: string

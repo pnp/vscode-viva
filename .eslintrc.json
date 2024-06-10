@@ -20,7 +20,6 @@
         "no-dupe-keys": "error",
         "no-duplicate-case": "error",
         "no-duplicate-imports": "error",
-        "no-unused-vars": "error",
         "curly": "error",
         "eqeqeq": "error",
         "no-throw-literal": "warn",

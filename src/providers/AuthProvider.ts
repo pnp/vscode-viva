@@ -19,7 +19,6 @@ export class M365AuthenticationSession implements AuthenticationSession {
   // Required for the session, but not for M365 CLI
   public readonly accessToken: string = '';
 
-  // eslint-disable-next-line no-unused-vars
   constructor(public readonly account: AuthenticationSessionAccountInformation) { }
 }
 
@@ -31,7 +30,7 @@ export class AuthProvider implements AuthenticationProvider, Disposable {
   private initializedDisposable: Disposable | undefined;
 
   /**
-   * Register the authentication provider
+   * Registers the authentication provider and associated commands.
    */
   public static register() {
     const ext = Extension.getInstance();
@@ -56,60 +55,59 @@ export class AuthProvider implements AuthenticationProvider, Disposable {
   }
 
   /**
-   * Returns the auth instance
-   * @returns
+   * Returns the singleton instance of the AuthProvider class.
+   * @returns The singleton instance of the AuthProvider class.
    */
   public static getInstance(): AuthProvider {
     return AuthProvider.instance;
   }
 
   /**
-   * Verify if the user is logged in
+   * Verifies the authentication status.
+   * Calls the `login` method of the `AuthProvider` class with `false` as the argument.
    */
   public static verify() {
     AuthProvider.login(false);
   }
 
   /**
-   * Login to M365
-   * @param createIfNone
-   * @returns
+   * Logs in the user.
+   * @param createIfNone - A boolean indicating whether to create a new session if none exists.
    */
   public static async login(createIfNone: boolean = true) {
     await authentication.getSession(AuthProvider.id, [], { createIfNone });
   }
 
   /**
-   * Logout from M365
+   * Logs out the user by removing the session.
    */
   public static async logout() {
     AuthProvider.instance.removeSession('');
   }
 
   /**
-   * Event emitter for session changes
+   * Event that fires when the authentication sessions change.
    */
   public get onDidChangeSessions(): Event<AuthenticationProviderAuthenticationSessionsChangeEvent> {
     return this.onDidChangeEventEmit.event;
   }
 
   /**
-   * Get the current session
-   * @param scopes
-   * @returns
+   * Retrieves the authentication sessions for the specified scopes.
+   * If no scopes are provided, retrieves all authentication sessions.
+   * @param scopes - The scopes for which to retrieve authentication sessions.
+   * @returns A promise that resolves to an array of authentication sessions.
    */
-  // eslint-disable-next-line no-unused-vars
   public async getSessions(scopes?: readonly string[]): Promise<readonly AuthenticationSession[]> {
     const account = await this.getAccount();
     return account ? [account] : [];
   }
 
   /**
-   * Create a new session
-   * @param _scopes
-   * @returns
+   * Creates a session for authentication.
+   * @param _scopes - The scopes for the session.
+   * @returns A promise that resolves to an AuthenticationSession.
    */
-  // eslint-disable-next-line no-unused-vars
   public async createSession(_scopes: string[]): Promise<AuthenticationSession> {
     return new Promise((resolve) => {
       window.withProgress({
@@ -157,11 +155,10 @@ export class AuthProvider implements AuthenticationProvider, Disposable {
   }
 
   /**
-   * Remove a session
-   * @param _sessionId
-   * @returns
+   * Removes a session with the specified session ID.
+   * @param _sessionId - The ID of the session to remove.
+   * @returns A Promise that resolves when the session is successfully removed.
    */
-  // eslint-disable-next-line no-unused-vars
   public async removeSession(_sessionId: string): Promise<void> {
     const output = await executeCommand('logout', { output: 'text' });
 
@@ -183,8 +180,13 @@ export class AuthProvider implements AuthenticationProvider, Disposable {
   }
 
   /**
-   * Get the account that is currently signed in
-   * @returns
+   * Retrieves the M365 authentication session for the current account.
+   * If the account is not available, it tries to fetch the account information using the 'status' command.
+   * If successful, it returns a new M365AuthenticationSession object with the account details.
+   * If unsuccessful, it logs an error message and returns undefined.
+   * If the account is already available, it returns a new M365AuthenticationSession object with the account details.
+   *
+   * @returns A Promise that resolves to an M365AuthenticationSession object or undefined.
    */
   public async getAccount(): Promise<M365AuthenticationSession | undefined> {
     if (!EnvironmentInformation.account) {

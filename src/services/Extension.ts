@@ -4,12 +4,13 @@ import { ExtensionContext, ExtensionMode, SecretStorage } from 'vscode';
 export class Extension {
   private static instance: Extension;
 
-  // eslint-disable-next-line no-unused-vars
   private constructor(private ctx: ExtensionContext) {}
 
   /**
-   * Creates the singleton instance for the extension.
-   * @param ctx
+   * Gets the instance of the Extension class.
+   * If an instance doesn't exist, it creates a new one using the provided ExtensionContext.
+   * @param ctx - The ExtensionContext object.
+   * @returns The instance of the Extension class.
    */
   public static getInstance(ctx?: ExtensionContext): Extension {
     if (!Extension.instance && ctx) {
@@ -20,49 +21,56 @@ export class Extension {
   }
 
   /**
-   * Get the name of the extension
+   * Gets the name of the extension.
+   * @returns The name of the extension.
    */
   public get name(): string {
     return this.ctx.extension.packageJSON.name;
   }
 
   /**
-   * Get the display name of the extension
+   * Gets the display name of the extension.
+   * @returns The display name as a string.
    */
   public get displayName(): string {
     return this.ctx.extension.packageJSON.displayName;
   }
 
   /**
-   * Returns the extension's version
+   * Gets the version of the extension.
+   * @returns The version string.
    */
   public get version(): string {
     return this.ctx.extension.packageJSON.version;
   }
 
   /**
-   * Check if the extension is in production/development mode
+   * Determines whether the extension is running in production mode.
+   * @returns True if the extension is running in production mode, false otherwise.
    */
   public get isProductionMode(): boolean {
     return this.ctx.extensionMode === ExtensionMode.Production;
   }
 
   /**
-   * Get the extension's subscriptions
+   * Returns the subscriptions of the Extension.
+   * @returns An array of disposable objects representing the subscriptions.
    */
   public get subscriptions(): { dispose(): any; }[] {
     return this.ctx.subscriptions;
   }
 
   /**
-   * Get the extension's secrets
+   * Gets the secret storage.
+   * @returns The secret storage.
    */
   public get secrets(): SecretStorage {
     return this.ctx.secrets;
   }
 
   /**
-   * Get the extension's path
+   * Gets the path of the extension.
+   * @returns The path of the extension.
    */
   public get extensionPath(): string {
     return this.ctx.extensionPath;

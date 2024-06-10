@@ -34,14 +34,27 @@ export class Scaffolder {
     );
   }
 
+  /**
+   * Creates a project using the provided input.
+   * @param input - The input for the project creation.
+   */
   public static async createProject(input: SpfxScaffoldCommandInput) {
     Scaffolder.scaffold(input, true);
   }
 
+  /**
+   * Adds a component to the project.
+   * @param input - The input for the SpfxAddComponentCommand.
+   */
   public static async addComponentToProject(input: SpfxAddComponentCommandInput) {
     Scaffolder.scaffold(input, false);
   }
 
+  /**
+   * Uses the provided sample to create a new project.
+   * @param sample - The sample to use for creating the project.
+   * @returns A Promise that resolves when the project creation is complete.
+   */
   public static async useSample(sample: Sample) {
     Logger.info(`Start using sample ${sample.name}`);
 
@@ -92,6 +105,9 @@ export class Scaffolder {
     });
   }
 
+  /**
+   * Displays a dialog to pick a folder and sends the selected folder path to the webview.
+   */
   public static async pickFolder() {
     const folder = await window.showOpenDialog({
       canSelectFolders: true,
@@ -105,6 +121,11 @@ export class Scaffolder {
     }
   }
 
+  /**
+   * Validates the solution name by checking if a folder with the same name already exists.
+   * @param folderPath - The path of the folder where the solution will be created.
+   * @param solutionNameInput - The input solution name to be validated.
+   */
   public static validateSolutionName(folderPath: string, solutionNameInput: string) {
     if (existsSync(join(folderPath, solutionNameInput))) {
       PnPWebview.postMessage(WebviewCommand.toWebview.validateSolutionName, false);
@@ -114,6 +135,11 @@ export class Scaffolder {
     PnPWebview.postMessage(WebviewCommand.toWebview.validateSolutionName, true);
   }
 
+  /**
+   * Validates the component name for a given component type.
+   * @param componentType - The type of the component.
+   * @param componentNameInput - The input component name to validate.
+   */
   public static async validateComponentName(componentType: ComponentType, componentNameInput: string) {
     if (await Scaffolder.componentFolderExists(componentType, componentNameInput)) {
       PnPWebview.postMessage(WebviewCommand.toWebview.validateComponentName, false);
@@ -123,6 +149,12 @@ export class Scaffolder {
     PnPWebview.postMessage(WebviewCommand.toWebview.validateComponentName, true);
   }
 
+  /**
+   * Scaffold method for creating a new project.
+   * @param input - The input for the scaffold command.
+   * @param isNewProject - A boolean indicating whether it's a new project or not.
+   * @returns A Promise that resolves when the scaffold process is complete.
+   */
   private static async scaffold(input: SpfxScaffoldCommandInput | SpfxAddComponentCommandInput, isNewProject: boolean) {
     Logger.info('Start creating a new project');
 
@@ -208,6 +240,10 @@ export class Scaffolder {
     });
   }
 
+  /**
+   * Retrieves the folder path where the project will be created.
+   * @returns A Promise that resolves to the selected folder path, or undefined if no folder is selected.
+   */
   private static async getFolderPath(): Promise<string | undefined> {
     const wsFolder = await Folders.getWorkspaceFolder();
     const folderOptions: QuickPickItem[] = [{
@@ -248,6 +284,10 @@ export class Scaffolder {
     return folderPath;
   }
 
+  /**
+   * Displays the create project form in a webview.
+   * @returns A promise that resolves when the form is displayed.
+   */
   private static async showCreateProjectForm() {
     PnPWebview.open(WebViewType.scaffoldForm, {
       isNewProject: true,
@@ -255,6 +295,10 @@ export class Scaffolder {
     });
   }
 
+  /**
+   * Displays the add project form in a PnPWebview.
+   * @returns A promise that resolves when the form is displayed.
+   */
   private static async showAddProjectForm() {
     PnPWebview.open(WebViewType.scaffoldForm, {
       isNewProject: false,
@@ -262,6 +306,10 @@ export class Scaffolder {
     });
   }
 
+  /**
+   * Retrieves the version of Node.js installed on the system.
+   * @returns The version of Node.js as a string.
+   */
   private static getNodeVersion(): string {
     const output = execSync('node --version', { shell: TerminalCommandExecuter.shell });
     const match = /v(?<major_version>\d+)\.(?<minor_version>\d+)\.(?<patch_version>\d+)/gm.exec(output.toString());
@@ -269,6 +317,11 @@ export class Scaffolder {
     return nodeVersion;
   }
 
+  /**
+   * Creates a project file with the given content and opens the folder in Visual Studio Code.
+   * @param folderPath - The path of the folder where the project file will be created.
+   * @param content - The content of the project file.
+   */
   private static async createProjectFileAndOpen(folderPath: string, content: any) {
     if (content) {
       writeFileSync(join(folderPath, PROJECT_FILE), content, { encoding: 'utf8' });
@@ -281,6 +334,11 @@ export class Scaffolder {
     }
   }
 
+  /**
+   * Retrieves the solution name from the user.
+   * @param folderPath - The path of the folder where the solution will be created.
+   * @returns A promise that resolves to the solution name entered by the user, or undefined if no solution name is provided.
+   */
   private static async getSolutionName(folderPath: string): Promise<string | undefined> {
     return await window.showInputBox({
       title: 'What is your solution name?',
@@ -301,6 +359,12 @@ export class Scaffolder {
     });
   }
 
+  /**
+   * Checks if a component folder exists in the workspace.
+   * @param type - The type of the component.
+   * @param value - The value of the component.
+   * @returns A boolean indicating whether the component folder exists.
+   */
   private static async componentFolderExists(type: ComponentType, value: string) {
     let componentFolder = '';
     switch (type) {
