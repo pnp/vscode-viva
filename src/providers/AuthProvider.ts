@@ -185,7 +185,6 @@ export class AuthProvider implements AuthenticationProvider, Disposable {
    * If successful, it returns a new M365AuthenticationSession object with the account details.
    * If unsuccessful, it logs an error message and returns undefined.
    * If the account is already available, it returns a new M365AuthenticationSession object with the account details.
-   *
    * @returns A Promise that resolves to an M365AuthenticationSession object or undefined.
    */
   public async getAccount(): Promise<M365AuthenticationSession | undefined> {
