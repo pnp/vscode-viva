@@ -10,15 +10,11 @@ import { Messenger } from '@estruyf/vscode/dist/client';
 export interface IGeneralInfoProps {
     isNewProject: boolean;
     folderPath: string;
-    // eslint-disable-next-line no-unused-vars
     setFolderPath: (folderPath: string) => void;
     solutionName: string;
-    // eslint-disable-next-line no-unused-vars
     setSolutionName: (value: string) => void;
     isValidSolutionName: boolean | null | undefined;
-    // eslint-disable-next-line no-unused-vars
     setIsValidSolutionName: (value: boolean | null) => void;
-    // eslint-disable-next-line no-unused-vars
     setComponentType: (componentType: ComponentType) => void;
     componentTypes: { value: string; name: string }[];
 }

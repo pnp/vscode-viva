@@ -11,19 +11,14 @@ interface IComponentDetailsStepProps {
     componentType: ComponentType;
     componentName: string;
     isValidComponentName: boolean | null | undefined;
-    // eslint-disable-next-line no-unused-vars
     setComponentName: (name: string) => void;
-    // eslint-disable-next-line no-unused-vars
     setIsValidComponentName: (value: boolean | null) => void;
     nodeVersion: string;
     frameworkType: string;
-    // eslint-disable-next-line no-unused-vars
     setFrameworkType: (type: string) => void;
     extensionType: ExtensionType;
-    // eslint-disable-next-line no-unused-vars
     setExtensionType: (type: ExtensionType) => void;
     aceType: string;
-    // eslint-disable-next-line no-unused-vars
     setAceType: (type: string) => void;
 }
 

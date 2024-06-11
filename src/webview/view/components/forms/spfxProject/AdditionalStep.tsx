@@ -6,16 +6,12 @@ import { PackageSelector } from './PackageSelector';
 
 interface AdditionalStepProps {
     shouldRunInit: boolean;
-    // eslint-disable-next-line no-unused-vars
     setShouldRunInit: (value: boolean) => void;
     shouldInstallReusablePropertyPaneControls: boolean;
-    // eslint-disable-next-line no-unused-vars
     setShouldInstallReusablePropertyPaneControls: (value: boolean) => void;
     shouldInstallReusableReactControls: boolean;
-    // eslint-disable-next-line no-unused-vars
     setShouldInstallReusableReactControls: (value: boolean) => void;
     shouldInstallPnPJs: boolean;
-    // eslint-disable-next-line no-unused-vars
     setShouldInstallPnPJs: (value: boolean) => void;
 }
 

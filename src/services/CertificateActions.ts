@@ -7,6 +7,11 @@ import { Uri, workspace } from 'vscode';
 
 export class CertificateActions {
 
+  /**
+   * Generates a certificate and saves it as a PFX file in the workspace.
+   * @param certPassword - The password to protect the generated certificate.
+   * @returns A base64-encoded string representation of the generated PFX file.
+   */
   public static async generateCertificate(certPassword: string): Promise<string> {
     try {
       const keys = pki.rsa.generateKeyPair(2048);

@@ -5,22 +5,24 @@ import { CommandOutput, executeCommand } from '@pnp/cli-microsoft365';
 export class CliExecuter {
 
   /**
-   * Execute the command
-   * @param command
-   * @param args
-   * @returns
+   * Executes a CLI command and returns the command output.
+   * @param command - The CLI command to execute.
+   * @param output - The desired output format of the command. Defaults to 'text'.
+   * @param args - Additional arguments to pass to the command.
+   * @returns A promise that resolves to the command output.
    */
   public static async execute(command: string, output: string | undefined = 'text', args?: any): Promise<CommandOutput> {
     return await CliExecuter.tryExecuteCommand(command, output, args);
   }
 
   /**
-   * Try to execute the command and log the output to the output channel.
-   * @param command
-   * @returns
+   * Executes a CLI command asynchronously and returns the command output.
+   * @param command The CLI command to execute.
+   * @param output The type of output to expect from the command (default: 'text').
+   * @param args Additional arguments to pass to the command.
+   * @returns A Promise that resolves to the command output.
    */
   private static async tryExecuteCommand(command: string, output: string | undefined = 'text', args?: any): Promise<CommandOutput> {
-    // eslint-disable-next-line no-unused-vars
     return await new Promise((resolve: (res: CommandOutput) => void, reject: (e: Error) => void): void => {
       Logger.getInstance();
       let cmdOutput: string = '';

@@ -4,8 +4,9 @@ import { workspace, window, WorkspaceFolder } from 'vscode';
 export class Folders {
 
   /**
-  * Retrieve the workspace folder
-  */
+   * Retrieves the workspace folder.
+   * @returns A promise that resolves to the workspace folder, or undefined if there are no workspace folders or the user cancels the selection.
+   */
   public static async getWorkspaceFolder(): Promise<WorkspaceFolder | undefined> {
     let folder: WorkspaceFolder | undefined;
 
