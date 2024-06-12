@@ -267,7 +267,7 @@ You can use the settings to change which Node.js version manager you want to use
 ## 🧪 Preview features
 
 >  [!WARNING]
->  Features described in this section are part of a pre-release and are considered as an early beta feature. They may change or be removed in a future major or minor release. To get the pre-release version of the extension you need to opt-in, please refer to the guidance in the [wiki](https://github.com/pnp/vscode-viva/wiki/1.-Get-started#-pre-release).
+>  Features described in this section are considered as an early beta feature. They may change or be removed in a future major or minor release.
 
 ### 1️⃣ SPFx Toolkit GitHub Chat Participant 
 
@@ -284,14 +284,13 @@ Now you may use SPFx Toolkit as a chat participant in GitHub Copilot chat extens
 Currently, we support the following commands:
 - `/setup` - that is dedicated to providing information on how to setup your local workspace for SharePoint Framework development
 - `/new` - that may be used to get guidance on how to create a new solution or find and reuse an existing sample from the PnP SPFx sample gallery
-- `/code` - that is fine-tuned to provide help in coding your SharePoint Framework project
-- `/action` - that will provide you additional boosters like validating the correctness of your SPFx project, scaffolding a CI/CD workflow, or renaming your project, and many more.
+- `/code` - that is fine-tuned to provide help in coding your SharePoint Framework project and provides additional boosters like validating the correctness of your SPFx project, scaffolding a CI/CD workflow, or renaming your project, and many more.
 
 > [!IMPORTANT]  
 > In order for this feature to work you need to meet the following requirements:
 > - Use the [Visual Studio Code Insiders](https://code.visualstudio.com/insiders/) release
 > - Use the pre-release version of the [GitHub Copilot Chat](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot-chat) extension
-> - Use pre-release of [SPFx Toolkit](https://marketplace.visualstudio.com/items?itemName=m365pnp.viva-connections-toolkit)
+> - Use latest version of [SPFx Toolkit](https://marketplace.visualstudio.com/items?itemName=m365pnp.viva-connections-toolkit)
 
 [Check out our docs for more details](https://github.com/pnp/vscode-viva/wiki/8.-Preview-features)
 
