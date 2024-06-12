@@ -290,8 +290,7 @@ export class Scaffolder {
    */
   private static async showCreateProjectForm() {
     PnPWebview.open(WebViewType.scaffoldForm, {
-      isNewProject: true,
-      nodeVersion: Scaffolder.getNodeVersion()
+      isNewProject: true
     });
   }
 
@@ -301,20 +300,8 @@ export class Scaffolder {
    */
   private static async showAddProjectForm() {
     PnPWebview.open(WebViewType.scaffoldForm, {
-      isNewProject: false,
-      nodeVersion: Scaffolder.getNodeVersion()
+      isNewProject: false
     });
-  }
-
-  /**
-   * Retrieves the version of Node.js installed on the system.
-   * @returns The version of Node.js as a string.
-   */
-  private static getNodeVersion(): string {
-    const output = execSync('node --version', { shell: TerminalCommandExecuter.shell });
-    const match = /v(?<major_version>\d+)\.(?<minor_version>\d+)\.(?<patch_version>\d+)/gm.exec(output.toString());
-    const nodeVersion = null === match ? '18' : match.groups?.major_version!;
-    return nodeVersion;
   }
 
   /**

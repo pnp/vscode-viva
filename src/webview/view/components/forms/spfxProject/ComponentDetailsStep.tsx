@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useEffect, useCallback } from 'react';
 import { VSCodeDropdown, VSCodeOption, VSCodeTextField } from '@vscode/webview-ui-toolkit/react';
-import { ComponentType, ComponentTypes, WebviewCommand, ExtensionType, ExtensionTypes, FrameworkTypes, AdaptiveCardTypesNode16, AdaptiveCardTypesNode18 } from '../../../../../constants';
+import { ComponentType, ComponentTypes, WebviewCommand, ExtensionType, ExtensionTypes, FrameworkTypes, AdaptiveCardTypes } from '../../../../../constants';
 import { StepHeader } from './StepHeader';
 import { Messenger } from '@estruyf/vscode/dist/client';
 
@@ -13,7 +13,6 @@ interface IComponentDetailsStepProps {
     isValidComponentName: boolean | null | undefined;
     setComponentName: (name: string) => void;
     setIsValidComponentName: (value: boolean | null) => void;
-    nodeVersion: string;
     frameworkType: string;
     setFrameworkType: (type: string) => void;
     extensionType: ExtensionType;
@@ -29,7 +28,6 @@ export const ComponentDetailsStep: React.FunctionComponent<IComponentDetailsStep
     isValidComponentName,
     setComponentName,
     setIsValidComponentName,
-    nodeVersion,
     frameworkType,
     setFrameworkType,
     extensionType,
@@ -101,9 +99,8 @@ export const ComponentDetailsStep: React.FunctionComponent<IComponentDetailsStep
                             Which adaptive card extension template do you want to use?
                         </label>
                         <VSCodeDropdown className={'w-full'} value={aceType} onChange={(e: any) => setAceType(e.target.value)}>
-                            {nodeVersion === '16' ?
-                                AdaptiveCardTypesNode16.map((type) => <VSCodeOption key={type.value} value={type.value}>{type.name}</VSCodeOption>) :
-                                AdaptiveCardTypesNode18.map((type) => <VSCodeOption key={type.value} value={type.value}>{type.name}</VSCodeOption>)
+                            {
+                                AdaptiveCardTypes.map((type) => <VSCodeOption key={type.value} value={type.value}>{type.name}</VSCodeOption>)
                             }
                         </VSCodeDropdown>
                     </div>

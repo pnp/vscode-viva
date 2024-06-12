@@ -60,10 +60,6 @@ export class PnPWebview {
         messageData.isNewProject = data.isNewProject;
       }
 
-      if (data && data.nodeVersion) {
-        messageData.nodeVersion = data.nodeVersion;
-      }
-
       PnPWebview.postMessage(WebviewCommand.toWebview.viewType, messageData);
     }
   }
@@ -105,10 +101,6 @@ export class PnPWebview {
 
     if (data && data.isNewProject !== undefined) {
       webViewData.isNewProject = data.isNewProject;
-    }
-
-    if (data && data.nodeVersion) {
-      webViewData.nodeVersion = data.nodeVersion;
     }
 
     PnPWebview.webview.webview.html = PnPWebview.getWebviewContent(PnPWebview.webview.webview, webViewData);
