@@ -1,5 +1,5 @@
 import * as vscode from 'vscode';
-import { Commands, promptActionContext, promptCodeContext, promptContext, promptNewContext, promptSetupContext } from '../constants';
+import { Commands, promptCodeContext, promptContext, promptNewContext, promptSetupContext } from '../constants';
 
 const MODEL_SELECTOR: vscode.LanguageModelChatSelector = { vendor: 'copilot', family: 'gpt-4' };
 
@@ -7,10 +7,10 @@ export class PromptHandlers {
 
   public static async handle(request: vscode.ChatRequest, context: vscode.ChatContext, stream: vscode.ChatResponseStream, token: vscode.CancellationToken): Promise<any> {
     stream.progress(PromptHandlers.getRandomProgressMessage());
-    const chatCommand = (request.command && ['setup', 'new', 'code', 'action'].indexOf(request.command) > -1) ? request.command : '';
+    const chatCommand = (request.command && ['setup', 'new', 'code'].indexOf(request.command) > -1) ? request.command : '';
 
-    const messages = [vscode.LanguageModelChatMessage.User(promptContext)];
-    messages.push(vscode.LanguageModelChatMessage.User(PromptHandlers.getChatCommandPrompt(chatCommand)));
+    const messages = [vscode.LanguageModelChatMessage.Assistant(promptContext)];
+    messages.push(vscode.LanguageModelChatMessage.Assistant(PromptHandlers.getChatCommandPrompt(chatCommand)));
     messages.push(vscode.LanguageModelChatMessage.User(request.prompt));
     const [model] = await vscode.lm.selectChatModels(MODEL_SELECTOR);
     try {
@@ -21,7 +21,14 @@ export class PromptHandlers {
       PromptHandlers.getChatCommandButtons(chatCommand).forEach(button => stream.button(button));
       return { metadata: { command: chatCommand } };
     } catch (err) {
-      stream.markdown('...It seems that something is not working as expected. Please try again later.');
+      if (err instanceof vscode.LanguageModelError) {
+        if (err.message.includes('off_topic')) {
+          stream.markdown('...I am sorry, I am not able to help with that. Please try again with a different question.');
+        }
+      } else {
+        stream.markdown('...It seems that something is not working as expected. Please try again later.');
+      }
+
       return { metadata: { command: '' } };
     }
   }
@@ -47,8 +54,7 @@ export class PromptHandlers {
           title: vscode.l10n.t('View samples'),
         }];
       case 'code':
-        return [];
-      case 'action':
+        // TODO: make visible only in context of a project
         return [{
           command: Commands.upgradeProject,
           title: vscode.l10n.t('Get upgrade guidance to latest SPFx version'),
@@ -78,8 +84,6 @@ export class PromptHandlers {
         return promptNewContext;
       case 'code':
         return promptCodeContext;
-      case 'action':
-        return promptActionContext;
       default:
         return '';
     }

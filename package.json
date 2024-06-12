@@ -66,10 +66,6 @@
 					{
 						"name": "code",
 						"description": "Let's write some SPFx code"
-					},
-					{
-						"name": "action",
-						"description": "Boost your SharePoint Framework project"
 					}
 				]
 			}
