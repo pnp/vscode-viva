@@ -21,7 +21,6 @@ if (elm) {
   const appCatalogUrls = elm.getAttribute('data-appCatalogUrls');
   const type = elm.getAttribute('data-type');
   const isNewProject = elm.getAttribute('data-isNewProject');
-  const nodeVersion = elm.getAttribute('data-nodeVersion');
   const data: any = {};
 
   if (spfxPackageName) {
@@ -34,10 +33,6 @@ if (elm) {
 
   if (isNewProject !== undefined) {
     data.isNewProject = isNewProject;
-  }
-
-  if (nodeVersion) {
-    data.nodeVersion = nodeVersion;
   }
 
   const routeEntry = Object.keys(routeEntries).findIndex(key => key === type);
