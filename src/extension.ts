@@ -1,6 +1,7 @@
 import { PnPWebview } from './webview/PnPWebview';
 import { CommandPanel } from './panels/CommandPanel';
-import { workspace, window, ThemeIcon, commands, ExtensionContext } from 'vscode';
+import * as vscode from 'vscode';
+import { workspace, window, ThemeIcon, commands } from 'vscode';
 import { PROJECT_FILE, Scaffolder } from './services/Scaffolder';
 import { Extension } from './services/Extension';
 import { Dependencies } from './services/Dependencies';
@@ -8,10 +9,15 @@ import { unlinkSync, readFileSync } from 'fs';
 import { TerminalCommandExecuter } from './services/TerminalCommandExecuter';
 import { AuthProvider } from './providers/AuthProvider';
 import { CliActions } from './services/CliActions';
-import { ProjectFileContent } from './constants';
+import { PromptHandlers } from './chat/PromptHandlers';
+import { CHAT_PARTICIPANT_NAME, ProjectFileContent } from './constants';
 
 
-export async function activate(context: ExtensionContext) {
+export async function activate(context: vscode.ExtensionContext) {
+
+	const chatParticipant = vscode.chat.createChatParticipant(CHAT_PARTICIPANT_NAME, PromptHandlers.handle);
+	chatParticipant.iconPath = vscode.Uri.joinPath(context.extensionUri, 'assets', 'images', 'parker-pnp.png');
+
 	Extension.getInstance(context);
 
 	TerminalCommandExecuter.register();

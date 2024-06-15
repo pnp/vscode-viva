@@ -15,7 +15,6 @@ export interface IAppProps {
   data: any | null
 }
 
-// eslint-disable-next-line no-unused-vars
 export const App: React.FunctionComponent<IAppProps> = ({ url, data }: React.PropsWithChildren<IAppProps>) => {
   const navigate = useNavigate();
 

@@ -4,7 +4,6 @@ import { ChevronDownIcon } from '../icons/ChevronDownIcon';
 
 
 export interface IMultiSelectProps {
-  // eslint-disable-next-line no-unused-vars
   onChange: (event: any, option?: IDropdownOption) => void;
   options: IDropdownOption[];
   label?: string;

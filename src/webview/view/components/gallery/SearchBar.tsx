@@ -7,13 +7,9 @@ import { MultiSelect } from '../controls';
 
 
 export interface ISearchBarProps {
-  // eslint-disable-next-line no-unused-vars
   onSearchTextboxChange: (event: any) => void;
-  // eslint-disable-next-line no-unused-vars
   onFilterBySPFxVersionChange: (event: any, option?: IDropdownOption) => void;
-  // eslint-disable-next-line no-unused-vars
   onFilterByComponentTypeChange: (event: any, option?: IDropdownOption) => void;
-  // eslint-disable-next-line no-unused-vars
   onFilterOnlyScenariosChange: (event: any) => void;
   initialQuery?: string;
   spfxVersions: IDropdownOption[];

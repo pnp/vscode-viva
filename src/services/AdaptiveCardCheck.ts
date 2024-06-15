@@ -5,8 +5,11 @@ import { parseYoRc } from '../utils/parseYoRc';
 
 
 export class AdaptiveCardCheck {
+
   /**
-   * Check if yo-rc has ACE component
+   * Validates the ACE (Adaptive Card Extension) component.
+   * If the required extension is not installed, prompts the user to install it.
+   * @returns A promise that resolves when the validation is complete.
    */
   public static async validateACEComponent() {
     try {

@@ -24,7 +24,7 @@ jobs:
           path: vscode-viva
         
       - name: Install the dependencies
-        run: npm install
+        run: npm ci
         working-directory: vscode-viva
 
       - name: Checkout cli-microsoft365
@@ -39,7 +39,7 @@ jobs:
           dir
 
       - name: Restore dependencies for cli-microsoft365
-        run: npm install
+        run: npm i
         working-directory: cli-microsoft365
 
       - name: Build cli-microsoft365

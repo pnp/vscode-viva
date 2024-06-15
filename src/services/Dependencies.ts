@@ -25,7 +25,9 @@ export class Dependencies {
   }
 
   /**
-   * Validate if all the required dependencies are installed
+   * Validates the dependencies required for SPFx development.
+   * Checks the Node.js version and npm dependencies.
+   * Displays notifications for missing or incompatible dependencies.
    */
   public static async validate() {
     await window.withProgress({
@@ -90,7 +92,7 @@ export class Dependencies {
   }
 
   /**
-   * Install all the dependencies
+   * Installs the dependencies by running the npm install command in a terminal.
    */
   public static install() {
     const terminal = window.createTerminal({
@@ -105,7 +107,8 @@ export class Dependencies {
   }
 
   /**
-   * Check node version
+   * Checks if the installed version of Node.js is valid.
+   * @returns Returns true if the installed version of Node.js is valid, otherwise false.
    */
   private static isValidNodeJs() {
     try {
@@ -145,7 +148,11 @@ export class Dependencies {
   }
 
   /**
-   * split dependency into name and version
+   * Splits a dependency string into an array of strings.
+   * If the dependency starts with '@', it splits the string into two parts: the scope and the package name.
+   * If the dependency does not start with '@', it splits the string into two parts: the package name and the version.
+   * @param dependency - The dependency string to split.
+   * @returns An array of strings containing the split parts of the dependency.
    */
   private static splitDependency(dependency: string): string[] {
     if (dependency.startsWith('@')) {

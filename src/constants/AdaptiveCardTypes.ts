@@ -1,19 +1,4 @@
-export const AdaptiveCardTypesNode16 = [
-  {
-    name: 'Basic Card Template',
-    value: 'Basic'
-  },
-  {
-    name: 'Image Card Template',
-    value: 'Image'
-  },
-  {
-    name: 'Primary Text Template',
-    value: 'PrimaryText'
-  }
-];
-
-export const AdaptiveCardTypesNode18 = [
+export const AdaptiveCardTypes = [
   {
     name: 'Generic Card Template',
     value: 'Generic'
@@ -21,5 +6,9 @@ export const AdaptiveCardTypesNode18 = [
   {
     name: 'Search Query Modifier',
     value: 'Search'
+  },
+  {
+    name: 'Data Visualization Card Template',
+    value: 'DataVisualization'
   }
 ];
