@@ -36,7 +36,14 @@ export class PromptHandlers {
       PromptHandlers.getChatCommandButtons(chatCommand, query).forEach(button => stream.button(button));
       return { metadata: { command: chatCommand } };
     } catch (err) {
-      stream.markdown('...It seems that something is not working as expected. Please try again later.');
+      if (err instanceof vscode.LanguageModelError) {
+        if (err.message.includes('off_topic')) {
+          stream.markdown('...I am sorry, I am not able to help with that. Please try again with a different question.');
+        }
+      } else {
+        stream.markdown('...It seems that something is not working as expected. Please try again later.');
+      }
+
       return { metadata: { command: '' } };
     }
   }

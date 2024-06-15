@@ -280,7 +280,7 @@ export class CliActions {
    * @returns A promise that resolves to an array of objects containing the URL and title of each tenant-wide extension,
    *          or undefined if no extensions are found.
    */
-  public static async getTenantWideExtensions(tenantAppCatalogUrl: string): Promise<{ Url: string, Title: string }[] | undefined> {
+  public static async getTenantWideExtensions(tenantAppCatalogUrl: string): Promise<{Url: string, Title: string}[] | undefined> {
     const origin = new URL(tenantAppCatalogUrl).origin;
     const commandOptions: any = {
       listUrl: `${tenantAppCatalogUrl.replace(origin, '')}/Lists/TenantWideExtensions`,
@@ -311,12 +311,8 @@ export class CliActions {
    * @returns A promise that resolves to an array of objects containing the title and URL of the health information.
    *          Returns undefined if there is no health information available.
    */
-  public static async getTenantHealthInfo(): Promise<{ Title: string, Url: string }[] | undefined> {
-    try {
-      const healthInfo = (await CliExecuter.execute('tenant serviceannouncement health list', 'json')).stdout || undefined;
-      if (!healthInfo) {
-        return undefined;
-      }
+  public static async getTenantHealthInfo(): Promise<{Title: string, Url: string}[] | undefined> {
+    const healthInfo = (await CliExecuter.execute('tenant serviceannouncement health list', 'json')).stdout || undefined;
 
       const healthInfoJson: any[] = JSON.parse(healthInfo);
       const healthInfoList = healthInfoJson.filter(service => service.status !== 'serviceOperational').map((service) => {
@@ -787,5 +783,38 @@ export class CliActions {
         Notifications.error(message);
       }
     });
+  }
+
+  /**
+   * Serves the project by executing the specified configuration using Gulp.
+   * Prompts the user to select a configuration from the serve.json file.
+   */
+  public static async serveProject() {
+    const wsFolder = Folders.getWorkspaceFolder();
+    if (!wsFolder) {
+      return;
+    }
+
+    const serveFiles = await workspace.findFiles('config/serve.json', '**/node_modules/**');
+    const serveFile = serveFiles && serveFiles.length > 0 ? serveFiles[0] : null;
+
+    if (!serveFile) {
+      return;
+    }
+
+    const serveFileContents = readFileSync(serveFile.fsPath, 'utf8');
+    const serveFileData: ServeConfig = JSON.parse(serveFileContents);
+    const configNames = Object.keys(serveFileData.serveConfigurations);
+
+    const answer = await window.showQuickPick(configNames, {
+      title: 'Select the configuration to serve',
+      ignoreFocusOut: true
+    });
+
+    if (!answer) {
+      return;
+    }
+
+    commands.executeCommand(Commands.executeTerminalCommand, `gulp serve --config=${answer}`);
   }
 }
