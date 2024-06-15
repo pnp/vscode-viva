@@ -11,8 +11,9 @@ export class DebuggerCheck {
   private static servePlaceholderUrl = 'https://contoso.sharepoint.com';
 
   /**
-   * Check if the URL is used in the launch.json file
-   * @param url
+   * Validates the provided URL by checking the launch.json and serve.json files.
+   * If any errors occur during validation, they will be logged using the Logger.
+   * @param url - The URL to validate.
    */
   public static async validateUrl(url: string) {
     try {
@@ -29,9 +30,8 @@ export class DebuggerCheck {
   }
 
   /**
-   * Validate the launch.json file
-   * @param url
-   * @returns
+   * Validates the launch configuration and updates the placeholder URL with the provided URL.
+   * @param url The URL to update the placeholder URL with.
    */
   private static async validateLaunch(url: string) {
     let launchFiles = await workspace.findFiles('.vscode/launch.json', '**/node_modules/**');
@@ -74,9 +74,10 @@ export class DebuggerCheck {
   }
 
   /**
-   * Validate the serve.json file
-   * @param url
-   * @returns
+   * Validates the serve configuration by checking if the initialPage and serveConfigurations
+   * use placeholder URLs and prompts the user to update them with the provided URL.
+   * If the user chooses to update, the URLs are modified and the serve configuration file is saved.
+   * @param url - The URL to be used as a replacement for the placeholder URLs.
    */
   private static async validateServe(url: string) {
     let serveFiles = await workspace.findFiles('config/serve.json', '**/node_modules/**');

@@ -1,5 +1,21 @@
 # Change Log
 
+## [3.3.0] - 2024-06-16
+
+- Refactored scaffolding form to smaller components
+- Code house keeping
+- Added missing ACE template DataVisualization for SPFx 1.19.0
+- Added GitHub Copilot Chat participant for SPFx Toolkit
+
+## [3.2.0] - 2024-05-12
+
+- Added support for SPFx 1.19.0
+
+## [3.1.0] - 2024-04-28
+
+- Refactor the action naming
+- Fixed bug when there's a space in the folder path causing serve
+
 ## [3.0.0] - 2024-03-31
 
 - Added VS Code extension walkthrough

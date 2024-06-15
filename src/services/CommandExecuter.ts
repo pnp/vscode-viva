@@ -7,11 +7,11 @@ import { Logger } from './Logger';
 export class Executer {
 
   /**
-   * Execute the command
-   * @param workingDirectory
-   * @param command
-   * @param args
-   * @returns
+   * Executes a command in the specified working directory with optional arguments.
+   * @param workingDirectory The working directory in which to execute the command.
+   * @param command The command to execute.
+   * @param args Optional arguments to pass to the command.
+   * @returns A promise that resolves to the exit code of the command.
    */
   public static async executeCommand(workingDirectory: string, command: string, args: string[] = []): Promise<number> {
     const result: CommandResult = await Executer.tryExecuteCommand(workingDirectory, command, ...args);
@@ -19,14 +19,13 @@ export class Executer {
   }
 
   /**
-   * Try to execute the command and log the output to the output channel.
-   * @param workingDirectory
-   * @param command
-   * @param args
-   * @returns
+   * Executes a command asynchronously and returns a promise that resolves to a CommandResult.
+   * @param workingDirectory - The working directory for the command execution.
+   * @param command - The command to execute.
+   * @param args - The arguments to pass to the command.
+   * @returns A promise that resolves to a CommandResult.
    */
   private static async tryExecuteCommand(workingDirectory: string | undefined, command: string, ...args: string[]): Promise<CommandResult> {
-    // eslint-disable-next-line no-unused-vars
     return await new Promise((resolve: (res: CommandResult) => void, reject: (e: Error) => void): void => {
       Logger.getInstance();
       let cmdOutput: string = '';

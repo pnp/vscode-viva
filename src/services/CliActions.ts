@@ -46,6 +46,10 @@ export class CliActions {
     );
   }
 
+  /**
+   * Retrieves the URLs of the app catalogs in the environment.
+   * @returns A promise that resolves to an array of app catalog URLs, or undefined if no app catalogs are found.
+   */
   public static async appCatalogUrlsGet(): Promise<string[] | undefined> {
     const appCatalogUrls: string[] = [];
     const tenantAppCatalog = (await CliExecuter.execute('spo tenant appcatalogurl get', 'json')).stdout || undefined;
@@ -64,6 +68,12 @@ export class CliActions {
     return EnvironmentInformation.appCatalogUrls;
   }
 
+  /**
+   * Retrieves the tenant-wide extensions from the specified tenant app catalog URL.
+   * @param tenantAppCatalogUrl The URL of the tenant app catalog.
+   * @returns A promise that resolves to an array of objects containing the URL and title of each tenant-wide extension,
+   *          or undefined if no extensions are found.
+   */
   public static async getTenantWideExtensions(tenantAppCatalogUrl: string): Promise<{Url: string, Title: string}[] | undefined> {
     const origin = new URL(tenantAppCatalogUrl).origin;
     const commandOptions: any = {
@@ -86,6 +96,11 @@ export class CliActions {
     return tenantWideExtensionList;
   }
 
+  /**
+   * Retrieves the health information of the tenant services.
+   * @returns A promise that resolves to an array of objects containing the title and URL of the health information.
+   *          Returns undefined if there is no health information available.
+   */
   public static async getTenantHealthInfo(): Promise<{Title: string, Url: string}[] | undefined> {
     const healthInfo = (await CliExecuter.execute('tenant serviceannouncement health list', 'json')).stdout || undefined;
 
@@ -103,6 +118,11 @@ export class CliActions {
     return healthInfoList;
   }
 
+  /**
+   * Generates a workflow form based on the provided input.
+   * @param input - The input for generating the workflow form.
+   * @returns A Promise that resolves when the workflow form generation is complete.
+   */
   public static async generateWorkflowForm(input: GenerateWorkflowCommandInput) {
     // Change the current working directory to the root of the Project
     const wsFolder = await Folders.getWorkspaceFolder();
@@ -132,7 +152,6 @@ export class CliActions {
         location: ProgressLocation.Notification,
         title: 'Creating app registration...',
         cancellable: true
-        // eslint-disable-next-line no-unused-vars
       }, async (progress: Progress<{ message?: string; increment?: number }>) => {
         try {
           const commandOptions: any = {};
@@ -171,7 +190,6 @@ export class CliActions {
       location: ProgressLocation.Notification,
       title: `Generating ${input.workflowType === WorkflowType.gitHub ? 'GitHub Workflow' : 'Azure DevOps Pipeline'}...`,
       cancellable: true
-      // eslint-disable-next-line no-unused-vars
     }, async (progress: Progress<{ message?: string; increment?: number }>) => {
       try {
         const commandOptions: any = {};
@@ -224,6 +242,10 @@ export class CliActions {
     });
   }
 
+  /**
+   * Upgrades the project by generating the upgrade steps and displaying them in a Markdown preview.
+   * @private
+   */
   private static async upgrade() {
     // Change the current working directory to the root of the Project
     const wsFolder = await Folders.getWorkspaceFolder();
@@ -241,7 +263,6 @@ export class CliActions {
       location: ProgressLocation.Notification,
       title: 'Generating the upgrade steps...',
       cancellable: true
-      // eslint-disable-next-line no-unused-vars
     }, async (progress: Progress<{ message?: string; increment?: number }>) => {
       try {
         const result = await CliExecuter.execute('spfx project upgrade', 'md');
@@ -267,6 +288,10 @@ export class CliActions {
     });
   }
 
+  /**
+   * Renames the current project.
+   * @returns A promise that resolves when the project is renamed.
+   */
   private static async renameProject() {
     // Change the current working directory to the root of the Project
     const wsFolder = await Folders.getWorkspaceFolder();
@@ -309,7 +334,6 @@ export class CliActions {
       location: ProgressLocation.Notification,
       title: 'Renaming the current project...',
       cancellable: true
-      // eslint-disable-next-line no-unused-vars
     }, async (progress: Progress<{ message?: string; increment?: number }>) => {
       try {
         let result: CommandOutput;
@@ -329,6 +353,14 @@ export class CliActions {
     });
   }
 
+  /**
+   * Grants API permissions for the current project.
+   * This method changes the current working directory to the root of the project,
+   * and then executes the command to grant API permissions.
+   * If the project is a Teams Toolkit project, the source directory is set to 'src'.
+   * Displays progress notifications during the execution.
+   * @returns A promise that resolves when the API permissions are granted.
+   */
   private static async grantAPIPermissions() {
     // Change the current working directory to the root of the Project
     const wsFolder = await Folders.getWorkspaceFolder();
@@ -346,7 +378,6 @@ export class CliActions {
       location: ProgressLocation.Notification,
       title: 'Granting API permissions for the current project...',
       cancellable: true
-      // eslint-disable-next-line no-unused-vars
     }, async (progress: Progress<{ message?: string; increment?: number }>) => {
       try {
         await CliExecuter.execute('spfx project permissions grant', 'json');
@@ -363,6 +394,11 @@ export class CliActions {
     });
   }
 
+  /**
+   * Displays the generate workflow form in a PnPWebview.
+   * Retrieves the necessary data and opens the webview with the data.
+   * @returns A promise that resolves when the form is displayed.
+   */
   private static async showGenerateWorkflowForm() {
     const content = await parseYoRc();
     const data = {
@@ -373,6 +409,13 @@ export class CliActions {
     PnPWebview.open(WebViewType.workflowForm, data);
   }
 
+  /**
+   * Validates the current project.
+   * This method changes the current working directory to the root of the project and performs
+   * validation on the project. If the project is a Teams Toolkit project, it changes the working
+   * directory to the 'src' folder before performing validation.
+   * @returns A promise that resolves when the validation is complete.
+   */
   private static async validateProject() {
     // Change the current working directory to the root of the Project
     const wsFolder = await Folders.getWorkspaceFolder();
@@ -390,7 +433,6 @@ export class CliActions {
       location: ProgressLocation.Notification,
       title: 'Validating the current project...',
       cancellable: true
-      // eslint-disable-next-line no-unused-vars
     }, async (progress: Progress<{ message?: string; increment?: number }>) => {
       try {
         const result = await CliExecuter.execute('spfx project doctor', 'md');
@@ -416,6 +458,10 @@ export class CliActions {
     });
   }
 
+  /**
+   * Deploys a project.
+   * @param file The file to deploy. If not provided, the method will search for .sppkg files in the workspace and prompt the user to select one.
+   */
   private static async deploy(file: Uri | undefined) {
     const authInstance = AuthProvider.getInstance();
     const account = await authInstance.getAccount();
@@ -481,7 +527,6 @@ export class CliActions {
       location: ProgressLocation.Notification,
       title: `Deploying the ${basename(file.fsPath)} project. Check [output window](command:${Commands.showOutputChannel}) to follow the progress.`,
       cancellable: false
-      // eslint-disable-next-line no-unused-vars
     }, async (progress: Progress<{ message?: string; increment?: number }>) => {
       try {
         const addResult = await CliExecuter.execute('spo app add', 'json', { filePath: file?.fsPath, appCatalogUrl: appCatalogUrl, appCatalogScope: appCatalogScope, overwrite: true });
@@ -521,6 +566,10 @@ export class CliActions {
     });
   }
 
+  /**
+   * Serves the project by executing the specified configuration using Gulp.
+   * Prompts the user to select a configuration from the serve.json file.
+   */
   public static async serveProject() {
     const wsFolder = Folders.getWorkspaceFolder();
     if (!wsFolder) {

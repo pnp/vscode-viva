@@ -7,6 +7,7 @@ export * from './FrameworkTypes';
 export * from './General';
 export * from './NodeVersionManagers';
 export * from './ProjectFileContent';
+export * from './Prompts';
 export * from './WebviewCommand';
 export * from './WebViewTypes';
 export * from './WorkflowTypes';
