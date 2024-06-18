@@ -92,7 +92,7 @@ export default function useSamples(): [Sample[], string[], ((query: string, comp
     }
 
     let filteredSamplesByExtension = filteredSamplesBySPFxVersion;
-    if (extensionTypes.length > 0) {
+    if (extensionTypes.length > 0 && componentTypes.includes('extension')) {
       filteredSamplesByExtension = filteredSamplesBySPFxVersion.filter((sample: Sample) => extensionTypes.includes(sample.extensionType));
     }
 
