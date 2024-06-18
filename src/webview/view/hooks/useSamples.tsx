@@ -90,7 +90,12 @@ export default function useSamples(): [Sample[], string[], ((query: string, comp
       filteredSamplesBySPFxVersion = filteredSamplesByComponentType.filter((sample: Sample) => spfxVersions.includes(sample.version));
     }
 
-    setSamples(filteredSamplesBySPFxVersion);
+    let filteredSamplesByExtension = filteredSamplesBySPFxVersion;
+    if (extensionTypes.length > 0 && componentTypes.includes('extension')) {
+      filteredSamplesByExtension = filteredSamplesBySPFxVersion.filter((sample: Sample) => extensionTypes.includes(sample.extensionType));
+    }
+
+    setSamples(filteredSamplesByExtension);
   };
 
   return [samples!, versions, search];
