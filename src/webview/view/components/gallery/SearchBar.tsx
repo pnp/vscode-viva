@@ -11,12 +11,15 @@ export interface ISearchBarProps {
   onFilterBySPFxVersionChange: (event: any, option?: IDropdownOption) => void;
   onFilterByComponentTypeChange: (event: any, option?: IDropdownOption) => void;
   onFilterOnlyScenariosChange: (event: any) => void;
+  // eslint-disable-next-line no-unused-vars
+  onFilterByExtensionTypeChange: (event: any, option?: IDropdownOption) => void;
   initialQuery?: string;
   spfxVersions: IDropdownOption[];
 }
 
-export const SearchBar: React.FunctionComponent<ISearchBarProps> = ({ onSearchTextboxChange, onFilterBySPFxVersionChange, onFilterByComponentTypeChange, onFilterOnlyScenariosChange, initialQuery, spfxVersions }: React.PropsWithChildren<ISearchBarProps>) => {
+export const SearchBar: React.FunctionComponent<ISearchBarProps> = ({ onSearchTextboxChange, onFilterBySPFxVersionChange, onFilterByComponentTypeChange, onFilterOnlyScenariosChange, onFilterByExtensionTypeChange, initialQuery, spfxVersions }: React.PropsWithChildren<ISearchBarProps>) => {
   const [query, setQuery] = useState<string>('');
+  const [isExtensionSelected, setIsExtensionSelected] = useState<boolean>(false);
 
   useEffect(() => {
     setQuery(initialQuery ?? '');
@@ -32,7 +35,26 @@ export const SearchBar: React.FunctionComponent<ISearchBarProps> = ({ onSearchTe
     return componentTypes;
   };
 
+  const getExtensionTypes = (): IDropdownOption[] => {
+    const extensionTypes: IDropdownOption[] = [
+      { key: 'ListViewCommandSet', text: 'List view commandset' },
+      { key: 'ApplicationCustomizer', text: 'Application customizer' },
+      { key: 'FieldCustomizer', text: 'Field customizer' },
+      { key: 'FormCustomizer', text: 'Form customizer' }
+    ];
+
+    return extensionTypes;
+  };
+
   const componentTypes = getComponentTypes();
+  const extensionTypes = getExtensionTypes();
+
+  const handleComponentTypeChange = (event: any, option?: IDropdownOption) => {
+    if (option?.key === 'extension') {
+      setIsExtensionSelected(prevState => !prevState);
+    }
+    onFilterByComponentTypeChange(event, option);
+  };
 
   return (
     <div>
@@ -48,11 +70,16 @@ export const SearchBar: React.FunctionComponent<ISearchBarProps> = ({ onSearchTe
           <MultiSelect options={spfxVersions} label="SPFx version" onChange={onFilterBySPFxVersionChange}/>
         </div>
         <div>
-          <MultiSelect options={componentTypes} label="Component Type" onChange={onFilterByComponentTypeChange}/>
+          <MultiSelect options={componentTypes} label="Component Type" onChange={handleComponentTypeChange}/>
         </div>
         <div>
           <VSCodeCheckbox onChange={onFilterOnlyScenariosChange}>show only scenarios</VSCodeCheckbox>
         </div>
+        {isExtensionSelected && (
+          <div>
+            <MultiSelect options={extensionTypes} label="Extension type" onChange={onFilterByExtensionTypeChange} />
+          </div>
+        )}
       </div>
     </div>
   );

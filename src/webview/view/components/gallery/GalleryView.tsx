@@ -17,17 +17,30 @@ export const GalleryView: React.FunctionComponent<IGalleryViewProps> = ({ }: Rea
   const [spfxVersions, setSPFxVersions] = useState<string[]>();
   const [showOnlyScenarios, setShowOnlyScenarios] = useState<boolean>(false);
   const [componentTypes, setComponentTypes] = useState<string[]>();
+  const [extensionTypes, setExtensionTypes] = useState<string[]>();
 
   const onSearchTextboxChange = (event: any) => {
     const input: string = event.target.value;
     setQuery(input);
-    search(input, componentTypes ?? [], spfxVersions ?? [], showOnlyScenarios);
+    search(input, componentTypes ?? [], spfxVersions ?? [], extensionTypes ?? [], showOnlyScenarios);
   };
 
   const onFilterOnlyScenariosChange = () => {
     setShowOnlyScenarios(!showOnlyScenarios);
-    search(query, componentTypes ?? [], spfxVersions ?? [], !showOnlyScenarios);
+    search(query, componentTypes ?? [], spfxVersions ?? [], extensionTypes ?? [], !showOnlyScenarios);
   };
+
+  const onFilterByExtensionTypeChange = (event: any, option?: IDropdownOption) => {
+    let extensionsInput: string[] = [];
+    if (option?.selected) {
+      extensionsInput = [...extensionTypes ?? [], option.key as string];
+    } else {
+      extensionsInput = extensionTypes?.filter(componentType => componentType !== option?.key) ?? [];
+    }
+
+    setExtensionTypes(extensionsInput);
+    search(query, componentTypes ?? [], spfxVersions ?? [], extensionsInput, showOnlyScenarios);
+  }
 
   const onFilterBySPFxVersionChange = (event: any, option?: IDropdownOption) => {
     let spfxVersionsInput: string[] = [];
@@ -38,7 +51,7 @@ export const GalleryView: React.FunctionComponent<IGalleryViewProps> = ({ }: Rea
     }
 
     setSPFxVersions(spfxVersionsInput);
-    search(query, componentTypes ?? [], spfxVersionsInput, showOnlyScenarios);
+    search(query, componentTypes ?? [], spfxVersionsInput, extensionTypes ?? [], showOnlyScenarios);
   };
 
   const onFilterByComponentTypeChange = (event: any, option?: IDropdownOption) => {
@@ -50,7 +63,7 @@ export const GalleryView: React.FunctionComponent<IGalleryViewProps> = ({ }: Rea
     }
 
     setComponentTypes(componentTypesInput);
-    search(query, componentTypesInput, spfxVersions ?? [], showOnlyScenarios);
+    search(query, componentTypesInput, spfxVersions ?? [], extensionTypes ?? [], showOnlyScenarios);
   };
 
   const getSPFxVersions = (): IDropdownOption[] => {
@@ -81,6 +94,7 @@ export const GalleryView: React.FunctionComponent<IGalleryViewProps> = ({ }: Rea
               onFilterBySPFxVersionChange={(event, option) => onFilterBySPFxVersionChange(event, option)}
               onFilterByComponentTypeChange={(event, option) => onFilterByComponentTypeChange(event, option)}
               onFilterOnlyScenariosChange={() => onFilterOnlyScenariosChange()}
+              onFilterByExtensionTypeChange={(event, option) => onFilterByExtensionTypeChange(event, option)}
               initialQuery={query}
               spfxVersions={getSPFxVersions()} />
 
