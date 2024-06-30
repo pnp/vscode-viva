@@ -55,9 +55,11 @@ export const GalleryView: React.FunctionComponent<IGalleryViewProps> = ({ }: Rea
   const onRemoveFilterBySPFxVersion = (key:string) => {
     onFilterBySPFxVersionChange(null, { key: key, text: key, selected: false });
   };
+  
   const onRemoveFilterByComponentType = (key:string) => {
     onFilterByComponentTypeChange(null, { key: key, text: key, selected: false });
   };
+  
   const onFilterByComponentTypeChange = (event: any, option?: IDropdownOption) => {
     let componentTypesInput: string[] = [];
     if (option?.selected) {
