@@ -41,6 +41,7 @@ export const GalleryView: React.FunctionComponent<IGalleryViewProps> = ({ }: Rea
       spfxVersionsInput = [...spfxVersions ?? [], option.key as string];
       setSelectedFilters([...selectedFilters, {
         key:option.key as string,
+        text: option.key as string,
         kind:'spfxVersion'
       }]);
     } else {
@@ -66,6 +67,7 @@ export const GalleryView: React.FunctionComponent<IGalleryViewProps> = ({ }: Rea
       componentTypesInput = [...componentTypes ?? [], option.key as string];
       setSelectedFilters([...selectedFilters, {
         key:option.key as string,
+        text: option.text as string,
         kind:'componentType'
       }]);
     } else {

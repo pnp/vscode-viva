@@ -22,6 +22,7 @@ export interface ISearchBarProps {
 
 export interface ISelectedFilter {
   key:string | null;
+  text: string;
   kind:'spfxVersion'|'componentType'
 }
 
@@ -51,6 +52,7 @@ export const SearchBar: React.FunctionComponent<ISearchBarProps> = ({ onSearchTe
 
     return options;
   };
+
 
   const componentTypes = getComponentTypeOptions();
 
@@ -82,12 +84,12 @@ export const SearchBar: React.FunctionComponent<ISearchBarProps> = ({ onSearchTe
         }}><VSCodeTag >{query} <strong>X</strong></VSCodeTag></div>}
         {selectedFilters.length > 0 && selectedFilters.map((filter, index) => {
           if (filter.kind === 'spfxVersion') {
-            return <div className={'p-1 cursor-pointer'} onClick={() => onRemoveFilterBySPFxVersion(filter.key as string)}><VSCodeTag key={index} >{filter.key} <strong>X</strong></VSCodeTag></div>;
+            return <div className={'p-1 cursor-pointer'} onClick={() => onRemoveFilterBySPFxVersion(filter.key as string)}><VSCodeTag key={index} >{filter.text} <strong>X</strong></VSCodeTag></div>;
           }
 
-          return <div className={'p-1 cursor-pointer'} onClick={() => onRemoveFilterByComponentType(filter.key as string)}><VSCodeTag key={index} >{filter.key} <strong>X</strong></VSCodeTag></div>;
+          return <div className={'p-1 cursor-pointer'} onClick={() => onRemoveFilterByComponentType(filter.key as string)}><VSCodeTag key={index} >{filter.text} <strong>X</strong></VSCodeTag></div>;
         })}
-        {(selectedFilters.length > 0 || query)&& <div className={'p-1 cursor-pointer'} onClick={clearAllFilters}><strong style={{color:'#3664be'}}>Clear all</strong></div>}
+        {(selectedFilters.length > 0 || query) && <div className={'p-1 cursor-pointer'} onClick={clearAllFilters}><strong style={{color:'#3664be'}}>Clear all</strong></div>}
       </div>
     </div>
   );
