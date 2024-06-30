@@ -25,7 +25,8 @@ export interface ISelectedFilter {
   kind:'spfxVersion'|'componentType'
 }
 
-export const SearchBar: React.FunctionComponent<ISearchBarProps> = ({ onSearchTextboxChange, onFilterBySPFxVersionChange, onFilterByComponentTypeChange, onFilterOnlyScenariosChange, initialQuery, spfxVersions, selectedFilters,onRemoveFilterByComponentType, onRemoveFilterBySPFxVersion,clearAllFilters, onClearTextboxChange,showOnlyScenarios }: React.PropsWithChildren<ISearchBarProps>) => {
+export const SearchBar: React.FunctionComponent<ISearchBarProps> = ({ onSearchTextboxChange, onFilterBySPFxVersionChange, onFilterByComponentTypeChange, onFilterOnlyScenariosChange, initialQuery, spfxVersions, selectedFilters,onRemoveFilterByComponentType, onRemoveFilterBySPFxVersion, clearAllFilters, 
+ onClearTextboxChange, showOnlyScenarios }: React.PropsWithChildren<ISearchBarProps>) => {
   const [query, setQuery] = useState<string>('');
 
   useEffect(() => {
