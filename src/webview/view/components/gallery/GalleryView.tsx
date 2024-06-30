@@ -87,11 +87,11 @@ export const GalleryView: React.FunctionComponent<IGalleryViewProps> = ({ }: Rea
   };
 
   useEffect(() => {
-    if(samples !== undefined) {
+    if (samples !== undefined) {
       setShowOnlyScenarios(showOnlyScenarios);
       search(query, componentTypes ?? [], spfxVersions ?? [], showOnlyScenarios);
     }
-  },[samples]);
+  }, [samples]);
   const clearFilters = () => {
     localStorage.clear();
     setSelectedFilters([]);
