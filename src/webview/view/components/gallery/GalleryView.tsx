@@ -30,6 +30,7 @@ export const GalleryView: React.FunctionComponent<IGalleryViewProps> = ({ }: Rea
     setQuery('');
     search('', componentTypes ?? [], spfxVersions ?? [], showOnlyScenarios);
   };
+  
   const onFilterOnlyScenariosChange = () => {
     setShowOnlyScenarios(!showOnlyScenarios);
     search(query, componentTypes ?? [], spfxVersions ?? [], !showOnlyScenarios);
