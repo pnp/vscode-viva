@@ -1,9 +1,10 @@
-import { VSCodeCheckbox, VSCodeTextField,VSCodeTag } from '@vscode/webview-ui-toolkit/react';
+import { VSCodeCheckbox, VSCodeTextField, VSCodeTag} from '@vscode/webview-ui-toolkit/react';
 import * as React from 'react';
 import { useEffect, useState } from 'react';
 import { SearchIcon } from '../icons';
 import { IDropdownOption } from '@fluentui/react';
 import { MultiSelect } from '../controls';
+import { CloseIcon } from '../icons/CloseIcon';
 
 export interface ISearchBarProps {
   onSearchTextboxChange: (event: any) => void;
@@ -53,6 +54,10 @@ export const SearchBar: React.FunctionComponent<ISearchBarProps> = ({ onSearchTe
     return options;
   };
 
+  const clearQueryAndTextbox = () => {
+    setQuery('');
+    onClearTextboxChange();
+  };
 
   const componentTypes = getComponentTypeOptions();
 
@@ -78,18 +83,50 @@ export const SearchBar: React.FunctionComponent<ISearchBarProps> = ({ onSearchTe
       </div>
 
       <div className={'flex flex-wrap'}>
-        {query && <div className={'p-1 cursor-pointer'} onClick={() => {
-          setQuery('');
-          onClearTextboxChange();
-        }}><VSCodeTag >{query} <strong>X</strong></VSCodeTag></div>}
+        {query && 
+        <label className={'p-1'}>
+          <VSCodeTag>
+            <div className={'flex'}>
+              {query}
+              <label className="cursor-pointer" onClick={clearQueryAndTextbox}>
+                <CloseIcon/>
+              </label>
+            </div>
+          </VSCodeTag>
+        </label>
+        }
         {selectedFilters.length > 0 && selectedFilters.map((filter, index) => {
           if (filter.kind === 'spfxVersion') {
-            return <div className={'p-1 cursor-pointer'} onClick={() => onRemoveFilterBySPFxVersion(filter.key as string)}><VSCodeTag key={index} >{filter.text} <strong>X</strong></VSCodeTag></div>;
+            return (
+              <label className={'p-1'} >
+                <VSCodeTag key={index} >
+                  <div className={'flex'}>
+                      {filter.text} 
+                      <label className="cursor-pointer" onClick={() => onRemoveFilterBySPFxVersion(filter.key as string)}>
+                        <CloseIcon/>
+                      </label>
+                  </div>
+                </VSCodeTag>
+              </label>);
           }
 
-          return <div className={'p-1 cursor-pointer'} onClick={() => onRemoveFilterByComponentType(filter.key as string)}><VSCodeTag key={index} >{filter.text} <strong>X</strong></VSCodeTag></div>;
+          return (
+            <label className={'p-1'} >
+              <VSCodeTag key={index} >
+                <div className={'flex'}>
+                  {filter.text} 
+                  <label className="cursor-pointer" onClick={() => onRemoveFilterByComponentType(filter.key as string)}>
+                    <CloseIcon/>
+                  </label>
+                </div>
+              </VSCodeTag>
+            </label>);
         })}
-        {(selectedFilters.length > 0 || query) && <div className={'p-1 cursor-pointer'} onClick={clearAllFilters}><strong style={{color:'#3664be'}}>Clear all</strong></div>}
+        {(selectedFilters.length > 0 || query) && 
+          <label className={'p-1'}>
+            <strong onClick={clearAllFilters} className="text-blueClearAll cursor-pointer bg-vscode">Clear all</strong>
+          </label>
+        }
       </div>
     </div>
   );
