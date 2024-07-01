@@ -31,12 +31,8 @@ export interface ISelectedFilter {
 
 export const SearchBar: React.FunctionComponent<ISearchBarProps> = ({ onSearchTextboxChange, onFilterBySPFxVersionChange, onFilterByComponentTypeChange, onFilterOnlyScenariosChange, initialQuery, spfxVersions, selectedFilters,onRemoveFilterByComponentType, onRemoveFilterBySPFxVersion, clearAllFilters, 
  onClearTextboxChange, showOnlyScenarios }: React.PropsWithChildren<ISearchBarProps>) => {
-  const [query, setQuery] = useState<string>('');
+  const [query, setQuery] = useState<string>(initialQuery ?? '');
   const [debouncedQuery] = useDebounce(query, 300);
-
-  useEffect(() => {
-    setQuery(initialQuery ?? '');
-  }, [initialQuery]);
 
   useEffect(() => {
     onSearchTextboxChange({ target: { value: debouncedQuery } });
