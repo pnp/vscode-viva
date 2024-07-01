@@ -5,6 +5,8 @@ import { SearchIcon } from '../icons';
 import { IDropdownOption } from '@fluentui/react';
 import { MultiSelect } from '../controls';
 import { CloseIcon } from '../icons/CloseIcon';
+import { useDebounce } from 'use-debounce';
+
 
 export interface ISearchBarProps {
   onSearchTextboxChange: (event: any) => void;
@@ -30,10 +32,20 @@ export interface ISelectedFilter {
 export const SearchBar: React.FunctionComponent<ISearchBarProps> = ({ onSearchTextboxChange, onFilterBySPFxVersionChange, onFilterByComponentTypeChange, onFilterOnlyScenariosChange, initialQuery, spfxVersions, selectedFilters,onRemoveFilterByComponentType, onRemoveFilterBySPFxVersion, clearAllFilters, 
  onClearTextboxChange, showOnlyScenarios }: React.PropsWithChildren<ISearchBarProps>) => {
   const [query, setQuery] = useState<string>('');
+  const [debouncedQuery] = useDebounce(query, 300);
 
   useEffect(() => {
     setQuery(initialQuery ?? '');
   }, [initialQuery]);
+
+  useEffect(() => {
+    onSearchTextboxChange({ target: { value: debouncedQuery } });
+  }, [debouncedQuery, onSearchTextboxChange]);
+
+  const onInputChange = (event: any) => {
+    const input: string = event.target.value;
+    setQuery(input);
+  };
 
   const getComponentTypeOptions = (): IDropdownOption[] => {
     const options: IDropdownOption[] = [
@@ -65,7 +77,7 @@ export const SearchBar: React.FunctionComponent<ISearchBarProps> = ({ onSearchTe
     <div>
       <div className={'mt-2 columns-1 md:columns-4'}>
         <div>
-          <VSCodeTextField size="100" placeholder="Search" value={query} onInput={onSearchTextboxChange}>
+          <VSCodeTextField size="100" placeholder="Search" value={query} onInput={onInputChange}>
             <span slot='start' className='mt-0'>
               <SearchIcon />
             </span>
