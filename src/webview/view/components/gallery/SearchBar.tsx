@@ -32,7 +32,12 @@ export interface ISelectedFilter {
 export const SearchBar: React.FunctionComponent<ISearchBarProps> = ({ onSearchTextboxChange, onFilterBySPFxVersionChange, onFilterByComponentTypeChange, onFilterOnlyScenariosChange, initialQuery, spfxVersions, selectedFilters,onRemoveFilterByComponentType, onRemoveFilterBySPFxVersion, clearAllFilters, 
  onClearTextboxChange, showOnlyScenarios }: React.PropsWithChildren<ISearchBarProps>) => {
   const [query, setQuery] = useState<string>(initialQuery ?? '');
-  const [debouncedQuery] = useDebounce(query, 300);
+  const [debouncedQuery, setDebounceQuery] = useDebounce(query, 300);
+
+  useEffect(() => {
+    setDebounceQuery(query);
+  }, [query]);
+  
 
   useEffect(() => {
     onSearchTextboxChange({ target: { value: debouncedQuery } });
@@ -66,6 +71,11 @@ export const SearchBar: React.FunctionComponent<ISearchBarProps> = ({ onSearchTe
     setQuery('');
     onClearTextboxChange();
   };
+
+  const resetQueryAndFilters = () => {
+    clearQueryAndTextbox();
+    clearAllFilters();
+  }
 
   const componentTypes = getComponentTypeOptions();
 
@@ -132,7 +142,7 @@ export const SearchBar: React.FunctionComponent<ISearchBarProps> = ({ onSearchTe
         })}
         {(selectedFilters.length > 0 || query) && 
           <label className={'p-1'}>
-            <strong onClick={clearAllFilters} className="text-blueClearAll cursor-pointer bg-vscode">Clear all</strong>
+            <strong onClick={resetQueryAndFilters} className="text-blueClearAll cursor-pointer bg-vscode">Clear all</strong>
           </label>
         }
       </div>
