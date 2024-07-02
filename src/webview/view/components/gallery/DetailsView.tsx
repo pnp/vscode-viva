@@ -21,7 +21,7 @@ export const DetailsView: React.FunctionComponent<IDetailsViewProps> = ({ }: Rea
   useEffect(() => {
     const { item } = state;
     setSample(item);
-
+    window.scrollTo(0, 0);
     const url = item.url.replace('github.com', 'raw.githubusercontent.com').replace('/blob', '').replace('/tree', '');
 
     const fetchData = async () => {
