@@ -8,9 +8,14 @@ Check it out in action 👇.
 
 ![Create new project](../images/scaffolding-form.gif)
 
-It's possible to scaffold any kind of SPFx project.
+It's possible to scaffold any kind of SPFx project including web parts, extensions, library components, and adaptive card extensions.
 
 ![All SPFx project support](../images/scaffolding-support.png)
+
+- **Web parts** are reusable elements that serve as the building blocks for SharePoint pages. They allow you to create customizable controls that can be used across multiple pages.
+- **Extensions** enable you to extend the SharePoint user experience by adding scripts to pages, modifying views, adding new actions, and altering list form experiences.
+- **Library components** are reusable code elements that can be shared across all the components in the tenant.
+- **Adaptive Card Extensions (ACEs)** allow you to build rich, native extensions for Viva Connections' Dashboards and SharePoint Pages.
 
 Install additional dependencies with a single click straight from the scaffolding form. Currently we support installing [PnP reusable property pane controls](https://pnp.github.io/sp-dev-fx-property-controls/), [PnP reusable React controls](https://pnp.github.io/sp-dev-fx-controls-react/), and [PnPjs](https://pnp.github.io/pnpjs/).
 
