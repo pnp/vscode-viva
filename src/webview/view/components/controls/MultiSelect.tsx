@@ -147,6 +147,7 @@ export const MultiSelect: React.FunctionComponent<IMultiSelectProps> = ({ onChan
       <Dropdown
         placeholder={label ?? 'Select'}
         multiSelect
+        selectedKeys={[...options.filter((option) => option.selected).map((option) => option.key as any)]}
         options={options}
         styles={getDropdownStyles()}
         onChange={onChange}

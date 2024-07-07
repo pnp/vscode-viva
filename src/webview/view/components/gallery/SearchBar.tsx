@@ -1,9 +1,10 @@
-import { VSCodeCheckbox, VSCodeTextField } from '@vscode/webview-ui-toolkit/react';
+import { VSCodeCheckbox, VSCodeTextField, VSCodeTag } from '@vscode/webview-ui-toolkit/react';
 import * as React from 'react';
 import { useEffect, useState } from 'react';
 import { SearchIcon } from '../icons';
 import { IDropdownOption } from '@fluentui/react';
 import { MultiSelect } from '../controls';
+import { CloseIcon } from '../icons/CloseIcon';
 import { useDebounce } from 'use-debounce';
 
 
@@ -14,15 +15,27 @@ export interface ISearchBarProps {
   onFilterOnlyScenariosChange: (event: any) => void;
   initialQuery?: string;
   spfxVersions: IDropdownOption[];
+  selectedFilters: ISelectedFilter[];
+  onRemoveFilterBySPFxVersion: (key: string) => void;
+  onRemoveFilterByComponentType: (key: string) => void;
+  clearAllFilters: () => void;
+  onClearTextboxChange: () => void;
+  showOnlyScenarios: boolean;
 }
 
-export const SearchBar: React.FunctionComponent<ISearchBarProps> = ({ onSearchTextboxChange, onFilterBySPFxVersionChange, onFilterByComponentTypeChange, onFilterOnlyScenariosChange, initialQuery, spfxVersions }: React.PropsWithChildren<ISearchBarProps>) => {
-  const [query, setQuery] = useState<string>('');
-  const [debouncedQuery] = useDebounce(query, 300);
+export interface ISelectedFilter {
+  key: string | null;
+  text: string;
+  kind: 'spfxVersion' | 'componentType'
+}
+
+export const SearchBar: React.FunctionComponent<ISearchBarProps> = ({ onSearchTextboxChange, onFilterBySPFxVersionChange, onFilterByComponentTypeChange, onFilterOnlyScenariosChange, initialQuery, spfxVersions, selectedFilters, onRemoveFilterByComponentType, onRemoveFilterBySPFxVersion, clearAllFilters, onClearTextboxChange, showOnlyScenarios }: React.PropsWithChildren<ISearchBarProps>) => {
+  const [query, setQuery] = useState<string>(initialQuery ?? '');
+  const [debouncedQuery, setDebounceQuery] = useDebounce(query, 300);
 
   useEffect(() => {
-    setQuery(initialQuery ?? '');
-  }, [initialQuery]);
+    setDebounceQuery(query);
+  }, [query]);
 
   useEffect(() => {
     onSearchTextboxChange({ target: { value: debouncedQuery } });
@@ -33,17 +46,36 @@ export const SearchBar: React.FunctionComponent<ISearchBarProps> = ({ onSearchTe
     setQuery(input);
   };
 
-  const getComponentTypes = (): IDropdownOption[] => {
-    const componentTypes: IDropdownOption[] = [
+  const getComponentTypeOptions = (): IDropdownOption[] => {
+    const options: IDropdownOption[] = [
       { key: 'webpart', text: 'Web Part' },
       { key: 'extension', text: 'Extension' },
       { key: 'adaptiveCardExtension', text: 'ACE' }
     ];
 
-    return componentTypes;
+    selectedFilters.forEach(filter => {
+      if (filter.kind === 'componentType') {
+        const matchingOption = options.find(option => option.key === filter.key);
+        if (matchingOption) {
+          matchingOption.selected = true;
+        }
+      }
+    });
+
+    return options;
   };
 
-  const componentTypes = getComponentTypes();
+  const clearQueryAndTextbox = () => {
+    setQuery('');
+    onClearTextboxChange();
+  };
+
+  const resetQueryAndFilters = () => {
+    clearQueryAndTextbox();
+    clearAllFilters();
+  };
+
+  const componentTypes = getComponentTypeOptions();
 
   return (
     <div>
@@ -56,14 +88,61 @@ export const SearchBar: React.FunctionComponent<ISearchBarProps> = ({ onSearchTe
           </VSCodeTextField>
         </div>
         <div>
-          <MultiSelect options={spfxVersions} label="SPFx version" onChange={onFilterBySPFxVersionChange}/>
+          <MultiSelect options={spfxVersions} label="SPFx version" onChange={onFilterBySPFxVersionChange} />
         </div>
         <div>
-          <MultiSelect options={componentTypes} label="Component Type" onChange={onFilterByComponentTypeChange}/>
+          <MultiSelect options={componentTypes} label="Component Type" onChange={onFilterByComponentTypeChange} />
         </div>
         <div>
-          <VSCodeCheckbox onChange={onFilterOnlyScenariosChange}>show only scenarios</VSCodeCheckbox>
+          <VSCodeCheckbox checked={showOnlyScenarios} onChange={onFilterOnlyScenariosChange}>show only scenarios</VSCodeCheckbox>
         </div>
+      </div>
+
+      <div className={'flex flex-wrap'}>
+        {query &&
+          <label className={'p-1'}>
+            <VSCodeTag>
+              <div className={'flex'}>
+                {query}
+                <label className="cursor-pointer" onClick={clearQueryAndTextbox}>
+                  <CloseIcon />
+                </label>
+              </div>
+            </VSCodeTag>
+          </label>
+        }
+        {selectedFilters.length > 0 && selectedFilters.map((filter, index) => {
+          if (filter.kind === 'spfxVersion') {
+            return (
+              <label className={'p-1'} >
+                <VSCodeTag key={index} >
+                  <div className={'flex'}>
+                    {filter.text}
+                    <label className="cursor-pointer" onClick={() => onRemoveFilterBySPFxVersion(filter.key as string)}>
+                      <CloseIcon />
+                    </label>
+                  </div>
+                </VSCodeTag>
+              </label>);
+          }
+
+          return (
+            <label className={'p-1'} >
+              <VSCodeTag key={index} >
+                <div className={'flex'}>
+                  {filter.text}
+                  <label className="cursor-pointer" onClick={() => onRemoveFilterByComponentType(filter.key as string)}>
+                    <CloseIcon />
+                  </label>
+                </div>
+              </VSCodeTag>
+            </label>);
+        })}
+        {(selectedFilters.length > 0 || query) &&
+          <label className={'p-1'}>
+            <strong onClick={resetQueryAndFilters} className="text-blueClearAll cursor-pointer bg-vscode">Clear all</strong>
+          </label>
+        }
       </div>
     </div>
   );
