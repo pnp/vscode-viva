@@ -30,19 +30,20 @@ export const GalleryView: React.FunctionComponent<IGalleryViewProps> = ({ }: Rea
     setQuery('');
     search('', componentTypes ?? [], spfxVersions ?? [], showOnlyScenarios);
   };
-  
+
   const onFilterOnlyScenariosChange = () => {
     setShowOnlyScenarios(!showOnlyScenarios);
     search(query, componentTypes ?? [], spfxVersions ?? [], !showOnlyScenarios);
   };
+
   const onFilterBySPFxVersionChange = (event: any, option?: IDropdownOption) => {
     let spfxVersionsInput: string[] = [];
     if (option?.selected) {
       spfxVersionsInput = [...spfxVersions ?? [], option.key as string];
       setSelectedFilters([...selectedFilters, {
-        key:option.key as string,
+        key: option.key as string,
         text: option.key as string,
-        kind:'spfxVersion'
+        kind: 'spfxVersion'
       }]);
     } else {
       spfxVersionsInput = spfxVersions?.filter(componentType => componentType !== option?.key) ?? [];
@@ -53,22 +54,22 @@ export const GalleryView: React.FunctionComponent<IGalleryViewProps> = ({ }: Rea
     search(query, componentTypes ?? [], spfxVersionsInput, showOnlyScenarios);
   };
 
-  const onRemoveFilterBySPFxVersion = (key:string) => {
+  const onRemoveFilterBySPFxVersion = (key: string) => {
     onFilterBySPFxVersionChange(null, { key: key, text: key, selected: false });
   };
-  
-  const onRemoveFilterByComponentType = (key:string) => {
+
+  const onRemoveFilterByComponentType = (key: string) => {
     onFilterByComponentTypeChange(null, { key: key, text: key, selected: false });
   };
-  
+
   const onFilterByComponentTypeChange = (event: any, option?: IDropdownOption) => {
     let componentTypesInput: string[] = [];
     if (option?.selected) {
       componentTypesInput = [...componentTypes ?? [], option.key as string];
       setSelectedFilters([...selectedFilters, {
-        key:option.key as string,
+        key: option.key as string,
         text: option.text as string,
-        kind:'componentType'
+        kind: 'componentType'
       }]);
     } else {
       componentTypesInput = componentTypes?.filter(componentType => componentType !== option?.key) ?? [];
@@ -97,6 +98,7 @@ export const GalleryView: React.FunctionComponent<IGalleryViewProps> = ({ }: Rea
       search(query, componentTypes ?? [], spfxVersions ?? [], showOnlyScenarios);
     }
   }, [samples]);
+
   const clearFilters = () => {
     localStorage.clear();
     setSelectedFilters([]);
