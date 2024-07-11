@@ -5,6 +5,9 @@ import { ComponentType, WebviewCommand } from '../../../../../constants';
 import { FolderIcon } from '../../icons';
 import { StepHeader } from './StepHeader';
 import { Messenger } from '@estruyf/vscode/dist/client';
+import { ComponentTypesDetails } from '../../../../../constants/ComponentTypesDetails';
+import { InfoIcon } from '../../icons/InfoIcon';
+import { LabelWithTooltip } from './LabelWithTooltip';
 
 
 export interface IGeneralInfoProps {
@@ -17,6 +20,7 @@ export interface IGeneralInfoProps {
     setIsValidSolutionName: (value: boolean | null) => void;
     setComponentType: (componentType: ComponentType) => void;
     componentTypes: { value: string; name: string }[];
+    componentType: ComponentType;
 }
 
 export const GeneralInfoStep: React.FunctionComponent<IGeneralInfoProps> = ({
@@ -28,7 +32,9 @@ export const GeneralInfoStep: React.FunctionComponent<IGeneralInfoProps> = ({
     isValidSolutionName,
     setIsValidSolutionName,
     setComponentType,
-    componentTypes }: React.PropsWithChildren<IGeneralInfoProps>) => {
+    componentTypes,
+    componentType
+  }: React.PropsWithChildren<IGeneralInfoProps>) => {
 
     const pickFolder = useCallback(() => {
         Messenger.send(WebviewCommand.toVSCode.pickFolder, {});
@@ -104,9 +110,7 @@ export const GeneralInfoStep: React.FunctionComponent<IGeneralInfoProps> = ({
                     </>
                 }
                 <div className={'mb-2'}>
-                    <label className={'block mb-1'}>
-                        What component you wish to create?
-                    </label>
+                    <LabelWithTooltip label={"Component Type"} tooltip={ComponentTypesDetails[componentType] ? ComponentTypesDetails[componentType].description : ""} />
                     <VSCodeDropdown className={'w-full'} onChange={(e: any) => setComponentType(e.target.value)}>
                         {componentTypes.map((component) => <VSCodeOption key={component.value} value={component.value}>{component.name}</VSCodeOption>)}
                     </VSCodeDropdown>
