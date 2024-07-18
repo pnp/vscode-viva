@@ -1,5 +1,12 @@
 # Change Log
 
+## [3.4.0] - 2024-07-18
+
+- Improved welcome experience
+- Fixed lags in sample gallery search
+- Improved sample gallery filter functionalities
+- Improved create project step in walkthrough
+
 ## [3.3.0] - 2024-06-16
 
 - Refactored scaffolding form to smaller components
