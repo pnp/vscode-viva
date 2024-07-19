@@ -1,5 +1,5 @@
 import * as React from "react";
-import { InfoIcon } from "../../icons/InfoIcon";
+import { InfoIcon } from "../icons/InfoIcon";
 
 interface ILabelWithTooltipProps {
   label: string;

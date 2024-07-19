@@ -4,7 +4,8 @@ import { VSCodeDropdown, VSCodeOption, VSCodeTextField } from '@vscode/webview-u
 import { ComponentType, ComponentTypes, WebviewCommand, ExtensionType, ExtensionTypes, FrameworkTypes, AdaptiveCardTypes } from '../../../../../constants';
 import { StepHeader } from './StepHeader';
 import { Messenger } from '@estruyf/vscode/dist/client';
-import { LabelWithTooltip } from './LabelWithTooltip';
+import { LabelWithTooltip } from '../../controls';
+
 
 
 interface IComponentDetailsStepProps {

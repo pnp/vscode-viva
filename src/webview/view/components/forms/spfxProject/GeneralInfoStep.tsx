@@ -5,7 +5,8 @@ import { ComponentType, WebviewCommand } from '../../../../../constants';
 import { FolderIcon } from '../../icons';
 import { StepHeader } from './StepHeader';
 import { Messenger } from '@estruyf/vscode/dist/client';
-import { LabelWithTooltip } from './LabelWithTooltip';
+import { LabelWithTooltip } from '../../controls';
+
 
 
 export interface IGeneralInfoProps {
