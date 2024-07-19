@@ -5,8 +5,6 @@ import { ComponentType, WebviewCommand } from '../../../../../constants';
 import { FolderIcon } from '../../icons';
 import { StepHeader } from './StepHeader';
 import { Messenger } from '@estruyf/vscode/dist/client';
-import { ComponentTypesDetails } from '../../../../../constants/ComponentTypesDetails';
-import { InfoIcon } from '../../icons/InfoIcon';
 import { LabelWithTooltip } from './LabelWithTooltip';
 
 
@@ -19,7 +17,7 @@ export interface IGeneralInfoProps {
     isValidSolutionName: boolean | null | undefined;
     setIsValidSolutionName: (value: boolean | null) => void;
     setComponentType: (componentType: ComponentType) => void;
-    componentTypes: { value: string; name: string }[];
+    componentTypes: { value: string; name: string; description: string }[];
     componentType: ComponentType;
 }
 
@@ -49,7 +47,7 @@ export const GeneralInfoStep: React.FunctionComponent<IGeneralInfoProps> = ({
 
         Messenger.send(WebviewCommand.toVSCode.validateSolutionName, { folderPath, solutionNameInput });
     }, [folderPath, setSolutionName, setIsValidSolutionName]);
-
+    
     useEffect(() => {
         const messageListener = (event: MessageEvent<any>) => {
             const { command, payload } = event.data;
@@ -73,7 +71,7 @@ export const GeneralInfoStep: React.FunctionComponent<IGeneralInfoProps> = ({
             Messenger.unlisten(messageListener);
         };
     }, [setFolderPath, setSolutionName]);
-
+    const getComponentType = componentTypes.find((component) => component.value === componentType);
     return (
         <div className={'spfx__form__step'}>
             <StepHeader step={1} title='General information' />
@@ -110,7 +108,7 @@ export const GeneralInfoStep: React.FunctionComponent<IGeneralInfoProps> = ({
                     </>
                 }
                 <div className={'mb-2'}>
-                    <LabelWithTooltip label={"Component Type"} tooltip={ComponentTypesDetails[componentType] ? ComponentTypesDetails[componentType].description : ""} />
+                    <LabelWithTooltip label={"Component Type"} tooltip={getComponentType ? getComponentType.description : ""} />
                     <VSCodeDropdown className={'w-full'} onChange={(e: any) => setComponentType(e.target.value)}>
                         {componentTypes.map((component) => <VSCodeOption key={component.value} value={component.value}>{component.name}</VSCodeOption>)}
                     </VSCodeDropdown>
