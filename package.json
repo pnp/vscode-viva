@@ -167,6 +167,18 @@
 						"none"
 					],
 					"description": "Choose your preferred Node.js version manager. Choose between `nvs`, `nvm`, or `none`."
+				},
+				"spfx-toolkit.showServiceIncidentList": {
+					"title": "Show service health incidents",
+					"type": "boolean",
+					"default": "true",
+					"description": "Show or hide the service health incidents in the account view."
+				},
+				"spfx-toolkit.showTenantWideExtensions": {
+					"title": "Show tenant-wide extensions",
+					"type": "boolean",
+					"default": "true",
+					"description": "Show or hide the tenant-wide extensions in the account view."
 				}
 			}
 		},

@@ -10,6 +10,7 @@ import { TeamsToolkitIntegration } from '../services/TeamsToolkitIntegration';
 import { AdaptiveCardCheck } from '../services/AdaptiveCardCheck';
 import { Subscription } from '../models';
 import { Extension } from '../services/Extension';
+import { getExtensionSettings } from '../utils';
 
 
 export class CommandPanel {
@@ -115,15 +116,18 @@ export class CommandPanel {
           new ActionTreeItem(webApiPermissionManagementUrl.replace(`${adminOriginUrl}/_layouts/15/online/AdminHome.aspx#/`, '...'), '', { name: 'globe', custom: false }, undefined, 'vscode.open', Uri.parse(webApiPermissionManagementUrl), 'sp-admin-api-url')
         ]));
 
-        const healthInfoList = await CliActions.getTenantHealthInfo();
-        if (healthInfoList)
-        {
-          const healthInfoItems: ActionTreeItem[] = [];
-          for (let i = 0; i < healthInfoList.length; i++) {
-            healthInfoItems.push(new ActionTreeItem(healthInfoList[i].Title, '', { name: 'm365-warning', custom: true } , undefined, 'vscode.open', Uri.parse(healthInfoList[i].Url), 'm365-health-service-url'));
-          }
-          if (healthInfoItems.length > 0) {
-            accountCommands[0].children.push(new ActionTreeItem('Service health incidents', '', { name: 'm365-health', custom: true }, undefined, undefined, undefined, undefined, healthInfoItems));
+        const showServiceIncidentList = getExtensionSettings('showServiceIncidentList', true);
+        if (showServiceIncidentList === true) {
+          const healthInfoList = await CliActions.getTenantHealthInfo();
+          if (healthInfoList)
+          {
+            const healthInfoItems: ActionTreeItem[] = [];
+            for (let i = 0; i < healthInfoList.length; i++) {
+              healthInfoItems.push(new ActionTreeItem(healthInfoList[i].Title, '', { name: 'm365-warning', custom: true } , undefined, 'vscode.open', Uri.parse(healthInfoList[i].Url), 'm365-health-service-url'));
+            }
+            if (healthInfoItems.length > 0) {
+              accountCommands[0].children.push(new ActionTreeItem('Service health incidents', '', { name: 'm365-health', custom: true }, undefined, undefined, undefined, undefined, healthInfoItems));
+            }
           }
         }
       }
@@ -155,20 +159,25 @@ export class CommandPanel {
       const origin = new URL(tenantAppCatalogUrl).origin;
       commands.executeCommand('setContext', ContextKeys.hasAppCatalog, true);
 
-      const tenantWideExtensions = await CliActions.getTenantWideExtensions(tenantAppCatalogUrl);
-      const tenantWideExtensionsList: ActionTreeItem[] = [];
-      if (tenantWideExtensions && tenantWideExtensions?.length > 0) {
-        tenantWideExtensions.forEach((extension) => {
-          tenantWideExtensionsList.push(new ActionTreeItem(extension.Title, '', { name: 'spo-app', custom: true }, undefined, 'vscode.open', Uri.parse(extension.Url), 'sp-app-catalog-tenant-wide-extensions-url'));
-        });
-      }
-
       environmentCommands.push(
         new ActionTreeItem('Tenant App Catalog', '', { name: 'spo-logo', custom: true }, undefined, undefined, undefined, undefined, [
-          new ActionTreeItem(tenantAppCatalogUrl.replace(origin, '...'), '', { name: 'globe', custom: false }, undefined, 'vscode.open', Uri.parse(tenantAppCatalogUrl), 'sp-app-catalog-url'),
-          new ActionTreeItem('Tenant-wide Extensions', '', { name: 'spo-app-list', custom: true }, undefined, undefined, undefined, 'sp-app-catalog-tenant-wide-extensions', tenantWideExtensionsList)
+          new ActionTreeItem(tenantAppCatalogUrl.replace(origin, '...'), '', { name: 'globe', custom: false }, undefined, 'vscode.open', Uri.parse(tenantAppCatalogUrl), 'sp-app-catalog-url')
         ]),
       );
+
+      const showTenantWideExtensions = getExtensionSettings('showTenantWideExtensions', true);
+
+      if (showTenantWideExtensions === true) {
+        const tenantWideExtensions = await CliActions.getTenantWideExtensions(tenantAppCatalogUrl);
+        const tenantWideExtensionsList: ActionTreeItem[] = [];
+        if (tenantWideExtensions && tenantWideExtensions?.length > 0) {
+          tenantWideExtensions.forEach((extension) => {
+            tenantWideExtensionsList.push(new ActionTreeItem(extension.Title, '', { name: 'spo-app', custom: true }, undefined, 'vscode.open', Uri.parse(extension.Url), 'sp-app-catalog-tenant-wide-extensions-url'));
+          });
+        }
+
+        environmentCommands.push(new ActionTreeItem('Tenant-wide Extensions', '', { name: 'spo-app-list', custom: true }, undefined, undefined, undefined, 'sp-app-catalog-tenant-wide-extensions', tenantWideExtensionsList));
+      }
 
       const siteAppCatalogActionItems: ActionTreeItem[] = [];
       for (let i = 1; i < appCatalogUrls.length; i++) {
