@@ -172,13 +172,13 @@
 					"title": "Show service health incidents",
 					"type": "boolean",
 					"default": "true",
-					"description": "Show or hide the service health incidents in the account view."
+					"description": "Show the service health incidents in the account view."
 				},
 				"spfx-toolkit.showTenantWideExtensions": {
 					"title": "Show tenant-wide extensions",
 					"type": "boolean",
 					"default": "true",
-					"description": "Show or hide the tenant-wide extensions in the account view."
+					"description": "Show the tenant-wide extensions in the account view."
 				}
 			}
 		},
