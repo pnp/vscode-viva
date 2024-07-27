@@ -1,7 +1,7 @@
 import { Commands } from './../constants/Commands';
 import { Notifications } from './Notifications';
 import { execSync } from 'child_process';
-import { commands, ProgressLocation, ThemeIcon, window } from 'vscode';
+import { commands, ProgressLocation, window } from 'vscode';
 import { Logger } from './Logger';
 import { NpmLs, Subscription } from '../models';
 import { TerminalCommandExecuter } from './TerminalCommandExecuter';

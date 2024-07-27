@@ -1,7 +1,7 @@
 import { PnPWebview } from './webview/PnPWebview';
 import { CommandPanel } from './panels/CommandPanel';
 import * as vscode from 'vscode';
-import { workspace, window, ThemeIcon, commands } from 'vscode';
+import { workspace, commands } from 'vscode';
 import { PROJECT_FILE, Scaffolder } from './services/Scaffolder';
 import { Extension } from './services/Extension';
 import { Dependencies } from './services/Dependencies';
