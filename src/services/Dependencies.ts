@@ -94,16 +94,8 @@ export class Dependencies {
   /**
    * Installs the dependencies by running the npm install command in a terminal.
    */
-  public static install() {
-    const terminal = window.createTerminal({
-      name: 'Installing dependencies',
-      iconPath: new ThemeIcon('cloud-download')
-    });
-
-    if (terminal) {
-      terminal.sendText(`npm i -g ${DEPENDENCIES.join(' ')}`);
-      terminal.show(true);
-    }
+  public static async install() {
+    await TerminalCommandExecuter.runCommand(`npm i -g ${DEPENDENCIES.join(' ')}`, [], 'Installing dependencies', 'cloud-download');
   }
 
   /**

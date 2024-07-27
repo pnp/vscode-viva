@@ -39,13 +39,11 @@ export async function activate(context: vscode.ExtensionContext) {
 			if (fileContents) {
 				unlinkSync(files[0].fsPath);
 
-				const terminal = window.createTerminal({
-					name: 'Installing dependencies',
-					iconPath: new ThemeIcon('cloud-download')
-				});
+				const terminalTitle = 'Installing dependencies';
+				const terminalIcon = 'cloud-download';
 
 				if (fileContents.indexOf(ProjectFileContent.init) > -1 || fileContents.indexOf(ProjectFileContent.initScenario) > -1) {
-					terminal.sendText('npm i');
+					await TerminalCommandExecuter.runCommand('npm i', [], terminalTitle, terminalIcon);
 				}
 
 				if (fileContents.indexOf(ProjectFileContent.initScenario) > -1) {
@@ -53,18 +51,16 @@ export async function activate(context: vscode.ExtensionContext) {
 				}
 
 				if (fileContents.indexOf(ProjectFileContent.installReusablePropertyPaneControls) > -1) {
-					terminal.sendText('npm install @pnp/spfx-property-controls --save --save-exact');
+					await TerminalCommandExecuter.runCommand('npm install @pnp/spfx-property-controls --save --save-exact', [], terminalTitle, terminalIcon);
 				}
 
 				if (fileContents.indexOf(ProjectFileContent.installReusableReactControls) > -1) {
-					terminal.sendText('npm install @pnp/spfx-controls-react --save --save-exact');
+					await TerminalCommandExecuter.runCommand('npm install @pnp/spfx-controls-react --save --save-exact', [], terminalTitle, terminalIcon);
 				}
 
 				if (fileContents.indexOf(ProjectFileContent.installPnPJs) > -1) {
-					terminal.sendText('npm install @pnp/sp @pnp/graph --save');
+					await TerminalCommandExecuter.runCommand('npm install @pnp/sp @pnp/graph --save', [], terminalTitle, terminalIcon);
 				}
-
-				terminal.show(true);
 			}
 		}
 	});
