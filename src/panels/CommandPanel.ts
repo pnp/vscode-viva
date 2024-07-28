@@ -116,7 +116,7 @@ export class CommandPanel {
         ]));
 
         const healthInfoList = await CliActions.getTenantHealthInfo();
-        if (healthInfoList)
+        if (healthInfoList?.some)
         {
           const healthInfoItems: ActionTreeItem[] = [];
           for (let i = 0; i < healthInfoList.length; i++) {
@@ -161,6 +161,9 @@ export class CommandPanel {
         tenantWideExtensions.forEach((extension) => {
           tenantWideExtensionsList.push(new ActionTreeItem(extension.Title, '', { name: 'spo-app', custom: true }, undefined, 'vscode.open', Uri.parse(extension.Url), 'sp-app-catalog-tenant-wide-extensions-url'));
         });
+      }
+      else {
+        tenantWideExtensionsList.push(new ActionTreeItem('none', '', undefined, undefined, 'vscode.open', undefined, undefined));
       }
 
       environmentCommands.push(
