@@ -67,7 +67,7 @@ export default function useSamples(): [Sample[], string[], ((query: string, comp
     });
   }, [allSamples]);
 
-  const search = (query: string, componentTypes: string[], spfxVersions: string[], showOnlyScenarios: boolean) => {
+  const search = (query: string, componentTypes: string[], spfxVersions: string[], extensionTypes: string[], showOnlyScenarios: boolean) => {
     const currentSamples: Sample[] = state['samples'];
     const samplesByTitle: Sample[] = currentSamples!.filter((sample: Sample) => sample.title.toString().toLowerCase().includes(query.toLowerCase()));
     const samplesByTag: Sample[] = currentSamples!.filter((sample: Sample) => sample.tags.some(tag => tag.toString().toLowerCase().includes(query.toLowerCase())));
