@@ -19,22 +19,35 @@ export const GalleryView: React.FunctionComponent<IGalleryViewProps> = ({ }: Rea
   const [spfxVersions, setSPFxVersions] = useLocalStorage<string[]>('spfxVersions', []);
   const [showOnlyScenarios, setShowOnlyScenarios] = useLocalStorage('showOnlyScenarios', false);
   const [componentTypes, setComponentTypes] = useLocalStorage<string[]>('componentTypes', []);
+  const [extensionTypes, setExtensionTypes] = useLocalStorage<string[]>('extensionTypes', []);
 
   const onSearchTextboxChange = (event: any) => {
     const input: string = event.target.value;
     setQuery(input);
-    search(input, componentTypes ?? [], spfxVersions ?? [], showOnlyScenarios);
+    search(input, componentTypes ?? [], spfxVersions ?? [], extensionTypes ?? [], showOnlyScenarios);
   };
 
   const onClearTextboxChange = () => {
     setQuery('');
-    search('', componentTypes ?? [], spfxVersions ?? [], showOnlyScenarios);
+    search('', componentTypes ?? [], spfxVersions ?? [], extensionTypes ?? [], showOnlyScenarios);
   };
 
   const onFilterOnlyScenariosChange = () => {
     setShowOnlyScenarios(!showOnlyScenarios);
-    search(query, componentTypes ?? [], spfxVersions ?? [], !showOnlyScenarios);
+    search(query, componentTypes ?? [], spfxVersions ?? [], extensionTypes ?? [], !showOnlyScenarios);
   };
+
+  const onFilterByExtensionTypeChange = (event: any, option?: IDropdownOption) => {
+    let extensionsInput: string[] = [];
+    if (option?.selected) {
+      extensionsInput = [...extensionTypes ?? [], option.key as string];
+    } else {
+      extensionsInput = extensionTypes?.filter(componentType => componentType !== option?.key) ?? [];
+    }
+
+    setExtensionTypes(extensionsInput);
+    search(query, componentTypes ?? [], spfxVersions ?? [], extensionsInput, showOnlyScenarios);
+  }
 
   const onFilterBySPFxVersionChange = (event: any, option?: IDropdownOption) => {
     let spfxVersionsInput: string[] = [];
@@ -51,7 +64,7 @@ export const GalleryView: React.FunctionComponent<IGalleryViewProps> = ({ }: Rea
       setSelectedFilters(removedFilter);
     }
     setSPFxVersions(spfxVersionsInput);
-    search(query, componentTypes ?? [], spfxVersionsInput, showOnlyScenarios);
+    search(query, componentTypes ?? [], spfxVersionsInput, extensionTypes ?? [], showOnlyScenarios);
   };
 
   const onRemoveFilterBySPFxVersion = (key: string) => {
@@ -81,7 +94,7 @@ export const GalleryView: React.FunctionComponent<IGalleryViewProps> = ({ }: Rea
       setSelectedFilters(removedFilter);
     }
     setComponentTypes(componentTypesInput);
-    search(query, componentTypesInput, spfxVersions ?? [], showOnlyScenarios);
+    search(query, componentTypesInput, spfxVersions ?? [], extensionTypes ?? [], showOnlyScenarios);
   };
 
   const getSPFxVersions = (): IDropdownOption[] => {
@@ -99,7 +112,7 @@ export const GalleryView: React.FunctionComponent<IGalleryViewProps> = ({ }: Rea
   useEffect(() => {
     if (samples !== undefined) {
       setShowOnlyScenarios(showOnlyScenarios);
-      search(query, componentTypes ?? [], spfxVersions ?? [], showOnlyScenarios);
+      search(query, componentTypes ?? [], spfxVersions ?? [], extensionTypes ?? [], showOnlyScenarios);
     }
   }, [samples]);
 
@@ -110,7 +123,7 @@ export const GalleryView: React.FunctionComponent<IGalleryViewProps> = ({ }: Rea
     setComponentTypes([]);
     setShowOnlyScenarios(false);
     setQuery('');
-    search('', [], [], false);
+    search('', [], [], [], false);
   };
 
   return (
@@ -129,6 +142,7 @@ export const GalleryView: React.FunctionComponent<IGalleryViewProps> = ({ }: Rea
               onFilterBySPFxVersionChange={(event, option) => onFilterBySPFxVersionChange(event, option)}
               onFilterByComponentTypeChange={(event, option) => onFilterByComponentTypeChange(event, option)}
               onFilterOnlyScenariosChange={() => onFilterOnlyScenariosChange()}
+              onFilterByExtensionTypeChange={(event, option) => onFilterByExtensionTypeChange(event, option)}
               initialQuery={query}
               selectedFilters={selectedFilters}
               onRemoveFilterBySPFxVersion={onRemoveFilterBySPFxVersion}
