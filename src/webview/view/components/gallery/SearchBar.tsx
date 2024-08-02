@@ -13,6 +13,7 @@ export interface ISearchBarProps {
   onFilterBySPFxVersionChange: (event: any, option?: IDropdownOption) => void;
   onFilterByComponentTypeChange: (event: any, option?: IDropdownOption) => void;
   onFilterOnlyScenariosChange: (event: any) => void;
+  onFilterByExtensionTypeChange: (event: any, option?: IDropdownOption) => void;
   initialQuery?: string;
   spfxVersions: IDropdownOption[];
   selectedFilters: ISelectedFilter[];
@@ -79,7 +80,7 @@ export const SearchBar: React.FunctionComponent<ISearchBarProps> = ({ onSearchTe
 
   return (
     <div>
-      <div className={'mt-2 columns-1 md:columns-4'}>
+      <div className={'mt-2 columns-1 md:columns-5'}>
         <div>
           <VSCodeTextField size="100" placeholder="Search" value={query} onInput={onInputChange}>
             <span slot='start' className='mt-0'>
@@ -143,6 +144,14 @@ export const SearchBar: React.FunctionComponent<ISearchBarProps> = ({ onSearchTe
             <strong onClick={resetQueryAndFilters} className="text-blueClearAll cursor-pointer bg-vscode">Clear all</strong>
           </label>
         }
+        {isExtensionSelected && (
+          <div>
+            <MultiSelect options={extensionTypes} label="Extension type" onChange={onFilterByExtensionTypeChange} />
+          </div>
+        )}
+        <div>
+          <VSCodeCheckbox onChange={onFilterOnlyScenariosChange}>show only scenarios</VSCodeCheckbox>
+        </div>
       </div>
     </div>
   );

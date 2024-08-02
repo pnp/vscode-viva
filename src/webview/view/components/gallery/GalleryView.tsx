@@ -63,6 +63,10 @@ export const GalleryView: React.FunctionComponent<IGalleryViewProps> = ({ }: Rea
   };
 
   const onFilterByComponentTypeChange = (event: any, option?: IDropdownOption) => {
+    if(option?.key === 'extension' && !option?.selected) {
+      setExtensionTypes([]);
+    }
+
     let componentTypesInput: string[] = [];
     if (option?.selected) {
       componentTypesInput = [...componentTypes ?? [], option.key as string];

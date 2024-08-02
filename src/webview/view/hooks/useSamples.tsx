@@ -6,7 +6,7 @@ import { Sample } from '../../../models';
 
 const SAMPLES_URL = 'https://raw.githubusercontent.com/pnp/vscode-viva/main/data/sp-dev-fx-samples.json';
 
-export default function useSamples(): [Sample[], string[], ((query: string, componentTypes: string[], spfxVersions: string[], showOnlyScenarios: boolean) => void)] {
+export default function useSamples(): [Sample[], string[], ((query: string, componentTypes: string[], spfxVersions: string[], extensionTypes: string[], showOnlyScenarios: boolean) => void)] {
   const [allSamples, setAllSamples] = useState<Sample[] | undefined>(undefined);
   const [samples, setSamples] = useState<Sample[] | undefined>(undefined);
   const state = Messenger.getState() as any || {};
