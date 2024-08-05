@@ -176,7 +176,7 @@ export class CommandPanel {
           });
         }
       else {
-        tenantWideExtensionsList.push(new ActionTreeItem('none', '', undefined, undefined, 'vscode.open', undefined, undefined));
+        tenantWideExtensionsList.push(new ActionTreeItem('none', '', undefined, undefined, undefined, undefined, undefined));
       }
 
         environmentCommands.push(new ActionTreeItem('Tenant-wide Extensions', '', { name: 'spo-app-list', custom: true }, undefined, undefined, undefined, 'sp-app-catalog-tenant-wide-extensions', tenantWideExtensionsList));
