@@ -145,8 +145,8 @@ export class TerminalCommandExecuter {
    * @param command - The command to run.
    * @param args - The arguments for the command.
    */
-  public static async runCommand(command: string, args: string[]) {
-    const terminal = await TerminalCommandExecuter.createTerminal('Gulp task', 'tasks-list-configure');
+  public static async runCommand(command: string, args: string[], terminalTitle: string = 'Gulp task', terminalIcon: string = 'tasks-list-configure') {
+    const terminal = await TerminalCommandExecuter.createTerminal(terminalTitle, terminalIcon);
 
     const wsFolder = await Folders.getWorkspaceFolder();
     if (wsFolder) {
