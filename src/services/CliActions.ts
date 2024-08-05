@@ -51,21 +51,25 @@ export class CliActions {
    * @returns A promise that resolves to an array of app catalog URLs, or undefined if no app catalogs are found.
    */
   public static async appCatalogUrlsGet(): Promise<string[] | undefined> {
-    const appCatalogUrls: string[] = [];
-    const tenantAppCatalog = (await CliExecuter.execute('spo tenant appcatalogurl get', 'json')).stdout || undefined;
-    const siteAppCatalogs = (await CliExecuter.execute('spo site appcatalog list', 'json')).stdout || undefined;
+    try {
+      const appCatalogUrls: string[] = [];
+      const tenantAppCatalog = (await CliExecuter.execute('spo tenant appcatalogurl get', 'json')).stdout || undefined;
+      const siteAppCatalogs = (await CliExecuter.execute('spo site appcatalog list', 'json')).stdout || undefined;
 
-    if (tenantAppCatalog) {
-      appCatalogUrls.push(JSON.parse(tenantAppCatalog));
+      if (tenantAppCatalog) {
+        appCatalogUrls.push(JSON.parse(tenantAppCatalog));
+      }
+
+      if (siteAppCatalogs) {
+        const siteAppCatalogsJson: SiteAppCatalog[] = JSON.parse(siteAppCatalogs);
+        siteAppCatalogsJson.forEach((siteAppCatalog) => appCatalogUrls.push(`${siteAppCatalog.AbsoluteUrl}/AppCatalog`));
+      }
+
+      EnvironmentInformation.appCatalogUrls = appCatalogUrls ? appCatalogUrls : undefined;
+      return EnvironmentInformation.appCatalogUrls;
+    } catch {
+      return undefined;
     }
-
-    if (siteAppCatalogs) {
-      const siteAppCatalogsJson: SiteAppCatalog[] = JSON.parse(siteAppCatalogs);
-      siteAppCatalogsJson.forEach((siteAppCatalog) => appCatalogUrls.push(`${siteAppCatalog.AbsoluteUrl}/AppCatalog`));
-    }
-
-    EnvironmentInformation.appCatalogUrls = appCatalogUrls ? appCatalogUrls : undefined;
-    return EnvironmentInformation.appCatalogUrls;
   }
 
   /**
@@ -74,26 +78,30 @@ export class CliActions {
    * @returns A promise that resolves to an array of objects containing the URL and title of each tenant-wide extension,
    *          or undefined if no extensions are found.
    */
-  public static async getTenantWideExtensions(tenantAppCatalogUrl: string): Promise<{Url: string, Title: string}[] | undefined> {
+  public static async getTenantWideExtensions(tenantAppCatalogUrl: string): Promise<{ Url: string, Title: string }[] | undefined> {
     const origin = new URL(tenantAppCatalogUrl).origin;
     const commandOptions: any = {
       listUrl: `${tenantAppCatalogUrl.replace(origin, '')}/Lists/TenantWideExtensions`,
       webUrl: tenantAppCatalogUrl
     };
-    const tenantWideExtensions = (await CliExecuter.execute('spo listitem list', 'json', commandOptions)).stdout || undefined;
+    try {
+      const tenantWideExtensions = (await CliExecuter.execute('spo listitem list', 'json', commandOptions)).stdout || undefined;
 
-    if (!tenantWideExtensions) {
+      if (!tenantWideExtensions) {
+        return undefined;
+      }
+
+      const tenantWideExtensionsJson: any[] = JSON.parse(tenantWideExtensions);
+      const tenantWideExtensionList = tenantWideExtensionsJson.map((extension) => {
+        return {
+          Url: `${tenantAppCatalogUrl}/Lists/TenantWideExtensions/DispForm.aspx?ID=${extension.Id}`,
+          Title: extension.Title
+        };
+      });
+      return tenantWideExtensionList;
+    } catch {
       return undefined;
     }
-
-    const tenantWideExtensionsJson: any[] = JSON.parse(tenantWideExtensions);
-    const tenantWideExtensionList = tenantWideExtensionsJson.map((extension) => {
-      return {
-        Url: `${tenantAppCatalogUrl}/Lists/TenantWideExtensions/DispForm.aspx?ID=${extension.Id}`,
-        Title: extension.Title
-      };
-    });
-    return tenantWideExtensionList;
   }
 
   /**
@@ -101,21 +109,25 @@ export class CliActions {
    * @returns A promise that resolves to an array of objects containing the title and URL of the health information.
    *          Returns undefined if there is no health information available.
    */
-  public static async getTenantHealthInfo(): Promise<{Title: string, Url: string}[] | undefined> {
-    const healthInfo = (await CliExecuter.execute('tenant serviceannouncement health list', 'json')).stdout || undefined;
+  public static async getTenantHealthInfo(): Promise<{ Title: string, Url: string }[] | undefined> {
+    try {
+      const healthInfo = (await CliExecuter.execute('tenant serviceannouncement health list', 'json')).stdout || undefined;
+      if (!healthInfo) {
+        return undefined;
+      }
 
-    if (!healthInfo) {
+      const healthInfoJson: any[] = JSON.parse(healthInfo);
+      const healthInfoList = healthInfoJson.filter(service => service.status !== 'serviceOperational').map((service) => {
+        return {
+          Url: `https://admin.microsoft.com/#/servicehealth/:/currentIssues/${encodeURIComponent(service.service)}/`,
+          Title: service.service
+        };
+      });
+      return healthInfoList;
+    }
+    catch {
       return undefined;
     }
-
-    const healthInfoJson: any[] = JSON.parse(healthInfo);
-    const healthInfoList = healthInfoJson.filter(service => service.status !== 'serviceOperational').map((service) => {
-      return {
-        Url: `https://admin.microsoft.com/#/servicehealth/:/currentIssues/${encodeURIComponent(service.service)}/`,
-        Title: service.service
-      };
-    });
-    return healthInfoList;
   }
 
   /**

@@ -119,7 +119,7 @@ export class CommandPanel {
         const showServiceIncidentList = getExtensionSettings('showServiceIncidentList', true);
         if (showServiceIncidentList === true) {
           const healthInfoList = await CliActions.getTenantHealthInfo();
-          if (healthInfoList)
+          if (healthInfoList?.some)
           {
             const healthInfoItems: ActionTreeItem[] = [];
             for (let i = 0; i < healthInfoList.length; i++) {
@@ -175,6 +175,9 @@ export class CommandPanel {
             tenantWideExtensionsList.push(new ActionTreeItem(extension.Title, '', { name: 'spo-app', custom: true }, undefined, 'vscode.open', Uri.parse(extension.Url), 'sp-app-catalog-tenant-wide-extensions-url'));
           });
         }
+      else {
+        tenantWideExtensionsList.push(new ActionTreeItem('none', '', undefined, undefined, undefined, undefined, undefined));
+      }
 
         environmentCommands.push(new ActionTreeItem('Tenant-wide Extensions', '', { name: 'spo-app-list', custom: true }, undefined, undefined, undefined, 'sp-app-catalog-tenant-wide-extensions', tenantWideExtensionsList));
       }
