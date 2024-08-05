@@ -1,8 +1,8 @@
 import { commands, ThemeIcon, workspace, window, Terminal } from 'vscode';
-import { Commands, EXTENSION_NAME, NodeVersionManagers } from '../constants';
+import { Commands, NodeVersionManagers } from '../constants';
 import { Subscription } from '../models';
 import { Extension } from './Extension';
-import { getPlatform } from '../utils';
+import { getPlatform, getExtensionSettings } from '../utils';
 import { TeamsToolkitIntegration } from './TeamsToolkitIntegration';
 import { Folders } from './Folders';
 import { join } from 'path';
@@ -99,7 +99,7 @@ export class TerminalCommandExecuter {
 
       // Check the user's settings to see if they want to use nvm or nvs
       // Get the user's preferred node version manager -- nvm or nvs or none, if they don't want to use either
-      const nodeVersionManager: string = TerminalCommandExecuter.getExtensionSettings('nodeVersionManager', 'nvm');
+      const nodeVersionManager: string = getExtensionSettings('nodeVersionManager', 'nvm');
 
       // Check if nvm is used
       const nvmFiles = await workspace.findFiles('.nvmrc', '**/node_modules/**');
@@ -115,17 +115,6 @@ export class TerminalCommandExecuter {
     }
 
     return terminal;
-  }
-
-  /**
-   * Retrieves the extension settings value for the specified setting.
-   * If the setting is not found, the default value is returned.
-   * @param setting - The name of the setting to retrieve.
-   * @param defaultValue - The default value to return if the setting is not found.
-   * @returns The value of the setting, or the default value if the setting is not found.
-   */
-  private static getExtensionSettings<T>(setting: string, defaultValue: T): T {
-      return workspace.getConfiguration(EXTENSION_NAME).get<T>(setting, defaultValue);
   }
 
   /**
@@ -145,8 +134,8 @@ export class TerminalCommandExecuter {
    * @param command - The command to run.
    * @param args - The arguments for the command.
    */
-  public static async runCommand(command: string, args: string[]) {
-    const terminal = await TerminalCommandExecuter.createTerminal('Gulp task', 'tasks-list-configure');
+  public static async runCommand(command: string, args: string[], terminalTitle: string = 'Gulp task', terminalIcon: string = 'tasks-list-configure') {
+    const terminal = await TerminalCommandExecuter.createTerminal(terminalTitle, terminalIcon);
 
     const wsFolder = await Folders.getWorkspaceFolder();
     if (wsFolder) {
