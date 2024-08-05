@@ -1,7 +1,7 @@
 import { Commands } from './../constants/Commands';
 import { Notifications } from './Notifications';
 import { execSync } from 'child_process';
-import { commands, ProgressLocation, ThemeIcon, window } from 'vscode';
+import { commands, ProgressLocation, window } from 'vscode';
 import { Logger } from './Logger';
 import { NpmLs, Subscription } from '../models';
 import { TerminalCommandExecuter } from './TerminalCommandExecuter';
@@ -94,16 +94,8 @@ export class Dependencies {
   /**
    * Installs the dependencies by running the npm install command in a terminal.
    */
-  public static install() {
-    const terminal = window.createTerminal({
-      name: 'Installing dependencies',
-      iconPath: new ThemeIcon('cloud-download')
-    });
-
-    if (terminal) {
-      terminal.sendText(`npm i -g ${DEPENDENCIES.join(' ')}`);
-      terminal.show(true);
-    }
+  public static async install() {
+    await TerminalCommandExecuter.runCommand(`npm i -g ${DEPENDENCIES.join(' ')}`, [], 'Installing dependencies', 'cloud-download');
   }
 
   /**
