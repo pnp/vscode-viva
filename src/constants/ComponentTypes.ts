@@ -9,18 +9,27 @@ export enum ComponentType {
 export const ComponentTypes = [
   {
     name: 'Web Part',
-    value: ComponentType.webPart
+    value: ComponentType.webPart,
+    description:
+      "A reusable component for displaying content and functionality on SharePoint pages."
+
   },
   {
     name: 'Extension',
-    value: ComponentType.extension
+    value: ComponentType.extension,
+    description:
+      "Custom scripts that enhance or modify the SharePoint or Teams UI."
   },
   {
     name: 'Library',
-    value: ComponentType.library
+    value: ComponentType.library,
+    description:
+      "A collection of files and documents with collaboration and version control features."
   },
   {
     name: 'Adaptive Card Extension',
-    value: ComponentType.adaptiveCardExtension
+    value: ComponentType.adaptiveCardExtension,
+    description:
+      "Components that render adaptive cards in SharePoint or Teams for flexible and interactive content.",
   }
 ];
