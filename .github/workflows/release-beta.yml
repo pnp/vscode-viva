@@ -12,7 +12,7 @@ jobs:
       - name: Setup node
         uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: 20
           registry-url: https://registry.npmjs.org/
       
       - name: Checkout vscode-viva
@@ -49,5 +49,5 @@ jobs:
         continue-on-error: false
 
       - name: Publish
-        run: npx @vscode/vsce publish -p ${{ secrets.VSCE_PAT }} --pre-release --baseImagesUrl https://raw.githubusercontent.com/pnp/vscode-viva/dev
+        run: npx @vscode/vsce@2.30.0 publish -p ${{ secrets.VSCE_PAT }} --pre-release --baseImagesUrl https://raw.githubusercontent.com/pnp/vscode-viva/dev
         working-directory: vscode-viva

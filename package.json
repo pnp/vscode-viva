@@ -2,7 +2,7 @@
 	"name": "viva-connections-toolkit",
 	"displayName": "SharePoint Framework Toolkit",
 	"description": "SharePoint Framework Toolkit aims to boost your productivity in developing and managing SharePoint Framework solutions helping at every stage of your development flow, from setting up your development workspace to deploying a solution straight to your tenant without the need to leave VS Code and now even create a CI/CD pipeline to introduce automate deployment of your app. This toolkit is provided by the community.",
-	"version": "3.4.0",
+	"version": "3.4.1",
 	"publisher": "m365pnp",
 	"preview": false,
 	"homepage": "https://github.com/pnp/vscode-viva",
@@ -167,6 +167,18 @@
 						"none"
 					],
 					"description": "Choose your preferred Node.js version manager. Choose between `nvs`, `nvm`, or `none`."
+				},
+				"spfx-toolkit.showServiceIncidentList": {
+					"title": "Show service health incidents",
+					"type": "boolean",
+					"default": "true",
+					"description": "Show the service health incidents in the account view."
+				},
+				"spfx-toolkit.showTenantWideExtensions": {
+					"title": "Show tenant-wide extensions",
+					"type": "boolean",
+					"default": "true",
+					"description": "Show the tenant-wide extensions in the account view."
 				}
 			}
 		},
