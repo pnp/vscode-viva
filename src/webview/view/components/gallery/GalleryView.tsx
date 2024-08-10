@@ -20,6 +20,7 @@ export const GalleryView: React.FunctionComponent<IGalleryViewProps> = ({ }: Rea
   const [showOnlyScenarios, setShowOnlyScenarios] = useLocalStorage('showOnlyScenarios', false);
   const [componentTypes, setComponentTypes] = useLocalStorage<string[]>('componentTypes', []);
   const [extensionTypes, setExtensionTypes] = useLocalStorage<string[]>('extensionTypes', []);
+  const [isExtensionSelected, setIsExtensionSelected] = useLocalStorage<boolean>('isExtensionSelected',false);
 
   const onSearchTextboxChange = (event: any) => {
     const input: string = event.target.value;
@@ -36,18 +37,6 @@ export const GalleryView: React.FunctionComponent<IGalleryViewProps> = ({ }: Rea
     setShowOnlyScenarios(!showOnlyScenarios);
     search(query, componentTypes ?? [], spfxVersions ?? [], extensionTypes ?? [], !showOnlyScenarios);
   };
-
-  const onFilterByExtensionTypeChange = (event: any, option?: IDropdownOption) => {
-    let extensionsInput: string[] = [];
-    if (option?.selected) {
-      extensionsInput = [...extensionTypes ?? [], option.key as string];
-    } else {
-      extensionsInput = extensionTypes?.filter(componentType => componentType !== option?.key) ?? [];
-    }
-
-    setExtensionTypes(extensionsInput);
-    search(query, componentTypes ?? [], spfxVersions ?? [], extensionsInput, showOnlyScenarios);
-  }
 
   const onFilterBySPFxVersionChange = (event: any, option?: IDropdownOption) => {
     let spfxVersionsInput: string[] = [];
@@ -76,8 +65,8 @@ export const GalleryView: React.FunctionComponent<IGalleryViewProps> = ({ }: Rea
   };
 
   const onFilterByComponentTypeChange = (event: any, option?: IDropdownOption) => {
-    if(option?.key === 'extension' && !option?.selected) {
-      setExtensionTypes([]);
+    if (option?.key === 'extension') {
+      setIsExtensionSelected(prevState => !prevState);
     }
 
     let componentTypesInput: string[] = [];
@@ -90,11 +79,38 @@ export const GalleryView: React.FunctionComponent<IGalleryViewProps> = ({ }: Rea
       }]);
     } else {
       componentTypesInput = componentTypes?.filter(componentType => componentType !== option?.key) ?? [];
-      const removedFilter = selectedFilters.filter(filter => filter.key !== option?.key);
+      let removedFilter = selectedFilters.filter(filter => filter.key !== option?.key);
+      if(option?.key === 'extension'){
+        setExtensionTypes([]);
+        removedFilter = removedFilter.filter(filter => filter.kind !== 'extensionType');
+      }
       setSelectedFilters(removedFilter);
     }
     setComponentTypes(componentTypesInput);
     search(query, componentTypesInput, spfxVersions ?? [], extensionTypes ?? [], showOnlyScenarios);
+  };
+
+  const onRemoveFilterByExtensionType = (key: string) => {
+    onFilterByExtensionTypeChange(null, { key: key, text: key, selected: false });
+  };
+
+  const onFilterByExtensionTypeChange = (event: any, option?: IDropdownOption) => {
+    let extensionTypesInput: string[] = [];
+
+    if (option?.selected) {
+      extensionTypesInput = [...extensionTypes ?? [], option.key as string];
+      setSelectedFilters([...selectedFilters, {
+        key: option.key as string,
+        text: option.text as string,
+        kind: 'extensionType'
+      }]);
+    } else {
+      extensionTypesInput = extensionTypes?.filter(componentType => componentType !== option?.key) ?? [];
+      const removedFilter = selectedFilters.filter(filter => filter.key !== option?.key);
+      setSelectedFilters(removedFilter);
+    }
+    setExtensionTypes(extensionTypesInput);
+    search(query, componentTypes ?? [], spfxVersions ?? [], extensionTypesInput, showOnlyScenarios);
   };
 
   const getSPFxVersions = (): IDropdownOption[] => {
@@ -121,10 +137,16 @@ export const GalleryView: React.FunctionComponent<IGalleryViewProps> = ({ }: Rea
     setSelectedFilters([]);
     setSPFxVersions([]);
     setComponentTypes([]);
+    setExtensionTypes([]);
     setShowOnlyScenarios(false);
     setQuery('');
     search('', [], [], [], false);
+    setIsExtensionSelected(false);
   };
+
+  const onClearExtensionTypes = () => {
+    setExtensionTypes([]);
+  }
 
   return (
     <div className={'w-full h-full max-w-7xl mx-auto sm:px-6 lg:px-8 py-16'}>
@@ -147,11 +169,12 @@ export const GalleryView: React.FunctionComponent<IGalleryViewProps> = ({ }: Rea
               selectedFilters={selectedFilters}
               onRemoveFilterBySPFxVersion={onRemoveFilterBySPFxVersion}
               onRemoveFilterByComponentType={onRemoveFilterByComponentType}
+              onremoveFilterByExtensionType={onRemoveFilterByExtensionType}
               clearAllFilters={clearFilters}
               onClearTextboxChange={onClearTextboxChange}
               showOnlyScenarios={showOnlyScenarios}
-              spfxVersions={getSPFxVersions()} />
-
+              spfxVersions={getSPFxVersions()} 
+              isExtensionSelected={isExtensionSelected}/>
             {
               samples.length === 0 && (
                 <NoResults />

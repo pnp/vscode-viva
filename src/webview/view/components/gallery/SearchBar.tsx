@@ -19,21 +19,22 @@ export interface ISearchBarProps {
   selectedFilters: ISelectedFilter[];
   onRemoveFilterBySPFxVersion: (key: string) => void;
   onRemoveFilterByComponentType: (key: string) => void;
+  onremoveFilterByExtensionType: (key: string) => void;
   clearAllFilters: () => void;
   onClearTextboxChange: () => void;
   showOnlyScenarios: boolean;
+  isExtensionSelected: boolean;
 }
 
 export interface ISelectedFilter {
   key: string | null;
   text: string;
-  kind: 'spfxVersion' | 'componentType'
+  kind: 'spfxVersion' | 'componentType' | 'extensionType';
 }
 
-export const SearchBar: React.FunctionComponent<ISearchBarProps> = ({ onSearchTextboxChange, onFilterBySPFxVersionChange, onFilterByComponentTypeChange, onFilterOnlyScenariosChange, onFilterByExtensionTypeChange, initialQuery, spfxVersions, selectedFilters, onRemoveFilterByComponentType, onRemoveFilterBySPFxVersion, clearAllFilters, onClearTextboxChange, showOnlyScenarios }: React.PropsWithChildren<ISearchBarProps>) => {
+export const SearchBar: React.FunctionComponent<ISearchBarProps> = ({ onSearchTextboxChange, onFilterBySPFxVersionChange, onFilterByComponentTypeChange, onFilterOnlyScenariosChange, onFilterByExtensionTypeChange, initialQuery, spfxVersions, selectedFilters, onRemoveFilterByComponentType, onRemoveFilterBySPFxVersion, onremoveFilterByExtensionType, clearAllFilters, onClearTextboxChange, showOnlyScenarios, isExtensionSelected }: React.PropsWithChildren<ISearchBarProps>) => {
   const [query, setQuery] = useState<string>(initialQuery ?? '');
   const [debouncedQuery, setDebounceQuery] = useDebounce(query, 300);
-  const [isExtensionSelected, setIsExtensionSelected] = useState<boolean>(false);
 
   useEffect(() => {
     setDebounceQuery(query);
@@ -75,6 +76,15 @@ export const SearchBar: React.FunctionComponent<ISearchBarProps> = ({ onSearchTe
       { key: 'FormCustomizer', text: 'Form customizer' }
     ];
 
+    selectedFilters.forEach(filter => {
+      if (filter.kind === 'extensionType') {
+        const matchingOption = extensionTypes.find(extensionType => extensionType.key === filter.key);
+        if (matchingOption) {
+          matchingOption.selected = true;
+        }
+      }
+    });
+
     return extensionTypes;
   };
 
@@ -92,10 +102,11 @@ export const SearchBar: React.FunctionComponent<ISearchBarProps> = ({ onSearchTe
   const extensionTypes = getExtensionTypeOptions();
 
   const handleComponentTypeChange = (event: any, option?: IDropdownOption) => {
-    if (option?.key === 'extension') {
-      setIsExtensionSelected(prevState => !prevState);
-    }
     onFilterByComponentTypeChange(event, option);
+  };
+
+  const handleExtensionTypeChange = (event: any, option?: IDropdownOption) => {
+    onFilterByExtensionTypeChange(event, option);
   };
 
   return (
@@ -116,7 +127,7 @@ export const SearchBar: React.FunctionComponent<ISearchBarProps> = ({ onSearchTe
         </div>
         {isExtensionSelected && (
           <div>
-            <MultiSelect options={extensionTypes} label="Extension type" onChange={onFilterByExtensionTypeChange} />
+            <MultiSelect options={extensionTypes} label="Extension type" onChange={handleExtensionTypeChange} />
           </div>
         )}
         <div>
@@ -145,6 +156,18 @@ export const SearchBar: React.FunctionComponent<ISearchBarProps> = ({ onSearchTe
                   <div className={'flex'}>
                     {filter.text}
                     <label className="cursor-pointer" onClick={() => onRemoveFilterBySPFxVersion(filter.key as string)}>
+                      <CloseIcon />
+                    </label>
+                  </div>
+                </VSCodeTag>
+              </label>);
+          } else if(filter.kind === 'extensionType') {
+            return (
+              <label className={'p-1'} >
+                <VSCodeTag key={index} >
+                  <div className={'flex'}>
+                    {filter.text}
+                    <label className="cursor-pointer" onClick={() => onremoveFilterByExtensionType(filter.key as string)}>
                       <CloseIcon />
                     </label>
                   </div>
