@@ -12,8 +12,6 @@ import { Extension } from './Extension';
 import download from 'github-directory-downloader/esm';
 import { CliExecuter } from './CliCommandExecuter';
 import { getPlatform } from '../utils';
-import { TerminalCommandExecuter } from './TerminalCommandExecuter';
-import { execSync } from 'child_process';
 import { PnPWebview } from '../webview/PnPWebview';
 import { Executer } from './CommandExecuter';
 import { TeamsToolkitIntegration } from './TeamsToolkitIntegration';
