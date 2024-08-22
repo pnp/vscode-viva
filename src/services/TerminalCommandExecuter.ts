@@ -6,6 +6,8 @@ import { getPlatform, getExtensionSettings } from '../utils';
 import { TeamsToolkitIntegration } from './TeamsToolkitIntegration';
 import { Folders } from './Folders';
 import { join } from 'path';
+import { ServeConfig } from './../models/ServeConfig';
+import { readFileSync } from 'fs';
 
 
 interface ShellSetting {
@@ -17,7 +19,12 @@ export class TerminalCommandExecuter {
 
   public static register() {
     const subscriptions: Subscription[] = Extension.getInstance().subscriptions;
-    TerminalCommandExecuter.registerCommands(subscriptions);
+    subscriptions.push(
+      commands.registerCommand(Commands.serveProject, TerminalCommandExecuter.serveProject)
+    );
+    subscriptions.push(
+      commands.registerCommand(Commands.executeTerminalCommand, TerminalCommandExecuter.runCommand)
+    );
 
     TerminalCommandExecuter.initShellPath();
   }
@@ -28,6 +35,61 @@ export class TerminalCommandExecuter {
    */
   public static get shell() {
     return TerminalCommandExecuter.shellPath;
+  }
+
+  /**
+   * Runs a command in the terminal.
+   * @param command - The command to run.
+   * @param args - The arguments for the command.
+   */
+  public static async runCommand(command: string, args: string[], terminalTitle: string = 'Gulp task', terminalIcon: string = 'tasks-list-configure') {
+    const terminal = await TerminalCommandExecuter.createTerminal(terminalTitle, terminalIcon);
+
+    const wsFolder = await Folders.getWorkspaceFolder();
+    if (wsFolder) {
+      let currentProjectPath = wsFolder.uri.fsPath;
+
+      if (TeamsToolkitIntegration.isTeamsToolkitProject) {
+        currentProjectPath = join(currentProjectPath, 'src');
+      }
+
+      TerminalCommandExecuter.runInTerminal(`cd "${currentProjectPath}"`, terminal);
+    }
+
+    TerminalCommandExecuter.runInTerminal(command, terminal);
+  }
+
+  /**
+   * Serves the project by executing the specified configuration using Gulp.
+   * Prompts the user to select a configuration from the serve.json file.
+   */
+  public static async serveProject() {
+    const wsFolder = Folders.getWorkspaceFolder();
+    if (!wsFolder) {
+      return;
+    }
+
+    const serveFiles = await workspace.findFiles('config/serve.json', '**/node_modules/**');
+    const serveFile = serveFiles && serveFiles.length > 0 ? serveFiles[0] : null;
+
+    if (!serveFile) {
+      return;
+    }
+
+    const serveFileContents = readFileSync(serveFile.fsPath, 'utf8');
+    const serveFileData: ServeConfig = JSON.parse(serveFileContents);
+    const configNames = Object.keys(serveFileData.serveConfigurations);
+
+    const answer = await window.showQuickPick(configNames, {
+      title: 'Select the configuration to serve',
+      ignoreFocusOut: true
+    });
+
+    if (!answer) {
+      return;
+    }
+
+    commands.executeCommand(Commands.executeTerminalCommand, `gulp serve --config=${answer}`);
   }
 
   /**
@@ -67,16 +129,6 @@ export class TerminalCommandExecuter {
     }
 
     return terminalSettings.get(`integrated.shell.${platform}`);
-  }
-
-  /**
-   * Registers the commands for execution.
-   * @param subscriptions - The array of subscriptions to add the registered command to.
-   */
-  private static registerCommands(subscriptions: Subscription[]) {
-    subscriptions.push(
-      commands.registerCommand(Commands.executeTerminalCommand, TerminalCommandExecuter.runCommand)
-    );
   }
 
   /**
@@ -127,27 +179,5 @@ export class TerminalCommandExecuter {
       terminal.show(true);
       terminal.sendText(` ${command}`);
     }
-  }
-
-  /**
-   * Runs a command in the terminal.
-   * @param command - The command to run.
-   * @param args - The arguments for the command.
-   */
-  public static async runCommand(command: string, args: string[], terminalTitle: string = 'Gulp task', terminalIcon: string = 'tasks-list-configure') {
-    const terminal = await TerminalCommandExecuter.createTerminal(terminalTitle, terminalIcon);
-
-    const wsFolder = await Folders.getWorkspaceFolder();
-    if (wsFolder) {
-      let currentProjectPath = wsFolder.uri.fsPath;
-
-      if (TeamsToolkitIntegration.isTeamsToolkitProject) {
-        currentProjectPath = join(currentProjectPath, 'src');
-      }
-
-      TerminalCommandExecuter.runInTerminal(`cd "${currentProjectPath}"`, terminal);
-    }
-
-    TerminalCommandExecuter.runInTerminal(command, terminal);
   }
 }

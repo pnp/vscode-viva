@@ -1,4 +1,3 @@
-import { ServeConfig } from './../models/ServeConfig';
 import { readFileSync, writeFileSync } from 'fs';
 import { Folders } from './Folders';
 import { commands, Progress, ProgressLocation, Uri, window, workspace } from 'vscode';
@@ -40,9 +39,6 @@ export class CliActions {
     );
     subscriptions.push(
       commands.registerCommand(Commands.pipeline, CliActions.showGenerateWorkflowForm)
-    );
-    subscriptions.push(
-      commands.registerCommand(Commands.serveProject, CliActions.serveProject)
     );
   }
 
@@ -576,38 +572,5 @@ export class CliActions {
         Notifications.error(message);
       }
     });
-  }
-
-  /**
-   * Serves the project by executing the specified configuration using Gulp.
-   * Prompts the user to select a configuration from the serve.json file.
-   */
-  public static async serveProject() {
-    const wsFolder = Folders.getWorkspaceFolder();
-    if (!wsFolder) {
-      return;
-    }
-
-    const serveFiles = await workspace.findFiles('config/serve.json', '**/node_modules/**');
-    const serveFile = serveFiles && serveFiles.length > 0 ? serveFiles[0] : null;
-
-    if (!serveFile) {
-      return;
-    }
-
-    const serveFileContents = readFileSync(serveFile.fsPath, 'utf8');
-    const serveFileData: ServeConfig = JSON.parse(serveFileContents);
-    const configNames = Object.keys(serveFileData.serveConfigurations);
-
-    const answer = await window.showQuickPick(configNames, {
-      title: 'Select the configuration to serve',
-      ignoreFocusOut: true
-    });
-
-    if (!answer) {
-      return;
-    }
-
-    commands.executeCommand(Commands.executeTerminalCommand, `gulp serve --config=${answer}`);
   }
 }
