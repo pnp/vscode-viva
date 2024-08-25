@@ -19,7 +19,7 @@ export interface ISearchBarProps {
   selectedFilters: ISelectedFilter[];
   onRemoveFilterBySPFxVersion: (key: string) => void;
   onRemoveFilterByComponentType: (key: string) => void;
-  onremoveFilterByExtensionType: (key: string) => void;
+  onRemoveFilterByExtensionType: (key: string) => void;
   clearAllFilters: () => void;
   onClearTextboxChange: () => void;
   showOnlyScenarios: boolean;
@@ -32,7 +32,7 @@ export interface ISelectedFilter {
   kind: 'spfxVersion' | 'componentType' | 'extensionType';
 }
 
-export const SearchBar: React.FunctionComponent<ISearchBarProps> = ({ onSearchTextboxChange, onFilterBySPFxVersionChange, onFilterByComponentTypeChange, onFilterOnlyScenariosChange, onFilterByExtensionTypeChange, initialQuery, spfxVersions, selectedFilters, onRemoveFilterByComponentType, onRemoveFilterBySPFxVersion, onremoveFilterByExtensionType, clearAllFilters, onClearTextboxChange, showOnlyScenarios, isExtensionSelected }: React.PropsWithChildren<ISearchBarProps>) => {
+export const SearchBar: React.FunctionComponent<ISearchBarProps> = ({ onSearchTextboxChange, onFilterBySPFxVersionChange, onFilterByComponentTypeChange, onFilterOnlyScenariosChange, onFilterByExtensionTypeChange, initialQuery, spfxVersions, selectedFilters, onRemoveFilterByComponentType, onRemoveFilterBySPFxVersion, onRemoveFilterByExtensionType, clearAllFilters, onClearTextboxChange, showOnlyScenarios, isExtensionSelected }: React.PropsWithChildren<ISearchBarProps>) => {
   const [query, setQuery] = useState<string>(initialQuery ?? '');
   const [debouncedQuery, setDebounceQuery] = useDebounce(query, 300);
 
@@ -161,13 +161,13 @@ export const SearchBar: React.FunctionComponent<ISearchBarProps> = ({ onSearchTe
                   </div>
                 </VSCodeTag>
               </label>);
-          } else if(filter.kind === 'extensionType') {
+          } else if (filter.kind === 'extensionType') {
             return (
               <label className={'p-1'} >
                 <VSCodeTag key={index} >
                   <div className={'flex'}>
                     {filter.text}
-                    <label className="cursor-pointer" onClick={() => onremoveFilterByExtensionType(filter.key as string)}>
+                    <label className="cursor-pointer" onClick={() => onRemoveFilterByExtensionType(filter.key as string)}>
                       <CloseIcon />
                     </label>
                   </div>

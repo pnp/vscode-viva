@@ -20,7 +20,7 @@ export const GalleryView: React.FunctionComponent<IGalleryViewProps> = ({ }: Rea
   const [showOnlyScenarios, setShowOnlyScenarios] = useLocalStorage('showOnlyScenarios', false);
   const [componentTypes, setComponentTypes] = useLocalStorage<string[]>('componentTypes', []);
   const [extensionTypes, setExtensionTypes] = useLocalStorage<string[]>('extensionTypes', []);
-  const [isExtensionSelected, setIsExtensionSelected] = useLocalStorage<boolean>('isExtensionSelected',false);
+  const [isExtensionSelected, setIsExtensionSelected] = useLocalStorage<boolean>('isExtensionSelected', false);
 
   const onSearchTextboxChange = (event: any) => {
     const input: string = event.target.value;
@@ -80,7 +80,7 @@ export const GalleryView: React.FunctionComponent<IGalleryViewProps> = ({ }: Rea
     } else {
       componentTypesInput = componentTypes?.filter(componentType => componentType !== option?.key) ?? [];
       let removedFilter = selectedFilters.filter(filter => filter.key !== option?.key);
-      if(option?.key === 'extension'){
+      if (option?.key === 'extension') {
         setExtensionTypes([]);
         removedFilter = removedFilter.filter(filter => filter.kind !== 'extensionType');
       }
@@ -146,7 +146,7 @@ export const GalleryView: React.FunctionComponent<IGalleryViewProps> = ({ }: Rea
 
   const onClearExtensionTypes = () => {
     setExtensionTypes([]);
-  }
+  };
 
   return (
     <div className={'w-full h-full max-w-7xl mx-auto sm:px-6 lg:px-8 py-16'}>
@@ -169,12 +169,12 @@ export const GalleryView: React.FunctionComponent<IGalleryViewProps> = ({ }: Rea
               selectedFilters={selectedFilters}
               onRemoveFilterBySPFxVersion={onRemoveFilterBySPFxVersion}
               onRemoveFilterByComponentType={onRemoveFilterByComponentType}
-              onremoveFilterByExtensionType={onRemoveFilterByExtensionType}
+              onRemoveFilterByExtensionType={onRemoveFilterByExtensionType}
               clearAllFilters={clearFilters}
               onClearTextboxChange={onClearTextboxChange}
               showOnlyScenarios={showOnlyScenarios}
-              spfxVersions={getSPFxVersions()} 
-              isExtensionSelected={isExtensionSelected}/>
+              spfxVersions={getSPFxVersions()}
+              isExtensionSelected={isExtensionSelected} />
             {
               samples.length === 0 && (
                 <NoResults />
