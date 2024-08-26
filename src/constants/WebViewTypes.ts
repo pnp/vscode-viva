@@ -2,7 +2,8 @@
 export enum WebViewType {
   samplesGallery = 'samplesGallery',
   workflowForm = 'workflowForm',
-  scaffoldForm = 'scaffoldForm'
+  scaffoldForm = 'scaffoldForm',
+  registerEntraAppRegistration = 'registerEntraAppRegistration'
 }
 
 export const WebViewTypes = [
@@ -20,5 +21,10 @@ export const WebViewTypes = [
     Title: 'Scaffold Form',
     homePageUrl: '/scaffold-form',
     value: WebViewType.scaffoldForm
+  },
+  {
+    Title: 'Register Entra App',
+    homePageUrl: '/register-entra-app',
+    value: WebViewType.registerEntraAppRegistration
   }
 ];
