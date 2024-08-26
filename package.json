@@ -224,6 +224,13 @@
 					"fontPath": "./assets/fonts/fabric-icons.woff",
 					"fontCharacter": "\\E95E"
 				}
+			},
+			"entra-id": {
+				"description": "Entra ID icon",
+				"default": {
+					"fontPath": "./assets/fonts/fabric-icons.woff",
+					"fontCharacter": "\\ED68"
+				}
 			}
 		},
 		"viewsContainers": {
@@ -343,15 +350,20 @@
 			},
 			{
 				"command": "spfx-toolkit.login",
-				"title": "Sign in to M365",
+				"title": "Sign in to Microsoft 365",
 				"category": "SharePoint Framework Toolkit",
 				"icon": "$(sign-in)"
 			},
 			{
 				"command": "spfx-toolkit.logout",
-				"title": "Sign out from M365",
+				"title": "Sign out from Microsoft 365",
 				"category": "SharePoint Framework Toolkit",
 				"icon": "$(sign-out)"
+			},
+			{
+				"command": "spfx-toolkit.registerEntraAppRegistration",
+				"title": "Create a new app registration",
+				"category": "SharePoint Framework Toolkit"
 			},
 			{
 				"command": "spfx-toolkit.refreshAppCatalogTreeView",
