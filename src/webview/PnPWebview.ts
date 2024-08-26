@@ -1,10 +1,10 @@
 import { join } from 'path';
 import { commands, Uri, ViewColumn, Webview, WebviewPanel, window, env } from 'vscode';
 import { Commands, WebViewType, WebViewTypes, WebviewCommand } from '../constants';
-import { Extension } from '../services/Extension';
-import { Logger } from '../services/Logger';
-import { Scaffolder } from '../services/Scaffolder';
-import { CliActions } from '../services/CliActions';
+import { Extension } from '../services/dataType/Extension';
+import { Logger } from '../services/dataType/Logger';
+import { Scaffolder } from '../services/actions/Scaffolder';
+import { CliActions } from '../services/actions/CliActions';
 
 
 export class PnPWebview {

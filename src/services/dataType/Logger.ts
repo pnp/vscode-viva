@@ -1,6 +1,6 @@
 import { Extension } from './Extension';
 import { commands, OutputChannel, window } from 'vscode';
-import { Commands } from '../constants';
+import { Commands } from '../../constants';
 
 
 export class Logger {

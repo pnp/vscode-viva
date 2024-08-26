@@ -1,9 +1,9 @@
-import { ServeConfig } from './../models/ServeConfig';
+import { ServeConfig } from '../../models/ServeConfig';
 import { writeFileSync } from 'fs';
 import { workspace } from 'vscode';
-import { VSCodeLaunch } from '../models';
-import { Notifications } from './Notifications';
-import { Logger } from './Logger';
+import { VSCodeLaunch } from '../../models';
+import { Notifications } from '../dataType/Notifications';
+import { Logger } from '../dataType/Logger';
 
 
 export class DebuggerCheck {

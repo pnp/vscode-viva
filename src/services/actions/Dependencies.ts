@@ -1,11 +1,11 @@
-import { Commands } from './../constants/Commands';
-import { Notifications } from './Notifications';
+import { Commands } from '../../constants/Commands';
+import { Notifications } from '../dataType/Notifications';
 import { execSync } from 'child_process';
 import { commands, ProgressLocation, window } from 'vscode';
-import { Logger } from './Logger';
-import { NpmLs, Subscription } from '../models';
-import { TerminalCommandExecuter } from './TerminalCommandExecuter';
-import { Extension } from './Extension';
+import { Logger } from '../dataType/Logger';
+import { NpmLs, Subscription } from '../../models';
+import { TerminalCommandExecuter } from '../executeWrappers/TerminalCommandExecuter';
+import { Extension } from '../dataType/Extension';
 
 
 const SUPPORTED_VERSIONS = ['18.17.1'];

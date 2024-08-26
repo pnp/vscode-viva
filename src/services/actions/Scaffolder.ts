@@ -1,20 +1,20 @@
-import { parseWinPath } from './../utils/parseWinPath';
-import { Folders } from './Folders';
-import { Notifications } from './Notifications';
-import { Logger } from './Logger';
+import { parseWinPath } from '../../utils/parseWinPath';
+import { Folders } from '../check/Folders';
+import { Notifications } from '../dataType/Notifications';
+import { Logger } from '../dataType/Logger';
 import { commands, ProgressLocation, QuickPickItem, Uri, window } from 'vscode';
-import { Commands, ComponentType, ProjectFileContent, WebviewCommand, WebViewType } from '../constants';
-import { Sample, SpfxAddComponentCommandInput, SpfxScaffoldCommandInput, Subscription } from '../models';
+import { Commands, ComponentType, ProjectFileContent, WebviewCommand, WebViewType } from '../../constants';
+import { Sample, SpfxAddComponentCommandInput, SpfxScaffoldCommandInput, Subscription } from '../../models';
 import { join } from 'path';
 import { existsSync, mkdirSync, writeFileSync } from 'fs';
 import * as glob from 'fast-glob';
-import { Extension } from './Extension';
+import { Extension } from '../dataType/Extension';
 import download from 'github-directory-downloader/esm';
-import { CliExecuter } from './CliCommandExecuter';
-import { getPlatform } from '../utils';
-import { PnPWebview } from '../webview/PnPWebview';
-import { Executer } from './CommandExecuter';
-import { TeamsToolkitIntegration } from './TeamsToolkitIntegration';
+import { CliExecuter } from '../executeWrappers/CliCommandExecuter';
+import { getPlatform } from '../../utils';
+import { PnPWebview } from '../../webview/PnPWebview';
+import { Executer } from '../executeWrappers/CommandExecuter';
+import { TeamsToolkitIntegration } from '../dataType/TeamsToolkitIntegration';
 
 
 export const PROJECT_FILE = 'project.pnp';

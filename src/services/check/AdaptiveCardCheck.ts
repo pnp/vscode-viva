@@ -1,7 +1,7 @@
 import { extensions, env, Uri } from 'vscode';
-import { Logger } from './Logger';
-import { Notifications } from './Notifications';
-import { parseYoRc } from '../utils/parseYoRc';
+import { Logger } from '../dataType/Logger';
+import { Notifications } from '../dataType/Notifications';
+import { parseYoRc } from '../../utils/parseYoRc';
 
 
 export class AdaptiveCardCheck {

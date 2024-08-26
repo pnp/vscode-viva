@@ -2,13 +2,13 @@ import { PnPWebview } from './webview/PnPWebview';
 import { CommandPanel } from './panels/CommandPanel';
 import * as vscode from 'vscode';
 import { workspace, commands } from 'vscode';
-import { PROJECT_FILE, Scaffolder } from './services/Scaffolder';
-import { Extension } from './services/Extension';
-import { Dependencies } from './services/Dependencies';
+import { PROJECT_FILE, Scaffolder } from './services/actions/Scaffolder';
+import { Extension } from './services/dataType/Extension';
+import { Dependencies } from './services/actions/Dependencies';
 import { unlinkSync, readFileSync } from 'fs';
-import { TerminalCommandExecuter } from './services/TerminalCommandExecuter';
+import { TerminalCommandExecuter } from './services/executeWrappers/TerminalCommandExecuter';
 import { AuthProvider } from './providers/AuthProvider';
-import { CliActions } from './services/CliActions';
+import { CliActions } from './services/actions/CliActions';
 import { PromptHandlers } from './chat/PromptHandlers';
 import { CHAT_PARTICIPANT_NAME, ProjectFileContent } from './constants';
 

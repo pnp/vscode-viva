@@ -1,6 +1,8 @@
 export class EnvironmentInformation {
   private static _appCatalogUrls: string[] | undefined = undefined;
   private static _account: string | undefined = undefined;
+  private static _tenantId: string | undefined = undefined;
+  private static _clientId: string | undefined = undefined;
 
   public static get appCatalogUrls(): string[] | undefined {
     return this._appCatalogUrls;
@@ -18,8 +20,26 @@ export class EnvironmentInformation {
     this._account = value;
   }
 
+  public static get tenantId(): string | undefined {
+    return this._tenantId;
+  }
+
+  public static set tenantId(value: string | undefined) {
+    this._tenantId = value;
+  }
+
+  public static get clientId(): string | undefined {
+    return this._clientId;
+  }
+
+  public static set clientId(value: string | undefined) {
+    this._clientId = value;
+  }
+
   public static reset() {
     this._appCatalogUrls = undefined;
     this._account = undefined;
+    this._tenantId = undefined;
+    this._clientId = undefined;
   }
 }

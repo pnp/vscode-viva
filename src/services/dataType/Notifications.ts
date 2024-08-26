@@ -1,5 +1,5 @@
 import { window } from 'vscode';
-import { Extension } from './Extension';
+import { Extension } from '../dataType/Extension';
 import { Logger } from './Logger';
 
 

@@ -1,9 +1,9 @@
-import { EnvironmentInformation } from './../services/EnvironmentInformation';
+import { EnvironmentInformation } from '../services/dataType/EnvironmentInformation';
 import { env, authentication, AuthenticationProvider, AuthenticationProviderAuthenticationSessionsChangeEvent, AuthenticationSession, AuthenticationSessionAccountInformation, commands, Disposable, Event, EventEmitter, ProgressLocation, window, Progress } from 'vscode';
 import { Commands } from '../constants';
-import { Logger } from '../services/Logger';
-import { Notifications } from '../services/Notifications';
-import { Extension } from './../services/Extension';
+import { Logger } from '../services/dataType/Logger';
+import { Notifications } from '../services/dataType/Notifications';
+import { Extension } from '../services/dataType/Extension';
 import { executeCommand } from '@pnp/cli-microsoft365';
 import { exec } from 'child_process';
 import { Folders } from '../services/check/Folders';

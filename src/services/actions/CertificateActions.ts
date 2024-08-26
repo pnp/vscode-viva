@@ -1,4 +1,4 @@
-import { Logger } from './Logger';
+import { Logger } from '../dataType/Logger';
 import { asn1, pkcs12, pki, util } from 'node-forge';
 import path = require('path');
 import fs = require('fs');

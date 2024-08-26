@@ -1,7 +1,7 @@
 import { ChildProcess, spawn, SpawnOptions } from 'child_process';
 import * as os from 'os';
-import { CommandResult } from '../models';
-import { Logger } from './Logger';
+import { CommandResult } from '../../models';
+import { Logger } from '../dataType/Logger';
 
 
 export class Executer {

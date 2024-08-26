@@ -1,4 +1,4 @@
-import { Logger } from './Logger';
+import { Logger } from '../dataType/Logger';
 import { CommandOutput, executeCommand } from '@pnp/cli-microsoft365';
 
 

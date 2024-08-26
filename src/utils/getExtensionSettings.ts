@@ -1,6 +1,7 @@
 import { workspace } from 'vscode';
 import { EXTENSION_NAME } from '../constants';
 
+
 /**
    * Retrieves the extension settings value for the specified setting.
    * If the setting is not found, the default value is returned.

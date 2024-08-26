@@ -1,12 +1,12 @@
 import { commands, ThemeIcon, workspace, window, Terminal } from 'vscode';
-import { Commands, NodeVersionManagers } from '../constants';
-import { Subscription } from '../models';
-import { Extension } from './Extension';
-import { getPlatform, getExtensionSettings } from '../utils';
-import { TeamsToolkitIntegration } from './TeamsToolkitIntegration';
-import { Folders } from './Folders';
+import { Commands, NodeVersionManagers } from '../../constants';
+import { Subscription } from '../../models';
+import { Extension } from '../dataType/Extension';
+import { getPlatform, getExtensionSettings } from '../../utils';
+import { TeamsToolkitIntegration } from '../dataType/TeamsToolkitIntegration';
+import { Folders } from '../check/Folders';
 import { join } from 'path';
-import { ServeConfig } from './../models/ServeConfig';
+import { ServeConfig } from '../../models/ServeConfig';
 import { readFileSync } from 'fs';
 
 
