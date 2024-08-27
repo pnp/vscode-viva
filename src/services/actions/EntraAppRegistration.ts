@@ -17,8 +17,6 @@ export class EntraAppRegistration {
 
   //TODO: Add comment details
   private static async showRegisterEntraAppRegistrationPage() {
-    /* TODO: Show webview with guidance and methods to register an Entra app
-    and cache the client ID and tenant ID of the created app for the login method if possible*/
     PnPWebview.open(WebViewType.registerEntraAppRegistration);
   }
 }

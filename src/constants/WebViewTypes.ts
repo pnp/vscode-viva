@@ -24,7 +24,7 @@ export const WebViewTypes = [
   },
   {
     Title: 'Register Entra App',
-    homePageUrl: '/register-entra-app',
+    homePageUrl: '/register-entra-app-reg',
     value: WebViewType.registerEntraAppRegistration
   }
 ];

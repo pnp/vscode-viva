@@ -11,6 +11,7 @@ import { AuthProvider } from './providers/AuthProvider';
 import { CliActions } from './services/actions/CliActions';
 import { PromptHandlers } from './chat/PromptHandlers';
 import { CHAT_PARTICIPANT_NAME, ProjectFileContent } from './constants';
+import { EntraAppRegistration } from './services/actions/EntraAppRegistration';
 
 
 export async function activate(context: vscode.ExtensionContext) {
@@ -27,6 +28,7 @@ export async function activate(context: vscode.ExtensionContext) {
 	Dependencies.registerCommands();
 	Scaffolder.registerCommands();
 	CliActions.registerCommands();
+	EntraAppRegistration.registerCommands();
 
 	CommandPanel.register();
 

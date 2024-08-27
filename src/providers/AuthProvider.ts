@@ -114,6 +114,7 @@ export class AuthProvider implements AuthenticationProvider, Disposable {
       title: 'Specify the application (client) ID',
       value: '',
       ignoreFocusOut: true,
+      prompt: 'Please provide the \'Application (client) ID\' of the Entra app registration. If you don\'t have the app registration yet, create one using the \'Create a new Entra app registration\' option.',
       validateInput: async (value) => {
         if (!value) {
           return 'Client ID is required';
@@ -136,6 +137,7 @@ export class AuthProvider implements AuthenticationProvider, Disposable {
       title: 'Specify the tenant ID',
       value: '',
       ignoreFocusOut: true,
+      prompt: 'Please provide GUID of your tenant which may be found as \'Directory (tenant) ID\' Entra app registration overview',
       validateInput: async (value) => {
         if (!value) {
           return 'Tenant ID is required';
