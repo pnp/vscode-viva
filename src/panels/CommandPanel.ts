@@ -11,6 +11,7 @@ import { AdaptiveCardCheck } from '../services/check/AdaptiveCardCheck';
 import { Subscription } from '../models';
 import { Extension } from '../services/dataType/Extension';
 import { getExtensionSettings } from '../utils';
+import { EntraApplicationCheck } from '../services/check/EntraApplicationCheck';
 
 
 export class CommandPanel {
@@ -98,6 +99,8 @@ export class CommandPanel {
     const accountCommands: ActionTreeItem[] = [];
 
     if (session) {
+      EntraApplicationCheck.validateEntraAppRegistrationComponent(session);
+
       commands.executeCommand('setContext', ContextKeys.isLoggedIn, true);
 
       accountCommands.push(new ActionTreeItem(session.account.label, '', { name: 'spo-m365', custom: true }, undefined, undefined, undefined, 'm365Account', []));
