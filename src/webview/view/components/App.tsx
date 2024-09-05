@@ -8,7 +8,7 @@ import { WebviewCommand } from '../../../constants';
 import { routeEntries } from '..';
 import { ScaffoldWorkflowView } from './forms/workflow/ScaffoldWorkflowView';
 import { ScaffoldSpfxProjectView } from './forms/spfxProject/ScaffoldSpfxProjectView';
-import { RegisterEntraAppRegView } from './forms/entraAppReg/registerEntraAppRegView';
+import { RegisterEntraAppRegView } from './forms/entraAppReg/RegisterEntraAppRegView';
 
 
 export interface IAppProps {

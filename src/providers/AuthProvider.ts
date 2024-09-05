@@ -112,7 +112,7 @@ export class AuthProvider implements AuthenticationProvider, Disposable {
 
     const clientId = await window.showInputBox({
       title: 'Specify the application (client) ID',
-      value: '',
+      value: EnvironmentInformation.clientId ?? '',
       ignoreFocusOut: true,
       prompt: 'Please provide the \'Application (client) ID\' of the Entra app registration. If you don\'t have the app registration yet, create one using the \'Create a new Entra app registration\' option.',
       validateInput: async (value) => {
@@ -135,7 +135,7 @@ export class AuthProvider implements AuthenticationProvider, Disposable {
 
     const tenantId = await window.showInputBox({
       title: 'Specify the tenant ID',
-      value: '',
+      value: EnvironmentInformation.tenantId ?? '',
       ignoreFocusOut: true,
       prompt: 'Please provide GUID of your tenant which may be found as \'Directory (tenant) ID\' Entra app registration overview',
       validateInput: async (value) => {

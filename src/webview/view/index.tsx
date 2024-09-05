@@ -10,6 +10,7 @@ export const routeEntries: { [routeKey: string]: string } = {
   [WebViewType.samplesGallery]: WebViewTypes.find(type => type.value === WebViewType.samplesGallery)?.homePageUrl as string,
   [WebViewType.workflowForm]: WebViewTypes.find(type => type.value === WebViewType.workflowForm)?.homePageUrl as string,
   [WebViewType.scaffoldForm]: WebViewTypes.find(type => type.value === WebViewType.scaffoldForm)?.homePageUrl as string,
+  [WebViewType.registerEntraAppRegistration]: WebViewTypes.find(type => type.value === WebViewType.registerEntraAppRegistration)?.homePageUrl as string,
 };
 
 const elm = document.querySelector('#root');
