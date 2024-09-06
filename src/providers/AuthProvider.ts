@@ -10,6 +10,7 @@ import { Folders } from '../services/check/Folders';
 import { TerminalCommandExecuter } from '../services/executeWrappers/TerminalCommandExecuter';
 import { isValidGUID } from '../utils/validateGuid';
 import { CliExecuter } from '../services/executeWrappers/CliCommandExecuter';
+import { EntraAppRegistration } from '../services/actions/EntraAppRegistration';
 
 
 export class M365AuthenticationSession implements AuthenticationSession {
@@ -47,7 +48,7 @@ export class AuthProvider implements AuthenticationProvider, Disposable {
     );
 
     subscriptions.push(
-      commands.registerCommand(Commands.login, AuthProvider.login)
+      commands.registerCommand(Commands.login, AuthProvider.signIn)
     );
     subscriptions.push(
       commands.registerCommand(Commands.logout, AuthProvider.logout)
@@ -70,45 +71,22 @@ export class AuthProvider implements AuthenticationProvider, Disposable {
     AuthProvider.login(false);
   }
 
-  /**
-   * Logs in the user.
-   * @param createIfNone - A boolean indicating whether to create a new session if none exists.
-   */
-  public static async login(createIfNone: boolean = true) {
-    await authentication.getSession(AuthProvider.id, [], { createIfNone });
-  }
+  public static async signIn(createIfNone: boolean = true) {
+    let shouldGenerateNewEntraAppReg = false;
+    if (!EnvironmentInformation.clientId) {
+      const shouldGenerateNewEntraAppRegistration = await window.showQuickPick(['Sign in using existing App Registration', 'Create a new App Registration'], {
+        title: 'SPFx Toolkit needs an Entra App Registration in order to grant the required permissions when signing in to your tenant. Do you want to provide client ID and tenant ID of an existing Entra App Registration or create a new one?',
+        ignoreFocusOut: true,
+        canPickMany: false
+      });
 
-  /**
-   * Logs out the user by removing the session.
-   */
-  public static async logout() {
-    AuthProvider.instance.removeSession('');
-  }
+      shouldGenerateNewEntraAppReg = shouldGenerateNewEntraAppRegistration === 'Create a new App Registration';
+    }
 
-  /**
-   * Event that fires when the authentication sessions change.
-   */
-  public get onDidChangeSessions(): Event<AuthenticationProviderAuthenticationSessionsChangeEvent> {
-    return this.onDidChangeEventEmit.event;
-  }
-
-  /**
-   * Retrieves the authentication sessions for the specified scopes.
-   * If no scopes are provided, retrieves all authentication sessions.
-   * @param scopes - The scopes for which to retrieve authentication sessions.
-   * @returns A promise that resolves to an array of authentication sessions.
-   */
-  public async getSessions(scopes?: readonly string[]): Promise<readonly AuthenticationSession[]> {
-    const account = await this.getAccount();
-    return account ? [account] : [];
-  }
-
-  /**
-   * Creates a session for authentication.
-   * @param _scopes - The scopes for the session.
-   * @returns A promise that resolves to an AuthenticationSession.
-   */
-  public async createSession(_scopes: string[]): Promise<AuthenticationSession> {
+    if (shouldGenerateNewEntraAppReg) {
+      EntraAppRegistration.showRegisterEntraAppRegistrationPage();
+      return;
+    }
 
     const clientId = await window.showInputBox({
       title: 'Specify the application (client) ID',
@@ -156,6 +134,53 @@ export class AuthProvider implements AuthenticationProvider, Disposable {
       throw new Error('Tenant ID is required');
     }
 
+    EnvironmentInformation.clientId = clientId;
+    EnvironmentInformation.tenantId = tenantId;
+
+    await authentication.getSession(AuthProvider.id, [], { createIfNone });
+  }
+
+  /**
+   * Logs in the user.
+   * @param createIfNone - A boolean indicating whether to create a new session if none exists.
+   */
+  public static async login(createIfNone: boolean = true) {
+    await authentication.getSession(AuthProvider.id, [], { createIfNone });
+  }
+
+  /**
+   * Logs out the user by removing the session.
+   */
+  public static async logout() {
+    AuthProvider.instance.removeSession('');
+  }
+
+  /**
+   * Event that fires when the authentication sessions change.
+   */
+  public get onDidChangeSessions(): Event<AuthenticationProviderAuthenticationSessionsChangeEvent> {
+    return this.onDidChangeEventEmit.event;
+  }
+
+  /**
+   * Retrieves the authentication sessions for the specified scopes.
+   * If no scopes are provided, retrieves all authentication sessions.
+   * @param scopes - The scopes for which to retrieve authentication sessions.
+   * @returns A promise that resolves to an array of authentication sessions.
+   */
+  public async getSessions(scopes?: readonly string[]): Promise<readonly AuthenticationSession[]> {
+    const account = await this.getAccount();
+    return account ? [account] : [];
+  }
+
+  /**
+   * Creates a session for authentication.
+   * @param _scopes - The scopes for the session.
+   * @returns A promise that resolves to an AuthenticationSession.
+   */
+  public async createSession(_scopes: string[]): Promise<AuthenticationSession> {
+    const clientId = EnvironmentInformation.clientId;
+    const tenantId = EnvironmentInformation.tenantId;
     return new Promise((resolve) => {
       window.withProgress({
         location: ProgressLocation.Notification,

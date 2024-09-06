@@ -20,11 +20,19 @@ export class EntraAppRegistration {
     );
   }
 
-  //TODO: Add comment details
+  /**
+   * Opens the Entra App Registration page in a webview.
+   */
   public static async showRegisterEntraAppRegistrationPage() {
     PnPWebview.open(WebViewType.registerEntraAppRegistration);
   }
 
+  /**
+   * Creates an Entra App Registration.
+   * This method creates an Entra App Registration by executing the 'spfxToolkit' command and retrieving the necessary details.
+   * It opens a web browser for the user to sign in to their tenant and then retrieves the tenant ID and client ID.
+   * @returns {Promise<void>} A promise that resolves when the Entra App Registration is created successfully.
+   */
   public static async createEntraAppRegistration() {
     new Promise((resolve) => {
       window.withProgress({
@@ -54,7 +62,7 @@ export class EntraAppRegistration {
 
         Notifications.info('SPFx Toolkit App Registration created successfully');
         PnPWebview.close();
-        AuthProvider.login();
+        AuthProvider.signIn();
       });
     });
   }
