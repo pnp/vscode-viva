@@ -74,23 +74,22 @@
 			{
 				"id": "spfx-toolkit-intro",
 				"title": "SharePoint Framework Toolkit Introduction",
-				"description": "Learn how to boost your productivity in developing and managing SharePoint Framework solutions.",
+				"description": "Start your journey wih SharePoint Framework and learn how to boost your productivity in developing and managing SharePoint Framework solutions.",
 				"steps": [
 					{
 						"id": "intro-to-spfx",
 						"title": "Introduction to SharePoint Framework",
-						"description": "Set up your Microsoft 365 tenant \n[Join the Microsoft 365 Developer Program](https://developer.microsoft.com/en-us/microsoft-365/dev-program)",
+						"description": "Learn SharePoint Framework and set up your Microsoft 365 tenant \n[Join the Microsoft 365 Developer Program](https://developer.microsoft.com/en-us/microsoft-365/dev-program)",
 						"media": {
 							"markdown": "assets/walkthrough/spfx-intro.md"
 						}
 					},
 					{
 						"id": "set-up-local-workspace",
-						"title": "Check and get required dependencies",
-						"description": "Validate if your local workspace is ready for SharePoint Framework development. \n[Check dependencies](command:spfx-toolkit.checkDependencies)",
+						"title": "Validate your local workspace",
+						"description": "Validate if your local workspace is ready for SharePoint Framework development by checking and installing the required dependencies. \n[Check dependencies](command:spfx-toolkit.checkDependencies)",
 						"media": {
-							"image": "assets/images/validate-dependency.png",
-							"altText": "Validate dependencies"
+							"markdown": "assets/walkthrough/validate-local-setup.md"
 						}
 					},
 					{
@@ -103,8 +102,8 @@
 					},
 					{
 						"id": "tenant-details",
-						"title": "Login to Microsoft 365",
-						"description": "Retrieve tenant helpful information and Manage your SPFx projects. \nLogin to your tenant to get started. \n[Sign in to Microsoft 365](command:spfx-toolkit.login)",
+						"title": "Sign in to Microsoft 365",
+						"description": "Retrieve tenant helpful information and Manage your SPFx projects. \nSign in to your tenant to get started. \n[Sign in to Microsoft 365](command:spfx-toolkit.login)",
 						"media": {
 							"markdown": "assets/walkthrough/tenant-details.md"
 						}
