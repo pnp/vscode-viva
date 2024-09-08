@@ -5,6 +5,7 @@ export const Commands = {
   // Authentication
   login: `${EXTENSION_NAME}.login`,
   logout: `${EXTENSION_NAME}.logout`,
+  registerEntraAppRegistration: `${EXTENSION_NAME}.registerEntraAppRegistration`,
 
   // Dependencies
   checkDependencies: `${EXTENSION_NAME}.checkDependencies`,

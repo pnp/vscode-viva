@@ -16,5 +16,6 @@ export const WebviewCommand = {
     validateSolutionName: 'validate-solution-name',
     validateComponentName: 'validate-component-name',
     addSpfxComponent: 'add-spfx-component',
+    createAppReg: 'create-app-reg',
   }
 };

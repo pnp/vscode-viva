@@ -77,7 +77,7 @@ In case you do not have all dependencies installed, or some are incorrect versio
 
 [Check out our docs for more details](https://github.com/pnp/vscode-viva/wiki/5.1-Validate-and-set-up-a-local-workspace)
 
-### 3️⃣ Don't Start from scratch. Reuse an SPFx (web part or extension) or ACE sample
+### 3️⃣ Don't Start from scratch. Reuse an SPFx web part or extension or ACE sample
 
 You may kick-start your development with a new project based on an existing ACE or SPFx web part or extension with a click of a button. All of the provided samples are powered by [PnP Samples repositories](https://pnp.github.io/sp-dev-fx-webparts/samples/type/).
 
@@ -90,7 +90,6 @@ Switch between the list and grid view and don't worry about the size of your VS 
 ![Sample gallery is responsive](./assets/images/samples-responsive.png)
 
 Check out how easy it is to create a new project based on a existing sample 👇. 
-
 ![Create project based on web part sample](./assets/images/sample-gallery.gif)
 
 [Check out our docs for more details](https://github.com/pnp/vscode-viva/wiki/5.2-Scaffolding#2-dont-start-from-scratch---sample-galleries)
@@ -119,33 +118,45 @@ Install additional dependencies with a single click straight from the scaffoldin
 
 [Check out our docs for more details](https://github.com/pnp/vscode-viva/wiki/5.2-Scaffolding#1-scaffold-a-new-spfx-project)
 
-### 6️⃣ Login to your tenant & retrieve environment details
+### 6️⃣ Sign in to your tenant & retrieve environment details
 
-![tenant info](./assets/images/tenant-info.png)
-
-The extension allows you to login to your Microsoft 365 tenant using CLI for Microsoft 365.
+The extension allows you to sign in to your Microsoft 365 tenant using CLI for Microsoft 365.
 
 ![login](./assets/images/login.png)
 
-Thanks to that the extension will retrieve helpful URLs from your tenant like: 
+SPFx Toolkit needs and Entra App Registration to be able to sign in to your tenant. You may either use an existing app registration or create a new one with a single click using a dedicated form. 
 
-- link to SharePoint main site 
-- link to SharePoint admin site
-- link to SharePoint web API permission management page
+![sign in options](./assets/images/sign-in-options.png)
+
+SPFx Toolkit will guide you through the process of creating a new app registration either manually by providing step-by-step guidance or automatically by creating the app registration for you.
+
+![entra app reg form](./assets/images/sign-in-entra-app-reg-form.png)
+
+![app registration](./assets/images/sign-in.gif)
+
+If you already have an Entra App Registration you may use it to sign in to your tenant by providing the Client Id and Tenant Id.
+
+![app registration](./assets/images/sign-in-existing-app.gif)
+
+Thanks to that the extension will retrieve helpful URLs from your tenant like link to: 
+
+- SharePoint main site 
+- SharePoint admin site
+- SharePoint web API permission management page
 
 Additionally, the extension will check and retrieve tenant service health incidents that are currently happening in your tenant so that you gain quick insights on your tenant health.
 
 ![tenant details](./assets/images/tenant-links.png)
 
-After successful login an additional view is presented that shows list links to app catalogs available in the tenant, both tenant-level and all site-level app catalogs. Additionally it will show you all tenant-wide extensions installed on your tenant with.
+After successful sign in an additional view is presented that shows list links to app catalogs available in the tenant, both tenant-level and all site-level app catalogs. Additionally it will show you all tenant-wide extensions installed on your tenant with.
 
 ![tenant details](./assets/images/app-catalog-list.png)
 
-Login-in is also required for some actions to work properly like the deploy action which allows you to upload of the .sppkg file to the tenant or site-level App Catalog.
+Using the extension settings you may choose show or hide the tenant-wide extensions list and tenant health incidents list.
 
-Additionally, when an SPFx project is opened the extension will check serve.json file and suggest updating it to set the properties based on the currently logged-in tenant.
+![settings](./assets/images/settings.png)
 
-![validate serve](./assets/images/validate-serve-config.png)
+Sign-in is also required for some actions to work properly like the deploy action which allows you to upload of the .sppkg file to the tenant or site-level App Catalog.
 
 [Check out our docs for more details](https://github.com/pnp/vscode-viva/wiki/5.3-Login-to-your-tenant-&-retrieve-environment-details)
 

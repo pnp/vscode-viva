@@ -3,14 +3,15 @@ import { commands, workspace, window, Uri } from 'vscode';
 import { Commands, ContextKeys } from '../constants';
 import { ActionTreeItem, ActionTreeDataProvider } from '../providers/ActionTreeDataProvider';
 import { AuthProvider, M365AuthenticationSession } from '../providers/AuthProvider';
-import { CliActions } from '../services/CliActions';
-import { DebuggerCheck } from '../services/DebuggerCheck';
-import { EnvironmentInformation } from '../services/EnvironmentInformation';
-import { TeamsToolkitIntegration } from '../services/TeamsToolkitIntegration';
-import { AdaptiveCardCheck } from '../services/AdaptiveCardCheck';
+import { CliActions } from '../services/actions/CliActions';
+import { DebuggerCheck } from '../services/check/DebuggerCheck';
+import { EnvironmentInformation } from '../services/dataType/EnvironmentInformation';
+import { TeamsToolkitIntegration } from '../services/dataType/TeamsToolkitIntegration';
+import { AdaptiveCardCheck } from '../services/check/AdaptiveCardCheck';
 import { Subscription } from '../models';
-import { Extension } from '../services/Extension';
+import { Extension } from '../services/dataType/Extension';
 import { getExtensionSettings } from '../utils';
+import { EntraApplicationCheck } from '../services/check/EntraApplicationCheck';
 
 
 export class CommandPanel {
@@ -98,9 +99,12 @@ export class CommandPanel {
     const accountCommands: ActionTreeItem[] = [];
 
     if (session) {
+      EntraApplicationCheck.validateEntraAppRegistrationComponent(session);
+
       commands.executeCommand('setContext', ContextKeys.isLoggedIn, true);
 
       accountCommands.push(new ActionTreeItem(session.account.label, '', { name: 'spo-m365', custom: true }, undefined, undefined, undefined, 'm365Account', []));
+      accountCommands[0].children.push(new ActionTreeItem('Entra app registration', '', { name: 'entra-id', custom: true }, undefined, 'vscode.open', Uri.parse(`https://portal.azure.com/#view/Microsoft_AAD_RegisteredApps/ApplicationMenuBlade/~/Overview/appId/${session.clientId}`), 'sp-admin-api-url'));
 
       const appCatalogUrls = await CliActions.appCatalogUrlsGet();
       if (appCatalogUrls?.some) {
@@ -138,7 +142,7 @@ export class CommandPanel {
       EnvironmentInformation.reset();
       commands.executeCommand('setContext', ContextKeys.isLoggedIn, false);
       commands.executeCommand('setContext', ContextKeys.hasAppCatalog, false);
-      accountCommands.push(new ActionTreeItem('Sign in to M365', '', { name: 'M365', custom: true }, undefined, Commands.login));
+      accountCommands.push(new ActionTreeItem('Sign in to Microsoft 365', '', { name: 'sign-in', custom: false }, undefined, Commands.login));
     }
 
     window.createTreeView('pnp-view-account', { treeDataProvider: new ActionTreeDataProvider(accountCommands), showCollapseAll: true });
