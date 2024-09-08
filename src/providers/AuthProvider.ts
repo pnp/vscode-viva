@@ -1,25 +1,26 @@
-import { EnvironmentInformation } from './../services/EnvironmentInformation';
+import { EnvironmentInformation } from '../services/dataType/EnvironmentInformation';
 import { env, authentication, AuthenticationProvider, AuthenticationProviderAuthenticationSessionsChangeEvent, AuthenticationSession, AuthenticationSessionAccountInformation, commands, Disposable, Event, EventEmitter, ProgressLocation, window, Progress } from 'vscode';
 import { Commands } from '../constants';
-import { Logger } from '../services/Logger';
-import { Notifications } from '../services/Notifications';
-import { Extension } from './../services/Extension';
+import { Logger } from '../services/dataType/Logger';
+import { Notifications } from '../services/dataType/Notifications';
+import { Extension } from '../services/dataType/Extension';
 import { executeCommand } from '@pnp/cli-microsoft365';
 import { exec } from 'child_process';
-import { Folders } from '../services/Folders';
-import { TerminalCommandExecuter } from '../services/TerminalCommandExecuter';
+import { Folders } from '../services/check/Folders';
+import { TerminalCommandExecuter } from '../services/executeWrappers/TerminalCommandExecuter';
+import { isValidGUID } from '../utils/validateGuid';
+import { CliExecuter } from '../services/executeWrappers/CliCommandExecuter';
+import { EntraAppRegistration } from '../services/actions/EntraAppRegistration';
 
 
 export class M365AuthenticationSession implements AuthenticationSession {
   public readonly id = AuthProvider.id;
+  public readonly scopes = []; // Scopes are not needed for the M365 CLI
+  public readonly accessToken: string = ''; // Scopes are not needed for the M365 CLI
+  public tenantId: string = '';
+  public clientId: string = '';
 
-  // Scopes are not needed for the M365 CLI
-  public readonly scopes = [];
-
-  // Required for the session, but not for M365 CLI
-  public readonly accessToken: string = '';
-
-  constructor(public readonly account: AuthenticationSessionAccountInformation) { }
+  constructor(public readonly account: AuthenticationSessionAccountInformation) {}
 }
 
 export class AuthProvider implements AuthenticationProvider, Disposable {
@@ -41,13 +42,13 @@ export class AuthProvider implements AuthenticationProvider, Disposable {
     subscriptions.push(
       authentication.registerAuthenticationProvider(
         AuthProvider.id,
-        'M365 Authentication',
+        'CLI for Microsoft 365 Authentication',
         AuthProvider.instance
       )
     );
 
     subscriptions.push(
-      commands.registerCommand(Commands.login, AuthProvider.login)
+      commands.registerCommand(Commands.login, AuthProvider.signIn)
     );
     subscriptions.push(
       commands.registerCommand(Commands.logout, AuthProvider.logout)
@@ -68,6 +69,75 @@ export class AuthProvider implements AuthenticationProvider, Disposable {
    */
   public static verify() {
     AuthProvider.login(false);
+  }
+
+  public static async signIn(createIfNone: boolean = true) {
+    let shouldGenerateNewEntraAppReg = false;
+    if (!EnvironmentInformation.clientId) {
+      const shouldGenerateNewEntraAppRegistration = await window.showQuickPick(['Sign in using existing App Registration', 'Create a new App Registration'], {
+        title: 'SPFx Toolkit needs an Entra App Registration in order to grant the required permissions when signing in to your tenant. Do you want to provide client ID and tenant ID of an existing Entra App Registration or create a new one?',
+        ignoreFocusOut: true,
+        canPickMany: false
+      });
+
+      shouldGenerateNewEntraAppReg = shouldGenerateNewEntraAppRegistration === 'Create a new App Registration';
+    }
+
+    if (shouldGenerateNewEntraAppReg) {
+      EntraAppRegistration.showRegisterEntraAppRegistrationPage();
+      return;
+    }
+
+    const clientId = await window.showInputBox({
+      title: 'Specify the application (client) ID',
+      value: EnvironmentInformation.clientId ?? '',
+      ignoreFocusOut: true,
+      prompt: 'Please provide the \'Application (client) ID\' of the Entra app registration. If you don\'t have the app registration yet, create one using the \'Create a new Entra app registration\' option.',
+      validateInput: async (value) => {
+        if (!value) {
+          return 'Client ID is required';
+        }
+
+        if (!isValidGUID(value)) {
+          return 'Client ID is not a valid GUID';
+        }
+
+        return undefined;
+      }
+    });
+
+    if (!clientId) {
+      Logger.error('Client ID is required');
+      throw new Error('Client ID is required');
+    }
+
+    const tenantId = await window.showInputBox({
+      title: 'Specify the tenant ID',
+      value: EnvironmentInformation.tenantId ?? '',
+      ignoreFocusOut: true,
+      prompt: 'Please provide GUID of your tenant which may be found as \'Directory (tenant) ID\' Entra app registration overview',
+      validateInput: async (value) => {
+        if (!value) {
+          return 'Tenant ID is required';
+        }
+
+        if (!isValidGUID(value)) {
+          return 'Tenant ID is not a valid GUID';
+        }
+
+        return undefined;
+      }
+    });
+
+    if (!tenantId) {
+      Logger.error('Tenant ID is required');
+      throw new Error('Tenant ID is required');
+    }
+
+    EnvironmentInformation.clientId = clientId;
+    EnvironmentInformation.tenantId = tenantId;
+
+    await authentication.getSession(AuthProvider.id, [], { createIfNone });
   }
 
   /**
@@ -109,13 +179,15 @@ export class AuthProvider implements AuthenticationProvider, Disposable {
    * @returns A promise that resolves to an AuthenticationSession.
    */
   public async createSession(_scopes: string[]): Promise<AuthenticationSession> {
+    const clientId = EnvironmentInformation.clientId;
+    const tenantId = EnvironmentInformation.tenantId;
     return new Promise((resolve) => {
       window.withProgress({
         location: ProgressLocation.Notification,
-        title: `Logging in to M365. Check [output window](command:${Commands.showOutputChannel}) for more details`,
+        title: `Logging in to Microsoft 365. Check [output window](command:${Commands.showOutputChannel}) for more details`,
         cancellable: true
       }, async (progress: Progress<{ message?: string; increment?: number }>) => {
-        await executeCommand('login', { output: 'text' }, {
+        await executeCommand('login', { output: 'json', appId: clientId, tenant: tenantId }, {
           stdout: (message: string) => {
             if (message.includes('https://microsoft.com/devicelogin')) {
               commands.executeCommand('vscode.open', 'https://microsoft.com/devicelogin');
@@ -135,12 +207,12 @@ export class AuthProvider implements AuthenticationProvider, Disposable {
             return '';
           },
           stderr: (message: string) => {
-            Logger.error(`M365 CLI - login: ${message}`);
+            Logger.error(`login: ${message}`);
             return message;
           }
         });
 
-        Notifications.info('M365 CLI - Logged in to M365');
+        Notifications.info('Logged in to Microsoft 365');
         const account = await this.getAccount();
 
         // Bring the editor to the front
@@ -160,16 +232,16 @@ export class AuthProvider implements AuthenticationProvider, Disposable {
    * @returns A Promise that resolves when the session is successfully removed.
    */
   public async removeSession(_sessionId: string): Promise<void> {
-    const output = await executeCommand('logout', { output: 'text' });
+    const output = await CliExecuter.execute('logout', 'json');
 
     if (output.stderr) {
-      Logger.error(`M365 CLI - logout: ${output.stderr}`);
+      Logger.error(`logout: ${output.stderr}`);
       return;
     }
 
-    EnvironmentInformation.account = undefined;
+    EnvironmentInformation.reset();
 
-    Logger.info('M365 CLI - logged out');
+    Logger.info('logged out');
     AuthProvider.login(false);
 
     this.onDidChangeEventEmit.fire({ added: [], removed: [], changed: [] });
@@ -192,27 +264,38 @@ export class AuthProvider implements AuthenticationProvider, Disposable {
       const status = await executeCommand('status', { output: 'json' });
 
       if (status.stdout) {
-        Logger.info(`M365 CLI - status: ${status.stdout}`);
+        Logger.info(`status: ${status.stdout}`);
         const sessions = JSON.parse(status.stdout.toString());
 
         if (sessions && sessions.connectedAs) {
           EnvironmentInformation.account = sessions.connectedAs;
 
-          return new M365AuthenticationSession({
-            id: sessions.connectedAs,
+          const account = new M365AuthenticationSession({
+            id: AuthProvider.id,
             label: sessions.connectedAs
           });
+
+          account.tenantId = sessions.appTenant ?? '';
+          EnvironmentInformation.tenantId = sessions.appTenant;
+          account.clientId = sessions.appId ?? '';
+          EnvironmentInformation.clientId = sessions.appId;
+
+          return account;
         }
       }
 
       if (status.stderr) {
-        Logger.error(`M365 CLI - status: ${status.stderr}`);
+        Logger.error(`status: ${status.stderr}`);
       }
     } else {
-      return new M365AuthenticationSession({
-        id: EnvironmentInformation.account,
+      const account = new M365AuthenticationSession({
+        id: AuthProvider.id,
         label: EnvironmentInformation.account
       });
+      account.tenantId = EnvironmentInformation.tenantId ?? '';
+      account.clientId = EnvironmentInformation.clientId ?? '';
+
+      return account;
     }
 
     return undefined;
