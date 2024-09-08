@@ -1,5 +1,17 @@
 # Change Log
 
+## [4.0.0] - 2024-09-08
+
+- Updated Sign in method
+- Updated SPFx Intro and workspace setup walkthrough steps
+- Updated readme assets
+- Added form to create Entra App Registration required for sign in
+- Added Extension filter dropdown to the sample gallery
+- Updated account view to show the Entra App Registration
+- Updated terminal usage to unified approach
+- Updated release workflows
+- Added settings to show and hide health incidents and tenant wide extensions
+
 ## [3.4.0] - 2024-07-18
 
 - Improved welcome experience
