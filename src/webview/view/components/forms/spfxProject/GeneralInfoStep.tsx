@@ -8,7 +8,6 @@ import { Messenger } from '@estruyf/vscode/dist/client';
 import { LabelWithTooltip } from '../../controls';
 
 
-
 export interface IGeneralInfoProps {
     isNewProject: boolean;
     folderPath: string;
