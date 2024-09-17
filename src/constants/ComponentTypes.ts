@@ -11,25 +11,25 @@ export const ComponentTypes = [
     name: 'Web Part',
     value: ComponentType.webPart,
     description:
-      "A reusable component for displaying content and functionality on SharePoint pages."
+      "SharePoint client-side web parts run in the browser, are built with modern tools and frameworks, and can be deployed to modern and classic SharePoint pages. They also enable extending Microsoft Teams tabs, providing powerful ways to enhance both SharePoint and Teams."
 
   },
   {
     name: 'Extension',
     value: ComponentType.extension,
     description:
-      "Custom scripts that enhance or modify the SharePoint or Teams UI."
+      "SPFx Extensions let you enhance SharePoint's user experience by customizing toolbars, list views, forms, and notifications. They work with frameworks like React and Angular, and include four main types: Application Customizers, Field Customizers, Command Sets, and Form Customizers."
   },
   {
     name: 'Library',
     value: ComponentType.library,
     description:
-      "A collection of files and documents with collaboration and version control features."
+      "A SharePoint Framework (SPFx) library is a component that allows you to create and share reusable code across multiple components within a tenant, providing a way to manage and reference common functionality."
   },
   {
     name: 'Adaptive Card Extension',
     value: ComponentType.adaptiveCardExtension,
     description:
-      "Components that render adaptive cards in SharePoint or Teams for flexible and interactive content.",
+      "ACEs are the primary way to extend Viva Connections and SharePoint. They use the Adaptive Card Framework with a JSON schema to create a unified UI, managed by Microsoft, allowing you to focus on business logic.",
   }
 ];
