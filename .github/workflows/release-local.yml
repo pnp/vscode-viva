@@ -12,7 +12,7 @@ jobs:
       - name: Setup node
         uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: 20
           registry-url: https://registry.npmjs.org/
       
       - name: Checkout vscode-viva
@@ -50,7 +50,7 @@ jobs:
 
       - name: Package
         run: |
-          npx @vscode/vsce package
+          npx @vscode/vsce@2.30.0 package
         working-directory: vscode-viva
 
       - name: Upload artifacts
