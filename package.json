@@ -2,7 +2,7 @@
 	"name": "viva-connections-toolkit",
 	"displayName": "SharePoint Framework Toolkit",
 	"description": "SharePoint Framework Toolkit aims to boost your productivity in developing and managing SharePoint Framework solutions helping at every stage of your development flow, from setting up your development workspace to deploying a solution straight to your tenant without the need to leave VS Code and now even create a CI/CD pipeline to introduce automate deployment of your app. This toolkit is provided by the community.",
-	"version": "3.4.0",
+	"version": "4.0.0",
 	"publisher": "m365pnp",
 	"preview": false,
 	"homepage": "https://github.com/pnp/vscode-viva",
@@ -74,23 +74,22 @@
 			{
 				"id": "spfx-toolkit-intro",
 				"title": "SharePoint Framework Toolkit Introduction",
-				"description": "Learn how to boost your productivity in developing and managing SharePoint Framework solutions.",
+				"description": "Start your journey wih SharePoint Framework and learn how to boost your productivity in developing and managing SharePoint Framework solutions.",
 				"steps": [
 					{
 						"id": "intro-to-spfx",
 						"title": "Introduction to SharePoint Framework",
-						"description": "Set up your Microsoft 365 tenant \n[Join the Microsoft 365 Developer Program](https://developer.microsoft.com/en-us/microsoft-365/dev-program)",
+						"description": "Learn SharePoint Framework and set up your Microsoft 365 tenant \n[Join the Microsoft 365 Developer Program](https://developer.microsoft.com/en-us/microsoft-365/dev-program)",
 						"media": {
 							"markdown": "assets/walkthrough/spfx-intro.md"
 						}
 					},
 					{
 						"id": "set-up-local-workspace",
-						"title": "Check and get required dependencies",
-						"description": "Validate if your local workspace is ready for SharePoint Framework development. \n[Check dependencies](command:spfx-toolkit.checkDependencies)",
+						"title": "Validate your local workspace",
+						"description": "Validate if your local workspace is ready for SharePoint Framework development by checking and installing the required dependencies. \n[Check dependencies](command:spfx-toolkit.checkDependencies)",
 						"media": {
-							"image": "assets/images/validate-dependency.png",
-							"altText": "Validate dependencies"
+							"markdown": "assets/walkthrough/validate-local-setup.md"
 						}
 					},
 					{
@@ -103,8 +102,8 @@
 					},
 					{
 						"id": "tenant-details",
-						"title": "Login to Microsoft 365",
-						"description": "Retrieve tenant helpful information and Manage your SPFx projects. \nLogin to your tenant to get started. \n[Sign in to Microsoft 365](command:spfx-toolkit.login)",
+						"title": "Sign in to Microsoft 365",
+						"description": "Retrieve tenant helpful information and Manage your SPFx projects. \nSign in to your tenant to get started. \n[Sign in to Microsoft 365](command:spfx-toolkit.login)",
 						"media": {
 							"markdown": "assets/walkthrough/tenant-details.md"
 						}
@@ -167,6 +166,18 @@
 						"none"
 					],
 					"description": "Choose your preferred Node.js version manager. Choose between `nvs`, `nvm`, or `none`."
+				},
+				"spfx-toolkit.showServiceIncidentList": {
+					"title": "Show service health incidents",
+					"type": "boolean",
+					"default": "true",
+					"description": "Show the service health incidents in the account view."
+				},
+				"spfx-toolkit.showTenantWideExtensions": {
+					"title": "Show tenant-wide extensions",
+					"type": "boolean",
+					"default": "true",
+					"description": "Show the tenant-wide extensions in the account view."
 				}
 			}
 		},
@@ -211,6 +222,13 @@
 				"default": {
 					"fontPath": "./assets/fonts/fabric-icons.woff",
 					"fontCharacter": "\\E95E"
+				}
+			},
+			"entra-id": {
+				"description": "Entra ID icon",
+				"default": {
+					"fontPath": "./assets/fonts/fabric-icons.woff",
+					"fontCharacter": "\\ED68"
 				}
 			}
 		},
@@ -331,15 +349,20 @@
 			},
 			{
 				"command": "spfx-toolkit.login",
-				"title": "Sign in to M365",
+				"title": "Sign in to Microsoft 365",
 				"category": "SharePoint Framework Toolkit",
 				"icon": "$(sign-in)"
 			},
 			{
 				"command": "spfx-toolkit.logout",
-				"title": "Sign out from M365",
+				"title": "Sign out from Microsoft 365",
 				"category": "SharePoint Framework Toolkit",
 				"icon": "$(sign-out)"
+			},
+			{
+				"command": "spfx-toolkit.registerEntraAppRegistration",
+				"title": "Create a new app registration",
+				"category": "SharePoint Framework Toolkit"
 			},
 			{
 				"command": "spfx-toolkit.refreshAppCatalogTreeView",

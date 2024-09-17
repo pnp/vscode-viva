@@ -8,7 +8,6 @@ import { Messenger } from '@estruyf/vscode/dist/client';
 import { LabelWithTooltip } from '../../controls';
 
 
-
 export interface IGeneralInfoProps {
     isNewProject: boolean;
     folderPath: string;
@@ -109,7 +108,7 @@ export const GeneralInfoStep: React.FunctionComponent<IGeneralInfoProps> = ({
                     </>
                 }
                 <div className={'mb-2'}>
-                    <LabelWithTooltip label={"Component Type"} tooltip={getComponentType ? getComponentType.description : ""} />
+                    <LabelWithTooltip label={"What component you wish to create?"} tooltip={getComponentType ? getComponentType.description : ""} />
                     <VSCodeDropdown className={'w-full'} onChange={(e: any) => setComponentType(e.target.value)}>
                         {componentTypes.map((component) => <VSCodeOption key={component.value} value={component.value}>{component.name}</VSCodeOption>)}
                     </VSCodeDropdown>
