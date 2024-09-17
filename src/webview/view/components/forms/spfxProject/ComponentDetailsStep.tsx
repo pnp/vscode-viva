@@ -7,7 +7,6 @@ import { Messenger } from '@estruyf/vscode/dist/client';
 import { LabelWithTooltip } from '../../controls';
 
 
-
 interface IComponentDetailsStepProps {
     isNewProject: boolean;
     componentType: ComponentType;
