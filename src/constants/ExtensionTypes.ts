@@ -30,7 +30,7 @@ export const ExtensionTypes = [
     name: 'Form Customizer',
     value: ExtensionType.formCustomizer,
     templates: ['No framework', 'React'],
-    description: "Customizes the look and feel of forms."
+    description: "Customizes the look and feel of list and library forms."
   },
   {
     name: 'Search Query Modifier',
