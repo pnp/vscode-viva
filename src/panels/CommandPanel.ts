@@ -12,6 +12,7 @@ import { Subscription } from '../models';
 import { Extension } from '../services/dataType/Extension';
 import { getExtensionSettings } from '../utils';
 import { EntraApplicationCheck } from '../services/check/EntraApplicationCheck';
+import { Notifications } from '../services/dataType/Notifications';
 
 
 export class CommandPanel {
@@ -33,40 +34,45 @@ export class CommandPanel {
   }
 
   private static async init() {
-    let isTeamsToolkitProject = false;
-    let files = await workspace.findFiles('.yo-rc.json', '**/node_modules/**');
+    try {
+      let isTeamsToolkitProject = false;
+      let files = await workspace.findFiles('.yo-rc.json', '**/node_modules/**');
 
-    if (files.length <= 0) {
-      files = await workspace.findFiles('src/.yo-rc.json', '**/node_modules/**');
-      isTeamsToolkitProject = true;
-    }
+      if (files.length <= 0) {
+        files = await workspace.findFiles('src/.yo-rc.json', '**/node_modules/**');
+        isTeamsToolkitProject = true;
+      }
 
-    if (files.length <= 0) {
+      if (files.length <= 0) {
+        CommandPanel.showWelcome();
+        return;
+      }
+
+      const file = files[0];
+      const content = readFileSync(file.fsPath, 'utf8');
+      if (!content) {
+        CommandPanel.showWelcome();
+        return;
+      }
+
+      const json = JSON.parse(content);
+      if (!json || !json['@microsoft/generator-sharepoint']) {
+        CommandPanel.showWelcome();
+        return;
+      }
+
+      commands.executeCommand('setContext', ContextKeys.isSPFxProject, true);
+      commands.executeCommand('setContext', ContextKeys.showWelcome, false);
+
+      TeamsToolkitIntegration.isTeamsToolkitProject = isTeamsToolkitProject;
+
+      AdaptiveCardCheck.validateACEComponent();
+      CommandPanel.registerTreeView();
+      AuthProvider.verify();
+    } catch (error) {
       CommandPanel.showWelcome();
-      return;
+      Notifications.error('Error initializing the extension, please verify the project and try again.');
     }
-
-    const file = files[0];
-    const content = readFileSync(file.fsPath, 'utf8');
-    if (!content) {
-      CommandPanel.showWelcome();
-      return;
-    }
-
-    const json = JSON.parse(content);
-    if (!json || !json['@microsoft/generator-sharepoint']) {
-      CommandPanel.showWelcome();
-      return;
-    }
-
-    commands.executeCommand('setContext', ContextKeys.isSPFxProject, true);
-    commands.executeCommand('setContext', ContextKeys.showWelcome, false);
-
-    TeamsToolkitIntegration.isTeamsToolkitProject = isTeamsToolkitProject;
-
-    AdaptiveCardCheck.validateACEComponent();
-    CommandPanel.registerTreeView();
-    AuthProvider.verify();
   }
 
   private static registerTreeView() {
