@@ -1,11 +1,3 @@
-##  Gulp tasks
-
-The extension shows all possible Gulp tasks one may run on an SPFx project. The tasks allow you to clean, bundle, package, serve the project with a single click.
-
-![Gulp Tasks](../images/tasks.png)
-
-[Check out our docs for more details](https://github.com/pnp/vscode-viva/wiki/5.4-Gulp-tasks)
-
 ##  Actions
 
 The actions section allows unique functionalities that may significantly boost productivity when working with SPFx projects.

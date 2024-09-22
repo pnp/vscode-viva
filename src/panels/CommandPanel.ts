@@ -206,14 +206,18 @@ export class CommandPanel {
 
   private static taskTreeView() {
     const taskCommands: ActionTreeItem[] = [
-      new ActionTreeItem('Clean project', '', { name: 'debug-start', custom: false }, undefined, Commands.executeTerminalCommand, 'gulp clean'),
+      new ActionTreeItem('Build project', '', { name: 'debug-start', custom: false }, undefined, Commands.executeTerminalCommand, 'gulp build'),
       new ActionTreeItem('Bundle project (local)', '', { name: 'debug-start', custom: false }, undefined, Commands.executeTerminalCommand, 'gulp bundle'),
       new ActionTreeItem('Bundle project (production)', '', { name: 'debug-start', custom: false }, undefined, Commands.executeTerminalCommand, 'gulp bundle --ship'),
+      new ActionTreeItem('Clean project', '', { name: 'debug-start', custom: false }, undefined, Commands.executeTerminalCommand, 'gulp clean'),
+      new ActionTreeItem('Deploy project assets to Azure Storage', '', { name: 'debug-start', custom: false }, undefined, Commands.executeTerminalCommand, 'gulp deploy-azure-storage'),
       new ActionTreeItem('Package (local)', '', { name: 'debug-start', custom: false }, undefined, Commands.executeTerminalCommand, 'gulp package-solution'),
       new ActionTreeItem('Package (production)', '', { name: 'debug-start', custom: false }, undefined, Commands.executeTerminalCommand, 'gulp package-solution --ship'),
       new ActionTreeItem('Serve', '', { name: 'debug-start', custom: false }, undefined, Commands.executeTerminalCommand, 'gulp serve'),
       new ActionTreeItem('Serve (nobrowser)', '', { name: 'debug-start', custom: false }, undefined, Commands.executeTerminalCommand, 'gulp serve --nobrowser'),
       new ActionTreeItem('Serve from configuration', '', { name: 'debug-start', custom: false }, undefined, Commands.serveProject),
+      new ActionTreeItem('Test', '', { name: 'debug-start', custom: false }, undefined, Commands.executeTerminalCommand, 'gulp test'),
+      new ActionTreeItem('Trust self-signed developer certificate', '', { name: 'debug-start', custom: false }, undefined, Commands.executeTerminalCommand, 'gulp trust-dev-cert'),
     ];
 
     window.registerTreeDataProvider('pnp-view-tasks', new ActionTreeDataProvider(taskCommands));
