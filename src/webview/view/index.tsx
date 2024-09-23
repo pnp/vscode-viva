@@ -19,6 +19,7 @@ if (elm) {
 
   const homePageUrl = elm.getAttribute('data-homePageUrl');
   const spfxPackageName = elm.getAttribute('data-spfxPackageName');
+  const isSignedIn = elm.getAttribute('data-isSignedIn');
   const appCatalogUrls = elm.getAttribute('data-appCatalogUrls');
   const type = elm.getAttribute('data-type');
   const isNewProject = elm.getAttribute('data-isNewProject');
@@ -26,6 +27,10 @@ if (elm) {
 
   if (spfxPackageName) {
     data.spfxPackageName = spfxPackageName;
+  }
+
+  if (isSignedIn) {
+    data.isSignedIn = isSignedIn;
   }
 
   if (appCatalogUrls) {

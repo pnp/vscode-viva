@@ -7,6 +7,7 @@ import { CliActions } from '../services/actions/CliActions';
 import { DebuggerCheck } from '../services/check/DebuggerCheck';
 import { EnvironmentInformation } from '../services/dataType/EnvironmentInformation';
 import { TeamsToolkitIntegration } from '../services/dataType/TeamsToolkitIntegration';
+import { ProjectInformation } from '../services/dataType/ProjectInformation';
 import { AdaptiveCardCheck } from '../services/check/AdaptiveCardCheck';
 import { Subscription } from '../models';
 import { Extension } from '../services/dataType/Extension';
@@ -64,6 +65,7 @@ export class CommandPanel {
       commands.executeCommand('setContext', ContextKeys.isSPFxProject, true);
       commands.executeCommand('setContext', ContextKeys.showWelcome, false);
 
+      ProjectInformation.isSPFxProject = true;
       TeamsToolkitIntegration.isTeamsToolkitProject = isTeamsToolkitProject;
 
       AdaptiveCardCheck.validateACEComponent();
@@ -90,7 +92,6 @@ export class CommandPanel {
     }
 
     CommandPanel.taskTreeView();
-    CommandPanel.actionsTreeView();
     CommandPanel.helpTreeView();
   }
 
@@ -151,6 +152,7 @@ export class CommandPanel {
       accountCommands.push(new ActionTreeItem('Sign in to Microsoft 365', '', { name: 'sign-in', custom: false }, undefined, Commands.login));
     }
 
+    CommandPanel.actionsTreeView();
     window.createTreeView('pnp-view-account', { treeDataProvider: new ActionTreeDataProvider(accountCommands), showCollapseAll: true });
   }
 
@@ -224,16 +226,19 @@ export class CommandPanel {
   }
 
   private static async actionsTreeView() {
-    const actionCommands: ActionTreeItem[] = [
-      new ActionTreeItem('Upgrade project', '', { name: 'arrow-up', custom: false }, undefined, Commands.upgradeProject),
-      new ActionTreeItem('Validate project', '', { name: 'check-all', custom: false }, undefined, Commands.validateProject),
-      new ActionTreeItem('Rename project', '', { name: 'whole-word', custom: false }, undefined, Commands.renameProject),
-      new ActionTreeItem('Grant API permissions', '', { name: 'workspace-trusted', custom: false }, undefined, Commands.grantAPIPermissions),
-      new ActionTreeItem('Deploy project (sppkg)', '', { name: 'cloud-upload', custom: false }, undefined, Commands.deployProject),
-      new ActionTreeItem('Add new component', '', { name: 'add', custom: false }, undefined, Commands.addToProject),
-      new ActionTreeItem('CI/CD Workflow', '', { name: 'rocket', custom: false }, undefined, Commands.pipeline),
-      new ActionTreeItem('View samples', '', { name: 'library', custom: false }, undefined, Commands.samplesGallery),
-    ];
+    const actionCommands: ActionTreeItem[] = [];
+    actionCommands.push(new ActionTreeItem('Upgrade project', '', { name: 'arrow-up', custom: false }, undefined, Commands.upgradeProject));
+    actionCommands.push(new ActionTreeItem('Validate project', '', { name: 'check-all', custom: false }, undefined, Commands.validateProject));
+    actionCommands.push(new ActionTreeItem('Rename project', '', { name: 'whole-word', custom: false }, undefined, Commands.renameProject));
+
+    if(EnvironmentInformation.account) {
+      actionCommands.push(new ActionTreeItem('Grant API permissions', '', { name: 'workspace-trusted', custom: false }, undefined, Commands.grantAPIPermissions));
+      actionCommands.push(new ActionTreeItem('Deploy project (sppkg)', '', { name: 'cloud-upload', custom: false }, undefined, Commands.deployProject));
+    }
+
+    actionCommands.push(new ActionTreeItem('Add new component', '', { name: 'add', custom: false }, undefined, Commands.addToProject));
+    actionCommands.push(new ActionTreeItem('CI/CD Workflow', '', { name: 'rocket', custom: false }, undefined, Commands.pipeline));
+    actionCommands.push(new ActionTreeItem('View samples', '', { name: 'library', custom: false }, undefined, Commands.samplesGallery));
 
     window.registerTreeDataProvider('pnp-view-actions', new ActionTreeDataProvider(actionCommands));
   }
