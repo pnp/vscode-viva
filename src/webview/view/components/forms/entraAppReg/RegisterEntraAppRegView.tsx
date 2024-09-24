@@ -94,11 +94,19 @@ export const RegisterEntraAppRegView: React.FunctionComponent<IRegisterEntraAppR
                   Microsoft Graph:<br />
                   <code>AppCatalog.ReadWrite.All</code><br />
                   <code>AuditLog.Read.All</code><br />
+                  <code>Directory.AccessAsUser.All</code><br />
+                  <code>Directory.ReadWrite.All</code><br />
                   <code>SecurityEvents.Read.All</code><br />
                   <code>ServiceHealth.Read.All</code><br />
                   <code>ServiceMessage.Read.All</code><br />
                   <code>Sites.Read.All</code><br />
                   <code>User.Read</code><br />
+                  <br />
+                  Azure Active Directory Graph:<br />
+                  <code>Directory.AccessAsUser.All</code><br />
+                  <br />
+                  Azure Service Management:<br />
+                  <code>user_impersonation</code><br />
                   <br />
                   Office 365 Management APIs:<br />
                   <code>ActivityFeed.Read</code><br />
@@ -135,11 +143,19 @@ export const RegisterEntraAppRegView: React.FunctionComponent<IRegisterEntraAppR
                         Microsoft Graph:<br />
                         <code>AppCatalog.ReadWrite.All</code><br />
                         <code>AuditLog.Read.All</code><br />
+                        <code>Directory.AccessAsUser.All</code><br />
+                        <code>Directory.ReadWrite.All</code><br />
                         <code>SecurityEvents.Read.All</code><br />
                         <code>ServiceHealth.Read.All</code><br />
                         <code>ServiceMessage.Read.All</code><br />
                         <code>Sites.Read.All</code><br />
                         <code>User.Read</code><br />
+                        <br />
+                        Azure Active Directory Graph:<br />
+                        <code>Directory.AccessAsUser.All</code><br />
+                        <br />
+                        Azure Service Management:<br />
+                        <code>user_impersonation</code><br />
                         <br />
                         Office 365 Management APIs:<br />
                         <code>ActivityFeed.Read</code><br />
