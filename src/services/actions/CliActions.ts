@@ -374,7 +374,7 @@ export class CliActions {
     const account = await authInstance.getAccount();
 
     if (!account) {
-      Notifications.error('You must be logged in to deploy a project.');
+      Notifications.error('You must be logged in to grant API permission for a project.');
       return;
     }
 
