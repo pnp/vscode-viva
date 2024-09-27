@@ -53,6 +53,10 @@ export class PnPWebview {
         messageData.spfxPackageName = data.spfxPackageName;
       }
 
+      if (data && data.isSignedIn) {
+        messageData.isSignedIn = data.isSignedIn;
+      }
+
       if (data && data.appCatalogUrls) {
         messageData.appCatalogUrls = data.appCatalogUrls;
       }
@@ -94,6 +98,10 @@ export class PnPWebview {
 
     if (data && data.spfxPackageName) {
       webViewData.spfxPackageName = data['spfxPackageName'];
+    }
+
+    if (data && data.isSignedIn) {
+      webViewData.isSignedIn = data.isSignedIn;
     }
 
     if (data && data.appCatalogUrls) {
