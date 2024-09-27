@@ -231,7 +231,7 @@ export class CommandPanel {
     actionCommands.push(new ActionTreeItem('Validate project', '', { name: 'check-all', custom: false }, undefined, Commands.validateProject));
     actionCommands.push(new ActionTreeItem('Rename project', '', { name: 'whole-word', custom: false }, undefined, Commands.renameProject));
 
-    if(EnvironmentInformation.account) {
+    if (EnvironmentInformation.account) {
       actionCommands.push(new ActionTreeItem('Grant API permissions', '', { name: 'workspace-trusted', custom: false }, undefined, Commands.grantAPIPermissions));
       actionCommands.push(new ActionTreeItem('Deploy project (sppkg)', '', { name: 'cloud-upload', custom: false }, undefined, Commands.deployProject));
     }
