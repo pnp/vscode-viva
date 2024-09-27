@@ -12,30 +12,30 @@ export const ExtensionTypes = [
     name: 'Application Customizer',
     value: ExtensionType.application,
     templates: [],
-    description: "Customizes the appearance and behavior of pages."
+    description: 'Adds scripts to the page, and accesses well-known HTML element placeholders and extends them with custom renderings.'
   },
   {
     name: 'Field Customizer',
     value: ExtensionType.field,
     templates: ['No framework', 'React', 'Minimal'],
-    description: "Modifies the way fields are displayed in lists."
+    description: 'Provides modified views to data for fields within a list.'
   },
   {
     name: 'ListView Command Set',
     value: ExtensionType.listViewCommandSet,
     templates: [],
-    description: "Adds custom commands to list view toolbars."
+    description: 'Extends the SharePoint command surfaces to add new actions, and provides client-side code that you can use to implement behaviors.'
   },
   {
     name: 'Form Customizer',
     value: ExtensionType.formCustomizer,
     templates: ['No framework', 'React'],
-    description: "Customizes the look and feel of list and library forms."
+    description: 'Provides a way to associate and override default new, edit and view form experience of list and libraries with custom forms by associating component to content type.'
   },
   {
     name: 'Search Query Modifier',
     value: ExtensionType.searchQueryModifier,
     templates: [],
-    description: "Modifies search queries to enhance search results."
+    description: 'Modifies search queries to enhance search results.'
   }
 ];

@@ -36,7 +36,7 @@ export const ComponentDetailsStep: React.FunctionComponent<IComponentDetailsStep
     aceType,
     setAceType }: React.PropsWithChildren<IComponentDetailsStepProps>) => {
     const componentTypeName = ComponentTypes.find((component) => component.value === componentType)?.name;
-  
+
     useEffect(() => {
         const messageListener = (event: MessageEvent<any>) => {
             const { command, payload } = event.data;
@@ -67,7 +67,7 @@ export const ComponentDetailsStep: React.FunctionComponent<IComponentDetailsStep
 
         Messenger.send(WebviewCommand.toVSCode.validateComponentName, { componentType, componentNameInput });
     }, [setComponentName, setIsValidComponentName, isNewProject, componentType]);
-    
+
     return (
         <div className={'spfx__form__step'}>
             <StepHeader step={2} title={`${componentTypeName} details`} />
