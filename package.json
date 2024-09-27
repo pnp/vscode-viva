@@ -109,11 +109,19 @@
 						}
 					},
 					{
-						"id": "tasks-and-actions",
-						"title": "Boost your development with actions",
-						"description": "Reduce the amount of context switching and automate your work with Tasks and Actions. \nValidate your project, rename your solution, deploy it to any app catalog, grant API permissions ... and many more all without leaving the context of your work.",
+						"id": "tasks",
+						"title": "Gulp tasks",
+						"description": "Get to know the Gulp tasks that are available in your SharePoint Framework project",
 						"media": {
-							"markdown": "assets/walkthrough/tasks-and-actions.md"
+							"markdown": "assets/walkthrough/tasks.md"
+						}
+					},
+					{
+						"id": "actions",
+						"title": "Boost your development with actions",
+						"description": "Reduce the amount of context switching and automate your work with Actions. \nValidate your project, rename your solution, deploy it to any app catalog, grant API permissions ... and many more all without leaving the context of your work.",
+						"media": {
+							"markdown": "assets/walkthrough/actions.md"
 						}
 					},
 					{
