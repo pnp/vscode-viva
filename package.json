@@ -322,12 +322,12 @@
 			},
 			{
 				"command": "spfx-toolkit.upgradeProject",
-				"title": "Upgrade project to latest SPFx version",
+				"title": "Upgrade project SPFx version",
 				"category": "SharePoint Framework Toolkit"
 			},
 			{
 				"command": "spfx-toolkit.deployProject",
-				"title": "Deploy the project",
+				"title": "Deploy project to app catalog",
 				"category": "SharePoint Framework Toolkit"
 			},
 			{
@@ -337,7 +337,7 @@
 			},
 			{
 				"command": "spfx-toolkit.validateProject",
-				"title": "Validate project",
+				"title": "Validate project correctness",
 				"category": "SharePoint Framework Toolkit"
 			},
 			{
@@ -352,7 +352,7 @@
 			},
 			{
 				"command": "spfx-toolkit.pipeline",
-				"title": "Generate CI/CD workflow",
+				"title": "Scaffold CI/CD Workflow",
 				"category": "SharePoint Framework Toolkit"
 			},
 			{

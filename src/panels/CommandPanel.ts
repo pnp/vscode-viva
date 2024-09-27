@@ -227,17 +227,17 @@ export class CommandPanel {
 
   private static async actionsTreeView() {
     const actionCommands: ActionTreeItem[] = [];
-    actionCommands.push(new ActionTreeItem('Upgrade project', '', { name: 'arrow-up', custom: false }, undefined, Commands.upgradeProject));
-    actionCommands.push(new ActionTreeItem('Validate project', '', { name: 'check-all', custom: false }, undefined, Commands.validateProject));
+    actionCommands.push(new ActionTreeItem('Upgrade project SPFx version', '', { name: 'arrow-up', custom: false }, undefined, Commands.upgradeProject));
+    actionCommands.push(new ActionTreeItem('Validate project correctness', '', { name: 'check-all', custom: false }, undefined, Commands.validateProject));
     actionCommands.push(new ActionTreeItem('Rename project', '', { name: 'whole-word', custom: false }, undefined, Commands.renameProject));
 
     if (EnvironmentInformation.account) {
       actionCommands.push(new ActionTreeItem('Grant API permissions', '', { name: 'workspace-trusted', custom: false }, undefined, Commands.grantAPIPermissions));
-      actionCommands.push(new ActionTreeItem('Deploy project (sppkg)', '', { name: 'cloud-upload', custom: false }, undefined, Commands.deployProject));
+      actionCommands.push(new ActionTreeItem('Deploy project to app catalog', '', { name: 'cloud-upload', custom: false }, undefined, Commands.deployProject));
     }
 
     actionCommands.push(new ActionTreeItem('Add new component', '', { name: 'add', custom: false }, undefined, Commands.addToProject));
-    actionCommands.push(new ActionTreeItem('CI/CD Workflow', '', { name: 'rocket', custom: false }, undefined, Commands.pipeline));
+    actionCommands.push(new ActionTreeItem('Scaffold CI/CD Workflow', '', { name: 'rocket', custom: false }, undefined, Commands.pipeline));
     actionCommands.push(new ActionTreeItem('View samples', '', { name: 'library', custom: false }, undefined, Commands.samplesGallery));
 
     window.registerTreeDataProvider('pnp-view-actions', new ActionTreeDataProvider(actionCommands));
