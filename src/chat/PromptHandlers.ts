@@ -1,5 +1,6 @@
 import * as vscode from 'vscode';
 import { Commands, promptCodeContext, promptContext, promptNewContext, promptSetupContext } from '../constants';
+import { ProjectInformation } from '../services/dataType/ProjectInformation';
 
 const MODEL_SELECTOR: vscode.LanguageModelChatSelector = { vendor: 'copilot', family: 'gpt-4' };
 
@@ -54,23 +55,26 @@ export class PromptHandlers {
           title: vscode.l10n.t('View samples'),
         }];
       case 'code':
-        // TODO: make visible only in context of a project
-        return [{
-          command: Commands.upgradeProject,
-          title: vscode.l10n.t('Get upgrade guidance to latest SPFx version'),
-        },
-        {
-          command: Commands.validateProject,
-          title: vscode.l10n.t('Validate your project'),
-        },
-        {
-          command: Commands.renameProject,
-          title: vscode.l10n.t('Rename your project'),
-        },
-        {
-          command: Commands.pipeline,
-          title: vscode.l10n.t('Create a CI/CD workflow'),
-        }];
+        if(ProjectInformation.isSPFxProject) {
+          return [{
+            command: Commands.upgradeProject,
+            title: vscode.l10n.t('Get upgrade guidance to latest SPFx version'),
+          },
+          {
+            command: Commands.validateProject,
+            title: vscode.l10n.t('Validate your project'),
+          },
+          {
+            command: Commands.renameProject,
+            title: vscode.l10n.t('Rename your project'),
+          },
+          {
+            command: Commands.pipeline,
+            title: vscode.l10n.t('Create a CI/CD workflow'),
+          }];
+        }
+
+        return [];
       default:
         return [];
     }

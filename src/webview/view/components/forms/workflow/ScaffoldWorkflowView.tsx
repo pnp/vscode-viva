@@ -24,6 +24,7 @@ export const ScaffoldWorkflowView: React.FunctionComponent<IScaffoldWorkflowView
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
   const [isWorkflowCreated, setIsWorkflowCreated] = useState<boolean>(false);
   const [shouldCreateAppRegistrationForm, setShouldCreateAppRegistrationForm] = useState<boolean>(false);
+  const [isSignedIn, setIsSignedIn] = useState<boolean>(false);
   const [certPassword, setCertPassword] = useState<string>('');
   const [appRegistrationName, setAppRegistrationName] = useState<string>('CI/CD Application');
   const [appId, setAppId] = useState<string>('');
@@ -36,6 +37,10 @@ export const ScaffoldWorkflowView: React.FunctionComponent<IScaffoldWorkflowView
     if (location.state.spfxPackageName) {
       setName(`Deploy Solution ${location.state.spfxPackageName}`);
       setAppRegistrationName(`CI/CD Application for ${location.state.spfxPackageName}`);
+    }
+
+    if (location.state.isSignedIn) {
+      setIsSignedIn(location.state.isSignedIn);
     }
 
     if (location.state.appCatalogUrls) {
@@ -219,12 +224,14 @@ export const ScaffoldWorkflowView: React.FunctionComponent<IScaffoldWorkflowView
                       </>
                   }
                   <div>
-                    <div className={'mt-2'}>
-                      <p className={'mb-1'}><strong>Don't have an app registration yet?</strong></p>
-                      <p className={'mb-2'}>👇 No problem, generate all that you need for your {workflowType === WorkflowType.gitHub ? 'workflow' : 'pipeline'} 👇</p>
-                      <VSCodeCheckbox checked={shouldCreateAppRegistrationForm} onChange={() => setShouldCreateAppRegistrationForm(!shouldCreateAppRegistrationForm)}>
-                        Generate a certificate and create an app registration
-                      </VSCodeCheckbox>
+                    <div className={isSignedIn ? '' : 'hidden'}>
+                      <div className={'mt-2'}>
+                        <p className={'mb-1'}><strong>Don't have an app registration yet?</strong></p>
+                        <p className={'mb-2'}>👇 No problem, generate all that you need for your {workflowType === WorkflowType.gitHub ? 'workflow' : 'pipeline'} 👇</p>
+                        <VSCodeCheckbox checked={shouldCreateAppRegistrationForm} onChange={() => setShouldCreateAppRegistrationForm(!shouldCreateAppRegistrationForm)}>
+                          Generate a certificate and create an app registration
+                        </VSCodeCheckbox>
+                      </div>
                     </div>
                     <div className={shouldCreateAppRegistrationForm ? '' : 'hidden'}>
                       <p className={'mt-1 mb-1'}>Here you may generate a new certificate and register a new app registration with a single click 🤩</p>

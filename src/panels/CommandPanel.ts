@@ -7,11 +7,13 @@ import { CliActions } from '../services/actions/CliActions';
 import { DebuggerCheck } from '../services/check/DebuggerCheck';
 import { EnvironmentInformation } from '../services/dataType/EnvironmentInformation';
 import { TeamsToolkitIntegration } from '../services/dataType/TeamsToolkitIntegration';
+import { ProjectInformation } from '../services/dataType/ProjectInformation';
 import { AdaptiveCardCheck } from '../services/check/AdaptiveCardCheck';
 import { Subscription } from '../models';
 import { Extension } from '../services/dataType/Extension';
 import { getExtensionSettings } from '../utils';
 import { EntraApplicationCheck } from '../services/check/EntraApplicationCheck';
+import { Notifications } from '../services/dataType/Notifications';
 
 
 export class CommandPanel {
@@ -33,40 +35,46 @@ export class CommandPanel {
   }
 
   private static async init() {
-    let isTeamsToolkitProject = false;
-    let files = await workspace.findFiles('.yo-rc.json', '**/node_modules/**');
+    try {
+      let isTeamsToolkitProject = false;
+      let files = await workspace.findFiles('.yo-rc.json', '**/node_modules/**');
 
-    if (files.length <= 0) {
-      files = await workspace.findFiles('src/.yo-rc.json', '**/node_modules/**');
-      isTeamsToolkitProject = true;
-    }
+      if (files.length <= 0) {
+        files = await workspace.findFiles('src/.yo-rc.json', '**/node_modules/**');
+        isTeamsToolkitProject = true;
+      }
 
-    if (files.length <= 0) {
+      if (files.length <= 0) {
+        CommandPanel.showWelcome();
+        return;
+      }
+
+      const file = files[0];
+      const content = readFileSync(file.fsPath, 'utf8');
+      if (!content) {
+        CommandPanel.showWelcome();
+        return;
+      }
+
+      const json = JSON.parse(content);
+      if (!json || !json['@microsoft/generator-sharepoint']) {
+        CommandPanel.showWelcome();
+        return;
+      }
+
+      commands.executeCommand('setContext', ContextKeys.isSPFxProject, true);
+      commands.executeCommand('setContext', ContextKeys.showWelcome, false);
+
+      ProjectInformation.isSPFxProject = true;
+      TeamsToolkitIntegration.isTeamsToolkitProject = isTeamsToolkitProject;
+
+      AdaptiveCardCheck.validateACEComponent();
+      CommandPanel.registerTreeView();
+      AuthProvider.verify();
+    } catch (error) {
       CommandPanel.showWelcome();
-      return;
+      Notifications.error('Error initializing the extension, please verify the project and try again.');
     }
-
-    const file = files[0];
-    const content = readFileSync(file.fsPath, 'utf8');
-    if (!content) {
-      CommandPanel.showWelcome();
-      return;
-    }
-
-    const json = JSON.parse(content);
-    if (!json || !json['@microsoft/generator-sharepoint']) {
-      CommandPanel.showWelcome();
-      return;
-    }
-
-    commands.executeCommand('setContext', ContextKeys.isSPFxProject, true);
-    commands.executeCommand('setContext', ContextKeys.showWelcome, false);
-
-    TeamsToolkitIntegration.isTeamsToolkitProject = isTeamsToolkitProject;
-
-    AdaptiveCardCheck.validateACEComponent();
-    CommandPanel.registerTreeView();
-    AuthProvider.verify();
   }
 
   private static registerTreeView() {
@@ -84,7 +92,6 @@ export class CommandPanel {
     }
 
     CommandPanel.taskTreeView();
-    CommandPanel.actionsTreeView();
     CommandPanel.helpTreeView();
   }
 
@@ -145,6 +152,7 @@ export class CommandPanel {
       accountCommands.push(new ActionTreeItem('Sign in to Microsoft 365', '', { name: 'sign-in', custom: false }, undefined, Commands.login));
     }
 
+    CommandPanel.actionsTreeView();
     window.createTreeView('pnp-view-account', { treeDataProvider: new ActionTreeDataProvider(accountCommands), showCollapseAll: true });
   }
 
@@ -200,30 +208,37 @@ export class CommandPanel {
 
   private static taskTreeView() {
     const taskCommands: ActionTreeItem[] = [
-      new ActionTreeItem('Clean project', '', { name: 'debug-start', custom: false }, undefined, Commands.executeTerminalCommand, 'gulp clean'),
+      new ActionTreeItem('Build project', '', { name: 'debug-start', custom: false }, undefined, Commands.executeTerminalCommand, 'gulp build'),
       new ActionTreeItem('Bundle project (local)', '', { name: 'debug-start', custom: false }, undefined, Commands.executeTerminalCommand, 'gulp bundle'),
       new ActionTreeItem('Bundle project (production)', '', { name: 'debug-start', custom: false }, undefined, Commands.executeTerminalCommand, 'gulp bundle --ship'),
+      new ActionTreeItem('Clean project', '', { name: 'debug-start', custom: false }, undefined, Commands.executeTerminalCommand, 'gulp clean'),
+      new ActionTreeItem('Deploy project assets to Azure Storage', '', { name: 'debug-start', custom: false }, undefined, Commands.executeTerminalCommand, 'gulp deploy-azure-storage'),
       new ActionTreeItem('Package (local)', '', { name: 'debug-start', custom: false }, undefined, Commands.executeTerminalCommand, 'gulp package-solution'),
       new ActionTreeItem('Package (production)', '', { name: 'debug-start', custom: false }, undefined, Commands.executeTerminalCommand, 'gulp package-solution --ship'),
       new ActionTreeItem('Serve', '', { name: 'debug-start', custom: false }, undefined, Commands.executeTerminalCommand, 'gulp serve'),
       new ActionTreeItem('Serve (nobrowser)', '', { name: 'debug-start', custom: false }, undefined, Commands.executeTerminalCommand, 'gulp serve --nobrowser'),
       new ActionTreeItem('Serve from configuration', '', { name: 'debug-start', custom: false }, undefined, Commands.serveProject),
+      new ActionTreeItem('Test', '', { name: 'debug-start', custom: false }, undefined, Commands.executeTerminalCommand, 'gulp test'),
+      new ActionTreeItem('Trust self-signed developer certificate', '', { name: 'debug-start', custom: false }, undefined, Commands.executeTerminalCommand, 'gulp trust-dev-cert'),
     ];
 
     window.registerTreeDataProvider('pnp-view-tasks', new ActionTreeDataProvider(taskCommands));
   }
 
   private static async actionsTreeView() {
-    const actionCommands: ActionTreeItem[] = [
-      new ActionTreeItem('Upgrade project', '', { name: 'arrow-up', custom: false }, undefined, Commands.upgradeProject),
-      new ActionTreeItem('Validate project', '', { name: 'check-all', custom: false }, undefined, Commands.validateProject),
-      new ActionTreeItem('Rename project', '', { name: 'whole-word', custom: false }, undefined, Commands.renameProject),
-      new ActionTreeItem('Grant API permissions', '', { name: 'workspace-trusted', custom: false }, undefined, Commands.grantAPIPermissions),
-      new ActionTreeItem('Deploy project (sppkg)', '', { name: 'cloud-upload', custom: false }, undefined, Commands.deployProject),
-      new ActionTreeItem('Add new component', '', { name: 'add', custom: false }, undefined, Commands.addToProject),
-      new ActionTreeItem('CI/CD Workflow', '', { name: 'rocket', custom: false }, undefined, Commands.pipeline),
-      new ActionTreeItem('View samples', '', { name: 'library', custom: false }, undefined, Commands.samplesGallery),
-    ];
+    const actionCommands: ActionTreeItem[] = [];
+    actionCommands.push(new ActionTreeItem('Upgrade project SPFx version', '', { name: 'arrow-up', custom: false }, undefined, Commands.upgradeProject));
+    actionCommands.push(new ActionTreeItem('Validate project correctness', '', { name: 'check-all', custom: false }, undefined, Commands.validateProject));
+    actionCommands.push(new ActionTreeItem('Rename project', '', { name: 'whole-word', custom: false }, undefined, Commands.renameProject));
+
+    if (EnvironmentInformation.account) {
+      actionCommands.push(new ActionTreeItem('Grant API permissions', '', { name: 'workspace-trusted', custom: false }, undefined, Commands.grantAPIPermissions));
+      actionCommands.push(new ActionTreeItem('Deploy project to app catalog', '', { name: 'cloud-upload', custom: false }, undefined, Commands.deployProject));
+    }
+
+    actionCommands.push(new ActionTreeItem('Add new component', '', { name: 'add', custom: false }, undefined, Commands.addToProject));
+    actionCommands.push(new ActionTreeItem('Scaffold CI/CD Workflow', '', { name: 'rocket', custom: false }, undefined, Commands.pipeline));
+    actionCommands.push(new ActionTreeItem('View samples', '', { name: 'library', custom: false }, undefined, Commands.samplesGallery));
 
     window.registerTreeDataProvider('pnp-view-actions', new ActionTreeDataProvider(actionCommands));
   }
