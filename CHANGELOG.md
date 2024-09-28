@@ -1,5 +1,16 @@
 # Change Log
 
+## [4.1.0] - 2024-09-28
+
+- Added support for SPFx 1.20.0
+- Updated missing scopes in the Entra App Registration
+- Updated error handling in extension init
+- Added guidance in tha scaffolding form for each SPFx project type
+- Added more gulp tasks
+- Added dedicated walkthrough for gulp tasks
+- Updated extension to hide features that require sign in
+- Updated action naming
+
 ## [4.0.0] - 2024-09-08
 
 - Updated Sign in method

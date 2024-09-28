@@ -370,6 +370,14 @@ export class CliActions {
    * @returns A promise that resolves when the API permissions are granted.
    */
   private static async grantAPIPermissions() {
+    const authInstance = AuthProvider.getInstance();
+    const account = await authInstance.getAccount();
+
+    if (!account) {
+      Notifications.error('You must be logged in to grant API permission for a project.');
+      return;
+    }
+
     // Change the current working directory to the root of the Project
     const wsFolder = await Folders.getWorkspaceFolder();
     if (wsFolder) {
@@ -411,7 +419,8 @@ export class CliActions {
     const content = await parseYoRc();
     const data = {
       spfxPackageName: content ? content['@microsoft/generator-sharepoint'].solutionName : '',
-      appCatalogUrls: EnvironmentInformation.appCatalogUrls && EnvironmentInformation.appCatalogUrls.length > 1 ? EnvironmentInformation.appCatalogUrls : []
+      appCatalogUrls: EnvironmentInformation.appCatalogUrls && EnvironmentInformation.appCatalogUrls.length > 1 ? EnvironmentInformation.appCatalogUrls : [],
+      isSignedIn: EnvironmentInformation.account ? true : false
     };
 
     PnPWebview.open(WebViewType.workflowForm, data);
