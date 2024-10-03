@@ -1,25 +1,39 @@
 import * as vscode from 'vscode';
-import { Commands, promptCodeContext, promptContext, promptNewContext, promptSetupContext } from '../constants';
+import { AdaptiveCardTypes, Commands, ComponentTypes, ExtensionTypes, msSampleGalleryLink, promptCodeContext, promptContext, promptGeneralContext, promptNewContext, promptSetupContext } from '../constants';
 import { ProjectInformation } from '../services/dataType/ProjectInformation';
 
-const MODEL_SELECTOR: vscode.LanguageModelChatSelector = { vendor: 'copilot', family: 'gpt-4' };
 
 export class PromptHandlers {
+  public static history: string[] = [];
+  public static previousCommand: string = '';
 
   public static async handle(request: vscode.ChatRequest, context: vscode.ChatContext, stream: vscode.ChatResponseStream, token: vscode.CancellationToken): Promise<any> {
     stream.progress(PromptHandlers.getRandomProgressMessage());
-    const chatCommand = (request.command && ['setup', 'new', 'code'].indexOf(request.command) > -1) ? request.command : '';
+    const chatCommand = (request.command && ['setup', 'new', 'code'].indexOf(request.command.toLowerCase()) > -1) ? request.command.toLowerCase() : '';
 
-    const messages = [vscode.LanguageModelChatMessage.Assistant(promptContext)];
+    const messages: vscode.LanguageModelChatMessage[] = [];
+    messages.push(vscode.LanguageModelChatMessage.Assistant(promptContext));
     messages.push(vscode.LanguageModelChatMessage.Assistant(PromptHandlers.getChatCommandPrompt(chatCommand)));
+
+    if (PromptHandlers.previousCommand !== chatCommand) {
+      PromptHandlers.history = [];
+      PromptHandlers.previousCommand = chatCommand;
+    } else {
+      PromptHandlers.history.forEach(message => messages.push(vscode.LanguageModelChatMessage.Assistant(message)));
+    }
+
     messages.push(vscode.LanguageModelChatMessage.User(request.prompt));
-    const [model] = await vscode.lm.selectChatModels(MODEL_SELECTOR);
+    PromptHandlers.history.push(request.prompt);
+    const [model] = await vscode.lm.selectChatModels({ vendor: 'copilot', family: 'gpt-4o' });
     try {
       const chatResponse = await model.sendRequest(messages, {}, token);
+      let query = '';
       for await (const fragment of chatResponse.text) {
+        query += fragment;
         stream.markdown(fragment);
       }
-      PromptHandlers.getChatCommandButtons(chatCommand).forEach(button => stream.button(button));
+      PromptHandlers.history.push(query);
+      PromptHandlers.getChatCommandButtons(chatCommand, query).forEach(button => stream.button(button));
       return { metadata: { command: chatCommand } };
     } catch (err) {
       if (err instanceof vscode.LanguageModelError) {
@@ -34,63 +48,23 @@ export class PromptHandlers {
     }
   }
 
-  private static getChatCommandButtons(chatCommand: string) {
-    switch (chatCommand) {
-      case 'setup':
-        return [{
-          command: Commands.checkDependencies,
-          title: vscode.l10n.t('Check if my local workspace is ready'),
-        },
-        {
-          command: Commands.installDependencies,
-          title: vscode.l10n.t('Install required dependencies'),
-        }];
-      case 'new':
-        return [{
-          command: Commands.createProject,
-          title: vscode.l10n.t('Create a new project'),
-        },
-        {
-          command: Commands.samplesGallery,
-          title: vscode.l10n.t('View samples'),
-        }];
-      case 'code':
-        if(ProjectInformation.isSPFxProject) {
-          return [{
-            command: Commands.upgradeProject,
-            title: vscode.l10n.t('Get upgrade guidance to latest SPFx version'),
-          },
-          {
-            command: Commands.validateProject,
-            title: vscode.l10n.t('Validate your project'),
-          },
-          {
-            command: Commands.renameProject,
-            title: vscode.l10n.t('Rename your project'),
-          },
-          {
-            command: Commands.pipeline,
-            title: vscode.l10n.t('Create a CI/CD workflow'),
-          }];
-        }
-
-        return [];
-      default:
-        return [];
-    }
-  }
-
   private static getChatCommandPrompt(chatCommand: string): string {
+    let context: string = '';
     switch (chatCommand) {
       case 'setup':
-        return promptSetupContext;
+        context += promptSetupContext;
       case 'new':
-        return promptNewContext;
+        context += promptNewContext;
+        context += `\n Here is some more information regarding each component type ${ComponentTypes}`;
+        context += `\n Here is some more information regarding each extension type ${ExtensionTypes}`;
+        context += `\n Here is some more information regarding each ACE type ${AdaptiveCardTypes}`;
       case 'code':
-        return promptCodeContext;
+        context += promptCodeContext;
       default:
-        return '';
+        context += promptGeneralContext;
     }
+
+    return context;
   }
 
   private static getRandomProgressMessage(): string {
@@ -113,5 +87,71 @@ export class PromptHandlers {
       'Waking up the AI...'
     ];
     return messages[Math.floor(Math.random() * messages.length)];
+  }
+
+  private static getChatCommandButtons(chatCommand: string, chatResponse: string) {
+    switch (chatCommand) {
+      case 'new':
+        const buttons = [];
+        const regex = /```([^\n]*)\n(?=[\s\S]*?yo @microsoft\/sharepoint.+)([\s\S]*?)\n?```/g;
+        const match = regex.exec(chatResponse);
+        if (match && match[2]) {
+          buttons.push(
+            {
+              command: Commands.executeTerminalCommand,
+              title: vscode.l10n.t('Create project'),
+              arguments: [match[2], 'Create project'],
+            });
+        }
+        if (chatResponse.toLowerCase().includes(msSampleGalleryLink)) {
+          buttons.push({
+            command: Commands.samplesGallery,
+            title: vscode.l10n.t('Open sample gallery'),
+          });
+        }
+        return buttons;
+      case 'setup':
+        // return [{
+        //         command: Commands.checkDependencies,
+        //         title: vscode.l10n.t('Check if my local workspace is ready'),
+        //       },
+        //       {
+        //         command: Commands.installDependencies,
+        //         title: vscode.l10n.t('Install required dependencies'),
+        //       }];
+        //     case 'new':
+        //       return [{
+        //         command: Commands.createProject,
+        //         title: vscode.l10n.t('Create a new project'),
+        //       },
+        //       {
+        //         command: Commands.samplesGallery,
+        //         title: vscode.l10n.t('View samples'),
+        //       }];
+        return [];
+      case 'code':
+        if (ProjectInformation.isSPFxProject) {
+          return [{
+            command: Commands.upgradeProject,
+            title: vscode.l10n.t('Get upgrade guidance to latest SPFx version'),
+          },
+          {
+            command: Commands.validateProject,
+            title: vscode.l10n.t('Validate your project'),
+          },
+          {
+            command: Commands.renameProject,
+            title: vscode.l10n.t('Rename your project'),
+          },
+          {
+            command: Commands.pipeline,
+            title: vscode.l10n.t('Create a CI/CD workflow'),
+          }];
+        }
+
+        return [];
+      default:
+        return [];
+    }
   }
 }

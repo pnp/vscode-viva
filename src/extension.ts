@@ -45,7 +45,7 @@ export async function activate(context: vscode.ExtensionContext) {
 				const terminalIcon = 'cloud-download';
 
 				if (fileContents.indexOf(ProjectFileContent.init) > -1 || fileContents.indexOf(ProjectFileContent.initScenario) > -1) {
-					await TerminalCommandExecuter.runCommand('npm i', [], terminalTitle, terminalIcon);
+					await TerminalCommandExecuter.runCommand('npm i', terminalTitle, terminalIcon);
 				}
 
 				if (fileContents.indexOf(ProjectFileContent.initScenario) > -1) {
@@ -53,15 +53,15 @@ export async function activate(context: vscode.ExtensionContext) {
 				}
 
 				if (fileContents.indexOf(ProjectFileContent.installReusablePropertyPaneControls) > -1) {
-					await TerminalCommandExecuter.runCommand('npm install @pnp/spfx-property-controls --save --save-exact', [], terminalTitle, terminalIcon);
+					await TerminalCommandExecuter.runCommand('npm install @pnp/spfx-property-controls --save --save-exact', terminalTitle, terminalIcon);
 				}
 
 				if (fileContents.indexOf(ProjectFileContent.installReusableReactControls) > -1) {
-					await TerminalCommandExecuter.runCommand('npm install @pnp/spfx-controls-react --save --save-exact', [], terminalTitle, terminalIcon);
+					await TerminalCommandExecuter.runCommand('npm install @pnp/spfx-controls-react --save --save-exact', terminalTitle, terminalIcon);
 				}
 
 				if (fileContents.indexOf(ProjectFileContent.installPnPJs) > -1) {
-					await TerminalCommandExecuter.runCommand('npm install @pnp/sp @pnp/graph --save', [], terminalTitle, terminalIcon);
+					await TerminalCommandExecuter.runCommand('npm install @pnp/sp @pnp/graph --save', terminalTitle, terminalIcon);
 				}
 
 				// If either of the following strings are found in the project file, run the command to get the node version
