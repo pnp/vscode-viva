@@ -61,11 +61,12 @@
 					},
 					{
 						"name": "new",
+						"isSticky": true,
 						"description": "Create a new SharePoint Framework project."
 					},
 					{
 						"name": "code",
-						"description": "Let's write some SPFx code"
+						"description": "Let's write some SPFx code (I am still learning this, please consider this as beta)"
 					}
 				]
 			}
