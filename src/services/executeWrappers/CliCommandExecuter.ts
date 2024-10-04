@@ -28,8 +28,20 @@ export class CliExecuter {
       let cmdOutput: string = '';
       let cmdOutputIncludingStderr: string = '';
       const outputChannel = Logger.channel;
+      let cliCommandOptions = '';
+      if (args) {
+        cliCommandOptions = `${Object.keys(args).map(key => {
+          let option = `--${key}`;
+          const value = args[key];
+          if (value) {
+            option = `${option} ${value}`;
+          }
 
-      Logger.info(`Running CLI command: ${command}`);
+          return option;
+        }).join(' ')}`;
+      }
+
+      Logger.info(`Running CLI command: m365 ${command} --output ${output} ${cliCommandOptions}`);
       executeCommand(command, { output, ...args }, {
         stdout: (message: string) => {
           message = message.toString();
