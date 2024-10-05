@@ -16,6 +16,7 @@ interface AdditionalStepProps {
     setShouldInstallPnPJs: (value: boolean) => void;
     shouldCreateNodeVersionFile: boolean;
     setShouldCreateNodeVersionFile: (value: boolean) => void;
+    nodeVersionManager: 'nvm' | 'nvs' | 'none';
     setNodeVersionManager: (value: 'nvm' | 'nvs' | 'none') => void;
     setNodeVersionManagerFile: (value: '.nvmrc' | '.node-version') => void;
 }
@@ -32,6 +33,7 @@ export const AdditionalStep: React.FunctionComponent<AdditionalStepProps> = ({
     shouldCreateNodeVersionFile,
     setShouldCreateNodeVersionFile,
     setNodeVersionManagerFile,
+    nodeVersionManager,
     setNodeVersionManager
 }: React.PropsWithChildren<AdditionalStepProps>) => {
 
@@ -113,10 +115,11 @@ export const AdditionalStep: React.FunctionComponent<AdditionalStepProps> = ({
                     label='Install PnPjs (@pnp/sp, @pnp/graph)'
                     link='https://pnp.github.io/pnpjs/' />
 
+                {nodeVersionManager !== 'none' &&
                 <PackageSelector
                     value={shouldCreateNodeVersionFile}
                     setValue={setShouldCreateNodeVersionFile}
-                    label='Create Node version file' />
+                    label='Create Node version file' />}
             </div>
         </div>
     );

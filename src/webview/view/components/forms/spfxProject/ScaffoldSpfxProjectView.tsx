@@ -133,6 +133,7 @@ export const ScaffoldSpfxProjectView: React.FunctionComponent<IScaffoldSpfxProje
             setShouldCreateNodeVersionFile={setShouldCreateNodeVersionFile}
             setNodeVersionManagerFile={setNodeVersionManagerFile}
             setNodeVersionManager={setNodeVersionManager}
+            nodeVersionManager={nodeVersionManager}
           />
         }
       </div>
