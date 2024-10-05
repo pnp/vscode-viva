@@ -11,7 +11,7 @@ import * as glob from 'fast-glob';
 import { Extension } from '../dataType/Extension';
 import download from 'github-directory-downloader/esm';
 import { CliExecuter } from '../executeWrappers/CliCommandExecuter';
-import { getPlatform } from '../../utils';
+import { getExtensionSettings, getPlatform } from '../../utils';
 import { PnPWebview } from '../../webview/PnPWebview';
 import { Executer } from '../executeWrappers/CommandExecuter';
 import { TeamsToolkitIntegration } from '../dataType/TeamsToolkitIntegration';
@@ -148,6 +148,45 @@ export class Scaffolder {
   }
 
   /**
+	 * Returns the value of the createNodeVersionFileDefaultValue setting and sends it to the webview.
+	 */
+	public static async createNodeVersionFileDefaultValue() {
+		const value = getExtensionSettings<boolean>(
+			'createNodeVersionFileDefaultValue',
+			false
+		);
+
+		PnPWebview.postMessage(
+			WebviewCommand.toWebview.createNodeVersionFileDefaultValue,
+			value
+		);
+	}
+
+	/**
+	 * Returns the value of the nodeVersionManagerFile setting and sends it to the webview.
+	 */
+	public static async nodeVersionManagerFile() {
+		const value = getExtensionSettings<string>('nodeVersionManagerFile', false);
+
+		PnPWebview.postMessage(
+			WebviewCommand.toWebview.createNodeVersionManagerFile,
+			value
+		);
+	}
+
+	/**
+	 * Returns the value of the nodeVersionManager setting and sends it to the webview.
+	 */
+	public static async nodeVersionManager() {
+		const value = getExtensionSettings<string>('nodeVersionManager', false);
+
+		PnPWebview.postMessage(
+			WebviewCommand.toWebview.nodeVersionManager,
+			value
+		);
+	}
+
+  /**
    * Scaffold method for creating a new project.
    * @param input - The input for the scaffold command.
    * @param isNewProject - A boolean indicating whether it's a new project or not.
@@ -224,6 +263,29 @@ export class Scaffolder {
           if (newSolutionInput.shouldInstallPnPJs) {
             content += ` ${ProjectFileContent.installPnPJs}`;
           }
+
+          if (newSolutionInput.shouldCreateNodeVersionFile) {
+            switch (newSolutionInput.nodeVersionManager) {
+              case 'nvm':
+                // If the node version manager is nvm, create the .nvmrc file even if the user has selected .node-version
+                content += ` ${ProjectFileContent.createNVMRCFile}`;
+                break;
+              case 'nvs':
+                // If the node version manager is nvs, create the file based on the user's settings
+                switch (newSolutionInput.nodeVersionManagerFile) {
+                  case '.nvmrc':
+                    content += ` ${ProjectFileContent.createNVMRCFile}`;
+                    break;
+                  case '.node-version':
+                    content += ` ${ProjectFileContent.createNodeVersionFile}`;
+                    break;
+                }
+                break;
+                case 'none':
+                // If the node version manager is none, do not create any file
+                break;
+							}
+						}
 
           Scaffolder.createProjectFileAndOpen(newFolderPath, content);
         } else {
