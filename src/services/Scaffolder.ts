@@ -196,7 +196,10 @@ export class Scaffolder {
 			false
 		);
 
-		PnPWebview.postMessage(WebviewCommand.toWebview.createNodeVersionFileDefaultValue, value);
+		PnPWebview.postMessage(
+			WebviewCommand.toWebview.createNodeVersionFileDefaultValue,
+			value
+		);
 	}
 
 	/**
@@ -207,6 +210,18 @@ export class Scaffolder {
 
 		PnPWebview.postMessage(
 			WebviewCommand.toWebview.createNodeVersionManagerFile,
+			value
+		);
+	}
+
+	/**
+	 * Returns the value of the nodeVersionManager setting and sends it to the webview.
+	 */
+	public static async nodeVersionManager() {
+		const value = getExtensionSettings<string>("nodeVersionManager", false);
+
+		PnPWebview.postMessage(
+			WebviewCommand.toWebview.nodeVersionManager,
 			value
 		);
 	}
@@ -306,13 +321,24 @@ export class Scaffolder {
 						}
 
 						if (newSolutionInput.shouldCreateNodeVersionFile) {
-							// TODO: should check if the node version manager file is set to nvm or nvs, in case of nvm, we must use .nvmrc
-							switch (newSolutionInput.nodeVersionManagerFile) {
-								case ".nvmrc":
+							switch (newSolutionInput.nodeVersionManager) {
+								case "nvm":
+									// If the node version manager is nvm, create the .nvmrc file even if the user has selected .node-version
 									content += ` ${ProjectFileContent.createNVMRCFile}`;
 									break;
-								case ".node-version":
-									content += ` ${ProjectFileContent.createNodeVersionFile}`;
+								case "nvs":
+									// If the node version manager is nvs, create the file based on the user's settings
+									switch (newSolutionInput.nodeVersionManagerFile) {
+										case ".nvmrc":
+											content += ` ${ProjectFileContent.createNVMRCFile}`;
+											break;
+										case ".node-version":
+											content += ` ${ProjectFileContent.createNodeVersionFile}`;
+											break;
+									}
+									break;
+								case "none":
+									// If the node version manager is none, do not create any file
 									break;
 							}
 						}

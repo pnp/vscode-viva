@@ -16,7 +16,9 @@ interface AdditionalStepProps {
     setShouldInstallPnPJs: (value: boolean) => void;
     shouldCreateNodeVersionFile: boolean;
     setShouldCreateNodeVersionFile: (value: boolean) => void;
-    nodeVersionManagerFile: '.nvmrc' | '.node-version';
+    //nodeVersionManager: 'nvm' | 'nvs' | 'none';
+    setNodeVersionManager: (value: 'nvm' | 'nvs' | 'none') => void;
+    //nodeVersionManagerFile: '.nvmrc' | '.node-version';
     setNodeVersionManagerFile: (value: '.nvmrc' | '.node-version') => void;
 }
 
@@ -31,22 +33,43 @@ export const AdditionalStep: React.FunctionComponent<AdditionalStepProps> = ({
     setShouldInstallPnPJs,
     shouldCreateNodeVersionFile,
     setShouldCreateNodeVersionFile,
-    setNodeVersionManagerFile
+    setNodeVersionManagerFile,
+    setNodeVersionManager
 }: React.PropsWithChildren<AdditionalStepProps>) => {
 
+    const [localShouldCreateNodeVersionFile, setLocalShouldCreateNodeVersionFile] = React.useState<boolean>(shouldCreateNodeVersionFile);
+
+    // Send a message to retrieve the default value for the create node version file
     const getCreateNodeVersionFileDefaultValue = React.useCallback(() => {
         Messenger.send(WebviewCommand.toVSCode.createNodeVersionFileDefaultValue, {});
     }, []);
 
+    // Send a message to retrieve the node version manager file
     const getNodeVersionManagerFile = React.useCallback(() => {
         Messenger.send(WebviewCommand.toVSCode.nodeVersionManagerFile, {});
     }, []);
 
+    // Send a message to retrieve the node version manager
+    const getNodeVersionManager = React.useCallback(() => {
+        Messenger.send(WebviewCommand.toVSCode.nodeVersionManager, {});
+    }, []);
+
+    // Listen for the response to the message/s
     React.useEffect(() => {
         const messageListener = (event: MessageEvent<any>) => {
             const { command, payload } = event.data;
-            if (command === WebviewCommand.toWebview.createNodeVersionFileDefaultValue) {
-                setShouldCreateNodeVersionFile(payload);
+            switch (command) {
+                case WebviewCommand.toWebview.nodeVersionManager:
+                    setNodeVersionManager(payload);
+                    break;
+                case WebviewCommand.toWebview.nodeVersionManagerFile:
+                    setNodeVersionManagerFile(payload);
+                    break;
+                case WebviewCommand.toWebview.createNodeVersionFileDefaultValue:
+                    setShouldCreateNodeVersionFile(payload);
+                    break;
+                default:
+                    break;
             }
         };
 
@@ -55,27 +78,17 @@ export const AdditionalStep: React.FunctionComponent<AdditionalStepProps> = ({
         return () => {
             Messenger.unlisten(messageListener);
         };
-    }, [setShouldCreateNodeVersionFile]);
+    }, [setNodeVersionManager, setNodeVersionManagerFile, setShouldCreateNodeVersionFile]);
 
+    // Sends the requests to load the settings values only once
     React.useEffect(() => {
-        const messageListener = (event: MessageEvent<any>) => {
-            const { command, payload } = event.data;
-            if (command === WebviewCommand.toWebview.nodeVersionManagerFile) {
-                setNodeVersionManagerFile(payload);
-            }
-        };
-
-        Messenger.listen(messageListener);
-
-        return () => {
-            Messenger.unlisten(messageListener);
-        };
-    }, [setNodeVersionManagerFile]);
-
-    getCreateNodeVersionFileDefaultValue();
-    getNodeVersionManagerFile();
-
-    // TODO: Check the selected node version manager from settings
+        // Get the default value for the create node version file
+        getCreateNodeVersionFileDefaultValue();
+        // Get the node version manager
+        getNodeVersionManager();
+        // Get the node version manager file
+        getNodeVersionManagerFile();
+    }, []);
 
     return (
         <div className={'spfx__form__step'}>

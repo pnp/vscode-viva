@@ -27,6 +27,7 @@ export const ScaffoldSpfxProjectView: React.FunctionComponent<IScaffoldSpfxProje
   const [shouldInstallReusableReactControls, setShouldInstallReusableReactControls] = useState<boolean>(false);
   const [shouldInstallPnPJs, setShouldInstallPnPJs] = useState<boolean>(false);
   const [shouldCreateNodeVersionFile, setShouldCreateNodeVersionFile] = useState<boolean>(false);
+  const [nodeVersionManager, setNodeVersionManager] = useState<'nvm' | 'nvs' | 'none'>('nvm');
   const [nodeVersionManagerFile, setNodeVersionManagerFile] = useState<'.nvmrc' | '.node-version'>('.nvmrc');
   const location: any = useLocation();
 
@@ -82,7 +83,8 @@ export const ScaffoldSpfxProjectView: React.FunctionComponent<IScaffoldSpfxProje
         shouldInstallReusableReactControls,
         shouldInstallPnPJs,
         shouldCreateNodeVersionFile,
-        nodeVersionManagerFile
+        nodeVersionManagerFile,
+        nodeVersionManager
       } as SpfxScaffoldCommandInput);
     }
   };
@@ -129,8 +131,8 @@ export const ScaffoldSpfxProjectView: React.FunctionComponent<IScaffoldSpfxProje
             setShouldInstallPnPJs={setShouldInstallPnPJs}
             shouldCreateNodeVersionFile={shouldCreateNodeVersionFile}
             setShouldCreateNodeVersionFile={setShouldCreateNodeVersionFile}
-            nodeVersionManagerFile={nodeVersionManagerFile}
             setNodeVersionManagerFile={setNodeVersionManagerFile}
+            setNodeVersionManager={setNodeVersionManager}
           />
         }
       </div>
