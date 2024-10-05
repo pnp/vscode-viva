@@ -117,34 +117,46 @@ export class PnPWebview {
       const { command, payload } = msg;
 
       switch (command) {
-        case WebviewCommand.toVSCode.logError:
-          Logger.error(payload);
-          break;
-        case WebviewCommand.toVSCode.useSample:
-          Scaffolder.useSample(payload);
-          break;
-        case WebviewCommand.toVSCode.redirectTo:
-          env.openExternal(Uri.parse(payload));
-          break;
-        case WebviewCommand.toVSCode.createWorkFlow:
-          CliActions.generateWorkflowForm(payload);
-          break;
-        case WebviewCommand.toVSCode.pickFolder:
-          Scaffolder.pickFolder();
-          break;
-        case WebviewCommand.toVSCode.validateSolutionName:
-          Scaffolder.validateSolutionName(payload.folderPath, payload.solutionNameInput);
-          break;
-        case WebviewCommand.toVSCode.createSpfxProject:
-          Scaffolder.createProject(payload);
-          break;
-        case WebviewCommand.toVSCode.validateComponentName:
-          Scaffolder.validateComponentName(payload.componentType, payload.componentNameInput);
-          break;
-        case WebviewCommand.toVSCode.addSpfxComponent:
-          Scaffolder.addComponentToProject(payload);
-          break;
-      }
+				case WebviewCommand.toVSCode.logError:
+					Logger.error(payload);
+					break;
+				case WebviewCommand.toVSCode.useSample:
+					Scaffolder.useSample(payload);
+					break;
+				case WebviewCommand.toVSCode.redirectTo:
+					env.openExternal(Uri.parse(payload));
+					break;
+				case WebviewCommand.toVSCode.createWorkFlow:
+					CliActions.generateWorkflowForm(payload);
+					break;
+				case WebviewCommand.toVSCode.pickFolder:
+					Scaffolder.pickFolder();
+					break;
+				case WebviewCommand.toVSCode.validateSolutionName:
+					Scaffolder.validateSolutionName(
+						payload.folderPath,
+						payload.solutionNameInput
+					);
+					break;
+				case WebviewCommand.toVSCode.createSpfxProject:
+					Scaffolder.createProject(payload);
+					break;
+				case WebviewCommand.toVSCode.validateComponentName:
+					Scaffolder.validateComponentName(
+						payload.componentType,
+						payload.componentNameInput
+					);
+					break;
+				case WebviewCommand.toVSCode.addSpfxComponent:
+					Scaffolder.addComponentToProject(payload);
+					break;
+				case WebviewCommand.toVSCode.createNodeVersionFileDefaultValue:
+					Scaffolder.createNodeVersionFileDefaultValue();
+					break;
+				case WebviewCommand.toVSCode.nodeVersionManagerFile:
+					Scaffolder.nodeVersionManagerFile();
+					break;
+			}
     });
   }
 
