@@ -119,7 +119,7 @@ export const AdditionalStep: React.FunctionComponent<AdditionalStepProps> = ({
                 <PackageSelector
                     value={shouldCreateNodeVersionFile}
                     setValue={setShouldCreateNodeVersionFile}
-                    label='Create Node version file' />}
+                    label='Create node version manager configuration file' />}
             </div>
         </div>
     );
