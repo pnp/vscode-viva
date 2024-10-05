@@ -62,6 +62,7 @@ export async function activate(context: vscode.ExtensionContext) {
 					await TerminalCommandExecuter.runCommand('npm install @pnp/sp @pnp/graph --save', [], terminalTitle, terminalIcon);
 				}
 
+				// If either of the following strings are found in the project file, run the command to get the node version
 				if (fileContents.indexOf(ProjectFileContent.createNVMRCFile) > -1 || fileContents.indexOf(ProjectFileContent.createNodeVersionFile) > -1) {
 					let nodeVersionCommand = 'node --version > ';
 					if (fileContents.indexOf(ProjectFileContent.createNVMRCFile) > -1) {

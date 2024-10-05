@@ -16,9 +16,7 @@ interface AdditionalStepProps {
     setShouldInstallPnPJs: (value: boolean) => void;
     shouldCreateNodeVersionFile: boolean;
     setShouldCreateNodeVersionFile: (value: boolean) => void;
-    //nodeVersionManager: 'nvm' | 'nvs' | 'none';
     setNodeVersionManager: (value: 'nvm' | 'nvs' | 'none') => void;
-    //nodeVersionManagerFile: '.nvmrc' | '.node-version';
     setNodeVersionManagerFile: (value: '.nvmrc' | '.node-version') => void;
 }
 
@@ -36,8 +34,6 @@ export const AdditionalStep: React.FunctionComponent<AdditionalStepProps> = ({
     setNodeVersionManagerFile,
     setNodeVersionManager
 }: React.PropsWithChildren<AdditionalStepProps>) => {
-
-    const [localShouldCreateNodeVersionFile, setLocalShouldCreateNodeVersionFile] = React.useState<boolean>(shouldCreateNodeVersionFile);
 
     // Send a message to retrieve the default value for the create node version file
     const getCreateNodeVersionFileDefaultValue = React.useCallback(() => {
