@@ -1,7 +1,7 @@
 import { readFileSync, writeFileSync } from 'fs';
 import { Folders } from '../check/Folders';
 import { commands, Progress, ProgressLocation, Uri, window, workspace } from 'vscode';
-import { Commands, WebViewType, WebviewCommand, WorkflowType } from '../../constants';
+import { Commands, ContextKeys, WebViewType, WebviewCommand, WorkflowType } from '../../constants';
 import { GenerateWorkflowCommandInput, SiteAppCatalog, SolutionAddResult, Subscription } from '../../models';
 import { Extension } from '../dataType/Extension';
 import { CliExecuter } from '../executeWrappers/CliCommandExecuter';
@@ -15,7 +15,15 @@ import { PnPWebview } from '../../webview/PnPWebview';
 import { parseYoRc } from '../../utils/parseYoRc';
 import { CertificateActions } from './CertificateActions';
 import path = require('path');
+import { ActionTreeItem } from '../../providers/ActionTreeDataProvider';
 
+
+interface AppCatalogApp {
+  ID: string;
+  Title: string;
+  Deployed: boolean;
+  Enabled: boolean;
+}
 
 export class CliActions {
 
@@ -40,6 +48,29 @@ export class CliActions {
     subscriptions.push(
       commands.registerCommand(Commands.pipeline, CliActions.showGenerateWorkflowForm)
     );
+    subscriptions.push(
+      commands.registerCommand(Commands.deployAppCatalogApp, (node: ActionTreeItem) =>
+        CliActions.toggleAppDeployed(node, ContextKeys.deployApp, 'deploy')
+      )
+    );
+    subscriptions.push(
+      commands.registerCommand(Commands.retractAppCatalogApp, (node: ActionTreeItem) =>
+        CliActions.toggleAppDeployed(node, ContextKeys.retractApp, 'retract')
+      )
+    );
+    subscriptions.push(
+      commands.registerCommand(Commands.removeAppCatalogApp, CliActions.removeAppCatalogApp)
+    );
+    subscriptions.push(
+      commands.registerCommand(Commands.enableAppCatalogApp, (node: ActionTreeItem) =>
+        CliActions.toggleAppEnabled(node, ContextKeys.enableApp, 'enable')
+      )
+    );
+    subscriptions.push(
+      commands.registerCommand(Commands.disableAppCatalogApp, (node: ActionTreeItem) =>
+        CliActions.toggleAppEnabled(node, ContextKeys.disableApp, 'disable')
+      )
+    );
   }
 
   /**
@@ -58,13 +89,195 @@ export class CliActions {
 
       if (siteAppCatalogs) {
         const siteAppCatalogsJson: SiteAppCatalog[] = JSON.parse(siteAppCatalogs);
-        siteAppCatalogsJson.forEach((siteAppCatalog) => appCatalogUrls.push(`${siteAppCatalog.AbsoluteUrl}/AppCatalog`));
+        siteAppCatalogsJson.forEach((siteAppCatalog) => appCatalogUrls.push(`${siteAppCatalog.AbsoluteUrl}`));
       }
 
       EnvironmentInformation.appCatalogUrls = appCatalogUrls ? appCatalogUrls : undefined;
       return EnvironmentInformation.appCatalogUrls;
     } catch {
       return undefined;
+    }
+  }
+
+  /**
+* Retrieves the list of apps deployed at the tenant or site app catalog.
+*
+* @param appCatalogUrl The URL of the tenant or site app catalog.
+* @returns A promise that resolves to an array of objects containing the ID, Title, Deployed, and Enabled status of each app.
+*/
+  public static async getAppCatalogApps(appCatalogUrl?: string): Promise<AppCatalogApp[] | undefined> {
+    try {
+      const commandOptions: any = appCatalogUrl && appCatalogUrl.trim() !== '' ? {
+        appCatalogScope: 'sitecollection',
+        appCatalogUrl: appCatalogUrl
+      } : {};
+
+      const response = (await CliExecuter.execute('spo app list', 'json', commandOptions));
+      const apps = response?.stdout || '[]';
+
+      const appsJson: any[] = JSON.parse(apps);
+      const appList = appsJson.map(({ ID, Title, Deployed, IsEnabled }) => {
+        return {
+          ID,
+          Title,
+          Deployed,
+          Enabled: IsEnabled
+        };
+      });
+
+      return appList;
+    } catch (e: any) {
+      const message = e?.error?.message;
+      Notifications.error(message);
+    }
+  }
+
+  /**
+ * Deploys or retracts the app in the tenant or site app catalog.
+ *
+ * @param node The tree item representing the app to be deployed or retracted.
+ * @param ctxValue The context value used to identify the action node.
+ * @param action The action to be performed: 'deploy' or 'retract'.
+ */
+  public static async toggleAppDeployed(node: ActionTreeItem, ctxValue: string, action: 'deploy' | 'retract') {
+    try {
+      const actionNode = node.children?.find(child => child.contextValue === ctxValue);
+
+      if (!actionNode?.command?.arguments) {
+        Notifications.error(`Failed to retrieve app details for ${action}.`);
+        return;
+      }
+
+      const [appID, appTitle, appCatalogUrl, deployed] = actionNode.command.arguments;
+
+      if (action === 'deploy' && deployed) {
+        Notifications.info(`App '${appTitle}' is already deployed.`);
+        return;
+      }
+
+      if (action === 'retract' && !deployed) {
+        Notifications.info(`App '${appTitle}' is already retracted.`);
+        return;
+      }
+
+      const commandOptions: any = {
+        id: appID,
+        ...(action === 'retract' && { force: true }),
+        ...(appCatalogUrl?.trim() && {
+          appCatalogScope: 'sitecollection',
+          appCatalogUrl: appCatalogUrl
+        })
+      };
+
+      const cliCommand = action === 'deploy' ? 'spo app deploy' : 'spo app retract';
+      await CliExecuter.execute(cliCommand, 'json', commandOptions);
+      Notifications.info(`App '${appTitle}' has been successfully ${action === 'deploy' ? 'deployed' : 'retracted'}.`);
+
+      // refresh the environmentTreeView
+      await commands.executeCommand('spfx-toolkit.refreshAppCatalogTreeView');
+    } catch (e: any) {
+      const message = e?.error?.message;
+      Notifications.error(message);
+    }
+  }
+
+  /**
+  * Removes an app from the tenant or site app catalog.
+  *
+  * @param node The tree item representing the app to be removed.
+  */
+  public static async removeAppCatalogApp(node: ActionTreeItem) {
+    try {
+      const actionNode = node.children?.find(child => child.contextValue === 'sp-app-remove-tenant');
+
+      if (!actionNode?.command?.arguments) {
+        Notifications.error('Failed to retrieve app details for removal.');
+        return;
+      }
+
+      const [appID, appTitle, appCatalogUrl] = actionNode.command.arguments;
+
+      const commandOptions: any = {
+        id: appID,
+        force: true,
+        ...(appCatalogUrl?.trim() && {
+          appCatalogScope: 'sitecollection',
+          appCatalogUrl: appCatalogUrl
+        })
+      };
+
+      await CliExecuter.execute('spo app remove', 'json', commandOptions);
+      Notifications.info(`App '${appTitle}' has been successfully removed.`);
+
+      // refresh the environmentTreeView
+      await commands.executeCommand('spfx-toolkit.refreshAppCatalogTreeView');
+    } catch (e: any) {
+      const message = e?.error?.message;
+      Notifications.error(message);
+    }
+  }
+
+  /**
+   * Enables or disables the app in the tenant or site app catalog.
+   *
+   * @param node The tree item representing the app to be deployed or retracted.
+   * @param ctxValue The context value used to identify the action node.
+   * @param action The action to be performed: 'enable' or 'disable'.
+   */
+  public static async toggleAppEnabled(node: ActionTreeItem, ctxValue: string, action: 'enable' | 'disable') {
+    try {
+      const actionNode = node.children?.find(child => child.contextValue === ctxValue);
+
+      if (!actionNode?.command?.arguments) {
+        Notifications.error(`Failed to retrieve app details for ${action}.`);
+        return;
+      }
+
+      const [appTitle, appCatalogUrl, isEnabled] = actionNode.command.arguments;
+
+      if (action === 'enable' && isEnabled) {
+        Notifications.info(`App '${appTitle}' is already enabled.`);
+        return;
+      }
+
+      if (action === 'disable' && !isEnabled) {
+        Notifications.info(`App '${appTitle}' is already disabled.`);
+        return;
+      }
+
+      const appProductIdFilter = `Title eq '${appTitle}'`;
+      const commandOptionsList: any = {
+        listTitle: 'Apps for SharePoint',
+        webUrl: appCatalogUrl,
+        fields: 'Id, Title, IsAppPackageEnabled',
+        filter: appProductIdFilter
+      };
+
+      const listItemsResponse = await CliExecuter.execute('spo listitem list', 'json', commandOptionsList);
+      const listItems = JSON.parse(listItemsResponse.stdout || '[]');
+
+      if (listItems.length === 0) {
+        Notifications.error(`App '${appTitle}' not found in the app catalog.`);
+        return;
+      }
+
+      const appListItemId = listItems[0].Id;
+
+      const commandOptionsSet: any = {
+        listTitle: 'Apps for SharePoint',
+        id: appListItemId,
+        webUrl: appCatalogUrl,
+        IsAppPackageEnabled: !isEnabled ? true : false
+      };
+
+      await CliExecuter.execute('spo listitem set', 'json', commandOptionsSet);
+      Notifications.info(`App '${appTitle}' has been successfully ${action === 'enable' ? 'enabled' : 'disabled'}.`);
+
+      // refresh the environmentTreeView
+      await commands.executeCommand('spfx-toolkit.refreshAppCatalogTreeView');
+    } catch (e: any) {
+      const message = e?.error?.message;
+      Notifications.error(message);
     }
   }
 
