@@ -9,6 +9,6 @@ import { EXTENSION_NAME } from '../constants';
    * @param defaultValue - The default value to return if the setting is not found.
    * @returns The value of the setting, or the default value if the setting is not found.
    */
-export const getExtensionSettings = <T>(setting: any, defaultValue: any) =>{
+export const getExtensionSettings = <T>(setting: string, defaultValue: T) => {
   return workspace.getConfiguration(EXTENSION_NAME).get<T>(setting, defaultValue);
 };
