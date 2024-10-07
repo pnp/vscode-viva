@@ -127,7 +127,7 @@ export class CommandPanel {
           new ActionTreeItem(webApiPermissionManagementUrl.replace(`${adminOriginUrl}/_layouts/15/online/AdminHome.aspx#/`, '...'), '', { name: 'globe', custom: false }, undefined, 'vscode.open', Uri.parse(webApiPermissionManagementUrl), 'sp-admin-api-url')
         ]));
 
-        const showServiceIncidentList = getExtensionSettings('showServiceIncidentList', true);
+        const showServiceIncidentList: boolean = getExtensionSettings<boolean>('showServiceIncidentList', true);
         if (showServiceIncidentList === true) {
           const healthInfoList = await CliActions.getTenantHealthInfo();
           if (healthInfoList?.some)
@@ -177,7 +177,7 @@ export class CommandPanel {
         ]),
       );
 
-      const showTenantWideExtensions = getExtensionSettings('showTenantWideExtensions', true);
+      const showTenantWideExtensions: boolean = getExtensionSettings<boolean>('showTenantWideExtensions', true);
 
       if (showTenantWideExtensions === true) {
         const tenantWideExtensions = await CliActions.getTenantWideExtensions(tenantAppCatalogUrl);
