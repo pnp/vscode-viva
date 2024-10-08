@@ -67,6 +67,7 @@
 					},
 					{
 						"name": "code",
+						"isSticky": true,
 						"description": "Let's write some SPFx code (I am still learning this, please consider this as beta)"
 					}
 				]
