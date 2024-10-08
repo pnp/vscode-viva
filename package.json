@@ -57,6 +57,7 @@
 				"commands": [
 					{
 						"name": "setup",
+						"isSticky": true,
 						"description": "Prepare your local workspace for SharePoint Framework development"
 					},
 					{

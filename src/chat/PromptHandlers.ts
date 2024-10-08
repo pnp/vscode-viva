@@ -98,9 +98,9 @@ export class PromptHandlers {
         if (match && match[2]) {
           buttons.push(
             {
-              command: Commands.executeTerminalCommand,
+              command: Commands.createProjectCopilot,
               title: vscode.l10n.t('Create project'),
-              arguments: [match[2], 'Create project'],
+              arguments: [match[2]],
             });
         }
         if (chatResponse.toLowerCase().includes(msSampleGalleryLink)) {
@@ -111,23 +111,12 @@ export class PromptHandlers {
         }
         return buttons;
       case 'setup':
-        // return [{
-        //         command: Commands.checkDependencies,
-        //         title: vscode.l10n.t('Check if my local workspace is ready'),
-        //       },
-        //       {
-        //         command: Commands.installDependencies,
-        //         title: vscode.l10n.t('Install required dependencies'),
-        //       }];
-        //     case 'new':
-        //       return [{
-        //         command: Commands.createProject,
-        //         title: vscode.l10n.t('Create a new project'),
-        //       },
-        //       {
-        //         command: Commands.samplesGallery,
-        //         title: vscode.l10n.t('View samples'),
-        //       }];
+        if (chatResponse.toLowerCase().includes('check dependencies')) {
+          return[{
+            command: Commands.checkDependencies,
+            title: vscode.l10n.t('Check if my local workspace is ready'),
+          }];
+        }
         return [];
       case 'code':
         if (ProjectInformation.isSPFxProject) {

@@ -113,4 +113,6 @@ You will suggest using SPFx Toolkit 'Check dependencies' action which allows to 
 When asked about creating new project you will suggest running the /new command instead of the /setup command in GitHub Copilot Chat with @spfx or using SPFx Toolkit Create new project form or Sample Gallery.`;
 
 // TODO: fixup prompt code context
-export const promptCodeContext = 'Your primary aim is to provide help in coding SPFx projects by providing code snippets and guidance on how to use them. You should be clear that you are still beta and may not have all the answers.';
+export const promptCodeContext = `Your primary aim is to provide help in coding SPFx projects by providing code snippets and guidance on how to use them. 
+At the end of your response you will suggest using SPFx Toolkit actions (upgrade, validate, rename, CI/CD workflow) to boost your productivity in developing and managing SharePoint Framework solutions.
+You should be clear that you are still beta and may not have all the answers.`;

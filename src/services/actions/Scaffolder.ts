@@ -2,7 +2,7 @@ import { parseWinPath } from '../../utils/parseWinPath';
 import { Folders } from '../check/Folders';
 import { Notifications } from '../dataType/Notifications';
 import { Logger } from '../dataType/Logger';
-import { commands, ProgressLocation, QuickPickItem, Uri, window } from 'vscode';
+import { commands, ProgressLocation, QuickPickItem, Uri, window, workspace } from 'vscode';
 import { Commands, ComponentType, ProjectFileContent, WebviewCommand, WebViewType } from '../../constants';
 import { Sample, SpfxAddComponentCommandInput, SpfxScaffoldCommandInput, Subscription } from '../../models';
 import { join } from 'path';
@@ -15,6 +15,7 @@ import { getExtensionSettings, getPlatform } from '../../utils';
 import { PnPWebview } from '../../webview/PnPWebview';
 import { Executer } from '../executeWrappers/CommandExecuter';
 import { TeamsToolkitIntegration } from '../dataType/TeamsToolkitIntegration';
+import { TerminalCommandExecuter } from '../executeWrappers/TerminalCommandExecuter';
 
 
 export const PROJECT_FILE = 'project.pnp';
@@ -30,6 +31,47 @@ export class Scaffolder {
     subscriptions.push(
       commands.registerCommand(Commands.addToProject, Scaffolder.showAddProjectForm)
     );
+    subscriptions.push(
+      commands.registerCommand(Commands.createProjectCopilot, Scaffolder.createProjectCopilot)
+    );
+  }
+
+  /**
+   * Creates a project using the provided input.
+   * @param input - The input for the project creation.
+   */
+  public static async createProjectCopilot(yoCommand: string) {
+    if (!yoCommand) {
+      return;
+    }
+
+    if (!yoCommand.includes('--skip-install')) {
+      yoCommand += ' --skip-install';
+    }
+
+    await window.withProgress({
+      location: ProgressLocation.Notification,
+      title: `Generating project... Check [output window](command:${Commands.showOutputChannel}) for more details`,
+      cancellable: false
+    }, async () => {
+
+      const workspaceFolder = workspace.workspaceFolders?.[0];
+      const workspacePath = workspaceFolder?.uri.fsPath;
+      if (!workspacePath) {
+        return;
+      }
+
+      const result = await Executer.executeCommand(workspacePath, yoCommand);
+      if (result !== 0) {
+        Notifications.errorNoLog(`Error creating the component. Check [output window](command:${Commands.showOutputChannel}) for more details.`);
+        return;
+      }
+
+      const regex = /--solution-name\s+"([^"]+)"/;
+      const solutionName = yoCommand.match(regex);
+      const newFolderPath = join(workspacePath!, solutionName![1]);
+      Scaffolder.createProjectFileAndOpen(newFolderPath, ProjectFileContent.init);
+    });
   }
 
   /**
