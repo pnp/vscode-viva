@@ -280,7 +280,11 @@ You can use the settings to change which Node.js version manager you want to use
 
 Now you may use SPFx Toolkit as a chat participant in GitHub Copilot chat extension. Simply, mention @spfx in the chat to ask dedicated questions regarding SharePoint Framework development. 
 
-![SPFx Toolkit chat in action](./assets/images/chat-in-action.gif)
+![SPFx Toolkit chat in action](./assets/images/chat-in-action-new.gif)
+
+![SPFx Toolkit chat in action](./assets/images/chat-in-action-new2.gif)
+
+![SPFx Toolkit chat in action](./assets/images/chat-in-action-setup.gif)
 
 @spfx is your dedicated AI Copilot that will help you with anything that is needed to develop your SharePoint Framework project. It has predefined commands that are tailored toward a specific activity for which you require guidance.
 
