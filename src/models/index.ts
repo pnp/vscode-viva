@@ -1,3 +1,4 @@
+export * from './AppCatalogApp';
 export * from './command-result';
 export * from './GenerateWorkflowCommandInput';
 export * from './npm-ls';
