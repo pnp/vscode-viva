@@ -38,11 +38,12 @@ export class TerminalCommandExecuter {
   }
 
   /**
-   * Runs a command in the terminal.
+   * Runs the specified command in a new terminal.
    * @param command - The command to run.
-   * @param args - The arguments for the command.
+   * @param terminalTitle - The title of the terminal.
+   * @param terminalIcon - The icon of the terminal.
    */
-  public static async runCommand(command: string, args: string[], terminalTitle: string = 'Gulp task', terminalIcon: string = 'tasks-list-configure') {
+  public static async runCommand(command: string, terminalTitle: string = 'Gulp task', terminalIcon: string = 'tasks-list-configure') {
     const terminal = await TerminalCommandExecuter.createTerminal(terminalTitle, terminalIcon);
 
     const wsFolder = await Folders.getWorkspaceFolder();
