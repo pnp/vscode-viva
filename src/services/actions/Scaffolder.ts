@@ -37,8 +37,8 @@ export class Scaffolder {
   }
 
   /**
-   * Creates a project using the provided input.
-   * @param input - The input for the project creation.
+   * Creates a project using the provided command.
+   * @param yoCommand - The Yeoman command for the project creation.
    */
   public static async createProjectCopilot(yoCommand: string) {
     if (!yoCommand) {
