@@ -2,7 +2,7 @@ import { readFileSync, writeFileSync } from 'fs';
 import { Folders } from '../check/Folders';
 import { commands, Progress, ProgressLocation, Uri, window, workspace } from 'vscode';
 import { Commands, ContextKeys, WebViewType, WebviewCommand, WorkflowType } from '../../constants';
-import { GenerateWorkflowCommandInput, SiteAppCatalog, SolutionAddResult, Subscription } from '../../models';
+import { AppCatalogApp, GenerateWorkflowCommandInput, SiteAppCatalog, SolutionAddResult, Subscription } from '../../models';
 import { Extension } from '../dataType/Extension';
 import { CliExecuter } from '../executeWrappers/CliCommandExecuter';
 import { Notifications } from '../dataType/Notifications';
@@ -17,13 +17,6 @@ import { CertificateActions } from './CertificateActions';
 import path = require('path');
 import { ActionTreeItem } from '../../providers/ActionTreeDataProvider';
 
-
-interface AppCatalogApp {
-  ID: string;
-  Title: string;
-  Deployed: boolean;
-  Enabled: boolean;
-}
 
 export class CliActions {
 
@@ -188,7 +181,7 @@ export class CliActions {
   */
   public static async removeAppCatalogApp(node: ActionTreeItem) {
     try {
-      const actionNode = node.children?.find(child => child.contextValue === 'sp-app-remove-tenant');
+      const actionNode = node.children?.find(child => child.contextValue === ContextKeys.removeApp);
 
       if (!actionNode?.command?.arguments) {
         Notifications.error('Failed to retrieve app details for removal.');
