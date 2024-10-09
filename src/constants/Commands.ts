@@ -51,4 +51,12 @@ export const Commands = {
 
   // Welcome
   welcome: `${EXTENSION_NAME}.welcome`,
+
+  // App actions
+  deployAppCatalogApp: `${EXTENSION_NAME}.deployAppCatalogApp`,
+  retractAppCatalogApp: `${EXTENSION_NAME}.retractAppCatalogApp`,
+  removeAppCatalogApp: `${EXTENSION_NAME}.removeAppCatalogApp`,
+  enableAppCatalogApp: `${EXTENSION_NAME}.enableAppCatalogApp`,
+  disableAppCatalogApp: `${EXTENSION_NAME}.disableAppCatalogApp`,
+  showMoreActions: `${EXTENSION_NAME}.showMoreActions`
 };
