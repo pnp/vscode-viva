@@ -116,6 +116,10 @@ Install additional dependencies with a single click straight from the scaffoldin
 
 ![Additional dependency step](./assets/images/scaffolding-additional-step.png)
 
+When you can set the additional dependencies it's also possible to automatically create the node version manager file with the version of Node.js used when creating the project. These settings are available in the extensiown settings.
+
+![Additional dependency step node version](./assets/images/scaffolding-additional-step-node-version.png)
+
 [Check out our docs for more details](https://github.com/pnp/vscode-viva/wiki/5.2-Scaffolding#1-scaffold-a-new-spfx-project)
 
 ### 6️⃣ Sign in to your tenant & retrieve environment details
@@ -272,7 +276,17 @@ Check it out in action 👇
 
 By default, the SharePoint Framework Toolkit will use the Node.js version that is installed on your machine. If you want to use a different version, you can use a Node.js Version Manager such as [nvm](https://github.com/nvm-sh/nvm) or [nvs](https://github.com/jasongin/nvs). The SharePoint Framework Toolkit will detect the preferred version of Node.js if a `.nvmrc` file is present in the root of your project, and will use that version for all the actions.
 
-You can use the settings to change which Node.js version manager you want to use. You may choose between `nvm` and `nvs`. If you wish to avoid using a Node.js version manager, you can set the value to `none`
+It's possible to use the settings to change which Node.js version manager you want to use. You may choose between `nvm` and `nvs`. If you wish to avoid using a Node.js version manager, you can set the value to `none`
+
+![Settings Node version manager](./assets/images/settings-node-version-manager.png)
+
+Other than selecting the Node.js version manager you may also select which file should be used to store the Node.js version. By default, the extension will use `.nvmrc` file, but you may change it to `.node-version` if you are using `nvs`.
+
+![Settings Node version file](./assets/images/settings-node-version-manager-file.png)
+
+It is also possible to set which is the default behavior when you're about to scaffold a new project. To do so there is a specific setting named `Create Node Version File Default Value`.
+
+![Settings Node version file default value](./assets/images/settings-node-version-manager-file-default-value.png)
 
 ### 1️⃣3️⃣ SPFx Toolkit GitHub Chat Participant 
 
