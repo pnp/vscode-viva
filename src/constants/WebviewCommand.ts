@@ -8,7 +8,6 @@ export const WebviewCommand = {
 		createNodeVersionFileDefaultValue: 'should-create-node-version-file',
 		nodeVersionManager: 'node-version-manager',
 		nodeVersionManagerFile: 'node-version-manager-file',
-		createNVMRCFile: 'create-nvmrc-file',
 		createNodeVersionManagerFile: 'node-version-manager-file',
   },
   toVSCode: {
@@ -25,7 +24,5 @@ export const WebviewCommand = {
 		createNodeVersionFileDefaultValue: 'should-create-node-version-file',
 		nodeVersionManager: 'node-version-manager',
 		nodeVersionManagerFile: 'node-version-manager-file',
-		createNVMRCFile: 'create-nvmrc-file',
-		createNodeVersionManagerFile: 'node-version-manager-file',
   }
 };

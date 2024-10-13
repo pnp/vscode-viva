@@ -166,7 +166,7 @@ export class Scaffolder {
 	 * Returns the value of the nodeVersionManagerFile setting and sends it to the webview.
 	 */
 	public static async nodeVersionManagerFile() {
-		const value = getExtensionSettings<string>('nodeVersionManagerFile', false);
+		const value = getExtensionSettings<string>('nodeVersionManagerFile', '.nvmrc');
 
 		PnPWebview.postMessage(
 			WebviewCommand.toWebview.createNodeVersionManagerFile,
@@ -178,7 +178,7 @@ export class Scaffolder {
 	 * Returns the value of the nodeVersionManager setting and sends it to the webview.
 	 */
 	public static async nodeVersionManager() {
-		const value = getExtensionSettings<string>('nodeVersionManager', false);
+		const value = getExtensionSettings<string>('nodeVersionManager', 'nvm');
 
 		PnPWebview.postMessage(
 			WebviewCommand.toWebview.nodeVersionManager,
@@ -281,11 +281,13 @@ export class Scaffolder {
                     break;
                 }
                 break;
-                case 'none':
                 // If the node version manager is none, do not create any file
+                case 'none':
+                // By default, do not create any file
+                default:
                 break;
-							}
-						}
+              }
+            }
 
           Scaffolder.createProjectFileAndOpen(newFolderPath, content);
         } else {

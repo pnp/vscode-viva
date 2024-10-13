@@ -190,7 +190,7 @@
 				"spfx-toolkit.createNodeVersionFileDefaultValue": {
 					"title": "Default value for the Node version file option",
 					"type": "boolean",
-					"default": "false",
+					"default": false,
 					"description": "The default value for the new project's setting for creating the Node version file. If checked the default selected value will be YES."
 				},
 				"spfx-toolkit.nodeVersionManagerFile": {
