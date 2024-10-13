@@ -186,6 +186,28 @@
 					"type": "boolean",
 					"default": "true",
 					"description": "Show the tenant-wide extensions in the account view."
+				},
+				"spfx-toolkit.projectUpgradeOutputMode": {
+					"title": "Project upgrade output mode",
+					"type": "string",
+					"default": "both",
+					"enum": [
+						"markdown",
+						"code tour",
+						"both"
+					],
+					"description": "Choose the output mode for the project upgrade. Choose between `markdown`, `code tour`, or `both`."
+				},
+				"spfx-toolkit.projectValidateOutputMode": {
+					"title": "Project validate output mode",
+					"type": "string",
+					"default": "both",
+					"enum": [
+						"markdown",
+						"code tour",
+						"both"
+					],
+					"description": "Choose the output mode for the project validation. Choose between `markdown`, `code tour`, or `both`."
 				}
 			}
 		},
