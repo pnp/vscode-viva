@@ -1237,10 +1237,10 @@
         "SharePoint"
       ],
       "createDate": "2017-09-28",
-      "updateDate": "2017-09-28",
-      "version": "1.2.0",
-      "componentType": null,
-      "extensionType": null,
+      "updateDate": "2024-10-05",
+      "version": "1.20.0",
+      "componentType": "extension",
+      "extensionType": "ApplicationCustomizer",
       "sampleGalerry": "sp-dev-fx-extensions",
       "sampleType": "samples"
     },
@@ -1747,8 +1747,8 @@
         "SharePoint"
       ],
       "createDate": "2023-09-12",
-      "updateDate": "2023-09-12",
-      "version": "1.17.4",
+      "updateDate": "2024-10-03",
+      "version": "1.20.0",
       "componentType": "extension",
       "extensionType": "ListViewCommandSet",
       "sampleGalerry": "sp-dev-fx-extensions",
@@ -6354,7 +6354,7 @@
       "name": "pnp-sp-dev-spfx-web-parts-react-kanban-board",
       "title": "Kanban Board Web part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-kanban-board",
-      "description": "This solution contains an SPFx web part which shows a Kanban board using jqxKanban ReactJS component (from JQWidgets). The web part uses the default columns of the SharePoint Tasks list for showing the board's columns and the tasks.",
+      "description": "This solution contains an SPFx web part which shows a Kanban board using Fluent UI. The web part uses the default columns of the SharePoint Tasks list for showing the board's columns and the tasks.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-kanban-board/assets/kanbanofficeUI.gif",
       "authors": [
         {
@@ -6378,8 +6378,8 @@
         "SharePoint"
       ],
       "createDate": "2020-07-02",
-      "updateDate": "2024-05-26",
-      "version": "1.19.0",
+      "updateDate": "2024-10-01",
+      "version": "1.20.0",
       "componentType": "webpart",
       "extensionType": null,
       "sampleGalerry": "sp-dev-fx-webparts",
@@ -6494,8 +6494,8 @@
         "SharePoint"
       ],
       "createDate": "2020-12-20",
-      "updateDate": "2022-07-11",
-      "version": "1.13.1",
+      "updateDate": "2024-10-02",
+      "version": "1.20.0",
       "componentType": "webpart",
       "extensionType": null,
       "sampleGalerry": "sp-dev-fx-webparts",
@@ -6567,8 +6567,8 @@
         "Get Subscriptions"
       ],
       "createDate": "2023-09-01",
-      "updateDate": "2023-09-01",
-      "version": "1.17.4",
+      "updateDate": "2024-10-02",
+      "version": "1.20.0",
       "componentType": "webpart",
       "extensionType": null,
       "sampleGalerry": "sp-dev-fx-webparts",
@@ -8681,8 +8681,8 @@
         "SharePoint"
       ],
       "createDate": "2019-10-13",
-      "updateDate": "2023-04-24",
-      "version": "1.19.0",
+      "updateDate": "2024-10-01",
+      "version": "1.20.0",
       "componentType": "webpart",
       "extensionType": null,
       "sampleGalerry": "sp-dev-fx-webparts",
