@@ -26,7 +26,7 @@ After successful sign in, an additional view is presented that shows a list of l
 
 - **Deploy**: Makes the solution available for installation in sites but does not automatically install it.
 - **Retract**: Reverses the deployment, preventing the solution from being installed in sites.
-- **Remove**: Moves the app to the recycle bin, preventing further deployment from the app catalog.
+- **Remove**: Removes the app from the app catalog.
 - **Enable**: Allows end users to add the solution to their SharePoint sites.
 - **Disable**: Hides the solution from end users, preventing them from adding it to sites.
 
