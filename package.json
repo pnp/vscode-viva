@@ -186,6 +186,22 @@
 					"type": "boolean",
 					"default": true,
 					"description": "Show the tenant-wide extensions in the account view."
+				},
+				"spfx-toolkit.createNodeVersionFileDefaultValue": {
+					"title": "Default value for the Node version file option",
+					"type": "boolean",
+					"default": false,
+					"description": "The default value for the new project's setting for creating the Node version file. If checked the default selected value will be YES."
+				},
+				"spfx-toolkit.nodeVersionManagerFile": {
+					"title": "Node version manager file to be used",
+					"type": "string",
+					"default": ".nvmrc",
+					"enum": [
+						".nvmrc",
+						".node-version"
+					],
+					"description": "The file to be used to store the Node version for the selected Node version manager. Remember that the .node-version file is supported only while using nvs."
 				}
 			}
 		},
