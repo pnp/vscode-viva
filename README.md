@@ -152,7 +152,15 @@ Additionally, the extension will check and retrieve tenant service health incide
 
 ![tenant details](./assets/images/tenant-links.png)
 
-After successful sign in an additional view is presented that shows list links to app catalogs available in the tenant, both tenant-level and all site-level app catalogs. Additionally it will show you all tenant-wide extensions installed on your tenant with.
+After successful sign in, an additional view is presented that shows a list of links to app catalogs available in the tenant, both tenant-level and all site-level app catalogs. You can expand each app catalog to reveal the list of apps contained within. Selecting an app navigates you to its details page. Additionally, hovering over an app node presents a set of actions, allowing you to perform various operations directly on the selected app.
+
+- **Deploy**: Makes the solution available for installation in sites but does not automatically install it.
+- **Retract**: Reverses the deployment, preventing the solution from being installed in sites.
+- **Remove**: Removes the app from the app catalog.
+- **Enable**: Allows end users to add the solution to their SharePoint sites.
+- **Disable**: Hides the solution from end users, preventing them from adding it to sites.
+
+Additionally, it will show you all tenant-wide extensions installed on your tenant.
 
 ![tenant details](./assets/images/app-catalog-list.png)
 
