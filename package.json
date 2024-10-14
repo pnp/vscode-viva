@@ -399,6 +399,42 @@
 				"title": "Refresh Account view",
 				"category": "SharePoint Framework Toolkit",
 				"icon": "$(refresh)"
+			},
+			{
+				"command": "spfx-toolkit.deployAppCatalogApp",
+				"title": "Deploy",
+				"category": "SharePoint Framework Toolkit",
+				"icon": "$(cloud-upload)"
+			},
+			{
+				"command": "spfx-toolkit.retractAppCatalogApp",
+				"title": "Retract",
+				"category": "SharePoint Framework Toolkit",
+				"icon": "$(cloud-download)"
+			},
+			{
+				"command": "spfx-toolkit.removeAppCatalogApp",
+				"title": "Remove",
+				"category": "SharePoint Framework Toolkit",
+				"icon": "$(trash)"
+			},
+			{
+				"command": "spfx-toolkit.enableAppCatalogApp",
+				"title": "Enable",
+				"category": "SharePoint Framework Toolkit",
+				"icon": "$(check)"
+			},
+			{
+				"command": "spfx-toolkit.disableAppCatalogApp",
+				"title": "Disable",
+				"category": "SharePoint Framework Toolkit",
+				"icon": "$(circle-slash)"
+			},
+			{
+				"command": "spfx-toolkit.showMoreActions",
+				"title": "...",
+				"category": "SharePoint Framework Toolkit",
+				"icon": "$(ellipsis)"
 			}
 		],
 		"menus": {
@@ -437,6 +473,34 @@
 					"command": "spfx-toolkit.logout",
 					"when": "view == pnp-view-account && viewItem == m365Account",
 					"group": "inline@1"
+				},
+				{
+					"command": "spfx-toolkit.deployAppCatalogApp",
+					"when": "view == pnp-view-environment && viewItem == pnp.etv.hasAppCatalogApp",
+					"group": "inline@1"
+				},
+				{
+					"submenu": "spfx-toolkit.showMoreActions",
+					"when": "view == pnp-view-environment && viewItem == pnp.etv.hasAppCatalogApp",
+					"group": "inline@2"
+				}
+			],
+			"spfx-toolkit.showMoreActions": [
+				{
+					"command": "spfx-toolkit.retractAppCatalogApp",
+					"group": "actions.more@1"
+				},
+				{
+					"command": "spfx-toolkit.removeAppCatalogApp",
+					"group": "actions.more@2"
+				},
+				{
+					"command": "spfx-toolkit.enableAppCatalogApp",
+					"group": "actions.more@3"
+				},
+				{
+					"command": "spfx-toolkit.disableAppCatalogApp",
+					"group": "actions.more@4"
 				}
 			],
 			"explorer/context": [
@@ -447,6 +511,13 @@
 				}
 			]
 		},
+		"submenus": [
+			{
+				"id": "spfx-toolkit.showMoreActions",
+				"label": "More Actions...",
+				"icon": "$(ellipsis)"
+			}
+		],
 		"languages": [
 			{
 				"id": "pnp.project.output",
