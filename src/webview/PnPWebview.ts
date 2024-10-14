@@ -156,15 +156,15 @@ export class PnPWebview {
         case WebviewCommand.toVSCode.createAppReg:
           EntraAppRegistration.createEntraAppRegistration();
           break;
-				case WebviewCommand.toVSCode.createNodeVersionFileDefaultValue:
-					Scaffolder.createNodeVersionFileDefaultValue();
-					break;
-				case WebviewCommand.toVSCode.nodeVersionManagerFile:
-					Scaffolder.nodeVersionManagerFile();
-					break;
-				case WebviewCommand.toVSCode.nodeVersionManager:
-					Scaffolder.nodeVersionManager();
-					break;
+        case WebviewCommand.toVSCode.createNodeVersionFileDefaultValue:
+          Scaffolder.createNodeVersionFileDefaultValue();
+          break;
+        case WebviewCommand.toVSCode.nodeVersionManagerFile:
+          Scaffolder.nodeVersionManagerFile();
+          break;
+        case WebviewCommand.toVSCode.nodeVersionManager:
+          Scaffolder.nodeVersionManager();
+          break;
       }
     });
   }

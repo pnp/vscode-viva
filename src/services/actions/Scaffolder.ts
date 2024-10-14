@@ -148,43 +148,43 @@ export class Scaffolder {
   }
 
   /**
-	 * Returns the value of the createNodeVersionFileDefaultValue setting and sends it to the webview.
-	 */
-	public static async createNodeVersionFileDefaultValue() {
-		const value = getExtensionSettings<boolean>(
-			'createNodeVersionFileDefaultValue',
-			false
-		);
+   * Returns the value of the createNodeVersionFileDefaultValue setting and sends it to the webview.
+   */
+  public static async createNodeVersionFileDefaultValue() {
+    const value = getExtensionSettings<boolean>(
+      'createNodeVersionFileDefaultValue',
+      false
+    );
 
-		PnPWebview.postMessage(
-			WebviewCommand.toWebview.createNodeVersionFileDefaultValue,
-			value
-		);
-	}
+    PnPWebview.postMessage(
+      WebviewCommand.toWebview.createNodeVersionFileDefaultValue,
+      value
+    );
+  }
 
-	/**
-	 * Returns the value of the nodeVersionManagerFile setting and sends it to the webview.
-	 */
-	public static async nodeVersionManagerFile() {
-		const value = getExtensionSettings<string>('nodeVersionManagerFile', '.nvmrc');
+  /**
+   * Returns the value of the nodeVersionManagerFile setting and sends it to the webview.
+   */
+  public static async nodeVersionManagerFile() {
+    const value = getExtensionSettings<string>('nodeVersionManagerFile', '.nvmrc');
 
-		PnPWebview.postMessage(
-			WebviewCommand.toWebview.createNodeVersionManagerFile,
-			value
-		);
-	}
+    PnPWebview.postMessage(
+      WebviewCommand.toWebview.createNodeVersionManagerFile,
+      value
+    );
+  }
 
-	/**
-	 * Returns the value of the nodeVersionManager setting and sends it to the webview.
-	 */
-	public static async nodeVersionManager() {
-		const value = getExtensionSettings<string>('nodeVersionManager', 'nvm');
+  /**
+   * Returns the value of the nodeVersionManager setting and sends it to the webview.
+   */
+  public static async nodeVersionManager() {
+    const value = getExtensionSettings<string>('nodeVersionManager', 'nvm');
 
-		PnPWebview.postMessage(
-			WebviewCommand.toWebview.nodeVersionManager,
-			value
-		);
-	}
+    PnPWebview.postMessage(
+      WebviewCommand.toWebview.nodeVersionManager,
+      value
+    );
+  }
 
   /**
    * Scaffold method for creating a new project.
@@ -281,13 +281,13 @@ export class Scaffolder {
                     break;
                 }
                 break;
-                // If the node version manager is none, do not create any file
-                case 'none':
-                // By default, do not create any file
-                default:
+              // If the node version manager is none, do not create any file
+              case 'none':
+              // By default, do not create any file
+              default:
                 break;
-              }
             }
+          }
 
           Scaffolder.createProjectFileAndOpen(newFolderPath, content);
         } else {

@@ -1,3 +1,4 @@
+
 {
   "samples": [
     {
@@ -4791,52 +4792,6 @@
       "sampleType": "samples"
     },
     {
-      "name": "pnp-sp-dev-spfx-web-parts-react-employees-onboarding",
-      "title": "Employee Onboarding",
-      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-employees-onboarding",
-      "description": "This project is an SPFx (SharePoint Framework) application designed for employee onboarding.",
-      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-employees-onboarding/assets/D:\\GitHub\\pnp\\sp-dev-fx-webparts\\samples\\react-employees-onboarding\\assets\\demo1.png",
-      "authors": [
-        {
-          "name": "Ejaz Hussain",
-          "pictureUrl": "https://github.com/ejazhussain.png"
-        }
-      ],
-      "tags": [
-        "SharePoint"
-      ],
-      "createDate": "2024-09-01",
-      "updateDate": "2024-09-01",
-      "version": "1.19.0",
-      "componentType": "webpart",
-      "extensionType": null,
-      "sampleGalerry": "sp-dev-fx-webparts",
-      "sampleType": "samples"
-    },
-    {
-      "name": "pnp-sp-dev-spfx-web-parts-react-enhanced-button",
-      "title": "Enhanced Button",
-      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-enhanced-button",
-      "description": "Extends the functionality of the native button web part.",
-      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-enhanced-button/assets/app.jpeg",
-      "authors": [
-        {
-          "name": "Ari Gunawan",
-          "pictureUrl": "https://github.com/AriGunawan.png"
-        }
-      ],
-      "tags": [
-        "SharePoint"
-      ],
-      "createDate": "2024-09-01",
-      "updateDate": "2024-09-01",
-      "version": "1.19.0",
-      "componentType": "webpart",
-      "extensionType": null,
-      "sampleGalerry": "sp-dev-fx-webparts",
-      "sampleType": "samples"
-    },
-    {
       "name": "pnp-sp-dev-spfx-web-parts-react-enhanced-list-formatting",
       "title": "Enhanced List Formatting Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-enhanced-list-formatting",
@@ -5641,8 +5596,8 @@
         "SharePoint"
       ],
       "createDate": "2020-11-06",
-      "updateDate": "2024-09-12",
-      "version": "1.19.0",
+      "updateDate": "2020-11-06",
+      "version": "1.9.1",
       "componentType": "webpart",
       "extensionType": null,
       "sampleGalerry": "sp-dev-fx-webparts",
@@ -8565,7 +8520,7 @@
         "Microsoft Teams"
       ],
       "createDate": "2022-09-26",
-      "updateDate": "2024-09-13",
+      "updateDate": "2022-11-12",
       "version": "1.15.2",
       "componentType": "webpart",
       "extensionType": null,
@@ -9749,29 +9704,6 @@
       "createDate": "2019-11-23",
       "updateDate": "2024-03-20",
       "version": "1.18.2",
-      "componentType": "webpart",
-      "extensionType": null,
-      "sampleGalerry": "sp-dev-fx-webparts",
-      "sampleType": "samples"
-    },
-    {
-      "name": "pnp-sp-dev-spfx-web-parts-react-training-checklist",
-      "title": "Training Checklist",
-      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-training-checklist",
-      "description": "YSample web part to display a training checklist in a SharePoint page.",
-      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-training-checklist/assets/trainingchecklist.png",
-      "authors": [
-        {
-          "name": "Valeras Narbutas",
-          "pictureUrl": "https://github.com/ValerasNarbutas.png"
-        }
-      ],
-      "tags": [
-        "SharePoint"
-      ],
-      "createDate": "2024-09-12",
-      "updateDate": "2024-09-12",
-      "version": "1.20.0-beta.0",
       "componentType": "webpart",
       "extensionType": null,
       "sampleGalerry": "sp-dev-fx-webparts",

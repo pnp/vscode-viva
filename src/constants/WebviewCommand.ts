@@ -5,10 +5,10 @@ export const WebviewCommand = {
     folderPath: 'folder-path',
     validateSolutionName: 'validate-solution-name',
     validateComponentName: 'validate-component-name',
-		createNodeVersionFileDefaultValue: 'should-create-node-version-file',
-		nodeVersionManager: 'node-version-manager',
-		nodeVersionManagerFile: 'node-version-manager-file',
-		createNodeVersionManagerFile: 'node-version-manager-file',
+    createNodeVersionFileDefaultValue: 'should-create-node-version-file',
+    nodeVersionManager: 'node-version-manager',
+    nodeVersionManagerFile: 'node-version-manager-file',
+    createNodeVersionManagerFile: 'node-version-manager-file',
   },
   toVSCode: {
     useSample: 'use-sample',
@@ -21,8 +21,8 @@ export const WebviewCommand = {
     validateComponentName: 'validate-component-name',
     addSpfxComponent: 'add-spfx-component',
     createAppReg: 'create-app-reg',
-		createNodeVersionFileDefaultValue: 'should-create-node-version-file',
-		nodeVersionManager: 'node-version-manager',
-		nodeVersionManagerFile: 'node-version-manager-file',
+    createNodeVersionFileDefaultValue: 'should-create-node-version-file',
+    nodeVersionManager: 'node-version-manager',
+    nodeVersionManagerFile: 'node-version-manager-file',
   }
 };

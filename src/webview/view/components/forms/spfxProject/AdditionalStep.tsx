@@ -115,10 +115,10 @@ export const AdditionalStep: React.FunctionComponent<AdditionalStepProps> = ({
                     link='https://pnp.github.io/pnpjs/' />
 
                 {nodeVersionManager !== 'none' &&
-                <PackageSelector
-                    value={shouldCreateNodeVersionFile}
-                    setValue={setShouldCreateNodeVersionFile}
-                    label='Create node version manager configuration file' />}
+                    <PackageSelector
+                        value={shouldCreateNodeVersionFile}
+                        setValue={setShouldCreateNodeVersionFile}
+                        label='Create node version manager configuration file' />}
             </div>
         </div>
     );

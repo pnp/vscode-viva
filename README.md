@@ -116,7 +116,7 @@ Install additional dependencies with a single click straight from the scaffoldin
 
 ![Additional dependency step](./assets/images/scaffolding-additional-step.png)
 
-When you can set the additional dependencies it's also possible to automatically create the node version manager file with the version of Node.js used when creating the project. These settings are available in the extensiown settings.
+When you can set the additional dependencies it's also possible to automatically create the node version manager file with the version of Node.js used when creating the project. These settings are available in the extension settings.
 
 ![Additional dependency step node version](./assets/images/scaffolding-additional-step-node-version.png)
 
@@ -284,7 +284,7 @@ Other than selecting the Node.js version manager you may also select which file 
 
 ![Settings Node version file](./assets/images/settings-node-version-manager-file.png)
 
-It is also possible to set which is the default behavior when you're about to scaffold a new project. To do so there is a specific setting named `Create Node Version File Default Value`.
+It is also possible to set the default behavior when you're about to scaffold a new project. To do so there is a specific setting named `Create Node Version File Default Value`.
 
 ![Settings Node version file default value](./assets/images/settings-node-version-manager-file-default-value.png)
 
