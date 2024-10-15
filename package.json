@@ -57,15 +57,18 @@
 				"commands": [
 					{
 						"name": "setup",
+						"isSticky": true,
 						"description": "Prepare your local workspace for SharePoint Framework development"
 					},
 					{
 						"name": "new",
+						"isSticky": true,
 						"description": "Create a new SharePoint Framework project."
 					},
 					{
 						"name": "code",
-						"description": "Let's write some SPFx code"
+						"isSticky": true,
+						"description": "Let's write some SPFx code (I am still learning this, please consider this as beta)"
 					}
 				]
 			}
