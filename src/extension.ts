@@ -73,7 +73,7 @@ export async function activate(context: vscode.ExtensionContext) {
 					else if (fileContents.indexOf(ProjectFileContent.createNodeVersionFile) > -1) {
 						nodeVersionCommand += '.node-version';
 					}
-					await TerminalCommandExecuter.runCommand(nodeVersionCommand, [], terminalTitle, terminalIcon);
+					await TerminalCommandExecuter.runCommand(nodeVersionCommand, terminalTitle, terminalIcon);
 				}
 			}
 		}
