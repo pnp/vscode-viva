@@ -1,5 +1,21 @@
 # Change Log
 
+## [4.2.0] - 2024-10-19
+
+- Include m365 prefix and log passed CLI command options
+- Refactors to ensure types for settings
+- Added a new project additional step to create or not the node version manager configuration file
+- Added new VSCode setting createNodeVersionFileDefaultValue to define the default value of the new project additional step
+- Added new VSCode setting nodeVersionManagerFile to specify which configuration file to be created
+- Dynamic loading of children for ActionTreeItem
+- Present solutions deployed per app catalog
+- Allow to disable and enable a solution
+- Allow to deploy and retract a solution
+- Allow to remove a solution
+- Clicking on app link should go to the solution appStore.aspx page
+- Updated prompt grounding for /setup and /new
+- Added new way to create new project together with Copilot
+
 ## [4.1.0] - 2024-09-28
 
 - Added support for SPFx 1.20.0

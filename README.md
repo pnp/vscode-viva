@@ -116,6 +116,10 @@ Install additional dependencies with a single click straight from the scaffoldin
 
 ![Additional dependency step](./assets/images/scaffolding-additional-step.png)
 
+When you can set the additional dependencies it's also possible to automatically create the node version manager file with the version of Node.js used when creating the project. These settings are available in the extension settings.
+
+![Additional dependency step node version](./assets/images/scaffolding-additional-step-node-version.png)
+
 [Check out our docs for more details](https://github.com/pnp/vscode-viva/wiki/5.2-Scaffolding#1-scaffold-a-new-spfx-project)
 
 ### 6️⃣ Sign in to your tenant & retrieve environment details
@@ -148,7 +152,15 @@ Additionally, the extension will check and retrieve tenant service health incide
 
 ![tenant details](./assets/images/tenant-links.png)
 
-After successful sign in an additional view is presented that shows list links to app catalogs available in the tenant, both tenant-level and all site-level app catalogs. Additionally it will show you all tenant-wide extensions installed on your tenant with.
+After successful sign in, an additional view is presented that shows a list of links to app catalogs available in the tenant, both tenant-level and all site-level app catalogs. You can expand each app catalog to reveal the list of apps contained within. Selecting an app navigates you to its details page. Additionally, hovering over an app node presents a set of actions, allowing you to perform various operations directly on the selected app.
+
+- **Deploy**: Makes the solution available for installation in sites but does not automatically install it.
+- **Retract**: Reverses the deployment, preventing the solution from being installed in sites.
+- **Remove**: Removes the app from the app catalog.
+- **Enable**: Allows end users to add the solution to their SharePoint sites.
+- **Disable**: Hides the solution from end users, preventing them from adding it to sites.
+
+Additionally, it will show you all tenant-wide extensions installed on your tenant.
 
 ![tenant details](./assets/images/app-catalog-list.png)
 
@@ -272,7 +284,17 @@ Check it out in action 👇
 
 By default, the SharePoint Framework Toolkit will use the Node.js version that is installed on your machine. If you want to use a different version, you can use a Node.js Version Manager such as [nvm](https://github.com/nvm-sh/nvm) or [nvs](https://github.com/jasongin/nvs). The SharePoint Framework Toolkit will detect the preferred version of Node.js if a `.nvmrc` file is present in the root of your project, and will use that version for all the actions.
 
-You can use the settings to change which Node.js version manager you want to use. You may choose between `nvm` and `nvs`. If you wish to avoid using a Node.js version manager, you can set the value to `none`
+It's possible to use the settings to change which Node.js version manager you want to use. You may choose between `nvm` and `nvs`. If you wish to avoid using a Node.js version manager, you can set the value to `none`
+
+![Settings Node version manager](./assets/images/settings-node-version-manager.png)
+
+Other than selecting the Node.js version manager you may also select which file should be used to store the Node.js version. By default, the extension will use `.nvmrc` file, but you may change it to `.node-version` if you are using `nvs`.
+
+![Settings Node version file](./assets/images/settings-node-version-manager-file.png)
+
+It is also possible to set the default behavior when you're about to scaffold a new project. To do so there is a specific setting named `Create Node Version File Default Value`.
+
+![Settings Node version file default value](./assets/images/settings-node-version-manager-file-default-value.png)
 
 ### 1️⃣3️⃣ SPFx Toolkit GitHub Chat Participant 
 
@@ -280,7 +302,11 @@ You can use the settings to change which Node.js version manager you want to use
 
 Now you may use SPFx Toolkit as a chat participant in GitHub Copilot chat extension. Simply, mention @spfx in the chat to ask dedicated questions regarding SharePoint Framework development. 
 
-![SPFx Toolkit chat in action](./assets/images/chat-in-action.gif)
+![SPFx Toolkit chat in action](./assets/images/chat-in-action-new.gif)
+
+![SPFx Toolkit chat in action](./assets/images/chat-in-action-new2.gif)
+
+![SPFx Toolkit chat in action](./assets/images/chat-in-action-setup.gif)
 
 @spfx is your dedicated AI Copilot that will help you with anything that is needed to develop your SharePoint Framework project. It has predefined commands that are tailored toward a specific activity for which you require guidance.
 

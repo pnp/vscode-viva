@@ -2,7 +2,7 @@ import { parseWinPath } from '../../utils/parseWinPath';
 import { Folders } from '../check/Folders';
 import { Notifications } from '../dataType/Notifications';
 import { Logger } from '../dataType/Logger';
-import { commands, ProgressLocation, QuickPickItem, Uri, window } from 'vscode';
+import { commands, ProgressLocation, QuickPickItem, Uri, window, workspace } from 'vscode';
 import { Commands, ComponentType, ProjectFileContent, WebviewCommand, WebViewType } from '../../constants';
 import { Sample, SpfxAddComponentCommandInput, SpfxScaffoldCommandInput, Subscription } from '../../models';
 import { join } from 'path';
@@ -11,10 +11,11 @@ import * as glob from 'fast-glob';
 import { Extension } from '../dataType/Extension';
 import download from 'github-directory-downloader/esm';
 import { CliExecuter } from '../executeWrappers/CliCommandExecuter';
-import { getPlatform } from '../../utils';
+import { getExtensionSettings, getPlatform } from '../../utils';
 import { PnPWebview } from '../../webview/PnPWebview';
 import { Executer } from '../executeWrappers/CommandExecuter';
 import { TeamsToolkitIntegration } from '../dataType/TeamsToolkitIntegration';
+import { TerminalCommandExecuter } from '../executeWrappers/TerminalCommandExecuter';
 
 
 export const PROJECT_FILE = 'project.pnp';
@@ -30,6 +31,47 @@ export class Scaffolder {
     subscriptions.push(
       commands.registerCommand(Commands.addToProject, Scaffolder.showAddProjectForm)
     );
+    subscriptions.push(
+      commands.registerCommand(Commands.createProjectCopilot, Scaffolder.createProjectCopilot)
+    );
+  }
+
+  /**
+   * Creates a project using the provided command.
+   * @param yoCommand - The Yeoman command for the project creation.
+   */
+  public static async createProjectCopilot(yoCommand: string) {
+    if (!yoCommand) {
+      return;
+    }
+
+    if (!yoCommand.includes('--skip-install')) {
+      yoCommand += ' --skip-install';
+    }
+
+    await window.withProgress({
+      location: ProgressLocation.Notification,
+      title: `Generating project... Check [output window](command:${Commands.showOutputChannel}) for more details`,
+      cancellable: false
+    }, async () => {
+
+      const workspaceFolder = workspace.workspaceFolders?.[0];
+      const workspacePath = workspaceFolder?.uri.fsPath;
+      if (!workspacePath) {
+        return;
+      }
+
+      const result = await Executer.executeCommand(workspacePath, yoCommand);
+      if (result !== 0) {
+        Notifications.errorNoLog(`Error creating the component. Check [output window](command:${Commands.showOutputChannel}) for more details.`);
+        return;
+      }
+
+      const regex = /--solution-name\s+"([^"]+)"/;
+      const solutionName = yoCommand.match(regex);
+      const newFolderPath = join(workspacePath!, solutionName![1]);
+      Scaffolder.createProjectFileAndOpen(newFolderPath, ProjectFileContent.init);
+    });
   }
 
   /**
@@ -148,6 +190,45 @@ export class Scaffolder {
   }
 
   /**
+   * Returns the value of the createNodeVersionFileDefaultValue setting and sends it to the webview.
+   */
+  public static async createNodeVersionFileDefaultValue() {
+    const value = getExtensionSettings<boolean>(
+      'createNodeVersionFileDefaultValue',
+      false
+    );
+
+    PnPWebview.postMessage(
+      WebviewCommand.toWebview.createNodeVersionFileDefaultValue,
+      value
+    );
+  }
+
+  /**
+   * Returns the value of the nodeVersionManagerFile setting and sends it to the webview.
+   */
+  public static async nodeVersionManagerFile() {
+    const value = getExtensionSettings<string>('nodeVersionManagerFile', '.nvmrc');
+
+    PnPWebview.postMessage(
+      WebviewCommand.toWebview.createNodeVersionManagerFile,
+      value
+    );
+  }
+
+  /**
+   * Returns the value of the nodeVersionManager setting and sends it to the webview.
+   */
+  public static async nodeVersionManager() {
+    const value = getExtensionSettings<string>('nodeVersionManager', 'nvm');
+
+    PnPWebview.postMessage(
+      WebviewCommand.toWebview.nodeVersionManager,
+      value
+    );
+  }
+
+  /**
    * Scaffold method for creating a new project.
    * @param input - The input for the scaffold command.
    * @param isNewProject - A boolean indicating whether it's a new project or not.
@@ -223,6 +304,31 @@ export class Scaffolder {
 
           if (newSolutionInput.shouldInstallPnPJs) {
             content += ` ${ProjectFileContent.installPnPJs}`;
+          }
+
+          if (newSolutionInput.shouldCreateNodeVersionFile) {
+            switch (newSolutionInput.nodeVersionManager) {
+              case 'nvm':
+                // If the node version manager is nvm, create the .nvmrc file even if the user has selected .node-version
+                content += ` ${ProjectFileContent.createNVMRCFile}`;
+                break;
+              case 'nvs':
+                // If the node version manager is nvs, create the file based on the user's settings
+                switch (newSolutionInput.nodeVersionManagerFile) {
+                  case '.nvmrc':
+                    content += ` ${ProjectFileContent.createNVMRCFile}`;
+                    break;
+                  case '.node-version':
+                    content += ` ${ProjectFileContent.createNodeVersionFile}`;
+                    break;
+                }
+                break;
+              // If the node version manager is none, do not create any file
+              case 'none':
+              // By default, do not create any file
+              default:
+                break;
+            }
           }
 
           Scaffolder.createProjectFileAndOpen(newFolderPath, content);
