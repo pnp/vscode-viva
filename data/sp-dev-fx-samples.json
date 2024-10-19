@@ -95,10 +95,10 @@
         "SharePoint"
       ],
       "createDate": "2018-02-01",
-      "updateDate": "2018-02-01",
-      "version": "1.4.1",
-      "componentType": null,
-      "extensionType": null,
+      "updateDate": "2024-10-05",
+      "version": "1.20.0",
+      "componentType": "extension",
+      "extensionType": "ApplicationCustomizer",
       "sampleGalerry": "sp-dev-fx-extensions",
       "sampleType": "samples"
     },
@@ -629,6 +629,29 @@
       "sampleType": "samples"
     },
     {
+      "name": "pnp-sp-dev-spfx-extensions-react-application-alert-banner",
+      "title": "Alert Banner",
+      "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-application-alert-banner",
+      "description": "Designed to display alert notifications prominently in the Banner of Modern SharePoint sites",
+      "image": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-alert-banner/assets/Screenshot2024-08-17170932.png",
+      "authors": [
+        {
+          "name": "Nicolas Kheirallah",
+          "pictureUrl": "https://github.com/nicolasKheirallah.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2023-12-25",
+      "updateDate": "2024-10-11",
+      "version": "1.19.0",
+      "componentType": "extension",
+      "extensionType": "ApplicationCustomizer",
+      "sampleGalerry": "sp-dev-fx-extensions",
+      "sampleType": "samples"
+    },
+    {
       "name": "pnp-sp-dev-spfx-extensions-react-application-announcements",
       "title": "Announcements SharePoint Framework Application Customizer",
       "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-application-announcements",
@@ -644,8 +667,8 @@
         "SharePoint"
       ],
       "createDate": "2020-06-18",
-      "updateDate": "2024-03-12",
-      "version": "1.10.0",
+      "updateDate": "2024-10-06",
+      "version": "1.20.0",
       "componentType": "extension",
       "extensionType": "ApplicationCustomizer",
       "sampleGalerry": "sp-dev-fx-extensions",
@@ -813,8 +836,8 @@
         "SharePoint"
       ],
       "createDate": "2022-11-09",
-      "updateDate": "2024-01-10",
-      "version": "1.18.2",
+      "updateDate": "2024-10-06",
+      "version": "1.20.0",
       "componentType": "extension",
       "extensionType": "ApplicationCustomizer",
       "sampleGalerry": "sp-dev-fx-extensions",
@@ -1080,6 +1103,29 @@
       "version": "1.4.1",
       "componentType": null,
       "extensionType": null,
+      "sampleGalerry": "sp-dev-fx-extensions",
+      "sampleType": "samples"
+    },
+    {
+      "name": "pnp-sp-dev-spfx-extensions-react-application-quick-create",
+      "title": "Application Customizer Quick Create",
+      "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-application-quick-create",
+      "description": "Injects a button to the command bar which shows all the lists in the site and have the ability to quickly create an item by showing the NewForm.aspx inside a panel.",
+      "image": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-quick-create/assets/QuickCreateDemo.gif",
+      "authors": [
+        {
+          "name": "Alec Tecson",
+          "pictureUrl": "https://github.com/alecwantstobattle.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2023-12-25",
+      "updateDate": "2024-09-30",
+      "version": "1.18.2",
+      "componentType": "extension",
+      "extensionType": "ApplicationCustomizer",
       "sampleGalerry": "sp-dev-fx-extensions",
       "sampleType": "samples"
     },
@@ -1889,8 +1935,8 @@
         "SharePoint"
       ],
       "createDate": "2019-01-29",
-      "updateDate": "2022-01-12",
-      "version": "1.7.1",
+      "updateDate": "2024-10-09",
+      "version": "1.20.0",
       "componentType": "extension",
       "extensionType": "ListViewCommandSet",
       "sampleGalerry": "sp-dev-fx-extensions",
@@ -2672,8 +2718,8 @@
         "SharePoint"
       ],
       "createDate": "2020-02-05",
-      "updateDate": "2024-03-11",
-      "version": "1.17.0",
+      "updateDate": "2024-10-03",
+      "version": "1.20.0",
       "componentType": "webpart",
       "extensionType": null,
       "sampleGalerry": "sp-dev-fx-webparts",
@@ -3398,7 +3444,7 @@
         "SharePoint"
       ],
       "createDate": "2020-06-11",
-      "updateDate": "2022-10-24",
+      "updateDate": "2024-10-09",
       "version": "1.15.2",
       "componentType": "webpart",
       "extensionType": null,
@@ -3941,8 +3987,8 @@
         "SharePoint"
       ],
       "createDate": "2020-12-04",
-      "updateDate": "2024-06-28",
-      "version": "1.12.1",
+      "updateDate": "2024-10-01",
+      "version": "1.16.1",
       "componentType": "webpart",
       "extensionType": null,
       "sampleGalerry": "sp-dev-fx-webparts",
@@ -4614,8 +4660,8 @@
         "SharePoint"
       ],
       "createDate": "2021-03-04",
-      "updateDate": "2023-06-20",
-      "version": "1.17.3",
+      "updateDate": "2024-10-05",
+      "version": "1.20.0",
       "componentType": "webpart",
       "extensionType": null,
       "sampleGalerry": "sp-dev-fx-webparts",
@@ -5284,7 +5330,7 @@
         "SharePoint"
       ],
       "createDate": "2022-04-20",
-      "updateDate": "2024-01-06",
+      "updateDate": "2024-10-03",
       "version": "1.17.2",
       "componentType": "webpart",
       "extensionType": null,
@@ -6022,7 +6068,7 @@
       ],
       "createDate": "2023-01-09",
       "updateDate": "2023-11-30",
-      "version": "1.19.0",
+      "version": "1.20.0",
       "componentType": "adaptiveCardExtension",
       "extensionType": null,
       "sampleGalerry": "sp-dev-fx-webparts",
@@ -6920,8 +6966,8 @@
         "SharePoint"
       ],
       "createDate": "2020-07-09",
-      "updateDate": "2020-07-09",
-      "version": "1.10.0",
+      "updateDate": "2024-10-06",
+      "version": "1.20.0",
       "componentType": "webpart",
       "extensionType": null,
       "sampleGalerry": "sp-dev-fx-webparts",
@@ -7185,8 +7231,8 @@
         "SharePoint"
       ],
       "createDate": "2023-02-03",
-      "updateDate": "2024-08-26",
-      "version": "1.19.0",
+      "updateDate": "2024-10-11",
+      "version": "1.20.0",
       "componentType": "adaptiveCardExtension",
       "extensionType": null,
       "sampleGalerry": "sp-dev-fx-webparts",
@@ -7478,7 +7524,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-organization-chart",
-      "title": "Organization Chart Web Part (SP2019 and Online)",
+      "title": "Organization Chart Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-organization-chart",
       "description": "Shows an organization chart based on specified user, and user can navigate to show company organization",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-organization-chart/assets/orgchart.gif",
@@ -7490,14 +7536,18 @@
         {
           "name": null,
           "pictureUrl": "https://github.com/Paxol.png"
+        },
+        {
+          "name": "Peter Paul Kirschner",
+          "pictureUrl": "https://github.com/petkir.png"
         }
       ],
       "tags": [
         "SharePoint"
       ],
       "createDate": "2021-05-03",
-      "updateDate": "2024-02-25",
-      "version": "1.18.2",
+      "updateDate": "2024-10-04",
+      "version": "1.20.0",
       "componentType": "webpart",
       "extensionType": null,
       "sampleGalerry": "sp-dev-fx-webparts",
@@ -7573,8 +7623,8 @@
         "SharePoint"
       ],
       "createDate": "2019-09-05",
-      "updateDate": "2023-05-23",
-      "version": "1.14.0",
+      "updateDate": "2024-10-06",
+      "version": "1.20.0",
       "componentType": "webpart",
       "extensionType": null,
       "sampleGalerry": "sp-dev-fx-webparts",
@@ -7652,14 +7702,18 @@
         {
           "name": "SlowRobot",
           "pictureUrl": "https://github.com/SlowRobot.png"
+        },
+        {
+          "name": "Tobias Maestrini",
+          "pictureUrl": "https://github.com/tmaestrini.png"
         }
       ],
       "tags": [
         "SharePoint"
       ],
       "createDate": "2020-04-30",
-      "updateDate": "2024-01-11",
-      "version": "1.18.2",
+      "updateDate": "2024-10-12",
+      "version": "1.20.0",
       "componentType": "webpart",
       "extensionType": null,
       "sampleGalerry": "sp-dev-fx-webparts",
