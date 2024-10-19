@@ -14,6 +14,7 @@ export const Commands = {
   // Scaffolding
   createProject: `${EXTENSION_NAME}.createProject`,
   addToProject: `${EXTENSION_NAME}.addToProject`,
+  createProjectCopilot: `${EXTENSION_NAME}.createProjectCopilot`,
 
   // Output channel
   showOutputChannel: `${EXTENSION_NAME}.showOutputChannel`,
@@ -51,4 +52,12 @@ export const Commands = {
 
   // Welcome
   welcome: `${EXTENSION_NAME}.welcome`,
+
+  // App actions
+  deployAppCatalogApp: `${EXTENSION_NAME}.deployAppCatalogApp`,
+  retractAppCatalogApp: `${EXTENSION_NAME}.retractAppCatalogApp`,
+  removeAppCatalogApp: `${EXTENSION_NAME}.removeAppCatalogApp`,
+  enableAppCatalogApp: `${EXTENSION_NAME}.enableAppCatalogApp`,
+  disableAppCatalogApp: `${EXTENSION_NAME}.disableAppCatalogApp`,
+  showMoreActions: `${EXTENSION_NAME}.showMoreActions`
 };

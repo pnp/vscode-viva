@@ -2,7 +2,7 @@
 	"name": "viva-connections-toolkit",
 	"displayName": "SharePoint Framework Toolkit",
 	"description": "SharePoint Framework Toolkit aims to boost your productivity in developing and managing SharePoint Framework solutions helping at every stage of your development flow, from setting up your development workspace to deploying a solution straight to your tenant without the need to leave VS Code and now even create a CI/CD pipeline to introduce automate deployment of your app. This toolkit is provided by the community.",
-	"version": "4.1.0",
+	"version": "4.2.0",
 	"publisher": "m365pnp",
 	"preview": false,
 	"homepage": "https://github.com/pnp/vscode-viva",
@@ -57,15 +57,18 @@
 				"commands": [
 					{
 						"name": "setup",
+						"isSticky": true,
 						"description": "Prepare your local workspace for SharePoint Framework development"
 					},
 					{
 						"name": "new",
+						"isSticky": true,
 						"description": "Create a new SharePoint Framework project."
 					},
 					{
 						"name": "code",
-						"description": "Let's write some SPFx code"
+						"isSticky": true,
+						"description": "Let's write some SPFx code (I am still learning this, please consider this as beta)"
 					}
 				]
 			}
@@ -178,14 +181,30 @@
 				"spfx-toolkit.showServiceIncidentList": {
 					"title": "Show service health incidents",
 					"type": "boolean",
-					"default": "true",
+					"default": true,
 					"description": "Show the service health incidents in the account view."
 				},
 				"spfx-toolkit.showTenantWideExtensions": {
 					"title": "Show tenant-wide extensions",
 					"type": "boolean",
-					"default": "true",
+					"default": true,
 					"description": "Show the tenant-wide extensions in the account view."
+				},
+				"spfx-toolkit.createNodeVersionFileDefaultValue": {
+					"title": "Default value for the Node version file option",
+					"type": "boolean",
+					"default": false,
+					"description": "The default value for the new project's setting for creating the Node version file. If checked the default selected value will be YES."
+				},
+				"spfx-toolkit.nodeVersionManagerFile": {
+					"title": "Node version manager file to be used",
+					"type": "string",
+					"default": ".nvmrc",
+					"enum": [
+						".nvmrc",
+						".node-version"
+					],
+					"description": "The file to be used to store the Node version for the selected Node version manager. Remember that the .node-version file is supported only while using nvs."
 				}
 			}
 		},
@@ -383,6 +402,42 @@
 				"title": "Refresh Account view",
 				"category": "SharePoint Framework Toolkit",
 				"icon": "$(refresh)"
+			},
+			{
+				"command": "spfx-toolkit.deployAppCatalogApp",
+				"title": "Deploy",
+				"category": "SharePoint Framework Toolkit",
+				"icon": "$(cloud-upload)"
+			},
+			{
+				"command": "spfx-toolkit.retractAppCatalogApp",
+				"title": "Retract",
+				"category": "SharePoint Framework Toolkit",
+				"icon": "$(cloud-download)"
+			},
+			{
+				"command": "spfx-toolkit.removeAppCatalogApp",
+				"title": "Remove",
+				"category": "SharePoint Framework Toolkit",
+				"icon": "$(trash)"
+			},
+			{
+				"command": "spfx-toolkit.enableAppCatalogApp",
+				"title": "Enable",
+				"category": "SharePoint Framework Toolkit",
+				"icon": "$(check)"
+			},
+			{
+				"command": "spfx-toolkit.disableAppCatalogApp",
+				"title": "Disable",
+				"category": "SharePoint Framework Toolkit",
+				"icon": "$(circle-slash)"
+			},
+			{
+				"command": "spfx-toolkit.showMoreActions",
+				"title": "...",
+				"category": "SharePoint Framework Toolkit",
+				"icon": "$(ellipsis)"
 			}
 		],
 		"menus": {
@@ -421,6 +476,34 @@
 					"command": "spfx-toolkit.logout",
 					"when": "view == pnp-view-account && viewItem == m365Account",
 					"group": "inline@1"
+				},
+				{
+					"command": "spfx-toolkit.deployAppCatalogApp",
+					"when": "view == pnp-view-environment && viewItem == pnp.etv.hasAppCatalogApp",
+					"group": "inline@1"
+				},
+				{
+					"submenu": "spfx-toolkit.showMoreActions",
+					"when": "view == pnp-view-environment && viewItem == pnp.etv.hasAppCatalogApp",
+					"group": "inline@2"
+				}
+			],
+			"spfx-toolkit.showMoreActions": [
+				{
+					"command": "spfx-toolkit.retractAppCatalogApp",
+					"group": "actions.more@1"
+				},
+				{
+					"command": "spfx-toolkit.removeAppCatalogApp",
+					"group": "actions.more@2"
+				},
+				{
+					"command": "spfx-toolkit.enableAppCatalogApp",
+					"group": "actions.more@3"
+				},
+				{
+					"command": "spfx-toolkit.disableAppCatalogApp",
+					"group": "actions.more@4"
 				}
 			],
 			"explorer/context": [
@@ -431,6 +514,13 @@
 				}
 			]
 		},
+		"submenus": [
+			{
+				"id": "spfx-toolkit.showMoreActions",
+				"label": "More Actions...",
+				"icon": "$(ellipsis)"
+			}
+		],
 		"languages": [
 			{
 				"id": "pnp.project.output",

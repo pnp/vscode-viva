@@ -95,7 +95,7 @@ export class Dependencies {
    * Installs the dependencies by running the npm install command in a terminal.
    */
   public static async install() {
-    await TerminalCommandExecuter.runCommand(`npm i -g ${DEPENDENCIES.join(' ')}`, [], 'Installing dependencies', 'cloud-download');
+    await TerminalCommandExecuter.runCommand(`npm i -g ${DEPENDENCIES.join(' ')}`, 'Installing dependencies', 'cloud-download');
   }
 
   /**
