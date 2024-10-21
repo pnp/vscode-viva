@@ -20,7 +20,13 @@ export class M365AuthenticationSession implements AuthenticationSession {
   public tenantId: string = '';
   public clientId: string = '';
 
-  constructor(public readonly account: AuthenticationSessionAccountInformation) {}
+  // Scopes are not needed for the M365 CLI
+  public readonly scopes = [];
+
+  // Required for the session, but not for M365 CLI
+  public readonly accessToken: string = '';
+
+  constructor(public readonly account: AuthenticationSessionAccountInformation) { }
 }
 
 export class AuthProvider implements AuthenticationProvider, Disposable {

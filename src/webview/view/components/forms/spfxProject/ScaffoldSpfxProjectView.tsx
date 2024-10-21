@@ -103,7 +103,6 @@ export const ScaffoldSpfxProjectView: React.FunctionComponent<IScaffoldSpfxProje
           setIsValidSolutionName={setIsValidSolutionName}
           setComponentType={setComponentType}
           componentTypes={ComponentTypes}
-          componentType={componentType}
         />
         <ComponentDetailsStep
           isNewProject={isNewProject}

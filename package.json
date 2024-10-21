@@ -92,7 +92,8 @@
 						"title": "Validate your local workspace",
 						"description": "Validate if your local workspace is ready for SharePoint Framework development by checking and installing the required dependencies. \n[Check dependencies](command:spfx-toolkit.checkDependencies)",
 						"media": {
-							"markdown": "assets/walkthrough/validate-local-setup.md"
+							"image": "assets/images/validate-dependency.png",
+							"altText": "Validate dependencies"
 						}
 					},
 					{

@@ -22,6 +22,7 @@
 
 <p align="center">
   <a href="#-capabilities">Capabilities</a> |
+  <a href="#-preview-features">Preview features</a> |
   <a href="#%EF%B8%8F-architecture">Architecture</a> |
   <a href="#-wiki">Wiki</a> |
   <a href="#-contributing">Contributing</a> |
@@ -296,7 +297,12 @@ It is also possible to set the default behavior when you're about to scaffold a 
 
 ![Settings Node version file default value](./assets/images/settings-node-version-manager-file-default-value.png)
 
-### 1️⃣3️⃣ SPFx Toolkit GitHub Chat Participant 
+## 🧪 Preview features
+
+>  [!WARNING]
+>  Features described in this section are considered as an early beta feature. They may change or be removed in a future major or minor release.
+
+### 1️⃣ SPFx Toolkit GitHub Chat Participant 
 
 ![SPFx Toolkit chat](./assets/images/chat-intro.png)
 
@@ -317,7 +323,13 @@ Currently, we support the following commands:
 - `/new` - that may be used to get guidance on how to create a new solution or find and reuse an existing sample from the PnP SPFx sample gallery
 - `/code` - that is fine-tuned to provide help in coding your SharePoint Framework project and provides additional boosters like validating the correctness of your SPFx project, scaffolding a CI/CD workflow, or renaming your project, and many more.
 
-[Check out our docs for more details](https://github.com/pnp/vscode-viva/wiki/8.-SPFx-Toolkit-GitHub-Chat-Participant)
+> [!IMPORTANT]  
+> In order for this feature to work you need to meet the following requirements:
+> - Use the [Visual Studio Code Insiders](https://code.visualstudio.com/insiders/) release
+> - Use the pre-release version of the [GitHub Copilot Chat](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot-chat) extension
+> - Use latest version of [SPFx Toolkit](https://marketplace.visualstudio.com/items?itemName=m365pnp.viva-connections-toolkit)
+
+[Check out our docs for more details](https://github.com/pnp/vscode-viva/wiki/8.-Preview-features)
 
 ## ⚙️ Architecture
 

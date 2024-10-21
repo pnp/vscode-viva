@@ -133,6 +133,16 @@ export class TerminalCommandExecuter {
   }
 
   /**
+   * Registers the commands for execution.
+   * @param subscriptions - The array of subscriptions to add the registered command to.
+   */
+  private static registerCommands(subscriptions: Subscription[]) {
+    subscriptions.push(
+      commands.registerCommand(Commands.executeTerminalCommand, TerminalCommandExecuter.runCommand)
+    );
+  }
+
+  /**
    * Creates a new terminal with the specified name and icon.
    * If a terminal with the same name already exists, it returns that terminal instead.
    * If the user's settings specify to use a specific node version manager (nvm or nvs),
@@ -171,6 +181,17 @@ export class TerminalCommandExecuter {
   }
 
   /**
+   * Retrieves the extension settings value for the specified setting.
+   * If the setting is not found, the default value is returned.
+   * @param setting - The name of the setting to retrieve.
+   * @param defaultValue - The default value to return if the setting is not found.
+   * @returns The value of the setting, or the default value if the setting is not found.
+   */
+  private static getExtensionSettings<T>(setting: string, defaultValue: T): T {
+      return workspace.getConfiguration(EXTENSION_NAME).get<T>(setting, defaultValue);
+  }
+
+  /**
    * Runs a command in the specified terminal.
    * @param command - The command to run.
    * @param terminal - The terminal in which to run the command.
@@ -180,5 +201,27 @@ export class TerminalCommandExecuter {
       terminal.show(true);
       terminal.sendText(` ${command}`);
     }
+  }
+
+  /**
+   * Runs a command in the terminal.
+   * @param command - The command to run.
+   * @param args - The arguments for the command.
+   */
+  public static async runCommand(command: string, args: string[]) {
+    const terminal = await TerminalCommandExecuter.createTerminal('Gulp task', 'tasks-list-configure');
+
+    const wsFolder = await Folders.getWorkspaceFolder();
+    if (wsFolder) {
+      let currentProjectPath = wsFolder.uri.fsPath;
+
+      if (TeamsToolkitIntegration.isTeamsToolkitProject) {
+        currentProjectPath = join(currentProjectPath, 'src');
+      }
+
+      TerminalCommandExecuter.runInTerminal(`cd "${currentProjectPath}"`, terminal);
+    }
+
+    TerminalCommandExecuter.runInTerminal(command, terminal);
   }
 }

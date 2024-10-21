@@ -280,7 +280,7 @@ export class CliActions {
    * @returns A promise that resolves to an array of objects containing the URL and title of each tenant-wide extension,
    *          or undefined if no extensions are found.
    */
-  public static async getTenantWideExtensions(tenantAppCatalogUrl: string): Promise<{ Url: string, Title: string }[] | undefined> {
+  public static async getTenantWideExtensions(tenantAppCatalogUrl: string): Promise<{Url: string, Title: string}[] | undefined> {
     const origin = new URL(tenantAppCatalogUrl).origin;
     const commandOptions: any = {
       listUrl: `${tenantAppCatalogUrl.replace(origin, '')}/Lists/TenantWideExtensions`,
@@ -311,12 +311,8 @@ export class CliActions {
    * @returns A promise that resolves to an array of objects containing the title and URL of the health information.
    *          Returns undefined if there is no health information available.
    */
-  public static async getTenantHealthInfo(): Promise<{ Title: string, Url: string }[] | undefined> {
-    try {
-      const healthInfo = (await CliExecuter.execute('tenant serviceannouncement health list', 'json')).stdout || undefined;
-      if (!healthInfo) {
-        return undefined;
-      }
+  public static async getTenantHealthInfo(): Promise<{Title: string, Url: string}[] | undefined> {
+    const healthInfo = (await CliExecuter.execute('tenant serviceannouncement health list', 'json')).stdout || undefined;
 
       const healthInfoJson: any[] = JSON.parse(healthInfo);
       const healthInfoList = healthInfoJson.filter(service => service.status !== 'serviceOperational').map((service) => {
@@ -479,21 +475,21 @@ export class CliActions {
       cancellable: true
     }, async (progress: Progress<{ message?: string; increment?: number }>) => {
       try {
-        const result = await CliExecuter.execute('spfx project upgrade', 'md');
+        const projectUpgradeOutputMode: string = getExtensionSettings('projectUpgradeOutputMode', 'both');
+        let resultMd: any;
 
-        if (result.stdout) {
-          // Create a file to allow the Markdown preview to correctly open the linked/referenced files
-          let savePath = wsFolder?.uri.fsPath;
-
-          if (savePath && TeamsToolkitIntegration.isTeamsToolkitProject) {
-            savePath = join(savePath, 'src');
-          }
-
-          const filePath = join(savePath || '', 'spfx.upgrade.md');
-          writeFileSync(filePath, result.stdout);
-          await commands.executeCommand('markdown.showPreview', Uri.file(filePath));
-        } else if (result.stderr) {
-          Notifications.error(result.stderr);
+        if (projectUpgradeOutputMode === 'markdown') {
+          resultMd = await CliExecuter.execute('spfx project upgrade', 'md');
+          CliActions.handleMarkdownResult(resultMd,wsFolder);
+        } else if (projectUpgradeOutputMode === 'code tour') {
+          await CliExecuter.execute('spfx project upgrade', 'tour');
+          commands.executeCommand('codetour.startTour');
+        } else {
+          resultMd = await CliExecuter.execute('spfx project upgrade', 'md');
+          await CliExecuter.execute('spfx project upgrade', 'tour');
+          
+          CliActions.handleMarkdownResult(resultMd, wsFolder);
+          commands.executeCommand('codetour.startTour');
         }
       } catch (e: any) {
         const message = e?.error?.message;
@@ -658,21 +654,22 @@ export class CliActions {
       cancellable: true
     }, async (progress: Progress<{ message?: string; increment?: number }>) => {
       try {
-        const result = await CliExecuter.execute('spfx project doctor', 'md');
+        const projectValidateOutputMode: string = getExtensionSettings('projectValidateOutputMode', 'both');
+        let resultMd: any;
 
-        if (result.stdout) {
-          // Create a file to allow the Markdown preview to correctly open the linked/referenced files
-          let savePath = wsFolder?.uri.fsPath;
-
-          if (savePath && TeamsToolkitIntegration.isTeamsToolkitProject) {
-            savePath = join(savePath, 'src');
-          }
-
-          const filePath = join(savePath || '', 'spfx.validate.md');
-          writeFileSync(filePath, result.stdout);
-          await commands.executeCommand('markdown.showPreview', Uri.file(filePath));
-        } else if (result.stderr) {
-          Notifications.error(result.stderr);
+        if (projectValidateOutputMode === 'markdown') {
+          resultMd = await CliExecuter.execute('spfx project doctor', 'md');
+          CliActions.handleMarkdownResult(resultMd,wsFolder);
+        } else if (projectValidateOutputMode === 'code tour') {
+          await CliExecuter.execute('spfx project doctor', 'tour');
+          commands.executeCommand('codetour.startTour');
+        } else {
+          resultMd = await CliExecuter.execute('spfx project doctor', 'md');
+          await CliExecuter.execute('spfx project doctor', 'tour');
+          
+          // Handle both results
+          CliActions.handleMarkdownResult(resultMd, wsFolder);
+          commands.executeCommand('codetour.startTour');
         }
       } catch (e: any) {
         const message = e?.error?.message;
@@ -787,5 +784,26 @@ export class CliActions {
         Notifications.error(message);
       }
     });
+  }
+
+  /**
+   * Handles the Markdown result
+   * @param result The result of the (CLI) command execution
+   * @param wsFolder The workspace folder
+   */
+  private static handleMarkdownResult(result: any, wsFolder: WorkspaceFolder | undefined) {
+    if (result?.stdout) {
+      let savePath = wsFolder?.uri.fsPath;
+
+      if (savePath && TeamsToolkitIntegration.isTeamsToolkitProject) {
+        savePath = join(savePath, 'src');
+      }
+
+      const filePath = join(savePath || '', 'spfx.upgrade.md');
+      writeFileSync(filePath, result.stdout);
+      commands.executeCommand('markdown.showPreview', Uri.file(filePath));
+    } else if (result?.stderr) {
+      Notifications.error(result.stderr);
+    }
   }
 }

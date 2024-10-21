@@ -5,7 +5,6 @@ import { ComponentType, WebviewCommand } from '../../../../../constants';
 import { FolderIcon } from '../../icons';
 import { StepHeader } from './StepHeader';
 import { Messenger } from '@estruyf/vscode/dist/client';
-import { LabelWithTooltip } from '../../controls';
 
 
 export interface IGeneralInfoProps {
@@ -17,8 +16,7 @@ export interface IGeneralInfoProps {
     isValidSolutionName: boolean | null | undefined;
     setIsValidSolutionName: (value: boolean | null) => void;
     setComponentType: (componentType: ComponentType) => void;
-    componentTypes: { value: string; name: string; description: string }[];
-    componentType: ComponentType;
+    componentTypes: { value: string; name: string }[];
 }
 
 export const GeneralInfoStep: React.FunctionComponent<IGeneralInfoProps> = ({
@@ -30,9 +28,7 @@ export const GeneralInfoStep: React.FunctionComponent<IGeneralInfoProps> = ({
     isValidSolutionName,
     setIsValidSolutionName,
     setComponentType,
-    componentTypes,
-    componentType
-  }: React.PropsWithChildren<IGeneralInfoProps>) => {
+    componentTypes }: React.PropsWithChildren<IGeneralInfoProps>) => {
 
     const pickFolder = useCallback(() => {
         Messenger.send(WebviewCommand.toVSCode.pickFolder, {});
@@ -71,7 +67,6 @@ export const GeneralInfoStep: React.FunctionComponent<IGeneralInfoProps> = ({
             Messenger.unlisten(messageListener);
         };
     }, [setFolderPath, setSolutionName]);
-    const getComponentType = componentTypes.find((component) => component.value === componentType);
     return (
         <div className={'spfx__form__step'}>
             <StepHeader step={1} title='General information' />
@@ -108,7 +103,9 @@ export const GeneralInfoStep: React.FunctionComponent<IGeneralInfoProps> = ({
                     </>
                 }
                 <div className={'mb-2'}>
-                    <LabelWithTooltip label={'What component you wish to create?'} tooltip={getComponentType ? getComponentType.description : ''} />
+                    <label className={'block mb-1'}>
+                        What component you wish to create?
+                    </label>
                     <VSCodeDropdown className={'w-full'} onChange={(e: any) => setComponentType(e.target.value)}>
                         {componentTypes.map((component) => <VSCodeOption key={component.value} value={component.value}>{component.name}</VSCodeOption>)}
                     </VSCodeDropdown>
