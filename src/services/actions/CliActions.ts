@@ -1,6 +1,6 @@
 import { readFileSync, writeFileSync } from 'fs';
 import { Folders } from '../check/Folders';
-import { commands, Progress, ProgressLocation, Uri, window, workspace } from 'vscode';
+import { commands, Progress, ProgressLocation, Uri, window, workspace, WorkspaceFolder } from 'vscode';
 import { Commands, ContextKeys, WebViewType, WebviewCommand, WorkflowType } from '../../constants';
 import { AppCatalogApp, GenerateWorkflowCommandInput, SiteAppCatalog, SolutionAddResult, Subscription } from '../../models';
 import { Extension } from '../dataType/Extension';
@@ -17,7 +17,8 @@ import { parseCliCommand } from '../../utils/parseCliCommand';
 import { CertificateActions } from './CertificateActions';
 import path = require('path');
 import { ActionTreeItem } from '../../providers/ActionTreeDataProvider';
-
+import { getExtensionSettings } from '../../utils/getExtensionSettings';
+import * as fs from 'fs';
 
 export class CliActions {
 
@@ -501,21 +502,21 @@ export class CliActions {
       cancellable: true
     }, async (progress: Progress<{ message?: string; increment?: number }>) => {
       try {
-        const result = await CliExecuter.execute('spfx project upgrade', 'md');
+        const projectUpgradeOutputMode: string = getExtensionSettings('projectUpgradeOutputMode', 'both');
+        let resultMd: any;
 
-        if (result.stdout) {
-          // Create a file to allow the Markdown preview to correctly open the linked/referenced files
-          let savePath = wsFolder?.uri.fsPath;
+        if (projectUpgradeOutputMode === 'markdown') {
+          resultMd = await CliExecuter.execute('spfx project upgrade', 'md');
+          CliActions.handleMarkdownResult(resultMd, wsFolder, 'upgrade');
+        } else if (projectUpgradeOutputMode === 'code tour') {
+          await CliExecuter.execute('spfx project upgrade', 'tour');
+          CliActions.handleTourResult(wsFolder, 'upgrade');
+        } else {
+          resultMd = await CliExecuter.execute('spfx project upgrade', 'md');
+          await CliExecuter.execute('spfx project upgrade', 'tour');
 
-          if (savePath && TeamsToolkitIntegration.isTeamsToolkitProject) {
-            savePath = join(savePath, 'src');
-          }
-
-          const filePath = join(savePath || '', 'spfx.upgrade.md');
-          writeFileSync(filePath, result.stdout);
-          await commands.executeCommand('markdown.showPreview', Uri.file(filePath));
-        } else if (result.stderr) {
-          Notifications.error(result.stderr);
+          CliActions.handleMarkdownResult(resultMd, wsFolder, 'upgrade');
+          CliActions.handleTourResult(wsFolder, 'upgrade');
         }
       } catch (e: any) {
         const message = e?.error?.message;
@@ -680,21 +681,22 @@ export class CliActions {
       cancellable: true
     }, async (progress: Progress<{ message?: string; increment?: number }>) => {
       try {
-        const result = await CliExecuter.execute('spfx project doctor', 'md');
+        const projectValidateOutputMode: string = getExtensionSettings('projectValidateOutputMode', 'both');
+        let resultMd: any;
 
-        if (result.stdout) {
-          // Create a file to allow the Markdown preview to correctly open the linked/referenced files
-          let savePath = wsFolder?.uri.fsPath;
+        if (projectValidateOutputMode === 'markdown') {
+          resultMd = await CliExecuter.execute('spfx project doctor', 'md');
+          CliActions.handleMarkdownResult(resultMd, wsFolder, 'validate');
+        } else if (projectValidateOutputMode === 'code tour') {
+          await CliExecuter.execute('spfx project doctor', 'tour');
+          CliActions.handleTourResult(wsFolder, 'validation');
+        } else {
+          resultMd = await CliExecuter.execute('spfx project doctor', 'md');
+          await CliExecuter.execute('spfx project doctor', 'tour');
 
-          if (savePath && TeamsToolkitIntegration.isTeamsToolkitProject) {
-            savePath = join(savePath, 'src');
-          }
-
-          const filePath = join(savePath || '', 'spfx.validate.md');
-          writeFileSync(filePath, result.stdout);
-          await commands.executeCommand('markdown.showPreview', Uri.file(filePath));
-        } else if (result.stderr) {
-          Notifications.error(result.stderr);
+          // Handle both results
+          CliActions.handleMarkdownResult(resultMd, wsFolder, 'validate');
+          CliActions.handleTourResult(wsFolder, 'validation');
         }
       } catch (e: any) {
         const message = e?.error?.message;
@@ -809,5 +811,44 @@ export class CliActions {
         Notifications.error(message);
       }
     });
+  }
+
+  /**
+   * Handles the Markdown result
+   * @param result The result of the (CLI) command execution
+   * @param wsFolder The workspace folder
+   */  private static handleMarkdownResult(result: any, wsFolder: WorkspaceFolder | undefined, fileName: string) {
+    if (result?.stdout) {
+      let savePath = wsFolder?.uri.fsPath;
+
+      if (savePath && TeamsToolkitIntegration.isTeamsToolkitProject) {
+        savePath = join(savePath, 'src');
+      }
+
+      const filePath = join(savePath || '', `spfx.${fileName}.md`);
+      writeFileSync(filePath, result.stdout);
+      commands.executeCommand('markdown.showPreview', Uri.file(filePath));
+    } else if (result?.stderr) {
+      Notifications.error(result.stderr);
+    }
+  }
+
+  /**
+   * Handles the Tour result
+   * @param wsFolder The workspace folder
+   */
+  private static async handleTourResult(wsFolder: WorkspaceFolder | undefined, fileName: string): Promise<void> {
+    if (!wsFolder) {
+      Notifications.error('Workspace folder is undefined. Cannot start Code Tour.');
+      return;
+    }
+    
+    const tourFilePath = path.join(wsFolder.uri.fsPath, '.tours', `${fileName}.tour`);
+    
+    if (fs.existsSync(tourFilePath)) {
+      await commands.executeCommand('codetour.startTour');
+    } else {
+      Notifications.error('Validation tour file not found. Cannot start Code Tour.');
+    }
   }
 }

@@ -210,6 +210,28 @@
 						".node-version"
 					],
 					"description": "The file to be used to store the Node version for the selected Node version manager. Remember that the .node-version file is supported only while using nvs."
+				},
+				"spfx-toolkit.projectUpgradeOutputMode": {
+					"title": "Project upgrade output mode",
+					"type": "string",
+					"default": "both",
+					"enum": [
+						"both",
+						"markdown",
+						"code tour"
+					],
+					"description": "Choose the output mode for the project upgrade. You can choose between `both`, `markdown`, or `code tour`."
+				},
+				"spfx-toolkit.projectValidateOutputMode": {
+					"title": "Project validate output mode",
+					"type": "string",
+					"default": "both",
+					"enum": [
+						"both",
+						"markdown",
+						"code tour"
+					],
+					"description": "Choose the output mode for the project validation. You can choose between `both`, `markdown`, or `code tour`."
 				}
 			}
 		},
