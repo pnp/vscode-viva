@@ -1,4 +1,3 @@
-
 {
   "samples": [
     {
@@ -1680,9 +1679,9 @@
       ],
       "createDate": "2021-06-13",
       "updateDate": "2021-11-25",
-      "version": null,
-      "componentType": null,
-      "extensionType": null,
+      "version": "1.12.1",
+      "componentType": "extension",
+      "extensionType": "ListViewCommandSet",
       "sampleGalerry": "sp-dev-fx-extensions",
       "sampleType": "samples"
     },
@@ -3253,8 +3252,39 @@
         "SharePoint"
       ],
       "createDate": "2020-06-22",
-      "updateDate": "2021-09-30",
-      "version": "1.10.0",
+      "updateDate": "2024-10-13",
+      "version": "1.20.0",
+      "componentType": "webpart",
+      "extensionType": null,
+      "sampleGalerry": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
+      "name": "pnp-sp-dev-spfx-web-parts-react-accordion-dynamic-section",
+      "title": "Dynamic Accordion - FAQ Builder web part",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-accordion-dynamic-section",
+      "description": "This sample is based on Erik Benke and Mike Zimmerman Accordion Section FAQ Builder web part. It was extended support single FAQs list based on Category and dynamic properties selection.",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-accordion-dynamic-section/assets/react-accordion-section.gif",
+      "authors": [
+        {
+          "name": "Jerry Yasir",
+          "pictureUrl": "https://github.com/jerryyasir.png"
+        },
+        {
+          "name": "Jack Vinitsky",
+          "pictureUrl": "https://github.com/jack-vinitsky.png"
+        },
+        {
+          "name": "Ravi Chandra",
+          "pictureUrl": "https://github.com/Ravikadri.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2021-01-05",
+      "updateDate": "2024-10-19",
+      "version": "1.20.0",
       "componentType": "webpart",
       "extensionType": null,
       "sampleGalerry": "sp-dev-fx-webparts",
@@ -3526,8 +3556,8 @@
         "SharePoint"
       ],
       "createDate": "2021-03-30",
-      "updateDate": "2023-03-06",
-      "version": "1.16.1",
+      "updateDate": "2024-10-08",
+      "version": "1.20.0",
       "componentType": "webpart",
       "extensionType": null,
       "sampleGalerry": "sp-dev-fx-webparts",
@@ -3887,8 +3917,8 @@
         "SharePoint"
       ],
       "createDate": "2019-07-23",
-      "updateDate": "2023-03-06",
-      "version": "1.16.1",
+      "updateDate": "2024-10-02",
+      "version": "1.20.0",
       "componentType": "webpart",
       "extensionType": null,
       "sampleGalerry": "sp-dev-fx-webparts",
@@ -4077,8 +4107,8 @@
         "SharePoint"
       ],
       "createDate": "2020-10-31",
-      "updateDate": "2020-06-12",
-      "version": "1.12.1",
+      "updateDate": "2024-10-15",
+      "version": "1.20.0",
       "componentType": "webpart",
       "extensionType": null,
       "sampleGalerry": "sp-dev-fx-webparts",
@@ -4473,6 +4503,29 @@
       "sampleType": "samples"
     },
     {
+      "name": "pnp-sp-dev-spfx-web-parts-react-csv-importer",
+      "title": "CSV Importer",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-csv-importer",
+      "description": "This web part allows users to import CSV files into an existing SharePoint list",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-csv-importer/assets/D:\\GitHub\\pnp\\sp-dev-fx-webparts\\samples\\react-csv-importer\\assets\\react-csv-importer.gif",
+      "authors": [
+        {
+          "name": "Michał Romiszewski",
+          "pictureUrl": "https://github.com/mromiszewski.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2022-10-11",
+      "updateDate": "2024-10-20",
+      "version": "1.20.0",
+      "componentType": "webpart",
+      "extensionType": null,
+      "sampleGalerry": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
       "name": "pnp-sp-dev-spfx-web-parts-react-custom-links",
       "title": "Custom Links Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-custom-links",
@@ -4557,8 +4610,8 @@
         "SharePoint"
       ],
       "createDate": "2021-03-01",
-      "updateDate": "2022-11-01",
-      "version": "1.14.0",
+      "updateDate": "2024-10-20",
+      "version": "1.20.0",
       "componentType": "webpart",
       "extensionType": null,
       "sampleGalerry": "sp-dev-fx-webparts",
@@ -5308,8 +5361,8 @@
         "SharePoint"
       ],
       "createDate": "2023-08-03",
-      "updateDate": "2023-08-03",
-      "version": "1.17.4",
+      "updateDate": "2024-10-01",
+      "version": "1.20.0",
       "componentType": "webpart",
       "extensionType": null,
       "sampleGalerry": "sp-dev-fx-webparts",
@@ -6917,8 +6970,8 @@
         "SharePoint"
       ],
       "createDate": "2024-03-16",
-      "updateDate": "2024-03-16",
-      "version": "1.18.2",
+      "updateDate": "2024-10-10",
+      "version": "1.20.0",
       "componentType": "webpart",
       "extensionType": null,
       "sampleGalerry": "sp-dev-fx-webparts",
@@ -7968,14 +8021,18 @@
         {
           "name": "Beau Cameron",
           "pictureUrl": "https://github.com/bcameron1231.png"
+        },
+        {
+          "name": "Gretchun Kim",
+          "pictureUrl": "https://github.com/gretchunkim.png"
         }
       ],
       "tags": [
         "SharePoint"
       ],
       "createDate": "2023-02-18",
-      "updateDate": "2023-02-18",
-      "version": "1.15.2",
+      "updateDate": "2024-10-23",
+      "version": "1.20.0",
       "componentType": "webpart",
       "extensionType": null,
       "sampleGalerry": "sp-dev-fx-webparts",
@@ -8782,8 +8839,8 @@
         "SharePoint"
       ],
       "createDate": "2021-03-06",
-      "updateDate": "2021-03-06",
-      "version": "1.10.0",
+      "updateDate": "2024-10-20",
+      "version": "1.20.0",
       "componentType": "webpart",
       "extensionType": null,
       "sampleGalerry": "sp-dev-fx-webparts",
