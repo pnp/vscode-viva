@@ -16,7 +16,7 @@ function Parse-SampleJsonFiles {
             $sampleContent = Get-Content -Path $sample.FullName -Raw
             $sampleJson = ConvertFrom-Json -InputObject $sampleContent
             
-            $yoRcPath = $sample.FullName.Replace("assets\sample.json", ".yo-rc.json")
+            $yoRcPath = $sample.FullName.ToLower().Replace("assets\sample.json", ".yo-rc.json")
 
             if (-not (Test-Path -Path $yoRcPath)) {
                 Continue
@@ -28,14 +28,22 @@ function Parse-SampleJsonFiles {
 
             $version = $null
             if ($null -ne $yoRcJson.version -and $yoRcJson.version.GetType().BaseType -eq [System.Array]) {
-                $version = $yoRcJson.version[$yoRcJson.version.Length - 1]
+                if ($null -ne $yoRcJson.version[$yoRcJson.version.Length - 1]) {
+                    $version = $yoRcJson.version[$yoRcJson.version.Length - 1]
+                } else {
+                    $version = $yoRcJson.version[0]
+                }
             } else {
                 $version = $yoRcJson.version
             }
 
             $componentType = $null
             if ($null -ne $yoRcJson.componentType -and $yoRcJson.componentType.GetType().BaseType -eq [System.Array]) {
-                $componentType = $yoRcJson.componentType[$yoRcJson.componentType.Length - 1]
+                if ($null -ne  $yoRcJson.componentType[$yoRcJson.componentType.Length - 1]) {
+                    $componentType = $yoRcJson.componentType[$yoRcJson.componentType.Length - 1]
+                } else {
+                    $componentType = $yoRcJson.componentType[0]
+                }
             } else {
                 $componentType = $yoRcJson.componentType
             }
