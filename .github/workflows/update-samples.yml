@@ -11,6 +11,8 @@ jobs:
     runs-on: windows-latest
 
     steps:
+      - uses: GitHubSecurityLab/actions-permissions/monitor@v1
+
       - name: Checkout vscode-viva
         uses: actions/checkout@v4
 
