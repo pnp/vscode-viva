@@ -929,8 +929,8 @@
         "SharePoint"
       ],
       "createDate": "2023-07-27",
-      "updateDate": "2024-01-20",
-      "version": "1.18.2",
+      "updateDate": "2024-10-23",
+      "version": "1.20.0",
       "componentType": "extension",
       "extensionType": "ApplicationCustomizer",
       "sampleGalerry": "sp-dev-fx-extensions",
@@ -1837,14 +1837,18 @@
         {
           "name": "Ramin Ahmadi",
           "pictureUrl": "https://github.com/AhmadiRamin.png"
+        },
+        {
+          "name": "Nishkalank Bezawada",
+          "pictureUrl": "https://github.com/NishkalankBezawada.png"
         }
       ],
       "tags": [
         "SharePoint"
       ],
       "createDate": "2018-12-05",
-      "updateDate": "2018-12-05",
-      "version": "1.7.0",
+      "updateDate": "2024-10-30",
+      "version": "1.16.1",
       "componentType": "extension",
       "extensionType": "ListViewCommandSet",
       "sampleGalerry": "sp-dev-fx-extensions",
