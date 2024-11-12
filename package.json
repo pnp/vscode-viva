@@ -63,12 +63,17 @@
 					{
 						"name": "new",
 						"isSticky": true,
-						"description": "Create a new SharePoint Framework project."
+						"description": "Create a new SharePoint Framework project"
+					},
+					{
+						"name": "manage",
+						"isSticky": true,
+						"description": "[beta] Manage your SharePoint Online tenant"
 					},
 					{
 						"name": "code",
 						"isSticky": true,
-						"description": "Let's write some SPFx code (I am still learning this, please consider this as beta)"
+						"description": "[beta] Let's write some SPFx code"
 					}
 				]
 			}

@@ -1,5 +1,6 @@
 export class EnvironmentInformation {
   private static _appCatalogUrls: string[] | undefined = undefined;
+  private static _tenantUrl: string | undefined = undefined;
   private static _account: string | undefined = undefined;
   private static _tenantId: string | undefined = undefined;
   private static _clientId: string | undefined = undefined;
@@ -18,6 +19,14 @@ export class EnvironmentInformation {
 
   public static set account(value: string | undefined) {
     this._account = value;
+  }
+
+  public static get tenantUrl(): string | undefined {
+    return this._tenantUrl;
+  }
+
+  public static set tenantUrl(value: string | undefined) {
+    this._tenantUrl = value;
   }
 
   public static get tenantId(): string | undefined {

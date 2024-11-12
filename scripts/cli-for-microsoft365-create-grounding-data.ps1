@@ -22,8 +22,6 @@ foreach ($command in $allSpoCommands) {
         continue
     }
 
-    #Write-Host $commandTitle
-
     $titleIndex = @($html.all).IndexOf($title)
 
     $usage = $html.all.tags('h2') | Where-Object { $_.tagName -eq 'H2' } | Select-Object -First 1
@@ -37,9 +35,7 @@ foreach ($command in $allSpoCommands) {
     $optionsEndIndex = @($html.all).IndexOf($subTitles[2])
     $commandOptions = @($html.all)[($optionsStartIndex + 1)..($optionsEndIndex - 1)]
     $commandOptions = $commandOptions | Where-Object { $_.nodeName -eq 'CODE' } | ForEach-Object { $_.innerText }
-    $commandOptions = $commandOptions  -split '\r?\n'
-    $commandOptions = $commandOptions | ForEach-Object { $_.Replace(':', '') }
-    #$commandOptions | ForEach-Object { Write-Host $_ }
+    $commandOptions = $commandOptions | ForEach-Object { $_.Replace("`r`n", '') }
 
     $examples = $subTitles[2].innerText
     $examplesStartIndex = @($html.all).IndexOf($subTitles[2])
@@ -53,19 +49,33 @@ foreach ($command in $allSpoCommands) {
     $commandExamples = $commandExamples | Where-Object { $_.nodeName -match  'CODE|P' } | ForEach-Object { $_.innerText }
     $commandExamples = $commandExamples | Select-Object -Unique
     $commandExamples = $commandExamples  -split '\r?\n'
-    #$commandExamples | ForEach-Object { Write-Host $_ }
+    $commandExamplesObjects = @()
+    for ($i = 0; $i -lt $commandExamples.Length; $i += 2) {
+        $example = $commandExamples[$i]
+        $description = $commandExamples[$i + 1]
+        $commandExamplesObject = @{
+            Example = $example
+            Description = $description
+        }
+        $commandExamplesObjects += $commandExamplesObject
+    }
 
-    [hashtable]$commandProperties = [ordered]@{}
-    # $commandProperties.Add('prefix', @("m365 $commandTitle"))
-    # $commandProperties.Add('body', @("m365 $commandTitle $commandOptions"))
-    # $commandProperties.Add('description', "$commandDescription")
-    # $commandClass = New-Object -TypeName psobject -Property $commandProperties
-
-    # $commandsData.Add($commandTitle, $commandClass)
+    $commandsData["m365 $commandTitle"] = @{
+        Description = $commandDescription
+        Options = $commandOptions
+        Examples = $commandExamplesObjects
+    }
 }
 
-# $orderedCommandsData = [ordered]@{}
-# foreach ($Item in ($commandsData.GetEnumerator() | Sort-Object -Property Key)) {
-#     $orderedCommandsData[$Item.Key] = $Item.Value
-# }
-# New-Object -TypeName psobject -Property $orderedCommandsData | ConvertTo-Json | Out-File "$workspacePath\vscode-viva\data\cli-for-microsoft365-spo-commands.json"
+$dataArray = @()
+foreach ($key in $commandsData.Keys) {
+    $orderedHashtable = [ordered]@{
+        Command = $key
+        Description = $commandsData[$key].Description
+        Options = $commandsData[$key].Options
+        Examples = $commandsData[$key].Examples
+    }
+    $dataArray += $orderedHashtable
+}
+
+$dataArray | ConvertTo-Json -Depth 3 | Out-File "$workspacePath\vscode-viva\src\chat\cli-for-microsoft365-spo-commands.ts"
