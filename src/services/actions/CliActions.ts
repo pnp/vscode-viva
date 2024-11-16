@@ -13,6 +13,7 @@ import { CommandOutput } from '@pnp/cli-microsoft365';
 import { TeamsToolkitIntegration } from '../dataType/TeamsToolkitIntegration';
 import { PnPWebview } from '../../webview/PnPWebview';
 import { parseYoRc } from '../../utils/parseYoRc';
+import { parseCliCommand } from '../../utils/parseCliCommand';
 import { CertificateActions } from './CertificateActions';
 import path = require('path');
 import { ActionTreeItem } from '../../providers/ActionTreeDataProvider';
@@ -454,6 +455,27 @@ export class CliActions {
         PnPWebview.postMessage(WebviewCommand.toWebview.WorkflowCreated, { success: false });
       }
     });
+  }
+
+  /**
+   * Runs a CLI command.
+   * @param command - The CLI command to run.
+   * @returns A promise that resolves to the output of the command
+   */
+  public static async runCliCommand(command: string, output: string = 'text'): Promise<string | undefined> {
+    if (!command) {
+      return;
+    }
+
+    const cliCommand = parseCliCommand(command);
+    const commandToRun = cliCommand.command.replace('m365 ', '');
+    const result = await CliExecuter.execute(commandToRun, output, cliCommand.options);
+    if (result.stderr) {
+      Notifications.error(result.stderr);
+      return;
+    }
+
+    return result.stdout;
   }
 
   /**

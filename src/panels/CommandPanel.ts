@@ -114,6 +114,7 @@ export class CommandPanel {
       if (appCatalogUrls?.some) {
         const url = new URL(appCatalogUrls[0]);
         const originUrl = url.origin;
+        EnvironmentInformation.tenantUrl = originUrl;
         const adminOriginUrl = originUrl.replace('.sharepoint.com', '-admin.sharepoint.com');
         const webApiPermissionManagementUrl = `${adminOriginUrl}/_layouts/15/online/AdminHome.aspx#/webApiPermissionManagement`;
         DebuggerCheck.validateUrl(originUrl);
