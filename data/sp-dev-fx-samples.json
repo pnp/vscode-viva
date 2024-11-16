@@ -4022,8 +4022,8 @@
         "SharePoint"
       ],
       "createDate": "2020-12-04",
-      "updateDate": "2024-10-01",
-      "version": "1.16.1",
+      "updateDate": "2024-11-03",
+      "version": "1.20.0",
       "componentType": "webpart",
       "extensionType": null,
       "sampleGalerry": "sp-dev-fx-webparts",
@@ -6974,7 +6974,7 @@
         "SharePoint"
       ],
       "createDate": "2024-03-16",
-      "updateDate": "2024-10-10",
+      "updateDate": "2024-11-01",
       "version": "1.20.0",
       "componentType": "webpart",
       "extensionType": null,
@@ -8739,8 +8739,8 @@
         "SharePoint"
       ],
       "createDate": "2020-11-22",
-      "updateDate": "2023-08-18",
-      "version": "1.18.2",
+      "updateDate": "2024-10-30",
+      "version": "1.20.0",
       "componentType": "webpart",
       "extensionType": null,
       "sampleGalerry": "sp-dev-fx-webparts",
