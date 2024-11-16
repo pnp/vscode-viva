@@ -308,6 +308,8 @@ Now you may use SPFx Toolkit as a chat participant in GitHub Copilot chat extens
 
 ![SPFx Toolkit chat in action](./assets/images/chat-in-action-setup.gif)
 
+![SPFx Toolkit chat in action](./assets/images/chat-in-action-manage.gif)
+
 @spfx is your dedicated AI Copilot that will help you with anything that is needed to develop your SharePoint Framework project. It has predefined commands that are tailored toward a specific activity for which you require guidance.
 
 ![SPFx Toolkit chat commands](./assets/images/chat-commands.png)
@@ -316,6 +318,7 @@ Currently, we support the following commands:
 - `/setup` - that is dedicated to providing information on how to setup your local workspace for SharePoint Framework development
 - `/new` - that may be used to get guidance on how to create a new solution or find and reuse an existing sample from the PnP SPFx sample gallery
 - `/code` - that is fine-tuned to provide help in coding your SharePoint Framework project and provides additional boosters like validating the correctness of your SPFx project, scaffolding a CI/CD workflow, or renaming your project, and many more.
+- `/manage` - this command is available only after sign in and allows you to ask questions about your SharePoint Online Tenant like checking the lists or list items or apps in app catalog and many more.
 
 [Check out our docs for more details](https://github.com/pnp/vscode-viva/wiki/8.-SPFx-Toolkit-GitHub-Chat-Participant)
 
