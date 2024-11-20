@@ -505,17 +505,13 @@ export class CliActions {
         const projectUpgradeOutputMode: string = getExtensionSettings('projectUpgradeOutputMode', 'both');
         let resultMd: any;
 
-        if (projectUpgradeOutputMode === 'markdown') {
+        if (projectUpgradeOutputMode === 'markdown' || projectUpgradeOutputMode === 'both') {
           resultMd = await CliExecuter.execute('spfx project upgrade', 'md');
           CliActions.handleMarkdownResult(resultMd, wsFolder, 'upgrade');
-        } else if (projectUpgradeOutputMode === 'code tour') {
+        } 
+        
+        if (projectUpgradeOutputMode === 'code tour' || projectUpgradeOutputMode === 'both') {
           await CliExecuter.execute('spfx project upgrade', 'tour');
-          CliActions.handleTourResult(wsFolder, 'upgrade');
-        } else {
-          resultMd = await CliExecuter.execute('spfx project upgrade', 'md');
-          await CliExecuter.execute('spfx project upgrade', 'tour');
-
-          CliActions.handleMarkdownResult(resultMd, wsFolder, 'upgrade');
           CliActions.handleTourResult(wsFolder, 'upgrade');
         }
       } catch (e: any) {
@@ -844,11 +840,15 @@ export class CliActions {
     }
     
     const tourFilePath = path.join(wsFolder.uri.fsPath, '.tours', `${fileName}.tour`);
-    
+    await workspace.fs.stat(Uri.file(tourFilePath));
+
+    // A timeout is needed so Codetour can find the tour file
     if (fs.existsSync(tourFilePath)) {
-      await commands.executeCommand('codetour.startTour');
+      setTimeout(() => {
+        commands.executeCommand('codetour.startTour');
+      }, 500);
     } else {
-      Notifications.error('Validation tour file not found. Cannot start Code Tour.');
+      Notifications.error(`${fileName}.tour file not found in path ${path.join(wsFolder.uri.fsPath, '.tours')}. Cannot start Code Tour.`);
     }
   }
 }
