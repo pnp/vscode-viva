@@ -66,6 +66,9 @@ export class CliActions {
         CliActions.toggleAppEnabled(node, ContextKeys.disableApp, 'disable')
       )
     );
+    subscriptions.push(
+      commands.registerCommand(Commands.upgradeAppCatalogApp, CliActions.upgradeAppCatalogApp)
+    );
   }
 
   /**
@@ -220,6 +223,53 @@ export class CliActions {
       await commands.executeCommand('spfx-toolkit.refreshAppCatalogTreeView');
     } catch (e: any) {
       const message = e?.error?.message;
+      Notifications.error(message);
+    }
+  }
+
+  /**
+  * Upgrades an app to a newer version available in the app catalog.
+  *
+  * @param node The tree item representing the app to be upgraded.
+  */
+  public static async upgradeAppCatalogApp(node: ActionTreeItem) {
+    try {
+      const actionNode = node.children?.find(child => child.contextValue === ContextKeys.removeApp);
+
+      if (!actionNode?.command?.arguments) {
+        Notifications.error('Failed to retrieve app details for upgrade.');
+        return;
+      }
+
+      const [appID, appTitle, appCatalogUrl] = actionNode.command.arguments;
+
+      const siteUrl = appCatalogUrl?.trim() || await window.showInputBox({
+        prompt: 'Enter the URL of the site to upgrade the app in',
+        placeHolder: 'https://contoso.sharepoint.com/sites/sales',
+        validateInput: (input) => (input.trim() ? undefined : 'Site URL cannot be empty')
+      });
+
+      if (!siteUrl) {
+        Notifications.warning('No site URL provided. App upgrade aborted.');
+        return;
+      }
+
+      const commandOptions: any = {
+        id: appID,
+        ...(appCatalogUrl?.trim()
+          ? { appCatalogScope: 'sitecollection', siteUrl, }
+          : { siteUrl })
+      };
+
+      await CliExecuter.execute('spo app upgrade', 'json', commandOptions);
+
+      Notifications.info(`App '${appTitle}' has been successfully upgraded.`);
+
+      // refresh the environmentTreeView
+      await commands.executeCommand('spfx-toolkit.refreshAppCatalogTreeView');
+
+    } catch (e: any) {
+      const message = e?.message || 'An unexpected error occurred during the app upgrade.';
       Notifications.error(message);
     }
   }
