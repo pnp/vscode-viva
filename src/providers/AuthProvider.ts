@@ -1,5 +1,6 @@
 import { EnvironmentInformation } from '../services/dataType/EnvironmentInformation';
 import { env, authentication, AuthenticationProvider, AuthenticationProviderAuthenticationSessionsChangeEvent, AuthenticationSession, AuthenticationSessionAccountInformation, commands, Disposable, Event, EventEmitter, ProgressLocation, window, Progress } from 'vscode';
+import * as vscode from 'vscode';
 import { Commands } from '../constants';
 import { Logger } from '../services/dataType/Logger';
 import { Notifications } from '../services/dataType/Notifications';
@@ -27,13 +28,15 @@ export class AuthProvider implements AuthenticationProvider, Disposable {
   public static readonly id = 'm365-pnp-auth-dev';
   public static instance: AuthProvider;
 
+  private static context: vscode.ExtensionContext;
   private onDidChangeEventEmit = new EventEmitter<AuthenticationProviderAuthenticationSessionsChangeEvent>();
   private initializedDisposable: Disposable | undefined;
 
   /**
    * Registers the authentication provider and associated commands.
    */
-  public static register() {
+  public static register(context: vscode.ExtensionContext) {
+    AuthProvider.context = context;
     const ext = Extension.getInstance();
     const subscriptions = ext.subscriptions;
 
@@ -88,6 +91,7 @@ export class AuthProvider implements AuthenticationProvider, Disposable {
       return;
     }
 
+    EnvironmentInformation.clientId = await AuthProvider.context.globalState.get('clientId');
     const clientId = await window.showInputBox({
       title: 'Specify the application (client) ID',
       value: EnvironmentInformation.clientId ?? '',
@@ -108,9 +112,11 @@ export class AuthProvider implements AuthenticationProvider, Disposable {
 
     if (!clientId) {
       Logger.error('Client ID is required');
+      EnvironmentInformation.clientId = undefined;
       throw new Error('Client ID is required');
     }
 
+    EnvironmentInformation.tenantId = await AuthProvider.context.globalState.get('tenantId');
     const tenantId = await window.showInputBox({
       title: 'Specify the tenant ID',
       value: EnvironmentInformation.tenantId ?? '',
@@ -131,11 +137,15 @@ export class AuthProvider implements AuthenticationProvider, Disposable {
 
     if (!tenantId) {
       Logger.error('Tenant ID is required');
+      EnvironmentInformation.clientId = undefined;
+      EnvironmentInformation.tenantId = undefined;
       throw new Error('Tenant ID is required');
     }
 
     EnvironmentInformation.clientId = clientId;
     EnvironmentInformation.tenantId = tenantId;
+    await AuthProvider.context.globalState.update('clientId', clientId);
+    await AuthProvider.context.globalState.update('tenantId', tenantId);
 
     await authentication.getSession(AuthProvider.id, [], { createIfNone });
   }
@@ -187,23 +197,9 @@ export class AuthProvider implements AuthenticationProvider, Disposable {
         title: `Logging in to Microsoft 365. Check [output window](command:${Commands.showOutputChannel}) for more details`,
         cancellable: true
       }, async (progress: Progress<{ message?: string; increment?: number }>) => {
-        await executeCommand('login', { output: 'json', appId: clientId, tenant: tenantId }, {
+        await executeCommand('login', { output: 'json', appId: clientId, tenant: tenantId, authType: 'browser' }, {
           stdout: (message: string) => {
-            if (message.includes('https://microsoft.com/devicelogin')) {
-              commands.executeCommand('vscode.open', 'https://microsoft.com/devicelogin');
-
-              const deviceCodeString = message.split('enter the code').pop();
-              if (deviceCodeString?.includes('to authenticate')) {
-                const deviceCode = deviceCodeString.split('to authenticate').shift()?.trim();
-                if (deviceCode) {
-                  Logger.info(`Device code: ${deviceCode}`);
-                  env.clipboard.writeText(deviceCode);
-                  progress.report({ message: `Device code '${deviceCode}' copied to clipboard. [Open the browser to authenticate](https://microsoft.com/devicelogin)` });
-                }
-              } else {
-                Notifications.info(`Check [output window](command:${Commands.showOutputChannel}) for the device code.`);
-              }
-            }
+            Notifications.info('To sign in, use the web browser that just has been opened. Please sign-in there.');
             return '';
           },
           stderr: (message: string) => {

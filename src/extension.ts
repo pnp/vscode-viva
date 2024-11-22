@@ -23,7 +23,7 @@ export async function activate(context: vscode.ExtensionContext) {
 
 	TerminalCommandExecuter.register();
 
-	AuthProvider.register();
+	AuthProvider.register(context);
 
 	Dependencies.registerCommands();
 	Scaffolder.registerCommands();
