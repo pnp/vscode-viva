@@ -461,6 +461,12 @@
 				"icon": "$(circle-slash)"
 			},
 			{
+				"command": "spfx-toolkit.upgradeAppCatalogApp",
+				"title": "Upgrade",
+				"category": "SharePoint Framework Toolkit",
+				"icon": "$(sync)"
+			},
+			{
 				"command": "spfx-toolkit.showMoreActions",
 				"title": "...",
 				"category": "SharePoint Framework Toolkit",
@@ -531,6 +537,10 @@
 				{
 					"command": "spfx-toolkit.disableAppCatalogApp",
 					"group": "actions.more@4"
+				},
+				{
+					"command": "spfx-toolkit.upgradeAppCatalogApp",
+					"group": "actions.more@5"
 				}
 			],
 			"explorer/context": [
