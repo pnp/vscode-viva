@@ -234,7 +234,7 @@ export class CliActions {
   */
   public static async upgradeAppCatalogApp(node: ActionTreeItem) {
     try {
-      const actionNode = node.children?.find(child => child.contextValue === ContextKeys.removeApp);
+      const actionNode = node.children?.find(child => child.contextValue === ContextKeys.upgradeApp);
 
       if (!actionNode?.command?.arguments) {
         Notifications.error('Failed to retrieve app details for upgrade.');
