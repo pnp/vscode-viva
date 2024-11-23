@@ -192,6 +192,18 @@ export class CliActions {
 
       const [appID, appTitle, appCatalogUrl] = actionNode.command.arguments;
 
+      const shouldRemove = await window.showQuickPick(['Yes', 'No'], {
+        title: `Are you sure you want to remove the app '${appTitle}' from the app catalog?`,
+        ignoreFocusOut: true,
+        canPickMany: false
+      });
+
+      const shouldRemoveAnswer = shouldRemove === 'Yes';
+
+      if (!shouldRemoveAnswer) {
+        return;
+      }
+
       const commandOptions: any = {
         id: appID,
         force: true,
