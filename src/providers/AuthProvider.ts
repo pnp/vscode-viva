@@ -281,7 +281,18 @@ export class AuthProvider implements AuthenticationProvider, Disposable {
       }
 
       if (status.stderr) {
-        Logger.error(`status: ${status.stderr}`);
+        const message = status.stderr.toString();
+        if (message.includes('Access token expired')) {
+          AuthProvider.logout();
+          const SignInButton = 'Sign in';
+          Notifications.info('Access token expired.', SignInButton).then((item) => {
+            if (item === SignInButton) {
+              AuthProvider.login();
+            }
+          });
+        } else {
+          Logger.error(`status: ${message}`);
+        }
       }
     } else {
       const account = new M365AuthenticationSession({
