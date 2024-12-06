@@ -78,4 +78,4 @@ foreach ($key in $commandsData.Keys) {
     $dataArray += $orderedHashtable
 }
 
-$dataArray | ConvertTo-Json -Depth 3 | Out-File "$workspacePath\vscode-viva\src\chat\cli-for-microsoft365-spo-commands.ts"
+$dataArray | ConvertTo-Json -Depth 3 | Out-File "$workspacePath\vscode-viva\src\chat\CliForMicrosoft365SpoCommands.ts"

@@ -21,6 +21,7 @@ export class PromptHandlers {
       const account = await authInstance.getAccount();
       if (!account) {
         stream.markdown('\n\n The `/manage` command is only available when you are signed in. Please sign in first.');
+        return;
       }
     }
 

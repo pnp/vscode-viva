@@ -59,5 +59,6 @@ export const Commands = {
   removeAppCatalogApp: `${EXTENSION_NAME}.removeAppCatalogApp`,
   enableAppCatalogApp: `${EXTENSION_NAME}.enableAppCatalogApp`,
   disableAppCatalogApp: `${EXTENSION_NAME}.disableAppCatalogApp`,
+  upgradeAppCatalogApp: `${EXTENSION_NAME}.upgradeAppCatalogApp`,
   showMoreActions: `${EXTENSION_NAME}.showMoreActions`
 };

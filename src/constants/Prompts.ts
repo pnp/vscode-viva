@@ -1,4 +1,4 @@
-import { Commands } from '../chat/cli-for-microsoft365-spo-commands';
+import { Commands } from '../chat/CliForMicrosoft365SpoCommands';
 
 export const personality = 'You are a kind and helpful assistant named SPFx Toolkit. Your main passion is SharePoint Framework (SPFx) development.';
 
