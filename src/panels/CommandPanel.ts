@@ -212,7 +212,7 @@ export class CommandPanel {
                     new ActionTreeItem('Remove', '', undefined, undefined, Commands.removeAppCatalogApp, [app.ID, app.Title], ContextKeys.removeApp),
                     new ActionTreeItem('Enable', '', undefined, undefined, Commands.enableAppCatalogApp, [app.Title, tenantAppCatalogUrl, app.Enabled], ContextKeys.enableApp),
                     new ActionTreeItem('Disable', '', undefined, undefined, Commands.disableAppCatalogApp, [app.Title, tenantAppCatalogUrl, app.Enabled], ContextKeys.disableApp),
-                    new ActionTreeItem('Upgrade', '', undefined, undefined, Commands.upgradeAppCatalogApp, [app.ID, app.Title], ContextKeys.upgradeApp)
+                    new ActionTreeItem('Upgrade', '', undefined, undefined, Commands.upgradeAppCatalogApp, [app.ID, app.Title, tenantAppCatalogUrl, true], ContextKeys.upgradeApp)
                   ]
                 )
               );
@@ -252,7 +252,7 @@ export class CommandPanel {
                       new ActionTreeItem('Remove', '', undefined, undefined, Commands.removeAppCatalogApp, [app.ID, app.Title, siteAppCatalogUrl], ContextKeys.removeApp),
                       new ActionTreeItem('Enable', '', undefined, undefined, Commands.enableAppCatalogApp, [app.Title, siteAppCatalogUrl, app.Enabled], ContextKeys.enableApp),
                       new ActionTreeItem('Disable', '', undefined, undefined, Commands.disableAppCatalogApp, [app.Title, siteAppCatalogUrl, app.Enabled], ContextKeys.disableApp),
-                      new ActionTreeItem('Upgrade', '', undefined, undefined, Commands.upgradeAppCatalogApp, [app.ID, app.Title, siteAppCatalogUrl], ContextKeys.upgradeApp)
+                      new ActionTreeItem('Upgrade', '', undefined, undefined, Commands.upgradeAppCatalogApp, [app.ID, app.Title, siteAppCatalogUrl, false], ContextKeys.upgradeApp)
                     ]
                   )
                 );
