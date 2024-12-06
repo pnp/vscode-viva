@@ -241,33 +241,45 @@ export class CliActions {
         return;
       }
 
-      const [appID, appTitle, appCatalogUrl] = actionNode.command.arguments;
+      const [appID, appTitle, appCatalogUrl, isTenantApp] = actionNode.command.arguments;
 
-      const siteUrl = appCatalogUrl?.trim() || await window.showInputBox({
-        prompt: 'Enter the URL of the site to upgrade the app in',
-        placeHolder: 'https://contoso.sharepoint.com/sites/sales',
-        validateInput: (input) => (input.trim() ? undefined : 'Site URL cannot be empty')
-      });
+      let siteUrl: string = appCatalogUrl;
 
-      if (!siteUrl) {
-        Notifications.warning('No site URL provided. App upgrade aborted.');
-        return;
+      if (isTenantApp) {
+        const relativeUrl = await window.showInputBox({
+          prompt: 'Enter the relative URL of the site to upgrade the app in',
+          placeHolder: 'e.g., sites/sales or leave blank for root site',
+          validateInput: (input) => {
+            const trimmedInput = input.trim();
+
+            if (trimmedInput.startsWith('https://')) {
+              return 'Please provide a relative URL, not an absolute URL.';
+            }
+            if (trimmedInput.startsWith('/')) {
+              return 'Please provide a relative URL without a leading slash.';
+            }
+
+            return undefined;
+          }
+        });
+
+        if (relativeUrl === undefined) {
+          Notifications.warning('No site URL provided. App upgrade aborted.');
+          return;
+        }
+
+        siteUrl = `${new URL(appCatalogUrl).origin}/${relativeUrl.trim()}`;
       }
 
       const commandOptions: any = {
         id: appID,
-        ...(appCatalogUrl?.trim()
-          ? { appCatalogScope: 'sitecollection', siteUrl, }
-          : { siteUrl })
+        ...(isTenantApp
+          ? { siteUrl }
+          : { appCatalogScope: 'sitecollection', siteUrl })
       };
 
       await CliExecuter.execute('spo app upgrade', 'json', commandOptions);
-
-      Notifications.info(`App '${appTitle}' has been successfully upgraded.`);
-
-      // refresh the environmentTreeView
-      await commands.executeCommand('spfx-toolkit.refreshAppCatalogTreeView');
-
+      Notifications.info(`App '${appTitle}' has been successfully upgraded on site '${siteUrl}'.`);
     } catch (e: any) {
       const message = e?.message || 'An unexpected error occurred during the app upgrade.';
       Notifications.error(message);
