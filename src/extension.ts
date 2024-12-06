@@ -28,7 +28,7 @@ export async function activate(context: vscode.ExtensionContext) {
 	Dependencies.registerCommands();
 	Scaffolder.registerCommands();
 	CliActions.registerCommands();
-	EntraAppRegistration.registerCommands();
+	EntraAppRegistration.registerCommands(context);
 
 	CommandPanel.register();
 
