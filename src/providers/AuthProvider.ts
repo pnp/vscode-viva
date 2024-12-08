@@ -21,12 +21,13 @@ export class M365AuthenticationSession implements AuthenticationSession {
   public tenantId: string = '';
   public clientId: string = '';
 
-  constructor(public readonly account: AuthenticationSessionAccountInformation) {}
+  constructor(public readonly account: AuthenticationSessionAccountInformation) { }
 }
 
 export class AuthProvider implements AuthenticationProvider, Disposable {
   public static readonly id = 'm365-pnp-auth-dev';
   public static instance: AuthProvider;
+  public static reSignIn = false;
 
   private static context: vscode.ExtensionContext;
   private onDidChangeEventEmit = new EventEmitter<AuthenticationProviderAuthenticationSessionsChangeEvent>();
@@ -155,6 +156,7 @@ export class AuthProvider implements AuthenticationProvider, Disposable {
    * @param createIfNone - A boolean indicating whether to create a new session if none exists.
    */
   public static async login(createIfNone: boolean = true) {
+    AuthProvider.reSignIn = false;
     await authentication.getSession(AuthProvider.id, [], { createIfNone });
   }
 
@@ -257,54 +259,56 @@ export class AuthProvider implements AuthenticationProvider, Disposable {
    */
   public async getAccount(): Promise<M365AuthenticationSession | undefined> {
     if (!EnvironmentInformation.account) {
-      const status = await executeCommand('status', { output: 'json' });
+      return await new Promise((resolve: (res: M365AuthenticationSession | undefined) => void, reject: (e: Error) => void): void => {
+        let account: M365AuthenticationSession | undefined;
+        executeCommand('status', { output: 'json' }, {
+          stdout: (message: string) => {
+            Logger.info(`status: ${message}`);
+            const sessions = JSON.parse(message.toString());
 
-      if (status.stdout) {
-        Logger.info(`status: ${status.stdout}`);
-        const sessions = JSON.parse(status.stdout.toString());
+            if (sessions && sessions.connectedAs) {
+              EnvironmentInformation.account = sessions.connectedAs;
 
-        if (sessions && sessions.connectedAs) {
-          EnvironmentInformation.account = sessions.connectedAs;
-
-          const account = new M365AuthenticationSession({
-            id: AuthProvider.id,
-            label: sessions.connectedAs
-          });
-
-          account.tenantId = sessions.appTenant ?? '';
-          EnvironmentInformation.tenantId = sessions.appTenant;
-          account.clientId = sessions.appId ?? '';
-          EnvironmentInformation.clientId = sessions.appId;
-
-          return account;
-        }
-      }
-
-      if (status.stderr) {
-        const message = status.stderr.toString();
-        if (message.includes('Access token expired')) {
-          AuthProvider.logout();
-          const SignInButton = 'Sign in';
-          Notifications.info('Access token expired.', SignInButton).then((item) => {
-            if (item === SignInButton) {
-              AuthProvider.login();
+              account = new M365AuthenticationSession({
+                id: AuthProvider.id,
+                label: sessions.connectedAs
+              });
+              account.tenantId = sessions.appTenant ?? '';
+              EnvironmentInformation.tenantId = sessions.appTenant;
+              account.clientId = sessions.appId ?? '';
+              EnvironmentInformation.clientId = sessions.appId;
             }
-          });
-        } else {
-          Logger.error(`status: ${message}`);
-        }
-      }
-    } else {
-      const account = new M365AuthenticationSession({
-        id: AuthProvider.id,
-        label: EnvironmentInformation.account
+          },
+          stderr: (message: string) => {
+            message = message.toString();
+            if (!AuthProvider.reSignIn && message.includes('Access token expired')) {
+              AuthProvider.logout();
+              AuthProvider.reSignIn = true;
+              const SignInButton = 'Sign in';
+              Notifications.info('Access token expired.', SignInButton).then((item) => {
+                if (item === SignInButton) {
+                  AuthProvider.signIn();
+                }
+              });
+            } else {
+              Logger.error(`status: ${message}`);
+            }
+          }
+        }).then(() => {
+          resolve(account);
+        }).catch(error => {
+          reject(error);
+        });
       });
-      account.tenantId = EnvironmentInformation.tenantId ?? '';
-      account.clientId = EnvironmentInformation.clientId ?? '';
-
-      return account;
     }
 
-    return undefined;
+    const account = new M365AuthenticationSession({
+      id: AuthProvider.id,
+      label: EnvironmentInformation.account
+    });
+    account.tenantId = EnvironmentInformation.tenantId ?? '';
+    account.clientId = EnvironmentInformation.clientId ?? '';
+
+    return account;
   }
 }
