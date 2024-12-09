@@ -90,7 +90,8 @@ export class PromptHandlers {
     const cliMatch = cliRegex.exec(chatResponse);
 
     if (cliMatch && cliMatch[2]) {
-      const result = await CliActions.runCliCommand(cliMatch[2], 'md');
+      const outputMode = cliMatch[2].toLowerCase().includes('list') ? 'text' : 'md';
+      const result = await CliActions.runCliCommand(cliMatch[2], outputMode);
       return result;
     }
 
