@@ -306,6 +306,10 @@ export class Scaffolder {
             content += ` ${ProjectFileContent.installPnPJs}`;
           }
 
+          if (newSolutionInput.shouldInstallSPFxFastServe) {
+            content += ` ${ProjectFileContent.installSPFxFastServe}`;
+          }
+
           if (newSolutionInput.shouldCreateNodeVersionFile) {
             switch (newSolutionInput.nodeVersionManager) {
               case 'nvm':
