@@ -1,9 +1,18 @@
 # Change Log
 
+## [4.3.0] - 2024-12-11
+
+- Added remove confirmation prompt when removing SPFx solution from app catalog
+- Added /manage GitHub Chat command
+- Added generating code tour for upgrade and validate SPFx solution actions
+- Added upgrade SPFx project action
+- Added SPFx Fast Serve optional dependency to the scaffolding form
+- Improved sign in experience with caching of Client ID and Tenant ID
+
 ## [4.2.0] - 2024-10-19
 
-- Include m365 prefix and log passed CLI command options
-- Refactors to ensure types for settings
+- Included m365 prefix and log passed CLI command options
+- Refactored to ensure types for settings
 - Added a new project additional step to create or not the node version manager configuration file
 - Added new VSCode setting createNodeVersionFileDefaultValue to define the default value of the new project additional step
 - Added new VSCode setting nodeVersionManagerFile to specify which configuration file to be created
