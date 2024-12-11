@@ -20,13 +20,17 @@ And for Azure DevOps👇
 
 [Check out our docs for more details](https://github.com/pnp/vscode-viva/wiki/5.5-Actions#cicd-github-workflow)
 
-- **Upgrade project** - Uses CLI for Microsoft 365 to create a .md report with upgrade guidance to the latest supported SPFx version by the extension. 
+- **Upgrade project** - Uses CLI for Microsoft 365 to create a .md and/or code tour report with upgrade guidance to the latest supported SPFx version by the extension. The upgrade guidance provides optional as well as required steps a user needs to take manually in order to upgrade the project. At the end of the guidance file, the user may find a summary of the steps in a single script and a couple of manual steps that need to be taken.
 
 ![Upgrade project](../images/upgrade-project.png)
 
+And the code tour guidance will provide you upgrade tips directly in your code!
+
+![Upgrade project](./assets/images/upgrade-project-code-tour.png)
+
 [Check out our docs for more details](https://github.com/pnp/vscode-viva/wiki/5.5-Actions#upgrade-project)
 
-- **Validate project** - Creates a validation .md report against the currently used SPFx version in the project. The action will automatically detect the SPFx version used and will validate if the project is properly set up. 
+- **Validate project** - Creates a validation .md report and/or code tour validation guidance for the currently open SPFx project. The action will automatically detect the SPFx version used and will validate if the project is properly set up.
 
 ![Upgrade project](../images/validate-project.png)
 
