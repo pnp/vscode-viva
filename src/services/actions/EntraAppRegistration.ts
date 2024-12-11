@@ -1,4 +1,5 @@
 import { window, commands, ProgressLocation, Progress } from 'vscode';
+import * as vscode from 'vscode';
 import { Extension } from '../dataType/Extension';
 import { Subscription } from '../../models';
 import { Commands, WebViewType } from '../../constants';
@@ -11,8 +12,10 @@ import { AuthProvider } from '../../providers/AuthProvider';
 
 
 export class EntraAppRegistration {
+  private static context: vscode.ExtensionContext;
 
-  public static registerCommands() {
+  public static registerCommands(context: vscode.ExtensionContext) {
+    EntraAppRegistration.context = context;
     const subscriptions: Subscription[] = Extension.getInstance().subscriptions;
 
     subscriptions.push(
@@ -59,6 +62,9 @@ export class EntraAppRegistration {
             return;
           }
         });
+
+        await EntraAppRegistration.context.globalState.update('clientId', EnvironmentInformation.clientId);
+        await EntraAppRegistration.context.globalState.update('tenantId', EnvironmentInformation.tenantId);
 
         Notifications.info('SPFx Toolkit App Registration created successfully');
         PnPWebview.close();

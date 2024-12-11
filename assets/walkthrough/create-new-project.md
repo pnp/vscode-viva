@@ -4,10 +4,6 @@ Creating a new project was never easier. Just use the **create a new project** a
 
 ![Create new project](../images/scaffolding.png)
 
-Check it out in action 👇.
-
-![Create new project](../images/scaffolding-form.gif)
-
 It's possible to scaffold any kind of SPFx project including web parts, extensions, library components, and adaptive card extensions.
 
 ![All SPFx project support](../images/scaffolding-support.png)
@@ -17,7 +13,7 @@ It's possible to scaffold any kind of SPFx project including web parts, extensio
 - **Library components** are reusable code elements that can be shared across all the components in the tenant.
 - **Adaptive Card Extensions (ACEs)** allow you to build rich, native extensions for Viva Connections Dashboards and SharePoint Pages.
 
-Install additional dependencies with a single click straight from the scaffolding form. Currently we support installing [PnP reusable property pane controls](https://pnp.github.io/sp-dev-fx-property-controls/), [PnP reusable React controls](https://pnp.github.io/sp-dev-fx-controls-react/), and [PnPjs](https://pnp.github.io/pnpjs/).
+Install additional dependencies with a single click straight from the scaffolding form. Currently we support installing [PnP reusable property pane controls](https://pnp.github.io/sp-dev-fx-property-controls/), [PnP reusable React controls](https://pnp.github.io/sp-dev-fx-controls-react/), [PnPjs](https://pnp.github.io/pnpjs/). Add and preconfigure [SPFx Fast Serve](https://github.com/s-KaiNet/spfx-fast-serve) and add a Node Version Manager configuration file either for NVM or NVS.
 
 ![Additional dependency step](../images/scaffolding-additional-step.png)
 

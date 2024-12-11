@@ -23,12 +23,12 @@ export async function activate(context: vscode.ExtensionContext) {
 
 	TerminalCommandExecuter.register();
 
-	AuthProvider.register();
+	AuthProvider.register(context);
 
 	Dependencies.registerCommands();
 	Scaffolder.registerCommands();
 	CliActions.registerCommands();
-	EntraAppRegistration.registerCommands();
+	EntraAppRegistration.registerCommands(context);
 
 	CommandPanel.register();
 
@@ -62,6 +62,10 @@ export async function activate(context: vscode.ExtensionContext) {
 
 				if (fileContents.indexOf(ProjectFileContent.installPnPJs) > -1) {
 					await TerminalCommandExecuter.runCommand('npm install @pnp/sp @pnp/graph --save', terminalTitle, terminalIcon);
+				}
+
+				if (fileContents.indexOf(ProjectFileContent.installSPFxFastServe) > -1) {
+					await TerminalCommandExecuter.runCommand('spfx-fast-serve --force-install', terminalTitle, terminalIcon);
 				}
 
 				// If either of the following strings are found in the project file, run the command to get the node version

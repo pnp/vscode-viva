@@ -1,30 +1,46 @@
 import * as vscode from 'vscode';
-import { AdaptiveCardTypes, Commands, ComponentTypes, ExtensionTypes, msSampleGalleryLink, promptCodeContext, promptContext, promptGeneralContext, promptNewContext, promptSetupContext } from '../constants';
+import { Logger } from '../services/dataType/Logger';
+import { AdaptiveCardTypes, Commands, ComponentTypes, ExtensionTypes, msSampleGalleryLink, promptCodeContext, promptContext, promptExplainSharePointData, promptGeneralContext, promptMangeContext, promptNewContext, promptSetupContext } from '../constants';
 import { ProjectInformation } from '../services/dataType/ProjectInformation';
+import { CliActions } from '../services/actions/CliActions';
+import { AuthProvider } from '../providers/AuthProvider';
+import { EnvironmentInformation } from '../services/dataType/EnvironmentInformation';
 
 
 export class PromptHandlers {
   public static history: string[] = [];
   public static previousCommand: string = '';
+  public static modelFamily = 'gpt-4o';
 
   public static async handle(request: vscode.ChatRequest, context: vscode.ChatContext, stream: vscode.ChatResponseStream, token: vscode.CancellationToken): Promise<any> {
     stream.progress(PromptHandlers.getRandomProgressMessage());
-    const chatCommand = (request.command && ['setup', 'new', 'code'].indexOf(request.command.toLowerCase()) > -1) ? request.command.toLowerCase() : '';
+    const chatCommand = (request.command && ['setup', 'new', 'code', 'manage'].indexOf(request.command.toLowerCase()) > -1) ? request.command.toLowerCase() : '';
 
+    if (chatCommand === 'manage') {
+      const authInstance = AuthProvider.getInstance();
+      const account = await authInstance.getAccount();
+      if (!account) {
+        stream.markdown('\n\n The `/manage` command is only available when you are signed in. Please sign in first.');
+        return;
+      }
+    }
+
+    // TODO: in near future we may retrieve chat history like const previousMessages = context.history.filter((h) => h instanceof vscode.ChatResponseTurn );. currently it is only insiders
     const messages: vscode.LanguageModelChatMessage[] = [];
     messages.push(vscode.LanguageModelChatMessage.Assistant(promptContext));
     messages.push(vscode.LanguageModelChatMessage.Assistant(PromptHandlers.getChatCommandPrompt(chatCommand)));
 
-    if (PromptHandlers.previousCommand !== chatCommand) {
+    if (PromptHandlers.previousCommand !== chatCommand && PromptHandlers.previousCommand !== '') {
       PromptHandlers.history = [];
-      PromptHandlers.previousCommand = chatCommand;
     } else {
       PromptHandlers.history.forEach(message => messages.push(vscode.LanguageModelChatMessage.Assistant(message)));
     }
+    PromptHandlers.previousCommand = chatCommand;
 
     messages.push(vscode.LanguageModelChatMessage.User(request.prompt));
     PromptHandlers.history.push(request.prompt);
-    const [model] = await vscode.lm.selectChatModels({ vendor: 'copilot', family: 'gpt-4o' });
+    // TODO: in near future it will be possible to use user selected model like `await request.model.sendRequest(messages, {}, token);` now it is only available in insiders
+    const [model] = await vscode.lm.selectChatModels({ vendor: 'copilot', family: PromptHandlers.modelFamily });
     try {
       const chatResponse = await model.sendRequest(messages, {}, token);
       let query = '';
@@ -34,18 +50,63 @@ export class PromptHandlers {
       }
       PromptHandlers.history.push(query);
       PromptHandlers.getChatCommandButtons(chatCommand, query).forEach(button => stream.button(button));
+
+      if (chatCommand === 'manage') {
+        try {
+          const data = await PromptHandlers.tryToGetDataFromSharePoint(query);
+          if (data) {
+            stream.markdown('\n\nThis is what I found...\n\n');
+            const explanationResponse = await PromptHandlers.explainOverSharePointData(data, token);
+            let explanationQuery = '';
+            for await (const fragment of explanationResponse.text) {
+              explanationQuery += fragment;
+              stream.markdown(fragment);
+            }
+            PromptHandlers.history.push(explanationQuery);
+          }
+        } catch (err: any) {
+          Logger.getInstance();
+          Logger.error(err!.error ? err!.error.message.toString() : err.toString());
+          stream.markdown('\n\nI was not able to retrieve the data from SharePoint. Please check the logs in output window for more information.');
+        }
+      }
+
       return { metadata: { command: chatCommand } };
     } catch (err) {
       if (err instanceof vscode.LanguageModelError) {
         if (err.message.includes('off_topic')) {
-          stream.markdown('...I am sorry, I am not able to help with that. Please try again with a different question.');
+          stream.markdown('\n\n...I am sorry, I am not able to help with that. Please try again with a different question.');
         }
       } else {
-        stream.markdown('...It seems that something is not working as expected. Please try again later.');
+        stream.markdown('\n\n...It seems that something is not working as expected. Please try again later.');
       }
 
       return { metadata: { command: '' } };
     }
+  }
+
+  private static async tryToGetDataFromSharePoint(chatResponse: string): Promise<string | undefined> {
+    const cliRegex = /```([^\n]*)\n(?=[\s\S]*?m365 spo.+)([\s\S]*?)\n?```/g;
+    const cliMatch = cliRegex.exec(chatResponse);
+
+    if (cliMatch && cliMatch[2]) {
+      const outputMode = cliMatch[2].toLowerCase().includes('list') ? 'text' : 'md';
+      const result = await CliActions.runCliCommand(cliMatch[2], outputMode);
+      return result;
+    }
+
+    return;
+  }
+
+  private static async explainOverSharePointData(data: string, token: vscode.CancellationToken): Promise<vscode.LanguageModelChatResponse> {
+    const [model] = await vscode.lm.selectChatModels({ vendor: 'copilot', family: PromptHandlers.modelFamily });
+    const messages = [
+      vscode.LanguageModelChatMessage.User(promptExplainSharePointData),
+      vscode.LanguageModelChatMessage.User('Analyze and explain the following response:'),
+      vscode.LanguageModelChatMessage.User(data)
+    ];
+    const chatResponse = await model.sendRequest(messages, {}, token);
+    return chatResponse;
   }
 
   private static getChatCommandPrompt(chatCommand: string): string {
@@ -55,11 +116,17 @@ export class PromptHandlers {
         context += promptSetupContext;
       case 'new':
         context += promptNewContext;
-        context += `\n Here is some more information regarding each component type ${ComponentTypes}`;
-        context += `\n Here is some more information regarding each extension type ${ExtensionTypes}`;
-        context += `\n Here is some more information regarding each ACE type ${AdaptiveCardTypes}`;
+        context += `\n Here is some more information regarding each component type ${JSON.stringify(ComponentTypes)}`;
+        context += `\n Here is some more information regarding each extension type ${JSON.stringify(ExtensionTypes)}`;
+        context += `\n Here is some more information regarding each ACE type ${JSON.stringify(AdaptiveCardTypes)}`;
       case 'code':
         context += promptCodeContext;
+      case 'manage':
+        // TODO: since we are already retrieving list of sites app catalog we could add it as additional context here
+        context += promptMangeContext;
+        if (EnvironmentInformation.tenantUrl) {
+          context += `Tenant SharePoint URL is: ${EnvironmentInformation.tenantUrl}`;
+        }
       default:
         context += promptGeneralContext;
     }
@@ -93,14 +160,14 @@ export class PromptHandlers {
     switch (chatCommand) {
       case 'new':
         const buttons = [];
-        const regex = /```([^\n]*)\n(?=[\s\S]*?yo @microsoft\/sharepoint.+)([\s\S]*?)\n?```/g;
-        const match = regex.exec(chatResponse);
-        if (match && match[2]) {
+        const yoRegex = /```([^\n]*)\n(?=[\s\S]*?yo @microsoft\/sharepoint.+)([\s\S]*?)\n?```/g;
+        const yoMatch = yoRegex.exec(chatResponse);
+        if (yoMatch && yoMatch[2]) {
           buttons.push(
             {
               command: Commands.createProjectCopilot,
               title: vscode.l10n.t('Create project'),
-              arguments: [match[2]],
+              arguments: [yoMatch[2]],
             });
         }
         if (chatResponse.toLowerCase().includes(msSampleGalleryLink)) {
@@ -112,7 +179,7 @@ export class PromptHandlers {
         return buttons;
       case 'setup':
         if (chatResponse.toLowerCase().includes('check dependencies')) {
-          return[{
+          return [{
             command: Commands.checkDependencies,
             title: vscode.l10n.t('Check if my local workspace is ready'),
           }];

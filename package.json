@@ -2,7 +2,7 @@
 	"name": "viva-connections-toolkit",
 	"displayName": "SharePoint Framework Toolkit",
 	"description": "SharePoint Framework Toolkit aims to boost your productivity in developing and managing SharePoint Framework solutions helping at every stage of your development flow, from setting up your development workspace to deploying a solution straight to your tenant without the need to leave VS Code and now even create a CI/CD pipeline to introduce automate deployment of your app. This toolkit is provided by the community.",
-	"version": "4.2.0",
+	"version": "4.3.0",
 	"publisher": "m365pnp",
 	"preview": false,
 	"homepage": "https://github.com/pnp/vscode-viva",
@@ -63,12 +63,17 @@
 					{
 						"name": "new",
 						"isSticky": true,
-						"description": "Create a new SharePoint Framework project."
+						"description": "Create a new SharePoint Framework project"
+					},
+					{
+						"name": "manage",
+						"isSticky": true,
+						"description": "[beta] Manage your SharePoint Online tenant"
 					},
 					{
 						"name": "code",
 						"isSticky": true,
-						"description": "Let's write some SPFx code (I am still learning this, please consider this as beta)"
+						"description": "[beta] Let's write some SPFx code"
 					}
 				]
 			}
@@ -205,6 +210,28 @@
 						".node-version"
 					],
 					"description": "The file to be used to store the Node version for the selected Node version manager. Remember that the .node-version file is supported only while using nvs."
+				},
+				"spfx-toolkit.projectUpgradeOutputMode": {
+					"title": "Project upgrade output mode",
+					"type": "string",
+					"default": "both",
+					"enum": [
+						"both",
+						"markdown",
+						"code tour"
+					],
+					"description": "Choose the output mode for the project upgrade. You can choose between `both`, `markdown`, or `code tour`."
+				},
+				"spfx-toolkit.projectValidateOutputMode": {
+					"title": "Project validate output mode",
+					"type": "string",
+					"default": "both",
+					"enum": [
+						"both",
+						"markdown",
+						"code tour"
+					],
+					"description": "Choose the output mode for the project validation. You can choose between `both`, `markdown`, or `code tour`."
 				}
 			}
 		},
@@ -434,6 +461,12 @@
 				"icon": "$(circle-slash)"
 			},
 			{
+				"command": "spfx-toolkit.upgradeAppCatalogApp",
+				"title": "Upgrade",
+				"category": "SharePoint Framework Toolkit",
+				"icon": "$(sync)"
+			},
+			{
 				"command": "spfx-toolkit.showMoreActions",
 				"title": "...",
 				"category": "SharePoint Framework Toolkit",
@@ -504,6 +537,10 @@
 				{
 					"command": "spfx-toolkit.disableAppCatalogApp",
 					"group": "actions.more@4"
+				},
+				{
+					"command": "spfx-toolkit.upgradeAppCatalogApp",
+					"group": "actions.more@5"
 				}
 			],
 			"explorer/context": [
