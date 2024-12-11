@@ -104,21 +104,13 @@ Creating a new project was never easier. Just use the **create a new project** a
 
 ![Create new project](./assets/images/scaffolding.png)
 
-Check it out in action 👇.
-
-![Create new project](./assets/images/scaffolding-form.gif)
-
 It's possible to scaffold any kind of SPFx project.
 
 ![All SPFx project support](./assets/images/scaffolding-support.png)
 
-Install additional dependencies with a single click straight from the scaffolding form. Currently we support installing [PnP reusable property pane controls](https://pnp.github.io/sp-dev-fx-property-controls/), [PnP reusable React controls](https://pnp.github.io/sp-dev-fx-controls-react/), and [PnPjs](https://pnp.github.io/pnpjs/).
+Install additional dependencies with a single click straight from the scaffolding form. Currently we support installing [PnP reusable property pane controls](https://pnp.github.io/sp-dev-fx-property-controls/), [PnP reusable React controls](https://pnp.github.io/sp-dev-fx-controls-react/), [PnPjs](https://pnp.github.io/pnpjs/). Add and preconfigure [SPFx Fast Serve](https://github.com/s-KaiNet/spfx-fast-serve) and add a Node Version Manager configuration file either for NVM or NVS.
 
 ![Additional dependency step](./assets/images/scaffolding-additional-step.png)
-
-When you can set the additional dependencies it's also possible to automatically create the node version manager file with the version of Node.js used when creating the project. These settings are available in the extension settings.
-
-![Additional dependency step node version](./assets/images/scaffolding-additional-step-node-version.png)
 
 [Check out our docs for more details](https://github.com/pnp/vscode-viva/wiki/5.2-Scaffolding#1-scaffold-a-new-spfx-project)
 
@@ -135,6 +127,8 @@ SPFx Toolkit needs and Entra App Registration to be able to sign in to your tena
 SPFx Toolkit will guide you through the process of creating a new app registration either manually by providing step-by-step guidance or automatically by creating the app registration for you.
 
 ![entra app reg form](./assets/images/sign-in-entra-app-reg-form.png)
+
+Check it out in action 👇
 
 ![app registration](./assets/images/sign-in.gif)
 
@@ -159,6 +153,7 @@ After successful sign in, an additional view is presented that shows a list of l
 - **Remove**: Removes the app from the app catalog.
 - **Enable**: Allows end users to add the solution to their SharePoint sites.
 - **Disable**: Hides the solution from end users, preventing them from adding it to sites.
+- **Upgrade**: Upgrades the solution to the latest version available in the app catalog for the specified site.
 
 Additionally, it will show you all tenant-wide extensions installed on your tenant.
 
@@ -202,13 +197,17 @@ And for Azure DevOps👇
 
 [Check out our docs for more details](https://github.com/pnp/vscode-viva/wiki/5.5-Actions#cicd-github-workflow)
 
-- **Upgrade project** - Uses CLI for Microsoft 365 to create a .md report with upgrade guidance to the latest supported SPFx version by the extension. 
+- **Upgrade project** - Uses CLI for Microsoft 365 to create a .md and/or code tour report with upgrade guidance to the latest supported SPFx version by the extension. The upgrade guidance provides optional as well as required steps a user needs to take manually in order to upgrade the project. At the end of the guidance file, the user may find a summary of the steps in a single script and a couple of manual steps that need to be taken.
 
 ![Upgrade project](./assets/images/upgrade-project.png)
 
+And the code tour guidance will provide you upgrade tips directly in your code!
+
+![Upgrade project](./assets/images/upgrade-project-code-tour.png)
+
 [Check out our docs for more details](https://github.com/pnp/vscode-viva/wiki/5.5-Actions#upgrade-project)
 
-- **Validate project** - Creates a validation .md report against the currently used SPFx version in the project. The action will automatically detect the SPFx version used and will validate if the project is properly set up. 
+- **Validate project** - Creates a validation .md report and/or code tour validation guidance for the currently open SPFx project. The action will automatically detect the SPFx version used and will validate if the project is properly set up.
 
 ![Upgrade project](./assets/images/validate-project.png)
 
@@ -315,7 +314,8 @@ Now you may use SPFx Toolkit as a chat participant in GitHub Copilot chat extens
 Currently, we support the following commands:
 - `/setup` - that is dedicated to providing information on how to setup your local workspace for SharePoint Framework development
 - `/new` - that may be used to get guidance on how to create a new solution or find and reuse an existing sample from the PnP SPFx sample gallery
-- `/code` - that is fine-tuned to provide help in coding your SharePoint Framework project and provides additional boosters like validating the correctness of your SPFx project, scaffolding a CI/CD workflow, or renaming your project, and many more.
+- `/code` - [beta] this command is fine-tuned to provide help in coding your SharePoint Framework project and provides additional boosters like validating the correctness of your SPFx project, scaffolding a CI/CD workflow, or renaming your project, and many more.
+- `/manage` - [beta] this command will allow you to ask and retrieve any kind of data from you SharePoint Online tenant. This command will only work if your are signed in to your tenant. It uses CLI for Microsoft 365 commands under the hood to retrieve and explain data and assets from your SharePoint Online tenant. Currently it does support only retrieving information, it will not support you in creating, updating or removing any resources. For example, you want to check if some list item or file exists. Or how many items with specific metadata do you have on a list? Or ask for content type columns to generate an interface based on the response quickly.
 
 [Check out our docs for more details](https://github.com/pnp/vscode-viva/wiki/8.-SPFx-Toolkit-GitHub-Chat-Participant)
 

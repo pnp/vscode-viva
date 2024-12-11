@@ -26,6 +26,7 @@ export const ScaffoldSpfxProjectView: React.FunctionComponent<IScaffoldSpfxProje
   const [shouldInstallReusablePropertyPaneControls, setShouldInstallReusablePropertyPaneControls] = useState<boolean>(false);
   const [shouldInstallReusableReactControls, setShouldInstallReusableReactControls] = useState<boolean>(false);
   const [shouldInstallPnPJs, setShouldInstallPnPJs] = useState<boolean>(false);
+  const [shouldInstallSPFxFastServe, setShouldInstallSPFxFastServe] = useState<boolean>(false);
   const [shouldCreateNodeVersionFile, setShouldCreateNodeVersionFile] = useState<boolean>(false);
   const [nodeVersionManager, setNodeVersionManager] = useState<'nvm' | 'nvs' | 'none'>('nvm');
   const [nodeVersionManagerFile, setNodeVersionManagerFile] = useState<'.nvmrc' | '.node-version'>('.nvmrc');
@@ -82,6 +83,7 @@ export const ScaffoldSpfxProjectView: React.FunctionComponent<IScaffoldSpfxProje
         shouldInstallReusablePropertyPaneControls,
         shouldInstallReusableReactControls,
         shouldInstallPnPJs,
+        shouldInstallSPFxFastServe,
         shouldCreateNodeVersionFile,
         nodeVersionManagerFile,
         nodeVersionManager
@@ -130,6 +132,8 @@ export const ScaffoldSpfxProjectView: React.FunctionComponent<IScaffoldSpfxProje
             setShouldInstallReusableReactControls={setShouldInstallReusableReactControls}
             shouldInstallPnPJs={shouldInstallPnPJs}
             setShouldInstallPnPJs={setShouldInstallPnPJs}
+            shouldInstallSPFxFastServe={shouldInstallSPFxFastServe}
+            setShouldInstallSPFxFastServe={setShouldInstallSPFxFastServe}
             shouldCreateNodeVersionFile={shouldCreateNodeVersionFile}
             setShouldCreateNodeVersionFile={setShouldCreateNodeVersionFile}
             setNodeVersionManagerFile={setNodeVersionManagerFile}

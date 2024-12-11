@@ -12,7 +12,6 @@ import { AdaptiveCardCheck } from '../services/check/AdaptiveCardCheck';
 import { Subscription } from '../models';
 import { Extension } from '../services/dataType/Extension';
 import { getExtensionSettings } from '../utils';
-import { EntraApplicationCheck } from '../services/check/EntraApplicationCheck';
 import { Notifications } from '../services/dataType/Notifications';
 
 
@@ -106,8 +105,6 @@ export class CommandPanel {
     const accountCommands: ActionTreeItem[] = [];
 
     if (session) {
-      EntraApplicationCheck.validateEntraAppRegistrationComponent(session);
-
       commands.executeCommand('setContext', ContextKeys.isLoggedIn, true);
 
       accountCommands.push(new ActionTreeItem(session.account.label, '', { name: 'spo-m365', custom: true }, TreeItemCollapsibleState.Expanded, undefined, undefined, 'm365Account', []));
@@ -117,6 +114,7 @@ export class CommandPanel {
       if (appCatalogUrls?.some) {
         const url = new URL(appCatalogUrls[0]);
         const originUrl = url.origin;
+        EnvironmentInformation.tenantUrl = originUrl;
         const adminOriginUrl = originUrl.replace('.sharepoint.com', '-admin.sharepoint.com');
         const webApiPermissionManagementUrl = `${adminOriginUrl}/_layouts/15/online/AdminHome.aspx#/webApiPermissionManagement`;
         DebuggerCheck.validateUrl(originUrl);
@@ -213,7 +211,8 @@ export class CommandPanel {
                     new ActionTreeItem('Retract', '', undefined, undefined, Commands.retractAppCatalogApp, [app.ID, app.Title, undefined, app.Deployed], ContextKeys.retractApp),
                     new ActionTreeItem('Remove', '', undefined, undefined, Commands.removeAppCatalogApp, [app.ID, app.Title], ContextKeys.removeApp),
                     new ActionTreeItem('Enable', '', undefined, undefined, Commands.enableAppCatalogApp, [app.Title, tenantAppCatalogUrl, app.Enabled], ContextKeys.enableApp),
-                    new ActionTreeItem('Disable', '', undefined, undefined, Commands.disableAppCatalogApp, [app.Title, tenantAppCatalogUrl, app.Enabled], ContextKeys.disableApp)
+                    new ActionTreeItem('Disable', '', undefined, undefined, Commands.disableAppCatalogApp, [app.Title, tenantAppCatalogUrl, app.Enabled], ContextKeys.disableApp),
+                    new ActionTreeItem('Upgrade', '', undefined, undefined, Commands.upgradeAppCatalogApp, [app.ID, app.Title, tenantAppCatalogUrl, true], ContextKeys.upgradeApp)
                   ]
                 )
               );
@@ -252,7 +251,8 @@ export class CommandPanel {
                       new ActionTreeItem('Retract', '', undefined, undefined, Commands.retractAppCatalogApp, [app.ID, app.Title, siteAppCatalogUrl, app.Deployed], ContextKeys.retractApp),
                       new ActionTreeItem('Remove', '', undefined, undefined, Commands.removeAppCatalogApp, [app.ID, app.Title, siteAppCatalogUrl], ContextKeys.removeApp),
                       new ActionTreeItem('Enable', '', undefined, undefined, Commands.enableAppCatalogApp, [app.Title, siteAppCatalogUrl, app.Enabled], ContextKeys.enableApp),
-                      new ActionTreeItem('Disable', '', undefined, undefined, Commands.disableAppCatalogApp, [app.Title, siteAppCatalogUrl, app.Enabled], ContextKeys.disableApp)
+                      new ActionTreeItem('Disable', '', undefined, undefined, Commands.disableAppCatalogApp, [app.Title, siteAppCatalogUrl, app.Enabled], ContextKeys.disableApp),
+                      new ActionTreeItem('Upgrade', '', undefined, undefined, Commands.upgradeAppCatalogApp, [app.ID, app.Title, siteAppCatalogUrl, false], ContextKeys.upgradeApp)
                     ]
                   )
                 );
