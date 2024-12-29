@@ -60,5 +60,8 @@ export const Commands = {
   enableAppCatalogApp: `${EXTENSION_NAME}.enableAppCatalogApp`,
   disableAppCatalogApp: `${EXTENSION_NAME}.disableAppCatalogApp`,
   upgradeAppCatalogApp: `${EXTENSION_NAME}.upgradeAppCatalogApp`,
-  showMoreActions: `${EXTENSION_NAME}.showMoreActions`
+  showMoreActions: `${EXTENSION_NAME}.showMoreActions`,
+
+  // Set form customizer
+  setFormCustomizer: `${EXTENSION_NAME}.setFormCustomizer`
 };
