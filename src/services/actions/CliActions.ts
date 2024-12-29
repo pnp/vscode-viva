@@ -443,7 +443,7 @@ export class CliActions {
 
       await window.withProgress({
         location: ProgressLocation.Notification,
-        title: 'Creating app registration...',
+        title: `Creating app registration... Check [output window](command:${Commands.showOutputChannel}) to follow the progress.`,
         cancellable: true
       }, async (progress: Progress<{ message?: string; increment?: number }>) => {
         try {
@@ -481,7 +481,7 @@ export class CliActions {
 
     await window.withProgress({
       location: ProgressLocation.Notification,
-      title: `Generating ${input.workflowType === WorkflowType.gitHub ? 'GitHub Workflow' : 'Azure DevOps Pipeline'}...`,
+      title: `Generating ${input.workflowType === WorkflowType.gitHub ? 'GitHub Workflow' : 'Azure DevOps Pipeline'}... Check [output window](command:${Commands.showOutputChannel}) to follow the progress.`,
       cancellable: true
     }, async (progress: Progress<{ message?: string; increment?: number }>) => {
       try {
@@ -575,7 +575,7 @@ export class CliActions {
 
     await window.withProgress({
       location: ProgressLocation.Notification,
-      title: 'Generating the upgrade steps...',
+      title: `Generating the upgrade steps... Check [output window](command:${Commands.showOutputChannel}) to follow the progress.`,
       cancellable: true
     }, async (progress: Progress<{ message?: string; increment?: number }>) => {
       try {
@@ -641,7 +641,7 @@ export class CliActions {
 
     await window.withProgress({
       location: ProgressLocation.Notification,
-      title: 'Renaming the current project...',
+      title: `Renaming the current project... Check [output window](command:${Commands.showOutputChannel}) to follow the progress.`,
       cancellable: true
     }, async (progress: Progress<{ message?: string; increment?: number }>) => {
       try {
@@ -693,7 +693,7 @@ export class CliActions {
 
     await window.withProgress({
       location: ProgressLocation.Notification,
-      title: 'Granting API permissions for the current project...',
+      title: `Granting API permissions for the current project... Check [output window](command:${Commands.showOutputChannel}) to follow the progress.`,
       cancellable: true
     }, async (progress: Progress<{ message?: string; increment?: number }>) => {
       try {
@@ -749,7 +749,7 @@ export class CliActions {
 
     await window.withProgress({
       location: ProgressLocation.Notification,
-      title: 'Validating the current project...',
+      title: `Validating the current project... Check [output window](command:${Commands.showOutputChannel}) to follow the progress.`,
       cancellable: true
     }, async (progress: Progress<{ message?: string; increment?: number }>) => {
       try {
