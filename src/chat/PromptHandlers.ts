@@ -66,8 +66,14 @@ export class PromptHandlers {
           }
         } catch (err: any) {
           Logger.getInstance();
-          Logger.error(err!.error ? err!.error.message.toString() : err.toString());
+          const errorText = err!.error ? err!.error.message.toString() : err.toString();
+          Logger.error(errorText);
           stream.markdown('\n\nI was not able to retrieve the data from SharePoint. Please check the logs in output window for more information.');
+
+          const markdownString = new vscode.MarkdownString();
+          markdownString.supportHtml = true;
+          markdownString.appendMarkdown(`<span style="color:#f00;">${errorText}</span>`);
+          stream.markdown(markdownString);
         }
       }
 
