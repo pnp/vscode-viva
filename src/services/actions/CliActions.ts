@@ -69,6 +69,9 @@ export class CliActions {
     subscriptions.push(
       commands.registerCommand(Commands.upgradeAppCatalogApp, CliActions.upgradeAppCatalogApp)
     );
+    subscriptions.push(
+      commands.registerCommand(Commands.setFormCustomizer, CliActions.setFormCustomizer)
+    );
   }
 
   /**
@@ -919,5 +922,112 @@ export class CliActions {
     } else {
       Notifications.error(`${fileName}.tour file not found in path ${path.join(wsFolder.uri.fsPath, '.tours')}. Cannot start Code Tour.`);
     }
+  }
+
+  /**
+   * Sets the form customizer for a content type on a list.
+   */
+  public static async setFormCustomizer() {
+    const relativeUrl = await window.showInputBox({
+      prompt: 'Enter the relative URL of the site',
+      ignoreFocusOut: true,
+      placeHolder: 'e.g., sites/sales',
+      validateInput: (input) => {
+        if (!input) {
+          return 'site URL is required';
+        }
+
+        const trimmedInput = input.trim();
+
+        if (trimmedInput.startsWith('https://')) {
+          return 'Please provide a relative URL, not an absolute URL.';
+        }
+        if (trimmedInput.startsWith('/')) {
+          return 'Please provide a relative URL without a leading slash.';
+        }
+
+        return undefined;
+      }
+    });
+
+    if (relativeUrl === undefined) {
+      Notifications.warning('No site URL provided. Setting form customizer aborted.');
+      return;
+    }
+
+    const siteUrl = `${EnvironmentInformation.tenantUrl}/${relativeUrl.trim()}`;
+
+    const listTitle = await window.showInputBox({
+      prompt: 'Enter the list title',
+      ignoreFocusOut: true,
+      validateInput: (value) => value ? undefined : 'List title is required'
+    });
+
+    if (!listTitle) {
+      Notifications.warning('No list title provided. Setting form customizer aborted.');
+      return;
+    }
+
+    const contentType = await window.showInputBox({
+      prompt: 'Enter the Content Type name',
+      ignoreFocusOut: true,
+      validateInput: (value) => value ? undefined : 'Content Type name is required'
+    });
+
+    if (!contentType) {
+      Notifications.warning('No content type name provided. Setting form customizer aborted.');
+      return;
+    }
+
+    const editFormClientSideComponentId = await window.showInputBox({
+      prompt: 'Enter the Edit form customizer ID (leave empty to skip)',
+      ignoreFocusOut: true
+    });
+
+    const newFormClientSideComponentId = await window.showInputBox({
+      prompt: 'Enter the New form customizer ID (leave empty to skip)',
+      ignoreFocusOut: true
+    });
+
+    const displayFormClientSideComponentId = await window.showInputBox({
+      prompt: 'Enter the View form customizer ID (leave empty to skip)',
+      ignoreFocusOut: true
+    });
+
+    const commandOptions: any = {
+      webUrl: siteUrl,
+      listTitle: listTitle,
+      name: contentType
+    };
+
+    if (editFormClientSideComponentId) {
+      commandOptions.EditFormClientSideComponentId = editFormClientSideComponentId;
+    }
+
+    if (newFormClientSideComponentId ) {
+      commandOptions.NewFormClientSideComponentId = newFormClientSideComponentId ;
+    }
+
+    if (displayFormClientSideComponentId) {
+      commandOptions.DisplayFormClientSideComponentId = displayFormClientSideComponentId;
+    }
+
+    await window.withProgress({
+      location: ProgressLocation.Notification,
+      title: 'Setting form customizer...',
+      cancellable: true
+    }, async (progress: Progress<{ message?: string; increment?: number }>) => {
+      try {
+        const result = await CliExecuter.execute('spo contenttype set', 'json', commandOptions);
+        if (result.stderr) {
+          Notifications.error(result.stderr);
+        } else {
+          Notifications.info('Form customizer set successfully.');
+        }
+      } catch (e: any) {
+        const message = e?.error?.message;
+        Notifications.error(message);
+      }
+    });
   }
 }
