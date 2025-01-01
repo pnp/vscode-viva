@@ -469,8 +469,7 @@
 			{
 				"command": "spfx-toolkit.setFormCustomizer",
 				"title": "Set Form Customizer",
-				"category": "SharePoint Framework Toolkit",
-				"icon": "$(file-code)"
+				"category": "SharePoint Framework Toolkit"
 			},
 			{
 				"command": "spfx-toolkit.showMoreActions",

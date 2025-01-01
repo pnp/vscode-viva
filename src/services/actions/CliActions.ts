@@ -928,15 +928,34 @@ export class CliActions {
    * Sets the form customizer for a content type on a list.
    */
   public static async setFormCustomizer() {
-    const siteUrl = await window.showInputBox({
-      prompt: 'Enter the site URL',
+    const relativeUrl = await window.showInputBox({
+      prompt: 'Enter the relative URL of the site',
       ignoreFocusOut: true,
-      validateInput: (value) => value ? undefined : 'Site URL is required'
+      placeHolder: 'e.g., sites/sales',
+      validateInput: (input) => {
+        if (!input) {
+          return 'site URL is required';
+        }
+
+        const trimmedInput = input.trim();
+
+        if (trimmedInput.startsWith('https://')) {
+          return 'Please provide a relative URL, not an absolute URL.';
+        }
+        if (trimmedInput.startsWith('/')) {
+          return 'Please provide a relative URL without a leading slash.';
+        }
+
+        return undefined;
+      }
     });
 
-    if (!siteUrl) {
+    if (relativeUrl === undefined) {
+      Notifications.warning('No site URL provided. Setting form customizer aborted.');
       return;
     }
+
+    const siteUrl = `${EnvironmentInformation.tenantUrl}/${relativeUrl.trim()}`;
 
     const listTitle = await window.showInputBox({
       prompt: 'Enter the list title',
@@ -945,6 +964,7 @@ export class CliActions {
     });
 
     if (!listTitle) {
+      Notifications.warning('No list title provided. Setting form customizer aborted.');
       return;
     }
 
@@ -955,21 +975,22 @@ export class CliActions {
     });
 
     if (!contentType) {
+      Notifications.warning('No content type name provided. Setting form customizer aborted.');
       return;
     }
 
     const editFormClientSideComponentId = await window.showInputBox({
-      prompt: 'Enter the Edit form customizer (leave empty to skip)',
+      prompt: 'Enter the Edit form customizer ID (leave empty to skip)',
       ignoreFocusOut: true
     });
 
-    const newFormClientSideComponentId  = await window.showInputBox({
-      prompt: 'Enter the New form customizer (leave empty to skip)',
+    const newFormClientSideComponentId = await window.showInputBox({
+      prompt: 'Enter the New form customizer ID (leave empty to skip)',
       ignoreFocusOut: true
     });
 
     const displayFormClientSideComponentId = await window.showInputBox({
-      prompt: 'Enter the View form customizer (leave empty to skip)',
+      prompt: 'Enter the View form customizer ID (leave empty to skip)',
       ignoreFocusOut: true
     });
 
@@ -984,7 +1005,7 @@ export class CliActions {
     }
 
     if (newFormClientSideComponentId ) {
-      commandOptions.newFormCustomizer = newFormClientSideComponentId ;
+      commandOptions.NewFormClientSideComponentId = newFormClientSideComponentId ;
     }
 
     if (displayFormClientSideComponentId) {
