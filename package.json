@@ -467,6 +467,11 @@
 				"icon": "$(sync)"
 			},
 			{
+				"command": "spfx-toolkit.setFormCustomizer",
+				"title": "Set Form Customizer",
+				"category": "SharePoint Framework Toolkit"
+			},
+			{
 				"command": "spfx-toolkit.showMoreActions",
 				"title": "...",
 				"category": "SharePoint Framework Toolkit",
