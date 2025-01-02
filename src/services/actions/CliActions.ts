@@ -1014,7 +1014,7 @@ export class CliActions {
 
     await window.withProgress({
       location: ProgressLocation.Notification,
-      title: 'Setting form customizer...',
+      title: `Setting form customizer... Check [output window](command:${Commands.showOutputChannel}) to follow the progress.`,
       cancellable: true
     }, async (progress: Progress<{ message?: string; increment?: number }>) => {
       try {
