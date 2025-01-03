@@ -13,6 +13,7 @@ import { Subscription } from '../models';
 import { Extension } from '../services/dataType/Extension';
 import { getExtensionSettings } from '../utils';
 import { Notifications } from '../services/dataType/Notifications';
+import { increaseVersion } from '../utils/increaseVersion';
 
 
 export class CommandPanel {
@@ -28,6 +29,9 @@ export class CommandPanel {
     );
     subscriptions.push(
       commands.registerCommand(Commands.welcome, () => commands.executeCommand('workbench.action.openWalkthrough', 'm365pnp.viva-connections-toolkit#spfx-toolkit-intro', false))
+    );
+    subscriptions.push(
+      commands.registerCommand(Commands.increaseVersion, CommandPanel.increaseVersion)
     );
 
     CommandPanel.init();
@@ -302,6 +306,7 @@ export class CommandPanel {
     actionCommands.push(new ActionTreeItem('Upgrade project SPFx version', '', { name: 'arrow-up', custom: false }, undefined, Commands.upgradeProject));
     actionCommands.push(new ActionTreeItem('Validate project correctness', '', { name: 'check-all', custom: false }, undefined, Commands.validateProject));
     actionCommands.push(new ActionTreeItem('Rename project', '', { name: 'whole-word', custom: false }, undefined, Commands.renameProject));
+    actionCommands.push(new ActionTreeItem('Increase project version', '', { name: 'arrow-up', custom: false }, undefined, Commands.increaseVersion));
 
     if (EnvironmentInformation.account) {
       actionCommands.push(new ActionTreeItem('Grant API permissions', '', { name: 'workspace-trusted', custom: false }, undefined, Commands.grantAPIPermissions));
@@ -350,5 +355,24 @@ export class CommandPanel {
 
   private static showWelcome() {
     commands.executeCommand('setContext', ContextKeys.showWelcome, true);
+  }
+
+  /**
+   * Increases the version of the project.
+   */
+  public static async increaseVersion() {
+    const versionType = await window.showQuickPick(['major', 'minor', 'patch'], {
+      placeHolder: 'Select the version type to increase',
+      ignoreFocusOut: true,
+      canPickMany: false,
+      title: 'Increase Version'
+    });
+
+    if (!versionType) {
+      return;
+    }
+
+    await increaseVersion(versionType as 'major' | 'minor' | 'patch');
+    Notifications.info(`Version increased successfully.`);
   }
 }
