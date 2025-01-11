@@ -2380,8 +2380,8 @@
         "SharePoint"
       ],
       "createDate": "2018-12-10",
-      "updateDate": "2018-12-10",
-      "version": "1.12.1",
+      "updateDate": "2024-10-31",
+      "version": "1.20.0",
       "componentType": "webpart",
       "extensionType": null,
       "sampleGalerry": "sp-dev-fx-extensions",
