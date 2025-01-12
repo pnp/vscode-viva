@@ -92,7 +92,7 @@ export class PromptHandlers {
   }
 
   private static async tryToGetDataFromSharePoint(chatResponse: string): Promise<string | undefined> {
-    const cliRegex = /```([^\n]*)\n(?=[\s\S]*?m365 spo.+)([\s\S]*?)\n?```/g;
+    const cliRegex = /```([^\n]*)\n(?=[\s\S]*?m365.+)([\s\S]*?)\n?```/g;
     const cliMatch = cliRegex.exec(chatResponse);
 
     if (cliMatch && cliMatch[2]) {
@@ -132,6 +132,9 @@ export class PromptHandlers {
         context += promptMangeContext;
         if (EnvironmentInformation.tenantUrl) {
           context += `Tenant SharePoint URL is: ${EnvironmentInformation.tenantUrl}`;
+        }
+        if (EnvironmentInformation.account) {
+          context += `Current userName (account) is: ${EnvironmentInformation.account}`;
         }
       default:
         context += promptGeneralContext;

@@ -9,8 +9,10 @@ if (-not (Test-Path -Path $cliLocalProjectPath -PathType Container)) {
 [hashtable]$commandsData = @{}
 
 $allSpoCommands = Get-ChildItem -Path "$workspacePath\cli-microsoft365\docs\docs\cmd\spo\*.mdx" -Recurse -Force -Exclude "_global*"
+$allTeamsCommands = Get-ChildItem -Path "$workspacePath\cli-microsoft365\docs\docs\cmd\teams\*.mdx" -Recurse -Force -Exclude "_global*"
+$allCommands = $allSpoCommands + $allTeamsCommands
 
-foreach ($command in $allSpoCommands) {
+foreach ($command in $allCommands) {
     $commandDocs = ConvertFrom-Markdown -Path $command
     $html = New-Object -Com 'HTMLFile'
     $html.write([ref]$commandDocs.Html)
