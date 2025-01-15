@@ -1,12 +1,12 @@
 {
 	"name": "viva-connections-toolkit",
-	"version": "4.3.1",
+	"version": "4.3.2",
 	"lockfileVersion": 3,
 	"requires": true,
 	"packages": {
 		"": {
 			"name": "viva-connections-toolkit",
-			"version": "4.3.1",
+			"version": "4.3.2",
 			"license": "MIT",
 			"dependencies": {
 				"@pnp/cli-microsoft365": "6.11.0",
