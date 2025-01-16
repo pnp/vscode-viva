@@ -2,16 +2,20 @@ import { VSCodeCheckbox } from '@vscode/webview-ui-toolkit/react';
 import * as React from 'react';
 import { StepHeader } from './StepHeader';
 import { PackageSelector } from './PackageSelector';
-import { WebviewCommand } from '../../../../../constants';
+import { ComponentType, WebviewCommand } from '../../../../../constants';
 import { Messenger } from '@estruyf/vscode/dist/client';
 
 interface AdditionalStepProps {
     shouldRunInit: boolean;
+    componentType: ComponentType;
+    componentName: string;
     setShouldRunInit: (value: boolean) => void;
     shouldInstallReusablePropertyPaneControls: boolean;
     setShouldInstallReusablePropertyPaneControls: (value: boolean) => void;
     shouldInstallReusableReactControls: boolean;
     setShouldInstallReusableReactControls: (value: boolean) => void;
+    shouldInstallReact: boolean;
+    setShouldInstallReact: (value: boolean) => void;
     shouldInstallPnPJs: boolean;
     setShouldInstallPnPJs: (value: boolean) => void;
     shouldInstallSPFxFastServe: boolean;
@@ -25,11 +29,15 @@ interface AdditionalStepProps {
 
 export const AdditionalStep: React.FunctionComponent<AdditionalStepProps> = ({
     shouldRunInit,
+    componentType,
+    componentName,
     setShouldRunInit,
     shouldInstallReusablePropertyPaneControls,
     setShouldInstallReusablePropertyPaneControls,
     shouldInstallReusableReactControls,
     setShouldInstallReusableReactControls,
+    shouldInstallReact,
+    setShouldInstallReact,
     shouldInstallPnPJs,
     setShouldInstallPnPJs,
     shouldInstallSPFxFastServe,
@@ -101,16 +109,31 @@ export const AdditionalStep: React.FunctionComponent<AdditionalStepProps> = ({
                     </label>
                     <VSCodeCheckbox checked={shouldRunInit} onChange={() => setShouldRunInit(!shouldRunInit)} />
                 </div>
-                <PackageSelector value={shouldInstallReusablePropertyPaneControls}
+                {
+                    componentType === ComponentType.webPart &&
+                    <PackageSelector value={shouldInstallReusablePropertyPaneControls}
                     setValue={setShouldInstallReusablePropertyPaneControls}
                     label='Install reusable property pane controls'
                     link='https://pnp.github.io/sp-dev-fx-property-controls/' />
+                }
 
-                <PackageSelector
+                {
+                    componentType === ComponentType.webPart &&
+                    <PackageSelector
                     value={shouldInstallReusableReactControls}
                     setValue={setShouldInstallReusableReactControls}
                     label='Install reusable React controls'
                     link='https://pnp.github.io/sp-dev-fx-controls-react/' />
+                }
+
+                {
+                    componentType === 'extension' &&
+                    <PackageSelector
+                    value={shouldInstallReact}
+                    setValue={setShouldInstallReact}
+                    label='Install React, ReactDom (@react, @react-dom)'
+                    link='https://github.com/facebook/react' />
+                }
 
                 <PackageSelector
                     value={shouldInstallPnPJs}

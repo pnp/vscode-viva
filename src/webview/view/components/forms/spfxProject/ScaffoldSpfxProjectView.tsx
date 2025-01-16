@@ -25,6 +25,7 @@ export const ScaffoldSpfxProjectView: React.FunctionComponent<IScaffoldSpfxProje
   const [shouldRunInit, setShouldRunInit] = useState<boolean>(true);
   const [shouldInstallReusablePropertyPaneControls, setShouldInstallReusablePropertyPaneControls] = useState<boolean>(false);
   const [shouldInstallReusableReactControls, setShouldInstallReusableReactControls] = useState<boolean>(false);
+  const [shouldInstallReact, setShouldInstallReact] = useState<boolean>(false);
   const [shouldInstallPnPJs, setShouldInstallPnPJs] = useState<boolean>(false);
   const [shouldInstallSPFxFastServe, setShouldInstallSPFxFastServe] = useState<boolean>(false);
   const [shouldCreateNodeVersionFile, setShouldCreateNodeVersionFile] = useState<boolean>(false);
@@ -82,6 +83,7 @@ export const ScaffoldSpfxProjectView: React.FunctionComponent<IScaffoldSpfxProje
         shouldRunInit,
         shouldInstallReusablePropertyPaneControls,
         shouldInstallReusableReactControls,
+        shouldInstallReact,
         shouldInstallPnPJs,
         shouldInstallSPFxFastServe,
         shouldCreateNodeVersionFile,
@@ -124,12 +126,16 @@ export const ScaffoldSpfxProjectView: React.FunctionComponent<IScaffoldSpfxProje
         {
           isNewProject &&
           <AdditionalStep
+            componentType={componentType}
+            componentName={componentName}
             shouldRunInit={shouldRunInit}
             setShouldRunInit={setShouldRunInit}
             shouldInstallReusablePropertyPaneControls={shouldInstallReusablePropertyPaneControls}
             setShouldInstallReusablePropertyPaneControls={setShouldInstallReusablePropertyPaneControls}
             shouldInstallReusableReactControls={shouldInstallReusableReactControls}
             setShouldInstallReusableReactControls={setShouldInstallReusableReactControls}
+            shouldInstallReact={shouldInstallReact}
+            setShouldInstallReact={setShouldInstallReact}
             shouldInstallPnPJs={shouldInstallPnPJs}
             setShouldInstallPnPJs={setShouldInstallPnPJs}
             shouldInstallSPFxFastServe={shouldInstallSPFxFastServe}
