@@ -12,6 +12,7 @@ import { CliActions } from './services/actions/CliActions';
 import { PromptHandlers } from './chat/PromptHandlers';
 import { CHAT_PARTICIPANT_NAME, ProjectFileContent } from './constants';
 import { EntraAppRegistration } from './services/actions/EntraAppRegistration';
+import { CopilotActions } from './services/actions/CopilotActions';
 
 
 export async function activate(context: vscode.ExtensionContext) {
@@ -29,6 +30,7 @@ export async function activate(context: vscode.ExtensionContext) {
 	Scaffolder.registerCommands();
 	CliActions.registerCommands();
 	EntraAppRegistration.registerCommands(context);
+	CopilotActions.registerCommands();
 
 	CommandPanel.register();
 

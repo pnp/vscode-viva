@@ -53,6 +53,9 @@ export const Commands = {
   // Welcome
   welcome: `${EXTENSION_NAME}.welcome`,
 
+  //Copilot
+  openCopilot: `${EXTENSION_NAME}.openCopilot`,
+
   // App actions
   deployAppCatalogApp: `${EXTENSION_NAME}.deployAppCatalogApp`,
   retractAppCatalogApp: `${EXTENSION_NAME}.retractAppCatalogApp`,
