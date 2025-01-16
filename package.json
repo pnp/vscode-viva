@@ -2,7 +2,7 @@
 	"name": "viva-connections-toolkit",
 	"displayName": "SharePoint Framework Toolkit",
 	"description": "SharePoint Framework Toolkit aims to boost your productivity in developing and managing SharePoint Framework solutions helping at every stage of your development flow, from setting up your development workspace to deploying a solution straight to your tenant without the need to leave VS Code and now even create a CI/CD pipeline to introduce automate deployment of your app. This toolkit is provided by the community.",
-	"version": "4.3.1",
+	"version": "4.3.2",
 	"publisher": "m365pnp",
 	"preview": false,
 	"homepage": "https://github.com/pnp/vscode-viva",
@@ -467,6 +467,18 @@
 				"icon": "$(sync)"
 			},
 			{
+				"command": "spfx-toolkit.installAppCatalogApp",
+				"title": "Install",
+				"category": "SharePoint Framework Toolkit",
+				"icon": "$(package)"
+			},
+			{
+				"command": "spfx-toolkit.uninstallAppCatalogApp",
+				"title": "Uninstall",
+				"category": "SharePoint Framework Toolkit",
+				"icon": "$(remove)"
+			},
+			{
 				"command": "spfx-toolkit.setFormCustomizer",
 				"title": "Set Form Customizer",
 				"category": "SharePoint Framework Toolkit"
@@ -545,6 +557,14 @@
 				},
 				{
 					"command": "spfx-toolkit.upgradeAppCatalogApp",
+					"group": "actions.more@5"
+				},
+				{
+					"command": "spfx-toolkit.installAppCatalogApp",
+					"group": "actions.more@5"
+				},
+				{
+					"command": "spfx-toolkit.uninstallAppCatalogApp",
 					"group": "actions.more@5"
 				}
 			],

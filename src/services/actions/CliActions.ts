@@ -67,6 +67,16 @@ export class CliActions {
       )
     );
     subscriptions.push(
+      commands.registerCommand(Commands.installAppCatalogApp, (node: ActionTreeItem) =>
+        CliActions.toggleAppInstalled(node, ContextKeys.installApp, 'install')
+      )
+    );
+    subscriptions.push(
+      commands.registerCommand(Commands.uninstallAppCatalogApp, (node: ActionTreeItem) =>
+        CliActions.toggleAppInstalled(node, ContextKeys.uninstallApp, 'uninstall')
+      )
+    );
+    subscriptions.push(
       commands.registerCommand(Commands.upgradeAppCatalogApp, CliActions.upgradeAppCatalogApp)
     );
     subscriptions.push(
@@ -344,6 +354,96 @@ export class CliActions {
 
       await CliExecuter.execute('spo listitem set', 'json', commandOptionsSet);
       Notifications.info(`App '${appTitle}' has been successfully ${action === 'enable' ? 'enabled' : 'disabled'}.`);
+
+      // refresh the environmentTreeView
+      await commands.executeCommand('spfx-toolkit.refreshAppCatalogTreeView');
+    } catch (e: any) {
+      const message = e?.error?.message;
+      Notifications.error(message);
+    }
+  }
+
+  /**
+ * Installs or uninstalls the app on a specified site.
+ *
+ * @param node The tree item representing the app to be installed or uninstalled.
+ * @param ctxValue The context value used to identify the action node.
+ * @param action The action to be performed: 'install' or 'uninstall'.
+ */
+  public static async toggleAppInstalled(node: ActionTreeItem, ctxValue: string, action: 'install' | 'uninstall') {
+    try {
+      const actionNode = node.children?.find(child => child.contextValue === ctxValue);
+
+      if (!actionNode?.command?.arguments) {
+        Notifications.error(`Failed to retrieve app details for ${action}.`);
+        return;
+      }
+
+      const [appID, appTitle, appCatalogUrl] = actionNode.command.arguments;
+
+      let siteUrl: string | undefined;
+      if (!appCatalogUrl) {
+        const relativeUrl = await window.showInputBox({
+          prompt: 'Enter the relative URL of the site',
+          ignoreFocusOut: true,
+          placeHolder: 'e.g., sites/sales',
+          validateInput: (input) => {
+            if (!input) {
+              return 'site URL is required';
+            }
+
+            const trimmedInput = input.trim();
+
+            if (trimmedInput.startsWith('https://')) {
+              return 'Please provide a relative URL, not an absolute URL.';
+            }
+            if (trimmedInput.startsWith('/')) {
+              return 'Please provide a relative URL without a leading slash.';
+            }
+
+            return undefined;
+          }
+        });
+
+        if (relativeUrl === undefined) {
+          Notifications.warning('No site URL provided. Operation aborted.');
+          return;
+        }
+
+        siteUrl = `${EnvironmentInformation.tenantUrl}/${relativeUrl.trim()}`;
+
+      } else {
+        siteUrl = appCatalogUrl;
+      }
+
+      let forceUninstall = false;
+      if (action === 'uninstall') {
+        const confirmForce = await window.showQuickPick(['Yes', 'No'], {
+          placeHolder: `Are you sure you want to uninstall the app '${appTitle}' from site '${siteUrl}'?`,
+          ignoreFocusOut: true,
+          canPickMany: false
+        });
+
+        if (confirmForce === 'Yes') {
+          forceUninstall = true;
+        } else {
+          Notifications.warning('App uninstallation aborted.');
+          return;
+        }
+      }
+
+      const commandOptions: any = {
+        id: appID,
+        siteUrl: siteUrl,
+        ...(appCatalogUrl && {
+          appCatalogScope: 'sitecollection'
+        }),
+        ...(forceUninstall && { force: true })
+      };
+
+      const cliCommand = action === 'install' ? 'spo app install' : 'spo app uninstall';
+      await CliExecuter.execute(cliCommand, 'json', commandOptions);
+      Notifications.info(`App '${appTitle}' has been successfully ${action === 'install' ? 'installed' : 'uninstalled'} on site '${siteUrl}'.`);
 
       // refresh the environmentTreeView
       await commands.executeCommand('spfx-toolkit.refreshAppCatalogTreeView');
@@ -1004,8 +1104,8 @@ export class CliActions {
       commandOptions.EditFormClientSideComponentId = editFormClientSideComponentId;
     }
 
-    if (newFormClientSideComponentId ) {
-      commandOptions.NewFormClientSideComponentId = newFormClientSideComponentId ;
+    if (newFormClientSideComponentId) {
+      commandOptions.NewFormClientSideComponentId = newFormClientSideComponentId;
     }
 
     if (displayFormClientSideComponentId) {

@@ -9,5 +9,7 @@ export const ContextKeys = {
   removeApp: 'pnp.etv.app.remove',
   enableApp: 'pnp.etv.app.enable',
   disableApp: 'pnp.etv.app.disable',
-  upgradeApp: 'pnp.etv.app.upgrade'
+  upgradeApp: 'pnp.etv.app.upgrade',
+  installApp: 'pnp.etv.app.install',
+  uninstallApp: 'pnp.etv.app.uninstall'
 };
