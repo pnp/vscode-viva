@@ -302,6 +302,10 @@ export class Scaffolder {
             content += ` ${ProjectFileContent.installReusableReactControls}`;
           }
 
+          if (newSolutionInput.shouldInstallReact) {
+            content += ` ${ProjectFileContent.installReact}`;
+          }
+
           if (newSolutionInput.shouldInstallPnPJs) {
             content += ` ${ProjectFileContent.installPnPJs}`;
           }
