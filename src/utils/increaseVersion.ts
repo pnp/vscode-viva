@@ -9,7 +9,13 @@ export async function increaseVersion(versionType: 'major' | 'minor' | 'patch') 
   }
 
   const packageJsonPath = join(wsFolder.uri.fsPath, 'package.json');
-  const packageSolutionPath = join(wsFolder.uri.fsPath, 'config/package-solution.json');
+  let packageSolutionFiles = await workspace.findFiles('config/package-solution.json', '**/node_modules/**');
+
+  if (packageSolutionFiles.length === 0) {
+    packageSolutionFiles = await workspace.findFiles('src/config/package-solution.json', '**/node_modules/**');
+  }
+
+  const packageSolutionPath = packageSolutionFiles[0].fsPath;
 
   const packageJson = JSON.parse(readFileSync(packageJsonPath, 'utf8'));
   const packageSolution = JSON.parse(readFileSync(packageSolutionPath, 'utf8'));
