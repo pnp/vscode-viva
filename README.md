@@ -154,6 +154,8 @@ After successful sign in, an additional view is presented that shows a list of l
 - **Enable**: Allows end users to add the solution to their SharePoint sites.
 - **Disable**: Hides the solution from end users, preventing them from adding it to sites.
 - **Upgrade**: Upgrades the solution to the latest version available in the app catalog for the specified site.
+- **Install**: Install the solution from tenant or site collection app catalog to a site.
+- **Uninstall**: Uninstall the solution from a site.
 
 Additionally, it will show you all tenant-wide extensions installed on your tenant.
 
