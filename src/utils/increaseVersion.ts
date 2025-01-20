@@ -2,6 +2,7 @@ import { readFileSync, writeFileSync } from 'fs';
 import { join } from 'path';
 import { workspace } from 'vscode';
 
+
 export async function increaseVersion(versionType: 'major' | 'minor' | 'patch') {
   const wsFolder = workspace.workspaceFolders?.[0];
   if (!wsFolder) {

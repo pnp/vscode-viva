@@ -378,6 +378,6 @@ export class CommandPanel {
     }
 
     await increaseVersion(versionType as 'major' | 'minor' | 'patch');
-    Notifications.info(`Version increased successfully.`);
+    Notifications.info('Version increased successfully.');
   }
 }
