@@ -6,7 +6,7 @@
 	"packages": {
 		"": {
 			"name": "viva-connections-toolkit",
-			"version": "4.3.2",
+			"version": "4.3.3",
 			"license": "MIT",
 			"dependencies": {
 				"@pnp/cli-microsoft365": "6.11.0",
@@ -25,7 +25,7 @@
 				"@types/react": "^18.0.8",
 				"@types/react-dom": "^18.0.3",
 				"@types/react-router-dom": "^5.3.3",
-				"@types/vscode": "^1.94.0",
+				"@types/vscode": "^1.93.0",
 				"@typescript-eslint/eslint-plugin": "^5.9.1",
 				"@typescript-eslint/parser": "^5.9.1",
 				"@vscode/prompt-tsx": "^0.2.3-alpha",
