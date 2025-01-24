@@ -46,6 +46,9 @@ export const Commands = {
   // Bundle
   bundleProject: `${EXTENSION_NAME}.bundleProject`,
 
+  // Package
+  packageProject: `${EXTENSION_NAME}.packageProject`,
+
   // Serving
   serveProject: `${EXTENSION_NAME}.serveProject`,
 

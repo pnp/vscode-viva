@@ -26,6 +26,9 @@ export class TerminalCommandExecuter {
       commands.registerCommand(Commands.bundleProject, TerminalCommandExecuter.bundleProject)
     );
     subscriptions.push(
+      commands.registerCommand(Commands.packageProject, TerminalCommandExecuter.packageProject)
+    );
+    subscriptions.push(
       commands.registerCommand(Commands.executeTerminalCommand, TerminalCommandExecuter.runCommand)
     );
 
@@ -99,7 +102,7 @@ export class TerminalCommandExecuter {
   public static async bundleProject() {
     const tasks = ['local','production'];
     const answer = await window.showQuickPick(tasks, {
-      title: 'Select the task to bundle',
+      title: 'Select the target environment',
       ignoreFocusOut: true
     });
 
@@ -108,6 +111,20 @@ export class TerminalCommandExecuter {
     }
 
     commands.executeCommand(Commands.executeTerminalCommand, answer === 'local' ? 'gulp bundle' : 'gulp bundle --ship');
+  }
+
+  public static async packageProject() {
+    const tasks = ['local','production'];
+    const answer = await window.showQuickPick(tasks, {
+      title: 'Select the target environment',
+      ignoreFocusOut: true
+    });
+
+    if(!answer) {
+      return;
+    }
+
+    commands.executeCommand(Commands.executeTerminalCommand, answer === 'local' ? 'gulp package-solution' : 'gulp package-solution --ship');
   }
 
   /**
