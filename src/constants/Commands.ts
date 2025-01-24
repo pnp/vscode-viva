@@ -43,6 +43,9 @@ export const Commands = {
   // Webviews
   samplesGallery: `${EXTENSION_NAME}.samplesGallery`,
 
+  // Bundle
+  bundleProject: `${EXTENSION_NAME}.bundleProject`,
+
   // Serving
   serveProject: `${EXTENSION_NAME}.serveProject`,
 
