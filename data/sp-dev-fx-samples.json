@@ -3991,7 +3991,7 @@
       "title": "Calendar Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-calendar",
       "description": "This Web Part allows you to manage events in a calendar. Uses a list of existing calendars on any website. The location and name of the list and the dates of the events to be displayed are defined in the properties of the web part.",
-      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-calendar/assets/animatevideo.gif",
+      "image": "https://raw.githubusercontent.com/pnp/sp-dev-fx-webparts/refs/heads/main/samples/react-calendar/assets/react-calendar-categories.mp4",
       "authors": [
         {
           "name": "João Mendes",
@@ -4026,7 +4026,7 @@
         "SharePoint"
       ],
       "createDate": "2020-12-04",
-      "updateDate": "2024-11-03",
+      "updateDate": "2025-01-15",
       "version": "1.20.0",
       "componentType": "webpart",
       "extensionType": null,
@@ -4414,6 +4414,29 @@
       "updateDate": "2018-05-22",
       "version": "1.1.1",
       "componentType": null,
+      "extensionType": null,
+      "sampleGalerry": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
+      "name": "pnp-sp-dev-spfx-web-parts-react-copilot-hr-assistant",
+      "title": "Copilot Chat Bubble - With SSO integrated to SharePoint which summarizes sessions at ESPC 2024",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-copilot-chatbubble-with-sso",
+      "description": "This web part integrates the Microsoft Copilot Agent, built via Copilot Studio, into SharePoint Online featuring Single Sign-on and a chat interface.",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-copilot-chatbubble-with-sso/assets/Example1.gif",
+      "authors": [
+        {
+          "name": "Nishkalank Bezawada",
+          "pictureUrl": "https://github.com/NishkalankBezawada.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2025-01-09",
+      "updateDate": "2025-01-10",
+      "version": "1.20.0",
+      "componentType": "webpart",
       "extensionType": null,
       "sampleGalerry": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -6963,8 +6986,16 @@
           "pictureUrl": "https://github.com/joaojmendes.png"
         },
         {
+          "name": "Aimery Thomas",
+          "pictureUrl": "https://github.com/a1mery.png"
+        },
+        {
           "name": "João Mendes",
           "pictureUrl": "https://github.com/joaojmendes.png"
+        },
+        {
+          "name": "Aimery Thomas",
+          "pictureUrl": "https://github.com/a1mery.png"
         }
       ],
       "tags": [
@@ -6976,10 +7007,10 @@
         "2023-01-31"
       ],
       "updateDate": [
-        "2023-01-31",
-        "2023-01-31"
+        "2025-01-19",
+        "2025-01-19"
       ],
-      "version": "1.16.1",
+      "version": "1.20.0",
       "componentType": "webpart",
       "extensionType": null,
       "sampleGalerry": "sp-dev-fx-webparts",
