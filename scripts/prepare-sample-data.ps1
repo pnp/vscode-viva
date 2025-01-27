@@ -14,70 +14,77 @@ function Parse-SampleJsonFiles {
 
         try {
             $sampleContent = Get-Content -Path $sample.FullName -Raw
-            $sampleJson = ConvertFrom-Json -InputObject $sampleContent
+            $sampleJsons = ConvertFrom-Json -InputObject $sampleContent
             
-            $yoRcPath = $sample.FullName.ToLower().Replace("assets\sample.json", ".yo-rc.json")
+            foreach ($sampleJson in $sampleJsons) {
+                $yoRcPath = $sample.FullName.ToLower().Replace("assets\sample.json", ".yo-rc.json")
 
-            if (-not (Test-Path -Path $yoRcPath)) {
-                Continue
-            }
-
-            $yoRcContent = Get-Content -Path $yoRcPath -Raw
-            $yoRcJson = ConvertFrom-Json -InputObject $yoRcContent
-            $yoRcJson = $yoRcJson.PSObject.Properties.Value
-
-            $version = $null
-            if ($null -ne $yoRcJson.version -and $yoRcJson.version.GetType().BaseType -eq [System.Array]) {
-                if ($null -ne $yoRcJson.version[$yoRcJson.version.Length - 1]) {
-                    $version = $yoRcJson.version[$yoRcJson.version.Length - 1]
-                } else {
-                    $version = $yoRcJson.version[0]
+                if (-not (Test-Path -Path $yoRcPath)) {
+                    Continue
                 }
-            } else {
-                $version = $yoRcJson.version
-            }
 
-            $componentType = $null
-            if ($null -ne $yoRcJson.componentType -and $yoRcJson.componentType.GetType().BaseType -eq [System.Array]) {
-                if ($null -ne  $yoRcJson.componentType[$yoRcJson.componentType.Length - 1]) {
-                    $componentType = $yoRcJson.componentType[$yoRcJson.componentType.Length - 1]
-                } else {
-                    $componentType = $yoRcJson.componentType[0]
+                $yoRcContent = Get-Content -Path $yoRcPath -Raw
+                $yoRcJson = ConvertFrom-Json -InputObject $yoRcContent
+                $yoRcJson = $yoRcJson.PSObject.Properties.Value
+
+                $version = $null
+                if ($null -ne $yoRcJson.version -and $yoRcJson.version.GetType().BaseType -eq [System.Array]) {
+                    if ($null -ne $yoRcJson.version[$yoRcJson.version.Length - 1]) {
+                        $version = $yoRcJson.version[$yoRcJson.version.Length - 1]
+                    }
+                    else {
+                        $version = $yoRcJson.version[0]
+                    }
                 }
-            } else {
-                $componentType = $yoRcJson.componentType
-            }
-
-            $extensionType = $null
-            if ($null -ne $yoRcJson.extensionType -and $yoRcJson.extensionType.GetType().BaseType -eq [System.Array]) {
-                $extensionType = $yoRcJson.extensionType[$yoRcJson.extensionType.Length - 1]
-            } else {
-                $extensionType = $yoRcJson.extensionType
-            }
-
-            $sampleAuthors = @()
-            foreach ($author in $sampleJson.authors) {
-                $sampleAuthors += [pscustomobject]@{ 
-                    name       = $author.name;
-                    pictureUrl = $author.pictureUrl;
+                else {
+                    $version = $yoRcJson.version
                 }
-            }
 
-            $samples += [pscustomobject]@{
-                name            = $sampleJson.name; 
-                title           = $sampleJson.title; 
-                url             = $sampleJson.url;
-                description     = $sampleJson.shortDescription; 
-                image           = $sampleJson.thumbnails[0].url; 
-                authors         = $sampleAuthors;
-                tags            = $sampleJson.products;
-                createDate      = $sampleJson.creationDateTime;
-                updateDate      = $sampleJson.updateDateTime;
-                version         = $version;  
-                componentType   = $componentType;
-                extensionType   = $extensionType;       
-                sampleGalerry   = $sampleRepo
-                sampleType      = $folder
+                $componentType = $null
+                if ($null -ne $yoRcJson.componentType -and $yoRcJson.componentType.GetType().BaseType -eq [System.Array]) {
+                    if ($null -ne $yoRcJson.componentType[$yoRcJson.componentType.Length - 1]) {
+                        $componentType = $yoRcJson.componentType[$yoRcJson.componentType.Length - 1]
+                    }
+                    else {
+                        $componentType = $yoRcJson.componentType[0]
+                    }
+                }
+                else {
+                    $componentType = $yoRcJson.componentType
+                }
+
+                $extensionType = $null
+                if ($null -ne $yoRcJson.extensionType -and $yoRcJson.extensionType.GetType().BaseType -eq [System.Array]) {
+                    $extensionType = $yoRcJson.extensionType[$yoRcJson.extensionType.Length - 1]
+                }
+                else {
+                    $extensionType = $yoRcJson.extensionType
+                }
+
+                $sampleAuthors = @()
+                foreach ($author in $sampleJson.authors) {
+                    $sampleAuthors += [pscustomobject]@{ 
+                        name       = $author.name;
+                        pictureUrl = $author.pictureUrl;
+                    }
+                }
+
+                $samples += [pscustomobject]@{
+                    name          = $sampleJson.name; 
+                    title         = $sampleJson.title; 
+                    url           = $sampleJson.url;
+                    description   = $sampleJson.shortDescription; 
+                    image         = $sampleJson.thumbnails[0].url; 
+                    authors       = $sampleAuthors;
+                    tags          = $sampleJson.products;
+                    createDate    = $sampleJson.creationDateTime;
+                    updateDate    = $sampleJson.updateDateTime;
+                    version       = $version;  
+                    componentType = $componentType;
+                    extensionType = $extensionType;       
+                    sampleGalerry = $sampleRepo
+                    sampleType    = $folder
+                }
             }
         }
         catch {
