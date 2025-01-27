@@ -3991,7 +3991,7 @@
       "title": "Calendar Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-calendar",
       "description": "This Web Part allows you to manage events in a calendar. Uses a list of existing calendars on any website. The location and name of the list and the dates of the events to be displayed are defined in the properties of the web part.",
-      "image": "https://raw.githubusercontent.com/pnp/sp-dev-fx-webparts/refs/heads/main/samples/react-calendar/assets/react-calendar-categories.mp4",
+      "image": "raw.githubusercontent.com/pnp/sp-dev-fx-webparts/refs/heads/main/samples/react-calendar/assets/react-calendar-categories.png",
       "authors": [
         {
           "name": "João Mendes",
@@ -4574,6 +4574,29 @@
       "createDate": "2020-10-05",
       "updateDate": "2020-10-05",
       "version": "1.11.0",
+      "componentType": "webpart",
+      "extensionType": null,
+      "sampleGalerry": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
+      "name": "pnp-sp-dev-spfx-web-parts-react-custom-localization",
+      "title": "Custom Localization",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-custom-localization",
+      "description": "Shows how you can load localization files and use the localized strings if you have requirements to display localized text outside the normal SPFx/SPO processing",
+      "image": "https://raw.githubusercontent.com/pnp/sp-dev-fx-webparts/main/samples/react-custom-localization/assets/default-behavior.png",
+      "authors": [
+        {
+          "name": "Brian McCullough",
+          "pictureUrl": "https://github.com/brianpmccullough.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2025-01-24",
+      "updateDate": "2025-01-24",
+      "version": "1.18.2",
       "componentType": "webpart",
       "extensionType": null,
       "sampleGalerry": "sp-dev-fx-webparts",
@@ -6963,32 +6986,12 @@
       "sampleType": "samples"
     },
     {
-      "name": [
-        "pnp-sp-dev-spfx-web-parts-react-modern-birthdays-timeline",
-        "pnp-sp-dev-spfx-web-parts-react-modern-birthdays"
-      ],
-      "title": [
-        "Birthdays Timeline Web Part",
-        "Birthdays Web Part"
-      ],
-      "url": [
-        "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-modern-birthdays",
-        "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-modern-birthdays"
-      ],
-      "description": [
-        "Shows upcoming birthdays in the company in a timeline",
-        "Shows upcoming birthdays in the company"
-      ],
+      "name": "pnp-sp-dev-spfx-web-parts-react-modern-birthdays-timeline",
+      "title": "Birthdays Timeline Web Part",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-modern-birthdays",
+      "description": "Shows upcoming birthdays in the company in a timeline",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-modern-birthdays/assets/birthdays.png",
       "authors": [
-        {
-          "name": "João Mendes",
-          "pictureUrl": "https://github.com/joaojmendes.png"
-        },
-        {
-          "name": "Aimery Thomas",
-          "pictureUrl": "https://github.com/a1mery.png"
-        },
         {
           "name": "João Mendes",
           "pictureUrl": "https://github.com/joaojmendes.png"
@@ -6999,17 +7002,37 @@
         }
       ],
       "tags": [
-        "SharePoint",
         "SharePoint"
       ],
-      "createDate": [
-        "2023-01-31",
-        "2023-01-31"
+      "createDate": "2023-01-31",
+      "updateDate": "2025-01-19",
+      "version": "1.20.0",
+      "componentType": "webpart",
+      "extensionType": null,
+      "sampleGalerry": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
+      "name": "pnp-sp-dev-spfx-web-parts-react-modern-birthdays",
+      "title": "Birthdays Web Part",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-modern-birthdays",
+      "description": "Shows upcoming birthdays in the company",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-modern-birthdays/assets/birthdays_teams.jpg",
+      "authors": [
+        {
+          "name": "João Mendes",
+          "pictureUrl": "https://github.com/joaojmendes.png"
+        },
+        {
+          "name": "Aimery Thomas",
+          "pictureUrl": "https://github.com/a1mery.png"
+        }
       ],
-      "updateDate": [
-        "2025-01-19",
-        "2025-01-19"
+      "tags": [
+        "SharePoint"
       ],
+      "createDate": "2023-01-31",
+      "updateDate": "2025-01-19",
       "version": "1.20.0",
       "componentType": "webpart",
       "extensionType": null,
@@ -9235,8 +9258,8 @@
         "SharePoint"
       ],
       "createDate": "2021-10-07",
-      "updateDate": "2023-11-09",
-      "version": "1.18.0",
+      "updateDate": "2025-01-22",
+      "version": "1.20.0",
       "componentType": "webpart",
       "extensionType": null,
       "sampleGalerry": "sp-dev-fx-webparts",
