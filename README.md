@@ -173,7 +173,23 @@ Sign-in is also required for some actions to work properly like the deploy actio
 
 The extension shows all possible Gulp tasks one may run on an SPFx project. The tasks allow you to clean, bundle, package, serve the project with a single click.
 
-![Gulp Tasks](./assets/images/tasks.png)
+![Gulp Tasks](./assets/images/tasks2.png)
+
+- **gulp bundle**
+
+![Bundle local](./assets/images/bundle-local.gif)
+
+- **gulp bundle --ship**
+
+![Bundle `production`](./assets/images/bundle-production.gif)
+
+- **gulp package-solution** 
+
+![Package local](./assets/images/package-local.gif)
+
+- **gulp package-solution --ship**
+
+![Bundle `production`](./assets/images/package-production.gif)
 
 [Check out our docs for more details](https://github.com/pnp/vscode-viva/wiki/5.4-Gulp-tasks)
 
