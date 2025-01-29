@@ -1,4 +1,4 @@
-import { VSCodeCheckbox } from '@vscode/webview-ui-toolkit/react';
+import { VSCodeCheckbox, VSCodeTextArea } from '@vscode/webview-ui-toolkit/react';
 import * as React from 'react';
 import { StepHeader } from './StepHeader';
 import { PackageSelector } from './PackageSelector';
@@ -25,6 +25,8 @@ interface AdditionalStepProps {
     nodeVersionManager: 'nvm' | 'nvs' | 'none';
     setNodeVersionManager: (value: 'nvm' | 'nvs' | 'none') => void;
     setNodeVersionManagerFile: (value: '.nvmrc' | '.node-version') => void;
+    shouldInstallCustomSteps: boolean;
+    setshouldInstallCustomSteps: (value: boolean) => void;
 }
 
 export const AdditionalStep: React.FunctionComponent<AdditionalStepProps> = ({
@@ -46,7 +48,9 @@ export const AdditionalStep: React.FunctionComponent<AdditionalStepProps> = ({
     setShouldCreateNodeVersionFile,
     setNodeVersionManagerFile,
     nodeVersionManager,
-    setNodeVersionManager
+    setNodeVersionManager,
+    shouldInstallCustomSteps,
+    setshouldInstallCustomSteps,
 }: React.PropsWithChildren<AdditionalStepProps>) => {
     // Send a message to retrieve the default value for the create node version file
     const getCreateNodeVersionFileDefaultValue = React.useCallback(() => {
@@ -152,6 +156,12 @@ export const AdditionalStep: React.FunctionComponent<AdditionalStepProps> = ({
                         value={shouldCreateNodeVersionFile}
                         setValue={setShouldCreateNodeVersionFile}
                         label='Create node version manager configuration file' />}
+
+                {componentType === 'extension' &&
+                    <PackageSelector
+                        value={shouldInstallCustomSteps}
+                        setValue={setshouldInstallCustomSteps}
+                        label='Install custom steps' />}
             </div>
         </div>
     );
