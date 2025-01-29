@@ -25,7 +25,9 @@ export class TerminalCommandExecuter {
     subscriptions.push(
       commands.registerCommand(Commands.executeTerminalCommand, TerminalCommandExecuter.runCommand)
     );
-
+    subscriptions.push(
+      commands.registerCommand(Commands.publishProject, TerminalCommandExecuter.publishProject)
+    );
     TerminalCommandExecuter.initShellPath();
   }
 
@@ -91,6 +93,29 @@ export class TerminalCommandExecuter {
     }
 
     commands.executeCommand(Commands.executeTerminalCommand, `gulp serve --config=${answer}`);
+  }
+
+  public static async publishProject() {
+    const wsFolder = Folders.getWorkspaceFolder();
+    if (!wsFolder) {
+      return;
+    }
+
+    const tasks = ['local','production'];
+    const answer = await window.showQuickPick(tasks, {
+      title: 'Select the target environment',
+      ignoreFocusOut: true
+    });
+
+    if(!answer) {
+      return;
+    }
+
+    const terminal = await TerminalCommandExecuter.createTerminal('Publish Project', 'cloud-upload');
+    if (terminal) {
+      TerminalCommandExecuter.runInTerminal(answer === 'local' ? 'gulp bundle && gulp package-solution' : 'gulp bundle --ship && gulp package-solution --ship', terminal);
+      //TerminalCommandExecuter.runInTerminal(answer === 'production' ? 'gulp package-solution' : 'gulp package-solution --ship', terminal);
+    }
   }
 
   /**

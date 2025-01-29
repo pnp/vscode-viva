@@ -46,6 +46,8 @@ export const Commands = {
   // Serving
   serveProject: `${EXTENSION_NAME}.serveProject`,
 
+  // Pulish
+  publishProject: `${EXTENSION_NAME}.publishProject`,
   // TreeViews
   refreshAppCatalogTreeView: `${EXTENSION_NAME}.refreshAppCatalogTreeView`,
   refreshAccountTreeView: `${EXTENSION_NAME}.refreshAccountTreeView`,
