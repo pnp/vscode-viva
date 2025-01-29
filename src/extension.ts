@@ -86,6 +86,20 @@ export async function activate(context: vscode.ExtensionContext) {
 					}
 					await TerminalCommandExecuter.runCommand(nodeVersionCommand, terminalTitle, terminalIcon);
 				}
+
+				//Look for the custom steps string in the project file and run the command if found
+				if (fileContents.indexOf(ProjectFileContent.installCustomSteps) > -1) {
+					const value = getExtensionSettings<string>('projectCustomSteps', '');
+					if (value) {
+						const jsonArray = JSON.parse(value);
+						// eslint-disable-next-line no-undef
+						jsonArray.forEach(async (item: { label: any; command: any; }) => {
+							// eslint-disable-next-line no-console
+							console.log(`Label: ${item.label}, Command: ${item.command}`);
+							await TerminalCommandExecuter.runCommand(item.command, item.label, terminalIcon);
+						});
+					}
+				}
 			}
 		}
 	});
