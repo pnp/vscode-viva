@@ -158,12 +158,15 @@ export const AdditionalStep: React.FunctionComponent<AdditionalStepProps> = ({
                         value={shouldCreateNodeVersionFile}
                         setValue={setShouldCreateNodeVersionFile}
                         label='Create node version manager configuration file' />}
-
-                {componentType === 'extension' &&
-                    <PackageSelector
-                        value={shouldInstallCustomSteps}
-                        setValue={setshouldInstallCustomSteps}
-                        label='Install custom steps' />}
+                {shouldInstallCustomSteps &&
+                    <label className={'block mb-1'}>
+                    To configure this setting, go to **Settings** (`Ctrl + ,`) and expand **Extensions**. Then navigate to **SharePoint Framework Toolkit** and scroll to the **`Spfx-toolkit.ProjectCustomSteps`** setting.
+                    </label>
+                }
+                <PackageSelector
+                    value={shouldInstallCustomSteps}
+                    setValue={setshouldInstallCustomSteps}
+                    label='Install custom steps' />
             </div>
         </div>
     );

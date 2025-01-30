@@ -229,16 +229,6 @@ export class Scaffolder {
   }
 
   /**
-   * Returns the value of the custom steps setting and sends it to the webview.
-   */
-  public static async getCustomSteps() {
-    const value = getExtensionSettings<string>('projectCustomSteps', '');
-    // eslint-disable-next-line no-console
-    console.log('comment here' + getExtensionSettings<string>('projectCustomSteps', ''));
-    //return getExtensionSettings<string>('projectCustomSteps', '');
-  }
-
-  /**
    * Scaffold method for creating a new project.
    * @param input - The input for the scaffold command.
    * @param isNewProject - A boolean indicating whether it's a new project or not.
