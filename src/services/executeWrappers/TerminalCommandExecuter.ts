@@ -63,6 +63,19 @@ export class TerminalCommandExecuter {
   }
 
   /**
+     * Prompts the user to select an option from a list.
+     * @param title - The title of the prompt.
+     * @param options - The list of options to choose from.
+     * @returns The selected option or undefined if none was selected.
+   */
+  private static async promptUserForSelection(title: string, options: string[]): Promise<string | undefined> {
+    return await window.showQuickPick(options, {
+      title,
+      ignoreFocusOut: true
+    });
+  }
+
+  /**
    * Serves the project by executing the specified configuration using Gulp.
    * Prompts the user to select a configuration from the serve.json file.
    */
@@ -96,21 +109,16 @@ export class TerminalCommandExecuter {
   }
 
   public static async publishProject() {
-    const tasks = ['local', 'production'];
-    const answer = await window.showQuickPick(tasks, {
-      title: 'Select the target environment',
-      ignoreFocusOut: true
-    });
+    const answer = await TerminalCommandExecuter.promptUserForSelection(
+      'Select the target environment',
+      ['local', 'production']
+    );
 
-    if (!answer) {
+    if(!answer) {
       return;
     }
 
-    if (answer === 'local') {
-      await commands.executeCommand(Commands.executeTerminalCommand, 'gulp bundle && gulp package-solution');
-    } else {
-      await commands.executeCommand(Commands.executeTerminalCommand, 'gulp bundle --ship && gulp package-solution --ship');
-    }
+    commands.executeCommand(Commands.executeTerminalCommand, `gulp bundle${answer === 'local' ? '' : ' --ship'} && gulp package-solution${answer === 'local' ? '' : ' --ship'}`);
   }
 
   /**
