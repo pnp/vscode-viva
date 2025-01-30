@@ -96,25 +96,20 @@ export class TerminalCommandExecuter {
   }
 
   public static async publishProject() {
-    const wsFolder = Folders.getWorkspaceFolder();
-    if (!wsFolder) {
-      return;
-    }
-
-    const tasks = ['local','production'];
+    const tasks = ['local', 'production'];
     const answer = await window.showQuickPick(tasks, {
       title: 'Select the target environment',
       ignoreFocusOut: true
     });
 
-    if(!answer) {
+    if (!answer) {
       return;
     }
 
-    const terminal = await TerminalCommandExecuter.createTerminal('Publish Project', 'cloud-upload');
-    if (terminal) {
-      TerminalCommandExecuter.runInTerminal(answer === 'local' ? 'gulp bundle && gulp package-solution' : 'gulp bundle --ship && gulp package-solution --ship', terminal);
-      //TerminalCommandExecuter.runInTerminal(answer === 'production' ? 'gulp package-solution' : 'gulp package-solution --ship', terminal);
+    if (answer === 'local') {
+      await commands.executeCommand(Commands.executeTerminalCommand, 'gulp bundle && gulp package-solution');
+    } else {
+      await commands.executeCommand(Commands.executeTerminalCommand, 'gulp bundle --ship && gulp package-solution --ship');
     }
   }
 
