@@ -106,12 +106,12 @@ export async function activate(context: vscode.ExtensionContext) {
 					const value = getExtensionSettings<string>('projectCustomSteps', '');
 					if (value) {
 						const jsonArray = JSON.parse(value);
-						// eslint-disable-next-line no-undef
-						jsonArray.forEach(async (item: { label: any; command: any; }) => {
-							// eslint-disable-next-line no-console
-							console.log(`Label: ${item.label}, Command: ${item.command}`);
-							await TerminalCommandExecuter.runCommand(item.command, item.label, terminalIcon);
-						});
+						// eslint-disable-next-line no-console
+						console.log(jsonArray.length);
+						for (let i = 0; i < jsonArray.length; i++) {
+							const item = jsonArray[i];
+							await TerminalCommandExecuter.runCommand(item.command, terminalTitle, terminalIcon);
+						}
 					}
 				}
 			}
