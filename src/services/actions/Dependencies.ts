@@ -43,7 +43,7 @@ export class Dependencies {
             // Validate node
             const isNodeValid = Dependencies.isValidNodeJs();
             if (!isNodeValid) {
-              Notifications.warning('Your Node.js version is not supported with SPFx development. Make sure you are using version: >=16.13 and <17.0 or >=18.17.1 and <19.0');
+              Notifications.warning('Your Node.js version is not supported with SPFx development. Make sure you are using version: >=18.17.1 and <19.0');
               resolve(null);
               return;
             }

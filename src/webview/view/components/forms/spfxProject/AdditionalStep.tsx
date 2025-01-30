@@ -2,12 +2,13 @@ import { VSCodeCheckbox, VSCodeTextArea } from '@vscode/webview-ui-toolkit/react
 import * as React from 'react';
 import { StepHeader } from './StepHeader';
 import { PackageSelector } from './PackageSelector';
-import { ComponentType, WebviewCommand } from '../../../../../constants';
+import { ComponentType, ExtensionType, WebviewCommand } from '../../../../../constants';
 import { Messenger } from '@estruyf/vscode/dist/client';
 
 interface AdditionalStepProps {
     shouldRunInit: boolean;
     componentType: ComponentType;
+    extensionType: ExtensionType;
     componentName: string;
     setShouldRunInit: (value: boolean) => void;
     shouldInstallReusablePropertyPaneControls: boolean;
@@ -32,6 +33,7 @@ interface AdditionalStepProps {
 export const AdditionalStep: React.FunctionComponent<AdditionalStepProps> = ({
     shouldRunInit,
     componentType,
+    extensionType,
     componentName,
     setShouldRunInit,
     shouldInstallReusablePropertyPaneControls,
@@ -131,7 +133,7 @@ export const AdditionalStep: React.FunctionComponent<AdditionalStepProps> = ({
                 }
 
                 {
-                    componentType === 'extension' &&
+                    (componentType === ComponentType.extension && extensionType === ExtensionType.application) &&
                     <PackageSelector
                     value={shouldInstallReact}
                     setValue={setShouldInstallReact}

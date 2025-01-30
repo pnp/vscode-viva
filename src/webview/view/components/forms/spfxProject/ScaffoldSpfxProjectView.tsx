@@ -129,6 +129,7 @@ export const ScaffoldSpfxProjectView: React.FunctionComponent<IScaffoldSpfxProje
           isNewProject &&
           <AdditionalStep
             componentType={componentType}
+            extensionType={extensionType}
             componentName={componentName}
             shouldRunInit={shouldRunInit}
             setShouldRunInit={setShouldRunInit}
