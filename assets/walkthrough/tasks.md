@@ -15,6 +15,6 @@ deploy-azure-storage - Deploys client-side solution project assets to Azure Stor
 
 SPFx Toolkit VS Code extension shows all possible Gulp tasks one may run on an SPFx project. Don't worry about remembering all the commands, just click on the task you want to run and the extension will do the rest.
 
-![Gulp Tasks](../images/tasks2.png)
+![Gulp Tasks](../images/tasks.png)
 
 [Check out our docs for more details](https://github.com/pnp/vscode-viva/wiki/5.4-Gulp-tasks)
