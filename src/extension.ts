@@ -109,8 +109,7 @@ export async function activate(context: vscode.ExtensionContext) {
 						// eslint-disable-next-line no-console
 						console.log(jsonArray.length);
 						for (let i = 0; i < jsonArray.length; i++) {
-							const item = jsonArray[i];
-							await TerminalCommandExecuter.runCommand(item.command, terminalTitle, terminalIcon);
+							await TerminalCommandExecuter.runCommand(jsonArray[i].command, terminalTitle, terminalIcon);
 						}
 					}
 				}
