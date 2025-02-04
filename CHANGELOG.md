@@ -1,5 +1,19 @@
 # Change Log
 
+## [4.4.0] - 2025-02-04
+
+- Updated the gulp bundle local and production to a single task with an additional prompt
+- Updated the gulp package-solution local and production to a single task with an additional prompt
+- Fixed warning message regarding installed Node.js version in validate dependency action
+- Added conditional logic to scaffolding form additional dependencies to show them based on project type
+- Added install react additional dependency to the scaffolding form visible for Application customizer
+- Added Install, and Uninstall apps to a specified site action to app view
+- Enhanced progress notifications with output window links for better user guidance to every CLI action
+- Added action which allows to set form customizer
+- Enhanced error handling in GitHub Copilot Chat participant
+- Updated welcome view
+- Updated VS Code typings and engine to latest
+
 ## [4.3.0] - 2024-12-11
 
 - Added remove confirmation prompt when removing SPFx solution from app catalog
