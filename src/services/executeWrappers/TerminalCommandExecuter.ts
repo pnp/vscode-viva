@@ -69,19 +69,6 @@ export class TerminalCommandExecuter {
   }
 
   /**
-     * Prompts the user to select an option from a list.
-     * @param title - The title of the prompt.
-     * @param options - The list of options to choose from.
-     * @returns The selected option or undefined if none was selected.
-   */
-  private static async promptUserForSelection(title: string, options: string[]): Promise<string | undefined> {
-    return await window.showQuickPick(options, {
-      title,
-      ignoreFocusOut: true
-    });
-  }
-
-  /**
    * Serves the project by executing the specified configuration using Gulp.
    * Prompts the user to select a configuration from the serve.json file.
    */
@@ -114,19 +101,6 @@ export class TerminalCommandExecuter {
     commands.executeCommand(Commands.executeTerminalCommand, `gulp serve --config=${answer}`);
   }
 
-  public static async publishProject() {
-    const answer = await TerminalCommandExecuter.promptUserForSelection(
-      'Select the target environment',
-      ['local', 'production']
-    );
-
-    if(!answer) {
-      return;
-    }
-
-    commands.executeCommand(Commands.executeTerminalCommand, `gulp bundle${answer === 'local' ? '' : ' --ship'} && gulp package-solution${answer === 'local' ? '' : ' --ship'}`);
-  }
-
   /**
    * Bundles the project based on the environment type selected by the user.
    */
@@ -147,6 +121,18 @@ export class TerminalCommandExecuter {
 
     if (answer) {
       commands.executeCommand(Commands.executeTerminalCommand, `gulp package-solution${answer === 'local' ? '' : ' --ship'}`);
+    }
+  }
+
+  /**
+   * Prompts the user to select an environment type and executes the appropriate
+   * Gulp command to publish (bundle & package) the project based on the user's selection.
+   */
+  public static async publishProject() {
+    const answer = await TerminalCommandExecuter.environmentTypePrompt();
+
+    if(answer){
+      commands.executeCommand(Commands.executeTerminalCommand, `gulp bundle${answer === 'local' ? '' : ' --ship'} && gulp package-solution${answer === 'local' ? '' : ' --ship'}`);
     }
   }
 
