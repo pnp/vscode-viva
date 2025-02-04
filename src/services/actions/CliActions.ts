@@ -67,7 +67,20 @@ export class CliActions {
       )
     );
     subscriptions.push(
+      commands.registerCommand(Commands.installAppCatalogApp, (node: ActionTreeItem) =>
+        CliActions.toggleAppInstalled(node, ContextKeys.installApp, 'install')
+      )
+    );
+    subscriptions.push(
+      commands.registerCommand(Commands.uninstallAppCatalogApp, (node: ActionTreeItem) =>
+        CliActions.toggleAppInstalled(node, ContextKeys.uninstallApp, 'uninstall')
+      )
+    );
+    subscriptions.push(
       commands.registerCommand(Commands.upgradeAppCatalogApp, CliActions.upgradeAppCatalogApp)
+    );
+    subscriptions.push(
+      commands.registerCommand(Commands.setFormCustomizer, CliActions.setFormCustomizer)
     );
   }
 
@@ -351,6 +364,96 @@ export class CliActions {
   }
 
   /**
+ * Installs or uninstalls the app on a specified site.
+ *
+ * @param node The tree item representing the app to be installed or uninstalled.
+ * @param ctxValue The context value used to identify the action node.
+ * @param action The action to be performed: 'install' or 'uninstall'.
+ */
+  public static async toggleAppInstalled(node: ActionTreeItem, ctxValue: string, action: 'install' | 'uninstall') {
+    try {
+      const actionNode = node.children?.find(child => child.contextValue === ctxValue);
+
+      if (!actionNode?.command?.arguments) {
+        Notifications.error(`Failed to retrieve app details for ${action}.`);
+        return;
+      }
+
+      const [appID, appTitle, appCatalogUrl] = actionNode.command.arguments;
+
+      let siteUrl: string | undefined;
+      if (!appCatalogUrl) {
+        const relativeUrl = await window.showInputBox({
+          prompt: 'Enter the relative URL of the site',
+          ignoreFocusOut: true,
+          placeHolder: 'e.g., sites/sales',
+          validateInput: (input) => {
+            if (!input) {
+              return 'site URL is required';
+            }
+
+            const trimmedInput = input.trim();
+
+            if (trimmedInput.startsWith('https://')) {
+              return 'Please provide a relative URL, not an absolute URL.';
+            }
+            if (trimmedInput.startsWith('/')) {
+              return 'Please provide a relative URL without a leading slash.';
+            }
+
+            return undefined;
+          }
+        });
+
+        if (relativeUrl === undefined) {
+          Notifications.warning('No site URL provided. Operation aborted.');
+          return;
+        }
+
+        siteUrl = `${EnvironmentInformation.tenantUrl}/${relativeUrl.trim()}`;
+
+      } else {
+        siteUrl = appCatalogUrl;
+      }
+
+      let forceUninstall = false;
+      if (action === 'uninstall') {
+        const confirmForce = await window.showQuickPick(['Yes', 'No'], {
+          placeHolder: `Are you sure you want to uninstall the app '${appTitle}' from site '${siteUrl}'?`,
+          ignoreFocusOut: true,
+          canPickMany: false
+        });
+
+        if (confirmForce === 'Yes') {
+          forceUninstall = true;
+        } else {
+          Notifications.warning('App uninstallation aborted.');
+          return;
+        }
+      }
+
+      const commandOptions: any = {
+        id: appID,
+        siteUrl: siteUrl,
+        ...(appCatalogUrl && {
+          appCatalogScope: 'sitecollection'
+        }),
+        ...(forceUninstall && { force: true })
+      };
+
+      const cliCommand = action === 'install' ? 'spo app install' : 'spo app uninstall';
+      await CliExecuter.execute(cliCommand, 'json', commandOptions);
+      Notifications.info(`App '${appTitle}' has been successfully ${action === 'install' ? 'installed' : 'uninstalled'} on site '${siteUrl}'.`);
+
+      // refresh the environmentTreeView
+      await commands.executeCommand('spfx-toolkit.refreshAppCatalogTreeView');
+    } catch (e: any) {
+      const message = e?.error?.message;
+      Notifications.error(message);
+    }
+  }
+
+  /**
    * Retrieves the tenant-wide extensions from the specified tenant app catalog URL.
    * @param tenantAppCatalogUrl The URL of the tenant app catalog.
    * @returns A promise that resolves to an array of objects containing the URL and title of each tenant-wide extension,
@@ -440,7 +543,7 @@ export class CliActions {
 
       await window.withProgress({
         location: ProgressLocation.Notification,
-        title: 'Creating app registration...',
+        title: `Creating app registration... Check [output window](command:${Commands.showOutputChannel}) to follow the progress.`,
         cancellable: true
       }, async (progress: Progress<{ message?: string; increment?: number }>) => {
         try {
@@ -478,7 +581,7 @@ export class CliActions {
 
     await window.withProgress({
       location: ProgressLocation.Notification,
-      title: `Generating ${input.workflowType === WorkflowType.gitHub ? 'GitHub Workflow' : 'Azure DevOps Pipeline'}...`,
+      title: `Generating ${input.workflowType === WorkflowType.gitHub ? 'GitHub Workflow' : 'Azure DevOps Pipeline'}... Check [output window](command:${Commands.showOutputChannel}) to follow the progress.`,
       cancellable: true
     }, async (progress: Progress<{ message?: string; increment?: number }>) => {
       try {
@@ -572,7 +675,7 @@ export class CliActions {
 
     await window.withProgress({
       location: ProgressLocation.Notification,
-      title: 'Generating the upgrade steps...',
+      title: `Generating the upgrade steps... Check [output window](command:${Commands.showOutputChannel}) to follow the progress.`,
       cancellable: true
     }, async (progress: Progress<{ message?: string; increment?: number }>) => {
       try {
@@ -638,7 +741,7 @@ export class CliActions {
 
     await window.withProgress({
       location: ProgressLocation.Notification,
-      title: 'Renaming the current project...',
+      title: `Renaming the current project... Check [output window](command:${Commands.showOutputChannel}) to follow the progress.`,
       cancellable: true
     }, async (progress: Progress<{ message?: string; increment?: number }>) => {
       try {
@@ -690,7 +793,7 @@ export class CliActions {
 
     await window.withProgress({
       location: ProgressLocation.Notification,
-      title: 'Granting API permissions for the current project...',
+      title: `Granting API permissions for the current project... Check [output window](command:${Commands.showOutputChannel}) to follow the progress.`,
       cancellable: true
     }, async (progress: Progress<{ message?: string; increment?: number }>) => {
       try {
@@ -746,7 +849,7 @@ export class CliActions {
 
     await window.withProgress({
       location: ProgressLocation.Notification,
-      title: 'Validating the current project...',
+      title: `Validating the current project... Check [output window](command:${Commands.showOutputChannel}) to follow the progress.`,
       cancellable: true
     }, async (progress: Progress<{ message?: string; increment?: number }>) => {
       try {
@@ -919,5 +1022,112 @@ export class CliActions {
     } else {
       Notifications.error(`${fileName}.tour file not found in path ${path.join(wsFolder.uri.fsPath, '.tours')}. Cannot start Code Tour.`);
     }
+  }
+
+  /**
+   * Sets the form customizer for a content type on a list.
+   */
+  public static async setFormCustomizer() {
+    const relativeUrl = await window.showInputBox({
+      prompt: 'Enter the relative URL of the site',
+      ignoreFocusOut: true,
+      placeHolder: 'e.g., sites/sales',
+      validateInput: (input) => {
+        if (!input) {
+          return 'site URL is required';
+        }
+
+        const trimmedInput = input.trim();
+
+        if (trimmedInput.startsWith('https://')) {
+          return 'Please provide a relative URL, not an absolute URL.';
+        }
+        if (trimmedInput.startsWith('/')) {
+          return 'Please provide a relative URL without a leading slash.';
+        }
+
+        return undefined;
+      }
+    });
+
+    if (relativeUrl === undefined) {
+      Notifications.warning('No site URL provided. Setting form customizer aborted.');
+      return;
+    }
+
+    const siteUrl = `${EnvironmentInformation.tenantUrl}/${relativeUrl.trim()}`;
+
+    const listTitle = await window.showInputBox({
+      prompt: 'Enter the list title',
+      ignoreFocusOut: true,
+      validateInput: (value) => value ? undefined : 'List title is required'
+    });
+
+    if (!listTitle) {
+      Notifications.warning('No list title provided. Setting form customizer aborted.');
+      return;
+    }
+
+    const contentType = await window.showInputBox({
+      prompt: 'Enter the Content Type name',
+      ignoreFocusOut: true,
+      validateInput: (value) => value ? undefined : 'Content Type name is required'
+    });
+
+    if (!contentType) {
+      Notifications.warning('No content type name provided. Setting form customizer aborted.');
+      return;
+    }
+
+    const editFormClientSideComponentId = await window.showInputBox({
+      prompt: 'Enter the Edit form customizer ID (leave empty to skip)',
+      ignoreFocusOut: true
+    });
+
+    const newFormClientSideComponentId = await window.showInputBox({
+      prompt: 'Enter the New form customizer ID (leave empty to skip)',
+      ignoreFocusOut: true
+    });
+
+    const displayFormClientSideComponentId = await window.showInputBox({
+      prompt: 'Enter the View form customizer ID (leave empty to skip)',
+      ignoreFocusOut: true
+    });
+
+    const commandOptions: any = {
+      webUrl: siteUrl,
+      listTitle: listTitle,
+      name: contentType
+    };
+
+    if (editFormClientSideComponentId) {
+      commandOptions.EditFormClientSideComponentId = editFormClientSideComponentId;
+    }
+
+    if (newFormClientSideComponentId) {
+      commandOptions.NewFormClientSideComponentId = newFormClientSideComponentId;
+    }
+
+    if (displayFormClientSideComponentId) {
+      commandOptions.DisplayFormClientSideComponentId = displayFormClientSideComponentId;
+    }
+
+    await window.withProgress({
+      location: ProgressLocation.Notification,
+      title: `Setting form customizer... Check [output window](command:${Commands.showOutputChannel}) to follow the progress.`,
+      cancellable: true
+    }, async (progress: Progress<{ message?: string; increment?: number }>) => {
+      try {
+        const result = await CliExecuter.execute('spo contenttype set', 'json', commandOptions);
+        if (result.stderr) {
+          Notifications.error(result.stderr);
+        } else {
+          Notifications.info('Form customizer set successfully.');
+        }
+      } catch (e: any) {
+        const message = e?.error?.message;
+        Notifications.error(message);
+      }
+    });
   }
 }

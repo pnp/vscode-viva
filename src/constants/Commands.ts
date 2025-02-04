@@ -43,6 +43,12 @@ export const Commands = {
   // Webviews
   samplesGallery: `${EXTENSION_NAME}.samplesGallery`,
 
+  // Bundle
+  bundleProject: `${EXTENSION_NAME}.bundleProject`,
+
+  // Package
+  packageProject: `${EXTENSION_NAME}.packageProject`,
+
   // Serving
   serveProject: `${EXTENSION_NAME}.serveProject`,
 
@@ -53,6 +59,9 @@ export const Commands = {
   // Welcome
   welcome: `${EXTENSION_NAME}.welcome`,
 
+  //Copilot
+  openCopilot: `${EXTENSION_NAME}.openCopilot`,
+
   // App actions
   deployAppCatalogApp: `${EXTENSION_NAME}.deployAppCatalogApp`,
   retractAppCatalogApp: `${EXTENSION_NAME}.retractAppCatalogApp`,
@@ -60,5 +69,10 @@ export const Commands = {
   enableAppCatalogApp: `${EXTENSION_NAME}.enableAppCatalogApp`,
   disableAppCatalogApp: `${EXTENSION_NAME}.disableAppCatalogApp`,
   upgradeAppCatalogApp: `${EXTENSION_NAME}.upgradeAppCatalogApp`,
-  showMoreActions: `${EXTENSION_NAME}.showMoreActions`
+  installAppCatalogApp: `${EXTENSION_NAME}.installAppCatalogApp`,
+  uninstallAppCatalogApp: `${EXTENSION_NAME}.uninstallAppCatalogApp`,
+  showMoreActions: `${EXTENSION_NAME}.showMoreActions`,
+
+  // Set form customizer
+  setFormCustomizer: `${EXTENSION_NAME}.setFormCustomizer`
 };

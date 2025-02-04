@@ -153,6 +153,8 @@ After successful sign in, an additional view is presented that shows a list of l
 - **Remove**: Removes the app from the app catalog.
 - **Enable**: Allows end users to add the solution to their SharePoint sites.
 - **Disable**: Hides the solution from end users, preventing them from adding it to sites.
+- **Install**: Install the solution from tenant or site collection app catalog to a site.
+- **Uninstall**: Uninstall the solution from a site.
 - **Upgrade**: Upgrades the solution to the latest version available in the app catalog for the specified site.
 
 Additionally, it will show you all tenant-wide extensions installed on your tenant.
@@ -236,6 +238,12 @@ And the code tour guidance will provide you upgrade tips directly in your code!
 ![Add component](./assets/images/add-component.png)
 
 [Check out our docs for more details](https://github.com/pnp/vscode-viva/wiki/5.5-Actions#add-new-component)
+
+- **Set Form Customizer** - Allows to update the New, Edit or View from of any SharePoint List to a given SPFx Form Customizer based on provided GUID. 
+
+![Set Form Customizer](./assets/images/set-form-customizer-action.png)
+
+[Check out our docs for more details](https://github.com/pnp/vscode-viva/wiki/5.5-Actions#set-form-customizer)
 
 - **Open sample/scenario galleries of the SPFx web part, extensions, or ACEs projects** - SharePoint Framework Toolkit supports a couple of sample galleries that may be used to scaffold a new SPFx project. 
 

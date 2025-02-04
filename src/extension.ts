@@ -12,6 +12,7 @@ import { CliActions } from './services/actions/CliActions';
 import { PromptHandlers } from './chat/PromptHandlers';
 import { CHAT_PARTICIPANT_NAME, ProjectFileContent } from './constants';
 import { EntraAppRegistration } from './services/actions/EntraAppRegistration';
+import { CopilotActions } from './services/actions/CopilotActions';
 
 
 export async function activate(context: vscode.ExtensionContext) {
@@ -29,6 +30,7 @@ export async function activate(context: vscode.ExtensionContext) {
 	Scaffolder.registerCommands();
 	CliActions.registerCommands();
 	EntraAppRegistration.registerCommands(context);
+	CopilotActions.registerCommands();
 
 	CommandPanel.register();
 
@@ -66,6 +68,10 @@ export async function activate(context: vscode.ExtensionContext) {
 
 				if (fileContents.indexOf(ProjectFileContent.installSPFxFastServe) > -1) {
 					await TerminalCommandExecuter.runCommand('spfx-fast-serve --force-install', terminalTitle, terminalIcon);
+				}
+
+				if (fileContents.indexOf(ProjectFileContent.installReact) > -1) {
+					await TerminalCommandExecuter.runCommand('npm install react@17.0.1 react-dom@17.0.1', terminalTitle, terminalIcon);
 				}
 
 				// If either of the following strings are found in the project file, run the command to get the node version

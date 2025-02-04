@@ -25,7 +25,6 @@ export class PromptHandlers {
       }
     }
 
-    // TODO: in near future we may retrieve chat history like const previousMessages = context.history.filter((h) => h instanceof vscode.ChatResponseTurn );. currently it is only insiders
     const messages: vscode.LanguageModelChatMessage[] = [];
     messages.push(vscode.LanguageModelChatMessage.Assistant(promptContext));
     messages.push(vscode.LanguageModelChatMessage.Assistant(PromptHandlers.getChatCommandPrompt(chatCommand)));
@@ -39,7 +38,7 @@ export class PromptHandlers {
 
     messages.push(vscode.LanguageModelChatMessage.User(request.prompt));
     PromptHandlers.history.push(request.prompt);
-    // TODO: in near future it will be possible to use user selected model like `await request.model.sendRequest(messages, {}, token);` now it is only available in insiders
+
     const [model] = await vscode.lm.selectChatModels({ vendor: 'copilot', family: PromptHandlers.modelFamily });
     try {
       const chatResponse = await model.sendRequest(messages, {}, token);
@@ -66,8 +65,14 @@ export class PromptHandlers {
           }
         } catch (err: any) {
           Logger.getInstance();
-          Logger.error(err!.error ? err!.error.message.toString() : err.toString());
+          const errorText = err!.error ? err!.error.message.toString() : err.toString();
+          Logger.error(errorText);
           stream.markdown('\n\nI was not able to retrieve the data from SharePoint. Please check the logs in output window for more information.');
+
+          const markdownString = new vscode.MarkdownString();
+          markdownString.supportHtml = true;
+          markdownString.appendMarkdown(`<span style="color:#f00;">${errorText}</span>`);
+          stream.markdown(markdownString);
         }
       }
 
