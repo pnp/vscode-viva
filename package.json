@@ -237,7 +237,7 @@
 					"title": "Additional Custom Steps",
 					"type": "string",
 					"default": "[\n  {\n    \"label\": \"PnP JS SharePoint\",\n    \"command\": \"npm install @pnp/sp\"\n  },\n  {\n    \"label\": \"PnP React Reusable Controls\",\n    \"command\": \"npm install ....\"\n  }\n]",
-					"description": "Provide a list of additional custom npm installs that should be installed during project deployment.",
+					"description": "Provide a list of additional custom npm packages that should be installed during project scaffolding.",
 					"editPresentation": "multilineText"
 				}
 			}
