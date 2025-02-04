@@ -6,6 +6,7 @@
 - Updated the gulp package-solution local and production to a single task with an additional prompt
 - Fixed warning message regarding installed Node.js version in validate dependency action
 - Added conditional logic to scaffolding form additional dependencies to show them based on project type
+- Added install react additional dependency to the scaffolding form visible for Application customizer
 - Added Install, and Uninstall apps to a specified site action to app view
 - Enhanced progress notifications with output window links for better user guidance to every CLI action
 - Added action which allows to set form customizer
