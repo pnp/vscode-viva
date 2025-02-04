@@ -392,6 +392,11 @@
 				"category": "SharePoint Framework Toolkit"
 			},
 			{
+				"command": "spfx-toolkit.increaseVersion",
+				"title": "Increase project version",
+				"category": "SharePoint Framework Toolkit"
+			},
+			{
 				"command": "spfx-toolkit.grantAPIPermissions",
 				"title": "Grant API permissions",
 				"category": "SharePoint Framework Toolkit"

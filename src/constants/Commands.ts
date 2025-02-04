@@ -34,6 +34,9 @@ export const Commands = {
   // Rename
   renameProject: `${EXTENSION_NAME}.renameProject`,
 
+  // Increase version
+  increaseVersion: `${EXTENSION_NAME}.increaseVersion`,
+
   // Grant API permissions
   grantAPIPermissions: `${EXTENSION_NAME}.grantAPIPermissions`,
 
