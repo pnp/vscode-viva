@@ -23,6 +23,12 @@ export class TerminalCommandExecuter {
       commands.registerCommand(Commands.serveProject, TerminalCommandExecuter.serveProject)
     );
     subscriptions.push(
+      commands.registerCommand(Commands.bundleProject, TerminalCommandExecuter.bundleProject)
+    );
+    subscriptions.push(
+      commands.registerCommand(Commands.packageProject, TerminalCommandExecuter.packageProject)
+    );
+    subscriptions.push(
       commands.registerCommand(Commands.executeTerminalCommand, TerminalCommandExecuter.runCommand)
     );
     subscriptions.push(
@@ -119,6 +125,39 @@ export class TerminalCommandExecuter {
     }
 
     commands.executeCommand(Commands.executeTerminalCommand, `gulp bundle${answer === 'local' ? '' : ' --ship'} && gulp package-solution${answer === 'local' ? '' : ' --ship'}`);
+  }
+
+  /**
+   * Bundles the project based on the environment type selected by the user.
+   */
+  public static async bundleProject() {
+    const answer = await TerminalCommandExecuter.environmentTypePrompt();
+
+    if (answer) {
+      commands.executeCommand(Commands.executeTerminalCommand, `gulp bundle${answer === 'local' ? '' : ' --ship'}`);
+    }
+  }
+
+  /**
+   * Prompts the user to select an environment type and executes the appropriate
+   * Gulp command to package the project based on the user's selection.
+   */
+  public static async packageProject() {
+    const answer = await TerminalCommandExecuter.environmentTypePrompt();
+
+    if (answer) {
+      commands.executeCommand(Commands.executeTerminalCommand, `gulp package-solution${answer === 'local' ? '' : ' --ship'}`);
+    }
+  }
+
+  /**
+   * Prompts the user to select the target environment type.
+   */
+  private static async environmentTypePrompt(): Promise<string | undefined> {
+    return await window.showQuickPick(['local', 'production'], {
+      title: 'Select the target environment',
+      ignoreFocusOut: true
+    });
   }
 
   /**

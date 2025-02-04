@@ -285,12 +285,10 @@ export class CommandPanel {
   private static taskTreeView() {
     const taskCommands: ActionTreeItem[] = [
       new ActionTreeItem('Build project', '', { name: 'debug-start', custom: false }, undefined, Commands.executeTerminalCommand, 'gulp build'),
-      new ActionTreeItem('Bundle project (local)', '', { name: 'debug-start', custom: false }, undefined, Commands.executeTerminalCommand, 'gulp bundle'),
-      new ActionTreeItem('Bundle project (production)', '', { name: 'debug-start', custom: false }, undefined, Commands.executeTerminalCommand, 'gulp bundle --ship'),
+      new ActionTreeItem('Bundle project', '', { name: 'debug-start', custom: false }, undefined, Commands.bundleProject),
       new ActionTreeItem('Clean project', '', { name: 'debug-start', custom: false }, undefined, Commands.executeTerminalCommand, 'gulp clean'),
       new ActionTreeItem('Deploy project assets to Azure Storage', '', { name: 'debug-start', custom: false }, undefined, Commands.executeTerminalCommand, 'gulp deploy-azure-storage'),
-      new ActionTreeItem('Package (local)', '', { name: 'debug-start', custom: false }, undefined, Commands.executeTerminalCommand, 'gulp package-solution'),
-      new ActionTreeItem('Package (production)', '', { name: 'debug-start', custom: false }, undefined, Commands.executeTerminalCommand, 'gulp package-solution --ship'),
+      new ActionTreeItem('Package', '', { name: 'debug-start', custom: false }, undefined, Commands.packageProject),
       new ActionTreeItem('Publish', '', { name: 'debug-start', custom: false }, undefined, Commands.publishProject),
       new ActionTreeItem('Serve', '', { name: 'debug-start', custom: false }, undefined, Commands.executeTerminalCommand, 'gulp serve'),
       new ActionTreeItem('Serve (nobrowser)', '', { name: 'debug-start', custom: false }, undefined, Commands.executeTerminalCommand, 'gulp serve --nobrowser'),
