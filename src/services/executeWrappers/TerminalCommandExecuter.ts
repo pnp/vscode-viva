@@ -29,6 +29,9 @@ export class TerminalCommandExecuter {
       commands.registerCommand(Commands.packageProject, TerminalCommandExecuter.packageProject)
     );
     subscriptions.push(
+      commands.registerCommand(Commands.publishProject, TerminalCommandExecuter.publishProject)
+    );
+    subscriptions.push(
       commands.registerCommand(Commands.executeTerminalCommand, TerminalCommandExecuter.runCommand)
     );
 
@@ -119,6 +122,18 @@ export class TerminalCommandExecuter {
 
     if (answer) {
       commands.executeCommand(Commands.executeTerminalCommand, `gulp package-solution${answer === 'local' ? '' : ' --ship'}`);
+    }
+  }
+
+  /**
+   * Prompts the user to select an environment type and executes the appropriate
+   * Gulp command to publish (bundle & package) the project based on the user's selection.
+   */
+  public static async publishProject() {
+    const answer = await TerminalCommandExecuter.environmentTypePrompt();
+
+    if(answer){
+      commands.executeCommand(Commands.executeTerminalCommand, `gulp bundle${answer === 'local' ? '' : ' --ship'} && gulp package-solution${answer === 'local' ? '' : ' --ship'}`);
     }
   }
 
