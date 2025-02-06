@@ -75,20 +75,6 @@ export async function activate(context: vscode.ExtensionContext) {
 					await TerminalCommandExecuter.runCommand('npm install react@17.0.1 react-dom@17.0.1 --save --save-exact', terminalTitle, terminalIcon);
 				}
 
-				//Look for the custom steps string in the project file and run the command if found
-				if (fileContents.indexOf(ProjectFileContent.installCustomSteps) > -1) {
-					const value = getExtensionSettings<string>('projectCustomSteps', '');
-					if (value) {
-						const jsonArray = JSON.parse(value);
-						// eslint-disable-next-line no-undef
-						jsonArray.forEach(async (item: { label: any; command: any; }) => {
-							// eslint-disable-next-line no-console
-							console.log(`Label: ${item.label}, Command: ${item.command}`);
-							await TerminalCommandExecuter.runCommand(item.command, item.label, terminalIcon);
-						});
-					}
-				}
-
 				// If either of the following strings are found in the project file, run the command to get the node version
 				if (fileContents.indexOf(ProjectFileContent.createNVMRCFile) > -1 || fileContents.indexOf(ProjectFileContent.createNodeVersionFile) > -1) {
 					let nodeVersionCommand = 'node --version > ';
@@ -106,8 +92,6 @@ export async function activate(context: vscode.ExtensionContext) {
 					const value = getExtensionSettings<string>('projectCustomSteps', '');
 					if (value) {
 						const jsonArray = JSON.parse(value);
-						// eslint-disable-next-line no-console
-						console.log(jsonArray.length);
 						for (let i = 0; i < jsonArray.length; i++) {
 							await TerminalCommandExecuter.runCommand(jsonArray[i].command, terminalTitle, terminalIcon);
 						}
