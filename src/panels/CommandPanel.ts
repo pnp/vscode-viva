@@ -171,31 +171,36 @@ export class CommandPanel {
 
       const catalogItems: ActionTreeItem[] = [];
 
-      const showTenantWideExtensions: boolean = getExtensionSettings<boolean>('showTenantWideExtensions', true);
-      if (showTenantWideExtensions === true) {
-        const tenantWideExtensionsNode = new ActionTreeItem('Tenant-wide Extensions', '', { name: 'spo-app-list', custom: true }, TreeItemCollapsibleState.Collapsed, undefined, undefined, 'sp-app-catalog-tenant-wide-extensions', undefined,
-          async () => {
-            const tenantWideExtensions = await CliActions.getTenantWideExtensions(tenantAppCatalogUrl);
-            const tenantWideExtensionsList: ActionTreeItem[] = [];
+      const tenantWideExtensionsNode = new ActionTreeItem('Tenant-wide Extensions', '', { name: 'spo-app-list', custom: true }, TreeItemCollapsibleState.Collapsed, undefined, undefined, 'sp-app-catalog-tenant-wide-extensions', undefined,
+        async () => {
+          const tenantWideExtensions = await CliActions.getTenantWideExtensions(tenantAppCatalogUrl);
+          const tenantWideExtensionsList: ActionTreeItem[] = [];
 
-            if (tenantWideExtensions && tenantWideExtensions.length > 0) {
-              tenantWideExtensions.forEach((extension) => {
-                tenantWideExtensionsList.push(
-                  new ActionTreeItem(extension.Title, '', { name: 'spo-app', custom: true }, TreeItemCollapsibleState.None, 'vscode.open', Uri.parse(extension.Url), 'sp-app-catalog-tenant-wide-extensions-url')
-                );
-              });
-            } else {
-              tenantWideExtensionsList.push(new ActionTreeItem('No extension found', ''));
-            }
-
-            return tenantWideExtensionsList;
+          if (tenantWideExtensions && tenantWideExtensions.length > 0) {
+            tenantWideExtensions.forEach((extension) => {
+              tenantWideExtensionsList.push(
+                new ActionTreeItem(extension.Title, '', { name: 'spo-app', custom: true }, TreeItemCollapsibleState.None, 'vscode.open', Uri.parse(extension.Url), 'sp-app-catalog-tenant-wide-extensions-url')
+              );
+            });
+          } else {
+            tenantWideExtensionsList.push(new ActionTreeItem('No extension found', ''));
           }
-        );
 
-        catalogItems.push(tenantWideExtensionsNode);
+          return tenantWideExtensionsList;
+        }
+      );
+
+      catalogItems.push(tenantWideExtensionsNode);
+
+      const showTenantAppCatalogApps: boolean = getExtensionSettings<boolean>('showTenantWideExtensions', true);
+      let showExpandTreeIcon: TreeItemCollapsibleState;
+      if (showTenantAppCatalogApps === true) {
+        showExpandTreeIcon = TreeItemCollapsibleState.Collapsed;
+      } else {
+        showExpandTreeIcon = TreeItemCollapsibleState.None;
       }
 
-      const tenantAppCatalogNode = new ActionTreeItem(tenantAppCatalogUrl.replace(origin, '...'), '', { name: 'globe', custom: false }, TreeItemCollapsibleState.Collapsed, 'vscode.open', `${Uri.parse(tenantAppCatalogUrl)}/AppCatalog`, 'sp-app-catalog-url', undefined,
+      const tenantAppCatalogNode = new ActionTreeItem(tenantAppCatalogUrl.replace(origin, '...'), '', { name: 'globe', custom: false }, showExpandTreeIcon, 'vscode.open', `${Uri.parse(tenantAppCatalogUrl)}/AppCatalog`, 'sp-app-catalog-url', undefined,
         async () => {
           const tenantAppCatalogApps = await CliActions.getAppCatalogApps();
           const tenantAppCatalogAppsList: ActionTreeItem[] = [];
