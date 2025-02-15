@@ -2653,6 +2653,56 @@
       "sampleType": "samples"
     },
     {
+      "name": "pnp-sp-dev-spfx-web-parts-angularelements-helloworld",
+      "title": "Angular Elements in SPFx web parts",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/angularelements-helloworld",
+      "description": "Set of sample web parts illustrating how to use Angular Elements in the SharePoint Framework.",
+      "image": "https://github.com/pnp/media/raw/master/parker/pnp/300w/parker.png",
+      "authors": [
+        {
+          "name": "Waldek Mastykarz",
+          "pictureUrl": "https://github.com/waldekmastykarz.png"
+        },
+        {
+          "name": "Sébastien Levert",
+          "pictureUrl": "https://github.com/sebastienlevert.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2018-06-01",
+      "updateDate": "2018-06-01",
+      "version": "1.4.0",
+      "componentType": "webpart",
+      "extensionType": null,
+      "sampleGalerry": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
+      "name": "pnp-sp-dev-spfx-web-parts-angularelements-html-templatefile",
+      "title": "Angular Elements with HTML Template File in SharePoint Framework",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/angularelements-html-templatefile",
+      "description": "A sample web part illustrating how to use Angular Elements in the SharePoint Framework with the help of separate template HTML File.",
+      "image": "https://github.com/pnp/media/raw/master/parker/pnp/300w/parker.png",
+      "authors": [
+        {
+          "name": "Jayakumar Balasubramaniam",
+          "pictureUrl": "https://github.com/JayakumarB.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2019-01-08",
+      "updateDate": "2019-01-08",
+      "version": "1.4.0",
+      "componentType": "webpart",
+      "extensionType": null,
+      "sampleGalerry": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
       "name": "pnp-sp-dev-spfx-web-parts-bootstrap-slider",
       "title": "Bootstrap Slider Web Part Built with jQuery v1.x and Boostrap v3.x",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/bootstrap-slider",
@@ -2893,6 +2943,37 @@
       "createDate": "2019-04-18",
       "updateDate": "2019-04-18",
       "version": "1.8.0",
+      "componentType": "webpart",
+      "extensionType": null,
+      "sampleGalerry": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
+      "name": "pnp-sp-dev-spfx-web-parts-js-modern-calendar",
+      "title": "Modern Calendar Web Part",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/js-modern-calendar",
+      "description": "This is a modern web part built on the GA version of the SharePoint Framework demonstrating how to build a custom web part with a calendar capabilities in it.",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/js-modern-calendar/assets/14b88f34-0121-11e7-8c91-56ecff9343e1.png",
+      "authors": [
+        {
+          "name": "Jeremy Coleman",
+          "pictureUrl": "https://github.com/jcoleman-pcprofessional.png"
+        },
+        {
+          "name": "Nanddeep Nachan",
+          "pictureUrl": "https://github.com/nanddeepn.png"
+        },
+        {
+          "name": "Peter Paul Kirschner",
+          "pictureUrl": "https://github.com/petkir.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2020-06-05",
+      "updateDate": "2024-10-05",
+      "version": "1.20.0",
       "componentType": "webpart",
       "extensionType": null,
       "sampleGalerry": "sp-dev-fx-webparts",
@@ -4215,6 +4296,29 @@
       "sampleType": "samples"
     },
     {
+      "name": "pnp-sp-dev-spfx-web-parts-react-check-flows",
+      "title": "Check Flows Web Part",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-check-flows",
+      "description": "This web part lists all the automated Flows associated with a SharePoint List/ Library. Basic flow information like Flow Name, Flow Trigger, Flow shared Type and Flow URL are displayed.",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-check-flows/assets/CheckFlows.gif",
+      "authors": [
+        {
+          "name": "Aakash Bhardwaj",
+          "pictureUrl": "https://avatars.githubusercontent.com/u/33526902?s=460&u=e780f4ef1da922c84f2c5c66c59cecbff2300581&v=4"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2019-09-17",
+      "updateDate": "2019-09-17",
+      "version": "1.10.0",
+      "componentType": "webpart",
+      "extensionType": null,
+      "sampleGalerry": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
       "name": "pnp-sp-dev-spfx-web-parts-react-check-user-group",
       "title": "Check User Group Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-check-user-group",
@@ -4718,6 +4822,29 @@
       "sampleType": "samples"
     },
     {
+      "name": "pnp-sp-dev-spfx-web-parts-react-daterangepicker",
+      "title": "Date range picker in SPFx Web Part",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-daterangepicker",
+      "description": "This web part used the date range picker in the SharePoint Framework (SPFx) web part",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-daterangepicker/assets/daterange1.png",
+      "authors": [
+        {
+          "name": "Ravichandran Krishnasamy",
+          "pictureUrl": "https://github.com/ravichandran-blog.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2020-07-04",
+      "updateDate": "2024-10-07",
+      "version": "1.20.0",
+      "componentType": "webpart",
+      "extensionType": null,
+      "sampleGalerry": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
       "name": "pnp-sp-dev-spfx-web-parts-react-dev-radar",
       "title": "Dev-Radar for SharePoint Online",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-dev-radar",
@@ -4916,6 +5043,33 @@
       "createDate": "2020-07-12",
       "updateDate": "2020-07-12",
       "version": "1.10.0",
+      "componentType": "webpart",
+      "extensionType": null,
+      "sampleGalerry": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
+      "name": "pnp-sp-dev-spfx-web-parts-react-edit-applicationcustomizer",
+      "title": "Edit Application Customizers Web Part",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-edit-applicationcustomizer",
+      "description": "This web part will allow users to view/update application customizers properties across any web where the current user has access to.",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-edit-applicationcustomizer/assets/react-all-applicationcustomizers.gif",
+      "authors": [
+        {
+          "name": "Kunj Sangani",
+          "pictureUrl": "https://github.com/kunj-sangani.png"
+        },
+        {
+          "name": "Siddharth Vaghasia",
+          "pictureUrl": "https://github.com/siddharth-vaghasia.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2020-11-07",
+      "updateDate": "2020-11-07",
+      "version": "1.11.0",
       "componentType": "webpart",
       "extensionType": null,
       "sampleGalerry": "sp-dev-fx-webparts",
@@ -5330,6 +5484,29 @@
       "sampleType": "samples"
     },
     {
+      "name": "pnp-sp-dev-spfx-web-parts-react-file-upload",
+      "title": "File Upload Web Part",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-file-upload",
+      "description": "The file upload web part allowing users to upload multiple files to a document library or as item attachments.",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-file-upload/assets/SPFileUploadPreview.gif",
+      "authors": [
+        {
+          "name": "Ramin Ahmadi",
+          "pictureUrl": "https://github.com/AhmadiRamin.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2018-02-14",
+      "updateDate": "2018-02-14",
+      "version": "1.4.0",
+      "componentType": "webpart",
+      "extensionType": null,
+      "sampleGalerry": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
       "name": "pnp-sp-dev-spfx-web-parts-react-find-parker",
       "title": "Find Parker Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-find-parker",
@@ -5563,6 +5740,29 @@
       "createDate": "2019-06-14",
       "updateDate": "2023-10-10",
       "version": "1.18.0",
+      "componentType": "webpart",
+      "extensionType": null,
+      "sampleGalerry": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
+      "name": "pnp-sp-dev-spfx-web-parts-react-functional-servicescope-hooks",
+      "title": "Consuming SPFX Service Scopes using React Hooks",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-functional-servicescope-hooks",
+      "description": "This web part is designed to help developers understand how to use the Context API and useContext() React Hook to share global data between a hierarchy of nested React components.",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-functional-servicescope-hooks/webpart.png",
+      "authors": [
+        {
+          "name": "Garry Trinder",
+          "pictureUrl": "https://github.com/garrytrinder.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2020-03-25",
+      "updateDate": "2020-03-25",
+      "version": "1.10.0",
       "componentType": "webpart",
       "extensionType": null,
       "sampleGalerry": "sp-dev-fx-webparts",
@@ -7378,6 +7578,37 @@
       "sampleType": "samples"
     },
     {
+      "name": "pnp-sp-dev-spfx-web-parts-react-my-personal-apps",
+      "title": "My Personal Apps Web Part",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-my-personal-apps",
+      "description": "The Web Part My Personal Apps allows the user to define links to Applications or Sites for quick access.",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-my-personal-apps/assets/Image1.png",
+      "authors": [
+        {
+          "name": "João Mendes",
+          "pictureUrl": "https://github.com/joaojmendes.png"
+        },
+        {
+          "name": "Zach Roberts",
+          "pictureUrl": "https://github.com/zachroberts8668.png"
+        },
+        {
+          "name": "Azores",
+          "pictureUrl": "https://github.com/gretchunkim.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2020-04-28",
+      "updateDate": "2025-01-13",
+      "version": "1.10.0",
+      "componentType": "webpart",
+      "extensionType": null,
+      "sampleGalerry": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
       "name": "pnp-sp-dev-spfx-web-parts-react-my-sites",
       "title": "My Sites Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-my-sites",
@@ -8851,6 +9082,29 @@
       "sampleType": "samples"
     },
     {
+      "name": "pnp-sp-dev-spfx-web-parts-react-save-attachments",
+      "title": "Save Attachments Web Part",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-save-attachments",
+      "description": "This SPFx Outlook Add-In lets users save any email attachments to a OneDrive folder.",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-save-attachments/assets/ReactSaveAttachments.gif",
+      "authors": [
+        {
+          "name": "Aakash Bhardwaj",
+          "pictureUrl": "https://avatars.githubusercontent.com/u/33526902?s=460&u=e780f4ef1da922c84f2c5c66c59cecbff2300581&v=4"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2020-10-04",
+      "updateDate": "2021-10-19",
+      "version": "1.13.0",
+      "componentType": "webpart",
+      "extensionType": null,
+      "sampleGalerry": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
       "name": "pnp-sp-dev-spfx-web-parts-react-script-editor",
       "title": "Script editor web part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-script-editor",
@@ -9093,6 +9347,29 @@
       "sampleType": "samples"
     },
     {
+      "name": "pnp-sp-dev-spfx-web-parts-react-soccer-highlights",
+      "title": "Soccer Highlights Web Part",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-soccer-highlights",
+      "description": "This react web part sample displays Soccer Highlights from a public Soccer API.",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-soccer-highlights/assets/SoccerHighlightsV1.png",
+      "authors": [
+        {
+          "name": "Jerry Yasir",
+          "pictureUrl": "https://github.com/jerryyasir.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2020-10-30",
+      "updateDate": "2020-10-30",
+      "version": "1.11.0",
+      "componentType": "webpart",
+      "extensionType": null,
+      "sampleGalerry": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
       "name": "pnp-sp-dev-spfx-web-parts-react-sp-pnp-js-property-decorators",
       "title": "Using PnP JS Core custom objects with @select and @expand decorators",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-sp-pnp-js-property-decorators",
@@ -9328,6 +9605,52 @@
       ],
       "createDate": "2020-10-17",
       "updateDate": "2020-10-17",
+      "version": "1.11.0",
+      "componentType": "webpart",
+      "extensionType": null,
+      "sampleGalerry": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
+      "name": "pnp-sp-dev-spfx-web-parts-react-tailwindcss3",
+      "title": "Tailwind 3 Web Part",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-tailwindcss",
+      "description": "This project showcases an integration of Tailwind CSS into an SPFx project.",
+      "image": "https://raw.githubusercontent.com/pnp/sp-dev-fx-webparts/main/samples/react-tailwindcss3/assets/example.png",
+      "authors": [
+        {
+          "name": "Ari Gunawan",
+          "pictureUrl": "https://github.com/AriGunawan.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2023-10-07",
+      "updateDate": "2023-10-07",
+      "version": "1.20.0",
+      "componentType": "webpart",
+      "extensionType": null,
+      "sampleGalerry": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
+      "name": "pnp-sp-dev-spfx-web-parts-react-target-audience",
+      "title": "Target Audience Web Part",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-target-audience",
+      "description": "Sample web part which uses a Generic React Component which enables it to have Target Audience functionality like what was available in classic web parts. Targets SharePoint Groups only within the site.",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-target-audience/assets/audience.gif",
+      "authors": [
+        {
+          "name": "Rabia Williams",
+          "pictureUrl": "https://github.com/rabwill.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2020-01-28",
+      "updateDate": "2020-01-28",
       "version": "1.11.0",
       "componentType": "webpart",
       "extensionType": null,
@@ -10025,6 +10348,37 @@
       "sampleType": "samples"
     },
     {
+      "name": "pnp-sp-dev-spfx-web-parts-react-tree-orgchart",
+      "title": "Tree Organization Web Part",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-tree-orgchart",
+      "description": "The Tree Organization Web Part shows the Organization Chart of the or the team, the web part reads information from current user to build the Organization Chart.",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-tree-orgchart/assets/Screenshot1.png",
+      "authors": [
+        {
+          "name": "João Mendes",
+          "pictureUrl": "https://github.com/joaojmendes.png"
+        },
+        {
+          "name": "Peter Paul Kirschner",
+          "pictureUrl": "https://github.com/petkir.png"
+        },
+        {
+          "name": "Thomas Daly",
+          "pictureUrl": "https://github.com/tom-daly.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2021-02-28",
+      "updateDate": "2024-10-06",
+      "version": "1.20.0",
+      "componentType": "webpart",
+      "extensionType": null,
+      "sampleGalerry": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
       "name": "pnp-sp-dev-spfx-web-parts-react-twitter",
       "title": "Twitter Timeline Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-twitter",
@@ -10259,6 +10613,29 @@
       "sampleType": "samples"
     },
     {
+      "name": "pnp-sp-dev-spfx-web-parts-react-world-clocks",
+      "title": "World Clocks Web Part",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-world-clocks",
+      "description": "This sample is extension of the single World time clock sample that was provided in SP Starter Kit.",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-world-clocks/assets/ClocksInAction.gif?raw=true",
+      "authors": [
+        {
+          "name": "Jerry Yasir",
+          "pictureUrl": "https://github.com/jerryyasir.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2020-09-26",
+      "updateDate": "2020-09-26",
+      "version": "1.11.0",
+      "componentType": "webpart",
+      "extensionType": null,
+      "sampleGalerry": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
       "name": "pnp-sp-dev-spfx-web-parts-react-yammer-api",
       "title": "Yammer REST API web part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-yammer-api",
@@ -10472,6 +10849,29 @@
       "createDate": "2019-06-11",
       "updateDate": "2019-06-11",
       "version": "1.8.1",
+      "componentType": "webpart",
+      "extensionType": null,
+      "sampleGalerry": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
+      "name": "pnp-sp-dev-spfx-web-parts-vuejs-todo-single-file-component",
+      "title": "Todo Client Web Part built with Vue.js and Vue's single-file components",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/vuejs-todo-single-file-component",
+      "description": "Sample Todo web part demonstrating how you can utilize Vue (a progressive framework for building user interfaces) with SharePoint Framework using handy single-file components approach.",
+      "image": "https://github.com/pnp/media/raw/master/parker/pnp/300w/parker.png",
+      "authors": [
+        {
+          "name": "Sergei Sergeev",
+          "pictureUrl": "https://github.com/s-KaiNet.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2020-04-27",
+      "updateDate": "2022-04-04",
+      "version": "1.11.0",
       "componentType": "webpart",
       "extensionType": null,
       "sampleGalerry": "sp-dev-fx-webparts",
