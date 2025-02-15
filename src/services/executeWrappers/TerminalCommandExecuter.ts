@@ -132,7 +132,7 @@ export class TerminalCommandExecuter {
   public static async publishProject() {
     const answer = await TerminalCommandExecuter.environmentTypePrompt();
 
-    if(answer){
+    if (answer) {
       commands.executeCommand(Commands.executeTerminalCommand, `gulp bundle${answer === 'local' ? '' : ' --ship'} && gulp package-solution${answer === 'local' ? '' : ' --ship'}`);
     }
   }
