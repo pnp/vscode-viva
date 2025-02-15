@@ -488,6 +488,24 @@
 				"title": "...",
 				"category": "SharePoint Framework Toolkit",
 				"icon": "$(ellipsis)"
+			},
+			{
+				"command": "spfx-toolkit.bundleProject",
+				"title": "Bundle",
+				"category": "SharePoint Framework Toolkit",
+				"icon": "$(sync)"
+			},
+			{
+				"command": "spfx-toolkit.packageProject",
+				"title": "Package",
+				"category": "SharePoint Framework Toolkit",
+				"icon": "$(sync)"
+			},
+			{
+				"command": "spfx-toolkit.publishProject",
+				"title": "Publish",
+				"category": "SharePoint Framework Toolkit",
+				"icon": "$(sync)"
 			}
 		],
 		"menus": {
