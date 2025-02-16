@@ -189,11 +189,11 @@
 					"default": true,
 					"description": "Show the service health incidents in the account view."
 				},
-				"spfx-toolkit.showTenantWideExtensions": {
-					"title": "Show tenant-wide extensions",
+				"spfx-toolkit.showAppsInAppCatalogs": {
+					"title": "Show apps in app catalogs",
 					"type": "boolean",
 					"default": true,
-					"description": "Show the tenant-wide extensions in the account view."
+					"description": "When set it will load all apps in every app catalog from your tenant."
 				},
 				"spfx-toolkit.createNodeVersionFileDefaultValue": {
 					"title": "Default value for the Node version file option",
