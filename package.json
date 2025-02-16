@@ -189,7 +189,7 @@
 					"default": true,
 					"description": "Show the service health incidents in the account view."
 				},
-				"spfx-toolkit.showTenantWideExtensions": {
+				"spfx-toolkit.showAppsInAppCatalogs": {
 					"title": "Show apps in app catalogs",
 					"type": "boolean",
 					"default": true,
