@@ -193,12 +193,7 @@ export class CommandPanel {
       catalogItems.push(tenantWideExtensionsNode);
 
       const showTenantAppCatalogApps: boolean = getExtensionSettings<boolean>('showTenantWideExtensions', true);
-      let showExpandTreeIcon: TreeItemCollapsibleState;
-      if (showTenantAppCatalogApps === true) {
-        showExpandTreeIcon = TreeItemCollapsibleState.Collapsed;
-      } else {
-        showExpandTreeIcon = TreeItemCollapsibleState.None;
-      }
+      const showExpandTreeIcon = showTenantAppCatalogApps  ?  TreeItemCollapsibleState.Collapsed : TreeItemCollapsibleState.None;
 
       const tenantAppCatalogNode = new ActionTreeItem(tenantAppCatalogUrl.replace(origin, '...'), '', { name: 'globe', custom: false }, showExpandTreeIcon, 'vscode.open', `${Uri.parse(tenantAppCatalogUrl)}/AppCatalog`, 'sp-app-catalog-url', undefined,
         async () => {
