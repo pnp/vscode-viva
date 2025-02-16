@@ -192,8 +192,8 @@ export class CommandPanel {
 
       catalogItems.push(tenantWideExtensionsNode);
 
-      const showTenantAppCatalogApps: boolean = getExtensionSettings<boolean>('showTenantWideExtensions', true);
-      const showExpandTreeIcon = showTenantAppCatalogApps  ?  TreeItemCollapsibleState.Collapsed : TreeItemCollapsibleState.None;
+      const showTenantAppCatalogApps: boolean = getExtensionSettings<boolean>('showAppsInAppCatalogs', true);
+      const showExpandTreeIcon = showTenantAppCatalogApps ? TreeItemCollapsibleState.Collapsed : TreeItemCollapsibleState.None;
 
       const tenantAppCatalogNode = new ActionTreeItem(tenantAppCatalogUrl.replace(origin, '...'), '', { name: 'globe', custom: false }, showExpandTreeIcon, 'vscode.open', `${Uri.parse(tenantAppCatalogUrl)}/AppCatalog`, 'sp-app-catalog-url', undefined,
         async () => {
@@ -237,7 +237,7 @@ export class CommandPanel {
       for (let i = 1; i < appCatalogUrls.length; i++) {
         const siteAppCatalogUrl = appCatalogUrls[i];
 
-        const siteAppCatalogNode = new ActionTreeItem(siteAppCatalogUrl.replace(origin, '...'), '', { name: 'globe', custom: false }, TreeItemCollapsibleState.Collapsed, 'vscode.open', `${Uri.parse(siteAppCatalogUrl)}/AppCatalog`, 'sp-app-catalog-url', undefined,
+        const siteAppCatalogNode = new ActionTreeItem(siteAppCatalogUrl.replace(origin, '...'), '', { name: 'globe', custom: false }, showExpandTreeIcon, 'vscode.open', `${Uri.parse(siteAppCatalogUrl)}/AppCatalog`, 'sp-app-catalog-url', undefined,
           async () => {
             const siteAppCatalogApps = await CliActions.getAppCatalogApps(siteAppCatalogUrl);
             const siteAppCatalogAppsList: ActionTreeItem[] = [];
