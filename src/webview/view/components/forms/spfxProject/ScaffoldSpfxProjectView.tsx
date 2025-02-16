@@ -31,6 +31,7 @@ export const ScaffoldSpfxProjectView: React.FunctionComponent<IScaffoldSpfxProje
   const [shouldCreateNodeVersionFile, setShouldCreateNodeVersionFile] = useState<boolean>(false);
   const [nodeVersionManager, setNodeVersionManager] = useState<'nvm' | 'nvs' | 'none'>('nvm');
   const [nodeVersionManagerFile, setNodeVersionManagerFile] = useState<'.nvmrc' | '.node-version'>('.nvmrc');
+  const [shouldInstallCustomSteps, setShouldInstallCustomSteps] = useState<boolean>(false);
   const location: any = useLocation();
 
   useEffect(() => {
@@ -88,7 +89,8 @@ export const ScaffoldSpfxProjectView: React.FunctionComponent<IScaffoldSpfxProje
         shouldInstallSPFxFastServe,
         shouldCreateNodeVersionFile,
         nodeVersionManagerFile,
-        nodeVersionManager
+        nodeVersionManager,
+        shouldInstallCustomSteps
       } as SpfxScaffoldCommandInput);
     }
   };
@@ -146,6 +148,8 @@ export const ScaffoldSpfxProjectView: React.FunctionComponent<IScaffoldSpfxProje
             setNodeVersionManagerFile={setNodeVersionManagerFile}
             setNodeVersionManager={setNodeVersionManager}
             nodeVersionManager={nodeVersionManager}
+            shouldInstallCustomSteps={shouldInstallCustomSteps}
+            setshouldInstallCustomSteps={setShouldInstallCustomSteps}
           />
         }
       </div>

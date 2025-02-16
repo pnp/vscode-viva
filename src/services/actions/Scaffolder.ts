@@ -339,6 +339,10 @@ export class Scaffolder {
             }
           }
 
+          if (newSolutionInput.shouldInstallCustomSteps) {
+            content += ` ${ProjectFileContent.installCustomSteps}`;
+          }
+
           Scaffolder.createProjectFileAndOpen(newFolderPath, content);
         } else {
           PnPWebview.close();
