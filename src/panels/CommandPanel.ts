@@ -290,9 +290,7 @@ export class CommandPanel {
       new ActionTreeItem('Deploy project assets to Azure Storage', '', { name: 'debug-start', custom: false }, undefined, Commands.executeTerminalCommand, 'gulp deploy-azure-storage'),
       new ActionTreeItem('Package', '', { name: 'debug-start', custom: false }, undefined, Commands.packageProject),
       new ActionTreeItem('Publish', '', { name: 'debug-start', custom: false }, undefined, Commands.publishProject),
-      new ActionTreeItem('Serve', '', { name: 'debug-start', custom: false }, undefined, Commands.executeTerminalCommand, 'gulp serve'),
-      new ActionTreeItem('Serve (nobrowser)', '', { name: 'debug-start', custom: false }, undefined, Commands.executeTerminalCommand, 'gulp serve --nobrowser'),
-      new ActionTreeItem('Serve from configuration', '', { name: 'debug-start', custom: false }, undefined, Commands.serveProject),
+      new ActionTreeItem('Serve Tasks', '', { name: 'debug-start', custom: false }, undefined, Commands.serveProject),
       new ActionTreeItem('Test', '', { name: 'debug-start', custom: false }, undefined, Commands.executeTerminalCommand, 'gulp test'),
       new ActionTreeItem('Trust self-signed developer certificate', '', { name: 'debug-start', custom: false }, undefined, Commands.executeTerminalCommand, 'gulp trust-dev-cert'),
     ];
