@@ -102,21 +102,7 @@ export class TerminalCommandExecuter {
    * Prompts the user to select a configuration from the serve.json file.
    */
   public static async serveFromConfiguration() {
-    const wsFolder = Folders.getWorkspaceFolder();
-    if (!wsFolder) {
-      return;
-    }
-
-    const serveFiles = await workspace.findFiles('config/serve.json', '**/node_modules/**');
-    const serveFile = serveFiles && serveFiles.length > 0 ? serveFiles[0] : null;
-
-    if (!serveFile) {
-      return;
-    }
-
-    const serveFileContents = readFileSync(serveFile.fsPath, 'utf8');
-    const serveFileData: ServeConfig = JSON.parse(serveFileContents);
-    const configNames = Object.keys(serveFileData.serveConfigurations);
+    const configNames = await TerminalCommandExecuter.getServeConfigNames();
 
     const answer = await window.showQuickPick(configNames, {
       title: 'Select the configuration to serve',
@@ -128,6 +114,34 @@ export class TerminalCommandExecuter {
     }
 
     commands.executeCommand(Commands.executeTerminalCommand, `gulp serve --config=${answer}`);
+  }
+
+  /**
+   * Gets the names of the serve configurations from the serve.json file.
+   *  
+   */
+  public static async getServeConfigNames(): Promise<string[]> {
+    const wsFolder = Folders.getWorkspaceFolder();
+    if (!wsFolder) {
+      return [];
+    }
+
+    const serveFiles = await workspace.findFiles('config/serve.json', '**/node_modules/**');
+    const serveFile = serveFiles && serveFiles.length > 0 ? serveFiles[0] : null;
+
+    if (!serveFile) {
+      return [];
+    }
+
+    const serveFileContents = readFileSync(serveFile.fsPath, 'utf8');
+    const serveFileData: ServeConfig = JSON.parse(serveFileContents);
+
+    if (!serveFileData.serveConfigurations || typeof serveFileData.serveConfigurations !== 'object') {
+        window.showErrorMessage("'serveConfigurations' property is missing from serve.json or not an object.");
+        return [];
+    }
+
+    return Object.keys(serveFileData.serveConfigurations);
   }
 
   /**
@@ -195,7 +209,12 @@ export class TerminalCommandExecuter {
    * Prompts the user to select the serve task type.
    */
   private static async serveTaskTypePrompt(): Promise<string | undefined> {
-    return await window.showQuickPick(['Serve', 'Serve (no browser)', 'Serve from configuration'], {
+    const configNames = await TerminalCommandExecuter.getServeConfigNames();
+    const options = ['Serve', 'Serve (no browser)'];
+    if (configNames.length > 1) {
+      options.push('Serve from configuration');
+    }
+    return await window.showQuickPick(options, {
       title: 'Select the serve type',
       ignoreFocusOut: true
     });
