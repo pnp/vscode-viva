@@ -70,7 +70,35 @@ export class TerminalCommandExecuter {
    * Serves the project by executing the specified configuration using Gulp.
    * Prompts the user to select a configuration from the serve.json file.
    */
-  public static async serveProject() {
+  public static async serveProject(): Promise<void> {
+    const wsFolder = await Folders.getWorkspaceFolder();
+    if (!wsFolder) {
+      return;
+    }
+
+    const serveTaskType = await TerminalCommandExecuter.serveTaskTypePrompt();
+    if (!serveTaskType) {
+      return;
+    }
+
+    switch (serveTaskType) {
+      case 'Serve':
+        commands.executeCommand(Commands.executeTerminalCommand, 'gulp serve');
+        break;
+      case 'Serve (no browser)':
+        commands.executeCommand(Commands.executeTerminalCommand, 'gulp serve --nobrowser');
+        break;
+      case 'Serve from configuration':
+        TerminalCommandExecuter.serveFromConfiguration();
+        break;
+    }
+  }
+
+  /**
+   * Serves the project by executing the specified configuration using Gulp.
+   * Prompts the user to select a configuration from the serve.json file.
+   */
+  public static async serveFromConfiguration() {
     const wsFolder = Folders.getWorkspaceFolder();
     if (!wsFolder) {
       return;
@@ -128,6 +156,16 @@ export class TerminalCommandExecuter {
   private static async environmentTypePrompt(): Promise<string | undefined> {
     return await window.showQuickPick(['local', 'production'], {
       title: 'Select the target environment',
+      ignoreFocusOut: true
+    });
+  }
+
+  /**
+   * Prompts the user to select the serve task type.
+   */
+  private static async serveTaskTypePrompt(): Promise<string | undefined> {
+    return await window.showQuickPick(['Serve', 'Serve (no browser)', 'Serve from configuration'], {
+      title: 'Select the serve type',
       ignoreFocusOut: true
     });
   }
