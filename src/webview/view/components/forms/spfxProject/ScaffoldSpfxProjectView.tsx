@@ -5,7 +5,8 @@ import { useLocation } from 'react-router-dom';
 import { Messenger } from '@estruyf/vscode/dist/client';
 import { SpfxAddComponentCommandInput, SpfxScaffoldCommandInput } from '../../../../../models';
 import { FormHeader, GeneralInfoStep, ComponentDetailsStep, AdditionalStep, FormActions } from '../spfxProject';
-
+import { getExtensionSettings } from '../../../../../utils/getExtensionSettings';
+import { Scaffolder } from '../../../../../services/actions/Scaffolder';
 
 export interface IScaffoldSpfxProjectViewProps { }
 
@@ -33,6 +34,7 @@ export const ScaffoldSpfxProjectView: React.FunctionComponent<IScaffoldSpfxProje
   const [nodeVersionManagerFile, setNodeVersionManagerFile] = useState<'.nvmrc' | '.node-version'>('.nvmrc');
   const [shouldInstallCustomSteps, setShouldInstallCustomSteps] = useState<boolean>(false);
   const location: any = useLocation();
+  const [customSteps, setCustomSteps] = useState<string>('');
 
   useEffect(() => {
     if (location.state.isNewProject !== undefined) {
@@ -90,7 +92,9 @@ export const ScaffoldSpfxProjectView: React.FunctionComponent<IScaffoldSpfxProje
         shouldCreateNodeVersionFile,
         nodeVersionManagerFile,
         nodeVersionManager,
-        shouldInstallCustomSteps
+        shouldInstallCustomSteps,
+        customSteps,
+        setCustomSteps,
       } as SpfxScaffoldCommandInput);
     }
   };
@@ -150,6 +154,8 @@ export const ScaffoldSpfxProjectView: React.FunctionComponent<IScaffoldSpfxProje
             nodeVersionManager={nodeVersionManager}
             shouldInstallCustomSteps={shouldInstallCustomSteps}
             setshouldInstallCustomSteps={setShouldInstallCustomSteps}
+            customSteps={customSteps}
+            setCustomSteps={setCustomSteps}
           />
         }
       </div>

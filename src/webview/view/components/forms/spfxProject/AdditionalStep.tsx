@@ -28,6 +28,8 @@ interface AdditionalStepProps {
     setNodeVersionManagerFile: (value: '.nvmrc' | '.node-version') => void;
     shouldInstallCustomSteps: boolean;
     setshouldInstallCustomSteps: (value: boolean) => void;
+    customSteps: any;
+    setCustomSteps: (value: string) => void;
 }
 
 export const AdditionalStep: React.FunctionComponent<AdditionalStepProps> = ({
@@ -53,6 +55,8 @@ export const AdditionalStep: React.FunctionComponent<AdditionalStepProps> = ({
     setNodeVersionManager,
     shouldInstallCustomSteps,
     setshouldInstallCustomSteps,
+    customSteps,
+    setCustomSteps
 }: React.PropsWithChildren<AdditionalStepProps>) => {
     // Send a message to retrieve the default value for the create node version file
     const getCreateNodeVersionFileDefaultValue = React.useCallback(() => {
@@ -70,6 +74,11 @@ export const AdditionalStep: React.FunctionComponent<AdditionalStepProps> = ({
     }, []);
 
     // Listen for the response to the message/s
+    const getCustomeSteps = React.useCallback(() => {
+        Messenger.send(WebviewCommand.toVSCode.customSteps, {});
+    }, []);
+
+    // Listen for the response to the message/s
     React.useEffect(() => {
         const messageListener = (event: MessageEvent<any>) => {
             const { command, payload } = event.data;
@@ -83,6 +92,11 @@ export const AdditionalStep: React.FunctionComponent<AdditionalStepProps> = ({
                 case WebviewCommand.toWebview.createNodeVersionFileDefaultValue:
                     setShouldCreateNodeVersionFile(payload);
                     break;
+                case WebviewCommand.toWebview.customSteps:
+                    setshouldInstallCustomSteps(payload);
+                    customSteps = payload;
+                    setCustomSteps = payload;
+                    break;
                 default:
                     break;
             }
@@ -93,7 +107,7 @@ export const AdditionalStep: React.FunctionComponent<AdditionalStepProps> = ({
         return () => {
             Messenger.unlisten(messageListener);
         };
-    }, [setNodeVersionManager, setNodeVersionManagerFile, setShouldCreateNodeVersionFile]);
+    }, [setNodeVersionManager, setNodeVersionManagerFile, setShouldCreateNodeVersionFile, customSteps]);
 
     // Sends the requests to load the settings values only once
     React.useEffect(() => {
@@ -103,6 +117,8 @@ export const AdditionalStep: React.FunctionComponent<AdditionalStepProps> = ({
         getNodeVersionManager();
         // Get the node version manager file
         getNodeVersionManagerFile();
+        // Get the custom steps
+        getCustomeSteps();
     }, []);
 
     return (
@@ -167,6 +183,8 @@ export const AdditionalStep: React.FunctionComponent<AdditionalStepProps> = ({
                     value={shouldInstallCustomSteps}
                     setValue={setshouldInstallCustomSteps}
                     label='Install custom steps' />
+
+                <VSCodeTextArea value={customSteps} />
             </div>
         </div>
     );

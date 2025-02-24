@@ -165,6 +165,9 @@ export class PnPWebview {
         case WebviewCommand.toVSCode.nodeVersionManager:
           Scaffolder.nodeVersionManager();
           break;
+        case WebviewCommand.toVSCode.customSteps:
+          Scaffolder.customSteps();
+          break;
       }
     });
   }
