@@ -8,6 +8,7 @@ import { Folders } from '../check/Folders';
 import { join } from 'path';
 import { ServeConfig } from '../../models/ServeConfig';
 import { readFileSync } from 'fs';
+import { Logger } from '../dataType/Logger';
 
 
 interface ShellSetting {
@@ -72,7 +73,6 @@ export class TerminalCommandExecuter {
   /**
    * Serves the project based on the user selected task type.
    */
-
   public static async serveProject(): Promise<void> {
     const wsFolder = await Folders.getWorkspaceFolder();
     if (!wsFolder) {
@@ -117,34 +117,6 @@ export class TerminalCommandExecuter {
   }
 
   /**
-   * Gets the names of the serve configurations from the serve.json file.
-   *  
-   */
-  public static async getServeConfigNames(): Promise<string[]> {
-    const wsFolder = Folders.getWorkspaceFolder();
-    if (!wsFolder) {
-      return [];
-    }
-
-    const serveFiles = await workspace.findFiles('config/serve.json', '**/node_modules/**');
-    const serveFile = serveFiles && serveFiles.length > 0 ? serveFiles[0] : null;
-
-    if (!serveFile) {
-      return [];
-    }
-
-    const serveFileContents = readFileSync(serveFile.fsPath, 'utf8');
-    const serveFileData: ServeConfig = JSON.parse(serveFileContents);
-
-    if (!serveFileData.serveConfigurations || typeof serveFileData.serveConfigurations !== 'object') {
-        window.showErrorMessage("'serveConfigurations' property is missing from serve.json or not an object.");
-        return [];
-    }
-
-    return Object.keys(serveFileData.serveConfigurations);
-  }
-
-  /**
    * Bundles the project based on the environment type selected by the user.
    */
   public static async bundleProject() {
@@ -177,6 +149,33 @@ export class TerminalCommandExecuter {
     if (answer) {
       commands.executeCommand(Commands.executeTerminalCommand, `gulp bundle${answer === 'local' ? '' : ' --ship'} && gulp package-solution${answer === 'local' ? '' : ' --ship'}`);
     }
+  }
+
+  /**
+   * Gets the names of the serve configurations from the serve.json file.
+   */
+  private static async getServeConfigNames(): Promise<string[]> {
+    const wsFolder = Folders.getWorkspaceFolder();
+    if (!wsFolder) {
+      return [];
+    }
+
+    const serveFiles = await workspace.findFiles('config/serve.json', '**/node_modules/**');
+    const serveFile = serveFiles && serveFiles.length > 0 ? serveFiles[0] : null;
+
+    if (!serveFile) {
+      return [];
+    }
+
+    const serveFileContents = readFileSync(serveFile.fsPath, 'utf8');
+    const serveFileData: ServeConfig = JSON.parse(serveFileContents);
+
+    if (!serveFileData.serveConfigurations || typeof serveFileData.serveConfigurations !== 'object') {
+      Logger.warning('The serve.json file does not contain any serve configurations.');
+      return [];
+    }
+
+    return Object.keys(serveFileData.serveConfigurations);
   }
 
   /**
