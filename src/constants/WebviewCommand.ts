@@ -9,6 +9,7 @@ export const WebviewCommand = {
     nodeVersionManager: 'node-version-manager',
     nodeVersionManagerFile: 'node-version-manager-file',
     createNodeVersionManagerFile: 'node-version-manager-file',
+    customSteps: 'custom-steps',
   },
   toVSCode: {
     useSample: 'use-sample',
@@ -24,5 +25,6 @@ export const WebviewCommand = {
     createNodeVersionFileDefaultValue: 'should-create-node-version-file',
     nodeVersionManager: 'node-version-manager',
     nodeVersionManagerFile: 'node-version-manager-file',
+    customSteps: 'custom-steps',
   }
 };

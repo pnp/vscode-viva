@@ -232,6 +232,13 @@
 						"code tour"
 					],
 					"description": "Choose the output mode for the project validation. You can choose between `both`, `markdown`, or `code tour`."
+				},
+				"spfx-toolkit.projectCustomSteps": {
+					"title": "Additional Custom Steps",
+					"type": "string",
+					"default": "",
+					"description": "Provide a list of additional custom npm packages that should be installed during project scaffolding.",
+					"editPresentation": "multilineText"
 				}
 			}
 		},

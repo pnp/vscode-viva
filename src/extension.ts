@@ -13,6 +13,7 @@ import { PromptHandlers } from './chat/PromptHandlers';
 import { CHAT_PARTICIPANT_NAME, ProjectFileContent } from './constants';
 import { EntraAppRegistration } from './services/actions/EntraAppRegistration';
 import { CopilotActions } from './services/actions/CopilotActions';
+import { getExtensionSettings } from './utils';
 
 
 export async function activate(context: vscode.ExtensionContext) {
@@ -71,7 +72,7 @@ export async function activate(context: vscode.ExtensionContext) {
 				}
 
 				if (fileContents.indexOf(ProjectFileContent.installReact) > -1) {
-					await TerminalCommandExecuter.runCommand('npm install react@17.0.1 react-dom@17.0.1', terminalTitle, terminalIcon);
+					await TerminalCommandExecuter.runCommand('npm install react@17.0.1 react-dom@17.0.1 --save --save-exact', terminalTitle, terminalIcon);
 				}
 
 				// If either of the following strings are found in the project file, run the command to get the node version
@@ -84,6 +85,17 @@ export async function activate(context: vscode.ExtensionContext) {
 						nodeVersionCommand += '.node-version';
 					}
 					await TerminalCommandExecuter.runCommand(nodeVersionCommand, terminalTitle, terminalIcon);
+				}
+
+				//Look for the custom steps string in the project file and run the command if found
+				if (fileContents.indexOf(ProjectFileContent.installCustomSteps) > -1) {
+					const value = getExtensionSettings<string>('projectCustomSteps', '');
+					if (value) {
+						const jsonArray = JSON.parse(value);
+						for (let i = 0; i < jsonArray.length; i++) {
+							await TerminalCommandExecuter.runCommand(jsonArray[i].command, terminalTitle, terminalIcon);
+						}
+					}
 				}
 			}
 		}
