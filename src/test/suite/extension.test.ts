@@ -2,6 +2,7 @@ import * as assert from 'assert';
 import * as vscode from 'vscode';
 import { sleep } from '../../utils/sleep';
 
+
 suite('Extension', () => {
 
 	suiteSetup(async () => {
