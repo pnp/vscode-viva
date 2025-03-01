@@ -1,6 +1,6 @@
 import { VSCodeCheckbox } from '@vscode/webview-ui-toolkit/react';
 import * as React from 'react';
-import { StepHeader } from './StepHeader';
+import { StepHeader } from '../../controls';
 import { PackageSelector } from './PackageSelector';
 import { ComponentType, ExtensionType, WebviewCommand } from '../../../../../constants';
 import { Messenger } from '@estruyf/vscode/dist/client';
