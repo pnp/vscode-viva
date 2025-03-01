@@ -1,0 +1,63 @@
+name: Check Tests
+
+on: 
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: "Test"
+    runs-on: windows-latest
+
+    steps:
+      - name: Setup node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          registry-url: https://registry.npmjs.org/
+      
+      - name: Checkout SPFx Toolkit
+        uses: actions/checkout@v4
+        with:
+          path: vscode-viva
+        
+      - name: Install dependencies for SPFx Toolkit
+        run: npm ci
+        working-directory: vscode-viva
+
+      - name: Checkout CLI for Microsoft 365
+        uses: actions/checkout@v4
+        with:
+          repository: Adam-it/cli-microsoft365
+          path: cli-microsoft365
+          ref: cli-cjs
+
+      - name: Print dir
+        run: |
+          dir
+
+      - name: Install dependencies for CLI for Microsoft 365
+        run: npm i
+        working-directory: cli-microsoft365
+
+      - name: Build CLI for Microsoft 365
+        run: npm run build
+        working-directory: cli-microsoft365
+
+      - name: Run script to copy local CLI for Microsoft 365   
+        run: .\vscode-viva\scripts\cli-for-microsoft365-copy-local-version.ps1 -workspacePath "${{ github.workspace }}"
+        shell: pwsh
+        continue-on-error: false
+
+      - name: Build SPFx Toolkit
+        run: npm run package
+        working-directory: vscode-viva
+
+      - name: Compile tests for SPFx Toolkit
+        run: npm run compile-tests
+        working-directory: vscode-viva
+
+      - name: Run tests for SPFx Toolkit
+        run: npm run test
+        working-directory: vscode-viva
+      
