@@ -1,6 +1,7 @@
 import { readFileSync, writeFileSync } from 'fs';
 import { join } from 'path';
 import { workspace } from 'vscode';
+import { TeamsToolkitIntegration } from '../services/dataType/TeamsToolkitIntegration';
 
 
 export async function increaseVersion(versionType: 'major' | 'minor' | 'patch') {
@@ -9,17 +10,18 @@ export async function increaseVersion(versionType: 'major' | 'minor' | 'patch') 
     throw new Error('Workspace folder not found');
   }
 
-  const packageJsonPath = join(wsFolder.uri.fsPath, 'package.json');
-  let packageSolutionFiles = await workspace.findFiles('config/package-solution.json', '**/node_modules/**');
-
-  if (packageSolutionFiles.length === 0) {
+  let packageSolutionFiles = [];
+  if (TeamsToolkitIntegration.isTeamsToolkitProject) {
     packageSolutionFiles = await workspace.findFiles('src/config/package-solution.json', '**/node_modules/**');
+  } else {
+    packageSolutionFiles = await workspace.findFiles('config/package-solution.json', '**/node_modules/**');
   }
 
   const packageSolutionPath = packageSolutionFiles[0].fsPath;
-
-  const packageJson = JSON.parse(readFileSync(packageJsonPath, 'utf8'));
   const packageSolution = JSON.parse(readFileSync(packageSolutionPath, 'utf8'));
+
+  const packageJsonPath = join(wsFolder.uri.fsPath, 'package.json');
+  const packageJson = JSON.parse(readFileSync(packageJsonPath, 'utf8'));
 
   const newVersion = incrementVersion(packageJson.version, versionType);
   packageJson.version = newVersion;
@@ -27,6 +29,13 @@ export async function increaseVersion(versionType: 'major' | 'minor' | 'patch') 
 
   writeFileSync(packageJsonPath, JSON.stringify(packageJson, null, 2));
   writeFileSync(packageSolutionPath, JSON.stringify(packageSolution, null, 2));
+
+  if (TeamsToolkitIntegration.isTeamsToolkitProject) {
+    const packageJsonSrcPath = join(wsFolder.uri.fsPath, 'src', 'package.json');
+    const packageJsonSrc = JSON.parse(readFileSync(packageJsonPath, 'utf8'));
+    packageJsonSrc.version = newVersion;
+    writeFileSync(packageJsonSrcPath, JSON.stringify(packageJsonSrc, null, 2));
+  }
 }
 
 function incrementVersion(version: string, versionType: 'major' | 'minor' | 'patch'): string {
