@@ -8,6 +8,7 @@ import { Folders } from '../check/Folders';
 import { join } from 'path';
 import { ServeConfig } from '../../models/ServeConfig';
 import { readFileSync } from 'fs';
+import { Logger } from '../dataType/Logger';
 
 
 interface ShellSetting {
@@ -21,6 +22,15 @@ export class TerminalCommandExecuter {
     const subscriptions: Subscription[] = Extension.getInstance().subscriptions;
     subscriptions.push(
       commands.registerCommand(Commands.serveProject, TerminalCommandExecuter.serveProject)
+    );
+    subscriptions.push(
+      commands.registerCommand(Commands.bundleProject, TerminalCommandExecuter.bundleProject)
+    );
+    subscriptions.push(
+      commands.registerCommand(Commands.packageProject, TerminalCommandExecuter.packageProject)
+    );
+    subscriptions.push(
+      commands.registerCommand(Commands.publishProject, TerminalCommandExecuter.publishProject)
     );
     subscriptions.push(
       commands.registerCommand(Commands.executeTerminalCommand, TerminalCommandExecuter.runCommand)
@@ -61,25 +71,38 @@ export class TerminalCommandExecuter {
   }
 
   /**
-   * Serves the project by executing the specified configuration using Gulp.
-   * Prompts the user to select a configuration from the serve.json file.
+   * Serves the project based on the user selected task type.
    */
-  public static async serveProject() {
-    const wsFolder = Folders.getWorkspaceFolder();
+  public static async serveProject(): Promise<void> {
+    const wsFolder = await Folders.getWorkspaceFolder();
     if (!wsFolder) {
       return;
     }
 
-    const serveFiles = await workspace.findFiles('config/serve.json', '**/node_modules/**');
-    const serveFile = serveFiles && serveFiles.length > 0 ? serveFiles[0] : null;
-
-    if (!serveFile) {
+    const serveTaskType = await TerminalCommandExecuter.serveTaskTypePrompt();
+    if (!serveTaskType) {
       return;
     }
 
-    const serveFileContents = readFileSync(serveFile.fsPath, 'utf8');
-    const serveFileData: ServeConfig = JSON.parse(serveFileContents);
-    const configNames = Object.keys(serveFileData.serveConfigurations);
+    switch (serveTaskType) {
+      case 'Serve':
+        commands.executeCommand(Commands.executeTerminalCommand, 'gulp serve');
+        break;
+      case 'Serve (no browser)':
+        commands.executeCommand(Commands.executeTerminalCommand, 'gulp serve --nobrowser');
+        break;
+      case 'Serve from configuration':
+        TerminalCommandExecuter.serveFromConfiguration();
+        break;
+    }
+  }
+
+  /**
+   * Serves the project by executing the specified configuration using Gulp.
+   * Prompts the user to select a configuration from the serve.json file.
+   */
+  public static async serveFromConfiguration() {
+    const configNames = await TerminalCommandExecuter.getServeConfigNames();
 
     const answer = await window.showQuickPick(configNames, {
       title: 'Select the configuration to serve',
@@ -91,6 +114,78 @@ export class TerminalCommandExecuter {
     }
 
     commands.executeCommand(Commands.executeTerminalCommand, `gulp serve --config=${answer}`);
+  }
+
+  /**
+   * Bundles the project based on the environment type selected by the user.
+   */
+  public static async bundleProject() {
+    const answer = await TerminalCommandExecuter.environmentTypePrompt();
+
+    if (answer) {
+      commands.executeCommand(Commands.executeTerminalCommand, `gulp bundle${answer === 'local' ? '' : ' --ship'}`);
+    }
+  }
+
+  /**
+   * Prompts the user to select an environment type and executes the appropriate
+   * Gulp command to package the project based on the user's selection.
+   */
+  public static async packageProject() {
+    const answer = await TerminalCommandExecuter.environmentTypePrompt();
+
+    if (answer) {
+      commands.executeCommand(Commands.executeTerminalCommand, `gulp package-solution${answer === 'local' ? '' : ' --ship'}`);
+    }
+  }
+
+  /**
+   * Prompts the user to select an environment type and executes the appropriate
+   * Gulp command to publish (bundle & package) the project based on the user's selection.
+   */
+  public static async publishProject() {
+    const answer = await TerminalCommandExecuter.environmentTypePrompt();
+
+    if (answer) {
+      commands.executeCommand(Commands.executeTerminalCommand, `gulp bundle${answer === 'local' ? '' : ' --ship'} && gulp package-solution${answer === 'local' ? '' : ' --ship'}`);
+    }
+  }
+
+  /**
+   * Gets the names of the serve configurations from the serve.json file.
+   */
+  private static async getServeConfigNames(): Promise<string[]> {
+    const wsFolder = Folders.getWorkspaceFolder();
+    if (!wsFolder) {
+      return [];
+    }
+
+    const serveFiles = await workspace.findFiles('config/serve.json', '**/node_modules/**');
+    const serveFile = serveFiles && serveFiles.length > 0 ? serveFiles[0] : null;
+
+    if (!serveFile) {
+      return [];
+    }
+
+    const serveFileContents = readFileSync(serveFile.fsPath, 'utf8');
+    const serveFileData: ServeConfig = JSON.parse(serveFileContents);
+
+    if (!serveFileData.serveConfigurations || typeof serveFileData.serveConfigurations !== 'object') {
+      Logger.warning('The serve.json file does not contain any serve configurations.');
+      return [];
+    }
+
+    return Object.keys(serveFileData.serveConfigurations);
+  }
+
+  /**
+   * Prompts the user to select the target environment type.
+   */
+  private static async environmentTypePrompt(): Promise<string | undefined> {
+    return await window.showQuickPick(['local', 'production'], {
+      title: 'Select the target environment',
+      ignoreFocusOut: true
+    });
   }
 
   /**
@@ -107,6 +202,21 @@ export class TerminalCommandExecuter {
     } else {
       TerminalCommandExecuter.shellPath = shell || undefined;
     }
+  }
+
+  /**
+   * Prompts the user to select the serve task type.
+   */
+  private static async serveTaskTypePrompt(): Promise<string | undefined> {
+    const configNames = await TerminalCommandExecuter.getServeConfigNames();
+    const options = ['Serve', 'Serve (no browser)'];
+    if (configNames.length > 1) {
+      options.push('Serve from configuration');
+    }
+    return await window.showQuickPick(options, {
+      title: 'Select the serve type',
+      ignoreFocusOut: true
+    });
   }
 
   /**

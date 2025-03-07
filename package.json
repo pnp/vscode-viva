@@ -2,13 +2,13 @@
 	"name": "viva-connections-toolkit",
 	"displayName": "SharePoint Framework Toolkit",
 	"description": "SharePoint Framework Toolkit aims to boost your productivity in developing and managing SharePoint Framework solutions helping at every stage of your development flow, from setting up your development workspace to deploying a solution straight to your tenant without the need to leave VS Code and now even create a CI/CD pipeline to introduce automate deployment of your app. This toolkit is provided by the community.",
-	"version": "4.3.2",
+	"version": "4.4.2",
 	"publisher": "m365pnp",
 	"preview": false,
 	"homepage": "https://github.com/pnp/vscode-viva",
 	"icon": "assets/logo-large.png",
 	"engines": {
-		"vscode": "^1.90.0"
+		"vscode": "^1.93.0"
 	},
 	"categories": [
 		"Snippets",
@@ -52,7 +52,7 @@
 				"id": "spfx-toolkit.pnp",
 				"fullName": "SPFx Toolkit",
 				"name": "spfx",
-				"description": "How can I help you with SPFx development?",
+				"description": "How can I help you with SPFx development? Use /setup, /new, /manage, /code commands for job specific support.",
 				"isSticky": true,
 				"commands": [
 					{
@@ -189,11 +189,11 @@
 					"default": true,
 					"description": "Show the service health incidents in the account view."
 				},
-				"spfx-toolkit.showTenantWideExtensions": {
-					"title": "Show tenant-wide extensions",
+				"spfx-toolkit.showAppsInAppCatalogs": {
+					"title": "Show apps in app catalogs",
 					"type": "boolean",
 					"default": true,
-					"description": "Show the tenant-wide extensions in the account view."
+					"description": "When set it will load all apps in every app catalog from your tenant."
 				},
 				"spfx-toolkit.createNodeVersionFileDefaultValue": {
 					"title": "Default value for the Node version file option",
@@ -332,7 +332,7 @@
 		"viewsWelcome": [
 			{
 				"view": "pnp-view-empty",
-				"contents": "Welcome to SharePoint Framework Toolkit\n\n\nTo start create a new SharePoint Framework project. \n[Create a new project](command:spfx-toolkit.createProject)\n\n\n\n\n\nUse a sample to kick off a new project and boost your development.\n[View samples](command:spfx-toolkit.samplesGallery)\n\n\n\n\n\nYou can also open an existing app.\n[Open folder](command:vscode.openFolder)\n\n\n\n\n\nValidate your local workspace and check if you have the required dependencies.\n[Check dependencies](command:spfx-toolkit.checkDependencies)\n\n\n\n\n\nInstall the required dependencies.\n[Install dependencies](command:spfx-toolkit.installDependencies)\n\n\n\nLearn more about SharePoint Framework and this toolkit.\n[Walkthrough](command:spfx-toolkit.welcome)\n\n\n\nFor additional help or resources visit the [extension wiki](https://github.com/pnp/vscode-viva/wiki)."
+				"contents": "Welcome to SharePoint Framework Toolkit\n\n\nTo start create a new SharePoint Framework project. \n[Create a new project](command:spfx-toolkit.createProject)\n\n\n\n\n\nUse a sample to kick off a new project and boost your development.\n[View samples](command:spfx-toolkit.samplesGallery)\n\n\n\n\n\nYou can also open an existing app.\n[Open folder](command:vscode.openFolder)\n\n\n\n\n\nValidate your local workspace and check if you have the required dependencies.\n[Check dependencies](command:spfx-toolkit.checkDependencies)\n\n\n\n\n\nInstall the required dependencies.\n[Install dependencies](command:spfx-toolkit.installDependencies)\n\n\n\nLearn more about SharePoint Framework and this toolkit.\n[Walkthrough](command:spfx-toolkit.welcome)\n\n\n\nStart effortlessly with GitHub Copilot. Get SPFx tailored support in setting up your local workspace, creating a new project, or managing your tenant.\n[Use @SPFx in GitHib Copilot](command:spfx-toolkit.openCopilot) \n\n\n\n\n\nFor additional help or resources visit the [extension wiki](https://github.com/pnp/vscode-viva/wiki)."
 			}
 		],
 		"commands": [
@@ -493,6 +493,24 @@
 				"title": "...",
 				"category": "SharePoint Framework Toolkit",
 				"icon": "$(ellipsis)"
+			},
+			{
+				"command": "spfx-toolkit.bundleProject",
+				"title": "Bundle",
+				"category": "SharePoint Framework Toolkit",
+				"icon": "$(sync)"
+			},
+			{
+				"command": "spfx-toolkit.packageProject",
+				"title": "Package",
+				"category": "SharePoint Framework Toolkit",
+				"icon": "$(sync)"
+			},
+			{
+				"command": "spfx-toolkit.publishProject",
+				"title": "Publish",
+				"category": "SharePoint Framework Toolkit",
+				"icon": "$(sync)"
 			}
 		],
 		"menus": {
@@ -612,7 +630,9 @@
 		"package": "npm run clean && npm run package:ext && npm run package:webview",
 		"package:ext": "webpack --mode production --config ./webpack/extension.config.js --devtool hidden-source-map",
 		"package:webview": "webpack --mode production --config ./webpack/webview.config.js",
-		"clean": "rimraf dist"
+		"compile-tests": "tsc -p . --outDir out --skipLibCheck",
+		"test": "vscode-test",
+		"clean": "rimraf dist && rimraf out"
 	},
 	"devDependencies": {
 		"@actions/core": "^1.8.2",
@@ -624,11 +644,12 @@
 		"@types/react": "^18.0.8",
 		"@types/react-dom": "^18.0.3",
 		"@types/react-router-dom": "^5.3.3",
-		"@types/vscode": "^1.90.0",
+		"@types/vscode": "^1.93.0",
 		"@typescript-eslint/eslint-plugin": "^5.9.1",
 		"@typescript-eslint/parser": "^5.9.1",
 		"@vscode/prompt-tsx": "^0.2.3-alpha",
-		"@vscode/test-electron": "^2.0.3",
+		"@vscode/test-cli": "^0.0.10",
+		"@vscode/test-electron": "^2.4.1",
 		"@vscode/webview-ui-toolkit": "^1.0.0",
 		"autoprefixer": "^10.4.5",
 		"css-loader": "^6.7.1",

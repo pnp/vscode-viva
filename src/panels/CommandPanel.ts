@@ -175,31 +175,31 @@ export class CommandPanel {
 
       const catalogItems: ActionTreeItem[] = [];
 
-      const showTenantWideExtensions: boolean = getExtensionSettings<boolean>('showTenantWideExtensions', true);
-      if (showTenantWideExtensions === true) {
-        const tenantWideExtensionsNode = new ActionTreeItem('Tenant-wide Extensions', '', { name: 'spo-app-list', custom: true }, TreeItemCollapsibleState.Collapsed, undefined, undefined, 'sp-app-catalog-tenant-wide-extensions', undefined,
-          async () => {
-            const tenantWideExtensions = await CliActions.getTenantWideExtensions(tenantAppCatalogUrl);
-            const tenantWideExtensionsList: ActionTreeItem[] = [];
+      const tenantWideExtensionsNode = new ActionTreeItem('Tenant-wide Extensions', '', { name: 'spo-app-list', custom: true }, TreeItemCollapsibleState.Collapsed, undefined, undefined, 'sp-app-catalog-tenant-wide-extensions', undefined,
+        async () => {
+          const tenantWideExtensions = await CliActions.getTenantWideExtensions(tenantAppCatalogUrl);
+          const tenantWideExtensionsList: ActionTreeItem[] = [];
 
-            if (tenantWideExtensions && tenantWideExtensions.length > 0) {
-              tenantWideExtensions.forEach((extension) => {
-                tenantWideExtensionsList.push(
-                  new ActionTreeItem(extension.Title, '', { name: 'spo-app', custom: true }, TreeItemCollapsibleState.None, 'vscode.open', Uri.parse(extension.Url), 'sp-app-catalog-tenant-wide-extensions-url')
-                );
-              });
-            } else {
-              tenantWideExtensionsList.push(new ActionTreeItem('No extension found', ''));
-            }
-
-            return tenantWideExtensionsList;
+          if (tenantWideExtensions && tenantWideExtensions.length > 0) {
+            tenantWideExtensions.forEach((extension) => {
+              tenantWideExtensionsList.push(
+                new ActionTreeItem(extension.Title, '', { name: 'spo-app', custom: true }, TreeItemCollapsibleState.None, 'vscode.open', Uri.parse(extension.Url), 'sp-app-catalog-tenant-wide-extensions-url')
+              );
+            });
+          } else {
+            tenantWideExtensionsList.push(new ActionTreeItem('No extension found', ''));
           }
-        );
 
-        catalogItems.push(tenantWideExtensionsNode);
-      }
+          return tenantWideExtensionsList;
+        }
+      );
 
-      const tenantAppCatalogNode = new ActionTreeItem(tenantAppCatalogUrl.replace(origin, '...'), '', { name: 'globe', custom: false }, TreeItemCollapsibleState.Collapsed, 'vscode.open', `${Uri.parse(tenantAppCatalogUrl)}/AppCatalog`, 'sp-app-catalog-url', undefined,
+      catalogItems.push(tenantWideExtensionsNode);
+
+      const showTenantAppCatalogApps: boolean = getExtensionSettings<boolean>('showAppsInAppCatalogs', true);
+      const showExpandTreeIcon = showTenantAppCatalogApps ? TreeItemCollapsibleState.Collapsed : TreeItemCollapsibleState.None;
+
+      const tenantAppCatalogNode = new ActionTreeItem(tenantAppCatalogUrl.replace(origin, '...'), '', { name: 'globe', custom: false }, showExpandTreeIcon, 'vscode.open', `${Uri.parse(tenantAppCatalogUrl)}/AppCatalog`, 'sp-app-catalog-url', undefined,
         async () => {
           const tenantAppCatalogApps = await CliActions.getAppCatalogApps();
           const tenantAppCatalogAppsList: ActionTreeItem[] = [];
@@ -241,7 +241,7 @@ export class CommandPanel {
       for (let i = 1; i < appCatalogUrls.length; i++) {
         const siteAppCatalogUrl = appCatalogUrls[i];
 
-        const siteAppCatalogNode = new ActionTreeItem(siteAppCatalogUrl.replace(origin, '...'), '', { name: 'globe', custom: false }, TreeItemCollapsibleState.Collapsed, 'vscode.open', `${Uri.parse(siteAppCatalogUrl)}/AppCatalog`, 'sp-app-catalog-url', undefined,
+        const siteAppCatalogNode = new ActionTreeItem(siteAppCatalogUrl.replace(origin, '...'), '', { name: 'globe', custom: false }, showExpandTreeIcon, 'vscode.open', `${Uri.parse(siteAppCatalogUrl)}/AppCatalog`, 'sp-app-catalog-url', undefined,
           async () => {
             const siteAppCatalogApps = await CliActions.getAppCatalogApps(siteAppCatalogUrl);
             const siteAppCatalogAppsList: ActionTreeItem[] = [];
@@ -289,15 +289,12 @@ export class CommandPanel {
   private static taskTreeView() {
     const taskCommands: ActionTreeItem[] = [
       new ActionTreeItem('Build project', '', { name: 'debug-start', custom: false }, undefined, Commands.executeTerminalCommand, 'gulp build'),
-      new ActionTreeItem('Bundle project (local)', '', { name: 'debug-start', custom: false }, undefined, Commands.executeTerminalCommand, 'gulp bundle'),
-      new ActionTreeItem('Bundle project (production)', '', { name: 'debug-start', custom: false }, undefined, Commands.executeTerminalCommand, 'gulp bundle --ship'),
+      new ActionTreeItem('Bundle project', '', { name: 'debug-start', custom: false }, undefined, Commands.bundleProject),
       new ActionTreeItem('Clean project', '', { name: 'debug-start', custom: false }, undefined, Commands.executeTerminalCommand, 'gulp clean'),
       new ActionTreeItem('Deploy project assets to Azure Storage', '', { name: 'debug-start', custom: false }, undefined, Commands.executeTerminalCommand, 'gulp deploy-azure-storage'),
-      new ActionTreeItem('Package (local)', '', { name: 'debug-start', custom: false }, undefined, Commands.executeTerminalCommand, 'gulp package-solution'),
-      new ActionTreeItem('Package (production)', '', { name: 'debug-start', custom: false }, undefined, Commands.executeTerminalCommand, 'gulp package-solution --ship'),
-      new ActionTreeItem('Serve', '', { name: 'debug-start', custom: false }, undefined, Commands.executeTerminalCommand, 'gulp serve'),
-      new ActionTreeItem('Serve (nobrowser)', '', { name: 'debug-start', custom: false }, undefined, Commands.executeTerminalCommand, 'gulp serve --nobrowser'),
-      new ActionTreeItem('Serve from configuration', '', { name: 'debug-start', custom: false }, undefined, Commands.serveProject),
+      new ActionTreeItem('Package', '', { name: 'debug-start', custom: false }, undefined, Commands.packageProject),
+      new ActionTreeItem('Publish', '', { name: 'debug-start', custom: false }, undefined, Commands.publishProject),
+      new ActionTreeItem('Serve Tasks', '', { name: 'debug-start', custom: false }, undefined, Commands.serveProject),
       new ActionTreeItem('Test', '', { name: 'debug-start', custom: false }, undefined, Commands.executeTerminalCommand, 'gulp test'),
       new ActionTreeItem('Trust self-signed developer certificate', '', { name: 'debug-start', custom: false }, undefined, Commands.executeTerminalCommand, 'gulp trust-dev-cert'),
     ];

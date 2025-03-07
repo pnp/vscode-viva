@@ -180,7 +180,7 @@ export class AuthProvider implements AuthenticationProvider, Disposable {
    * @param scopes - The scopes for which to retrieve authentication sessions.
    * @returns A promise that resolves to an array of authentication sessions.
    */
-  public async getSessions(scopes?: readonly string[]): Promise<readonly AuthenticationSession[]> {
+  public async getSessions(scopes: readonly string[] | undefined, options: vscode.AuthenticationProviderSessionOptions): Promise<AuthenticationSession[]> {
     const account = await this.getAccount();
     return account ? [account] : [];
   }

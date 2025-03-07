@@ -46,6 +46,15 @@ export const Commands = {
   // Webviews
   samplesGallery: `${EXTENSION_NAME}.samplesGallery`,
 
+  // Bundle
+  bundleProject: `${EXTENSION_NAME}.bundleProject`,
+
+  // Package
+  packageProject: `${EXTENSION_NAME}.packageProject`,
+
+  // Publish
+  publishProject: `${EXTENSION_NAME}.publishProject`,
+
   // Serving
   serveProject: `${EXTENSION_NAME}.serveProject`,
 
@@ -55,6 +64,9 @@ export const Commands = {
 
   // Welcome
   welcome: `${EXTENSION_NAME}.welcome`,
+
+  //Copilot
+  openCopilot: `${EXTENSION_NAME}.openCopilot`,
 
   // App actions
   deployAppCatalogApp: `${EXTENSION_NAME}.deployAppCatalogApp`,

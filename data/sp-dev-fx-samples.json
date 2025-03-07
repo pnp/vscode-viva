@@ -2380,8 +2380,8 @@
         "SharePoint"
       ],
       "createDate": "2018-12-10",
-      "updateDate": "2018-12-10",
-      "version": "1.12.1",
+      "updateDate": "2024-10-31",
+      "version": "1.20.0",
       "componentType": "webpart",
       "extensionType": null,
       "sampleGalerry": "sp-dev-fx-extensions",
@@ -3902,7 +3902,7 @@
       "title": "Birthdays Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-birthdays",
       "description": "The Web Part Birthdays shows the upcoming birthdays in the company, the web part reads birthdays from a list located on the tenant's root site with title \"Birthdays.\"",
-      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-birthdays/assets/birthdays.gif",
+      "image": "https://raw.githubusercontent.com/pnp/sp-dev-fx-webparts/main/samples/react-birthdays/assets/birthdays.gif",
       "authors": [
         {
           "name": "Valeras Narbutas",
@@ -3915,13 +3915,17 @@
         {
           "name": "Sajal Maity",
           "pictureUrl": "https://github.com/smaity.png"
+        },
+        {
+          "name": "Azores",
+          "pictureUrl": "https://github.com/gretchunkim.png"
         }
       ],
       "tags": [
         "SharePoint"
       ],
       "createDate": "2019-07-23",
-      "updateDate": "2024-10-02",
+      "updateDate": "2025-01-13",
       "version": "1.20.0",
       "componentType": "webpart",
       "extensionType": null,
@@ -3987,7 +3991,7 @@
       "title": "Calendar Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-calendar",
       "description": "This Web Part allows you to manage events in a calendar. Uses a list of existing calendars on any website. The location and name of the list and the dates of the events to be displayed are defined in the properties of the web part.",
-      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-calendar/assets/animatevideo.gif",
+      "image": "raw.githubusercontent.com/pnp/sp-dev-fx-webparts/refs/heads/main/samples/react-calendar/assets/react-calendar-categories.png",
       "authors": [
         {
           "name": "João Mendes",
@@ -4022,7 +4026,7 @@
         "SharePoint"
       ],
       "createDate": "2020-12-04",
-      "updateDate": "2024-11-03",
+      "updateDate": "2025-01-15",
       "version": "1.20.0",
       "componentType": "webpart",
       "extensionType": null,
@@ -4415,6 +4419,29 @@
       "sampleType": "samples"
     },
     {
+      "name": "pnp-sp-dev-spfx-web-parts-react-copilot-hr-assistant",
+      "title": "Copilot Chat Bubble - With SSO integrated to SharePoint which summarizes sessions at ESPC 2024",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-copilot-chatbubble-with-sso",
+      "description": "This web part integrates the Microsoft Copilot Agent, built via Copilot Studio, into SharePoint Online featuring Single Sign-on and a chat interface.",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-copilot-chatbubble-with-sso/assets/Example1.gif",
+      "authors": [
+        {
+          "name": "Nishkalank Bezawada",
+          "pictureUrl": "https://github.com/NishkalankBezawada.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2025-01-09",
+      "updateDate": "2025-01-10",
+      "version": "1.20.0",
+      "componentType": "webpart",
+      "extensionType": null,
+      "sampleGalerry": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
       "name": "pnp-sp-dev-spfx-web-parts-react-copy-views",
       "title": "Copy Views Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-copy-views",
@@ -4547,6 +4574,29 @@
       "createDate": "2020-10-05",
       "updateDate": "2020-10-05",
       "version": "1.11.0",
+      "componentType": "webpart",
+      "extensionType": null,
+      "sampleGalerry": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
+      "name": "pnp-sp-dev-spfx-web-parts-react-custom-localization",
+      "title": "Custom Localization",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-custom-localization",
+      "description": "Shows how you can load localization files and use the localized strings if you have requirements to display localized text outside the normal SPFx/SPO processing",
+      "image": "https://raw.githubusercontent.com/pnp/sp-dev-fx-webparts/main/samples/react-custom-localization/assets/default-behavior.png",
+      "authors": [
+        {
+          "name": "Brian McCullough",
+          "pictureUrl": "https://github.com/brianpmccullough.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2025-01-24",
+      "updateDate": "2025-01-24",
+      "version": "1.18.2",
       "componentType": "webpart",
       "extensionType": null,
       "sampleGalerry": "sp-dev-fx-webparts",
@@ -5672,8 +5722,8 @@
         "SharePoint"
       ],
       "createDate": "2021-09-17",
-      "updateDate": "2023-03-06",
-      "version": "1.16.1",
+      "updateDate": "2025-01-10",
+      "version": "1.20.0",
       "componentType": "webpart",
       "extensionType": null,
       "sampleGalerry": "sp-dev-fx-webparts",
@@ -6798,6 +6848,29 @@
       "sampleType": "samples"
     },
     {
+      "name": "pnp-sp-dev-spfx-web-parts-react-mcs-hr-assistant",
+      "title": "Copilot Agent - HR Assistant",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-mcs-hr-assistant",
+      "description": "Integrates the Microsoft Copilot Agent, built via Copilot Studio, into SharePoint Online modern pages",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-mcs-hr-assistant/assets/demo-1.png",
+      "authors": [
+        {
+          "name": "Ejaz Hussain",
+          "pictureUrl": "https://github.com/ejazhussain.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2025-01-10",
+      "updateDate": "2025-01-10",
+      "version": "1.20.0-rc.1",
+      "componentType": "webpart",
+      "extensionType": null,
+      "sampleGalerry": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
       "name": "pnp-sp-dev-spfx-web-parts-react-members-with-presence",
       "title": "Group members list with Presence information web part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-members-with-presence",
@@ -6913,22 +6986,10 @@
       "sampleType": "samples"
     },
     {
-      "name": [
-        "pnp-sp-dev-spfx-web-parts-react-modern-birthdays-timeline",
-        "pnp-sp-dev-spfx-web-parts-react-modern-birthdays"
-      ],
-      "title": [
-        "Birthdays Timeline Web Part",
-        "Birthdays Web Part"
-      ],
-      "url": [
-        "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-modern-birthdays",
-        "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-modern-birthdays"
-      ],
-      "description": [
-        "Shows upcoming birthdays in the company in a timeline",
-        "Shows upcoming birthdays in the company"
-      ],
+      "name": "pnp-sp-dev-spfx-web-parts-react-modern-birthdays-timeline",
+      "title": "Birthdays Timeline Web Part",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-modern-birthdays",
+      "description": "Shows upcoming birthdays in the company in a timeline",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-modern-birthdays/assets/birthdays.png",
       "authors": [
         {
@@ -6936,23 +6997,43 @@
           "pictureUrl": "https://github.com/joaojmendes.png"
         },
         {
-          "name": "João Mendes",
-          "pictureUrl": "https://github.com/joaojmendes.png"
+          "name": "Aimery Thomas",
+          "pictureUrl": "https://github.com/a1mery.png"
         }
       ],
       "tags": [
-        "SharePoint",
         "SharePoint"
       ],
-      "createDate": [
-        "2023-01-31",
-        "2023-01-31"
+      "createDate": "2023-01-31",
+      "updateDate": "2025-01-19",
+      "version": "1.20.0",
+      "componentType": "webpart",
+      "extensionType": null,
+      "sampleGalerry": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
+      "name": "pnp-sp-dev-spfx-web-parts-react-modern-birthdays",
+      "title": "Birthdays Web Part",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-modern-birthdays",
+      "description": "Shows upcoming birthdays in the company",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-modern-birthdays/assets/birthdays_teams.jpg",
+      "authors": [
+        {
+          "name": "João Mendes",
+          "pictureUrl": "https://github.com/joaojmendes.png"
+        },
+        {
+          "name": "Aimery Thomas",
+          "pictureUrl": "https://github.com/a1mery.png"
+        }
       ],
-      "updateDate": [
-        "2023-01-31",
-        "2023-01-31"
+      "tags": [
+        "SharePoint"
       ],
-      "version": "1.16.1",
+      "createDate": "2023-01-31",
+      "updateDate": "2025-01-19",
+      "version": "1.20.0",
       "componentType": "webpart",
       "extensionType": null,
       "sampleGalerry": "sp-dev-fx-webparts",
@@ -9177,8 +9258,31 @@
         "SharePoint"
       ],
       "createDate": "2021-10-07",
-      "updateDate": "2023-11-09",
-      "version": "1.18.0",
+      "updateDate": "2025-01-22",
+      "version": "1.20.0",
+      "componentType": "webpart",
+      "extensionType": null,
+      "sampleGalerry": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
+      "name": "pnp-sp-dev-spfx-web-parts-react-svg-to-json-converter",
+      "title": "SVG to JSON Converter",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-svg-to-json-converter",
+      "description": "Allows users to read SVGs from a SharePoint library, select one of them and have the code converted into a JSON format that is ready to be used in a SharePoint List in advanced formatting.",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-svg-to-json-converter/assets/webpart-german.png",
+      "authors": [
+        {
+          "name": "Luise Freese",
+          "pictureUrl": "https://github.com/LuiseFreese.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2024-11-01",
+      "updateDate": "2024-11-01",
+      "version": "1.20.0",
       "componentType": "webpart",
       "extensionType": null,
       "sampleGalerry": "sp-dev-fx-webparts",
@@ -9638,6 +9742,33 @@
       "createDate": "2018-11-18",
       "updateDate": "2018-11-18",
       "version": "1.7.0",
+      "componentType": "webpart",
+      "extensionType": null,
+      "sampleGalerry": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
+      "name": "pnp-sp-dev-spfx-web-parts-react-teams-tabs-graph",
+      "title": "MS Teams Channels and Tabs from Modern Team site",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-teams-tabs-graph",
+      "description": "A SPFx Web Part using Graph api. It shows Channels and Tabs (with link) from a Modern Team Site connected to Microsoft Teams.",
+      "image": "https://raw.githubusercontent.com/pnp/sp-dev-fx-webparts/refs/heads/main/samples/react-teams-tabs-graph/assets/screenshots/react-teams-tabs-graph-webpart.png",
+      "authors": [
+        {
+          "name": "Federico Porceddu",
+          "pictureUrl": "https://github.com/fredupstair.png"
+        },
+        {
+          "name": "Nicolas Kheirallah",
+          "pictureUrl": "https://github.com/nicolaskheirallah.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2025-01-01",
+      "updateDate": "2025-01-01",
+      "version": "1.20.0",
       "componentType": "webpart",
       "extensionType": null,
       "sampleGalerry": "sp-dev-fx-webparts",
