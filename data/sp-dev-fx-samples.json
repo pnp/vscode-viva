@@ -803,14 +803,18 @@
         {
           "name": "Michał Romiszewski",
           "pictureUrl": "https://github.com/mromiszewski.png"
+        },
+        {
+          "name": "Nishkalank Bezawada",
+          "pictureUrl": "https://github.com/NishkalankBezawada.png"
         }
       ],
       "tags": [
         "SharePoint"
       ],
       "createDate": "2021-01-20",
-      "updateDate": "2021-07-22",
-      "version": "1.12.1",
+      "updateDate": "2024-12-09",
+      "version": "1.20.0",
       "componentType": "extension",
       "extensionType": "ApplicationCustomizer",
       "sampleGalerry": "sp-dev-fx-extensions",
@@ -4134,8 +4138,8 @@
         "SharePoint"
       ],
       "createDate": "2020-07-16",
-      "updateDate": "2022-10-22",
-      "version": "1.15.0",
+      "updateDate": "2025-02-21",
+      "version": "1.20.0",
       "componentType": "webpart",
       "extensionType": null,
       "sampleGalerry": "sp-dev-fx-webparts",
