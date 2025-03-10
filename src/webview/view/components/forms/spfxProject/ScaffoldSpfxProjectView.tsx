@@ -5,7 +5,8 @@ import { useLocation } from 'react-router-dom';
 import { Messenger } from '@estruyf/vscode/dist/client';
 import { SpfxAddComponentCommandInput, SpfxScaffoldCommandInput } from '../../../../../models';
 import { FormHeader, GeneralInfoStep, ComponentDetailsStep, AdditionalStep, FormActions } from '../spfxProject';
-
+import { getExtensionSettings } from '../../../../../utils/getExtensionSettings';
+import { Scaffolder } from '../../../../../services/actions/Scaffolder';
 
 export interface IScaffoldSpfxProjectViewProps { }
 
@@ -31,7 +32,9 @@ export const ScaffoldSpfxProjectView: React.FunctionComponent<IScaffoldSpfxProje
   const [shouldCreateNodeVersionFile, setShouldCreateNodeVersionFile] = useState<boolean>(false);
   const [nodeVersionManager, setNodeVersionManager] = useState<'nvm' | 'nvs' | 'none'>('nvm');
   const [nodeVersionManagerFile, setNodeVersionManagerFile] = useState<'.nvmrc' | '.node-version'>('.nvmrc');
+  const [shouldInstallCustomSteps, setShouldInstallCustomSteps] = useState<boolean>(false);
   const location: any = useLocation();
+  const [customSteps, setCustomSteps] = useState<string>('');
 
   useEffect(() => {
     if (location.state.isNewProject !== undefined) {
@@ -88,7 +91,10 @@ export const ScaffoldSpfxProjectView: React.FunctionComponent<IScaffoldSpfxProje
         shouldInstallSPFxFastServe,
         shouldCreateNodeVersionFile,
         nodeVersionManagerFile,
-        nodeVersionManager
+        nodeVersionManager,
+        shouldInstallCustomSteps,
+        customSteps,
+        setCustomSteps,
       } as SpfxScaffoldCommandInput);
     }
   };
@@ -146,6 +152,10 @@ export const ScaffoldSpfxProjectView: React.FunctionComponent<IScaffoldSpfxProje
             setNodeVersionManagerFile={setNodeVersionManagerFile}
             setNodeVersionManager={setNodeVersionManager}
             nodeVersionManager={nodeVersionManager}
+            shouldInstallCustomSteps={shouldInstallCustomSteps}
+            setshouldInstallCustomSteps={setShouldInstallCustomSteps}
+            customSteps={customSteps}
+            setCustomSteps={setCustomSteps}
           />
         }
       </div>

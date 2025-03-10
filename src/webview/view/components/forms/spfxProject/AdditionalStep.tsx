@@ -1,4 +1,4 @@
-import { VSCodeCheckbox } from '@vscode/webview-ui-toolkit/react';
+import { VSCodeCheckbox, VSCodeTextArea } from '@vscode/webview-ui-toolkit/react';
 import * as React from 'react';
 import { StepHeader } from '../../controls';
 import { PackageSelector } from './PackageSelector';
@@ -26,6 +26,10 @@ interface AdditionalStepProps {
     nodeVersionManager: 'nvm' | 'nvs' | 'none';
     setNodeVersionManager: (value: 'nvm' | 'nvs' | 'none') => void;
     setNodeVersionManagerFile: (value: '.nvmrc' | '.node-version') => void;
+    shouldInstallCustomSteps: boolean;
+    setshouldInstallCustomSteps: (value: boolean) => void;
+    customSteps: any;
+    setCustomSteps: (value: string) => void;
 }
 
 export const AdditionalStep: React.FunctionComponent<AdditionalStepProps> = ({
@@ -48,7 +52,11 @@ export const AdditionalStep: React.FunctionComponent<AdditionalStepProps> = ({
     setShouldCreateNodeVersionFile,
     setNodeVersionManagerFile,
     nodeVersionManager,
-    setNodeVersionManager
+    setNodeVersionManager,
+    shouldInstallCustomSteps,
+    setshouldInstallCustomSteps,
+    customSteps,
+    setCustomSteps
 }: React.PropsWithChildren<AdditionalStepProps>) => {
     // Send a message to retrieve the default value for the create node version file
     const getCreateNodeVersionFileDefaultValue = React.useCallback(() => {
@@ -66,6 +74,11 @@ export const AdditionalStep: React.FunctionComponent<AdditionalStepProps> = ({
     }, []);
 
     // Listen for the response to the message/s
+    const getCustomeSteps = React.useCallback(() => {
+        Messenger.send(WebviewCommand.toVSCode.customSteps, {});
+    }, []);
+
+    // Listen for the response to the message/s
     React.useEffect(() => {
         const messageListener = (event: MessageEvent<any>) => {
             const { command, payload } = event.data;
@@ -79,6 +92,11 @@ export const AdditionalStep: React.FunctionComponent<AdditionalStepProps> = ({
                 case WebviewCommand.toWebview.createNodeVersionFileDefaultValue:
                     setShouldCreateNodeVersionFile(payload);
                     break;
+                case WebviewCommand.toWebview.customSteps:
+                    setshouldInstallCustomSteps(payload);
+                    customSteps = payload;
+                    setCustomSteps = payload;
+                    break;
                 default:
                     break;
             }
@@ -89,7 +107,7 @@ export const AdditionalStep: React.FunctionComponent<AdditionalStepProps> = ({
         return () => {
             Messenger.unlisten(messageListener);
         };
-    }, [setNodeVersionManager, setNodeVersionManagerFile, setShouldCreateNodeVersionFile]);
+    }, [setNodeVersionManager, setNodeVersionManagerFile, setShouldCreateNodeVersionFile, customSteps]);
 
     // Sends the requests to load the settings values only once
     React.useEffect(() => {
@@ -99,6 +117,8 @@ export const AdditionalStep: React.FunctionComponent<AdditionalStepProps> = ({
         getNodeVersionManager();
         // Get the node version manager file
         getNodeVersionManagerFile();
+        // Get the custom steps
+        getCustomeSteps();
     }, []);
 
     return (
@@ -154,6 +174,17 @@ export const AdditionalStep: React.FunctionComponent<AdditionalStepProps> = ({
                         value={shouldCreateNodeVersionFile}
                         setValue={setShouldCreateNodeVersionFile}
                         label='Create node version manager configuration file' />}
+                {shouldInstallCustomSteps &&
+                    <label className={'block mb-1'}>
+                    To configure this setting, go to **Settings** (`Ctrl + ,`) and expand **Extensions**. Then navigate to **SharePoint Framework Toolkit** and scroll to the **`Spfx-toolkit.ProjectCustomSteps`** setting.
+                    </label>
+                }
+                <PackageSelector
+                    value={shouldInstallCustomSteps}
+                    setValue={setshouldInstallCustomSteps}
+                    label='Install custom steps' />
+
+                <VSCodeTextArea value={customSteps} />
             </div>
         </div>
     );
