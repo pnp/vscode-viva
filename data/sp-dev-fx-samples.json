@@ -644,7 +644,7 @@
         "SharePoint"
       ],
       "createDate": "2023-12-25",
-      "updateDate": "2024-10-11",
+      "updateDate": "2025-03-06",
       "version": "1.19.0",
       "componentType": "extension",
       "extensionType": "ApplicationCustomizer",
@@ -667,7 +667,7 @@
         "SharePoint"
       ],
       "createDate": "2020-06-18",
-      "updateDate": "2024-10-06",
+      "updateDate": "2024-12-24",
       "version": "1.20.0",
       "componentType": "extension",
       "extensionType": "ApplicationCustomizer",
@@ -1387,6 +1387,29 @@
       "sampleType": "samples"
     },
     {
+      "name": "pnp-sp-dev-spfx-extensions-YOUR-SOLUTION-NAME-GOES-HERE",
+      "title": "AI Document Assistant",
+      "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/YOUR-SOLUTION-NAME-GOES-HERE",
+      "description": "The AI Document Assistant is a SharePoint Framework (SPFx) Command Set extension designed to enhance document interactions in SharePoint Online. This intelligent assistant leverages the OpenAI Assistant API to allow users to ask questions about selected documents directly within a chat interface.",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-command-ai-document-assistant/assets/architecture.png",
+      "authors": [
+        {
+          "name": "Ejaz Hussain",
+          "pictureUrl": "https://github.com/ejazhussain.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2023-12-25",
+      "updateDate": "2023-12-31",
+      "version": "1.20.0",
+      "componentType": "extension",
+      "extensionType": "ListViewCommandSet",
+      "sampleGalerry": "sp-dev-fx-extensions",
+      "sampleType": "samples"
+    },
+    {
       "name": "pnp-sp-dev-spfx-extensions-react-react-command-change-page-layouttype",
       "title": "Change Page Layout Command Extension",
       "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-command-change-page-layouttype",
@@ -1987,14 +2010,18 @@
         {
           "name": "Dan Toft (Code Reviews)",
           "pictureUrl": "https://github.com/Tanddant.png"
+        },
+        {
+          "name": "Nicolas Kheirallah",
+          "pictureUrl": "https://github.com/NicolasKheirallah.png"
         }
       ],
       "tags": [
         "SharePoint"
       ],
       "createDate": "2023-12-22",
-      "updateDate": "2024-04-06",
-      "version": "1.17.4",
+      "updateDate": "2025-03-12",
+      "version": "1.20.0",
       "componentType": "extension",
       "extensionType": "ListViewCommandSet",
       "sampleGalerry": "sp-dev-fx-extensions",
@@ -2469,11 +2496,11 @@
       "sampleType": "samples"
     },
     {
-      "name": "pnp-sp-dev-spfx-extensions-react-utility-extensions",
+      "name": "pnp-sp-dev-spfx-extensions-react-YOUR-SOLUTION-NAME-GOES-HERE",
       "title": "Copy Path and Copy Name List view command set extensions",
-      "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-utility-extensions",
-      "description": "List view command set extensions with below functionalities: Copy Path and Copy Name.",
-      "image": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-utility-extensions/assets/CopyPathCopyNameExtenstions.png",
+      "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/YOUR-SOLUTION-NAME-GOES-HERE",
+      "description": "List view command set extensions with below functionalities",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-utility-extensions/assets/CopyPathCopyNameExtenstions.png",
       "authors": [
         {
           "name": "Harminder Singh",
@@ -2483,8 +2510,8 @@
       "tags": [
         "SharePoint"
       ],
-      "createDate": "2023-10-04",
-      "updateDate": "2024-08-28",
+      "createDate": "2023-10-22",
+      "updateDate": "2025-02-27",
       "version": "1.19.0",
       "componentType": "extension",
       "extensionType": "ListViewCommandSet",
@@ -4147,21 +4174,25 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-caml2table",
-      "title": "CAML to Table Web Part",
+      "title": "CAML to Table",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-caml2table",
-      "description": "Let's the user test CAML queries at ease.",
+      "description": "A powerful web part that allows users to test and build CAML queries visually with a rich, intuitive interface. This enhanced version includes a visual query builder, query validation, saved queries, and more.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-caml2table/assets/Demo.gif",
       "authors": [
         {
           "name": "Dan Toft",
           "pictureUrl": "https://github.com/Tanddant.png"
+        },
+        {
+          "name": "Nicolas Kheirallah",
+          "pictureUrl": "https://github.com/NicolasKheirallah.png"
         }
       ],
       "tags": [
         "SharePoint"
       ],
       "createDate": "2022-11-26",
-      "updateDate": "2022-11-26",
+      "updateDate": "2025-03-11",
       "version": "1.15.2",
       "componentType": "webpart",
       "extensionType": null,
@@ -4951,6 +4982,29 @@
       "createDate": "2021-04-05",
       "updateDate": "2021-04-05",
       "version": "1.10.0",
+      "componentType": "webpart",
+      "extensionType": null,
+      "sampleGalerry": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
+      "name": "pnp-sp-dev-spfx-web-parts-react-document-ai-chat",
+      "title": "Document AI Chat using Kernel Memory",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-document-ai-chat",
+      "description": "This project guides you through building an intelligent document chatbot using Kernel Memory and Azure services. It covers the architecture and implementation details, including using an Azure Function for backend processing, a SharePoint Framework (SPFx) web part for the user interface, and leveraging Azure AI Search and Azure OpenAI for advanced search and response generation. The project also provides step-by-step instructions and references to relevant documentation.",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-document-ai-chat/assets/kernel-memory-architecture.png",
+      "authors": [
+        {
+          "name": "Ejaz Hussain",
+          "pictureUrl": "https://github.com/ejazhussain.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2025-03-10",
+      "updateDate": "2025-03-10",
+      "version": "1.20.0",
       "componentType": "webpart",
       "extensionType": null,
       "sampleGalerry": "sp-dev-fx-webparts",
@@ -6291,6 +6345,29 @@
       "sampleType": "samples"
     },
     {
+      "name": "pnp-sp-dev-spfx-web-parts-react-group-members-webpart",
+      "title": "Group Members Web Part – Microsoft 365 Group User Management",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-group-members-webpart",
+      "description": "The Group Members Web Part provides a comprehensive solution for displaying and managing Microsoft 365 group memberships within SharePoint. This web part leverages Microsoft Graph to fetch user data and presents it in an intuitive, responsive interface that supports filtering, search, and quick actions.",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-group-members-webpart/assets/GroupMembersUI.png",
+      "authors": [
+        {
+          "name": "Nicolas Kheirallah",
+          "pictureUrl": "https://github.com/NicolasKheirallah.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2025-02-28",
+      "updateDate": "2025-02-28",
+      "version": "1.20.0",
+      "componentType": "webpart",
+      "extensionType": null,
+      "sampleGalerry": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
       "name": "pnp-sp-dev-spfx-web-parts-react-group-membership-manager",
       "title": "Group Membership Manager Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-group-membership-manager",
@@ -7237,6 +7314,29 @@
       ],
       "createDate": "2023-01-31",
       "updateDate": "2025-01-19",
+      "version": "1.20.0",
+      "componentType": "webpart",
+      "extensionType": null,
+      "sampleGalerry": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
+      "name": "pnp-sp-dev-spfx-web-parts-react-modern-calendar",
+      "title": "New Modern Calendar Web Part",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-modern-calendar",
+      "description": "New Modern Calendar Web Part for SharePoint Framework",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-modern-calendar/assets/moderCalendar1.png",
+      "authors": [
+        {
+          "name": "João Mendes",
+          "pictureUrl": "https://github.com/joaojmendes.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2025-03-08",
+      "updateDate": "2025-03-08",
       "version": "1.20.0",
       "componentType": "webpart",
       "extensionType": null,
@@ -9005,6 +9105,29 @@
       "sampleType": "samples"
     },
     {
+      "name": "pnp-sp-dev-spfx-web-parts-react-richtext-editor",
+      "title": "Rich Text Editor - Fluent UI",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-richtext-editor",
+      "description": "A robust rich text editor utilizing the latest Fluent React components to seamlessly align with SharePoint Online Modern UI standards. Full control over UI and backend code, making integration with external systems like SharePoint lists a breeze. Inspiration is drawn from the out-of-the-box Text web part.",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-richtext-editor/assets/screenshot.png",
+      "authors": [
+        {
+          "name": "Ejaz Hussain",
+          "pictureUrl": "https://github.com/ejazhussain.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2025-02-11",
+      "updateDate": "2025-02-11",
+      "version": "1.20.0",
+      "componentType": "webpart",
+      "extensionType": null,
+      "sampleGalerry": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
       "name": "pnp-sp-dev-spfx-web-parts-react-roomchat",
       "title": "Room Chat Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-roomchat",
@@ -9374,6 +9497,29 @@
       "sampleType": "samples"
     },
     {
+      "name": "pnp-sp-dev-spfx-web-parts-react-sp-bookmarks",
+      "title": "Bookmarks Manager",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-sp-bookmarks",
+      "description": "Allows users to manage and organize bookmarks in a SharePoint list.",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-sp-bookmarks/assets/BookmarksManager.gif",
+      "authors": [
+        {
+          "name": "Sudeep Ghatak",
+          "pictureUrl": "https://github.com/sudeepghatak.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2025-01-27",
+      "updateDate": "2025-01-27",
+      "version": "1.20.0",
+      "componentType": "webpart",
+      "extensionType": null,
+      "sampleGalerry": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
       "name": "pnp-sp-dev-spfx-web-parts-react-sp-pnp-js-property-decorators",
       "title": "Using PnP JS Core custom objects with @select and @expand decorators",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-sp-pnp-js-property-decorators",
@@ -9392,6 +9538,29 @@
       "updateDate": "2017-07-02",
       "version": "1.0.2",
       "componentType": null,
+      "extensionType": null,
+      "sampleGalerry": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
+      "name": "pnp-sp-dev-spfx-web-parts-react-sp-secret-santa",
+      "title": "Using React Accordion plugin with SPFx",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-sp-secret-santa",
+      "description": "The Secret Santa is a fun and interactive tool designed to manage a Secret Santa gift exchange directly on your SharePoint site.",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-sp-secret-santa/assets/SecretSanta.gif",
+      "authors": [
+        {
+          "name": "Sudeep Ghatak",
+          "pictureUrl": "https://github.com/sudeepghatak.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2024-12-25",
+      "updateDate": "2024-12-31",
+      "version": "1.20.0",
+      "componentType": "webpart",
       "extensionType": null,
       "sampleGalerry": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -10680,6 +10849,29 @@
       "createDate": "2020-03-23",
       "updateDate": "2020-03-23",
       "version": "1.10.0",
+      "componentType": "webpart",
+      "extensionType": null,
+      "sampleGalerry": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
+      "name": "pnp-sp-dev-spfx-web-parts-react-yet-another-FAQ-webpart",
+      "title": "SPFx FAQ Accordion Web Part",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-yet-another-FAQ-webpart",
+      "description": "The Yet another FAQ Accordion Web Part is a modern SPFx solution for displaying FAQs in SharePoint Online, featuring a responsive interface with real-time search, grouping, and customizable styling.",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-yet-another-FAQ-webpart/assets/preview.png",
+      "authors": [
+        {
+          "name": "Nicolas Kheirallah",
+          "pictureUrl": "https://github.com/NicolasKheirallah.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2025-02-23",
+      "updateDate": "2025-02-23",
+      "version": "1.20.0",
       "componentType": "webpart",
       "extensionType": null,
       "sampleGalerry": "sp-dev-fx-webparts",
