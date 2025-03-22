@@ -2834,6 +2834,29 @@
       "sampleType": "samples"
     },
     {
+      "name": "pnp-sp-dev-spfx-web-parts-js-demo-time",
+      "title": "Demo Time",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/js-demo-time",
+      "description": "This web part is more a POC created for the SharePoint Hackathon 2025. This web part allows you to quickly add presentation mode to any page on your site. It has no UI and is not visible after publish, so not edit mode of the page. After adding it to a page and publishing it will add an additional Play in the page header.",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/js-demo-time/assets/demo-time-gif1.gif",
+      "authors": [
+        {
+          "name": "Adam Wójcik",
+          "pictureUrl": "https://github.com/Adam-it.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2025-03-16",
+      "updateDate": "2025-03-16",
+      "version": "1.20.0",
+      "componentType": "webpart",
+      "extensionType": null,
+      "sampleGalerry": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
       "name": "pnp-sp-dev-spfx-web-parts-js-display-list",
       "title": "Display List JavaScript Client-Side Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/js-display-list",
@@ -2974,6 +2997,29 @@
       "createDate": "2019-04-18",
       "updateDate": "2019-04-18",
       "version": "1.8.0",
+      "componentType": "webpart",
+      "extensionType": null,
+      "sampleGalerry": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
+      "name": "pnp-sp-dev-spfx-web-parts-js-mermaid-diagram",
+      "title": "Mermaid Diagram Web Part for SharePoint Online",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/js-mermaid-diagram",
+      "description": "I created this web part to add Mermaid diagram support in SharePoint Online as part of my tutorial series. While working on it, I found this discussion thread: Displaying Mermaid Diagrams in SharePoint Online Markdown Web Parts, which highlights the need for a proper solution.",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/js-mermaid-diagram/assets/js-mermaid.png",
+      "authors": [
+        {
+          "name": "Clavin Fernandes",
+          "pictureUrl": "https://github.com/cfernandes-muhimbi.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2025-03-16",
+      "updateDate": "2025-03-16",
+      "version": "1.20.0",
       "componentType": "webpart",
       "extensionType": null,
       "sampleGalerry": "sp-dev-fx-webparts",
@@ -6983,6 +7029,29 @@
       "sampleType": "samples"
     },
     {
+      "name": "pnp-sp-dev-spfx-web-parts-react-m365-planner-timeline",
+      "title": "M365 Planner Timeline Web Part",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-m365-planner-timeline",
+      "description": "The purpose of this web part sample is to render M365 Group Plan tasks in a timeline ordered by the task due date with tags for years and months in a vertical stack. There are filter options to filter out completed tasks and tender tasks by a plan bucket. A task's detail can be viewed by clicking the (i) icon below the \"Due Date\" popping up a callout dialog with task details. It Should be noted that a M365 Group Planner can have 0 to 200 plans assigned to M365 Group. The web part needs to be configured in the web part's property pane you must select the plan to be rendered, along with options for the plan bucket and completed task filter. These setting will be used when the web part renders on the page. The configuration of multiple web parts on hte page for different plans and buckets is supported.",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-m365-planner-timeline/assets/webParts.png",
+      "authors": [
+        {
+          "name": "Bill Brockbank",
+          "pictureUrl": "https://github.com/billbrockbank.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2024-12-25",
+      "updateDate": "2024-12-31",
+      "version": "1.20.0",
+      "componentType": "webpart",
+      "extensionType": null,
+      "sampleGalerry": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
       "name": "pnp-sp-dev-spfx-web-parts-react-manage-hublevel-subscriptions",
       "title": "Subscription Manager Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-manage-hublevel-subscriptions",
@@ -8097,7 +8166,7 @@
         "SharePoint"
       ],
       "createDate": "2019-09-05",
-      "updateDate": "2024-10-06",
+      "updateDate": "2025-03-15",
       "version": "1.20.0",
       "componentType": "webpart",
       "extensionType": null,
@@ -9748,14 +9817,18 @@
         {
           "name": "Arun Kumar Perumal",
           "pictureUrl": "https://github.com/arunkumarperumal.png"
+        },
+        {
+          "name": "Nicolas Kheirallah",
+          "pictureUrl": "https://github.com/nicolaskheirallah.png"
         }
       ],
       "tags": [
         "SharePoint"
       ],
       "createDate": "2022-03-30",
-      "updateDate": "2022-03-30",
-      "version": "1.13.0",
+      "updateDate": "2025-03-16",
+      "version": "1.20.0",
       "componentType": "webpart",
       "extensionType": null,
       "sampleGalerry": "sp-dev-fx-webparts",
