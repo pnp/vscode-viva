@@ -9,4 +9,5 @@ export enum ProjectFileContent {
   installReact = 'install-react',
   createNVMRCFile = 'create-nvmrc-file',
   createNodeVersionFile = 'create-node-version-file',
+  installCustomSteps = 'install-custom-steps'
 }
