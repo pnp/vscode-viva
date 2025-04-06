@@ -73,6 +73,11 @@ export const Commands = {
   uninstallAppCatalogApp: `${EXTENSION_NAME}.uninstallAppCatalogApp`,
   showMoreActions: `${EXTENSION_NAME}.showMoreActions`,
 
+  // App Catalog actions
+  addTenantAppCatalog: `${EXTENSION_NAME}.addTenantAppCatalog`,
+  addSiteAppCatalog: `${EXTENSION_NAME}.addSiteAppCatalog`,
+  removeSiteAppCatalog: `${EXTENSION_NAME}.removeSiteAppCatalog`,
+
   // Set form customizer
   setFormCustomizer: `${EXTENSION_NAME}.setFormCustomizer`
 };
