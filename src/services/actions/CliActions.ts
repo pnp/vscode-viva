@@ -1279,8 +1279,6 @@ export class CliActions {
 
       appCatalogUrl = appCatalogUrl.replace('/AppCatalog', '');
 
-      log(appCatalogUrl)
-
       const shouldRemove = await window.showQuickPick(['Yes', 'No'], {
         title: `Are you sure you want to remove the site app catalog from site '${appCatalogUrl}'?`,
         ignoreFocusOut: true,
@@ -1297,8 +1295,6 @@ export class CliActions {
         siteUrl: appCatalogUrl?.trim(),
         force: true
       };
-
-      log(commandOptions);
 
       await CliExecuter.execute('spo site appcatalog remove', 'json', commandOptions);
       Notifications.info(`App '${appCatalogUrl}' has been successfully removed.`);
