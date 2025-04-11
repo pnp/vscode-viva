@@ -78,6 +78,52 @@
 				]
 			}
 		],
+		"languageModelTools": [
+			{
+				"name": "spo_site_add",
+				"tags": [
+					"sharepoint",
+					"site",
+					"spfx-toolkit"
+				],
+				"toolReferenceName": "SharePointSiteAdd",
+				"displayName": "Add SharePoint Site",
+				"modelDescription": "Create a new SharePoint Online site.",
+				"userDescription": "Create a new SharePoint Online site.",
+				"canBeReferencedInPrompt": true,
+				"icon": "$(add)",
+				"inputSchema": {
+					"type": "object",
+					"properties": {
+						"type": {
+							"type": "string",
+							"description": "Type of sites to add. Allowed values TeamSite, CommunicationSite. This property is required.",
+							"default": "CommunicationSite"
+						},
+						"title": {
+							"type": "string",
+							"description": "Site title. This property is required.",
+							"default": ""
+						},
+						"url": {
+							"type": "string",
+							"description": "Site URL. In case of CommunicationSite this option is required.",
+							"default": ""
+						},
+						"description": {
+							"type": "string",
+							"description": "Site description. This property is optional.",
+							"default": ""
+						},
+						"owners": {
+							"type": "string",
+							"description": "Comma-separated list of user emails to set as site owners. In case of TeamSite this option is required.",
+							"default": ""
+						}
+					}
+				}
+			}
+		],
 		"walkthroughs": [
 			{
 				"id": "spfx-toolkit-intro",
