@@ -34,12 +34,12 @@ export class Dependencies {
     await window.withProgress({
       location: ProgressLocation.Notification,
       cancellable: false,
-      title: 'Checking dependencies',
+      title: 'Validating local setup',
     }, async (progress) => {
       return new Promise((resolve) => {
         setTimeout(() => {
           try {
-            progress.report({ message: 'Checking node version...' });
+            progress.report({ message: 'Validating node version...' });
 
             // Validate node
             const isNodeValid = Dependencies.isValidNodeJs();
@@ -70,13 +70,13 @@ export class Dependencies {
               return;
             }
 
-            progress.report({ message: 'Checking npm dependencies...' });
+            progress.report({ message: 'Validating npm dependencies...' });
 
             const command = 'npm list -g --json --silent';
             const result = execSync(command, { shell: TerminalCommandExecuter.shell, timeout: 15000 });
 
             if (!result) {
-              Notifications.error('Failed checking dependencies');
+              Notifications.error('Failed validating local setup');
             }
 
             // Check for missing dependencies
@@ -104,7 +104,7 @@ export class Dependencies {
             }
             resolve(null);
           } catch (e) {
-            Notifications.error('Failed checking dependencies');
+            Notifications.error('Failed validating local setup');
             Logger.error(`${(e as Error).message}`);
             resolve(null);
           }
