@@ -4516,10 +4516,10 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-connected-web-parts",
-      "title": "Connected web parts",
+      "title": "Connected Web Parts",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-connected-web-parts",
       "description": "This samples showcase how to connect two web parts together.",
-      "image": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-connected-web-parts/assets/connected-web-parts.gif?raw=true",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-connected-web-parts/assets/connected-web-parts.gif",
       "authors": [
         {
           "name": "Guido Zambarda",
@@ -4530,8 +4530,8 @@
         "SharePoint"
       ],
       "createDate": "2024-03-16",
-      "updateDate": "2024-03-16",
-      "version": "1.18.2",
+      "updateDate": "2025-03-22",
+      "version": "1.20.0",
       "componentType": "webpart",
       "extensionType": null,
       "sampleGalerry": "sp-dev-fx-webparts",
@@ -4950,10 +4950,10 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-directory",
-      "title": "Organization Directory Web Part",
+      "title": "Organization Directory",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-directory",
       "description": "Search People from Organization Directory and show live persona card on hover.",
-      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-directory/assets/react-directory7.png",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-directory/assets/react-directory-teams1.png",
       "authors": [
         {
           "name": "João Mendes",
@@ -4969,14 +4969,18 @@
         },
         {
           "name": "Abderahman Moujahid",
-          "pictureUrl": "https://avatars.githubusercontent.com/u/36161889?s=460&u=afdd5f6681bc375ee3811482dec79824c12d8170&v=4"
+          "pictureUrl": "https://github.com/Abderahman88.png"
+        },
+        {
+          "name": "Sandeep P S",
+          "pictureUrl": "https://github.com/Sandeep-FED.png"
         }
       ],
       "tags": [
         "SharePoint"
       ],
-      "createDate": "2021-03-04",
-      "updateDate": "2024-10-05",
+      "createDate": "2019-07-29",
+      "updateDate": "2025-04-06",
       "version": "1.20.0",
       "componentType": "webpart",
       "extensionType": null,
@@ -5300,10 +5304,10 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-enhanced-powerapps",
-      "title": "Enhanced Power Apps Web Part",
+      "title": "Enhanced Power App",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-enhanced-powerapps",
-      "description": "Adds dynamic resizing, theme awareness, and dynamic data to embedded Power Apps",
-      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-enhanced-powerapps/assets/enhanced-power-apps.gif",
+      "description": "Sample web part showing how to embed a Power App that resizes, adapts to themes, and supports dynamic properties",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-enhanced-powerapps/assets/dpstep1.png",
       "authors": [
         {
           "name": "Hugo Bernier",
@@ -5312,17 +5316,13 @@
         {
           "name": "Babak Danyal",
           "pictureUrl": "https://github.com/babakdanyal.png"
-        },
-        {
-          "name": "Kunj Balkrishna Sangani",
-          "pictureUrl": "https://github.com/kunj-sangani.png"
         }
       ],
       "tags": [
         "SharePoint"
       ],
-      "createDate": "2020-07-26",
-      "updateDate": "2023-06-27",
+      "createDate": "2024-12-25",
+      "updateDate": "2024-12-31",
       "version": "1.11.0",
       "componentType": "webpart",
       "extensionType": null,
@@ -6557,9 +6557,9 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-image-editor",
-      "title": "Image Editor Web Part",
+      "title": "React Image Editor",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-image-editor",
-      "description": "This solution contains an SPFx web part that shows an HTML Image Editor based on canvas and Office UI Fabric",
+      "description": "This solution contains an SPFx web part that shows an HTML Image Editor based on canvas and Fluent UI.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-image-editor/assets/react-image-editor.gif",
       "authors": [
         {
@@ -6571,8 +6571,8 @@
         "SharePoint"
       ],
       "createDate": "2021-03-17",
-      "updateDate": "2021-03-17",
-      "version": "1.11.0",
+      "updateDate": "2025-04-02",
+      "version": "1.20.0",
       "componentType": "webpart",
       "extensionType": null,
       "sampleGalerry": "sp-dev-fx-webparts",
@@ -8349,6 +8349,29 @@
       "createDate": "2023-12-09",
       "updateDate": "2023-12-09",
       "version": "1.18.2",
+      "componentType": "webpart",
+      "extensionType": null,
+      "sampleGalerry": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
+      "name": "pnp-sp-dev-spfx-web-parts-react-personal-dashboard",
+      "title": "Personal Dashboard",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-personal-dashboard",
+      "description": "The Personal Dashboard app, built using the SharePoint framework, offers a versatile solution for organizations across various platforms such as Teams, Outlook, and Office. This app enables seamless integration with both public and enterprise APIs, allowing users to effortlessly consume and leverage their desired APIs within their personalized workspace.",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-personal-dashboard/assets/Configuration.gif",
+      "authors": [
+        {
+          "name": "Saurabh Tripathi",
+          "pictureUrl": "https://github.com/saurabh7019.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2025-04-08",
+      "updateDate": "2025-04-08",
+      "version": "1.20.0",
       "componentType": "webpart",
       "extensionType": null,
       "sampleGalerry": "sp-dev-fx-webparts",
