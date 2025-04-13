@@ -164,7 +164,7 @@ export class CommandPanel {
     if (!appCatalogUrls) {
       environmentCommands.push(
         new ActionTreeItem(
-          'Create a app catalog',
+          'Create an app catalog',
           '',
           { name: 'add', custom: false },
           undefined,
