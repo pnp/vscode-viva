@@ -1,5 +1,15 @@
 # Change Log
 
+## [4.5.0] - 2025-04-14
+
+- Adds new Gulp task Publish, which includes both bundle and package
+- Updates settings to allow not to load apps for app catalogs
+- Updates serve gulp tasks to combine them into a single task
+- Refactors pipeline scaffolding form to smaller components
+- Adds initial integration tests for the product
+- Add an action that allows to increase project version and implement version increment logic
+- Fixes App Install/Uninstall issue to allow installing apps on root site
+
 ## [4.4.0] - 2025-02-04
 
 - Updated the gulp bundle local and production to a single task with an additional prompt
