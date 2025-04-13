@@ -3,17 +3,16 @@ import { CliExecuter } from '../../../services/executeWrappers/CliCommandExecute
 import { validateAuth } from './ToolAuthValidationUtil';
 
 
-interface ISharePointSiteAddParameters {
-    type: string;
+interface ISharePointListAddParameters {
     title: string;
+    webUrl: string;
+    baseTemplate?: string;
     description?: string;
-    owners?: string[];
-    url?: string;
 }
 
-export class SharePointSiteAdd implements LanguageModelTool<ISharePointSiteAddParameters> {
+export class SharePointListAdd implements LanguageModelTool<ISharePointListAddParameters> {
     async invoke(
-        options: LanguageModelToolInvocationOptions<ISharePointSiteAddParameters>,
+        options: LanguageModelToolInvocationOptions<ISharePointListAddParameters>,
         _token: CancellationToken
     ) {
         const params = options.input;
@@ -22,25 +21,25 @@ export class SharePointSiteAdd implements LanguageModelTool<ISharePointSiteAddPa
             return authValidationResult as LanguageModelToolResult;
         }
 
-        const result = await CliExecuter.execute('spo site add', 'json', params);
+        const result = await CliExecuter.execute('spo list add', 'json', params);
         if (result.stderr) {
             return new LanguageModelToolResult([new LanguageModelTextPart(`Error: ${result.stderr}`)]);
         }
 
-        return new LanguageModelToolResult([new LanguageModelTextPart(`Site created successfully ${(result.stdout !== '' ? `\nResult: ${result.stdout}` : '')}`)]);
+        return new LanguageModelToolResult([new LanguageModelTextPart(`List created successfully ${(result.stdout !== '' ? `\nResult: ${result.stdout}` : '')}`)]);
     }
 
     async prepareInvocation(
-        options: LanguageModelToolInvocationPrepareOptions<ISharePointSiteAddParameters>,
+        options: LanguageModelToolInvocationPrepareOptions<ISharePointListAddParameters>,
         _token: CancellationToken
     ) {
         const confirmationMessages = {
-            title: 'Create a new SharePoint Online site',
-            message: new MarkdownString('Should I create a new Site with the following parameters?'),
+            title: 'Create a new SharePoint Online list',
+            message: new MarkdownString('Should I create a new List with the following parameters?'),
         };
 
         return {
-            invocationMessage: 'Creating a new SharePoint Online site',
+            invocationMessage: 'Creating a new SharePoint Online list',
             confirmationMessages,
         };
     }

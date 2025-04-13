@@ -78,8 +78,187 @@
 				]
 			}
 		],
-		"languageModelTools": [
+		"languageModelTools": [			
 			{
+				"name": "spo_app_list",
+				"tags": [
+					"sharepoint",
+					"app",
+					"spfx-toolkit"
+				],
+				"toolReferenceName": "SharePointAppList",
+				"displayName": "List SharePoint apps",
+				"modelDescription": "Lists apps from the tenant app catalog. This tool may be used to list all apps from the tenant app catalog.",
+				"userDescription": "Lists apps from the tenant app catalog",
+				"canBeReferencedInPrompt": true,
+				"icon": "$(search)",
+				"inputSchema": {}
+			},
+			{
+				"name": "spo_app_install",
+				"tags": [
+					"sharepoint",
+					"app",
+					"spfx-toolkit"
+				],
+				"toolReferenceName": "SharePointAppInstall",
+				"displayName": "Install a SharePoint app in a site",
+				"modelDescription": "Installs an app from tenant app catalog in the site. This tool may be used to install a specified app by its GUID to a specified site.",
+				"userDescription": "Installs an app from tenant app catalog in the site",
+				"canBeReferencedInPrompt": true,
+				"icon": "$(package)",
+				"inputSchema": {
+					"type": "object",
+					"properties": {
+						"siteUrl": {
+							"type": "string",
+							"description": "URL of the site. This option is required.",
+							"default": ""
+						},
+						"id": {
+							"type": "string",
+							"description": "GUID of the app to install. This option is required.",
+							"default": ""
+						}
+					}
+				}
+			},
+			{
+				"name": "spo_list_add",
+				"tags": [
+					"sharepoint",
+					"list",
+					"spfx-toolkit"
+				],
+				"toolReferenceName": "SharePointListAdd",
+				"displayName": "Create a SharePoint list",
+				"modelDescription": "Creates list in the specified site. This tool may be used to create a SharePoint list in a site.",
+				"userDescription": "Creates list in the specified site.",
+				"canBeReferencedInPrompt": true,
+				"icon": "$(add)",
+				"inputSchema": {
+					"type": "object",
+					"properties": {
+						"title": {
+							"type": "string",
+							"description": "Title of the list to add. This option is required.",
+							"default": ""
+						},
+						"webUrl": {
+							"type": "string",
+							"description": "URL of the site where the list should be added. This option is required.",
+							"default": ""
+						},
+						"baseTemplate": {
+							"type": "string",
+							"description": "The list definition type on which the list is based. Allowed values Announcements, Contacts, CustomGrid, DataSources,DiscussionBoard, DocumentLibrary, Events, GanttTasks, GenericList, IssuesTracking, Links, NoCodeWorkflows,PictureLibrary, Survey, Tasks, WebPageLibrary, WorkflowHistory, WorkflowProcess, XmlForm. Default value is GenericList. This option is optional.",
+							"default": ""
+						},
+						"description": {
+							"type": "string",
+							"description": "The description for the list. This option is optional.",
+							"default": ""
+						}
+					}
+				}
+			},
+			{
+				"name": "spo_list_get",
+				"tags": [
+					"sharepoint",
+					"list",
+					"spfx-toolkit"
+				],
+				"toolReferenceName": "SharePointListGet",
+				"displayName": "Get a SharePoint list",
+				"modelDescription": "Gets information about the specific list. This tool may be used to check if a list on a SharePoint site exists or to retrieve more information about it.",
+				"userDescription": "Gets information about the specific list.",
+				"canBeReferencedInPrompt": true,
+				"icon": "$(search)",
+				"inputSchema": {
+					"type": "object",
+					"properties": {
+						"title": {
+							"type": "string",
+							"description": "Title of the list to retrieve information for. This option is required.",
+							"default": ""
+						},
+						"webUrl": {
+							"type": "string",
+							"description": "URL of the site where the list to retrieve is located. This option is required.",
+							"default": ""
+						}
+					}
+				}
+			},
+			{
+				"name": "spo_list_remove",
+				"tags": [
+					"sharepoint",
+					"list",
+					"spfx-toolkit"
+				],
+				"toolReferenceName": "SharePointListRemove",
+				"displayName": "Remove a SharePoint list",
+				"modelDescription": "Removes the specified list. This tool may be used to remove a SharePoint list from a site.",
+				"userDescription": "Removes the specified list.",
+				"canBeReferencedInPrompt": true,
+				"icon": "$(trash)",
+				"inputSchema": {
+					"type": "object",
+					"properties": {
+						"title": {
+							"type": "string",
+							"description": "Title of the list to remove. This option is required.",
+							"default": ""
+						},
+						"webUrl": {
+							"type": "string",
+							"description": "URL of the site where the list to remove is located. This option is required.",
+							"default": ""
+						}
+					}
+				}
+			},
+			{
+				"name": "spo_page_add",
+				"tags": [
+					"sharepoint",
+					"page",
+					"spfx-toolkit"
+				],
+				"toolReferenceName": "SharePointPageAdd",
+				"displayName": "Add a SharePoint Page",
+				"modelDescription": "Creates a page. This tool may be used to add a page on a SharePoint site.",
+				"userDescription": "Creates a page.",
+				"canBeReferencedInPrompt": true,
+				"icon": "$(add)",
+				"inputSchema": {
+					"type": "object",
+					"properties": {
+						"name": {
+							"type": "string",
+							"description": "Name of the page to create. This option is required.",
+							"default": ""
+						},
+						"webUrl": {
+							"type": "string",
+							"description": "URL of the site where the page should be created. This option is required.",
+							"default": ""
+						},
+						"title": {
+							"type": "string",
+							"description": "Title of the page to create. If not specified, will use the page name as its title. This option is optional.",
+							"default": ""
+						},
+						"layoutType": {
+							"type": "string",
+							"description": "Layout of the page. Allowed values Article, Home, SingleWebPartAppPage, RepostPage, HeaderlessSearchResults, Spaces, Topic. Default Article. This option is optional.",
+							"default": ""
+						}
+					}
+				}
+			},{
 				"name": "spo_site_add",
 				"tags": [
 					"sharepoint",
@@ -88,7 +267,7 @@
 				],
 				"toolReferenceName": "SharePointSiteAdd",
 				"displayName": "Add SharePoint Site",
-				"modelDescription": "Create a new SharePoint Online site.",
+				"modelDescription": "Create a new SharePoint Online site. This tool may be used to create a CommunicationSite or a TeamSite. in case of TeamSite we need to provide the owners of the site and in case of CommunicationSite we need to specify the url.",
 				"userDescription": "Create a new SharePoint Online site.",
 				"canBeReferencedInPrompt": true,
 				"icon": "$(add)",
@@ -118,6 +297,54 @@
 						"owners": {
 							"type": "string",
 							"description": "Comma-separated list of user emails to set as site owners. In case of TeamSite this option is required.",
+							"default": ""
+						}
+					}
+				}
+			},
+			{
+				"name": "spo_site_remove",
+				"tags": [
+					"sharepoint",
+					"site",
+					"spfx-toolkit"
+				],
+				"toolReferenceName": "SharePointSiteRemove",
+				"displayName": "Remove SharePoint Site",
+				"modelDescription": "Remove a SharePoint Online site. This till may be used to remove a site.",
+				"userDescription": "Remove a SharePoint Online site.",
+				"canBeReferencedInPrompt": true,
+				"icon": "$(trash)",
+				"inputSchema": {
+					"type": "object",
+					"properties": {
+						"url": {
+							"type": "string",
+							"description": "URL of the site. This option is required.",
+							"default": ""
+						}
+					}
+				}
+			},
+			{
+				"name": "spo_site_get",
+				"tags": [
+					"sharepoint",
+					"site",
+					"spfx-toolkit"
+				],
+				"toolReferenceName": "SharePointSiteGet",
+				"displayName": "Get SharePoint Site",
+				"modelDescription": "Get a SharePoint Online site. This tool may be used to check if a site extist or to retrieve more information about a SharePoints site.",
+				"userDescription": "Get a SharePoint Online site.",
+				"canBeReferencedInPrompt": true,
+				"icon": "$(search)",
+				"inputSchema": {
+					"type": "object",
+					"properties": {
+						"url": {
+							"type": "string",
+							"description": "URL of the site. This option is required.",
 							"default": ""
 						}
 					}

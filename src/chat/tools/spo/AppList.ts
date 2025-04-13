@@ -3,17 +3,11 @@ import { CliExecuter } from '../../../services/executeWrappers/CliCommandExecute
 import { validateAuth } from './ToolAuthValidationUtil';
 
 
-interface ISharePointSiteAddParameters {
-    type: string;
-    title: string;
-    description?: string;
-    owners?: string[];
-    url?: string;
-}
+interface ISharePointAppListParameters {}
 
-export class SharePointSiteAdd implements LanguageModelTool<ISharePointSiteAddParameters> {
+export class SharePointAppList implements LanguageModelTool<ISharePointAppListParameters> {
     async invoke(
-        options: LanguageModelToolInvocationOptions<ISharePointSiteAddParameters>,
+        options: LanguageModelToolInvocationOptions<ISharePointAppListParameters>,
         _token: CancellationToken
     ) {
         const params = options.input;
@@ -22,25 +16,25 @@ export class SharePointSiteAdd implements LanguageModelTool<ISharePointSiteAddPa
             return authValidationResult as LanguageModelToolResult;
         }
 
-        const result = await CliExecuter.execute('spo site add', 'json', params);
+        const result = await CliExecuter.execute('spo app list', 'json', params);
         if (result.stderr) {
             return new LanguageModelToolResult([new LanguageModelTextPart(`Error: ${result.stderr}`)]);
         }
 
-        return new LanguageModelToolResult([new LanguageModelTextPart(`Site created successfully ${(result.stdout !== '' ? `\nResult: ${result.stdout}` : '')}`)]);
+        return new LanguageModelToolResult([new LanguageModelTextPart(`Apps from tenant app catalog retrieved successfully ${(result.stdout !== '' ? `\nResult: ${result.stdout}` : '')}`)]);
     }
 
     async prepareInvocation(
-        options: LanguageModelToolInvocationPrepareOptions<ISharePointSiteAddParameters>,
+        options: LanguageModelToolInvocationPrepareOptions<ISharePointAppListParameters>,
         _token: CancellationToken
     ) {
         const confirmationMessages = {
-            title: 'Create a new SharePoint Online site',
-            message: new MarkdownString('Should I create a new Site with the following parameters?'),
+            title: 'List apps from SharePoint Online tenant app catalog',
+            message: new MarkdownString('Should I retrieve all apps from SharePoint Online tenant app catalog?'),
         };
 
         return {
-            invocationMessage: 'Creating a new SharePoint Online site',
+            invocationMessage: 'Getting apps from SharePoint Online tenant app catalog',
             confirmationMessages,
         };
     }
