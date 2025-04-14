@@ -13,6 +13,7 @@ import { PromptHandlers } from './chat/PromptHandlers';
 import { CHAT_PARTICIPANT_NAME, ProjectFileContent } from './constants';
 import { EntraAppRegistration } from './services/actions/EntraAppRegistration';
 import { CopilotActions } from './services/actions/CopilotActions';
+import { ChatTools } from './chat/tools/ChatTools';
 
 
 export async function activate(context: vscode.ExtensionContext) {
@@ -21,6 +22,8 @@ export async function activate(context: vscode.ExtensionContext) {
 	chatParticipant.iconPath = vscode.Uri.joinPath(context.extensionUri, 'assets', 'images', 'parker-pnp.png');
 
 	Extension.getInstance(context);
+
+	ChatTools.register();
 
 	TerminalCommandExecuter.register();
 
