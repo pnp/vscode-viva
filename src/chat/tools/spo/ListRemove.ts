@@ -19,7 +19,7 @@ export class SharePointListRemove implements LanguageModelTool<ISharePointListRe
             return authValidationResult as LanguageModelToolResult;
         }
 
-        const result = await CliExecuter.execute('spo list add', 'json', {
+        const result = await CliExecuter.execute('spo list remove', 'json', {
             title: params.title,
             webUrl: params.webUrl,
             force: true
