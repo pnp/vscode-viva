@@ -311,7 +311,7 @@
 				],
 				"toolReferenceName": "SharePointSiteRemove",
 				"displayName": "Remove SharePoint Site",
-				"modelDescription": "Remove a SharePoint Online site. This till may be used to remove a site.",
+				"modelDescription": "Remove a SharePoint Online site. This tool may be used to remove a site.",
 				"userDescription": "Remove a SharePoint Online site.",
 				"canBeReferencedInPrompt": true,
 				"icon": "$(trash)",
