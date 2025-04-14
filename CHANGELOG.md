@@ -10,13 +10,13 @@
 
 ## [4.5.0] - 2025-04-14
 
-- Adds new Gulp task Publish, which includes both bundle and package
-- Updates settings to allow not to load apps for app catalogs
-- Updates serve gulp tasks to combine them into a single task
-- Refactors pipeline scaffolding form to smaller components
-- Adds initial integration tests for the product
-- Add an action that allows to increase project version and implement version increment logic
-- Fixes App Install/Uninstall issue to allow installing apps on root site
+- Added new Gulp task Publish, which includes both bundle and package
+- Updated settings to allow not to load apps for app catalogs
+- Updated serve gulp tasks to combine them into a single task
+- Refactored pipeline scaffolding form to smaller components
+- Added initial integration tests for the product
+- Added an action that allows to increase project version and implement version increment logic
+- Fixed App Install/Uninstall issue to allow installing apps on root site
 
 ## [4.4.0] - 2025-02-04
 
