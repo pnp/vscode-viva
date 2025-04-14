@@ -12,7 +12,6 @@ test - Runs unit tests, if available, for the client-side solution project.
 package-solution - Packages the client-side solution into a SharePoint package.
 deploy-azure-storage - Deploys client-side solution project assets to Azure Storage.
 
-
 SPFx Toolkit VS Code extension shows all possible Gulp tasks one may run on an SPFx project. Don't worry about remembering all the commands, just click on the task you want to run and the extension will do the rest.
 
 ![Gulp Tasks](../images/tasks.png)

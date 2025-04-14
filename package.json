@@ -2,7 +2,7 @@
 	"name": "viva-connections-toolkit",
 	"displayName": "SharePoint Framework Toolkit",
 	"description": "SharePoint Framework Toolkit aims to boost your productivity in developing and managing SharePoint Framework solutions helping at every stage of your development flow, from setting up your development workspace to deploying a solution straight to your tenant without the need to leave VS Code and now even create a CI/CD pipeline to introduce automate deployment of your app. This toolkit is provided by the community.",
-	"version": "4.4.0",
+	"version": "4.5.0",
 	"publisher": "m365pnp",
 	"preview": false,
 	"homepage": "https://github.com/pnp/vscode-viva",
@@ -189,11 +189,11 @@
 					"default": true,
 					"description": "Show the service health incidents in the account view."
 				},
-				"spfx-toolkit.showTenantWideExtensions": {
-					"title": "Show tenant-wide extensions",
+				"spfx-toolkit.showAppsInAppCatalogs": {
+					"title": "Show apps in app catalogs",
 					"type": "boolean",
 					"default": true,
-					"description": "Show the tenant-wide extensions in the account view."
+					"description": "When set it will load all apps in every app catalog from your tenant."
 				},
 				"spfx-toolkit.createNodeVersionFileDefaultValue": {
 					"title": "Default value for the Node version file option",
@@ -392,6 +392,11 @@
 				"category": "SharePoint Framework Toolkit"
 			},
 			{
+				"command": "spfx-toolkit.increaseVersion",
+				"title": "Increase project version",
+				"category": "SharePoint Framework Toolkit"
+			},
+			{
 				"command": "spfx-toolkit.grantAPIPermissions",
 				"title": "Grant API permissions",
 				"category": "SharePoint Framework Toolkit"
@@ -488,6 +493,24 @@
 				"title": "...",
 				"category": "SharePoint Framework Toolkit",
 				"icon": "$(ellipsis)"
+			},
+			{
+				"command": "spfx-toolkit.bundleProject",
+				"title": "Bundle",
+				"category": "SharePoint Framework Toolkit",
+				"icon": "$(sync)"
+			},
+			{
+				"command": "spfx-toolkit.packageProject",
+				"title": "Package",
+				"category": "SharePoint Framework Toolkit",
+				"icon": "$(sync)"
+			},
+			{
+				"command": "spfx-toolkit.publishProject",
+				"title": "Publish",
+				"category": "SharePoint Framework Toolkit",
+				"icon": "$(sync)"
 			}
 		],
 		"menus": {
@@ -607,7 +630,9 @@
 		"package": "npm run clean && npm run package:ext && npm run package:webview",
 		"package:ext": "webpack --mode production --config ./webpack/extension.config.js --devtool hidden-source-map",
 		"package:webview": "webpack --mode production --config ./webpack/webview.config.js",
-		"clean": "rimraf dist"
+		"compile-tests": "tsc -p . --outDir out --skipLibCheck",
+		"test": "vscode-test",
+		"clean": "rimraf dist && rimraf out"
 	},
 	"devDependencies": {
 		"@actions/core": "^1.8.2",
@@ -623,7 +648,8 @@
 		"@typescript-eslint/eslint-plugin": "^5.9.1",
 		"@typescript-eslint/parser": "^5.9.1",
 		"@vscode/prompt-tsx": "^0.2.3-alpha",
-		"@vscode/test-electron": "^2.0.3",
+		"@vscode/test-cli": "^0.0.10",
+		"@vscode/test-electron": "^2.4.1",
 		"@vscode/webview-ui-toolkit": "^1.0.0",
 		"autoprefixer": "^10.4.5",
 		"css-loader": "^6.7.1",

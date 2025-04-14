@@ -161,7 +161,7 @@ Additionally, it will show you all tenant-wide extensions installed on your tena
 
 ![tenant details](./assets/images/app-catalog-list.png)
 
-Using the extension settings you may choose show or hide the tenant-wide extensions list and tenant health incidents list.
+Using the extension settings you may choose to show or hide the apps in app catalog list and tenant health incidents list.
 
 ![settings](./assets/images/settings.png)
 
@@ -244,6 +244,12 @@ And the code tour guidance will provide you upgrade tips directly in your code!
 ![Set Form Customizer](./assets/images/set-form-customizer-action.png)
 
 [Check out our docs for more details](https://github.com/pnp/vscode-viva/wiki/5.5-Actions#set-form-customizer)
+
+- **Increase project version** - This action allows you to increase project major, minor or patch varsion and automatically align the versioning between `package.json` and `package-solution.json` files.
+
+![Increase project version](./assets/images/increase-versioning.png)
+
+[Check out our docs for more details](https://github.com/pnp/vscode-viva/wiki/5.5-Actions#increase-project-version)
 
 - **Open sample/scenario galleries of the SPFx web part, extensions, or ACEs projects** - SharePoint Framework Toolkit supports a couple of sample galleries that may be used to scaffold a new SPFx project. 
 

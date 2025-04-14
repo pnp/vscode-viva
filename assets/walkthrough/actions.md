@@ -60,6 +60,18 @@ And the code tour guidance will provide you upgrade tips directly in your code!
 
 [Check out our docs for more details](https://github.com/pnp/vscode-viva/wiki/5.5-Actions#add-new-component)
 
+- **Set Form Customizer** - Allows to update the New, Edit or View from of any SharePoint List to a given SPFx Form Customizer based on provided GUID. 
+
+![Set Form Customizer](../images/set-form-customizer-action.png)
+
+[Check out our docs for more details](https://github.com/pnp/vscode-viva/wiki/5.5-Actions#set-form-customizer)
+
+- **Increase project version** - This action allows you to increase project major, minor or patch varsion and automatically align the versioning between `package.json` and `package-solution.json` files.
+
+![Increase project version](../images/increase-versioning.png)
+
+[Check out our docs for more details](https://github.com/pnp/vscode-viva/wiki/5.5-Actions#increase-project-version)
+
 - **Open sample/scenario galleries of the SPFx web part, extensions, or ACEs projects** - SharePoint Framework Toolkit supports a couple of sample galleries that may be used to scaffold a new SPFx project. 
 
 [Check out our docs for more details](https://github.com/pnp/vscode-viva/wiki/5.5-Actions#open-samplescenario-galleries-of-the-spfx-web-part-extensions-or-aces-projects)

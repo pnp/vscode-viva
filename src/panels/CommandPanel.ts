@@ -13,6 +13,7 @@ import { Subscription } from '../models';
 import { Extension } from '../services/dataType/Extension';
 import { getExtensionSettings } from '../utils';
 import { Notifications } from '../services/dataType/Notifications';
+import { increaseVersion } from '../utils/increaseVersion';
 
 
 export class CommandPanel {
@@ -28,6 +29,9 @@ export class CommandPanel {
     );
     subscriptions.push(
       commands.registerCommand(Commands.welcome, () => commands.executeCommand('workbench.action.openWalkthrough', 'm365pnp.viva-connections-toolkit#spfx-toolkit-intro', false))
+    );
+    subscriptions.push(
+      commands.registerCommand(Commands.increaseVersion, CommandPanel.increaseVersion)
     );
 
     CommandPanel.init();
@@ -171,31 +175,31 @@ export class CommandPanel {
 
       const catalogItems: ActionTreeItem[] = [];
 
-      const showTenantWideExtensions: boolean = getExtensionSettings<boolean>('showTenantWideExtensions', true);
-      if (showTenantWideExtensions === true) {
-        const tenantWideExtensionsNode = new ActionTreeItem('Tenant-wide Extensions', '', { name: 'spo-app-list', custom: true }, TreeItemCollapsibleState.Collapsed, undefined, undefined, 'sp-app-catalog-tenant-wide-extensions', undefined,
-          async () => {
-            const tenantWideExtensions = await CliActions.getTenantWideExtensions(tenantAppCatalogUrl);
-            const tenantWideExtensionsList: ActionTreeItem[] = [];
+      const tenantWideExtensionsNode = new ActionTreeItem('Tenant-wide Extensions', '', { name: 'spo-app-list', custom: true }, TreeItemCollapsibleState.Collapsed, undefined, undefined, 'sp-app-catalog-tenant-wide-extensions', undefined,
+        async () => {
+          const tenantWideExtensions = await CliActions.getTenantWideExtensions(tenantAppCatalogUrl);
+          const tenantWideExtensionsList: ActionTreeItem[] = [];
 
-            if (tenantWideExtensions && tenantWideExtensions.length > 0) {
-              tenantWideExtensions.forEach((extension) => {
-                tenantWideExtensionsList.push(
-                  new ActionTreeItem(extension.Title, '', { name: 'spo-app', custom: true }, TreeItemCollapsibleState.None, 'vscode.open', Uri.parse(extension.Url), 'sp-app-catalog-tenant-wide-extensions-url')
-                );
-              });
-            } else {
-              tenantWideExtensionsList.push(new ActionTreeItem('No extension found', ''));
-            }
-
-            return tenantWideExtensionsList;
+          if (tenantWideExtensions && tenantWideExtensions.length > 0) {
+            tenantWideExtensions.forEach((extension) => {
+              tenantWideExtensionsList.push(
+                new ActionTreeItem(extension.Title, '', { name: 'spo-app', custom: true }, TreeItemCollapsibleState.None, 'vscode.open', Uri.parse(extension.Url), 'sp-app-catalog-tenant-wide-extensions-url')
+              );
+            });
+          } else {
+            tenantWideExtensionsList.push(new ActionTreeItem('No extension found', ''));
           }
-        );
 
-        catalogItems.push(tenantWideExtensionsNode);
-      }
+          return tenantWideExtensionsList;
+        }
+      );
 
-      const tenantAppCatalogNode = new ActionTreeItem(tenantAppCatalogUrl.replace(origin, '...'), '', { name: 'globe', custom: false }, TreeItemCollapsibleState.Collapsed, 'vscode.open', `${Uri.parse(tenantAppCatalogUrl)}/AppCatalog`, 'sp-app-catalog-url', undefined,
+      catalogItems.push(tenantWideExtensionsNode);
+
+      const showTenantAppCatalogApps: boolean = getExtensionSettings<boolean>('showAppsInAppCatalogs', true);
+      const showExpandTreeIcon = showTenantAppCatalogApps ? TreeItemCollapsibleState.Collapsed : TreeItemCollapsibleState.None;
+
+      const tenantAppCatalogNode = new ActionTreeItem(tenantAppCatalogUrl.replace(origin, '...'), '', { name: 'globe', custom: false }, showExpandTreeIcon, 'vscode.open', `${Uri.parse(tenantAppCatalogUrl)}/AppCatalog`, 'sp-app-catalog-url', undefined,
         async () => {
           const tenantAppCatalogApps = await CliActions.getAppCatalogApps();
           const tenantAppCatalogAppsList: ActionTreeItem[] = [];
@@ -237,7 +241,7 @@ export class CommandPanel {
       for (let i = 1; i < appCatalogUrls.length; i++) {
         const siteAppCatalogUrl = appCatalogUrls[i];
 
-        const siteAppCatalogNode = new ActionTreeItem(siteAppCatalogUrl.replace(origin, '...'), '', { name: 'globe', custom: false }, TreeItemCollapsibleState.Collapsed, 'vscode.open', `${Uri.parse(siteAppCatalogUrl)}/AppCatalog`, 'sp-app-catalog-url', undefined,
+        const siteAppCatalogNode = new ActionTreeItem(siteAppCatalogUrl.replace(origin, '...'), '', { name: 'globe', custom: false }, showExpandTreeIcon, 'vscode.open', `${Uri.parse(siteAppCatalogUrl)}/AppCatalog`, 'sp-app-catalog-url', undefined,
           async () => {
             const siteAppCatalogApps = await CliActions.getAppCatalogApps(siteAppCatalogUrl);
             const siteAppCatalogAppsList: ActionTreeItem[] = [];
@@ -289,9 +293,8 @@ export class CommandPanel {
       new ActionTreeItem('Clean project', '', { name: 'debug-start', custom: false }, undefined, Commands.executeTerminalCommand, 'gulp clean'),
       new ActionTreeItem('Deploy project assets to Azure Storage', '', { name: 'debug-start', custom: false }, undefined, Commands.executeTerminalCommand, 'gulp deploy-azure-storage'),
       new ActionTreeItem('Package', '', { name: 'debug-start', custom: false }, undefined, Commands.packageProject),
-      new ActionTreeItem('Serve', '', { name: 'debug-start', custom: false }, undefined, Commands.executeTerminalCommand, 'gulp serve'),
-      new ActionTreeItem('Serve (nobrowser)', '', { name: 'debug-start', custom: false }, undefined, Commands.executeTerminalCommand, 'gulp serve --nobrowser'),
-      new ActionTreeItem('Serve from configuration', '', { name: 'debug-start', custom: false }, undefined, Commands.serveProject),
+      new ActionTreeItem('Publish', '', { name: 'debug-start', custom: false }, undefined, Commands.publishProject),
+      new ActionTreeItem('Serve', '', { name: 'debug-start', custom: false }, undefined, Commands.serveProject),
       new ActionTreeItem('Test', '', { name: 'debug-start', custom: false }, undefined, Commands.executeTerminalCommand, 'gulp test'),
       new ActionTreeItem('Trust self-signed developer certificate', '', { name: 'debug-start', custom: false }, undefined, Commands.executeTerminalCommand, 'gulp trust-dev-cert'),
     ];
@@ -304,6 +307,7 @@ export class CommandPanel {
     actionCommands.push(new ActionTreeItem('Upgrade project SPFx version', '', { name: 'arrow-up', custom: false }, undefined, Commands.upgradeProject));
     actionCommands.push(new ActionTreeItem('Validate project correctness', '', { name: 'check-all', custom: false }, undefined, Commands.validateProject));
     actionCommands.push(new ActionTreeItem('Rename project', '', { name: 'whole-word', custom: false }, undefined, Commands.renameProject));
+    actionCommands.push(new ActionTreeItem('Increase project version', '', { name: 'fold-up', custom: false }, undefined, Commands.increaseVersion));
 
     if (EnvironmentInformation.account) {
       actionCommands.push(new ActionTreeItem('Grant API permissions', '', { name: 'workspace-trusted', custom: false }, undefined, Commands.grantAPIPermissions));
@@ -353,5 +357,24 @@ export class CommandPanel {
 
   private static showWelcome() {
     commands.executeCommand('setContext', ContextKeys.showWelcome, true);
+  }
+
+  /**
+   * Increases the version of the project.
+   */
+  public static async increaseVersion() {
+    const versionType = await window.showQuickPick(['major', 'minor', 'patch'], {
+      placeHolder: 'Select the version type to increase',
+      ignoreFocusOut: true,
+      canPickMany: false,
+      title: 'Increase Version'
+    });
+
+    if (!versionType) {
+      return;
+    }
+
+    await increaseVersion(versionType as 'major' | 'minor' | 'patch');
+    Notifications.info('Version increased successfully.');
   }
 }

@@ -2,9 +2,8 @@ import * as React from 'react';
 import { useEffect, useCallback } from 'react';
 import { VSCodeDropdown, VSCodeOption, VSCodeTextField } from '@vscode/webview-ui-toolkit/react';
 import { ComponentType, ComponentTypes, WebviewCommand, ExtensionType, ExtensionTypes, FrameworkTypes, AdaptiveCardTypes } from '../../../../../constants';
-import { StepHeader } from './StepHeader';
 import { Messenger } from '@estruyf/vscode/dist/client';
-import { LabelWithTooltip } from '../../controls';
+import { LabelWithTooltip, StepHeader } from '../../controls';
 
 
 interface IComponentDetailsStepProps {

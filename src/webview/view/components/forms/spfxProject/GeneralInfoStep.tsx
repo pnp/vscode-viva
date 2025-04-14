@@ -3,9 +3,8 @@ import { useEffect, useCallback } from 'react';
 import { VSCodeButton, VSCodeDropdown, VSCodeOption, VSCodeTextField } from '@vscode/webview-ui-toolkit/react';
 import { ComponentType, WebviewCommand } from '../../../../../constants';
 import { FolderIcon } from '../../icons';
-import { StepHeader } from './StepHeader';
 import { Messenger } from '@estruyf/vscode/dist/client';
-import { LabelWithTooltip } from '../../controls';
+import { LabelWithTooltip, StepHeader } from '../../controls';
 
 
 export interface IGeneralInfoProps {
