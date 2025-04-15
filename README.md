@@ -58,7 +58,7 @@ When running the extension for the first time it will present you a walkthrough 
 
 ### 2️⃣ Set up your development environment
 
-To ensure that you can develop SPFx solutions, you may use the **check dependencies** functionality. 
+To ensure that you can develop SPFx solutions, you may use the **Validate local setup** functionality. 
 
 ![Validate dependency](./assets/images/validate-dependency.png)
 
