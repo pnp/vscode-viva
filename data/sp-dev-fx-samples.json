@@ -7951,6 +7951,29 @@
       "sampleType": "samples"
     },
     {
+      "name": "pnp-sp-dev-spfx-web-parts-react-nutrient-document-viewer",
+      "title": "Nutrient Document Viewer",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-nutrient-document-viewer",
+      "description": "This a custom PDF viewer web part for SharePoint Online by integrating Nutrient for Web using the SharePoint Framework (SPFx).",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-nutrient-document-viewer/assets/Nutrient-PDF.gif",
+      "authors": [
+        {
+          "name": "Clavin Fernandes",
+          "pictureUrl": "https://github.com/cfernandes-muhimbi.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2025-03-25",
+      "updateDate": "2025-03-25",
+      "version": "1.20.0",
+      "componentType": "webpart",
+      "extensionType": null,
+      "sampleGalerry": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
       "name": "pnp-sp-dev-spfx-web-parts-react-office-offer-creation",
       "title": "SharePoint document generator - Offer Creation Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-office-offer-creation",
