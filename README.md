@@ -64,7 +64,7 @@ To ensure that you can develop SPFx solutions, you may use the **check dependenc
 
 This action will check if you have the required dependencies such as:
 
-- Node version: 18
+- Node version: 22
 - NPM dependencies:
   - gulp
   - yo
@@ -73,7 +73,7 @@ This action will check if you have the required dependencies such as:
 In case you do not have all dependencies installed, or some are incorrect version, you can use the **install dependencies** action to install them.
 
 >  [!NOTE]
->  The list of valid dependencies is based on [set up your development environment recommendations](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-development-environment)
+>  The list of valid dependencies is based on [set up your development environment recommendations](https://learn.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-development-environment)
 
 [Check out our docs for more details](https://github.com/pnp/vscode-viva/wiki/5.1-Validate-and-set-up-a-local-workspace)
 
