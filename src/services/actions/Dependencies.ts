@@ -8,8 +8,8 @@ import { TerminalCommandExecuter } from '../executeWrappers/TerminalCommandExecu
 import { Extension } from '../dataType/Extension';
 
 
-const SUPPORTED_VERSIONS = ['18.17.1'];
-const DEPENDENCIES = ['gulp-cli@3.0.0', 'yo@5.0.0', '@microsoft/generator-sharepoint@1.20.0'];
+const SUPPORTED_VERSIONS = ['22.14.0'];
+const DEPENDENCIES = ['gulp-cli@3.0.0', 'yo@5.1.0', '@microsoft/generator-sharepoint@1.21.0'];
 
 export class Dependencies {
 
@@ -43,7 +43,7 @@ export class Dependencies {
             // Validate node
             const isNodeValid = Dependencies.isValidNodeJs();
             if (!isNodeValid) {
-              Notifications.warning('Your Node.js version is not supported with SPFx development. Make sure you are using version: >=18.17.1 and <19.0');
+              Notifications.warning('Your Node.js version is not supported with SPFx development. Make sure you are using version: >=22.14.0 and <23.0.0');
               resolve(null);
               return;
             }
