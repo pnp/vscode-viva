@@ -1,5 +1,9 @@
 # Change Log
 
+## [4.6.0] - 2025-04-26
+
+- Added support for SPFx 1.21.0
+
 ## [4.5.0] - 2025-04-14
 
 - Added new Gulp task Publish, which includes both bundle and package
