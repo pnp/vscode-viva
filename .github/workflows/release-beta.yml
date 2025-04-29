@@ -48,6 +48,6 @@ jobs:
         shell: pwsh
         continue-on-error: false
 
-      - name: Publish
-        run: npx @vscode/vsce@2.30.0 publish -p ${{ secrets.VSCE_PAT }} --pre-release --baseImagesUrl https://raw.githubusercontent.com/pnp/vscode-viva/dev
+      - name: Publish 
+        run: npx @vscode/vsce@3.3.2 publish -p ${{ secrets.VSCE_PAT }} --pre-release --baseImagesUrl https://raw.githubusercontent.com/pnp/vscode-viva/dev
         working-directory: vscode-viva

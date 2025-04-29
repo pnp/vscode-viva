@@ -52,5 +52,5 @@ jobs:
         continue-on-error: false
 
       - name: Publish
-        run: npx @vscode/vsce@2.30.0 publish -p ${{ secrets.VSCE_PAT }}
+        run: npx @vscode/vsce@3.3.2 publish -p ${{ secrets.VSCE_PAT }}
         working-directory: vscode-viva
