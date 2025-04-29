@@ -26,7 +26,7 @@ export const FormActions: React.FunctionComponent<IFormActionsProps> = ({
             )}
             <VSCodeButton
                 disabled={!isFormValid ? true : null}
-                className={isSubmitting ? 'w-full hidden' : 'w-full'}
+                className={isSubmitting ? 'w-full block text-center hidden' : 'w-full block text-center'}
                 onClick={submit}
             >
                 <span slot={'start'}>
