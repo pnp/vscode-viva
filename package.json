@@ -803,6 +803,42 @@
 				{
 					"command": "spfx-toolkit.validateProject",
 					"when": "pnp.project.isSPFxProject"
+				},
+				{
+					"command": "spfx-toolkit.deployAppCatalogApp",
+					"when": "false"
+				},
+				{
+					"command": "spfx-toolkit.showMoreActions",
+					"when": "false"
+				},
+				{
+					"command": "spfx-toolkit.retractAppCatalogApp",
+					"when": "false"
+				},
+				{
+					"command": "spfx-toolkit.removeAppCatalogApp",
+					"when": "false"
+				},
+				{
+					"command": "spfx-toolkit.enableAppCatalogApp",
+					"when": "false"
+				},
+				{
+					"command": "spfx-toolkit.disableAppCatalogApp",
+					"when": "false"
+				},
+				{
+					"command": "spfx-toolkit.upgradeAppCatalogApp",
+					"when": "false"
+				},
+				{
+					"command": "spfx-toolkit.installAppCatalogApp",
+					"when": "false"
+				},
+				{
+					"command": "spfx-toolkit.uninstallAppCatalogApp",
+					"when": "false"
 				}
 			],
 			"view/title": [
