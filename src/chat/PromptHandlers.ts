@@ -183,7 +183,7 @@ export class PromptHandlers {
         }
         return buttons;
       case 'setup':
-        if (chatResponse.toLowerCase().includes('check dependencies')) {
+        if (chatResponse.toLowerCase().includes('validate local setup')) {
           return [{
             command: Commands.checkDependencies,
             title: vscode.l10n.t('Check if my local workspace is ready'),

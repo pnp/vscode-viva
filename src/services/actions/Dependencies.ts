@@ -1,7 +1,8 @@
 import { Commands } from '../../constants/Commands';
 import { Notifications } from '../dataType/Notifications';
 import { execSync } from 'child_process';
-import { commands, ProgressLocation, window } from 'vscode';
+import { commands, ProgressLocation, window, Uri } from 'vscode';
+import * as os from 'os';
 import { Logger } from '../dataType/Logger';
 import { NpmLs, Subscription } from '../../models';
 import { TerminalCommandExecuter } from '../executeWrappers/TerminalCommandExecuter';
@@ -33,28 +34,49 @@ export class Dependencies {
     await window.withProgress({
       location: ProgressLocation.Notification,
       cancellable: false,
-      title: 'Checking dependencies',
+      title: 'Validating local setup',
     }, async (progress) => {
       return new Promise((resolve) => {
         setTimeout(() => {
           try {
-            progress.report({ message: 'Checking node version...' });
+            progress.report({ message: 'Validating node version...' });
 
             // Validate node
             const isNodeValid = Dependencies.isValidNodeJs();
             if (!isNodeValid) {
-              Notifications.warning('Your Node.js version is not supported with SPFx development. Make sure you are using version: >=22.14.0 and <23.0.0');
+              const installNodeJSOption = 'Install Node.js';
+              const useNvmOption = os.platform() === 'win32' ? 'Use NVM for Windows' : 'Use NVM';
+              const useNvsOption = 'Use NVS';
+
+              Notifications.warning(
+                'Your Node.js version is not supported with SPFx development. Make sure you are using version: >=22.14.0 and <23.0.0',
+                installNodeJSOption,
+                useNvmOption,
+                useNvsOption
+              ).then((selectedOption) => {
+                if (selectedOption === installNodeJSOption) {
+                  commands.executeCommand('vscode.open', Uri.parse('https://nodejs.org/en/download/'));
+                } else if (selectedOption === useNvmOption) {
+                  const nvmInstallUrl = os.platform() === 'win32'
+                    ? 'https://github.com/coreybutler/nvm-windows?tab=readme-ov-file#overview'
+                    : 'https://github.com/nvm-sh/nvm?tab=readme-ov-file#intro';
+                  commands.executeCommand('vscode.open', Uri.parse(nvmInstallUrl));
+                } else if (selectedOption === useNvsOption) {
+                  const nvsInstallUrl = 'https://github.com/jasongin/nvs?tab=readme-ov-file#nvs-node-version-switcher';
+                  commands.executeCommand('vscode.open', Uri.parse(nvsInstallUrl));
+                }
+              });
               resolve(null);
               return;
             }
 
-            progress.report({ message: 'Checking npm dependencies...' });
+            progress.report({ message: 'Validating npm dependencies...' });
 
             const command = 'npm list -g --json --silent';
             const result = execSync(command, { shell: TerminalCommandExecuter.shell, timeout: 15000 });
 
             if (!result) {
-              Notifications.error('Failed checking dependencies');
+              Notifications.error('Failed validating local setup');
             }
 
             // Check for missing dependencies
@@ -82,7 +104,7 @@ export class Dependencies {
             }
             resolve(null);
           } catch (e) {
-            Notifications.error('Failed checking dependencies');
+            Notifications.error('Failed validating local setup');
             Logger.error(`${(e as Error).message}`);
             resolve(null);
           }
