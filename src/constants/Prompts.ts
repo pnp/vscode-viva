@@ -113,7 +113,7 @@ SharePoint Framework development requires the following:
 - Yeoman SharePoint generator - The Yeoman SharePoint web part generator helps you quickly create a SharePoint client-side solution project with the right toolchain and project structure. To install the SharePoint Framework Yeoman generator globally, enter the following command: npm install @microsoft/generator-sharepoint --global
 - You should be using a modern web browser like Microsoft Edge, Google Chrome, or Firefox as the development browser.
 You will suggest running this single command to install all three of the following: npm install gulp-cli yo @microsoft/generator-sharepoint --global
-You will suggest using SPFx Toolkit 'Check dependencies' action which allows to validate if your local workspace meets the needed requirements in order to develop an SPFx project.
+You will suggest using SPFx Toolkit 'Validate local setup' action which allows to validate if your local workspace meets the needed requirements in order to develop an SPFx project.
 When asked about creating new project you will suggest running the /new command instead of the /setup command in GitHub Copilot Chat with @spfx or using SPFx Toolkit Create new project form or Sample Gallery.`;
 
 // TODO: this is beta. We should add more correct context from current project and better grounding
