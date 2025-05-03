@@ -612,177 +612,177 @@
 			{
 				"command": "spfx-toolkit.welcome",
 				"title": "Welcome",
-				"category": "SharePoint Framework Toolkit"
+				"category": "SPFx Toolkit"
 			},
 			{
 				"command": "spfx-toolkit.checkDependencies",
 				"title": "Validate local setup",
-				"category": "SharePoint Framework Toolkit"
+				"category": "SPFx Toolkit"
 			},
 			{
 				"command": "spfx-toolkit.installDependencies",
 				"title": "Install dependencies",
-				"category": "SharePoint Framework Toolkit"
+				"category": "SPFx Toolkit"
 			},
 			{
 				"command": "spfx-toolkit.createProject",
 				"title": "Create new project",
-				"category": "SharePoint Framework Toolkit"
+				"category": "SPFx Toolkit"
 			},
 			{
 				"command": "spfx-toolkit.addToProject",
 				"title": "Add component to project",
-				"category": "SharePoint Framework Toolkit"
+				"category": "SPFx Toolkit"
 			},
 			{
 				"command": "spfx-toolkit.executeTerminalCommand",
 				"title": "Execute terminal command",
-				"category": "SharePoint Framework Toolkit"
+				"category": "SPFx Toolkit"
 			},
 			{
 				"command": "spfx-toolkit.upgradeProject",
 				"title": "Upgrade project SPFx version",
-				"category": "SharePoint Framework Toolkit"
+				"category": "SPFx Toolkit"
 			},
 			{
 				"command": "spfx-toolkit.deployProject",
 				"title": "Deploy project to app catalog",
-				"category": "SharePoint Framework Toolkit"
+				"category": "SPFx Toolkit"
 			},
 			{
 				"command": "spfx-toolkit.samplesGallery",
 				"title": "Open SharePoint Framework Samples gallery",
-				"category": "SharePoint Framework Toolkit"
+				"category": "SPFx Toolkit"
 			},
 			{
 				"command": "spfx-toolkit.validateProject",
 				"title": "Validate project correctness",
-				"category": "SharePoint Framework Toolkit"
+				"category": "SPFx Toolkit"
 			},
 			{
 				"command": "spfx-toolkit.renameProject",
 				"title": "Rename project",
-				"category": "SharePoint Framework Toolkit"
+				"category": "SPFx Toolkit"
 			},
 			{
 				"command": "spfx-toolkit.increaseVersion",
 				"title": "Increase project version",
-				"category": "SharePoint Framework Toolkit"
+				"category": "SPFx Toolkit"
 			},
 			{
 				"command": "spfx-toolkit.grantAPIPermissions",
 				"title": "Grant API permissions",
-				"category": "SharePoint Framework Toolkit"
+				"category": "SPFx Toolkit"
 			},
 			{
 				"command": "spfx-toolkit.pipeline",
 				"title": "Scaffold CI/CD Workflow",
-				"category": "SharePoint Framework Toolkit"
+				"category": "SPFx Toolkit"
 			},
 			{
 				"command": "spfx-toolkit.login",
 				"title": "Sign in to Microsoft 365",
-				"category": "SharePoint Framework Toolkit",
+				"category": "SPFx Toolkit",
 				"icon": "$(sign-in)"
 			},
 			{
 				"command": "spfx-toolkit.logout",
 				"title": "Sign out from Microsoft 365",
-				"category": "SharePoint Framework Toolkit",
+				"category": "SPFx Toolkit",
 				"icon": "$(sign-out)"
 			},
 			{
 				"command": "spfx-toolkit.registerEntraAppRegistration",
 				"title": "Create a new app registration",
-				"category": "SharePoint Framework Toolkit"
+				"category": "SPFx Toolkit"
 			},
 			{
 				"command": "spfx-toolkit.refreshAppCatalogTreeView",
 				"title": "Refresh App Catalog list",
-				"category": "SharePoint Framework Toolkit",
+				"category": "SPFx Toolkit",
 				"icon": "$(refresh)"
 			},
 			{
 				"command": "spfx-toolkit.refreshAccountTreeView",
 				"title": "Refresh Account view",
-				"category": "SharePoint Framework Toolkit",
+				"category": "SPFx Toolkit",
 				"icon": "$(refresh)"
 			},
 			{
 				"command": "spfx-toolkit.deployAppCatalogApp",
 				"title": "Deploy",
-				"category": "SharePoint Framework Toolkit",
+				"category": "SPFx Toolkit",
 				"icon": "$(cloud-upload)"
 			},
 			{
 				"command": "spfx-toolkit.retractAppCatalogApp",
 				"title": "Retract",
-				"category": "SharePoint Framework Toolkit",
+				"category": "SPFx Toolkit",
 				"icon": "$(cloud-download)"
 			},
 			{
 				"command": "spfx-toolkit.removeAppCatalogApp",
 				"title": "Remove",
-				"category": "SharePoint Framework Toolkit",
+				"category": "SPFx Toolkit",
 				"icon": "$(trash)"
 			},
 			{
 				"command": "spfx-toolkit.enableAppCatalogApp",
 				"title": "Enable",
-				"category": "SharePoint Framework Toolkit",
+				"category": "SPFx Toolkit",
 				"icon": "$(check)"
 			},
 			{
 				"command": "spfx-toolkit.disableAppCatalogApp",
 				"title": "Disable",
-				"category": "SharePoint Framework Toolkit",
+				"category": "SPFx Toolkit",
 				"icon": "$(circle-slash)"
 			},
 			{
 				"command": "spfx-toolkit.upgradeAppCatalogApp",
 				"title": "Upgrade",
-				"category": "SharePoint Framework Toolkit",
+				"category": "SPFx Toolkit",
 				"icon": "$(sync)"
 			},
 			{
 				"command": "spfx-toolkit.installAppCatalogApp",
 				"title": "Install",
-				"category": "SharePoint Framework Toolkit",
+				"category": "SPFx Toolkit",
 				"icon": "$(package)"
 			},
 			{
 				"command": "spfx-toolkit.uninstallAppCatalogApp",
 				"title": "Uninstall",
-				"category": "SharePoint Framework Toolkit",
+				"category": "SPFx Toolkit",
 				"icon": "$(remove)"
 			},
 			{
 				"command": "spfx-toolkit.setFormCustomizer",
 				"title": "Set Form Customizer",
-				"category": "SharePoint Framework Toolkit"
+				"category": "SPFx Toolkit"
 			},
 			{
 				"command": "spfx-toolkit.showMoreActions",
 				"title": "...",
-				"category": "SharePoint Framework Toolkit",
+				"category": "SPFx Toolkit",
 				"icon": "$(ellipsis)"
 			},
 			{
 				"command": "spfx-toolkit.bundleProject",
 				"title": "Bundle",
-				"category": "SharePoint Framework Toolkit",
+				"category": "SPFx Toolkit",
 				"icon": "$(sync)"
 			},
 			{
 				"command": "spfx-toolkit.packageProject",
 				"title": "Package",
-				"category": "SharePoint Framework Toolkit",
+				"category": "SPFx Toolkit",
 				"icon": "$(sync)"
 			},
 			{
 				"command": "spfx-toolkit.publishProject",
 				"title": "Publish",
-				"category": "SharePoint Framework Toolkit",
+				"category": "SPFx Toolkit",
 				"icon": "$(sync)"
 			}
 		],
