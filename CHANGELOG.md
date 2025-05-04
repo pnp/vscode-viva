@@ -1,5 +1,9 @@
 # Change Log
 
+## [4.7.0] - 2025-05-04
+
+- Added support for SPFx 1.21.1
+
 ## [4.6.0] - 2025-04-26
 
 - Added support for SPFx 1.21.0
