@@ -1027,12 +1027,8 @@ export class CliActions {
     const relativeUrl = await window.showInputBox({
       prompt: 'Enter the relative URL of the site',
       ignoreFocusOut: true,
-      placeHolder: 'e.g., sites/sales',
+      placeHolder: 'e.g., sites/sales or leave blank for root site',
       validateInput: (input) => {
-        if (!input) {
-          return 'site URL is required';
-        }
-
         const trimmedInput = input.trim();
 
         if (trimmedInput.startsWith('https://')) {
