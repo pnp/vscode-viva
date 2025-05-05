@@ -872,6 +872,10 @@
 			],
 			"spfx-toolkit.showMoreActions": [
 				{
+					"command": "spfx-toolkit.deployAppCatalogApp",
+					"group": "actions.more@1"
+				},
+				{
 					"command": "spfx-toolkit.retractAppCatalogApp",
 					"group": "actions.more@1"
 				},
