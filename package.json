@@ -860,7 +860,7 @@
 					"group": "inline@1"
 				},
 				{
-					"command": "spfx-toolkit.deployAppCatalogApp",
+					"command": "spfx-toolkit.installAppCatalogApp",
 					"when": "view == pnp-view-environment && viewItem == pnp.etv.hasAppCatalogApp",
 					"group": "inline@1"
 				},
@@ -871,6 +871,10 @@
 				}
 			],
 			"spfx-toolkit.showMoreActions": [
+				{
+					"command": "spfx-toolkit.deployAppCatalogApp",
+					"group": "actions.more@1"
+				},
 				{
 					"command": "spfx-toolkit.retractAppCatalogApp",
 					"group": "actions.more@1"
