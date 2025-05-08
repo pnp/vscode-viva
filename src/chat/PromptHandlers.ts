@@ -1,6 +1,6 @@
 import * as vscode from 'vscode';
 import { Logger } from '../services/dataType/Logger';
-import { AdaptiveCardTypes, Commands, ComponentTypes, ExtensionTypes, msSampleGalleryLink, promptCodeContext, promptContext, promptExplainSharePointData, promptGeneralContext, promptMangeContext, promptNewContext, promptSetupContext } from '../constants';
+import { AdaptiveCardTypes, Commands, ComponentTypes, ExtensionTypes, msSampleGalleryLink, promptCodeContext, promptContext, promptExplainSharePointData, promptGeneralContext, promptInfoContext, promptNewContext, promptSetupContext } from '../constants';
 import { ProjectInformation } from '../services/dataType/ProjectInformation';
 import { CliActions } from '../services/actions/CliActions';
 import { AuthProvider } from '../providers/AuthProvider';
@@ -14,13 +14,13 @@ export class PromptHandlers {
 
   public static async handle(request: vscode.ChatRequest, context: vscode.ChatContext, stream: vscode.ChatResponseStream, token: vscode.CancellationToken): Promise<any> {
     stream.progress(PromptHandlers.getRandomProgressMessage());
-    const chatCommand = (request.command && ['setup', 'new', 'code', 'manage'].indexOf(request.command.toLowerCase()) > -1) ? request.command.toLowerCase() : '';
+    const chatCommand = (request.command && ['setup', 'new', 'code', 'info'].indexOf(request.command.toLowerCase()) > -1) ? request.command.toLowerCase() : '';
 
-    if (chatCommand === 'manage') {
+    if (chatCommand === 'info') {
       const authInstance = AuthProvider.getInstance();
       const account = await authInstance.getAccount();
       if (!account) {
-        stream.markdown('\n\n The `/manage` command is only available when you are signed in. Please sign in first.');
+        stream.markdown('\n\n The `/info` command is only available when you are signed in. Please sign in first.');
         return;
       }
     }
@@ -50,7 +50,7 @@ export class PromptHandlers {
       PromptHandlers.history.push(query);
       PromptHandlers.getChatCommandButtons(chatCommand, query).forEach(button => stream.button(button));
 
-      if (chatCommand === 'manage') {
+      if (chatCommand === 'info') {
         try {
           const data = await PromptHandlers.tryToGetDataFromSharePoint(query);
           if (data) {
@@ -126,9 +126,9 @@ export class PromptHandlers {
         context += `\n Here is some more information regarding each ACE type ${JSON.stringify(AdaptiveCardTypes)}`;
       case 'code':
         context += promptCodeContext;
-      case 'manage':
+      case 'info':
         // TODO: since we are already retrieving list of sites app catalog we could add it as additional context here
-        context += promptMangeContext;
+        context += promptInfoContext;
         if (EnvironmentInformation.tenantUrl) {
           context += `Tenant SharePoint URL is: ${EnvironmentInformation.tenantUrl}`;
         }
