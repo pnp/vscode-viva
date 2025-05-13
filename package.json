@@ -784,6 +784,37 @@
 				"title": "Publish",
 				"category": "SPFx Toolkit",
 				"icon": "$(sync)"
+			},
+			{
+				"command": "spfx-toolkit.serveProject",
+				"title": "Serve",
+				"category": "SPFx Toolkit",
+				"icon": "$(sync)"
+			},
+			{
+				"command": "spfx-toolkit.gulpClean",
+				"title": "Clean",
+				"category": "SPFx Toolkit"
+			},
+			{
+				"command": "spfx-toolkit.gulpBuild",
+				"title": "Build",
+				"category": "SPFx Toolkit"
+			},
+			{
+				"command": "spfx-toolkit.gulpTest",
+				"title": "Test",
+				"category": "SPFx Toolkit"
+			},
+			{
+				"command": "spfx-toolkit.gulpTrustDevCert",
+				"title": "Trust self-signed developer certificate",
+				"category": "SPFx Toolkit"
+			},
+			{
+				"command": "spfx-toolkit.gulpDeployAzureStorage",
+				"title": "Deploy project assets to Azure Storage",
+				"category": "SPFx Toolkit"
 			}
 		],
 		"menus": {
