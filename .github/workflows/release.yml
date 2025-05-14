@@ -8,8 +8,12 @@ on:
 
 jobs:
   build:
+    if: github.repository == 'pnp/vscode-viva'
     name: "Build and release"
     runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
 
     steps:
       - name: Setup node

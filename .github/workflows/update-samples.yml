@@ -7,9 +7,13 @@ on:
 
 jobs:
   update:
+    if: github.repository == 'pnp/vscode-viva'
     name: "Update samples json"
     runs-on: windows-latest
 
+    permissions:
+      contents: write
+    
     steps:
       - name: Checkout vscode-viva
         uses: actions/checkout@v4

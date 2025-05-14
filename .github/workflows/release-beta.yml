@@ -5,9 +5,14 @@ on:
 
 jobs:
   build:
+    if: github.repository == 'pnp/vscode-viva'
     name: "Build and pre-release"
     runs-on: ubuntu-latest
 
+    permissions:
+      contents: write
+      packages: read
+    
     steps:
       - name: Setup node
         uses: actions/setup-node@v4

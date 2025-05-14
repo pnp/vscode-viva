@@ -6,8 +6,12 @@ on:
 
 jobs:
   build:
+    if: github.repository == 'pnp/vscode-viva'
     name: "Test"
     runs-on: windows-latest
+
+    permissions:
+      contents: read
 
     steps:
       - name: Setup node

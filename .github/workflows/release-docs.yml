@@ -10,6 +10,7 @@ on:
 
 jobs:
   build_docs:
+    if: github.repository == 'pnp/vscode-viva'
     name: "Build and release docs"
     runs-on: ubuntu-latest
 
@@ -45,6 +46,7 @@ jobs:
           path: docs/dist
 
   deploy_docs:
+    if: github.repository == 'pnp/vscode-viva'
     needs: build_docs
     runs-on: ubuntu-latest
 
