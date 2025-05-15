@@ -288,15 +288,15 @@ export class CommandPanel {
 
   private static taskTreeView() {
     const taskCommands: ActionTreeItem[] = [
-      new ActionTreeItem('Build project', '', { name: 'debug-start', custom: false }, undefined, Commands.executeTerminalCommand, 'gulp build'),
+      new ActionTreeItem('Build project', '', { name: 'debug-start', custom: false }, undefined, Commands.buildProject),
       new ActionTreeItem('Bundle project', '', { name: 'debug-start', custom: false }, undefined, Commands.bundleProject),
-      new ActionTreeItem('Clean project', '', { name: 'debug-start', custom: false }, undefined, Commands.executeTerminalCommand, 'gulp clean'),
-      new ActionTreeItem('Deploy project assets to Azure Storage', '', { name: 'debug-start', custom: false }, undefined, Commands.executeTerminalCommand, 'gulp deploy-azure-storage'),
+      new ActionTreeItem('Clean project', '', { name: 'debug-start', custom: false }, undefined, Commands.cleanProject),
+      new ActionTreeItem('Deploy project assets to Azure Storage', '', { name: 'debug-start', custom: false }, undefined, Commands.deployToAzureStorage),
       new ActionTreeItem('Package', '', { name: 'debug-start', custom: false }, undefined, Commands.packageProject),
       new ActionTreeItem('Publish', '', { name: 'debug-start', custom: false }, undefined, Commands.publishProject),
       new ActionTreeItem('Serve', '', { name: 'debug-start', custom: false }, undefined, Commands.serveProject),
-      new ActionTreeItem('Test', '', { name: 'debug-start', custom: false }, undefined, Commands.executeTerminalCommand, 'gulp test'),
-      new ActionTreeItem('Trust self-signed developer certificate', '', { name: 'debug-start', custom: false }, undefined, Commands.executeTerminalCommand, 'gulp trust-dev-cert'),
+      new ActionTreeItem('Test', '', { name: 'debug-start', custom: false }, undefined, Commands.testProject),
+      new ActionTreeItem('Trust self-signed developer certificate', '', { name: 'debug-start', custom: false }, undefined, Commands.trustDevCert),
     ];
 
     window.registerTreeDataProvider('pnp-view-tasks', new ActionTreeDataProvider(taskCommands));
