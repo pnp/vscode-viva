@@ -91,46 +91,6 @@ export async function activate(context: vscode.ExtensionContext) {
 			}
 		}
 	});
-
-	context.subscriptions.push(
-		vscode.commands.registerCommand('spfx-toolkit.gulpClean', () => {
-		  const terminal = vscode.window.createTerminal({ name: 'Gulp task' });
-		  terminal.show();
-		  terminal.sendText('gulp clean');
-		})
-	);
-
-	context.subscriptions.push(
-		vscode.commands.registerCommand('spfx-toolkit.gulpBuild', () => {
-		  const terminal = vscode.window.createTerminal({ name: 'Gulp task' });
-		  terminal.show();
-		  terminal.sendText('gulp build');
-		})
-	);
-
-	context.subscriptions.push(
-		vscode.commands.registerCommand('spfx-toolkit.gulpTest', () => {
-		  const terminal = vscode.window.createTerminal({ name: 'Gulp task' });
-		  terminal.show();
-		  terminal.sendText('gulp test');
-		})
-	);
-
-	context.subscriptions.push(
-		vscode.commands.registerCommand('spfx-toolkit.gulpTrustDevCert', () => {
-		  const terminal = vscode.window.createTerminal({ name: 'Gulp task' });
-		  terminal.show();
-		  terminal.sendText('gulp trust-dev-cert');
-		})
-	);
-
-	context.subscriptions.push(
-		vscode.commands.registerCommand('spfx-toolkit.gulpDeployAzureStorage', () => {
-		  const terminal = vscode.window.createTerminal({ name: 'Gulp task' });
-		  terminal.show();
-		  terminal.sendText('gulp deploy-azure-storage');
-		})
-	);
 }
 
 // this method is called when your extension is deactivated

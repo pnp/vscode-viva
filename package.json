@@ -792,29 +792,34 @@
 				"icon": "$(sync)"
 			},
 			{
-				"command": "spfx-toolkit.gulpClean",
+				"command": "spfx-toolkit.cleanProject",
 				"title": "Clean",
-				"category": "SPFx Toolkit"
+				"category": "SPFx Toolkit",
+				"icon": "$(sync)"
 			},
 			{
-				"command": "spfx-toolkit.gulpBuild",
+				"command": "spfx-toolkit.buildProject",
 				"title": "Build",
-				"category": "SPFx Toolkit"
+				"category": "SPFx Toolkit",
+				"icon": "$(sync)"
 			},
 			{
-				"command": "spfx-toolkit.gulpTest",
+				"command": "spfx-toolkit.testProject",
 				"title": "Test",
-				"category": "SPFx Toolkit"
+				"category": "SPFx Toolkit",
+				"icon": "$(sync)"
 			},
 			{
-				"command": "spfx-toolkit.gulpTrustDevCert",
+				"command": "spfx-toolkit.trustDevCert",
 				"title": "Trust self-signed developer certificate",
-				"category": "SPFx Toolkit"
+				"category": "SPFx Toolkit",
+				"icon": "$(sync)"
 			},
 			{
-				"command": "spfx-toolkit.gulpDeployAzureStorage",
+				"command": "spfx-toolkit.deployToAzureStorage",
 				"title": "Deploy project assets to Azure Storage",
-				"category": "SPFx Toolkit"
+				"category": "SPFx Toolkit",
+				"icon": "$(sync)"
 			}
 		],
 		"menus": {
