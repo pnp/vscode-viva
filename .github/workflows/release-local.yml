@@ -5,7 +5,7 @@ on:
 
 jobs:
   build:
-    if: github.repository == 'pnp/vscode-viva'
+    if: github.repository_owner == 'pnp'
     name: "Build and package"
     runs-on: ubuntu-latest
 
