@@ -8,8 +8,13 @@ on:
 
 jobs:
   build:
+    if: github.repository_owner == 'pnp'
     name: "Build and release"
     runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+      packages: read
 
     steps:
       - name: Setup node
