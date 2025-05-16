@@ -46,7 +46,7 @@ jobs:
           path: docs/dist
 
   deploy_docs:
-   if: github.repository_owner == 'pnp'
+    if: github.repository_owner == 'pnp'
     needs: build_docs
     runs-on: ubuntu-latest
 

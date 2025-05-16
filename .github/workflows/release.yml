@@ -13,7 +13,8 @@ jobs:
     runs-on: ubuntu-latest
 
     permissions:
-      contents: read
+      contents: write
+      packages: read
 
     steps:
       - name: Setup node
