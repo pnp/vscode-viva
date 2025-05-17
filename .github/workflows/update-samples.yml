@@ -13,6 +13,7 @@ jobs:
 
     permissions:
       contents: write
+      pull-requests: write
     
     steps:
       - name: Checkout vscode-viva
@@ -56,4 +57,5 @@ jobs:
           branch: update-sample-data
           title: Sample data update
           body: Automated check and update of SPFx extensions and webparts samples data and aces sample data.
+          dry-run: true
 ...
