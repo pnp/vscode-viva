@@ -35,4 +35,4 @@ root:
 
 ## ❓ More guidance and tips
 
-For more contributing guidance and tips and technical documentation of this extension please go to the repo [wiki](https://github.com/pnp/vscode-viva/wiki).
+For more contributing guidance and tips and technical documentation of this extension please go to the repo [Docs](https://pnp.github.io/vscode-viva/).
