@@ -563,7 +563,7 @@
 			"activitybar": [
 				{
 					"id": "pnp-view",
-					"title": "SharePoint Framework Toolkit",
+					"title": "SPFx Toolkit",
 					"icon": "assets/logo-light.svg"
 				}
 			]
@@ -572,7 +572,7 @@
 			"pnp-view": [
 				{
 					"id": "pnp-view-empty",
-					"name": "SharePoint Framework Toolkit",
+					"name": "SPFx Toolkit",
 					"when": "pnp.project.showWelcome"
 				},
 				{
