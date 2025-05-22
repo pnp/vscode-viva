@@ -17,7 +17,7 @@ Install additional dependencies with a single click straight from the scaffoldin
 
 ![Additional dependency step](../images/scaffolding-additional-step.png)
 
-[Check out our docs for more details](https://github.com/pnp/vscode-viva/wiki/5.2-Scaffolding#1-scaffold-a-new-spfx-project)
+[Check out our docs for more details](https://pnp.github.io/vscode-viva/features/scaffolding/#1-scaffold-a-new-spfx-project)
 
 ## Don't Start from scratch. Reuse an SPFx (web part or extension) or ACE sample
 
@@ -35,4 +35,4 @@ Check out how easy it is to create a new project based on a existing sample 👇
 
 ![Create project based on web part sample](../images/sample-gallery.gif)
 
-[Check out our docs for more details](https://github.com/pnp/vscode-viva/wiki/5.2-Scaffolding#2-dont-start-from-scratch---sample-galleries)
+[Check out our docs for more details](https://pnp.github.io/vscode-viva/features/scaffolding/#2-dont-start-from-scratch---sample-galleries)
