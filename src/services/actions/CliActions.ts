@@ -10,7 +10,7 @@ import { basename, join } from 'path';
 import { EnvironmentInformation } from '../dataType/EnvironmentInformation';
 import { AuthProvider } from '../../providers/AuthProvider';
 import { CommandOutput } from '@pnp/cli-microsoft365';
-import { TeamsToolkitIntegration } from '../dataType/TeamsToolkitIntegration';
+import { M365AgentsToolkitIntegration } from '../dataType/M365AgentsToolkitIntegration';
 import { PnPWebview } from '../../webview/PnPWebview';
 import { parseYoRc } from '../../utils/parseYoRc';
 import { parseCliCommand } from '../../utils/parseCliCommand';
@@ -518,7 +518,7 @@ export class CliActions {
     if (wsFolder) {
       let fsPath = wsFolder.uri.fsPath;
 
-      if (TeamsToolkitIntegration.isTeamsToolkitProject) {
+      if (M365AgentsToolkitIntegration.isM365AgentsToolkitProject) {
         fsPath = join(fsPath, 'src');
       }
 
@@ -662,7 +662,7 @@ export class CliActions {
     if (wsFolder) {
       let fsPath = wsFolder.uri.fsPath;
 
-      if (TeamsToolkitIntegration.isTeamsToolkitProject) {
+      if (M365AgentsToolkitIntegration.isM365AgentsToolkitProject) {
         fsPath = join(fsPath, 'src');
       }
 
@@ -703,7 +703,7 @@ export class CliActions {
     if (wsFolder) {
       let fsPath = wsFolder.uri.fsPath;
 
-      if (TeamsToolkitIntegration.isTeamsToolkitProject) {
+      if (M365AgentsToolkitIntegration.isM365AgentsToolkitProject) {
         fsPath = join(fsPath, 'src');
       }
 
@@ -762,7 +762,7 @@ export class CliActions {
    * Grants API permissions for the current project.
    * This method changes the current working directory to the root of the project,
    * and then executes the command to grant API permissions.
-   * If the project is a Teams Toolkit project, the source directory is set to 'src'.
+   * If the project is a Microsoft 365 Agents Toolkit project, the source directory is set to 'src'.
    * Displays progress notifications during the execution.
    * @returns A promise that resolves when the API permissions are granted.
    */
@@ -780,7 +780,7 @@ export class CliActions {
     if (wsFolder) {
       let fsPath = wsFolder.uri.fsPath;
 
-      if (TeamsToolkitIntegration.isTeamsToolkitProject) {
+      if (M365AgentsToolkitIntegration.isM365AgentsToolkitProject) {
         fsPath = join(fsPath, 'src');
       }
 
@@ -826,7 +826,7 @@ export class CliActions {
   /**
    * Validates the current project.
    * This method changes the current working directory to the root of the project and performs
-   * validation on the project. If the project is a Teams Toolkit project, it changes the working
+   * validation on the project. If the project is a Microsoft 365 Agents Toolkit project, it changes the working
    * directory to the 'src' folder before performing validation.
    * @returns A promise that resolves when the validation is complete.
    */
@@ -836,7 +836,7 @@ export class CliActions {
     if (wsFolder) {
       let fsPath = wsFolder.uri.fsPath;
 
-      if (TeamsToolkitIntegration.isTeamsToolkitProject) {
+      if (M365AgentsToolkitIntegration.isM365AgentsToolkitProject) {
         fsPath = join(fsPath, 'src');
       }
 
@@ -988,7 +988,7 @@ export class CliActions {
 
     let savePath = wsFolder?.uri.fsPath;
 
-    if (savePath && TeamsToolkitIntegration.isTeamsToolkitProject) {
+    if (savePath && M365AgentsToolkitIntegration.isM365AgentsToolkitProject) {
       savePath = join(savePath, 'src');
     }
 

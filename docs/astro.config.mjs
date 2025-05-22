@@ -51,7 +51,7 @@ export default defineConfig({
 					items: [
 						{ label: 'SPFx Toolkit Chat Participant', link: 'guides/chat-participant' },
 						{ label: 'Coding Snippets', link: 'guides/snippets' },
-						{ label: 'Teams Toolkit Integration', link: 'guides/teams-toolkit' }
+						{ label: 'Microsoft 365 Agents Toolkit Integration', link: 'guides/microsoft365-agents-toolkit' }
 					],
 				},
 				{

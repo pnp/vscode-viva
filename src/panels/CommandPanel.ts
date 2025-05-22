@@ -6,7 +6,7 @@ import { AuthProvider, M365AuthenticationSession } from '../providers/AuthProvid
 import { CliActions } from '../services/actions/CliActions';
 import { DebuggerCheck } from '../services/check/DebuggerCheck';
 import { EnvironmentInformation } from '../services/dataType/EnvironmentInformation';
-import { TeamsToolkitIntegration } from '../services/dataType/TeamsToolkitIntegration';
+import { M365AgentsToolkitIntegration } from '../services/dataType/M365AgentsToolkitIntegration';
 import { ProjectInformation } from '../services/dataType/ProjectInformation';
 import { AdaptiveCardCheck } from '../services/check/AdaptiveCardCheck';
 import { Subscription } from '../models';
@@ -39,12 +39,12 @@ export class CommandPanel {
 
   private static async init() {
     try {
-      let isTeamsToolkitProject = false;
+      let isM365AgentsToolkitProject = false;
       let files = await workspace.findFiles('.yo-rc.json', '**/node_modules/**');
 
       if (files.length <= 0) {
         files = await workspace.findFiles('src/.yo-rc.json', '**/node_modules/**');
-        isTeamsToolkitProject = true;
+        isM365AgentsToolkitProject = true;
       }
 
       if (files.length <= 0) {
@@ -69,7 +69,7 @@ export class CommandPanel {
       commands.executeCommand('setContext', ContextKeys.showWelcome, false);
 
       ProjectInformation.isSPFxProject = true;
-      TeamsToolkitIntegration.isTeamsToolkitProject = isTeamsToolkitProject;
+      M365AgentsToolkitIntegration.isM365AgentsToolkitProject = isM365AgentsToolkitProject;
 
       AdaptiveCardCheck.validateACEComponent();
       CommandPanel.registerTreeView();
@@ -334,7 +334,7 @@ export class CommandPanel {
       ]),
       new ActionTreeItem('Resources & Tooling', '', undefined, TreeItemCollapsibleState.Expanded, undefined, undefined, undefined, [
         new ActionTreeItem('Microsoft Graph Explorer', '', { name: 'globe', custom: false }, undefined, 'vscode.open', Uri.parse('https://developer.microsoft.com/en-us/graph/graph-explorer')),
-        new ActionTreeItem('Teams Toolkit', '', { name: 'tools', custom: false }, undefined, 'vscode.open', Uri.parse('https://marketplace.visualstudio.com/items?itemName=TeamsDevApp.ms-teams-vscode-extension')),
+        new ActionTreeItem('Microsoft 365 Agents Toolkit', '', { name: 'tools', custom: false }, undefined, 'vscode.open', Uri.parse('https://marketplace.visualstudio.com/items?itemName=TeamsDevApp.ms-teams-vscode-extension')),
         new ActionTreeItem('Adaptive Card Previewer', '', { name: 'tools', custom: false }, undefined, 'vscode.open', Uri.parse('https://marketplace.visualstudio.com/items?itemName=TeamsDevApp.vscode-adaptive-cards')),
         new ActionTreeItem('SharePoint Embedded', '', { name: 'tools', custom: false }, undefined, 'vscode.open', Uri.parse('https://marketplace.visualstudio.com/items?itemName=SharepointEmbedded.ms-sharepoint-embedded-vscode-extension')),
         new ActionTreeItem('Adaptive Card Designer', '', { name: 'globe', custom: false }, undefined, 'vscode.open', Uri.parse('https://adaptivecards.io/designer/')),
