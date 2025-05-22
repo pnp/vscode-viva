@@ -771,55 +771,55 @@
 				"command": "spfx-toolkit.bundleProject",
 				"title": "Bundle",
 				"category": "SPFx Toolkit",
-				"icon": "$(sync)"
+				"icon": "$(package)"
 			},
 			{
 				"command": "spfx-toolkit.packageProject",
 				"title": "Package",
 				"category": "SPFx Toolkit",
-				"icon": "$(sync)"
+				"icon": "$(zap)"
 			},
 			{
 				"command": "spfx-toolkit.publishProject",
 				"title": "Publish",
 				"category": "SPFx Toolkit",
-				"icon": "$(sync)"
+				"icon": "$(rocket)"
 			},
 			{
 				"command": "spfx-toolkit.serveProject",
 				"title": "Serve",
 				"category": "SPFx Toolkit",
-				"icon": "$(sync)"
+				"icon": "$(play-circle)"
 			},
 			{
 				"command": "spfx-toolkit.cleanProject",
 				"title": "Clean",
 				"category": "SPFx Toolkit",
-				"icon": "$(sync)"
+				"icon": "$(clear-all)"
 			},
 			{
 				"command": "spfx-toolkit.buildProject",
 				"title": "Build",
 				"category": "SPFx Toolkit",
-				"icon": "$(sync)"
+				"icon": "$(gear)"
 			},
 			{
 				"command": "spfx-toolkit.testProject",
 				"title": "Test",
 				"category": "SPFx Toolkit",
-				"icon": "$(sync)"
+				"icon": "$(beaker)"
 			},
 			{
 				"command": "spfx-toolkit.trustDevCert",
 				"title": "Trust self-signed developer certificate",
 				"category": "SPFx Toolkit",
-				"icon": "$(sync)"
+				"icon": "$(verified)"
 			},
 			{
 				"command": "spfx-toolkit.deployToAzureStorage",
 				"title": "Deploy project assets to Azure Storage",
 				"category": "SPFx Toolkit",
-				"icon": "$(sync)"
+				"icon": "$(cloud-upload)"
 			}
 		],
 		"menus": {
