@@ -3,7 +3,7 @@ import { Commands, NodeVersionManagers } from '../../constants';
 import { Subscription } from '../../models';
 import { Extension } from '../dataType/Extension';
 import { getPlatform, getExtensionSettings } from '../../utils';
-import { TeamsToolkitIntegration } from '../dataType/TeamsToolkitIntegration';
+import { M365AgentsToolkitIntegration } from '../dataType/M365AgentsToolkitIntegration';
 import { Folders } from '../check/Folders';
 import { join } from 'path';
 import { ServeConfig } from '../../models/ServeConfig';
@@ -75,7 +75,7 @@ export class TerminalCommandExecuter {
     if (wsFolder) {
       let currentProjectPath = wsFolder.uri.fsPath;
 
-      if (TeamsToolkitIntegration.isTeamsToolkitProject) {
+      if (M365AgentsToolkitIntegration.isM365AgentsToolkitProject) {
         currentProjectPath = join(currentProjectPath, 'src');
       }
 
