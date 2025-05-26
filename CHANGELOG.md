@@ -1,5 +1,92 @@
 # Change Log
 
+## [4.7.0] - 2025-05-04
+
+- Added support for SPFx 1.21.1
+
+## [4.6.0] - 2025-04-26
+
+- Added support for SPFx 1.21.0
+
+## [4.5.0] - 2025-04-14
+
+- Added new Gulp task Publish, which includes both bundle and package
+- Updated settings to allow not to load apps for app catalogs
+- Updated serve gulp tasks to combine them into a single task
+- Refactored pipeline scaffolding form to smaller components
+- Added initial integration tests for the product
+- Added an action that allows to increase project version and implement version increment logic
+- Fixed App Install/Uninstall issue to allow installing apps on root site
+
+## [4.4.0] - 2025-02-04
+
+- Updated the gulp bundle local and production to a single task with an additional prompt
+- Updated the gulp package-solution local and production to a single task with an additional prompt
+- Fixed warning message regarding installed Node.js version in validate dependency action
+- Added conditional logic to scaffolding form additional dependencies to show them based on project type
+- Added install react additional dependency to the scaffolding form visible for Application customizer
+- Added Install, and Uninstall apps to a specified site action to app view
+- Enhanced progress notifications with output window links for better user guidance to every CLI action
+- Added action which allows to set form customizer
+- Enhanced error handling in GitHub Copilot Chat participant
+- Updated welcome view
+- Updated VS Code typings and engine to latest
+
+## [4.3.0] - 2024-12-11
+
+- Added remove confirmation prompt when removing SPFx solution from app catalog
+- Added /manage GitHub Chat command
+- Added generating code tour for upgrade and validate SPFx solution actions
+- Added upgrade SPFx project action
+- Added SPFx Fast Serve optional dependency to the scaffolding form
+- Improved sign in experience with caching of Client ID and Tenant ID
+
+## [4.2.0] - 2024-10-19
+
+- Included m365 prefix and log passed CLI command options
+- Refactored to ensure types for settings
+- Added a new project additional step to create or not the node version manager configuration file
+- Added new VSCode setting createNodeVersionFileDefaultValue to define the default value of the new project additional step
+- Added new VSCode setting nodeVersionManagerFile to specify which configuration file to be created
+- Dynamic loading of children for ActionTreeItem
+- Present solutions deployed per app catalog
+- Allow to disable and enable a solution
+- Allow to deploy and retract a solution
+- Allow to remove a solution
+- Clicking on app link should go to the solution appStore.aspx page
+- Updated prompt grounding for /setup and /new
+- Added new way to create new project together with Copilot
+
+## [4.1.0] - 2024-09-28
+
+- Added support for SPFx 1.20.0
+- Updated missing scopes in the Entra App Registration
+- Updated error handling in extension init
+- Added guidance in tha scaffolding form for each SPFx project type
+- Added more gulp tasks
+- Added dedicated walkthrough for gulp tasks
+- Updated extension to hide features that require sign in
+- Updated action naming
+
+## [4.0.0] - 2024-09-08
+
+- Updated Sign in method
+- Updated SPFx Intro and workspace setup walkthrough steps
+- Updated readme assets
+- Added form to create Entra App Registration required for sign in
+- Added Extension filter dropdown to the sample gallery
+- Updated account view to show the Entra App Registration
+- Updated terminal usage to unified approach
+- Updated release workflows
+- Added settings to show and hide health incidents and tenant wide extensions
+
+## [3.4.0] - 2024-07-18
+
+- Improved welcome experience
+- Fixed lags in sample gallery search
+- Improved sample gallery filter functionalities
+- Improved create project step in walkthrough
+
 ## [3.3.0] - 2024-06-16
 
 - Refactored scaffolding form to smaller components

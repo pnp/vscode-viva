@@ -10,6 +10,7 @@ export const routeEntries: { [routeKey: string]: string } = {
   [WebViewType.samplesGallery]: WebViewTypes.find(type => type.value === WebViewType.samplesGallery)?.homePageUrl as string,
   [WebViewType.workflowForm]: WebViewTypes.find(type => type.value === WebViewType.workflowForm)?.homePageUrl as string,
   [WebViewType.scaffoldForm]: WebViewTypes.find(type => type.value === WebViewType.scaffoldForm)?.homePageUrl as string,
+  [WebViewType.registerEntraAppRegistration]: WebViewTypes.find(type => type.value === WebViewType.registerEntraAppRegistration)?.homePageUrl as string,
 };
 
 const elm = document.querySelector('#root');
@@ -18,6 +19,7 @@ if (elm) {
 
   const homePageUrl = elm.getAttribute('data-homePageUrl');
   const spfxPackageName = elm.getAttribute('data-spfxPackageName');
+  const isSignedIn = elm.getAttribute('data-isSignedIn');
   const appCatalogUrls = elm.getAttribute('data-appCatalogUrls');
   const type = elm.getAttribute('data-type');
   const isNewProject = elm.getAttribute('data-isNewProject');
@@ -25,6 +27,10 @@ if (elm) {
 
   if (spfxPackageName) {
     data.spfxPackageName = spfxPackageName;
+  }
+
+  if (isSignedIn) {
+    data.isSignedIn = isSignedIn;
   }
 
   if (appCatalogUrls) {

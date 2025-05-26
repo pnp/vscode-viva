@@ -5,6 +5,7 @@ export const Commands = {
   // Authentication
   login: `${EXTENSION_NAME}.login`,
   logout: `${EXTENSION_NAME}.logout`,
+  registerEntraAppRegistration: `${EXTENSION_NAME}.registerEntraAppRegistration`,
 
   // Dependencies
   checkDependencies: `${EXTENSION_NAME}.checkDependencies`,
@@ -13,6 +14,7 @@ export const Commands = {
   // Scaffolding
   createProject: `${EXTENSION_NAME}.createProject`,
   addToProject: `${EXTENSION_NAME}.addToProject`,
+  createProjectCopilot: `${EXTENSION_NAME}.createProjectCopilot`,
 
   // Output channel
   showOutputChannel: `${EXTENSION_NAME}.showOutputChannel`,
@@ -32,6 +34,9 @@ export const Commands = {
   // Rename
   renameProject: `${EXTENSION_NAME}.renameProject`,
 
+  // Increase version
+  increaseVersion: `${EXTENSION_NAME}.increaseVersion`,
+
   // Grant API permissions
   grantAPIPermissions: `${EXTENSION_NAME}.grantAPIPermissions`,
 
@@ -41,8 +46,32 @@ export const Commands = {
   // Webviews
   samplesGallery: `${EXTENSION_NAME}.samplesGallery`,
 
+  // Bundle
+  bundleProject: `${EXTENSION_NAME}.bundleProject`,
+
+  // Package
+  packageProject: `${EXTENSION_NAME}.packageProject`,
+
+  // Publish
+  publishProject: `${EXTENSION_NAME}.publishProject`,
+
   // Serving
   serveProject: `${EXTENSION_NAME}.serveProject`,
+
+  // Clean
+  cleanProject: `${EXTENSION_NAME}.cleanProject`,
+
+  // Build
+  buildProject: `${EXTENSION_NAME}.buildProject`,
+
+  // Test
+  testProject: `${EXTENSION_NAME}.testProject`,
+
+  // Trust dev cert
+  trustDevCert: `${EXTENSION_NAME}.trustDevCert`,
+
+  // Deploy to Azure Storage
+  deployToAzureStorage: `${EXTENSION_NAME}.deployToAzureStorage`,
 
   // TreeViews
   refreshAppCatalogTreeView: `${EXTENSION_NAME}.refreshAppCatalogTreeView`,
@@ -50,4 +79,21 @@ export const Commands = {
 
   // Welcome
   welcome: `${EXTENSION_NAME}.welcome`,
+
+  //Copilot
+  openCopilot: `${EXTENSION_NAME}.openCopilot`,
+
+  // App actions
+  deployAppCatalogApp: `${EXTENSION_NAME}.deployAppCatalogApp`,
+  retractAppCatalogApp: `${EXTENSION_NAME}.retractAppCatalogApp`,
+  removeAppCatalogApp: `${EXTENSION_NAME}.removeAppCatalogApp`,
+  enableAppCatalogApp: `${EXTENSION_NAME}.enableAppCatalogApp`,
+  disableAppCatalogApp: `${EXTENSION_NAME}.disableAppCatalogApp`,
+  upgradeAppCatalogApp: `${EXTENSION_NAME}.upgradeAppCatalogApp`,
+  installAppCatalogApp: `${EXTENSION_NAME}.installAppCatalogApp`,
+  uninstallAppCatalogApp: `${EXTENSION_NAME}.uninstallAppCatalogApp`,
+  showMoreActions: `${EXTENSION_NAME}.showMoreActions`,
+
+  // Set form customizer
+  setFormCustomizer: `${EXTENSION_NAME}.setFormCustomizer`
 };

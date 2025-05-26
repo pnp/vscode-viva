@@ -1,16 +1,19 @@
 import { PnPWebview } from './webview/PnPWebview';
 import { CommandPanel } from './panels/CommandPanel';
 import * as vscode from 'vscode';
-import { workspace, window, ThemeIcon, commands } from 'vscode';
-import { PROJECT_FILE, Scaffolder } from './services/Scaffolder';
-import { Extension } from './services/Extension';
-import { Dependencies } from './services/Dependencies';
+import { workspace, commands } from 'vscode';
+import { PROJECT_FILE, Scaffolder } from './services/actions/Scaffolder';
+import { Extension } from './services/dataType/Extension';
+import { Dependencies } from './services/actions/Dependencies';
 import { unlinkSync, readFileSync } from 'fs';
-import { TerminalCommandExecuter } from './services/TerminalCommandExecuter';
+import { TerminalCommandExecuter } from './services/executeWrappers/TerminalCommandExecuter';
 import { AuthProvider } from './providers/AuthProvider';
-import { CliActions } from './services/CliActions';
+import { CliActions } from './services/actions/CliActions';
 import { PromptHandlers } from './chat/PromptHandlers';
 import { CHAT_PARTICIPANT_NAME, ProjectFileContent } from './constants';
+import { EntraAppRegistration } from './services/actions/EntraAppRegistration';
+import { CopilotActions } from './services/actions/CopilotActions';
+import { ChatTools } from './chat/tools/ChatTools';
 
 
 export async function activate(context: vscode.ExtensionContext) {
@@ -20,13 +23,17 @@ export async function activate(context: vscode.ExtensionContext) {
 
 	Extension.getInstance(context);
 
+	ChatTools.register();
+
 	TerminalCommandExecuter.register();
 
-	AuthProvider.register();
+	AuthProvider.register(context);
 
 	Dependencies.registerCommands();
 	Scaffolder.registerCommands();
 	CliActions.registerCommands();
+	EntraAppRegistration.registerCommands(context);
+	CopilotActions.registerCommands();
 
 	CommandPanel.register();
 
@@ -39,13 +46,11 @@ export async function activate(context: vscode.ExtensionContext) {
 			if (fileContents) {
 				unlinkSync(files[0].fsPath);
 
-				const terminal = window.createTerminal({
-					name: 'Installing dependencies',
-					iconPath: new ThemeIcon('cloud-download')
-				});
+				const terminalTitle = 'Installing dependencies';
+				const terminalIcon = 'cloud-download';
 
 				if (fileContents.indexOf(ProjectFileContent.init) > -1 || fileContents.indexOf(ProjectFileContent.initScenario) > -1) {
-					terminal.sendText('npm i');
+					await TerminalCommandExecuter.runCommand('npm i', terminalTitle, terminalIcon);
 				}
 
 				if (fileContents.indexOf(ProjectFileContent.initScenario) > -1) {
@@ -53,18 +58,36 @@ export async function activate(context: vscode.ExtensionContext) {
 				}
 
 				if (fileContents.indexOf(ProjectFileContent.installReusablePropertyPaneControls) > -1) {
-					terminal.sendText('npm install @pnp/spfx-property-controls --save --save-exact');
+					await TerminalCommandExecuter.runCommand('npm install @pnp/spfx-property-controls --save --save-exact', terminalTitle, terminalIcon);
 				}
 
 				if (fileContents.indexOf(ProjectFileContent.installReusableReactControls) > -1) {
-					terminal.sendText('npm install @pnp/spfx-controls-react --save --save-exact');
+					await TerminalCommandExecuter.runCommand('npm install @pnp/spfx-controls-react --save --save-exact', terminalTitle, terminalIcon);
 				}
 
 				if (fileContents.indexOf(ProjectFileContent.installPnPJs) > -1) {
-					terminal.sendText('npm install @pnp/sp @pnp/graph --save');
+					await TerminalCommandExecuter.runCommand('npm install @pnp/sp @pnp/graph --save', terminalTitle, terminalIcon);
 				}
 
-				terminal.show(true);
+				if (fileContents.indexOf(ProjectFileContent.installSPFxFastServe) > -1) {
+					await TerminalCommandExecuter.runCommand('spfx-fast-serve --force-install', terminalTitle, terminalIcon);
+				}
+
+				if (fileContents.indexOf(ProjectFileContent.installReact) > -1) {
+					await TerminalCommandExecuter.runCommand('npm install react@17.0.1 react-dom@17.0.1', terminalTitle, terminalIcon);
+				}
+
+				// If either of the following strings are found in the project file, run the command to get the node version
+				if (fileContents.indexOf(ProjectFileContent.createNVMRCFile) > -1 || fileContents.indexOf(ProjectFileContent.createNodeVersionFile) > -1) {
+					let nodeVersionCommand = 'node --version > ';
+					if (fileContents.indexOf(ProjectFileContent.createNVMRCFile) > -1) {
+						nodeVersionCommand += '.nvmrc';
+					}
+					else if (fileContents.indexOf(ProjectFileContent.createNodeVersionFile) > -1) {
+						nodeVersionCommand += '.node-version';
+					}
+					await TerminalCommandExecuter.runCommand(nodeVersionCommand, terminalTitle, terminalIcon);
+				}
 			}
 		}
 	});

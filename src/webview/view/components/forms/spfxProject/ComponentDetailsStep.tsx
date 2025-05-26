@@ -2,8 +2,8 @@ import * as React from 'react';
 import { useEffect, useCallback } from 'react';
 import { VSCodeDropdown, VSCodeOption, VSCodeTextField } from '@vscode/webview-ui-toolkit/react';
 import { ComponentType, ComponentTypes, WebviewCommand, ExtensionType, ExtensionTypes, FrameworkTypes, AdaptiveCardTypes } from '../../../../../constants';
-import { StepHeader } from './StepHeader';
 import { Messenger } from '@estruyf/vscode/dist/client';
+import { LabelWithTooltip, StepHeader } from '../../controls';
 
 
 interface IComponentDetailsStepProps {
@@ -84,9 +84,7 @@ export const ComponentDetailsStep: React.FunctionComponent<IComponentDetailsStep
                 {
                     componentType === 'extension' &&
                     <div className={'mb-2'}>
-                        <label className={'block mb-1'}>
-                            Which extension type would you like to create?
-                        </label>
+                        <LabelWithTooltip label='Which extension type would you like to create?' tooltip={ExtensionTypes.find((type) => type.value === extensionType)?.description as string} />
                         <VSCodeDropdown className={'w-full'} value={extensionType} onChange={(e: any) => setExtensionType(e.target.value)}>
                             {ExtensionTypes.map((type) => <VSCodeOption key={type.value} value={type.value}>{type.name}</VSCodeOption>)}
                         </VSCodeDropdown>
@@ -95,9 +93,7 @@ export const ComponentDetailsStep: React.FunctionComponent<IComponentDetailsStep
                 {
                     componentType === ComponentType.adaptiveCardExtension &&
                     <div className={'mb-2'}>
-                        <label className={'block mb-1'}>
-                            Which adaptive card extension template do you want to use?
-                        </label>
+                        <LabelWithTooltip label='Which adaptive card extension template do you want to use?' tooltip={AdaptiveCardTypes.find((type) => type.value === aceType)?.description as string} />
                         <VSCodeDropdown className={'w-full'} value={aceType} onChange={(e: any) => setAceType(e.target.value)}>
                             {
                                 AdaptiveCardTypes.map((type) => <VSCodeOption key={type.value} value={type.value}>{type.name}</VSCodeOption>)
@@ -108,9 +104,7 @@ export const ComponentDetailsStep: React.FunctionComponent<IComponentDetailsStep
                 {
                     componentType === ComponentType.webPart &&
                     <div className={'mb-2'}>
-                        <label className={'block mb-1'}>
-                            Which template would you like to use?
-                        </label>
+                        <LabelWithTooltip label='Which template would you like to use?' tooltip={FrameworkTypes.find((framework) => framework.value === frameworkType)?.description as string} />
                         <VSCodeDropdown className={'w-full'} value={frameworkType} onChange={(e: any) => setFrameworkType(e.target.value)}>
                             {FrameworkTypes.map((framework) => <VSCodeOption key={framework.value} value={framework.value}>{framework.name}</VSCodeOption>)}
                         </VSCodeDropdown>
@@ -119,9 +113,7 @@ export const ComponentDetailsStep: React.FunctionComponent<IComponentDetailsStep
                 {
                     componentType === ComponentType.extension && ExtensionTypes.find(e => e.value === extensionType)?.templates.some(t => t) &&
                     <div className={'mb-2'}>
-                        <label className={'block mb-1'}>
-                            Which template would you like to use?
-                        </label>
+                        <LabelWithTooltip label='Which template would you like to use?' tooltip={FrameworkTypes.find((framework) => framework.value === frameworkType)?.description as string} />
                         <VSCodeDropdown className={'w-full'} value={frameworkType} onChange={(e: any) => setFrameworkType(e.target.value)}>
                             {ExtensionTypes.find(e => e.value === extensionType)?.templates.map((framework) => {
                                 const key = FrameworkTypes.find(f => f.name === framework)?.value;
