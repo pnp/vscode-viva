@@ -29,6 +29,8 @@ export const DetailsView: React.FunctionComponent<IDetailsViewProps> = ({ }: Rea
       let data = await response.text();
       data = data.replace(/\]\(assets/g, `](${url}/assets`);
       data = data.replace(/\]\(\.\/assets/g, `](${url}/assets`);
+      data = data.replace(/\]\(images/g, `](${url}/images`);
+      data = data.replace(/\]\(\.\/images/g, `](${url}/images`);
       data = data.replace(/<img src="https:\/\/m365-visitor-stats\.azurewebsites\.net\/[^"]*" \/>/g, '');
       setDocs(data);
     };
