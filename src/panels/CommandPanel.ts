@@ -346,7 +346,7 @@ export class CommandPanel {
         new ActionTreeItem('Join the Microsoft 365 & Power Platform Community Discord Server', '', { name: 'feedback', custom: false }, undefined, 'vscode.open', Uri.parse('https://aka.ms/community/discord'))
       ]),
       new ActionTreeItem('Support', '', undefined, TreeItemCollapsibleState.Expanded, undefined, undefined, undefined, [
-        new ActionTreeItem('Wiki', '', { name: 'question', custom: false }, undefined, 'vscode.open', Uri.parse('https://github.com/pnp/vscode-viva/wiki')),
+        new ActionTreeItem('Docs', '', { name: 'question', custom: false }, undefined, 'vscode.open', Uri.parse('https://pnp.github.io/vscode-viva/')),
         new ActionTreeItem('Report an issue', '', { name: 'github', custom: false }, undefined, 'vscode.open', Uri.parse('https://github.com/pnp/vscode-viva/issues/new/choose')),
         new ActionTreeItem('Start Walkthrough', '', { name: 'info', custom: false }, undefined, Commands.welcome)
       ])
