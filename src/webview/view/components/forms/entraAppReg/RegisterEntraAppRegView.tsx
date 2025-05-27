@@ -33,7 +33,7 @@ export const RegisterEntraAppRegView: React.FunctionComponent<IRegisterEntraAppR
       </div>
       <div className={'mb-2'}>
         <label className={'block mb-2'}>
-          For more information please visit <VSCodeLink href='https://github.com/pnp/vscode-viva/wiki/5.3-Login-to-your-tenant-&-retrieve-environment-details'>SPFx Toolkit login docs</VSCodeLink>
+          For more information please visit <VSCodeLink href='https://pnp.github.io/vscode-viva/features/login-tenant/'>SPFx Toolkit login docs</VSCodeLink>
         </label>
       </div>
       <div className={'mb-2'}>
