@@ -26,7 +26,7 @@ And for Azure DevOps👇
 
 And the code tour guidance will provide you upgrade tips directly in your code!
 
-![Upgrade project](./assets/images/upgrade-project-code-tour.png)
+![Upgrade project](../images/upgrade-project-code-tour.png)
 
 [Check out our docs for more details](https://pnp.github.io/vscode-viva/features/actions/#upgrade-project)
 
