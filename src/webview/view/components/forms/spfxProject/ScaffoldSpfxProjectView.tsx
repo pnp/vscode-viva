@@ -25,7 +25,12 @@ export const ScaffoldSpfxProjectView: React.FunctionComponent<IScaffoldSpfxProje
   const [shouldRunInit, setShouldRunInit] = useState<boolean>(true);
   const [shouldInstallReusablePropertyPaneControls, setShouldInstallReusablePropertyPaneControls] = useState<boolean>(false);
   const [shouldInstallReusableReactControls, setShouldInstallReusableReactControls] = useState<boolean>(false);
+  const [shouldInstallReact, setShouldInstallReact] = useState<boolean>(false);
   const [shouldInstallPnPJs, setShouldInstallPnPJs] = useState<boolean>(false);
+  const [shouldInstallSPFxFastServe, setShouldInstallSPFxFastServe] = useState<boolean>(false);
+  const [shouldCreateNodeVersionFile, setShouldCreateNodeVersionFile] = useState<boolean>(false);
+  const [nodeVersionManager, setNodeVersionManager] = useState<'nvm' | 'nvs' | 'none'>('nvm');
+  const [nodeVersionManagerFile, setNodeVersionManagerFile] = useState<'.nvmrc' | '.node-version'>('.nvmrc');
   const location: any = useLocation();
 
   useEffect(() => {
@@ -78,7 +83,12 @@ export const ScaffoldSpfxProjectView: React.FunctionComponent<IScaffoldSpfxProje
         shouldRunInit,
         shouldInstallReusablePropertyPaneControls,
         shouldInstallReusableReactControls,
-        shouldInstallPnPJs
+        shouldInstallReact,
+        shouldInstallPnPJs,
+        shouldInstallSPFxFastServe,
+        shouldCreateNodeVersionFile,
+        nodeVersionManagerFile,
+        nodeVersionManager
       } as SpfxScaffoldCommandInput);
     }
   };
@@ -97,6 +107,7 @@ export const ScaffoldSpfxProjectView: React.FunctionComponent<IScaffoldSpfxProje
           setIsValidSolutionName={setIsValidSolutionName}
           setComponentType={setComponentType}
           componentTypes={ComponentTypes}
+          componentType={componentType}
         />
         <ComponentDetailsStep
           isNewProject={isNewProject}
@@ -115,14 +126,26 @@ export const ScaffoldSpfxProjectView: React.FunctionComponent<IScaffoldSpfxProje
         {
           isNewProject &&
           <AdditionalStep
+            componentType={componentType}
+            extensionType={extensionType}
+            componentName={componentName}
             shouldRunInit={shouldRunInit}
             setShouldRunInit={setShouldRunInit}
             shouldInstallReusablePropertyPaneControls={shouldInstallReusablePropertyPaneControls}
             setShouldInstallReusablePropertyPaneControls={setShouldInstallReusablePropertyPaneControls}
             shouldInstallReusableReactControls={shouldInstallReusableReactControls}
             setShouldInstallReusableReactControls={setShouldInstallReusableReactControls}
+            shouldInstallReact={shouldInstallReact}
+            setShouldInstallReact={setShouldInstallReact}
             shouldInstallPnPJs={shouldInstallPnPJs}
             setShouldInstallPnPJs={setShouldInstallPnPJs}
+            shouldInstallSPFxFastServe={shouldInstallSPFxFastServe}
+            setShouldInstallSPFxFastServe={setShouldInstallSPFxFastServe}
+            shouldCreateNodeVersionFile={shouldCreateNodeVersionFile}
+            setShouldCreateNodeVersionFile={setShouldCreateNodeVersionFile}
+            setNodeVersionManagerFile={setNodeVersionManagerFile}
+            setNodeVersionManager={setNodeVersionManager}
+            nodeVersionManager={nodeVersionManager}
           />
         }
       </div>

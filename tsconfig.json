@@ -9,6 +9,11 @@
 		"sourceMap": true,
 		"rootDir": "src",
 		"strict": true,
-		"jsx": "react",
-	}
+		"jsx": "react"
+	},
+	"exclude": [
+        "node_modules",
+        "dist",
+        "out"
+    ]
 }
