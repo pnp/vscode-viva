@@ -718,7 +718,7 @@
       ],
       "createDate": "2023-07-02",
       "updateDate": "2023-07-02",
-      "version": "1.16.1",
+      "version": "1.20.0",
       "componentType": "extension",
       "extensionType": "ApplicationCustomizer",
       "sampleGalerry": "sp-dev-fx-extensions",
@@ -2055,6 +2055,29 @@
       "version": "1.20.0",
       "componentType": "extension",
       "extensionType": "ListViewCommandSet",
+      "sampleGalerry": "sp-dev-fx-extensions",
+      "sampleType": "samples"
+    },
+    {
+      "name": "pnp-sp-dev-spfx-extensions-react-copilot-aprils-fool",
+      "title": "Copilot April's Fool",
+      "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-copilot-aprils-fool",
+      "description": "An extention to privide a simple approach to display custom messages in SharePoint Online.",
+      "image": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-copilot-aprils-fool/assets/sample.png",
+      "authors": [
+        {
+          "name": "Valeras Narbutas",
+          "pictureUrl": "https://github.com/ValerasNarbutas.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2025-03-23",
+      "updateDate": "2025-03-23",
+      "version": "1.20.0",
+      "componentType": "extension",
+      "extensionType": "ApplicationCustomizer",
       "sampleGalerry": "sp-dev-fx-extensions",
       "sampleType": "samples"
     },
@@ -4281,6 +4304,29 @@
       "sampleType": "samples"
     },
     {
+      "name": "pnp-sp-dev-spfx-web-parts-react-carbon-footprint-calculator",
+      "title": "Carbon Footprint Calculator",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-carbon-footprint-calculator",
+      "description": "This SharePoint Framework (SPFx) web part provides users with an interactive calculator to estimate their monthly carbon footprint.",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-carbon-footprint-calculator/assets/sample.png",
+      "authors": [
+        {
+          "name": "João LIVIO",
+          "pictureUrl": "https://github.com/jtlivio.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2025-05-08",
+      "updateDate": "2025-05-08",
+      "version": "1.21.1",
+      "componentType": "webpart",
+      "extensionType": null,
+      "sampleGalerry": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
       "name": "pnp-sp-dev-spfx-web-parts-react-carousel",
       "title": "Carousel Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-carousel",
@@ -4654,7 +4700,7 @@
         "SharePoint"
       ],
       "createDate": "2025-01-09",
-      "updateDate": "2025-01-10",
+      "updateDate": "2025-05-16",
       "version": "1.20.0",
       "componentType": "webpart",
       "extensionType": null,
@@ -6665,7 +6711,7 @@
       ],
       "createDate": "2021-03-17",
       "updateDate": "2025-04-02",
-      "version": "1.20.0",
+      "version": "1.21.1",
       "componentType": "webpart",
       "extensionType": null,
       "sampleGalerry": "sp-dev-fx-webparts",
@@ -7521,8 +7567,8 @@
         "SharePoint"
       ],
       "createDate": "2024-03-16",
-      "updateDate": "2024-11-01",
-      "version": "1.20.0",
+      "updateDate": "2025-05-01",
+      "version": "1.21.0",
       "componentType": "webpart",
       "extensionType": null,
       "sampleGalerry": "sp-dev-fx-webparts",
@@ -9721,6 +9767,29 @@
       ],
       "createDate": "2025-01-27",
       "updateDate": "2025-01-27",
+      "version": "1.20.0",
+      "componentType": "webpart",
+      "extensionType": null,
+      "sampleGalerry": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
+      "name": "pnp-sp-dev-spfx-web-parts-react-sp-emp-recognition",
+      "title": "rEmployee Recognition",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-sp-emp-recognition",
+      "description": "This SharePoint Framework (SPFx) web part enables organizations to celebrate employee achievements and contributions through a modern recognition system. Users can easily nominate colleagues for various types of recognition and engage with these recognitions through social reactions.",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-sp-emp-recognition/assets/Add recognition.png",
+      "authors": [
+        {
+          "name": "Sudeep Ghatak",
+          "pictureUrl": "https://github.com/sudeepghatak.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2025-04-20",
+      "updateDate": "2025-04-20",
       "version": "1.20.0",
       "componentType": "webpart",
       "extensionType": null,
