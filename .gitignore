@@ -8,3 +8,9 @@ sp-dev-fx-aces
 sp-dev-fx-extensions
 sp-dev-fx-library-components
 sp-dev-fx-webparts
+
+# Docs
+.astro/
+npm-debug.log*
+.env
+.env.production
