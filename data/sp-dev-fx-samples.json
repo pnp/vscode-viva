@@ -5353,7 +5353,7 @@
         "SharePoint"
       ],
       "createDate": "2025-04-27",
-      "updateDate": "2025-04-27",
+      "updateDate": "2025-05-04",
       "version": "1.20.0",
       "componentType": "webpart",
       "extensionType": null,
@@ -6157,8 +6157,8 @@
         "SharePoint"
       ],
       "createDate": "2021-09-17",
-      "updateDate": "2025-01-10",
-      "version": "1.20.0",
+      "updateDate": "2025-05-26",
+      "version": "1.21.1",
       "componentType": "webpart",
       "extensionType": null,
       "sampleGalerry": "sp-dev-fx-webparts",
