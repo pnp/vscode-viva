@@ -251,32 +251,17 @@ export class CommandPanel {
       for (let i = 1; i < appCatalogUrls.length; i++) {
         const siteAppCatalogUrl = appCatalogUrls[i];
 
-        const siteAppCatalogNode = new ActionTreeItem(
-          siteAppCatalogUrl.replace(origin, '...'),
-          '',
-          { name: 'globe', custom: false },
-          showExpandTreeIcon,
-          'vscode.open',
-          `${Uri.parse(siteAppCatalogUrl)}/AppCatalog`,
-          'sp-app-catalog-url',
-          undefined,
+        const siteAppCatalogNode = new ActionTreeItem(siteAppCatalogUrl.replace(origin, '...'), '', { name: 'globe', custom: false }, showExpandTreeIcon, 'vscode.open', `${Uri.parse(siteAppCatalogUrl)}/AppCatalog`, 'sp-app-catalog-url', undefined,
           async () => {
             const siteAppCatalogApps = await CliActions.getAppCatalogApps(siteAppCatalogUrl);
             const siteAppCatalogAppsList: ActionTreeItem[] = [];
-        
+
             if (siteAppCatalogApps && siteAppCatalogApps.length > 0) {
               siteAppCatalogApps.forEach((app) => {
                 const appStoreUrl = `${siteAppCatalogUrl}/_layouts/15/appStore.aspx/appDetail/${app.ID}?sorting=1&from=0&catalog=3`;
-        
+
                 siteAppCatalogAppsList.push(
-                  new ActionTreeItem(
-                    app.Title,
-                    '',
-                    { name: 'package', custom: false },
-                    undefined,
-                    'vscode.open',
-                    Uri.parse(appStoreUrl),
-                    ContextKeys.hasAppCatalogApp,
+                  new ActionTreeItem(app.Title, '', { name: 'package', custom: false }, undefined, 'vscode.open', Uri.parse(appStoreUrl), ContextKeys.hasAppCatalogApp,
                     [
                       new ActionTreeItem('Deploy', '', undefined, undefined, Commands.deployAppCatalogApp, [app.ID, app.Title, siteAppCatalogUrl, app.Deployed], ContextKeys.deployApp),
                       new ActionTreeItem('Retract', '', undefined, undefined, Commands.retractAppCatalogApp, [app.ID, app.Title, siteAppCatalogUrl, app.Deployed], ContextKeys.retractApp),
@@ -293,7 +278,7 @@ export class CommandPanel {
             } else {
               siteAppCatalogAppsList.push(new ActionTreeItem('No app found', ''));
             }
-        
+
             return siteAppCatalogAppsList;
           }
         );
