@@ -1,7 +1,5 @@
-import { VSCodeButton, VSCodeCheckbox, VSCodeDropdown, VSCodeLink, VSCodeOption, VSCodeProgressRing, VSCodeTextField } from '@vscode/webview-ui-toolkit/react';
 import * as React from 'react';
 import { useEffect, useState } from 'react';
-import { AzureDevOpsIcon, CopyIcon, GitHubIcon, RocketIcon } from '../../icons';
 import { useLocation } from 'react-router-dom';
 import { Messenger } from '@estruyf/vscode/dist/client';
 import { WebviewCommand, WorkflowType } from '../../../../../constants';
