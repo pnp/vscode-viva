@@ -53,7 +53,7 @@ export const RegisterEntraAppRegView: React.FunctionComponent<IRegisterEntraAppR
             <p className={'mb-1'}>SPFx Toolkit will use CLI for Microsoft 365 to sign in as Azure CLI app to your tenant to create a new App Registration.</p>
             <br />
             <div>
-              <VSCodeButton className={isSubmitting ? 'w-full hidden' : 'w-full'} onClick={submit}>
+              <VSCodeButton className={isSubmitting ? 'w-full text-center hidden' : 'w-full block text-center'} onClick={submit}>
                 Create the Entra App Registration
               </VSCodeButton>
             </div>
