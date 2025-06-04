@@ -41,7 +41,7 @@ export const WorkflowSummary: React.FunctionComponent<WorkflowSummaryProps> = ({
                 {shouldCreateAppRegistrationForm && certPassword.length < 5 ?
                     <p className={'py-2'}><strong>Please provide a password for your certificate which is at least 6 characters long</strong></p> :
                     ''}
-                <VSCodeButton disabled={shouldCreateAppRegistrationForm && certPassword.length < 5 ? true : null} className={isSubmitting ? 'w-full block text-center hidden' : 'w-full block text-center'} onClick={submit}>
+                <VSCodeButton disabled={shouldCreateAppRegistrationForm && certPassword.length < 5 ? true : null} className={isSubmitting ? 'w-full text-center hidden' : 'w-full block text-center'} onClick={submit}>
                     <span slot={'start'}><RocketIcon /></span>
                     {shouldCreateAppRegistrationForm ? `Create ${workflowType === WorkflowType.gitHub ? 'workflow' : 'pipeline'} & new app registration` : `Create ${workflowType === WorkflowType.gitHub ? 'workflow' : 'pipeline'}`}
                 </VSCodeButton>
