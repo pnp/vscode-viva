@@ -2,6 +2,7 @@ import { lm } from 'vscode';
 import { Subscription } from '../../models';
 import { Extension } from '../../services/dataType/Extension';
 import { SharePointAppInstall, SharePointAppList, SharePointListAdd, SharePointListGet, SharePointListRemove, SharePointPageAdd, SharePointSiteAdd, SharePointSiteGet, SharePointSiteRemove } from './spo/index';
+import { SharePointFrameworkProjectUpgrade } from './spfx';
 
 
 export class ChatTools {
@@ -34,6 +35,9 @@ export class ChatTools {
         );
         subscriptions.push(
             lm.registerTool('spo_site_get', new SharePointSiteGet())
+        );
+        subscriptions.push(
+            lm.registerTool('upgrade_spfx_project', new SharePointFrameworkProjectUpgrade())
         );
     }
 }
