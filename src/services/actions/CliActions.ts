@@ -18,6 +18,7 @@ import { CertificateActions } from './CertificateActions';
 import path = require('path');
 import { getExtensionSettings } from '../../utils/getExtensionSettings';
 import * as fs from 'fs';
+import { ActionTreeItem } from '../../providers/ActionTreeDataProvider';
 
 
 export class CliActions {
