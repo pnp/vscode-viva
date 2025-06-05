@@ -166,7 +166,7 @@ export class CommandPanel {
     const environmentCommands: ActionTreeItem[] = [];
 
     if (!appCatalogUrls) {
-      environmentCommands.push(new ActionTreeItem('No app catalog found', ''));
+      environmentCommands.push(new ActionTreeItem('Create an app catalog', '', { name: 'add', custom: false }, undefined, Commands.addTenantAppCatalog, ContextKeys.hasAppCatalogApp, 'sp-add-tenant-app-catalog'));
     } else {
       const tenantAppCatalogUrl = appCatalogUrls[0];
       const origin = new URL(tenantAppCatalogUrl).origin;
@@ -199,7 +199,7 @@ export class CommandPanel {
       const showTenantAppCatalogApps: boolean = getExtensionSettings<boolean>('showAppsInAppCatalogs', true);
       const showExpandTreeIcon = showTenantAppCatalogApps ? TreeItemCollapsibleState.Collapsed : TreeItemCollapsibleState.None;
 
-      const tenantAppCatalogNode = new ActionTreeItem(tenantAppCatalogUrl.replace(origin, '...'), '', { name: 'globe', custom: false }, showExpandTreeIcon, 'vscode.open', `${Uri.parse(tenantAppCatalogUrl)}/AppCatalog`, 'sp-app-catalog-url', undefined,
+      const tenantAppCatalogNode = new ActionTreeItem(tenantAppCatalogUrl.replace(origin, '...'), '', { name: 'globe', custom: false }, showExpandTreeIcon, 'vscode.open', `${Uri.parse(tenantAppCatalogUrl)}/AppCatalog`, 'sp-tenant-app-catalog-url', undefined,
         async () => {
           const tenantAppCatalogApps = await CliActions.getAppCatalogApps();
           const tenantAppCatalogAppsList: ActionTreeItem[] = [];
@@ -276,11 +276,13 @@ export class CommandPanel {
         siteAppCatalogActionItems.push(siteAppCatalogNode);
       }
 
-      if (siteAppCatalogActionItems.length > 0) {
-        environmentCommands.push(
-          new ActionTreeItem('Site App Catalogs', '', { name: 'spo-logo', custom: true }, TreeItemCollapsibleState.Collapsed, undefined, undefined, undefined, siteAppCatalogActionItems)
-        );
+      if (siteAppCatalogActionItems.length === 0) {
+        siteAppCatalogActionItems.push(new ActionTreeItem('No site app catalog found', ''));
       }
+
+      environmentCommands.push(
+          new ActionTreeItem('Site App Catalogs', '', { name: 'spo-logo', custom: true }, TreeItemCollapsibleState.Collapsed, Commands.addSiteAppCatalog , undefined, 'sp-app-catalog-root', siteAppCatalogActionItems)
+        );
     }
 
     window.createTreeView('pnp-view-environment', { treeDataProvider: new ActionTreeDataProvider(environmentCommands), showCollapseAll: true });
