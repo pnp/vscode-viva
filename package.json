@@ -822,6 +822,24 @@
 				"title": "Deploy project assets to Azure Storage",
 				"category": "SPFx Toolkit",
 				"icon": "$(cloud-upload)"
+			},
+			{
+				"command": "spfx-toolkit.addTenantAppCatalog",
+				"title": "Add Tenant App Catalog",
+				"category": "SharePoint Framework Toolkit",
+				"icon": "$(add)"
+			},
+			{
+				"command": "spfx-toolkit.addSiteAppCatalog",
+				"title": "Add Site App Catalog",
+				"category": "SharePoint Framework Toolkit",
+				"icon": "$(add)"
+			},
+			{
+				"command": "spfx-toolkit.removeSiteAppCatalog",
+				"title": "Remove Site App Catalog",
+				"category": "SharePoint Framework Toolkit",
+				"icon": "$(trash)"
 			}
 		],
 		"menus": {
@@ -906,6 +924,21 @@
 					"submenu": "spfx-toolkit.showMoreActions",
 					"when": "view == pnp-view-environment && viewItem == pnp.etv.hasAppCatalogApp",
 					"group": "inline@2"
+				},
+				{
+					"command": "spfx-toolkit.addTenantAppCatalog",
+					"when": "view == pnp-view-environment && viewItem == pnp.etv.hasNoAppCatalog",
+					"group": "inline"
+				},
+				{
+					"command": "spfx-toolkit.addSiteAppCatalog",
+					"when": "viewItem == sp-app-catalog-root",
+					"group": "inline"
+				},
+				{
+					"command": "spfx-toolkit.removeSiteAppCatalog",
+					"when": "viewItem == sp-app-catalog-url",
+					"group": "inline"
 				}
 			],
 			"spfx-toolkit.showMoreActions": [

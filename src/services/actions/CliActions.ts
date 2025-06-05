@@ -82,6 +82,15 @@ export class CliActions {
     subscriptions.push(
       commands.registerCommand(Commands.setFormCustomizer, CliActions.setFormCustomizer)
     );
+    subscriptions.push(
+      commands.registerCommand(Commands.addTenantAppCatalog, CliActions.addTenantAppCatalog)
+    );
+    subscriptions.push(
+      commands.registerCommand(Commands.addSiteAppCatalog, CliActions.addSiteAppCatalog)
+    );
+    subscriptions.push(
+      commands.registerCommand(Commands.removeSiteAppCatalog, CliActions.removeSiteAppCatalog)
+    );
   }
 
   /**
@@ -652,6 +661,291 @@ export class CliActions {
     return result.stdout;
   }
 
+ /**
+   * Sets the form customizer for a content type on a list.
+   */
+  public static async setFormCustomizer() {
+    const relativeUrl = await window.showInputBox({
+      prompt: 'Enter the relative URL of the site',
+      ignoreFocusOut: true,
+      placeHolder: 'e.g., sites/sales or leave blank for root site',
+      validateInput: (input) => {
+        const trimmedInput = input.trim();
+
+        if (trimmedInput.startsWith('https://')) {
+          return 'Please provide a relative URL, not an absolute URL.';
+        }
+        if (trimmedInput.startsWith('/')) {
+          return 'Please provide a relative URL without a leading slash.';
+        }
+
+        return undefined;
+      }
+    });
+
+    if (relativeUrl === undefined) {
+      Notifications.warning('No site URL provided. Setting form customizer aborted.');
+      return;
+    }
+
+    const siteUrl = `${EnvironmentInformation.tenantUrl}/${relativeUrl.trim()}`;
+
+    const listTitle = await window.showInputBox({
+      prompt: 'Enter the list title',
+      ignoreFocusOut: true,
+      validateInput: (value) => value ? undefined : 'List title is required'
+    });
+
+    if (!listTitle) {
+      Notifications.warning('No list title provided. Setting form customizer aborted.');
+      return;
+    }
+
+    const contentType = await window.showInputBox({
+      prompt: 'Enter the Content Type name',
+      ignoreFocusOut: true,
+      validateInput: (value) => value ? undefined : 'Content Type name is required'
+    });
+
+    if (!contentType) {
+      Notifications.warning('No content type name provided. Setting form customizer aborted.');
+      return;
+    }
+
+    const editFormClientSideComponentId = await window.showInputBox({
+      prompt: 'Enter the Edit form customizer ID (leave empty to skip)',
+      ignoreFocusOut: true
+    });
+
+    const newFormClientSideComponentId = await window.showInputBox({
+      prompt: 'Enter the New form customizer ID (leave empty to skip)',
+      ignoreFocusOut: true
+    });
+
+    const displayFormClientSideComponentId = await window.showInputBox({
+      prompt: 'Enter the View form customizer ID (leave empty to skip)',
+      ignoreFocusOut: true
+    });
+
+    const commandOptions: any = {
+      webUrl: siteUrl,
+      listTitle: listTitle,
+      name: contentType
+    };
+
+    if (editFormClientSideComponentId) {
+      commandOptions.EditFormClientSideComponentId = editFormClientSideComponentId;
+    }
+
+    if (newFormClientSideComponentId) {
+      commandOptions.NewFormClientSideComponentId = newFormClientSideComponentId;
+    }
+
+    if (displayFormClientSideComponentId) {
+      commandOptions.DisplayFormClientSideComponentId = displayFormClientSideComponentId;
+    }
+
+    await window.withProgress({
+      location: ProgressLocation.Notification,
+      title: `Setting form customizer... Check [output window](command:${Commands.showOutputChannel}) to follow the progress.`,
+      cancellable: true
+    }, async (progress: Progress<{ message?: string; increment?: number }>) => {
+      try {
+        const result = await CliExecuter.execute('spo contenttype set', 'json', commandOptions);
+        if (result.stderr) {
+          Notifications.error(result.stderr);
+        } else {
+          Notifications.info('Form customizer set successfully.');
+        }
+      } catch (e: any) {
+        const message = e?.error?.message;
+        Notifications.error(message);
+      }
+    });
+  }
+
+/**
+   * Adds a Tenant App Catalog.
+   * The URL is fixed to "https://domain.sharepoint.com/sites/appcatalog".
+   * Prompts the user for the owner and timeZone.
+   */
+  public static async addTenantAppCatalog() {
+    const tenantUrl = EnvironmentInformation.tenantUrl;
+    if (!tenantUrl) {
+      Notifications.error('Tenant URL not found. Please ensure you are logged in.');
+      return;
+    }
+
+    const appCatalogUrl = `${tenantUrl}/sites/appcatalog`;
+
+    const owner: string | undefined = await window.showInputBox({
+      prompt: 'Enter the email address of the tenant admin (owner)',
+      ignoreFocusOut: true,
+      value: EnvironmentInformation.account || '',
+      validateInput: (value) => value ? undefined : 'Owner email is required',
+    });
+    if (!owner) {
+      Notifications.error('Owner email is required to create a Tenant App Catalog.');
+      return;
+    }
+
+    const timeZoneInput = await window.showInputBox({
+      prompt: 'Enter the time zone as an integer (e.g., 4 for UTC+4). Refer to the guidelines: https://msdn.microsoft.com/library/microsoft.sharepoint.spregionalsettings.timezones.aspx',
+      ignoreFocusOut: true,
+      validateInput: (value) => {
+        const parsed = parseInt(value, 10);
+        return isNaN(parsed) ? 'Time zone must be an integer' : undefined;
+      },
+    });
+
+    if (!timeZoneInput) {
+      Notifications.error('Time zone is required to create a Tenant App Catalog.');
+      return;
+    }
+
+    const timeZone = parseInt(timeZoneInput, 10);
+
+    const confirmation = await window.showQuickPick(['Yes', 'No'], {
+      placeHolder: `Are you sure you want to create a Tenant App Catalog at '${appCatalogUrl}' with owner '${owner}' and time zone '${timeZone}'?`,
+      ignoreFocusOut: true,
+    });
+
+    if (confirmation !== 'Yes') {
+      return;
+    }
+
+    await window.withProgress({
+      location: ProgressLocation.Notification,
+      title: `Creating Tenant App Catalog at ${appCatalogUrl}... Check [output window](command:${Commands.showOutputChannel}) to follow the progress.`,
+      cancellable: false,
+    }, async () => {
+      try {
+        const commandOptions: any = {
+          url: appCatalogUrl,
+          owner,
+          timeZone,
+        };
+        const result = await CliExecuter.execute('spo tenant appcatalog add', 'json', commandOptions);
+
+        if (result.stderr) {
+          Notifications.error(result.stderr);
+        } else {
+          Notifications.info(`Tenant App Catalog created successfully at '${appCatalogUrl}'.`);
+          await commands.executeCommand('spfx-toolkit.refreshAppCatalogTreeView');
+        }
+      } catch (e: any) {
+        const message = e?.error?.message || 'An unexpected error occurred.';
+        Notifications.error(message);
+      }
+    });
+  }
+
+  /**
+   * Adds a Site Collection App Catalog.
+   * Prompts for the url.
+   */
+  public static async addSiteAppCatalog() {
+    try {
+      const relativeUrl = await window.showInputBox({
+        prompt: 'Enter the relative URL of the site where you want to create the site app catalog',
+        ignoreFocusOut: true,
+        placeHolder: 'e.g., sites/sales or leave blank for root site',
+        validateInput: (input) => {
+          const trimmedInput = input.trim();
+          if (trimmedInput.startsWith('https://')) {
+            return 'Please provide a relative URL, not an absolute URL.';
+          }
+          if (trimmedInput.startsWith('/')) {
+            return 'Please provide a relative URL without a leading slash.';
+          }
+          return undefined;
+        }});
+
+      if (!relativeUrl) {
+        Notifications.warning('No site URL provided. Operation aborted.');
+        return;
+      }
+
+      const siteUrl = `${EnvironmentInformation.tenantUrl}/${relativeUrl.trim()}`;
+
+      const confirmation = await window.showQuickPick(['Yes', 'No'], {
+        placeHolder: `Are you sure you want to create a site app catalog for '${relativeUrl}'?`,
+        ignoreFocusOut: true,
+      });
+
+      if (confirmation !== 'Yes') {
+        return;
+      }
+
+      await window.withProgress({
+        location: ProgressLocation.Notification,
+        title: `Creating site app catalog for ${siteUrl}... Check [output window](command:${Commands.showOutputChannel}) to follow the progress.`,
+        cancellable: false,
+      }, async () => {
+        const commandOptions: any = { siteUrl };
+        const result = await CliExecuter.execute('spo site appcatalog add', 'json', commandOptions);
+
+        if (result.stderr) {
+          Notifications.error(result.stderr);
+        } else {
+          Notifications.info(`Site app catalog created successfully for '${siteUrl}'.`);
+          await commands.executeCommand('spfx-toolkit.refreshAppCatalogTreeView');
+        }
+      });
+    } catch (e: any) {
+      const message = e?.error?.message || 'An unexpected error occurred.';
+      Notifications.error(message);
+    }
+  }
+
+  /**
+   * Removes a Site Collection App Catalog.
+   */
+  public static async removeSiteAppCatalog(node: ActionTreeItem) {
+    try {
+      let [appCatalogUrl] = node.command?.arguments || [];
+
+      if (!appCatalogUrl) {
+        Notifications.error('Failed to retrieve app catalog details for removal.');
+        return;
+      }
+
+      appCatalogUrl = appCatalogUrl.replace('/AppCatalog', '');
+
+      const shouldRemove = await window.showQuickPick(['Yes', 'No'], {
+        title: `Are you sure you want to remove the site app catalog from site '${appCatalogUrl}'?`,
+        ignoreFocusOut: true,
+        canPickMany: false
+      });
+
+      const shouldRemoveAnswer = shouldRemove === 'Yes';
+
+      if (!shouldRemoveAnswer) {
+        return;
+      }
+
+      const commandOptions: any = {
+        siteUrl: appCatalogUrl?.trim(),
+        force: true
+      };
+
+      await window.withProgress({
+        location: ProgressLocation.Notification,
+        title: `Removing site app catalog from ${appCatalogUrl}... Check [output window](command:${Commands.showOutputChannel}) to follow the progress.`,
+        cancellable: false,
+      }, async () => {
+        await CliExecuter.execute('spo site appcatalog remove', 'json', commandOptions);
+      });
+
+      Notifications.info(`App catalog '${appCatalogUrl}' has been successfully removed. Note: The App Catalog library will remain in the site, but it will be in a disabled state.`);
+
+      await commands.executeCommand('spfx-toolkit.refreshAppCatalogTreeView');
+    } catch (e: any) {
+      const message = e?.error?.message;
+      Notifications.error(message);
+    }
+  }
+
   /**
    * Upgrades the project by generating the upgrade steps and displaying them in a Markdown preview.
    * @private
@@ -1018,108 +1312,5 @@ export class CliActions {
     } else {
       Notifications.error(`${fileName}.tour file not found in path ${path.join(wsFolder.uri.fsPath, '.tours')}. Cannot start Code Tour.`);
     }
-  }
-
-  /**
-   * Sets the form customizer for a content type on a list.
-   */
-  public static async setFormCustomizer() {
-    const relativeUrl = await window.showInputBox({
-      prompt: 'Enter the relative URL of the site',
-      ignoreFocusOut: true,
-      placeHolder: 'e.g., sites/sales or leave blank for root site',
-      validateInput: (input) => {
-        const trimmedInput = input.trim();
-
-        if (trimmedInput.startsWith('https://')) {
-          return 'Please provide a relative URL, not an absolute URL.';
-        }
-        if (trimmedInput.startsWith('/')) {
-          return 'Please provide a relative URL without a leading slash.';
-        }
-
-        return undefined;
-      }
-    });
-
-    if (relativeUrl === undefined) {
-      Notifications.warning('No site URL provided. Setting form customizer aborted.');
-      return;
-    }
-
-    const siteUrl = `${EnvironmentInformation.tenantUrl}/${relativeUrl.trim()}`;
-
-    const listTitle = await window.showInputBox({
-      prompt: 'Enter the list title',
-      ignoreFocusOut: true,
-      validateInput: (value) => value ? undefined : 'List title is required'
-    });
-
-    if (!listTitle) {
-      Notifications.warning('No list title provided. Setting form customizer aborted.');
-      return;
-    }
-
-    const contentType = await window.showInputBox({
-      prompt: 'Enter the Content Type name',
-      ignoreFocusOut: true,
-      validateInput: (value) => value ? undefined : 'Content Type name is required'
-    });
-
-    if (!contentType) {
-      Notifications.warning('No content type name provided. Setting form customizer aborted.');
-      return;
-    }
-
-    const editFormClientSideComponentId = await window.showInputBox({
-      prompt: 'Enter the Edit form customizer ID (leave empty to skip)',
-      ignoreFocusOut: true
-    });
-
-    const newFormClientSideComponentId = await window.showInputBox({
-      prompt: 'Enter the New form customizer ID (leave empty to skip)',
-      ignoreFocusOut: true
-    });
-
-    const displayFormClientSideComponentId = await window.showInputBox({
-      prompt: 'Enter the View form customizer ID (leave empty to skip)',
-      ignoreFocusOut: true
-    });
-
-    const commandOptions: any = {
-      webUrl: siteUrl,
-      listTitle: listTitle,
-      name: contentType
-    };
-
-    if (editFormClientSideComponentId) {
-      commandOptions.EditFormClientSideComponentId = editFormClientSideComponentId;
-    }
-
-    if (newFormClientSideComponentId) {
-      commandOptions.NewFormClientSideComponentId = newFormClientSideComponentId;
-    }
-
-    if (displayFormClientSideComponentId) {
-      commandOptions.DisplayFormClientSideComponentId = displayFormClientSideComponentId;
-    }
-
-    await window.withProgress({
-      location: ProgressLocation.Notification,
-      title: `Setting form customizer... Check [output window](command:${Commands.showOutputChannel}) to follow the progress.`,
-      cancellable: true
-    }, async (progress: Progress<{ message?: string; increment?: number }>) => {
-      try {
-        const result = await CliExecuter.execute('spo contenttype set', 'json', commandOptions);
-        if (result.stderr) {
-          Notifications.error(result.stderr);
-        } else {
-          Notifications.info('Form customizer set successfully.');
-        }
-      } catch (e: any) {
-        const message = e?.error?.message;
-        Notifications.error(message);
-      }
-    });
   }
 }
