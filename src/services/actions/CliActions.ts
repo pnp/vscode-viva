@@ -816,7 +816,7 @@ export class CliActions {
 
     await window.withProgress({
       location: ProgressLocation.Notification,
-      title: `Creating Tenant App Catalog at ${appCatalogUrl}...`,
+      title: `Creating Tenant App Catalog at ${appCatalogUrl}... Check [output window](command:${Commands.showOutputChannel}) to follow the progress.`,
       cancellable: false,
     }, async () => {
       try {
@@ -879,7 +879,7 @@ export class CliActions {
 
       await window.withProgress({
         location: ProgressLocation.Notification,
-        title: `Creating site app catalog for ${siteUrl}...Check [output window](command:${Commands.showOutputChannel}) to follow the progress.`,
+        title: `Creating site app catalog for ${siteUrl}... Check [output window](command:${Commands.showOutputChannel}) to follow the progress.`,
         cancellable: false,
       }, async () => {
         const commandOptions: any = { siteUrl };

@@ -839,7 +839,7 @@
 				"command": "spfx-toolkit.removeSiteAppCatalog",
 				"title": "Remove Site App Catalog",
 				"category": "SharePoint Framework Toolkit",
-				"icon": "$(remove)"
+				"icon": "$(trash)"
 			}
 		],
 		"menus": {
