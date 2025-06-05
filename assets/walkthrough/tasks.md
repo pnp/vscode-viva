@@ -1,4 +1,4 @@
-##  Gulp tasks
+# Gulp tasks
 
 The SharePoint Framework uses [Gulp](https://gulpjs.com/) as its task runner to handle building, bundling, and packaging of the client-side solution project.
 
