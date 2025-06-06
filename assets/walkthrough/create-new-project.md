@@ -1,6 +1,6 @@
-## Create a new project
+# Create a new project
 
-Creating a new project was never easier. Just use the **create a new project** action, and the extension will guide you through the process with a dedicated scaffolding form.
+Creating a new project has never been easier. Just use the **create a new project** action, and the extension will guide you through the process with a dedicated scaffolding form.
 
 ![Create new project](../images/scaffolding.png)
 
@@ -17,7 +17,7 @@ Install additional dependencies with a single click straight from the scaffoldin
 
 ![Additional dependency step](../images/scaffolding-additional-step.png)
 
-[Check out our docs for more details](https://github.com/pnp/vscode-viva/wiki/5.2-Scaffolding#1-scaffold-a-new-spfx-project)
+[Check out our docs for more details](https://pnp.github.io/vscode-viva/features/scaffolding/#1-scaffold-a-new-spfx-project)
 
 ## Don't Start from scratch. Reuse an SPFx (web part or extension) or ACE sample
 
@@ -31,8 +31,8 @@ Switch between the list and grid view and don't worry about the size of your VS 
 
 ![Sample gallery is responsive](../images/samples-responsive.png)
 
-Check out how easy it is to create a new project based on a existing sample 👇. 
+Check out how easy it is to create a new project based on an existing sample 👇. 
 
 ![Create project based on web part sample](../images/sample-gallery.gif)
 
-[Check out our docs for more details](https://github.com/pnp/vscode-viva/wiki/5.2-Scaffolding#2-dont-start-from-scratch---sample-galleries)
+[Check out our docs for more details](https://pnp.github.io/vscode-viva/features/scaffolding/#2-dont-start-from-scratch---sample-galleries)

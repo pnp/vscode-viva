@@ -54,7 +54,7 @@ jobs:
 
       - name: Package
         run: |
-          npx @vscode/vsce@2.30.0 package
+          npx @vscode/vsce@3.3.2 package
         working-directory: vscode-viva
 
       - name: Upload artifacts

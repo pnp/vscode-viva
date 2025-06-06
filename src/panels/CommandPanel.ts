@@ -6,7 +6,7 @@ import { AuthProvider, M365AuthenticationSession } from '../providers/AuthProvid
 import { CliActions } from '../services/actions/CliActions';
 import { DebuggerCheck } from '../services/check/DebuggerCheck';
 import { EnvironmentInformation } from '../services/dataType/EnvironmentInformation';
-import { TeamsToolkitIntegration } from '../services/dataType/TeamsToolkitIntegration';
+import { M365AgentsToolkitIntegration } from '../services/dataType/M365AgentsToolkitIntegration';
 import { ProjectInformation } from '../services/dataType/ProjectInformation';
 import { AdaptiveCardCheck } from '../services/check/AdaptiveCardCheck';
 import { Subscription } from '../models';
@@ -39,12 +39,12 @@ export class CommandPanel {
 
   private static async init() {
     try {
-      let isTeamsToolkitProject = false;
+      let isM365AgentsToolkitProject = false;
       let files = await workspace.findFiles('.yo-rc.json', '**/node_modules/**');
 
       if (files.length <= 0) {
         files = await workspace.findFiles('src/.yo-rc.json', '**/node_modules/**');
-        isTeamsToolkitProject = true;
+        isM365AgentsToolkitProject = true;
       }
 
       if (files.length <= 0) {
@@ -69,7 +69,7 @@ export class CommandPanel {
       commands.executeCommand('setContext', ContextKeys.showWelcome, false);
 
       ProjectInformation.isSPFxProject = true;
-      TeamsToolkitIntegration.isTeamsToolkitProject = isTeamsToolkitProject;
+      M365AgentsToolkitIntegration.isM365AgentsToolkitProject = isM365AgentsToolkitProject;
 
       AdaptiveCardCheck.validateACEComponent();
       CommandPanel.registerTreeView();
@@ -166,7 +166,7 @@ export class CommandPanel {
     const environmentCommands: ActionTreeItem[] = [];
 
     if (!appCatalogUrls) {
-      environmentCommands.push(new ActionTreeItem('No app catalog found', ''));
+      environmentCommands.push(new ActionTreeItem('Create an app catalog', '', { name: 'add', custom: false }, undefined, Commands.addTenantAppCatalog, ContextKeys.hasAppCatalogApp, 'sp-add-tenant-app-catalog'));
     } else {
       const tenantAppCatalogUrl = appCatalogUrls[0];
       const origin = new URL(tenantAppCatalogUrl).origin;
@@ -199,7 +199,7 @@ export class CommandPanel {
       const showTenantAppCatalogApps: boolean = getExtensionSettings<boolean>('showAppsInAppCatalogs', true);
       const showExpandTreeIcon = showTenantAppCatalogApps ? TreeItemCollapsibleState.Collapsed : TreeItemCollapsibleState.None;
 
-      const tenantAppCatalogNode = new ActionTreeItem(tenantAppCatalogUrl.replace(origin, '...'), '', { name: 'globe', custom: false }, showExpandTreeIcon, 'vscode.open', `${Uri.parse(tenantAppCatalogUrl)}/AppCatalog`, 'sp-app-catalog-url', undefined,
+      const tenantAppCatalogNode = new ActionTreeItem(tenantAppCatalogUrl.replace(origin, '...'), '', { name: 'globe', custom: false }, showExpandTreeIcon, 'vscode.open', `${Uri.parse(tenantAppCatalogUrl)}/AppCatalog`, 'sp-tenant-app-catalog-url', undefined,
         async () => {
           const tenantAppCatalogApps = await CliActions.getAppCatalogApps();
           const tenantAppCatalogAppsList: ActionTreeItem[] = [];
@@ -276,11 +276,13 @@ export class CommandPanel {
         siteAppCatalogActionItems.push(siteAppCatalogNode);
       }
 
-      if (siteAppCatalogActionItems.length > 0) {
-        environmentCommands.push(
-          new ActionTreeItem('Site App Catalogs', '', { name: 'spo-logo', custom: true }, TreeItemCollapsibleState.Collapsed, undefined, undefined, undefined, siteAppCatalogActionItems)
-        );
+      if (siteAppCatalogActionItems.length === 0) {
+        siteAppCatalogActionItems.push(new ActionTreeItem('No site app catalog found', ''));
       }
+
+      environmentCommands.push(
+          new ActionTreeItem('Site App Catalogs', '', { name: 'spo-logo', custom: true }, TreeItemCollapsibleState.Collapsed, Commands.addSiteAppCatalog , undefined, 'sp-app-catalog-root', siteAppCatalogActionItems)
+        );
     }
 
     window.createTreeView('pnp-view-environment', { treeDataProvider: new ActionTreeDataProvider(environmentCommands), showCollapseAll: true });
@@ -288,15 +290,15 @@ export class CommandPanel {
 
   private static taskTreeView() {
     const taskCommands: ActionTreeItem[] = [
-      new ActionTreeItem('Build project', '', { name: 'debug-start', custom: false }, undefined, Commands.executeTerminalCommand, 'gulp build'),
-      new ActionTreeItem('Bundle project', '', { name: 'debug-start', custom: false }, undefined, Commands.bundleProject),
-      new ActionTreeItem('Clean project', '', { name: 'debug-start', custom: false }, undefined, Commands.executeTerminalCommand, 'gulp clean'),
-      new ActionTreeItem('Deploy project assets to Azure Storage', '', { name: 'debug-start', custom: false }, undefined, Commands.executeTerminalCommand, 'gulp deploy-azure-storage'),
-      new ActionTreeItem('Package', '', { name: 'debug-start', custom: false }, undefined, Commands.packageProject),
-      new ActionTreeItem('Publish', '', { name: 'debug-start', custom: false }, undefined, Commands.publishProject),
-      new ActionTreeItem('Serve', '', { name: 'debug-start', custom: false }, undefined, Commands.serveProject),
-      new ActionTreeItem('Test', '', { name: 'debug-start', custom: false }, undefined, Commands.executeTerminalCommand, 'gulp test'),
-      new ActionTreeItem('Trust self-signed developer certificate', '', { name: 'debug-start', custom: false }, undefined, Commands.executeTerminalCommand, 'gulp trust-dev-cert'),
+      new ActionTreeItem('Build project', '', { name: 'gear', custom: false }, undefined, Commands.buildProject),
+      new ActionTreeItem('Bundle project', '', { name: 'package', custom: false }, undefined, Commands.bundleProject),
+      new ActionTreeItem('Clean project', '', { name: 'clear-all', custom: false }, undefined, Commands.cleanProject),
+      new ActionTreeItem('Deploy project assets to Azure Storage', '', { name: 'cloud-upload', custom: false }, undefined, Commands.deployToAzureStorage),
+      new ActionTreeItem('Package', '', { name: 'zap', custom: false }, undefined, Commands.packageProject),
+      new ActionTreeItem('Publish', '', { name: 'rocket', custom: false }, undefined, Commands.publishProject),
+      new ActionTreeItem('Serve', '', { name: 'play-circle', custom: false }, undefined, Commands.serveProject),
+      new ActionTreeItem('Test', '', { name: 'beaker', custom: false }, undefined, Commands.testProject),
+      new ActionTreeItem('Trust self-signed developer certificate', '', { name: 'verified', custom: false }, undefined, Commands.trustDevCert),
     ];
 
     window.registerTreeDataProvider('pnp-view-tasks', new ActionTreeDataProvider(taskCommands));
@@ -334,7 +336,7 @@ export class CommandPanel {
       ]),
       new ActionTreeItem('Resources & Tooling', '', undefined, TreeItemCollapsibleState.Expanded, undefined, undefined, undefined, [
         new ActionTreeItem('Microsoft Graph Explorer', '', { name: 'globe', custom: false }, undefined, 'vscode.open', Uri.parse('https://developer.microsoft.com/en-us/graph/graph-explorer')),
-        new ActionTreeItem('Teams Toolkit', '', { name: 'tools', custom: false }, undefined, 'vscode.open', Uri.parse('https://marketplace.visualstudio.com/items?itemName=TeamsDevApp.ms-teams-vscode-extension')),
+        new ActionTreeItem('Microsoft 365 Agents Toolkit', '', { name: 'tools', custom: false }, undefined, 'vscode.open', Uri.parse('https://marketplace.visualstudio.com/items?itemName=TeamsDevApp.ms-teams-vscode-extension')),
         new ActionTreeItem('Adaptive Card Previewer', '', { name: 'tools', custom: false }, undefined, 'vscode.open', Uri.parse('https://marketplace.visualstudio.com/items?itemName=TeamsDevApp.vscode-adaptive-cards')),
         new ActionTreeItem('SharePoint Embedded', '', { name: 'tools', custom: false }, undefined, 'vscode.open', Uri.parse('https://marketplace.visualstudio.com/items?itemName=SharepointEmbedded.ms-sharepoint-embedded-vscode-extension')),
         new ActionTreeItem('Adaptive Card Designer', '', { name: 'globe', custom: false }, undefined, 'vscode.open', Uri.parse('https://adaptivecards.io/designer/')),
@@ -346,7 +348,7 @@ export class CommandPanel {
         new ActionTreeItem('Join the Microsoft 365 & Power Platform Community Discord Server', '', { name: 'feedback', custom: false }, undefined, 'vscode.open', Uri.parse('https://aka.ms/community/discord'))
       ]),
       new ActionTreeItem('Support', '', undefined, TreeItemCollapsibleState.Expanded, undefined, undefined, undefined, [
-        new ActionTreeItem('Wiki', '', { name: 'question', custom: false }, undefined, 'vscode.open', Uri.parse('https://github.com/pnp/vscode-viva/wiki')),
+        new ActionTreeItem('Docs', '', { name: 'question', custom: false }, undefined, 'vscode.open', Uri.parse('https://pnp.github.io/vscode-viva/')),
         new ActionTreeItem('Report an issue', '', { name: 'github', custom: false }, undefined, 'vscode.open', Uri.parse('https://github.com/pnp/vscode-viva/issues/new/choose')),
         new ActionTreeItem('Start Walkthrough', '', { name: 'info', custom: false }, undefined, Commands.welcome)
       ])

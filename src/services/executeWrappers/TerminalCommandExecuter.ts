@@ -3,7 +3,7 @@ import { Commands, NodeVersionManagers } from '../../constants';
 import { Subscription } from '../../models';
 import { Extension } from '../dataType/Extension';
 import { getPlatform, getExtensionSettings } from '../../utils';
-import { TeamsToolkitIntegration } from '../dataType/TeamsToolkitIntegration';
+import { M365AgentsToolkitIntegration } from '../dataType/M365AgentsToolkitIntegration';
 import { Folders } from '../check/Folders';
 import { join } from 'path';
 import { ServeConfig } from '../../models/ServeConfig';
@@ -35,6 +35,21 @@ export class TerminalCommandExecuter {
     subscriptions.push(
       commands.registerCommand(Commands.executeTerminalCommand, TerminalCommandExecuter.runCommand)
     );
+    subscriptions.push(
+      commands.registerCommand(Commands.cleanProject, TerminalCommandExecuter.cleanProject)
+    );
+    subscriptions.push(
+      commands.registerCommand(Commands.buildProject, TerminalCommandExecuter.buildProject)
+    );
+    subscriptions.push(
+      commands.registerCommand(Commands.testProject, TerminalCommandExecuter.testProject)
+    );
+    subscriptions.push(
+      commands.registerCommand(Commands.trustDevCert, TerminalCommandExecuter.trustDevCert)
+    );
+    subscriptions.push(
+      commands.registerCommand(Commands.deployToAzureStorage, TerminalCommandExecuter.deployToAzureStorage)
+    );
 
     TerminalCommandExecuter.initShellPath();
   }
@@ -60,7 +75,7 @@ export class TerminalCommandExecuter {
     if (wsFolder) {
       let currentProjectPath = wsFolder.uri.fsPath;
 
-      if (TeamsToolkitIntegration.isTeamsToolkitProject) {
+      if (M365AgentsToolkitIntegration.isM365AgentsToolkitProject) {
         currentProjectPath = join(currentProjectPath, 'src');
       }
 
@@ -186,6 +201,41 @@ export class TerminalCommandExecuter {
       title: 'Select the target environment',
       ignoreFocusOut: true
     });
+  }
+
+  /**
+   * Cleans the project by executing the Gulp clean command.
+   */
+  private static cleanProject() {
+    commands.executeCommand(Commands.executeTerminalCommand, 'gulp clean');
+  }
+
+  /**
+   * Builds the project by executing the Gulp build command.
+  */
+  private static buildProject() {
+    commands.executeCommand(Commands.executeTerminalCommand, 'gulp build');
+  }
+
+  /**
+   * Tests the project by executing the Gulp test command.
+  */
+  private static testProject() {
+    commands.executeCommand(Commands.executeTerminalCommand, 'gulp test');
+  }
+
+  /**
+   * Trusts the development certificate by executing the Gulp trust-dev-cert command.
+  */
+  private static trustDevCert() {
+    commands.executeCommand(Commands.executeTerminalCommand, 'gulp trust-dev-cert');
+  }
+
+  /**
+   * Deploys to Azure CDN by executing the Gulp deploy-to-azure-storage command.
+  */
+  private static deployToAzureStorage() {
+    commands.executeCommand(Commands.executeTerminalCommand, 'gulp deploy-azure-storage');
   }
 
   /**

@@ -14,8 +14,7 @@ import { CliExecuter } from '../executeWrappers/CliCommandExecuter';
 import { getExtensionSettings, getPlatform } from '../../utils';
 import { PnPWebview } from '../../webview/PnPWebview';
 import { Executer } from '../executeWrappers/CommandExecuter';
-import { TeamsToolkitIntegration } from '../dataType/TeamsToolkitIntegration';
-import { TerminalCommandExecuter } from '../executeWrappers/TerminalCommandExecuter';
+import { M365AgentsToolkitIntegration } from '../dataType/M365AgentsToolkitIntegration';
 
 
 export const PROJECT_FILE = 'project.pnp';
@@ -276,7 +275,7 @@ export class Scaffolder {
           const wsFolder = await Folders.getWorkspaceFolder();
           let path = wsFolder?.uri.fsPath;
 
-          if (path && TeamsToolkitIntegration.isTeamsToolkitProject) {
+          if (path && M365AgentsToolkitIntegration.isM365AgentsToolkitProject) {
             path = join(path, 'src');
           }
 

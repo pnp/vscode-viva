@@ -1,6 +1,6 @@
-## Coding Snippets
+# Coding Snippets
 
-The SharePoint Framework Toolkit comes together as a bundle with two other extensions. One of them is [SPFx Snippets](https://marketplace.visualstudio.com/items?itemName=eliostruyf.spfx-snippets) created by [Elit Struyf](https://www.eliostruyf.com/). 
+The SharePoint Framework Toolkit comes together as a bundle with two other extensions. One of them is [SPFx Snippets](https://marketplace.visualstudio.com/items?itemName=eliostruyf.spfx-snippets) created by [Elio Struyf](https://www.eliostruyf.com/). 
 
 It contains snippets for working in:
 

@@ -1,4 +1,4 @@
-##  Gulp tasks
+# Gulp tasks
 
 The SharePoint Framework uses [Gulp](https://gulpjs.com/) as its task runner to handle building, bundling, and packaging of the client-side solution project.
 
@@ -16,4 +16,4 @@ SPFx Toolkit VS Code extension shows all possible Gulp tasks one may run on an S
 
 ![Gulp Tasks](../images/tasks.png)
 
-[Check out our docs for more details](https://github.com/pnp/vscode-viva/wiki/5.4-Gulp-tasks)
+[Check out our docs for more details](https://pnp.github.io/vscode-viva/features/gulp-tasks/)
