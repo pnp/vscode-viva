@@ -1,4 +1,4 @@
-##  Actions
+# Actions
 
 The actions section allows unique functionalities that may significantly boost productivity when working with SPFx projects.
 
@@ -66,7 +66,7 @@ And the code tour guidance will provide you upgrade tips directly in your code!
 
 [Check out our docs for more details](https://pnp.github.io/vscode-viva/features/actions/#set-form-customizer)
 
-- **Increase project version** - This action allows you to increase project major, minor or patch varsion and automatically align the versioning between `package.json` and `package-solution.json` files.
+- **Increase project version** - This action allows you to increase project major, minor or patch version and automatically align the versioning between `package.json` and `package-solution.json` files.
 
 ![Increase project version](../images/increase-versioning.png)
 

@@ -15,7 +15,6 @@ import { getExtensionSettings, getPlatform } from '../../utils';
 import { PnPWebview } from '../../webview/PnPWebview';
 import { Executer } from '../executeWrappers/CommandExecuter';
 import { M365AgentsToolkitIntegration } from '../dataType/M365AgentsToolkitIntegration';
-import { TerminalCommandExecuter } from '../executeWrappers/TerminalCommandExecuter';
 
 
 export const PROJECT_FILE = 'project.pnp';
