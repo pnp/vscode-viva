@@ -1,10 +1,11 @@
 import { join } from 'path';
 import { commands, Uri, ViewColumn, Webview, WebviewPanel, window, env } from 'vscode';
 import { Commands, WebViewType, WebViewTypes, WebviewCommand } from '../constants';
-import { Extension } from '../services/Extension';
-import { Logger } from '../services/Logger';
-import { Scaffolder } from '../services/Scaffolder';
-import { CliActions } from '../services/CliActions';
+import { Extension } from '../services/dataType/Extension';
+import { Logger } from '../services/dataType/Logger';
+import { Scaffolder } from '../services/actions/Scaffolder';
+import { CliActions } from '../services/actions/CliActions';
+import { EntraAppRegistration } from '../services/actions/EntraAppRegistration';
 
 
 export class PnPWebview {
@@ -52,6 +53,10 @@ export class PnPWebview {
         messageData.spfxPackageName = data.spfxPackageName;
       }
 
+      if (data && data.isSignedIn) {
+        messageData.isSignedIn = data.isSignedIn;
+      }
+
       if (data && data.appCatalogUrls) {
         messageData.appCatalogUrls = data.appCatalogUrls;
       }
@@ -93,6 +98,10 @@ export class PnPWebview {
 
     if (data && data.spfxPackageName) {
       webViewData.spfxPackageName = data['spfxPackageName'];
+    }
+
+    if (data && data.isSignedIn) {
+      webViewData.isSignedIn = data.isSignedIn;
     }
 
     if (data && data.appCatalogUrls) {
@@ -143,6 +152,18 @@ export class PnPWebview {
           break;
         case WebviewCommand.toVSCode.addSpfxComponent:
           Scaffolder.addComponentToProject(payload);
+          break;
+        case WebviewCommand.toVSCode.createAppReg:
+          EntraAppRegistration.createEntraAppRegistration();
+          break;
+        case WebviewCommand.toVSCode.createNodeVersionFileDefaultValue:
+          Scaffolder.createNodeVersionFileDefaultValue();
+          break;
+        case WebviewCommand.toVSCode.nodeVersionManagerFile:
+          Scaffolder.nodeVersionManagerFile();
+          break;
+        case WebviewCommand.toVSCode.nodeVersionManager:
+          Scaffolder.nodeVersionManager();
           break;
       }
     });

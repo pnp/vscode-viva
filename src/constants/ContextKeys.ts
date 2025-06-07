@@ -3,4 +3,14 @@ export const ContextKeys = {
   isSPFxProject: 'pnp.project.isSPFxProject',
   isLoggedIn: 'pnp.project.isLoggedIn',
   hasAppCatalog: 'pnp.project.hasAppCatalog',
+  hasNoAppCatalog: 'pnp.project.hasNoAppCatalog',
+  hasAppCatalogApp: 'pnp.etv.hasAppCatalogApp',
+  deployApp: 'pnp.etv.app.deploy',
+  retractApp: 'pnp.etv.app.retract',
+  removeApp: 'pnp.etv.app.remove',
+  enableApp: 'pnp.etv.app.enable',
+  disableApp: 'pnp.etv.app.disable',
+  upgradeApp: 'pnp.etv.app.upgrade',
+  installApp: 'pnp.etv.app.install',
+  uninstallApp: 'pnp.etv.app.uninstall'
 };

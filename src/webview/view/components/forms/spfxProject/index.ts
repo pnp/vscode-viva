@@ -4,4 +4,3 @@ export * from './FormActions';
 export * from './FormHeader';
 export * from './GeneralInfoStep';
 export * from './PackageSelector';
-export * from './StepHeader';

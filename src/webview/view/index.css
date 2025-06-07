@@ -112,3 +112,7 @@
 .bg-vscode{
   background: var(--vscode-editor-background);
 }
+
+.entraAppReg_manual_steps {
+  list-style: disc;
+}

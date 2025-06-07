@@ -6,7 +6,7 @@ import { Sample } from '../../../models';
 
 const SAMPLES_URL = 'https://raw.githubusercontent.com/pnp/vscode-viva/main/data/sp-dev-fx-samples.json';
 
-export default function useSamples(): [Sample[], string[], ((query: string, componentTypes: string[], spfxVersions: string[], showOnlyScenarios: boolean) => void)] {
+export default function useSamples(): [Sample[], string[], ((query: string, componentTypes: string[], spfxVersions: string[], extensionTypes: string[], showOnlyScenarios: boolean) => void)] {
   const [allSamples, setAllSamples] = useState<Sample[] | undefined>(undefined);
   const [samples, setSamples] = useState<Sample[] | undefined>(undefined);
   const state = Messenger.getState() as any || {};
@@ -67,8 +67,11 @@ export default function useSamples(): [Sample[], string[], ((query: string, comp
     });
   }, [allSamples]);
 
-  const search = (query: string, componentTypes: string[], spfxVersions: string[], showOnlyScenarios: boolean) => {
+  const search = (query: string, componentTypes: string[], spfxVersions: string[], extensionTypes: string[], showOnlyScenarios: boolean) => {
     const currentSamples: Sample[] = state['samples'];
+    if (!currentSamples) {
+      return;
+    }
     const samplesByTitle: Sample[] = currentSamples!.filter((sample: Sample) => sample.title.toString().toLowerCase().includes(query.toLowerCase()));
     const samplesByTag: Sample[] = currentSamples!.filter((sample: Sample) => sample.tags.some(tag => tag.toString().toLowerCase().includes(query.toLowerCase())));
     const samplesByAuthor: Sample[] = currentSamples!.filter((sample: Sample) => sample.authors.some(author => author.name && author.name.toString().toLowerCase().includes(query.toLowerCase())));
@@ -90,7 +93,12 @@ export default function useSamples(): [Sample[], string[], ((query: string, comp
       filteredSamplesBySPFxVersion = filteredSamplesByComponentType.filter((sample: Sample) => spfxVersions.includes(sample.version));
     }
 
-    setSamples(filteredSamplesBySPFxVersion);
+    let filteredSamplesByExtension = filteredSamplesBySPFxVersion;
+    if (extensionTypes.length > 0 && componentTypes.includes('extension')) {
+      filteredSamplesByExtension = filteredSamplesBySPFxVersion.filter((sample: Sample) => extensionTypes.includes(sample.extensionType));
+    }
+
+    setSamples(filteredSamplesByExtension);
   };
 
   return [samples!, versions, search];

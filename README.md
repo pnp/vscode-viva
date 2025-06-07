@@ -22,9 +22,8 @@
 
 <p align="center">
   <a href="#-capabilities">Capabilities</a> |
-  <a href="#-preview-features">Preview features</a> |
   <a href="#%EF%B8%8F-architecture">Architecture</a> |
-  <a href="#-wiki">Wiki</a> |
+  <a href="#-docs">Docs</a> |
   <a href="#-contributing">Contributing</a> |
   <a href="#-support">Support</a> |
   <a href="#-code-of-conduct">Code of Conduct</a> |
@@ -55,17 +54,17 @@ When running the extension for the first time it will present you a walkthrough 
 
 ![Walkthrough](./assets/images/walkthrough.png)
 
-[Check out our docs for more details](https://github.com/pnp/vscode-viva/wiki/4-Welcome-experience)
+[Check out our docs for more details](https://pnp.github.io/vscode-viva/guides/welcome-experience/)
 
 ### 2️⃣ Set up your development environment
 
-To ensure that you can develop SPFx solutions, you may use the **check dependencies** functionality. 
+To ensure that you can develop SPFx solutions, you may use the **Validate local setup** functionality. 
 
 ![Validate dependency](./assets/images/validate-dependency.png)
 
 This action will check if you have the required dependencies such as:
 
-- Node version: 18
+- Node version: 22
 - NPM dependencies:
   - gulp
   - yo
@@ -74,11 +73,11 @@ This action will check if you have the required dependencies such as:
 In case you do not have all dependencies installed, or some are incorrect version, you can use the **install dependencies** action to install them.
 
 >  [!NOTE]
->  The list of valid dependencies is based on [set up your development environment recommendations](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-development-environment)
+>  The list of valid dependencies is based on [set up your development environment recommendations](https://learn.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-development-environment)
 
-[Check out our docs for more details](https://github.com/pnp/vscode-viva/wiki/5.1-Validate-and-set-up-a-local-workspace)
+[Check out our docs for more details](https://pnp.github.io/vscode-viva/features/setup-workspace/)
 
-### 3️⃣ Don't Start from scratch. Reuse an SPFx (web part or extension) or ACE sample
+### 3️⃣ Don't Start from scratch. Reuse an SPFx web part or extension or ACE sample
 
 You may kick-start your development with a new project based on an existing ACE or SPFx web part or extension with a click of a button. All of the provided samples are powered by [PnP Samples repositories](https://pnp.github.io/sp-dev-fx-webparts/samples/type/).
 
@@ -91,10 +90,9 @@ Switch between the list and grid view and don't worry about the size of your VS 
 ![Sample gallery is responsive](./assets/images/samples-responsive.png)
 
 Check out how easy it is to create a new project based on a existing sample 👇. 
-
 ![Create project based on web part sample](./assets/images/sample-gallery.gif)
 
-[Check out our docs for more details](https://github.com/pnp/vscode-viva/wiki/5.2-Scaffolding#2-dont-start-from-scratch---sample-galleries)
+[Check out our docs for more details](https://pnp.github.io/vscode-viva/features/scaffolding/#2-dont-start-from-scratch---sample-galleries)
 
 ### 4️⃣ Start from an ACE scenario
 
@@ -106,49 +104,70 @@ Creating a new project was never easier. Just use the **create a new project** a
 
 ![Create new project](./assets/images/scaffolding.png)
 
-Check it out in action 👇.
-
-![Create new project](./assets/images/scaffolding-form.gif)
-
 It's possible to scaffold any kind of SPFx project.
 
 ![All SPFx project support](./assets/images/scaffolding-support.png)
 
-Install additional dependencies with a single click straight from the scaffolding form. Currently we support installing [PnP reusable property pane controls](https://pnp.github.io/sp-dev-fx-property-controls/), [PnP reusable React controls](https://pnp.github.io/sp-dev-fx-controls-react/), and [PnPjs](https://pnp.github.io/pnpjs/).
+Install additional dependencies with a single click straight from the scaffolding form. Currently we support installing [PnP reusable property pane controls](https://pnp.github.io/sp-dev-fx-property-controls/), [PnP reusable React controls](https://pnp.github.io/sp-dev-fx-controls-react/), [PnPjs](https://pnp.github.io/pnpjs/). Add and preconfigure [SPFx Fast Serve](https://github.com/s-KaiNet/spfx-fast-serve) and add a Node Version Manager configuration file either for NVM or NVS.
 
 ![Additional dependency step](./assets/images/scaffolding-additional-step.png)
 
-[Check out our docs for more details](https://github.com/pnp/vscode-viva/wiki/5.2-Scaffolding#1-scaffold-a-new-spfx-project)
+[Check out our docs for more details](https://pnp.github.io/vscode-viva/features/scaffolding/#1-scaffold-a-new-spfx-project)
 
-### 6️⃣ Login to your tenant & retrieve environment details
+### 6️⃣ Sign in to your tenant & retrieve environment details
 
-![tenant info](./assets/images/tenant-info.png)
-
-The extension allows you to login to your Microsoft 365 tenant using CLI for Microsoft 365.
+The extension allows you to sign in to your Microsoft 365 tenant using CLI for Microsoft 365.
 
 ![login](./assets/images/login.png)
 
-Thanks to that the extension will retrieve helpful URLs from your tenant like: 
+SPFx Toolkit needs and Entra App Registration to be able to sign in to your tenant. You may either use an existing app registration or create a new one with a single click using a dedicated form. 
 
-- link to SharePoint main site 
-- link to SharePoint admin site
-- link to SharePoint web API permission management page
+![sign in options](./assets/images/sign-in-options.png)
+
+SPFx Toolkit will guide you through the process of creating a new app registration either manually by providing step-by-step guidance or automatically by creating the app registration for you.
+
+![entra app reg form](./assets/images/sign-in-entra-app-reg-form.png)
+
+Check it out in action 👇
+
+![app registration](./assets/images/sign-in.gif)
+
+If you already have an Entra App Registration you may use it to sign in to your tenant by providing the Client Id and Tenant Id.
+
+![app registration](./assets/images/sign-in-existing-app.gif)
+
+Thanks to that the extension will retrieve helpful URLs from your tenant like link to: 
+
+- SharePoint main site 
+- SharePoint admin site
+- SharePoint web API permission management page
 
 Additionally, the extension will check and retrieve tenant service health incidents that are currently happening in your tenant so that you gain quick insights on your tenant health.
 
 ![tenant details](./assets/images/tenant-links.png)
 
-After successful login an additional view is presented that shows list links to app catalogs available in the tenant, both tenant-level and all site-level app catalogs. Additionally it will show you all tenant-wide extensions installed on your tenant with.
+After successful sign in, an additional view is presented that shows a list of links to app catalogs available in the tenant, both tenant-level and all site-level app catalogs. You can expand each app catalog to reveal the list of apps contained within. Selecting an app navigates you to its details page. Additionally, hovering over an app node presents a set of actions, allowing you to perform various operations directly on the selected app.
+
+- **Deploy**: Makes the solution available for installation in sites but does not automatically install it.
+- **Retract**: Reverses the deployment, preventing the solution from being installed in sites.
+- **Remove**: Removes the app from the app catalog.
+- **Enable**: Allows end users to add the solution to their SharePoint sites.
+- **Disable**: Hides the solution from end users, preventing them from adding it to sites.
+- **Install**: Install the solution from tenant or site collection app catalog to a site.
+- **Uninstall**: Uninstall the solution from a site.
+- **Upgrade**: Upgrades the solution to the latest version available in the app catalog for the specified site.
+
+Additionally, it will show you all tenant-wide extensions installed on your tenant.
 
 ![tenant details](./assets/images/app-catalog-list.png)
 
-Login-in is also required for some actions to work properly like the deploy action which allows you to upload of the .sppkg file to the tenant or site-level App Catalog.
+Using the extension settings you may choose to show or hide the apps in app catalog list and tenant health incidents list.
 
-Additionally, when an SPFx project is opened the extension will check serve.json file and suggest updating it to set the properties based on the currently logged-in tenant.
+![settings](./assets/images/settings.png)
 
-![validate serve](./assets/images/validate-serve-config.png)
+Sign-in is also required for some actions to work properly like the deploy action which allows you to upload of the .sppkg file to the tenant or site-level App Catalog.
 
-[Check out our docs for more details](https://github.com/pnp/vscode-viva/wiki/5.3-Login-to-your-tenant-&-retrieve-environment-details)
+[Check out our docs for more details](https://pnp.github.io/vscode-viva/features/login-tenant/)
 
 ### 7️⃣ Gulp tasks
 
@@ -156,7 +175,7 @@ The extension shows all possible Gulp tasks one may run on an SPFx project. The 
 
 ![Gulp Tasks](./assets/images/tasks.png)
 
-[Check out our docs for more details](https://github.com/pnp/vscode-viva/wiki/5.4-Gulp-tasks)
+[Check out our docs for more details](https://pnp.github.io/vscode-viva/features/gulp-tasks/)
 
 ### 8️⃣ Actions
 
@@ -178,47 +197,63 @@ And for Azure DevOps👇
 
 ![Azure DevOps CI CD pipeline](./assets/images/azdo-ci-cd.gif)
 
-[Check out our docs for more details](https://github.com/pnp/vscode-viva/wiki/5.5-Actions#cicd-github-workflow)
+[Check out our docs for more details](https://pnp.github.io/vscode-viva/features/actions/)
 
-- **Upgrade project** - Uses CLI for Microsoft 365 to create a .md report with upgrade guidance to the latest supported SPFx version by the extension. 
+- **Upgrade project** - Uses CLI for Microsoft 365 to create a .md and/or code tour report with upgrade guidance to the latest supported SPFx version by the extension. The upgrade guidance provides optional as well as required steps a user needs to take manually in order to upgrade the project. At the end of the guidance file, the user may find a summary of the steps in a single script and a couple of manual steps that need to be taken.
 
 ![Upgrade project](./assets/images/upgrade-project.png)
 
-[Check out our docs for more details](https://github.com/pnp/vscode-viva/wiki/5.5-Actions#upgrade-project)
+And the code tour guidance will provide you upgrade tips directly in your code!
 
-- **Validate project** - Creates a validation .md report against the currently used SPFx version in the project. The action will automatically detect the SPFx version used and will validate if the project is properly set up. 
+![Upgrade project](./assets/images/upgrade-project-code-tour.png)
+
+[Check out our docs for more details](https://pnp.github.io/vscode-viva/features/actions/#upgrade-project)
+
+- **Validate project** - Creates a validation .md report and/or code tour validation guidance for the currently open SPFx project. The action will automatically detect the SPFx version used and will validate if the project is properly set up.
 
 ![Upgrade project](./assets/images/validate-project.png)
 
-[Check out our docs for more details](https://github.com/pnp/vscode-viva/wiki/5.5-Actions#validate-current-project)
+[Check out our docs for more details](https://pnp.github.io/vscode-viva/features/actions/#validate-current-project)
 
 - **Rename project** - Forget about manual work and let the extension rename your project and generate a new solution ID. 
 
 ![Rename](./assets/images/rename.png)
 
-[Check out our docs for more details](https://github.com/pnp/vscode-viva/wiki/5.5-Actions#rename-current-project)
+[Check out our docs for more details](https://pnp.github.io/vscode-viva/features/actions/#rename-current-project)
 
 - **Grant API permissions** - The action will Grant all API permissions specified in the package-solution.json of the current project. This is especially helpful if you just want to debug your SPFx solution using Workbench. No longer do you need to bundle, package, and deploy the project to then go to the SharePoint admin portal and consent to the permissions. All of that is now done with just a single click. 
 
 ![Grant permissions](./assets/images/grant-permissions.png)
 
-[Check out our docs for more details](https://github.com/pnp/vscode-viva/wiki/5.5-Actions#grant-api-permissions)
+[Check out our docs for more details](https://pnp.github.io/vscode-viva/features/actions/#grant-api-permissions)
 
 - **Deploy project** - This action will only work when the user is logged in to tenant and the sppkg file is present. The action will deploy the project to the selected (tenant or site) app catalog. 
 
 ![Deploy](./assets/images/deploy.png)
 
-[Check out our docs for more details](https://github.com/pnp/vscode-viva/wiki/5.5-Actions#grant-api-permissions)
+[Check out our docs for more details](https://pnp.github.io/vscode-viva/features/actions/#deploy-project)
 
 - **Add new component** - Allows scaffolding a new SPFx project as a new component of the currently opened project. The action under the hood uses the same SharePoint Yeoman generator to scaffold a new project and this feature is an abstraction UI layer. 
 
 ![Add component](./assets/images/add-component.png)
 
-[Check out our docs for more details](https://github.com/pnp/vscode-viva/wiki/5.5-Actions#add-new-component)
+[Check out our docs for more details](https://pnp.github.io/vscode-viva/features/actions/#add-new-component)
+
+- **Set Form Customizer** - Allows to update the New, Edit or View from of any SharePoint List to a given SPFx Form Customizer based on provided GUID. 
+
+![Set Form Customizer](./assets/images/set-form-customizer-action.png)
+
+[Check out our docs for more details](https://pnp.github.io/vscode-viva/features/actions/#set-form-customizer)
+
+- **Increase project version** - This action allows you to increase project major, minor or patch varsion and automatically align the versioning between `package.json` and `package-solution.json` files.
+
+![Increase project version](./assets/images/increase-versioning.png)
+
+[Check out our docs for more details](https://pnp.github.io/vscode-viva/features/actions/#increase-project-version)
 
 - **Open sample/scenario galleries of the SPFx web part, extensions, or ACEs projects** - SharePoint Framework Toolkit supports a couple of sample galleries that may be used to scaffold a new SPFx project. 
 
-[Check out our docs for more details](https://github.com/pnp/vscode-viva/wiki/5.5-Actions#open-samplescenario-galleries-of-the-spfx-web-part-extensions-or-aces-projects)
+[Check out our docs for more details](https://pnp.github.io/vscode-viva/features/actions/#open-samplescenario-galleries-of-the-spfx-web-part-extensions-or-aces-projects)
 
 ### 9️⃣ Help and feedback section
 
@@ -226,7 +261,7 @@ The help and feedback section is a group of links that will direct you to the ri
 
 ![help and feedback](./assets/images/help-and-feedback.png)
 
-[Check out our docs for more details](https://github.com/pnp/vscode-viva/wiki/5.6-Help-and-feedback-section)
+[Check out our docs for more details](https://pnp.github.io/vscode-viva/guides/help-feedback/)
 
 ### 1️⃣0️⃣ Coding Snippets
 
@@ -250,32 +285,41 @@ Check it out in action 👇
 
 ![code snippets](./assets/images/code-snippets.gif)
 
-### 1️⃣1️⃣ Teams Toolkit Integration
+### 1️⃣1️⃣ Microsoft 365 Agents Toolkit Integration
 
-[Teams Toolkit](https://marketplace.visualstudio.com/items?itemName=TeamsDevApp.ms-teams-vscode-extension) is a widely used VS Code extension that aims to help you develop solutions that will allow you to extend Microsoft Teams. SharePoint Framework Toolkit aims to boost your productivity in SharePoint Framework solutions that may be used to extend SharePoint, Microsoft Teams, Microsoft Viva Connections, Outlook, and Microsoft365.com. Among many awesome functionalities, Teams Toolkit allows you to create a project to extend Teams Tab with SPFx project, and that’s where both of those extensions may cooperate.
+[Microsoft 365 Agents Toolkit](https://marketplace.visualstudio.com/items?itemName=TeamsDevApp.ms-teams-vscode-extension) is a widely used VS Code extension that aims to help you develop solutions that will allow you to extend Microsoft Teams. SharePoint Framework Toolkit aims to boost your productivity in SharePoint Framework solutions that may be used to extend SharePoint, Microsoft Teams, Microsoft Viva Connections, Outlook, and Microsoft365.com. Among many awesome functionalities, Microsoft 365 Agents Toolkit allows you to create a project to extend Teams Tab with SPFx project, and that’s where both of those extensions may cooperate.
 
-![Teams Toolkit integration](./assets/images/better-together.png)
+![Microsoft 365 Agents Toolkit integration](./assets/images/better-together.png)
 
-[Check out our docs for more details](https://github.com/pnp/vscode-viva/wiki/6-Teams-Toolkit-Integration)
+[Check out our docs for more details](https://pnp.github.io/vscode-viva/guides/teams-toolkit/)
 
 ### 1️⃣2️⃣ Node.js Version Manager Support
 
 By default, the SharePoint Framework Toolkit will use the Node.js version that is installed on your machine. If you want to use a different version, you can use a Node.js Version Manager such as [nvm](https://github.com/nvm-sh/nvm) or [nvs](https://github.com/jasongin/nvs). The SharePoint Framework Toolkit will detect the preferred version of Node.js if a `.nvmrc` file is present in the root of your project, and will use that version for all the actions.
 
-You can use the settings to change which Node.js version manager you want to use. You may choose between `nvm` and `nvs`. If you wish to avoid using a Node.js version manager, you can set the value to `none`
+It's possible to use the settings to change which Node.js version manager you want to use. You may choose between `nvm` and `nvs`. If you wish to avoid using a Node.js version manager, you can set the value to `none`
 
-## 🧪 Preview features
+![Settings Node version manager](./assets/images/settings-node-version-manager.png)
 
->  [!WARNING]
->  Features described in this section are considered as an early beta feature. They may change or be removed in a future major or minor release.
+Other than selecting the Node.js version manager you may also select which file should be used to store the Node.js version. By default, the extension will use `.nvmrc` file, but you may change it to `.node-version` if you are using `nvs`.
 
-### 1️⃣ SPFx Toolkit GitHub Chat Participant 
+![Settings Node version file](./assets/images/settings-node-version-manager-file.png)
+
+It is also possible to set the default behavior when you're about to scaffold a new project. To do so there is a specific setting named `Create Node Version File Default Value`.
+
+![Settings Node version file default value](./assets/images/settings-node-version-manager-file-default-value.png)
+
+### 1️⃣3️⃣ SPFx Toolkit GitHub Chat Participant 
 
 ![SPFx Toolkit chat](./assets/images/chat-intro.png)
 
 Now you may use SPFx Toolkit as a chat participant in GitHub Copilot chat extension. Simply, mention @spfx in the chat to ask dedicated questions regarding SharePoint Framework development. 
 
-![SPFx Toolkit chat in action](./assets/images/chat-in-action.gif)
+![SPFx Toolkit chat in action](./assets/images/chat-in-action-new.gif)
+
+![SPFx Toolkit chat in action](./assets/images/chat-in-action-new2.gif)
+
+![SPFx Toolkit chat in action](./assets/images/chat-in-action-setup.gif)
 
 @spfx is your dedicated AI Copilot that will help you with anything that is needed to develop your SharePoint Framework project. It has predefined commands that are tailored toward a specific activity for which you require guidance.
 
@@ -284,15 +328,10 @@ Now you may use SPFx Toolkit as a chat participant in GitHub Copilot chat extens
 Currently, we support the following commands:
 - `/setup` - that is dedicated to providing information on how to setup your local workspace for SharePoint Framework development
 - `/new` - that may be used to get guidance on how to create a new solution or find and reuse an existing sample from the PnP SPFx sample gallery
-- `/code` - that is fine-tuned to provide help in coding your SharePoint Framework project and provides additional boosters like validating the correctness of your SPFx project, scaffolding a CI/CD workflow, or renaming your project, and many more.
+- `/code` - [beta] this command is fine-tuned to provide help in coding your SharePoint Framework project and provides additional boosters like validating the correctness of your SPFx project, scaffolding a CI/CD workflow, or renaming your project, and many more.
+- `/info` - this command will allow you to ask and retrieve any kind of data from you SharePoint Online tenant. This command will only work if your are signed in to your tenant. It uses CLI for Microsoft 365 commands under the hood to retrieve and explain data and assets from your SharePoint Online tenant. It does support only retrieving information, it will not support you in creating, updating or removing any resources. For example, you want to check if some list item or file exists. Or how many items with specific metadata do you have on a list? Or ask for content type columns to generate an interface based on the response quickly.
 
-> [!IMPORTANT]  
-> In order for this feature to work you need to meet the following requirements:
-> - Use the [Visual Studio Code Insiders](https://code.visualstudio.com/insiders/) release
-> - Use the pre-release version of the [GitHub Copilot Chat](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot-chat) extension
-> - Use latest version of [SPFx Toolkit](https://marketplace.visualstudio.com/items?itemName=m365pnp.viva-connections-toolkit)
-
-[Check out our docs for more details](https://github.com/pnp/vscode-viva/wiki/8.-Preview-features)
+[Check out our docs for more details](https://pnp.github.io/vscode-viva/guides/chat-participant/)
 
 ## ⚙️ Architecture
 
@@ -300,9 +339,9 @@ SharePoint Framework Toolkit for Visual Studio Code is an abstraction layer on t
 
 This means that the features and capabilities provided through this tool are available for any solution which has been built with SPFx.
 
-## 📚 Wiki 
+## 📚 Docs 
 
-For more information on how to use the extension, please refer to the [wiki](https://github.com/pnp/vscode-viva/wiki).
+For more information on how to use the extension, please refer to the [SPFx Toolkit Docs](https://pnp.github.io/vscode-viva/).
 
 ## 👩‍💻 Contributing
 

@@ -1,5 +1,6 @@
 import { WorkflowType } from '../constants';
 
+
 export interface GenerateWorkflowCommandInput {
   workflowType: WorkflowType
   name: string;

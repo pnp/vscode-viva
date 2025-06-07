@@ -1,8 +1,9 @@
-import { Event, ProviderResult, ThemeIcon, TreeDataProvider, TreeItem, TreeItemCollapsibleState } from 'vscode';
+import { Event, ProviderResult, ThemeIcon, TreeDataProvider, TreeItem, TreeItemCollapsibleState, EventEmitter } from 'vscode';
 
 
 export class ActionTreeDataProvider implements TreeDataProvider<any> {
-  onDidChangeTreeData?: Event<TreeItem | null | undefined> | undefined;
+  private _onDidChangeTreeData: EventEmitter<ActionTreeItem | undefined | void> = new EventEmitter<ActionTreeItem | undefined | void>();
+  readonly onDidChangeTreeData: Event<ActionTreeItem | undefined | void> = this._onDidChangeTreeData.event;
 
   actions: ActionTreeItem[];
 
@@ -15,26 +16,32 @@ export class ActionTreeDataProvider implements TreeDataProvider<any> {
   }
 
   getChildren(element?: ActionTreeItem | undefined): ProviderResult<TreeItem[]> {
-    return element && (element as any).children ? Promise.resolve((element as any).children) : Promise.resolve(this.actions);
+    if (element) {
+      return element.fetchChildren();
+    }
+    return this.actions;
+  }
+
+  refresh(element?: ActionTreeItem): void {
+    this._onDidChangeTreeData.fire(element);
   }
 }
 
 export class ActionTreeItem extends TreeItem {
+  children: ActionTreeItem[] | undefined;
+  loadChildren: (() => Promise<ActionTreeItem[]>) | undefined;
 
-  children: ActionTreeItem[] = [];
-
-  constructor(label: string, description?: string, image?: { name: string; custom: boolean }, collapsibleState?: TreeItemCollapsibleState, command?: any, args?: any, contextValue?: string, children?: ActionTreeItem[]) {
-    super(label, children ? TreeItemCollapsibleState.Expanded : TreeItemCollapsibleState.None);
+  constructor(label: string, description?: string, image?: { name: string; custom: boolean }, collapsibleState?: TreeItemCollapsibleState, command?: any, args?: any, contextValue?: string, children?: ActionTreeItem[], loadChildren?: () => Promise<ActionTreeItem[]>) {
+    super(label, collapsibleState);
 
     this.label = label;
     this.description = description;
-
     this.iconPath = image ? new ThemeIcon(image.name) : undefined;
 
     this.command = command ? {
       command: command,
       title: label,
-      arguments: [args]
+      arguments: Array.isArray(args) ? args : [args]
     } : undefined;
 
     this.contextValue = contextValue;
@@ -42,5 +49,17 @@ export class ActionTreeItem extends TreeItem {
     if (children) {
       this.children = children;
     }
+    else if (collapsibleState === TreeItemCollapsibleState.Collapsed) {
+      this.children = undefined;
+    }
+
+    this.loadChildren = loadChildren;
+  }
+
+  async fetchChildren() {
+    if (this.loadChildren && !this.children) {
+      this.children = await this.loadChildren();
+    }
+    return this.children || [];
   }
 }

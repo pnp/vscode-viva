@@ -5,14 +5,19 @@ on:
 
 jobs:
   build:
+    if: github.repository_owner == 'pnp'
     name: "Build and pre-release"
     runs-on: ubuntu-latest
 
+    permissions:
+      contents: write
+      packages: read
+    
     steps:
       - name: Setup node
         uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: 20
           registry-url: https://registry.npmjs.org/
       
       - name: Checkout vscode-viva
@@ -48,6 +53,6 @@ jobs:
         shell: pwsh
         continue-on-error: false
 
-      - name: Publish
-        run: npx @vscode/vsce publish -p ${{ secrets.VSCE_PAT }} --pre-release --baseImagesUrl https://raw.githubusercontent.com/pnp/vscode-viva/dev
+      - name: Publish 
+        run: npx @vscode/vsce@3.3.2 publish -p ${{ secrets.VSCE_PAT }} --pre-release --baseImagesUrl https://raw.githubusercontent.com/pnp/vscode-viva/dev
         working-directory: vscode-viva
