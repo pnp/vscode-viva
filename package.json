@@ -826,19 +826,19 @@
 			{
 				"command": "spfx-toolkit.addTenantAppCatalog",
 				"title": "Add Tenant App Catalog",
-				"category": "SharePoint Framework Toolkit",
+				"category": "SPFx Toolkit",
 				"icon": "$(add)"
 			},
 			{
 				"command": "spfx-toolkit.addSiteAppCatalog",
 				"title": "Add Site App Catalog",
-				"category": "SharePoint Framework Toolkit",
+				"category": "SPFx Toolkit",
 				"icon": "$(add)"
 			},
 			{
 				"command": "spfx-toolkit.removeSiteAppCatalog",
 				"title": "Remove Site App Catalog",
-				"category": "SharePoint Framework Toolkit",
+				"category": "SPFx Toolkit",
 				"icon": "$(trash)"
 			}
 		],
