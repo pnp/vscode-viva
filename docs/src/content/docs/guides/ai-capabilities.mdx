@@ -1,9 +1,9 @@
 ---
-title: SPFx Toolkit GitHub Chat Participant
-description: Learn how to use the SPFx Toolkit as a GitHub Copilot chat participant to streamline SharePoint Framework development with predefined commands and AI assistance.
+title: SPFx Toolkit AI capabilities
+description: Learn how to use the SPFx Toolkit as a GitHub Copilot chat participant and languages model tools to streamline SharePoint Framework development with predefined commands and AI assistance.
 ---
 
-### SPFx Toolkit GitHub Chat Participant 
+# SPFx Toolkit GitHub Chat Participant 
 
 ![chat-intro](../../../../../assets/images/chat-intro.png)
 
@@ -30,13 +30,13 @@ Check it out in action 👇
 ![chat-in-action-new](../../../../../assets/images/chat-in-action-new.gif)
 ![chat-in-action-new2](../../../../../assets/images/chat-in-action-new2.gif)
 
-## `/code` 
+## `/code` (beta)
 
 This command is beta and is fine-tuned to provide help in coding your SharePoint Framework project and provides additional boosters like validating the correctness of your SPFx project, scaffolding a CI/CD workflow, or renaming your project, and many more.
 
-## `/manage` 
+## `/info` 
 
-This command is beta and will allow you to ask and retrieve any kind of data from you SharePoint Online tenant. This command will only work if your are signed in to your tenant. It uses CLI for Microsoft 365 commands under the hood to retrieve and explain data and assets from your SharePoint Online tenant. Currently, it does support only retrieving information, it will not support you in creating, updating or removing any resources. For example, you want to check if some list item or file exists. Or how many items with specific metadata do you have on a list? Or ask for content type columns to generate an interface based on the response quickly.
+This command will allow you to ask and retrieve any kind of data from you SharePoint Online tenant. This command will only work if your are signed in to your tenant. It uses CLI for Microsoft 365 commands under the hood to retrieve and explain data and assets from your SharePoint Online tenant. Currently, it does support only retrieving information, it will not support you in creating, updating or removing any resources. For example, you want to check if some list item or file exists. Or how many items with specific metadata do you have on a list? Or ask for content type columns to generate an interface based on the response quickly.
 
 <video width="100%" controls>
   <source src="https://github.com/user-attachments/assets/be808a6f-6533-4e36-bb46-019682e41158" type="video/mp4" />
@@ -163,3 +163,14 @@ This command has the following skills:
 | m365 spo folder get            | Gets information about the specified folder           |
 | m365 spo cdn get               | View current status of the specified Microsoft 365 CDN |
 
+
+# SPFx Toolkit Language Model Tools
+
+The SPFx Toolkit Language Model Tools provide a set of skills may be used by GitHub Copilot in agent mode to assist you in your SharePoint Framework development tasks and managing your SharePoint Online tenant. 
+
+![Language Model Tools](../../../../../assets/images/language-model-tools.png)
+
+Language model tools may only be used in agent mode, which is available in the GitHub Copilot chat extension. Currently it allows you to do basic operations to manage your SharePoint Online tenant like getting information about specific site, creating and removing a site, listing apps from your tenant app catalog, installing an app, creating a page, etc. 
+In order to use the tool you may #hashtag mention it, otherwise if your prompt will be well defined then GitHub Copilot should figure out which tool should be used to proceed with the task.
+
+![Language Model Tools in Action](../../../../../assets/images/language-model-tools-in-action.png)

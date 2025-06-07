@@ -146,7 +146,8 @@ Additionally, the extension will check and retrieve tenant service health incide
 
 ![tenant details](./assets/images/tenant-links.png)
 
-After successful sign in, an additional view is presented that shows a list of links to app catalogs available in the tenant, both tenant-level and all site-level app catalogs. You can expand each app catalog to reveal the list of apps contained within. Selecting an app navigates you to its details page. Additionally, hovering over an app node presents a set of actions, allowing you to perform various operations directly on the selected app.
+After successful sign in, an additional view is presented that shows a list of links to app catalogs available in the tenant, both tenant-level and all site-level app catalogs. If you don't have a tenant app catalog you may create on directly from this extension. It is also possible to create a site-level app catalog and deactivate them if needed.
+You can expand each app catalog to reveal the list of apps contained within. Selecting an app navigates you to its details page. Additionally, hovering over an app node presents a set of actions, allowing you to perform various operations directly on the selected app.
 
 - **Deploy**: Makes the solution available for installation in sites but does not automatically install it.
 - **Retract**: Reverses the deployment, preventing the solution from being installed in sites.
@@ -291,7 +292,7 @@ Check it out in action 👇
 
 ![Microsoft 365 Agents Toolkit integration](./assets/images/better-together.png)
 
-[Check out our docs for more details](https://pnp.github.io/vscode-viva/guides/teams-toolkit/)
+[Check out our docs for more details](https://pnp.github.io/vscode-viva/guides/m365-agents-toolkit/)
 
 ### 1️⃣2️⃣ Node.js Version Manager Support
 
@@ -331,7 +332,16 @@ Currently, we support the following commands:
 - `/code` - [beta] this command is fine-tuned to provide help in coding your SharePoint Framework project and provides additional boosters like validating the correctness of your SPFx project, scaffolding a CI/CD workflow, or renaming your project, and many more.
 - `/info` - this command will allow you to ask and retrieve any kind of data from you SharePoint Online tenant. This command will only work if your are signed in to your tenant. It uses CLI for Microsoft 365 commands under the hood to retrieve and explain data and assets from your SharePoint Online tenant. It does support only retrieving information, it will not support you in creating, updating or removing any resources. For example, you want to check if some list item or file exists. Or how many items with specific metadata do you have on a list? Or ask for content type columns to generate an interface based on the response quickly.
 
-[Check out our docs for more details](https://pnp.github.io/vscode-viva/guides/chat-participant/)
+The SPFx Toolkit Language Model Tools provide a set of skills may be used by GitHub Copilot in agent mode to assist you in your SharePoint Framework development tasks and managing your SharePoint Online tenant. 
+
+![Language Model Tools](./assets/images/language-model-tools.png)
+
+Language model tools may only be used in agent mode, which is available in the GitHub Copilot chat extension. Currently it allows you to do basic operations to manage your SharePoint Online tenant like getting information about specific site, creating and removing a site, listing apps from your tenant app catalog, installing an app, creating a page, etc. 
+In order to use the tool you may #hashtag mention it, otherwise if your prompt will be well defined then GitHub Copilot should figure out which tool should be used to proceed with the task.
+
+![Language Model Tools in Action](./assets/images/language-model-tools-in-action.png)
+
+[Check out our docs for more details](https://pnp.github.io/vscode-viva/guides/ai-capabilities/)
 
 ## ⚙️ Architecture
 

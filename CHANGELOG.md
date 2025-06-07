@@ -1,5 +1,23 @@
 # Change Log
 
+## [4.8.0] - 2025-06-07
+
+- Added LLM Tools for GitHub Copilot agent mode
+- Hidden app management related context-menu actions from the command pallete
+- Added support for installing the correct version of Node.js
+- Fixed setting form customizer list from to root site
+- Updated command category names to shorten version
+- Updated default action for SPFx app to install
+- Renamed the /manage chat command to /info
+- Added gulp operations to VS Code extension commands
+- Updated gulp tasks icons
+- Updated Teams Toolkit to M365 Agents Toolkit
+- Updated wiki link to a new name and URL
+- Updated Dependencies
+- Added features to add tenant app catalog and add/remove site app catalog
+- Added progress notification for SPFx actions
+- Added upgrade suggestion in case installation fails due to app being already installed
+
 ## [4.7.0] - 2025-05-04
 
 - Added support for SPFx 1.21.1
