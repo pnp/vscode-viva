@@ -1,10 +1,10 @@
-## Sign in to your tenant & retrieve environment details
+# Sign in to your tenant & retrieve environment details
 
 The extension allows you to sign in to your Microsoft 365 tenant using CLI for Microsoft 365.
 
 ![login](../images/login.png)
 
-SPFx Toolkit needs and Entra App Registration to be able to sign in to your tenant. You may either use an existing app registration or create a new one with a single click using a dedicated form. SPFx Toolkit will guide you through the process of creating a new app registration either manually by providing step-by-step guidance or automatically by creating the app registration for you.
+SPFx Toolkit needs and Entra App Registration to sign in to your tenant. You may either use an existing app registration or create a new one with a single click using a dedicated form. SPFx Toolkit will guide you through the process of creating a new app registration either manually by providing step-by-step guidance or automatically by creating the app registration for you.
 
 ![app registration](../images/sign-in.gif)
 
@@ -41,6 +41,6 @@ Using the extension settings you may choose show or hide the tenant-wide extensi
 
 ![settings](../images/settings.png)
 
-Sign-in is also required for some actions to work properly like the deploy action which allows you to upload of the .sppkg file to the tenant or site-level App Catalog.
+Sign-in is also required for some actions to work properly, such as the deploy action, which allows you to upload of the .sppkg file to the tenant or site-level App Catalog.
 
-[Check out our docs for more details](https://github.com/pnp/vscode-viva/wiki/5.3-Login-to-your-tenant-&-retrieve-environment-details)
+[Check out our docs for more details](https://pnp.github.io/vscode-viva/features/login-tenant/)

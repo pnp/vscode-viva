@@ -33,7 +33,7 @@ export const RegisterEntraAppRegView: React.FunctionComponent<IRegisterEntraAppR
       </div>
       <div className={'mb-2'}>
         <label className={'block mb-2'}>
-          For more information please visit <VSCodeLink href='https://github.com/pnp/vscode-viva/wiki/5.3-Login-to-your-tenant-&-retrieve-environment-details'>SPFx Toolkit login docs</VSCodeLink>
+          For more information please visit <VSCodeLink href='https://pnp.github.io/vscode-viva/features/login-tenant/'>SPFx Toolkit login docs</VSCodeLink>
         </label>
       </div>
       <div className={'mb-2'}>
@@ -53,7 +53,7 @@ export const RegisterEntraAppRegView: React.FunctionComponent<IRegisterEntraAppR
             <p className={'mb-1'}>SPFx Toolkit will use CLI for Microsoft 365 to sign in as Azure CLI app to your tenant to create a new App Registration.</p>
             <br />
             <div>
-              <VSCodeButton className={isSubmitting ? 'w-full hidden' : 'w-full'} onClick={submit}>
+              <VSCodeButton className={isSubmitting ? 'w-full text-center hidden' : 'w-full block text-center'} onClick={submit}>
                 Create the Entra App Registration
               </VSCodeButton>
             </div>

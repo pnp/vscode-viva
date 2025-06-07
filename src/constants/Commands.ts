@@ -58,6 +58,21 @@ export const Commands = {
   // Serving
   serveProject: `${EXTENSION_NAME}.serveProject`,
 
+  // Clean
+  cleanProject: `${EXTENSION_NAME}.cleanProject`,
+
+  // Build
+  buildProject: `${EXTENSION_NAME}.buildProject`,
+
+  // Test
+  testProject: `${EXTENSION_NAME}.testProject`,
+
+  // Trust dev cert
+  trustDevCert: `${EXTENSION_NAME}.trustDevCert`,
+
+  // Deploy to Azure Storage
+  deployToAzureStorage: `${EXTENSION_NAME}.deployToAzureStorage`,
+
   // TreeViews
   refreshAppCatalogTreeView: `${EXTENSION_NAME}.refreshAppCatalogTreeView`,
   refreshAccountTreeView: `${EXTENSION_NAME}.refreshAccountTreeView`,
@@ -78,6 +93,11 @@ export const Commands = {
   installAppCatalogApp: `${EXTENSION_NAME}.installAppCatalogApp`,
   uninstallAppCatalogApp: `${EXTENSION_NAME}.uninstallAppCatalogApp`,
   showMoreActions: `${EXTENSION_NAME}.showMoreActions`,
+
+  // App Catalog actions
+  addTenantAppCatalog: `${EXTENSION_NAME}.addTenantAppCatalog`,
+  addSiteAppCatalog: `${EXTENSION_NAME}.addSiteAppCatalog`,
+  removeSiteAppCatalog: `${EXTENSION_NAME}.removeSiteAppCatalog`,
 
   // Set form customizer
   setFormCustomizer: `${EXTENSION_NAME}.setFormCustomizer`

@@ -2,7 +2,7 @@
 	"name": "viva-connections-toolkit",
 	"displayName": "SharePoint Framework Toolkit",
 	"description": "SharePoint Framework Toolkit aims to boost your productivity in developing and managing SharePoint Framework solutions helping at every stage of your development flow, from setting up your development workspace to deploying a solution straight to your tenant without the need to leave VS Code and now even create a CI/CD pipeline to introduce automate deployment of your app. This toolkit is provided by the community.",
-	"version": "4.7.0",
+	"version": "4.8.0",
 	"publisher": "m365pnp",
 	"preview": false,
 	"homepage": "https://github.com/pnp/vscode-viva",
@@ -24,6 +24,7 @@
 	"bugs": {
 		"url": "https://github.com/pnp/vscode-viva/issues"
 	},
+	"qna": "https://github.com/pnp/vscode-viva/discussions",
 	"keywords": [
 		"SPFx",
 		"SharePoint Framework",
@@ -52,7 +53,7 @@
 				"id": "spfx-toolkit.pnp",
 				"fullName": "SPFx Toolkit",
 				"name": "spfx",
-				"description": "How can I help you with SPFx development? Use /setup, /new, /manage, /code commands for job specific support.",
+				"description": "How can I help you with SPFx development? Use /setup, /new, /info, /code commands for job specific support.",
 				"isSticky": true,
 				"commands": [
 					{
@@ -66,9 +67,9 @@
 						"description": "Create a new SharePoint Framework project"
 					},
 					{
-						"name": "manage",
+						"name": "info",
 						"isSticky": true,
-						"description": "[beta] Manage your SharePoint Online tenant"
+						"description": "Retrieve information from your SharePoint Online tenant"
 					},
 					{
 						"name": "code",
@@ -76,6 +77,280 @@
 						"description": "[beta] Let's write some SPFx code"
 					}
 				]
+			}
+		],
+		"languageModelTools": [
+			{
+				"name": "spo_app_list",
+				"tags": [
+					"sharepoint",
+					"app",
+					"spfx-toolkit"
+				],
+				"toolReferenceName": "SharePointAppList",
+				"displayName": "List SharePoint apps",
+				"modelDescription": "Lists apps from the tenant app catalog. This tool may be used to list all apps from the tenant app catalog.",
+				"userDescription": "Lists apps from the tenant app catalog",
+				"canBeReferencedInPrompt": true,
+				"icon": "$(search)",
+				"inputSchema": {}
+			},
+			{
+				"name": "spo_app_install",
+				"tags": [
+					"sharepoint",
+					"app",
+					"spfx-toolkit"
+				],
+				"toolReferenceName": "SharePointAppInstall",
+				"displayName": "Install a SharePoint app in a site",
+				"modelDescription": "Installs an app from tenant app catalog in the site. This tool may be used to install a specified app by its GUID to a specified site.",
+				"userDescription": "Installs an app from tenant app catalog in the site",
+				"canBeReferencedInPrompt": true,
+				"icon": "$(package)",
+				"inputSchema": {
+					"type": "object",
+					"properties": {
+						"siteUrl": {
+							"type": "string",
+							"description": "URL of the site. This option is required.",
+							"default": ""
+						},
+						"id": {
+							"type": "string",
+							"description": "GUID of the app to install. This option is required.",
+							"default": ""
+						}
+					}
+				}
+			},
+			{
+				"name": "spo_list_add",
+				"tags": [
+					"sharepoint",
+					"list",
+					"spfx-toolkit"
+				],
+				"toolReferenceName": "SharePointListAdd",
+				"displayName": "Create a SharePoint list",
+				"modelDescription": "Creates list in the specified site. This tool may be used to create a SharePoint list in a site.",
+				"userDescription": "Creates list in the specified site.",
+				"canBeReferencedInPrompt": true,
+				"icon": "$(add)",
+				"inputSchema": {
+					"type": "object",
+					"properties": {
+						"title": {
+							"type": "string",
+							"description": "Title of the list to add. This option is required.",
+							"default": ""
+						},
+						"webUrl": {
+							"type": "string",
+							"description": "URL of the site where the list should be added. This option is required.",
+							"default": ""
+						},
+						"baseTemplate": {
+							"type": "string",
+							"description": "The list definition type on which the list is based. Allowed values Announcements, Contacts, CustomGrid, DataSources,DiscussionBoard, DocumentLibrary, Events, GanttTasks, GenericList, IssuesTracking, Links, NoCodeWorkflows,PictureLibrary, Survey, Tasks, WebPageLibrary, WorkflowHistory, WorkflowProcess, XmlForm. Default value is GenericList. This option is optional.",
+							"default": ""
+						},
+						"description": {
+							"type": "string",
+							"description": "The description for the list. This option is optional.",
+							"default": ""
+						}
+					}
+				}
+			},
+			{
+				"name": "spo_list_get",
+				"tags": [
+					"sharepoint",
+					"list",
+					"spfx-toolkit"
+				],
+				"toolReferenceName": "SharePointListGet",
+				"displayName": "Get a SharePoint list",
+				"modelDescription": "Gets information about the specific list. This tool may be used to check if a list on a SharePoint site exists or to retrieve more information about it.",
+				"userDescription": "Gets information about the specific list.",
+				"canBeReferencedInPrompt": true,
+				"icon": "$(search)",
+				"inputSchema": {
+					"type": "object",
+					"properties": {
+						"title": {
+							"type": "string",
+							"description": "Title of the list to retrieve information for. This option is required.",
+							"default": ""
+						},
+						"webUrl": {
+							"type": "string",
+							"description": "URL of the site where the list to retrieve is located. This option is required.",
+							"default": ""
+						}
+					}
+				}
+			},
+			{
+				"name": "spo_list_remove",
+				"tags": [
+					"sharepoint",
+					"list",
+					"spfx-toolkit"
+				],
+				"toolReferenceName": "SharePointListRemove",
+				"displayName": "Remove a SharePoint list",
+				"modelDescription": "Removes the specified list. This tool may be used to remove a SharePoint list from a site.",
+				"userDescription": "Removes the specified list.",
+				"canBeReferencedInPrompt": true,
+				"icon": "$(trash)",
+				"inputSchema": {
+					"type": "object",
+					"properties": {
+						"title": {
+							"type": "string",
+							"description": "Title of the list to remove. This option is required.",
+							"default": ""
+						},
+						"webUrl": {
+							"type": "string",
+							"description": "URL of the site where the list to remove is located. This option is required.",
+							"default": ""
+						}
+					}
+				}
+			},
+			{
+				"name": "spo_page_add",
+				"tags": [
+					"sharepoint",
+					"page",
+					"spfx-toolkit"
+				],
+				"toolReferenceName": "SharePointPageAdd",
+				"displayName": "Add a SharePoint Page",
+				"modelDescription": "Creates a page. This tool may be used to add a page on a SharePoint site.",
+				"userDescription": "Creates a page.",
+				"canBeReferencedInPrompt": true,
+				"icon": "$(add)",
+				"inputSchema": {
+					"type": "object",
+					"properties": {
+						"name": {
+							"type": "string",
+							"description": "Name of the page to create. This option is required.",
+							"default": ""
+						},
+						"webUrl": {
+							"type": "string",
+							"description": "URL of the site where the page should be created. This option is required.",
+							"default": ""
+						},
+						"title": {
+							"type": "string",
+							"description": "Title of the page to create. If not specified, will use the page name as its title. This option is optional.",
+							"default": ""
+						},
+						"layoutType": {
+							"type": "string",
+							"description": "Layout of the page. Allowed values Article, Home, SingleWebPartAppPage, RepostPage, HeaderlessSearchResults, Spaces, Topic. Default Article. This option is optional.",
+							"default": ""
+						}
+					}
+				}
+			},
+			{
+				"name": "spo_site_add",
+				"tags": [
+					"sharepoint",
+					"site",
+					"spfx-toolkit"
+				],
+				"toolReferenceName": "SharePointSiteAdd",
+				"displayName": "Add SharePoint Site",
+				"modelDescription": "Create a new SharePoint Online site. This tool may be used to create a CommunicationSite or a TeamSite. in case of TeamSite we need to provide the owners of the site and in case of CommunicationSite we need to specify the url.",
+				"userDescription": "Create a new SharePoint Online site.",
+				"canBeReferencedInPrompt": true,
+				"icon": "$(add)",
+				"inputSchema": {
+					"type": "object",
+					"properties": {
+						"type": {
+							"type": "string",
+							"description": "Type of sites to add. Allowed values TeamSite, CommunicationSite. This property is required.",
+							"default": "CommunicationSite"
+						},
+						"title": {
+							"type": "string",
+							"description": "Site title. This property is required.",
+							"default": ""
+						},
+						"url": {
+							"type": "string",
+							"description": "Site URL. In case of CommunicationSite this option is required.",
+							"default": ""
+						},
+						"description": {
+							"type": "string",
+							"description": "Site description. This property is optional.",
+							"default": ""
+						},
+						"owners": {
+							"type": "string",
+							"description": "Comma-separated list of user emails to set as site owners. In case of TeamSite this option is required.",
+							"default": ""
+						}
+					}
+				}
+			},
+			{
+				"name": "spo_site_remove",
+				"tags": [
+					"sharepoint",
+					"site",
+					"spfx-toolkit"
+				],
+				"toolReferenceName": "SharePointSiteRemove",
+				"displayName": "Remove SharePoint Site",
+				"modelDescription": "Remove a SharePoint Online site. This tool may be used to remove a site.",
+				"userDescription": "Remove a SharePoint Online site.",
+				"canBeReferencedInPrompt": true,
+				"icon": "$(trash)",
+				"inputSchema": {
+					"type": "object",
+					"properties": {
+						"url": {
+							"type": "string",
+							"description": "URL of the site. This option is required.",
+							"default": ""
+						}
+					}
+				}
+			},
+			{
+				"name": "spo_site_get",
+				"tags": [
+					"sharepoint",
+					"site",
+					"spfx-toolkit"
+				],
+				"toolReferenceName": "SharePointSiteGet",
+				"displayName": "Get SharePoint Site",
+				"modelDescription": "Get a SharePoint Online site. This tool may be used to check if a site extist or to retrieve more information about a SharePoints site.",
+				"userDescription": "Get a SharePoint Online site.",
+				"canBeReferencedInPrompt": true,
+				"icon": "$(search)",
+				"inputSchema": {
+					"type": "object",
+					"properties": {
+						"url": {
+							"type": "string",
+							"description": "URL of the site. This option is required.",
+							"default": ""
+						}
+					}
+				}
 			}
 		],
 		"walkthroughs": [
@@ -95,7 +370,7 @@
 					{
 						"id": "set-up-local-workspace",
 						"title": "Validate your local workspace",
-						"description": "Validate if your local workspace is ready for SharePoint Framework development by checking and installing the required dependencies. \n[Check dependencies](command:spfx-toolkit.checkDependencies)",
+						"description": "Validate if your local workspace is ready for SharePoint Framework development by checking and installing the required dependencies. \n[Validate local setup](command:spfx-toolkit.checkDependencies)",
 						"media": {
 							"markdown": "assets/walkthrough/validate-local-setup.md"
 						}
@@ -290,7 +565,7 @@
 			"activitybar": [
 				{
 					"id": "pnp-view",
-					"title": "SharePoint Framework Toolkit",
+					"title": "SPFx Toolkit",
 					"icon": "assets/logo-light.svg"
 				}
 			]
@@ -299,7 +574,7 @@
 			"pnp-view": [
 				{
 					"id": "pnp-view-empty",
-					"name": "SharePoint Framework Toolkit",
+					"name": "SPFx Toolkit",
 					"when": "pnp.project.showWelcome"
 				},
 				{
@@ -332,185 +607,239 @@
 		"viewsWelcome": [
 			{
 				"view": "pnp-view-empty",
-				"contents": "Welcome to SharePoint Framework Toolkit\n\n\nTo start create a new SharePoint Framework project. \n[Create a new project](command:spfx-toolkit.createProject)\n\n\n\n\n\nUse a sample to kick off a new project and boost your development.\n[View samples](command:spfx-toolkit.samplesGallery)\n\n\n\n\n\nYou can also open an existing app.\n[Open folder](command:vscode.openFolder)\n\n\n\n\n\nValidate your local workspace and check if you have the required dependencies.\n[Check dependencies](command:spfx-toolkit.checkDependencies)\n\n\n\n\n\nInstall the required dependencies.\n[Install dependencies](command:spfx-toolkit.installDependencies)\n\n\n\nLearn more about SharePoint Framework and this toolkit.\n[Walkthrough](command:spfx-toolkit.welcome)\n\n\n\nStart effortlessly with GitHub Copilot. Get SPFx tailored support in setting up your local workspace, creating a new project, or managing your tenant.\n[Use @SPFx in GitHib Copilot](command:spfx-toolkit.openCopilot) \n\n\n\n\n\nFor additional help or resources visit the [extension wiki](https://github.com/pnp/vscode-viva/wiki)."
+				"contents": "Welcome to SharePoint Framework Toolkit\n\n\nTo start create a new SharePoint Framework project. \n[Create a new project](command:spfx-toolkit.createProject)\n\n\n\n\n\nUse a sample to kick off a new project and boost your development.\n[View samples](command:spfx-toolkit.samplesGallery)\n\n\n\n\n\nYou can also open an existing app.\n[Open folder](command:vscode.openFolder)\n\n\n\n\n\nValidate your local workspace and check if you have the required dependencies.\n[Validate local setup](command:spfx-toolkit.checkDependencies)\n\n\n\n\n\nInstall the required dependencies.\n[Install dependencies](command:spfx-toolkit.installDependencies)\n\n\n\nLearn more about SharePoint Framework and this toolkit.\n[Walkthrough](command:spfx-toolkit.welcome)\n\n\n\nStart effortlessly with GitHub Copilot. Get SPFx tailored support in setting up your local workspace, creating a new project, or managing your tenant.\n[Use @SPFx in GitHub Copilot](command:spfx-toolkit.openCopilot) \n\n\n\n\n\nFor additional help or resources visit the [SPFX Toolkit docs](https://pnp.github.io/vscode-viva)."
 			}
 		],
 		"commands": [
 			{
 				"command": "spfx-toolkit.welcome",
 				"title": "Welcome",
-				"category": "SharePoint Framework Toolkit"
+				"category": "SPFx Toolkit"
 			},
 			{
 				"command": "spfx-toolkit.checkDependencies",
-				"title": "Check dependencies",
-				"category": "SharePoint Framework Toolkit"
+				"title": "Validate local setup",
+				"category": "SPFx Toolkit"
 			},
 			{
 				"command": "spfx-toolkit.installDependencies",
 				"title": "Install dependencies",
-				"category": "SharePoint Framework Toolkit"
+				"category": "SPFx Toolkit"
 			},
 			{
 				"command": "spfx-toolkit.createProject",
 				"title": "Create new project",
-				"category": "SharePoint Framework Toolkit"
+				"category": "SPFx Toolkit"
 			},
 			{
 				"command": "spfx-toolkit.addToProject",
 				"title": "Add component to project",
-				"category": "SharePoint Framework Toolkit"
+				"category": "SPFx Toolkit"
 			},
 			{
 				"command": "spfx-toolkit.executeTerminalCommand",
 				"title": "Execute terminal command",
-				"category": "SharePoint Framework Toolkit"
+				"category": "SPFx Toolkit"
 			},
 			{
 				"command": "spfx-toolkit.upgradeProject",
 				"title": "Upgrade project SPFx version",
-				"category": "SharePoint Framework Toolkit"
+				"category": "SPFx Toolkit"
 			},
 			{
 				"command": "spfx-toolkit.deployProject",
 				"title": "Deploy project to app catalog",
-				"category": "SharePoint Framework Toolkit"
+				"category": "SPFx Toolkit"
 			},
 			{
 				"command": "spfx-toolkit.samplesGallery",
 				"title": "Open SharePoint Framework Samples gallery",
-				"category": "SharePoint Framework Toolkit"
+				"category": "SPFx Toolkit"
 			},
 			{
 				"command": "spfx-toolkit.validateProject",
 				"title": "Validate project correctness",
-				"category": "SharePoint Framework Toolkit"
+				"category": "SPFx Toolkit"
 			},
 			{
 				"command": "spfx-toolkit.renameProject",
 				"title": "Rename project",
-				"category": "SharePoint Framework Toolkit"
+				"category": "SPFx Toolkit"
 			},
 			{
 				"command": "spfx-toolkit.increaseVersion",
 				"title": "Increase project version",
-				"category": "SharePoint Framework Toolkit"
+				"category": "SPFx Toolkit"
 			},
 			{
 				"command": "spfx-toolkit.grantAPIPermissions",
 				"title": "Grant API permissions",
-				"category": "SharePoint Framework Toolkit"
+				"category": "SPFx Toolkit"
 			},
 			{
 				"command": "spfx-toolkit.pipeline",
 				"title": "Scaffold CI/CD Workflow",
-				"category": "SharePoint Framework Toolkit"
+				"category": "SPFx Toolkit"
 			},
 			{
 				"command": "spfx-toolkit.login",
 				"title": "Sign in to Microsoft 365",
-				"category": "SharePoint Framework Toolkit",
+				"category": "SPFx Toolkit",
 				"icon": "$(sign-in)"
 			},
 			{
 				"command": "spfx-toolkit.logout",
 				"title": "Sign out from Microsoft 365",
-				"category": "SharePoint Framework Toolkit",
+				"category": "SPFx Toolkit",
 				"icon": "$(sign-out)"
 			},
 			{
 				"command": "spfx-toolkit.registerEntraAppRegistration",
 				"title": "Create a new app registration",
-				"category": "SharePoint Framework Toolkit"
+				"category": "SPFx Toolkit"
 			},
 			{
 				"command": "spfx-toolkit.refreshAppCatalogTreeView",
 				"title": "Refresh App Catalog list",
-				"category": "SharePoint Framework Toolkit",
+				"category": "SPFx Toolkit",
 				"icon": "$(refresh)"
 			},
 			{
 				"command": "spfx-toolkit.refreshAccountTreeView",
 				"title": "Refresh Account view",
-				"category": "SharePoint Framework Toolkit",
+				"category": "SPFx Toolkit",
 				"icon": "$(refresh)"
 			},
 			{
 				"command": "spfx-toolkit.deployAppCatalogApp",
 				"title": "Deploy",
-				"category": "SharePoint Framework Toolkit",
+				"category": "SPFx Toolkit",
 				"icon": "$(cloud-upload)"
 			},
 			{
 				"command": "spfx-toolkit.retractAppCatalogApp",
 				"title": "Retract",
-				"category": "SharePoint Framework Toolkit",
+				"category": "SPFx Toolkit",
 				"icon": "$(cloud-download)"
 			},
 			{
 				"command": "spfx-toolkit.removeAppCatalogApp",
 				"title": "Remove",
-				"category": "SharePoint Framework Toolkit",
+				"category": "SPFx Toolkit",
 				"icon": "$(trash)"
 			},
 			{
 				"command": "spfx-toolkit.enableAppCatalogApp",
 				"title": "Enable",
-				"category": "SharePoint Framework Toolkit",
+				"category": "SPFx Toolkit",
 				"icon": "$(check)"
 			},
 			{
 				"command": "spfx-toolkit.disableAppCatalogApp",
 				"title": "Disable",
-				"category": "SharePoint Framework Toolkit",
+				"category": "SPFx Toolkit",
 				"icon": "$(circle-slash)"
 			},
 			{
 				"command": "spfx-toolkit.upgradeAppCatalogApp",
 				"title": "Upgrade",
-				"category": "SharePoint Framework Toolkit",
+				"category": "SPFx Toolkit",
 				"icon": "$(sync)"
 			},
 			{
 				"command": "spfx-toolkit.installAppCatalogApp",
 				"title": "Install",
-				"category": "SharePoint Framework Toolkit",
+				"category": "SPFx Toolkit",
 				"icon": "$(package)"
 			},
 			{
 				"command": "spfx-toolkit.uninstallAppCatalogApp",
 				"title": "Uninstall",
-				"category": "SharePoint Framework Toolkit",
+				"category": "SPFx Toolkit",
 				"icon": "$(remove)"
 			},
 			{
 				"command": "spfx-toolkit.setFormCustomizer",
 				"title": "Set Form Customizer",
-				"category": "SharePoint Framework Toolkit"
+				"category": "SPFx Toolkit"
 			},
 			{
 				"command": "spfx-toolkit.showMoreActions",
 				"title": "...",
-				"category": "SharePoint Framework Toolkit",
+				"category": "SPFx Toolkit",
 				"icon": "$(ellipsis)"
 			},
 			{
 				"command": "spfx-toolkit.bundleProject",
 				"title": "Bundle",
-				"category": "SharePoint Framework Toolkit",
-				"icon": "$(sync)"
+				"category": "SPFx Toolkit",
+				"icon": "$(package)"
 			},
 			{
 				"command": "spfx-toolkit.packageProject",
 				"title": "Package",
-				"category": "SharePoint Framework Toolkit",
-				"icon": "$(sync)"
+				"category": "SPFx Toolkit",
+				"icon": "$(zap)"
 			},
 			{
 				"command": "spfx-toolkit.publishProject",
 				"title": "Publish",
-				"category": "SharePoint Framework Toolkit",
-				"icon": "$(sync)"
+				"category": "SPFx Toolkit",
+				"icon": "$(rocket)"
+			},
+			{
+				"command": "spfx-toolkit.serveProject",
+				"title": "Serve",
+				"category": "SPFx Toolkit",
+				"icon": "$(play-circle)"
+			},
+			{
+				"command": "spfx-toolkit.cleanProject",
+				"title": "Clean",
+				"category": "SPFx Toolkit",
+				"icon": "$(clear-all)"
+			},
+			{
+				"command": "spfx-toolkit.buildProject",
+				"title": "Build",
+				"category": "SPFx Toolkit",
+				"icon": "$(gear)"
+			},
+			{
+				"command": "spfx-toolkit.testProject",
+				"title": "Test",
+				"category": "SPFx Toolkit",
+				"icon": "$(beaker)"
+			},
+			{
+				"command": "spfx-toolkit.trustDevCert",
+				"title": "Trust self-signed developer certificate",
+				"category": "SPFx Toolkit",
+				"icon": "$(verified)"
+			},
+			{
+				"command": "spfx-toolkit.deployToAzureStorage",
+				"title": "Deploy project assets to Azure Storage",
+				"category": "SPFx Toolkit",
+				"icon": "$(cloud-upload)"
+			},
+			{
+				"command": "spfx-toolkit.addTenantAppCatalog",
+				"title": "Add Tenant App Catalog",
+				"category": "SPFx Toolkit",
+				"icon": "$(add)"
+			},
+			{
+				"command": "spfx-toolkit.addSiteAppCatalog",
+				"title": "Add Site App Catalog",
+				"category": "SPFx Toolkit",
+				"icon": "$(add)"
+			},
+			{
+				"command": "spfx-toolkit.removeSiteAppCatalog",
+				"title": "Remove Site App Catalog",
+				"category": "SPFx Toolkit",
+				"icon": "$(trash)"
 			}
 		],
 		"menus": {
@@ -530,6 +859,42 @@
 				{
 					"command": "spfx-toolkit.validateProject",
 					"when": "pnp.project.isSPFxProject"
+				},
+				{
+					"command": "spfx-toolkit.deployAppCatalogApp",
+					"when": "false"
+				},
+				{
+					"command": "spfx-toolkit.showMoreActions",
+					"when": "false"
+				},
+				{
+					"command": "spfx-toolkit.retractAppCatalogApp",
+					"when": "false"
+				},
+				{
+					"command": "spfx-toolkit.removeAppCatalogApp",
+					"when": "false"
+				},
+				{
+					"command": "spfx-toolkit.enableAppCatalogApp",
+					"when": "false"
+				},
+				{
+					"command": "spfx-toolkit.disableAppCatalogApp",
+					"when": "false"
+				},
+				{
+					"command": "spfx-toolkit.upgradeAppCatalogApp",
+					"when": "false"
+				},
+				{
+					"command": "spfx-toolkit.installAppCatalogApp",
+					"when": "false"
+				},
+				{
+					"command": "spfx-toolkit.uninstallAppCatalogApp",
+					"when": "false"
 				}
 			],
 			"view/title": [
@@ -551,7 +916,7 @@
 					"group": "inline@1"
 				},
 				{
-					"command": "spfx-toolkit.deployAppCatalogApp",
+					"command": "spfx-toolkit.installAppCatalogApp",
 					"when": "view == pnp-view-environment && viewItem == pnp.etv.hasAppCatalogApp",
 					"group": "inline@1"
 				},
@@ -559,9 +924,28 @@
 					"submenu": "spfx-toolkit.showMoreActions",
 					"when": "view == pnp-view-environment && viewItem == pnp.etv.hasAppCatalogApp",
 					"group": "inline@2"
+				},
+				{
+					"command": "spfx-toolkit.addTenantAppCatalog",
+					"when": "view == pnp-view-environment && viewItem == pnp.etv.hasNoAppCatalog",
+					"group": "inline"
+				},
+				{
+					"command": "spfx-toolkit.addSiteAppCatalog",
+					"when": "viewItem == sp-app-catalog-root",
+					"group": "inline"
+				},
+				{
+					"command": "spfx-toolkit.removeSiteAppCatalog",
+					"when": "viewItem == sp-app-catalog-url",
+					"group": "inline"
 				}
 			],
 			"spfx-toolkit.showMoreActions": [
+				{
+					"command": "spfx-toolkit.deployAppCatalogApp",
+					"group": "actions.more@1"
+				},
 				{
 					"command": "spfx-toolkit.retractAppCatalogApp",
 					"group": "actions.more@1"
@@ -635,54 +1019,52 @@
 		"clean": "rimraf dist && rimraf out"
 	},
 	"devDependencies": {
-		"@actions/core": "^1.8.2",
-		"@estruyf/vscode": "1.0.0",
-		"@fluentui/react": "^8.114.0",
-		"@types/glob": "^7.2.0",
-		"@types/mocha": "^9.0.0",
-		"@types/node": "14.x",
-		"@types/react": "^18.0.8",
-		"@types/react-dom": "^18.0.3",
-		"@types/react-router-dom": "^5.3.3",
+		"@actions/core": "1.11.1",
+		"@estruyf/vscode": "1.1.0",
+		"@fluentui/react": "8.122.16",
+		"@tailwindcss/postcss": "4.1.4",
+		"@types/glob": "8.1.0",
+		"@types/mocha": "10.0.10",
+		"@types/react": "18.0.8",
+		"@types/react-dom": "18.0.3",
+		"@types/react-router-dom": "5.3.3",
 		"@types/vscode": "^1.93.0",
-		"@typescript-eslint/eslint-plugin": "^5.9.1",
-		"@typescript-eslint/parser": "^5.9.1",
-		"@vscode/prompt-tsx": "^0.2.3-alpha",
-		"@vscode/test-cli": "^0.0.10",
-		"@vscode/test-electron": "^2.4.1",
-		"@vscode/webview-ui-toolkit": "^1.0.0",
-		"autoprefixer": "^10.4.5",
-		"css-loader": "^6.7.1",
-		"date-fns": "^2.28.0",
+		"@typescript-eslint/eslint-plugin": "8.31.1",
+		"@typescript-eslint/parser": "8.31.1",
+		"@vscode/test-cli": "0.0.10",
+		"@vscode/test-electron": "2.5.2",
+		"@vscode/webview-ui-toolkit": "1.0.0",
+		"autoprefixer": "^10.4.21",
+		"css-loader": "^7.1.2",
+		"date-fns": "^4.1.0",
 		"eslint": "^8.6.0",
 		"fast-glob": "^3.2.11",
-		"file-loader": "^6.2.0",
 		"github-directory-downloader": "^1.3.6",
-		"glob": "^7.2.0",
-		"mocha": "^9.1.3",
-		"npm": "^8.8.0",
+		"glob": "^11.0.2",
+		"mocha": "^11.1.0",
+		"npm": "^11.3.0",
 		"npm-run-all": "^4.1.5",
 		"path-browserify": "^1.0.1",
-		"postcss": "^8.4.31",
-		"postcss-loader": "^6.2.1",
-		"postcss-nested": "^5.0.6",
+		"postcss": "^8.5.3",
+		"postcss-loader": "^8.1.1",
+		"postcss-nesting": "^13.0.1",
 		"react": "^18.1.0",
 		"react-dom": "^18.1.0",
 		"react-router-dom": "^6.3.0",
-		"rimraf": "^3.0.2",
-		"style-loader": "^3.3.1",
-		"tailwindcss": "^3.0.24",
-		"ts-loader": "^9.2.9",
-		"typescript": "^4.5.4",
+		"rimraf": "^6.0.1",
+		"style-loader": "^4.0.0",
+		"tailwindcss": "^3.3.0",
+		"ts-loader": "^9.5.2",
+		"typescript": "^5.8.3",
 		"webpack": "^5.76.0",
 		"webpack-cli": "^4.9.1",
 		"webpack-dev-server": "^4.8.1"
 	},
 	"dependencies": {
 		"@pnp/cli-microsoft365": "6.11.0",
-		"node-forge": "^1.3.1",
-		"react-markdown": "^9.0.1",
-		"remark-gfm": "^4.0.0",
-		"use-debounce": "^10.0.1"
+		"node-forge": "1.3.1",
+		"react-markdown": "10.1.0",
+		"remark-gfm": "4.0.1",
+		"use-debounce": "10.0.4"
 	}
 }

@@ -1,5 +1,23 @@
 # Change Log
 
+## [4.8.0] - 2025-06-07
+
+- Added LLM Tools for GitHub Copilot agent mode
+- Hidden app management related context-menu actions from the command pallete
+- Added support for installing the correct version of Node.js
+- Fixed setting form customizer list from to root site
+- Updated command category names to shorten version
+- Updated default action for SPFx app to install
+- Renamed the /manage chat command to /info
+- Added gulp operations to VS Code extension commands
+- Updated gulp tasks icons
+- Updated Teams Toolkit to M365 Agents Toolkit
+- Updated wiki link to a new name and URL
+- Updated Dependencies
+- Added features to add tenant app catalog and add/remove site app catalog
+- Added progress notification for SPFx actions
+- Added upgrade suggestion in case installation fails due to app being already installed
+
 ## [4.7.0] - 2025-05-04
 
 - Added support for SPFx 1.21.1
@@ -10,13 +28,13 @@
 
 ## [4.5.0] - 2025-04-14
 
-- Adds new Gulp task Publish, which includes both bundle and package
-- Updates settings to allow not to load apps for app catalogs
-- Updates serve gulp tasks to combine them into a single task
-- Refactors pipeline scaffolding form to smaller components
-- Adds initial integration tests for the product
-- Add an action that allows to increase project version and implement version increment logic
-- Fixes App Install/Uninstall issue to allow installing apps on root site
+- Added new Gulp task Publish, which includes both bundle and package
+- Updated settings to allow not to load apps for app catalogs
+- Updated serve gulp tasks to combine them into a single task
+- Refactored pipeline scaffolding form to smaller components
+- Added initial integration tests for the product
+- Added an action that allows to increase project version and implement version increment logic
+- Fixed App Install/Uninstall issue to allow installing apps on root site
 
 ## [4.4.0] - 2025-02-04
 

@@ -1,7 +1,7 @@
 import { readFileSync, writeFileSync } from 'fs';
 import { Folders } from '../check/Folders';
 import { commands, Progress, ProgressLocation, Uri, window, workspace, WorkspaceFolder } from 'vscode';
-import { Commands, ContextKeys, WebViewType, WebviewCommand, WorkflowType } from '../../constants';
+import { Commands, WebViewType, WebviewCommand, WorkflowType } from '../../constants';
 import { AppCatalogApp, GenerateWorkflowCommandInput, SiteAppCatalog, SolutionAddResult, Subscription } from '../../models';
 import { Extension } from '../dataType/Extension';
 import { CliExecuter } from '../executeWrappers/CliCommandExecuter';
@@ -10,15 +10,16 @@ import { basename, join } from 'path';
 import { EnvironmentInformation } from '../dataType/EnvironmentInformation';
 import { AuthProvider } from '../../providers/AuthProvider';
 import { CommandOutput } from '@pnp/cli-microsoft365';
-import { TeamsToolkitIntegration } from '../dataType/TeamsToolkitIntegration';
+import { M365AgentsToolkitIntegration } from '../dataType/M365AgentsToolkitIntegration';
 import { PnPWebview } from '../../webview/PnPWebview';
 import { parseYoRc } from '../../utils/parseYoRc';
 import { parseCliCommand } from '../../utils/parseCliCommand';
 import { CertificateActions } from './CertificateActions';
 import path = require('path');
-import { ActionTreeItem } from '../../providers/ActionTreeDataProvider';
 import { getExtensionSettings } from '../../utils/getExtensionSettings';
 import * as fs from 'fs';
+import { ActionTreeItem } from '../../providers/ActionTreeDataProvider';
+
 
 export class CliActions {
 
@@ -44,43 +45,16 @@ export class CliActions {
       commands.registerCommand(Commands.pipeline, CliActions.showGenerateWorkflowForm)
     );
     subscriptions.push(
-      commands.registerCommand(Commands.deployAppCatalogApp, (node: ActionTreeItem) =>
-        CliActions.toggleAppDeployed(node, ContextKeys.deployApp, 'deploy')
-      )
-    );
-    subscriptions.push(
-      commands.registerCommand(Commands.retractAppCatalogApp, (node: ActionTreeItem) =>
-        CliActions.toggleAppDeployed(node, ContextKeys.retractApp, 'retract')
-      )
-    );
-    subscriptions.push(
-      commands.registerCommand(Commands.removeAppCatalogApp, CliActions.removeAppCatalogApp)
-    );
-    subscriptions.push(
-      commands.registerCommand(Commands.enableAppCatalogApp, (node: ActionTreeItem) =>
-        CliActions.toggleAppEnabled(node, ContextKeys.enableApp, 'enable')
-      )
-    );
-    subscriptions.push(
-      commands.registerCommand(Commands.disableAppCatalogApp, (node: ActionTreeItem) =>
-        CliActions.toggleAppEnabled(node, ContextKeys.disableApp, 'disable')
-      )
-    );
-    subscriptions.push(
-      commands.registerCommand(Commands.installAppCatalogApp, (node: ActionTreeItem) =>
-        CliActions.toggleAppInstalled(node, ContextKeys.installApp, 'install')
-      )
-    );
-    subscriptions.push(
-      commands.registerCommand(Commands.uninstallAppCatalogApp, (node: ActionTreeItem) =>
-        CliActions.toggleAppInstalled(node, ContextKeys.uninstallApp, 'uninstall')
-      )
-    );
-    subscriptions.push(
-      commands.registerCommand(Commands.upgradeAppCatalogApp, CliActions.upgradeAppCatalogApp)
-    );
-    subscriptions.push(
       commands.registerCommand(Commands.setFormCustomizer, CliActions.setFormCustomizer)
+    );
+    subscriptions.push(
+      commands.registerCommand(Commands.addTenantAppCatalog, CliActions.addTenantAppCatalog)
+    );
+    subscriptions.push(
+      commands.registerCommand(Commands.addSiteAppCatalog, CliActions.addSiteAppCatalog)
+    );
+    subscriptions.push(
+      commands.registerCommand(Commands.removeSiteAppCatalog, CliActions.removeSiteAppCatalog)
     );
   }
 
@@ -137,312 +111,6 @@ export class CliActions {
       });
 
       return appList;
-    } catch (e: any) {
-      const message = e?.error?.message;
-      Notifications.error(message);
-    }
-  }
-
-  /**
- * Deploys or retracts the app in the tenant or site app catalog.
- *
- * @param node The tree item representing the app to be deployed or retracted.
- * @param ctxValue The context value used to identify the action node.
- * @param action The action to be performed: 'deploy' or 'retract'.
- */
-  public static async toggleAppDeployed(node: ActionTreeItem, ctxValue: string, action: 'deploy' | 'retract') {
-    try {
-      const actionNode = node.children?.find(child => child.contextValue === ctxValue);
-
-      if (!actionNode?.command?.arguments) {
-        Notifications.error(`Failed to retrieve app details for ${action}.`);
-        return;
-      }
-
-      const [appID, appTitle, appCatalogUrl, deployed] = actionNode.command.arguments;
-
-      if (action === 'deploy' && deployed) {
-        Notifications.info(`App '${appTitle}' is already deployed.`);
-        return;
-      }
-
-      if (action === 'retract' && !deployed) {
-        Notifications.info(`App '${appTitle}' is already retracted.`);
-        return;
-      }
-
-      const commandOptions: any = {
-        id: appID,
-        ...(action === 'retract' && { force: true }),
-        ...(appCatalogUrl?.trim() && {
-          appCatalogScope: 'sitecollection',
-          appCatalogUrl: appCatalogUrl
-        })
-      };
-
-      const cliCommand = action === 'deploy' ? 'spo app deploy' : 'spo app retract';
-      await CliExecuter.execute(cliCommand, 'json', commandOptions);
-      Notifications.info(`App '${appTitle}' has been successfully ${action === 'deploy' ? 'deployed' : 'retracted'}.`);
-
-      // refresh the environmentTreeView
-      await commands.executeCommand('spfx-toolkit.refreshAppCatalogTreeView');
-    } catch (e: any) {
-      const message = e?.error?.message;
-      Notifications.error(message);
-    }
-  }
-
-  /**
-  * Removes an app from the tenant or site app catalog.
-  *
-  * @param node The tree item representing the app to be removed.
-  */
-  public static async removeAppCatalogApp(node: ActionTreeItem) {
-    try {
-      const actionNode = node.children?.find(child => child.contextValue === ContextKeys.removeApp);
-
-      if (!actionNode?.command?.arguments) {
-        Notifications.error('Failed to retrieve app details for removal.');
-        return;
-      }
-
-      const [appID, appTitle, appCatalogUrl] = actionNode.command.arguments;
-
-      const shouldRemove = await window.showQuickPick(['Yes', 'No'], {
-        title: `Are you sure you want to remove the app '${appTitle}' from the app catalog?`,
-        ignoreFocusOut: true,
-        canPickMany: false
-      });
-
-      const shouldRemoveAnswer = shouldRemove === 'Yes';
-
-      if (!shouldRemoveAnswer) {
-        return;
-      }
-
-      const commandOptions: any = {
-        id: appID,
-        force: true,
-        ...(appCatalogUrl?.trim() && {
-          appCatalogScope: 'sitecollection',
-          appCatalogUrl: appCatalogUrl
-        })
-      };
-
-      await CliExecuter.execute('spo app remove', 'json', commandOptions);
-      Notifications.info(`App '${appTitle}' has been successfully removed.`);
-
-      // refresh the environmentTreeView
-      await commands.executeCommand('spfx-toolkit.refreshAppCatalogTreeView');
-    } catch (e: any) {
-      const message = e?.error?.message;
-      Notifications.error(message);
-    }
-  }
-
-  /**
-  * Upgrades an app to a newer version available in the app catalog.
-  *
-  * @param node The tree item representing the app to be upgraded.
-  */
-  public static async upgradeAppCatalogApp(node: ActionTreeItem) {
-    try {
-      const actionNode = node.children?.find(child => child.contextValue === ContextKeys.upgradeApp);
-
-      if (!actionNode?.command?.arguments) {
-        Notifications.error('Failed to retrieve app details for upgrade.');
-        return;
-      }
-
-      const [appID, appTitle, appCatalogUrl, isTenantApp] = actionNode.command.arguments;
-
-      let siteUrl: string = appCatalogUrl;
-
-      if (isTenantApp) {
-        const relativeUrl = await window.showInputBox({
-          prompt: 'Enter the relative URL of the site to upgrade the app in',
-          placeHolder: 'e.g., sites/sales or leave blank for root site',
-          validateInput: (input) => {
-            const trimmedInput = input.trim();
-
-            if (trimmedInput.startsWith('https://')) {
-              return 'Please provide a relative URL, not an absolute URL.';
-            }
-            if (trimmedInput.startsWith('/')) {
-              return 'Please provide a relative URL without a leading slash.';
-            }
-
-            return undefined;
-          }
-        });
-
-        if (relativeUrl === undefined) {
-          Notifications.warning('No site URL provided. App upgrade aborted.');
-          return;
-        }
-
-        siteUrl = `${new URL(appCatalogUrl).origin}/${relativeUrl.trim()}`;
-      }
-
-      const commandOptions: any = {
-        id: appID,
-        ...(isTenantApp
-          ? { siteUrl }
-          : { appCatalogScope: 'sitecollection', siteUrl })
-      };
-
-      await CliExecuter.execute('spo app upgrade', 'json', commandOptions);
-      Notifications.info(`App '${appTitle}' has been successfully upgraded on site '${siteUrl}'.`);
-    } catch (e: any) {
-      const message = e?.message || 'An unexpected error occurred during the app upgrade.';
-      Notifications.error(message);
-    }
-  }
-
-  /**
-   * Enables or disables the app in the tenant or site app catalog.
-   *
-   * @param node The tree item representing the app to be deployed or retracted.
-   * @param ctxValue The context value used to identify the action node.
-   * @param action The action to be performed: 'enable' or 'disable'.
-   */
-  public static async toggleAppEnabled(node: ActionTreeItem, ctxValue: string, action: 'enable' | 'disable') {
-    try {
-      const actionNode = node.children?.find(child => child.contextValue === ctxValue);
-
-      if (!actionNode?.command?.arguments) {
-        Notifications.error(`Failed to retrieve app details for ${action}.`);
-        return;
-      }
-
-      const [appTitle, appCatalogUrl, isEnabled] = actionNode.command.arguments;
-
-      if (action === 'enable' && isEnabled) {
-        Notifications.info(`App '${appTitle}' is already enabled.`);
-        return;
-      }
-
-      if (action === 'disable' && !isEnabled) {
-        Notifications.info(`App '${appTitle}' is already disabled.`);
-        return;
-      }
-
-      const appProductIdFilter = `Title eq '${appTitle}'`;
-      const commandOptionsList: any = {
-        listTitle: 'Apps for SharePoint',
-        webUrl: appCatalogUrl,
-        fields: 'Id, Title, IsAppPackageEnabled',
-        filter: appProductIdFilter
-      };
-
-      const listItemsResponse = await CliExecuter.execute('spo listitem list', 'json', commandOptionsList);
-      const listItems = JSON.parse(listItemsResponse.stdout || '[]');
-
-      if (listItems.length === 0) {
-        Notifications.error(`App '${appTitle}' not found in the app catalog.`);
-        return;
-      }
-
-      const appListItemId = listItems[0].Id;
-
-      const commandOptionsSet: any = {
-        listTitle: 'Apps for SharePoint',
-        id: appListItemId,
-        webUrl: appCatalogUrl,
-        IsAppPackageEnabled: !isEnabled ? true : false
-      };
-
-      await CliExecuter.execute('spo listitem set', 'json', commandOptionsSet);
-      Notifications.info(`App '${appTitle}' has been successfully ${action === 'enable' ? 'enabled' : 'disabled'}.`);
-
-      // refresh the environmentTreeView
-      await commands.executeCommand('spfx-toolkit.refreshAppCatalogTreeView');
-    } catch (e: any) {
-      const message = e?.error?.message;
-      Notifications.error(message);
-    }
-  }
-
-  /**
- * Installs or uninstalls the app on a specified site.
- *
- * @param node The tree item representing the app to be installed or uninstalled.
- * @param ctxValue The context value used to identify the action node.
- * @param action The action to be performed: 'install' or 'uninstall'.
- */
-  public static async toggleAppInstalled(node: ActionTreeItem, ctxValue: string, action: 'install' | 'uninstall') {
-    try {
-      const actionNode = node.children?.find(child => child.contextValue === ctxValue);
-
-      if (!actionNode?.command?.arguments) {
-        Notifications.error(`Failed to retrieve app details for ${action}.`);
-        return;
-      }
-
-      const [appID, appTitle, appCatalogUrl] = actionNode.command.arguments;
-
-      let siteUrl: string | undefined;
-      if (!appCatalogUrl) {
-        const relativeUrl = await window.showInputBox({
-          prompt: 'Enter the relative URL of the site',
-          ignoreFocusOut: true,
-          placeHolder: 'e.g., sites/sales or leave blank for root site',
-          validateInput: (input) => {
-            const trimmedInput = input.trim();
-
-            if (trimmedInput.startsWith('https://')) {
-              return 'Please provide a relative URL, not an absolute URL.';
-            }
-            if (trimmedInput.startsWith('/')) {
-              return 'Please provide a relative URL without a leading slash.';
-            }
-
-            return undefined;
-          }
-        });
-
-        if (relativeUrl === undefined) {
-          Notifications.warning('No site URL provided. Operation aborted.');
-          return;
-        }
-
-        siteUrl = `${EnvironmentInformation.tenantUrl}/${relativeUrl.trim()}`;
-
-      } else {
-        siteUrl = appCatalogUrl;
-      }
-
-      let forceUninstall = false;
-      if (action === 'uninstall') {
-        const confirmForce = await window.showQuickPick(['Yes', 'No'], {
-          placeHolder: `Are you sure you want to uninstall the app '${appTitle}' from site '${siteUrl}'?`,
-          ignoreFocusOut: true,
-          canPickMany: false
-        });
-
-        if (confirmForce === 'Yes') {
-          forceUninstall = true;
-        } else {
-          Notifications.warning('App uninstallation aborted.');
-          return;
-        }
-      }
-
-      const commandOptions: any = {
-        id: appID,
-        siteUrl: siteUrl,
-        ...(appCatalogUrl && {
-          appCatalogScope: 'sitecollection'
-        }),
-        ...(forceUninstall && { force: true })
-      };
-
-      const cliCommand = action === 'install' ? 'spo app install' : 'spo app uninstall';
-      await CliExecuter.execute(cliCommand, 'json', commandOptions);
-      Notifications.info(`App '${appTitle}' has been successfully ${action === 'install' ? 'installed' : 'uninstalled'} on site '${siteUrl}'.`);
-
-      // refresh the environmentTreeView
-      await commands.executeCommand('spfx-toolkit.refreshAppCatalogTreeView');
     } catch (e: any) {
       const message = e?.error?.message;
       Notifications.error(message);
@@ -518,7 +186,7 @@ export class CliActions {
     if (wsFolder) {
       let fsPath = wsFolder.uri.fsPath;
 
-      if (TeamsToolkitIntegration.isTeamsToolkitProject) {
+      if (M365AgentsToolkitIntegration.isM365AgentsToolkitProject) {
         fsPath = join(fsPath, 'src');
       }
 
@@ -652,6 +320,291 @@ export class CliActions {
     return result.stdout;
   }
 
+ /**
+   * Sets the form customizer for a content type on a list.
+   */
+  public static async setFormCustomizer() {
+    const relativeUrl = await window.showInputBox({
+      prompt: 'Enter the relative URL of the site',
+      ignoreFocusOut: true,
+      placeHolder: 'e.g., sites/sales or leave blank for root site',
+      validateInput: (input) => {
+        const trimmedInput = input.trim();
+
+        if (trimmedInput.startsWith('https://')) {
+          return 'Please provide a relative URL, not an absolute URL.';
+        }
+        if (trimmedInput.startsWith('/')) {
+          return 'Please provide a relative URL without a leading slash.';
+        }
+
+        return undefined;
+      }
+    });
+
+    if (relativeUrl === undefined) {
+      Notifications.warning('No site URL provided. Setting form customizer aborted.');
+      return;
+    }
+
+    const siteUrl = `${EnvironmentInformation.tenantUrl}/${relativeUrl.trim()}`;
+
+    const listTitle = await window.showInputBox({
+      prompt: 'Enter the list title',
+      ignoreFocusOut: true,
+      validateInput: (value) => value ? undefined : 'List title is required'
+    });
+
+    if (!listTitle) {
+      Notifications.warning('No list title provided. Setting form customizer aborted.');
+      return;
+    }
+
+    const contentType = await window.showInputBox({
+      prompt: 'Enter the Content Type name',
+      ignoreFocusOut: true,
+      validateInput: (value) => value ? undefined : 'Content Type name is required'
+    });
+
+    if (!contentType) {
+      Notifications.warning('No content type name provided. Setting form customizer aborted.');
+      return;
+    }
+
+    const editFormClientSideComponentId = await window.showInputBox({
+      prompt: 'Enter the Edit form customizer ID (leave empty to skip)',
+      ignoreFocusOut: true
+    });
+
+    const newFormClientSideComponentId = await window.showInputBox({
+      prompt: 'Enter the New form customizer ID (leave empty to skip)',
+      ignoreFocusOut: true
+    });
+
+    const displayFormClientSideComponentId = await window.showInputBox({
+      prompt: 'Enter the View form customizer ID (leave empty to skip)',
+      ignoreFocusOut: true
+    });
+
+    const commandOptions: any = {
+      webUrl: siteUrl,
+      listTitle: listTitle,
+      name: contentType
+    };
+
+    if (editFormClientSideComponentId) {
+      commandOptions.EditFormClientSideComponentId = editFormClientSideComponentId;
+    }
+
+    if (newFormClientSideComponentId) {
+      commandOptions.NewFormClientSideComponentId = newFormClientSideComponentId;
+    }
+
+    if (displayFormClientSideComponentId) {
+      commandOptions.DisplayFormClientSideComponentId = displayFormClientSideComponentId;
+    }
+
+    await window.withProgress({
+      location: ProgressLocation.Notification,
+      title: `Setting form customizer... Check [output window](command:${Commands.showOutputChannel}) to follow the progress.`,
+      cancellable: true
+    }, async (progress: Progress<{ message?: string; increment?: number }>) => {
+      try {
+        const result = await CliExecuter.execute('spo contenttype set', 'json', commandOptions);
+        if (result.stderr) {
+          Notifications.error(result.stderr);
+        } else {
+          Notifications.info('Form customizer set successfully.');
+        }
+      } catch (e: any) {
+        const message = e?.error?.message;
+        Notifications.error(message);
+      }
+    });
+  }
+
+/**
+   * Adds a Tenant App Catalog.
+   * The URL is fixed to "https://domain.sharepoint.com/sites/appcatalog".
+   * Prompts the user for the owner and timeZone.
+   */
+  public static async addTenantAppCatalog() {
+    const tenantUrl = EnvironmentInformation.tenantUrl;
+    if (!tenantUrl) {
+      Notifications.error('Tenant URL not found. Please ensure you are logged in.');
+      return;
+    }
+
+    const appCatalogUrl = `${tenantUrl}/sites/appcatalog`;
+
+    const owner: string | undefined = await window.showInputBox({
+      prompt: 'Enter the email address of the tenant admin (owner)',
+      ignoreFocusOut: true,
+      value: EnvironmentInformation.account || '',
+      validateInput: (value) => value ? undefined : 'Owner email is required',
+    });
+    if (!owner) {
+      Notifications.error('Owner email is required to create a Tenant App Catalog.');
+      return;
+    }
+
+    const timeZoneInput = await window.showInputBox({
+      prompt: 'Enter the time zone as an integer (e.g., 4 for UTC+4). Refer to the guidelines: https://msdn.microsoft.com/library/microsoft.sharepoint.spregionalsettings.timezones.aspx',
+      ignoreFocusOut: true,
+      validateInput: (value) => {
+        const parsed = parseInt(value, 10);
+        return isNaN(parsed) ? 'Time zone must be an integer' : undefined;
+      },
+    });
+
+    if (!timeZoneInput) {
+      Notifications.error('Time zone is required to create a Tenant App Catalog.');
+      return;
+    }
+
+    const timeZone = parseInt(timeZoneInput, 10);
+
+    const confirmation = await window.showQuickPick(['Yes', 'No'], {
+      placeHolder: `Are you sure you want to create a Tenant App Catalog at '${appCatalogUrl}' with owner '${owner}' and time zone '${timeZone}'?`,
+      ignoreFocusOut: true,
+    });
+
+    if (confirmation !== 'Yes') {
+      return;
+    }
+
+    await window.withProgress({
+      location: ProgressLocation.Notification,
+      title: `Creating Tenant App Catalog at ${appCatalogUrl}... Check [output window](command:${Commands.showOutputChannel}) to follow the progress.`,
+      cancellable: false,
+    }, async () => {
+      try {
+        const commandOptions: any = {
+          url: appCatalogUrl,
+          owner,
+          timeZone,
+        };
+        const result = await CliExecuter.execute('spo tenant appcatalog add', 'json', commandOptions);
+
+        if (result.stderr) {
+          Notifications.error(result.stderr);
+        } else {
+          Notifications.info(`Tenant App Catalog created successfully at '${appCatalogUrl}'.`);
+          await commands.executeCommand('spfx-toolkit.refreshAppCatalogTreeView');
+        }
+      } catch (e: any) {
+        const message = e?.error?.message || 'An unexpected error occurred.';
+        Notifications.error(message);
+      }
+    });
+  }
+
+  /**
+   * Adds a Site Collection App Catalog.
+   * Prompts for the url.
+   */
+  public static async addSiteAppCatalog() {
+    try {
+      const relativeUrl = await window.showInputBox({
+        prompt: 'Enter the relative URL of the site where you want to create the site app catalog',
+        ignoreFocusOut: true,
+        placeHolder: 'e.g., sites/sales or leave blank for root site',
+        validateInput: (input) => {
+          const trimmedInput = input.trim();
+          if (trimmedInput.startsWith('https://')) {
+            return 'Please provide a relative URL, not an absolute URL.';
+          }
+          if (trimmedInput.startsWith('/')) {
+            return 'Please provide a relative URL without a leading slash.';
+          }
+          return undefined;
+        }});
+
+      if (!relativeUrl) {
+        Notifications.warning('No site URL provided. Operation aborted.');
+        return;
+      }
+
+      const siteUrl = `${EnvironmentInformation.tenantUrl}/${relativeUrl.trim()}`;
+
+      const confirmation = await window.showQuickPick(['Yes', 'No'], {
+        placeHolder: `Are you sure you want to create a site app catalog for '${relativeUrl}'?`,
+        ignoreFocusOut: true,
+      });
+
+      if (confirmation !== 'Yes') {
+        return;
+      }
+
+      await window.withProgress({
+        location: ProgressLocation.Notification,
+        title: `Creating site app catalog for ${siteUrl}... Check [output window](command:${Commands.showOutputChannel}) to follow the progress.`,
+        cancellable: false,
+      }, async () => {
+        const commandOptions: any = { siteUrl };
+        const result = await CliExecuter.execute('spo site appcatalog add', 'json', commandOptions);
+
+        if (result.stderr) {
+          Notifications.error(result.stderr);
+        } else {
+          Notifications.info(`Site app catalog created successfully for '${siteUrl}'.`);
+          await commands.executeCommand('spfx-toolkit.refreshAppCatalogTreeView');
+        }
+      });
+    } catch (e: any) {
+      const message = e?.error?.message || 'An unexpected error occurred.';
+      Notifications.error(message);
+    }
+  }
+
+  /**
+   * Removes a Site Collection App Catalog.
+   */
+  public static async removeSiteAppCatalog(node: ActionTreeItem) {
+    try {
+      let [appCatalogUrl] = node.command?.arguments || [];
+
+      if (!appCatalogUrl) {
+        Notifications.error('Failed to retrieve app catalog details for removal.');
+        return;
+      }
+
+      appCatalogUrl = appCatalogUrl.replace('/AppCatalog', '');
+
+      const shouldRemove = await window.showQuickPick(['Yes', 'No'], {
+        title: `Are you sure you want to remove the site app catalog from site '${appCatalogUrl}'?`,
+        ignoreFocusOut: true,
+        canPickMany: false
+      });
+
+      const shouldRemoveAnswer = shouldRemove === 'Yes';
+
+      if (!shouldRemoveAnswer) {
+        return;
+      }
+
+      const commandOptions: any = {
+        siteUrl: appCatalogUrl?.trim(),
+        force: true
+      };
+
+      await window.withProgress({
+        location: ProgressLocation.Notification,
+        title: `Removing site app catalog from ${appCatalogUrl}... Check [output window](command:${Commands.showOutputChannel}) to follow the progress.`,
+        cancellable: false,
+      }, async () => {
+        await CliExecuter.execute('spo site appcatalog remove', 'json', commandOptions);
+      });
+
+      Notifications.info(`App catalog '${appCatalogUrl}' has been successfully removed. Note: The App Catalog library will remain in the site, but it will be in a disabled state.`);
+
+      await commands.executeCommand('spfx-toolkit.refreshAppCatalogTreeView');
+    } catch (e: any) {
+      const message = e?.error?.message;
+      Notifications.error(message);
+    }
+  }
+
   /**
    * Upgrades the project by generating the upgrade steps and displaying them in a Markdown preview.
    * @private
@@ -662,7 +615,7 @@ export class CliActions {
     if (wsFolder) {
       let fsPath = wsFolder.uri.fsPath;
 
-      if (TeamsToolkitIntegration.isTeamsToolkitProject) {
+      if (M365AgentsToolkitIntegration.isM365AgentsToolkitProject) {
         fsPath = join(fsPath, 'src');
       }
 
@@ -703,7 +656,7 @@ export class CliActions {
     if (wsFolder) {
       let fsPath = wsFolder.uri.fsPath;
 
-      if (TeamsToolkitIntegration.isTeamsToolkitProject) {
+      if (M365AgentsToolkitIntegration.isM365AgentsToolkitProject) {
         fsPath = join(fsPath, 'src');
       }
 
@@ -762,7 +715,7 @@ export class CliActions {
    * Grants API permissions for the current project.
    * This method changes the current working directory to the root of the project,
    * and then executes the command to grant API permissions.
-   * If the project is a Teams Toolkit project, the source directory is set to 'src'.
+   * If the project is a Microsoft 365 Agents Toolkit project, the source directory is set to 'src'.
    * Displays progress notifications during the execution.
    * @returns A promise that resolves when the API permissions are granted.
    */
@@ -780,7 +733,7 @@ export class CliActions {
     if (wsFolder) {
       let fsPath = wsFolder.uri.fsPath;
 
-      if (TeamsToolkitIntegration.isTeamsToolkitProject) {
+      if (M365AgentsToolkitIntegration.isM365AgentsToolkitProject) {
         fsPath = join(fsPath, 'src');
       }
 
@@ -826,7 +779,7 @@ export class CliActions {
   /**
    * Validates the current project.
    * This method changes the current working directory to the root of the project and performs
-   * validation on the project. If the project is a Teams Toolkit project, it changes the working
+   * validation on the project. If the project is a Microsoft 365 Agents Toolkit project, it changes the working
    * directory to the 'src' folder before performing validation.
    * @returns A promise that resolves when the validation is complete.
    */
@@ -836,7 +789,7 @@ export class CliActions {
     if (wsFolder) {
       let fsPath = wsFolder.uri.fsPath;
 
-      if (TeamsToolkitIntegration.isTeamsToolkitProject) {
+      if (M365AgentsToolkitIntegration.isM365AgentsToolkitProject) {
         fsPath = join(fsPath, 'src');
       }
 
@@ -988,7 +941,7 @@ export class CliActions {
 
     let savePath = wsFolder?.uri.fsPath;
 
-    if (savePath && TeamsToolkitIntegration.isTeamsToolkitProject) {
+    if (savePath && M365AgentsToolkitIntegration.isM365AgentsToolkitProject) {
       savePath = join(savePath, 'src');
     }
 
@@ -1018,112 +971,5 @@ export class CliActions {
     } else {
       Notifications.error(`${fileName}.tour file not found in path ${path.join(wsFolder.uri.fsPath, '.tours')}. Cannot start Code Tour.`);
     }
-  }
-
-  /**
-   * Sets the form customizer for a content type on a list.
-   */
-  public static async setFormCustomizer() {
-    const relativeUrl = await window.showInputBox({
-      prompt: 'Enter the relative URL of the site',
-      ignoreFocusOut: true,
-      placeHolder: 'e.g., sites/sales',
-      validateInput: (input) => {
-        if (!input) {
-          return 'site URL is required';
-        }
-
-        const trimmedInput = input.trim();
-
-        if (trimmedInput.startsWith('https://')) {
-          return 'Please provide a relative URL, not an absolute URL.';
-        }
-        if (trimmedInput.startsWith('/')) {
-          return 'Please provide a relative URL without a leading slash.';
-        }
-
-        return undefined;
-      }
-    });
-
-    if (relativeUrl === undefined) {
-      Notifications.warning('No site URL provided. Setting form customizer aborted.');
-      return;
-    }
-
-    const siteUrl = `${EnvironmentInformation.tenantUrl}/${relativeUrl.trim()}`;
-
-    const listTitle = await window.showInputBox({
-      prompt: 'Enter the list title',
-      ignoreFocusOut: true,
-      validateInput: (value) => value ? undefined : 'List title is required'
-    });
-
-    if (!listTitle) {
-      Notifications.warning('No list title provided. Setting form customizer aborted.');
-      return;
-    }
-
-    const contentType = await window.showInputBox({
-      prompt: 'Enter the Content Type name',
-      ignoreFocusOut: true,
-      validateInput: (value) => value ? undefined : 'Content Type name is required'
-    });
-
-    if (!contentType) {
-      Notifications.warning('No content type name provided. Setting form customizer aborted.');
-      return;
-    }
-
-    const editFormClientSideComponentId = await window.showInputBox({
-      prompt: 'Enter the Edit form customizer ID (leave empty to skip)',
-      ignoreFocusOut: true
-    });
-
-    const newFormClientSideComponentId = await window.showInputBox({
-      prompt: 'Enter the New form customizer ID (leave empty to skip)',
-      ignoreFocusOut: true
-    });
-
-    const displayFormClientSideComponentId = await window.showInputBox({
-      prompt: 'Enter the View form customizer ID (leave empty to skip)',
-      ignoreFocusOut: true
-    });
-
-    const commandOptions: any = {
-      webUrl: siteUrl,
-      listTitle: listTitle,
-      name: contentType
-    };
-
-    if (editFormClientSideComponentId) {
-      commandOptions.EditFormClientSideComponentId = editFormClientSideComponentId;
-    }
-
-    if (newFormClientSideComponentId) {
-      commandOptions.NewFormClientSideComponentId = newFormClientSideComponentId;
-    }
-
-    if (displayFormClientSideComponentId) {
-      commandOptions.DisplayFormClientSideComponentId = displayFormClientSideComponentId;
-    }
-
-    await window.withProgress({
-      location: ProgressLocation.Notification,
-      title: `Setting form customizer... Check [output window](command:${Commands.showOutputChannel}) to follow the progress.`,
-      cancellable: true
-    }, async (progress: Progress<{ message?: string; increment?: number }>) => {
-      try {
-        const result = await CliExecuter.execute('spo contenttype set', 'json', commandOptions);
-        if (result.stderr) {
-          Notifications.error(result.stderr);
-        } else {
-          Notifications.info('Form customizer set successfully.');
-        }
-      } catch (e: any) {
-        const message = e?.error?.message;
-        Notifications.error(message);
-      }
-    });
   }
 }

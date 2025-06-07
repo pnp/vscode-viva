@@ -13,6 +13,8 @@ import { PromptHandlers } from './chat/PromptHandlers';
 import { CHAT_PARTICIPANT_NAME, ProjectFileContent } from './constants';
 import { EntraAppRegistration } from './services/actions/EntraAppRegistration';
 import { CopilotActions } from './services/actions/CopilotActions';
+import { ChatTools } from './chat/tools/ChatTools';
+import { SpfxAppCLIActions } from './services/actions/SpfxAppCLIActions';
 
 
 export async function activate(context: vscode.ExtensionContext) {
@@ -22,6 +24,8 @@ export async function activate(context: vscode.ExtensionContext) {
 
 	Extension.getInstance(context);
 
+	ChatTools.register();
+
 	TerminalCommandExecuter.register();
 
 	AuthProvider.register(context);
@@ -29,6 +33,7 @@ export async function activate(context: vscode.ExtensionContext) {
 	Dependencies.registerCommands();
 	Scaffolder.registerCommands();
 	CliActions.registerCommands();
+	SpfxAppCLIActions.registerCommands();
 	EntraAppRegistration.registerCommands(context);
 	CopilotActions.registerCommands();
 
