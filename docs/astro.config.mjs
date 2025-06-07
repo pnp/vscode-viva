@@ -49,9 +49,9 @@ export default defineConfig({
 				{
 					label: 'Extended Capabilities',
 					items: [
-						{ label: 'SPFx Toolkit Chat Participant', link: 'guides/chat-participant' },
+						{ label: 'SPFx Toolkit AI capabilities', link: 'guides/ai-capabilities' },
 						{ label: 'Coding Snippets', link: 'guides/snippets' },
-						{ label: 'Teams Toolkit Integration', link: 'guides/teams-toolkit' }
+						{ label: 'Microsoft 365 Agents Toolkit Integration', link: 'guides/m365-agents-toolkit' }
 					],
 				},
 				{
