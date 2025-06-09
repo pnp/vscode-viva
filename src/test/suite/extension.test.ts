@@ -20,8 +20,13 @@ suite('Extension', function () {
 		assert.strictEqual(actual, expected);
 	});
 
-	test('should register the "spfx-toolkit.login" command', async () => {
+	test('should have the "spfx-toolkit.login" command', async () => {
 		const commands = await vscode.commands.getCommands(true);
 		assert(commands.includes('spfx-toolkit.login'));
+	});
+
+	test('should have the "spfx-toolkit.welcome" command', async () => {
+		const commands = await vscode.commands.getCommands(true);
+		assert(commands.includes('spfx-toolkit.welcome'));
 	});
 });
