@@ -2,6 +2,7 @@ import { Uri, TreeItemCollapsibleState } from 'vscode';
 import { ActionTreeItem } from '../providers/ActionTreeDataProvider';
 import { Commands } from '../constants';
 
+
 export const helpCommands: ActionTreeItem[] = [
     new ActionTreeItem('Docs & Learning', '', undefined, TreeItemCollapsibleState.Expanded, undefined, undefined, undefined, [
         new ActionTreeItem('Overview of the SharePoint Framework', '', { name: 'book', custom: false }, undefined, 'vscode.open', Uri.parse('https://learn.microsoft.com/en-us/sharepoint/dev/spfx/sharepoint-framework-overview')),

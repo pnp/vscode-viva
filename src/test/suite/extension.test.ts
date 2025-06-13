@@ -1,22 +1,21 @@
 import * as assert from 'assert';
 import * as vscode from 'vscode';
 import { sleep } from '../../utils/sleep';
+import { EXTENSION_ID } from '../testConstants';
 
 
 suite('Extension', function () {
-	const extensionId = 'm365pnp.viva-connections-toolkit';
-
 	this.timeout(10000); // 10 seconds timeout for the suite
 
 	suiteSetup(async () => {
 		do {
 			await sleep(1000);
-		} while (!vscode.extensions.getExtension(extensionId)?.isActive);
+		} while (!vscode.extensions.getExtension(EXTENSION_ID)?.isActive);
 	});
 
 	test('should activate', async () => {
 		const expected = true;
-		const actual = vscode.extensions.getExtension(extensionId)?.isActive;
+		const actual = vscode.extensions.getExtension(EXTENSION_ID)?.isActive;
 		assert.strictEqual(actual, expected);
 	});
 

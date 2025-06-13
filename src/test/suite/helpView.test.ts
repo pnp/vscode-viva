@@ -1,13 +1,12 @@
 import * as assert from 'assert';
 import * as vscode from 'vscode';
 import { helpCommands } from '../../panels/HelpTreeData';
+import { EXTENSION_ID } from '../testConstants';
 
 
 suite('Help and feedback', () => {
-    const extensionId = 'm365pnp.viva-connections-toolkit';
-
     test('should verify that "pnp-view-help" is contributed', () => {
-        const extension = vscode.extensions.getExtension(extensionId);
+        const extension = vscode.extensions.getExtension(EXTENSION_ID);
         assert(extension, 'Extension not found');
 
         const contributedViews = extension.packageJSON.contributes.views?.['pnp-view'];
