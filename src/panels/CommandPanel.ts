@@ -15,6 +15,7 @@ import { getExtensionSettings } from '../utils';
 import { Notifications } from '../services/dataType/Notifications';
 import { increaseVersion } from '../utils/increaseVersion';
 import { helpCommands } from './HelpTreeData';
+import { gulpTaskCommands } from './TaskTreeData';
 
 
 export class CommandPanel {
@@ -95,8 +96,12 @@ export class CommandPanel {
       });
     }
 
-    CommandPanel.taskTreeView();
-    CommandPanel.helpTreeView();
+    window.registerTreeDataProvider('pnp-view-tasks', new ActionTreeDataProvider(gulpTaskCommands));
+    window.createTreeView('pnp-view-help',
+      {
+        treeDataProvider: new ActionTreeDataProvider(helpCommands),
+        showCollapseAll: true
+      });
   }
 
   private static refreshAccountTreeView() {
@@ -289,22 +294,6 @@ export class CommandPanel {
     window.createTreeView('pnp-view-environment', { treeDataProvider: new ActionTreeDataProvider(environmentCommands), showCollapseAll: true });
   }
 
-  private static taskTreeView() {
-    const taskCommands: ActionTreeItem[] = [
-      new ActionTreeItem('Build project', '', { name: 'gear', custom: false }, undefined, Commands.buildProject),
-      new ActionTreeItem('Bundle project', '', { name: 'package', custom: false }, undefined, Commands.bundleProject),
-      new ActionTreeItem('Clean project', '', { name: 'clear-all', custom: false }, undefined, Commands.cleanProject),
-      new ActionTreeItem('Deploy project assets to Azure Storage', '', { name: 'cloud-upload', custom: false }, undefined, Commands.deployToAzureStorage),
-      new ActionTreeItem('Package', '', { name: 'zap', custom: false }, undefined, Commands.packageProject),
-      new ActionTreeItem('Publish', '', { name: 'rocket', custom: false }, undefined, Commands.publishProject),
-      new ActionTreeItem('Serve', '', { name: 'play-circle', custom: false }, undefined, Commands.serveProject),
-      new ActionTreeItem('Test', '', { name: 'beaker', custom: false }, undefined, Commands.testProject),
-      new ActionTreeItem('Trust self-signed developer certificate', '', { name: 'verified', custom: false }, undefined, Commands.trustDevCert),
-    ];
-
-    window.registerTreeDataProvider('pnp-view-tasks', new ActionTreeDataProvider(taskCommands));
-  }
-
   private static async actionsTreeView() {
     const actionCommands: ActionTreeItem[] = [];
     actionCommands.push(new ActionTreeItem('Upgrade project SPFx version', '', { name: 'arrow-up', custom: false }, undefined, Commands.upgradeProject));
@@ -323,14 +312,6 @@ export class CommandPanel {
     actionCommands.push(new ActionTreeItem('View samples', '', { name: 'library', custom: false }, undefined, Commands.samplesGallery));
 
     window.registerTreeDataProvider('pnp-view-actions', new ActionTreeDataProvider(actionCommands));
-  }
-
-  private static helpTreeView() {
-    window.createTreeView('pnp-view-help',
-      {
-        treeDataProvider: new ActionTreeDataProvider(helpCommands),
-        showCollapseAll: true
-      });
   }
 
   private static showWelcome() {
