@@ -10671,6 +10671,29 @@
       "sampleType": "samples"
     },
     {
+      "name": "pnp-sp-dev-spfx-web-parts-react-ticket-mgnt",
+      "title": "Ticket Management App",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-ticket-mgnt",
+      "description": "This SharePoint web part is a ticket management system with a modern, responsive design. It includes a dashboard, personal view, new ticket form, and a detailed ticket view. Tickets can be configured with metadata like priority and status. The system integrates with SharePoint for assignments and permissions, stores data in a SharePoint list, and provides real-time updates. Built with React, TypeScript, and Fluent UI, it maintains SharePoint's look and feel while offering advanced functionality for managing issues or requests.",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-ticket-mgnt/assets/new ticket.png",
+      "authors": [
+        {
+          "name": "Sudeep Ghatak",
+          "pictureUrl": "https://github.com/sudeepghatak.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2025-06-13",
+      "updateDate": "2025-06-13",
+      "version": "1.20.0",
+      "componentType": "webpart",
+      "extensionType": null,
+      "sampleGalerry": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
       "name": "pnp-sp-dev-spfx-web-parts-react-tiles-v2",
       "title": "Tiles V2 Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-tiles-v2",
