@@ -189,7 +189,13 @@ export class CommandPanel {
           if (tenantWideExtensions && tenantWideExtensions.length > 0) {
             tenantWideExtensions.forEach((extension) => {
               tenantWideExtensionsList.push(
-                new ActionTreeItem(extension.Title, '', { name: 'spo-app', custom: true }, TreeItemCollapsibleState.None, 'vscode.open', Uri.parse(extension.Url), 'sp-app-catalog-tenant-wide-extensions-url')
+                new ActionTreeItem(extension.Title, '', { name: 'spo-app', custom: true }, TreeItemCollapsibleState.None, 'vscode.open', Uri.parse(extension.Url), ContextKeys.hasTenantWideExtension,
+                  [
+                    new ActionTreeItem('Remove', '', undefined, undefined, Commands.removeTenantWideExtension, [extension.Title, extension.Url, tenantAppCatalogUrl], ContextKeys.removeTenantWideExtension),
+                    new ActionTreeItem('Enable', '', undefined, undefined, Commands.enableTenantWideExtension, [extension.Title, extension.Url, tenantAppCatalogUrl, extension.IsDisabled], ContextKeys.enableTenantWideExtension),
+                    new ActionTreeItem('Disable', '', undefined, undefined, Commands.disableTenantWideExtension, [extension.Title, extension.Url, tenantAppCatalogUrl, extension.IsDisabled], ContextKeys.disableTenantWideExtension),
+                  ]
+                )
               );
             });
           } else {
