@@ -511,14 +511,14 @@ export class SpfxAppCLIActions {
                 return;
             }
 
-            const [extensionTitle, extensionUrl, tenantAppCatalogUrl, isDisabled] = actionNode.command.arguments;
+            const [extensionTitle, extensionUrl, tenantAppCatalogUrl, extensionDisabled] = actionNode.command.arguments;
 
-            if (action === 'enable' && !isDisabled) {
+            if (action === 'enable' && !extensionDisabled) {
                 Notifications.info(`Extension '${extensionTitle}' is already enabled.`);
                 return;
             }
 
-            if (action === 'disable' && isDisabled) {
+            if (action === 'disable' && extensionDisabled) {
                 Notifications.info(`Extension '${extensionTitle}' is already disabled.`);
                 return;
             }
@@ -530,20 +530,13 @@ export class SpfxAppCLIActions {
                 return;
             }
 
-            const commandOptionsSet: any = {
-                listUrl: `${tenantAppCatalogUrl.replace(new URL(tenantAppCatalogUrl).origin, '')}/Lists/TenantWideExtensions`,
-                id: extensionId,
-                webUrl: tenantAppCatalogUrl,
-                TenantWideExtensionDisabled: isDisabled ? false : true
-            };
-
-            await window.withProgress({
-                location: ProgressLocation.Notification,
-                title: `${action === 'enable' ? 'Enabling' : 'Disabling'} tenant-wide extension... Check [output window](command:${Commands.showOutputChannel}) to follow the progress.`,
-                cancellable: true
-            }, async () => {
-                await CliExecuter.execute('spo listitem set', 'json', commandOptionsSet);
-            });
+            await SpfxAppCLIActions.updateExtensionProperties(extensionId,
+                `${tenantAppCatalogUrl.replace(new URL(tenantAppCatalogUrl).origin, '')}/Lists/TenantWideExtensions`,
+                {
+                    TenantWideExtensionDisabled: action === 'enable' ? false : true
+                },
+                tenantAppCatalogUrl
+            );
 
             Notifications.info(`Extension '${extensionTitle}' has been successfully ${action === 'enable' ? 'enabled' : 'disabled'}.`);
 
@@ -553,5 +546,30 @@ export class SpfxAppCLIActions {
             const message = e?.error?.message;
             Notifications.error(message);
         }
+    }
+
+    /**
+     * Updates the properties of a tenant-wide extension.
+     *
+     * @param id The ID of the extension to update.
+     * @param listUrl The URL of the list containing the extension.
+     * @param properties The properties to update.
+     * @param webUrl The URL of the web where the list is located.
+     */
+    private static async updateExtensionProperties(id: string, listUrl: string, properties: { [key: string]: any }, webUrl: string) {
+        const commandOptions: any = {
+            id: id,
+            listUrl: listUrl,
+            webUrl: webUrl,
+            ...properties
+        };
+
+        await window.withProgress({
+            location: ProgressLocation.Notification,
+            title: `Updating extension properties... Check [output window](command:${Commands.showOutputChannel}) to follow the progress.`,
+            cancellable: true
+        }, async () => {
+            await CliExecuter.execute('spo listitem set', 'json', commandOptions);
+        });
     }
 }
