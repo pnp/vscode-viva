@@ -49,6 +49,19 @@ export class SpfxAppCLIActions {
         subscriptions.push(
             commands.registerCommand(Commands.upgradeAppCatalogApp, SpfxAppCLIActions.upgradeAppCatalogApp)
         );
+        subscriptions.push(
+            commands.registerCommand(Commands.removeTenantWideExtension, SpfxAppCLIActions.removeTenantWideExtension)
+        );
+        subscriptions.push(
+            commands.registerCommand(Commands.enableTenantWideExtension, (node: ActionTreeItem) =>
+                SpfxAppCLIActions.toggleExtensionEnabled(node, ContextKeys.enableTenantWideExtension, 'enable')
+            )
+        );
+        subscriptions.push(
+            commands.registerCommand(Commands.disableTenantWideExtension, (node: ActionTreeItem) =>
+                SpfxAppCLIActions.toggleExtensionEnabled(node, ContextKeys.disableTenantWideExtension, 'disable')
+            )
+        );
     }
 
     /**
@@ -393,9 +406,7 @@ export class SpfxAppCLIActions {
                 canPickMany: false
             });
 
-            const shouldRemoveAnswer = shouldRemove === 'Yes';
-
-            if (!shouldRemoveAnswer) {
+            if (shouldRemove !== 'Yes') {
                 return;
             }
 
@@ -424,5 +435,141 @@ export class SpfxAppCLIActions {
             const message = e?.error?.message;
             Notifications.error(message);
         }
+    }
+
+    /**
+     * Removes a tenant-wide extension.
+     *
+     * @param node The tree item representing the tenant-wide extension to be removed.
+     */
+    public static async removeTenantWideExtension(node: ActionTreeItem) {
+        try {
+            const actionNode = node.children?.find(child => child.contextValue === ContextKeys.removeTenantWideExtension);
+
+            if (!actionNode?.command?.arguments) {
+                Notifications.error('Failed to retrieve the extension details for removal.');
+                return;
+            }
+
+            const [extensionTitle, extensionUrl, tenantAppCatalogUrl] = actionNode.command.arguments;
+
+            const shouldRemove = await window.showQuickPick(['Yes', 'No'], {
+                title: `Are you sure you want to remove the app '${extensionTitle}' from the Tenant Wide Extensions list?`,
+                ignoreFocusOut: true,
+                canPickMany: false
+            });
+
+            if (shouldRemove !== 'Yes') {
+                return;
+            }
+
+            const url = new URL(extensionUrl);
+            const extensionId = url.searchParams.get('ID');
+            if (!extensionId) {
+                Notifications.error('Failed to retrieve the extension ID from the extension URL.');
+                return;
+            }
+
+            const commandOptionsSet: any = {
+                listUrl: `${tenantAppCatalogUrl.replace(new URL(tenantAppCatalogUrl).origin, '')}/Lists/TenantWideExtensions`,
+                webUrl: tenantAppCatalogUrl,
+                id: extensionId,
+                force: true
+            };
+
+            await window.withProgress({
+                location: ProgressLocation.Notification,
+                title: `Removing Tenant Wide Extension... Check [output window](command:${Commands.showOutputChannel}) to follow the progress.`,
+                cancellable: true
+            }, async () => {
+                await CliExecuter.execute('spo listitem remove', 'json', commandOptionsSet);
+            });
+
+            Notifications.info(`Tenant Wide Extension '${extensionTitle}' has been successfully removed.`);
+
+            // refresh the environmentTreeView
+            await commands.executeCommand('spfx-toolkit.refreshAppCatalogTreeView');
+        } catch (e: any) {
+            const message = e?.error?.message;
+            Notifications.error(message);
+        }
+    }
+
+    /**
+     * Enables or disables a tenant-wide extension.
+     *
+     * @param node The tree item representing the tenant-wide extension to be enabled or disabled.
+     * @param ctxValue The context value used to identify the action node.
+     * @param action The action to be performed: 'enable' or 'disable'.
+     */
+    public static async toggleExtensionEnabled(node: ActionTreeItem, ctxValue: string, action: 'enable' | 'disable') {
+        try {
+            const actionNode = node.children?.find(child => child.contextValue === ctxValue);
+
+            if (!actionNode?.command?.arguments) {
+                Notifications.error(`Failed to retrieve the extension details for ${action}.`);
+                return;
+            }
+
+            const [extensionTitle, extensionUrl, tenantAppCatalogUrl, extensionDisabled] = actionNode.command.arguments;
+
+            if (action === 'enable' && !extensionDisabled) {
+                Notifications.info(`Extension '${extensionTitle}' is already enabled.`);
+                return;
+            }
+
+            if (action === 'disable' && extensionDisabled) {
+                Notifications.info(`Extension '${extensionTitle}' is already disabled.`);
+                return;
+            }
+
+            const url = new URL(extensionUrl);
+            const extensionId = url.searchParams.get('ID');
+            if (!extensionId) {
+                Notifications.error('Failed to retrieve the extension ID from the extension URL.');
+                return;
+            }
+
+            await SpfxAppCLIActions.updateExtensionProperties(extensionId,
+                `${tenantAppCatalogUrl.replace(new URL(tenantAppCatalogUrl).origin, '')}/Lists/TenantWideExtensions`,
+                {
+                    TenantWideExtensionDisabled: action === 'enable' ? false : true
+                },
+                tenantAppCatalogUrl
+            );
+
+            Notifications.info(`Extension '${extensionTitle}' has been successfully ${action === 'enable' ? 'enabled' : 'disabled'}.`);
+
+            // refresh the environmentTreeView
+            await commands.executeCommand('spfx-toolkit.refreshAppCatalogTreeView');
+        } catch (e: any) {
+            const message = e?.error?.message;
+            Notifications.error(message);
+        }
+    }
+
+    /**
+     * Updates the properties of a tenant-wide extension.
+     *
+     * @param id The ID of the extension to update.
+     * @param listUrl The URL of the list containing the extension.
+     * @param properties The properties to update.
+     * @param webUrl The URL of the web where the list is located.
+     */
+    private static async updateExtensionProperties(id: string, listUrl: string, properties: { [key: string]: any }, webUrl: string) {
+        const commandOptions: any = {
+            id: id,
+            listUrl: listUrl,
+            webUrl: webUrl,
+            ...properties
+        };
+
+        await window.withProgress({
+            location: ProgressLocation.Notification,
+            title: `Updating extension properties... Check [output window](command:${Commands.showOutputChannel}) to follow the progress.`,
+            cancellable: true
+        }, async () => {
+            await CliExecuter.execute('spo listitem set', 'json', commandOptions);
+        });
     }
 }

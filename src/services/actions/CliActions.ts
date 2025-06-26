@@ -123,7 +123,7 @@ export class CliActions {
    * @returns A promise that resolves to an array of objects containing the URL and title of each tenant-wide extension,
    *          or undefined if no extensions are found.
    */
-  public static async getTenantWideExtensions(tenantAppCatalogUrl: string): Promise<{ Url: string, Title: string }[] | undefined> {
+  public static async getTenantWideExtensions(tenantAppCatalogUrl: string): Promise<{ Url: string, Title: string, extensionDisabled: boolean }[] | undefined> {
     const origin = new URL(tenantAppCatalogUrl).origin;
     const commandOptions: any = {
       listUrl: `${tenantAppCatalogUrl.replace(origin, '')}/Lists/TenantWideExtensions`,
@@ -140,7 +140,8 @@ export class CliActions {
       const tenantWideExtensionList = tenantWideExtensionsJson.map((extension) => {
         return {
           Url: `${tenantAppCatalogUrl}/Lists/TenantWideExtensions/DispForm.aspx?ID=${extension.Id}`,
-          Title: extension.Title
+          Title: extension.Title,
+          extensionDisabled: extension.TenantWideExtensionDisabled || false
         };
       });
       return tenantWideExtensionList;
@@ -320,9 +321,9 @@ export class CliActions {
     return result.stdout;
   }
 
- /**
-   * Sets the form customizer for a content type on a list.
-   */
+  /**
+    * Sets the form customizer for a content type on a list.
+    */
   public static async setFormCustomizer() {
     const relativeUrl = await window.showInputBox({
       prompt: 'Enter the relative URL of the site',
@@ -423,11 +424,11 @@ export class CliActions {
     });
   }
 
-/**
-   * Adds a Tenant App Catalog.
-   * The URL is fixed to "https://domain.sharepoint.com/sites/appcatalog".
-   * Prompts the user for the owner and timeZone.
-   */
+  /**
+     * Adds a Tenant App Catalog.
+     * The URL is fixed to "https://domain.sharepoint.com/sites/appcatalog".
+     * Prompts the user for the owner and timeZone.
+     */
   public static async addTenantAppCatalog() {
     const tenantUrl = EnvironmentInformation.tenantUrl;
     if (!tenantUrl) {
@@ -518,7 +519,8 @@ export class CliActions {
             return 'Please provide a relative URL without a leading slash.';
           }
           return undefined;
-        }});
+        }
+      });
 
       if (!relativeUrl) {
         Notifications.warning('No site URL provided. Operation aborted.');

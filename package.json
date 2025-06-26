@@ -857,6 +857,30 @@
 				"title": "Remove Site App Catalog",
 				"category": "SPFx Toolkit",
 				"icon": "$(trash)"
+			},
+			{
+				"command": "spfx-toolkit.moreTenantWideExtensionActions",
+				"title": "...",
+				"category": "SPFx Toolkit",
+				"icon": "$(ellipsis)"
+			},
+			{
+				"command": "spfx-toolkit.removeTenantWideExtension",
+				"title": "Remove",
+				"category": "SPFx Toolkit",
+				"icon": "$(trash)"
+			},
+			{
+				"command": "spfx-toolkit.enableTenantWideExtension",
+				"title": "Enable",
+				"category": "SPFx Toolkit",
+				"icon": "$(check)"
+			},
+			{
+				"command": "spfx-toolkit.disableTenantWideExtension",
+				"title": "Disable",
+				"category": "SPFx Toolkit",
+				"icon": "$(circle-slash)"
 			}
 		],
 		"menus": {
@@ -912,6 +936,22 @@
 				{
 					"command": "spfx-toolkit.uninstallAppCatalogApp",
 					"when": "false"
+				},
+				{
+					"command": "spfx-toolkit.moreTenantWideExtensionActions",
+					"when": "false"
+				},
+				{
+					"command": "spfx-toolkit.removeTenantWideExtension",
+					"when": "false"
+				},
+				{
+					"command": "spfx-toolkit.enableTenantWideExtension",
+					"when": "false"
+				},
+				{
+					"command": "spfx-toolkit.disableTenantWideExtension",
+					"when": "false"
 				}
 			],
 			"view/title": [
@@ -956,6 +996,11 @@
 					"command": "spfx-toolkit.removeSiteAppCatalog",
 					"when": "viewItem == sp-app-catalog-url",
 					"group": "inline"
+				},
+				{
+					"submenu": "spfx-toolkit.moreTenantWideExtensionActions",
+					"when": "view == pnp-view-environment && viewItem == pnp.etv.hasTenantWideExtension",
+					"group": "inline@2"
 				}
 			],
 			"spfx-toolkit.showMoreActions": [
@@ -992,6 +1037,20 @@
 					"group": "actions.more@5"
 				}
 			],
+			"spfx-toolkit.moreTenantWideExtensionActions": [
+				{
+					"command": "spfx-toolkit.removeTenantWideExtension",
+					"group": "actions.more@1"
+				},
+				{
+					"command": "spfx-toolkit.enableTenantWideExtension",
+					"group": "actions.more@2"
+				},
+				{
+					"command": "spfx-toolkit.disableTenantWideExtension",
+					"group": "actions.more@3"
+				}
+			],
 			"explorer/context": [
 				{
 					"command": "spfx-toolkit.deployProject",
@@ -1003,6 +1062,11 @@
 		"submenus": [
 			{
 				"id": "spfx-toolkit.showMoreActions",
+				"label": "More Actions...",
+				"icon": "$(ellipsis)"
+			},
+			{
+				"id": "spfx-toolkit.moreTenantWideExtensionActions",
 				"label": "More Actions...",
 				"icon": "$(ellipsis)"
 			}
