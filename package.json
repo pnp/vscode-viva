@@ -361,9 +361,9 @@
 					"upgrade",
 					"spfx-toolkit"
 				],
-				"toolReferenceName": "SharePointFrameworkPojectUpgrade",
+				"toolReferenceName": "SharePointFrameworkProjectUpgrade",
 				"displayName": "Upgrade SharePoint Framework project",
-				"modelDescription": "Allows to retrieve the necessary steps that need to be done to upgrade a SharePoint Framework porject to latest version of SharePoint Framework (SPFx). The retrieved steps may be executed by the agent. It should be used to retrieve the required steps to perform update so that GitHub Copilot Agent may perform them.",
+				"modelDescription": "Allows retrieval of the steps required to upgrade a SharePoint Framework (SPFx) project to the latest version. The retrieved steps may be executed by the GitHub Copilot Agent to perform the upgrade.",
 				"userDescription": "Upgrade SharePoint Framework project.",
 				"canBeReferencedInPrompt": true,
 				"icon": "$(arrow-up)",
