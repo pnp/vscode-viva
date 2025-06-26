@@ -351,6 +351,23 @@
 						}
 					}
 				}
+			},
+			{
+				"name": "upgrade_spfx_project",
+				"tags": [
+					"sharepoint framework",
+					"SPFx",
+					"project",
+					"upgrade",
+					"spfx-toolkit"
+				],
+				"toolReferenceName": "SharePointFrameworkProjectUpgrade",
+				"displayName": "Upgrade SharePoint Framework project",
+				"modelDescription": "Allows retrieval of the steps required to upgrade a SharePoint Framework (SPFx) project to the latest version. The retrieved steps may be executed by the GitHub Copilot Agent to perform the upgrade.",
+				"userDescription": "Upgrade SharePoint Framework project.",
+				"canBeReferencedInPrompt": true,
+				"icon": "$(arrow-up)",
+				"inputSchema": {}
 			}
 		],
 		"walkthroughs": [
