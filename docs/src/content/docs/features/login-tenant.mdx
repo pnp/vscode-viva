@@ -53,6 +53,12 @@ of the form to create your custom application
 
 ![app-reg-config](../../../../assets/images/app-reg-config.png)
 
+- Under Mobile and desktop applications, click on Add URI and enter the following redirect URIs:
+    - http://localhost
+    - https://localhost
+
+![app-reg-configURI](../../../../assets/images/app-reg-configURI.png)
+
 - we can skip over the <code>Supported account type</code> section, as this is defaulted to <code>Accounts in this organizational directory only (tenant only - Single tenant)</code> meaning, that only users within the current tenant directory can use this application.
 - In the <code>Advanced settings</code> section, we need to enable the <code>Allow public client flows</code> toggle, as we are using the <code>Device code flow</code> method to authenticate to our tenant using the CLI for Microsoft 365.
 
