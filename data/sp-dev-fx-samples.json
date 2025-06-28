@@ -9005,6 +9005,33 @@
       "sampleType": "samples"
     },
     {
+      "name": "pnp-sp-dev-spfx-web-parts-react-public-holidays-global",
+      "title": "Public Holidays Global",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-public-holidays-global",
+      "description": "Displays public holidays for multiple countries and years.",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-public-holidays-global/assets/sample.png",
+      "authors": [
+        {
+          "name": "João Livio",
+          "pictureUrl": "https://github.com/jtlivio.png"
+        },
+        {
+          "name": "Create a new issue",
+          "pictureUrl": "https://github.com/pnp/sp-dev-fx-webparts/issues/new.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2025-06-17",
+      "updateDate": "2025-06-17",
+      "version": "1.20.0",
+      "componentType": "webpart",
+      "extensionType": null,
+      "sampleGalerry": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
       "name": "pnp-sp-dev-spfx-web-parts-react-questions-and-answers",
       "title": "Questions and Answers Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-questions-and-answers",
