@@ -13,7 +13,7 @@
 
 [data-has-hero] .hero>img {
     filter: drop-shadow(0 0 3rem rgba(168, 210, 215, 0.77));
-    width: 250px;
+    width: 400px;
 
     @media (max-width: 768px) {
         width: 150px;
@@ -37,14 +37,17 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    gap: 40px;
     flex-wrap: wrap;
 }
 
-.intro-content,
-.youtube-video {
-    flex: 0 0 48%;
+.intro-content {
+    flex: 0 0 60%; 
     min-width: 300px;
+}
+
+.youtube-video {
+    flex: 0 0 35%;
+    min-width: 250px;
 }
 
 .intro a {
@@ -58,7 +61,7 @@
 
 .youtube-video iframe {
     width: 100%;
-    height: 315px;
+    height: 250px;
     border-radius: 8px;
 }
 
