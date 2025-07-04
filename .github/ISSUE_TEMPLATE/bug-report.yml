@@ -1,7 +1,8 @@
 name: 🐞 Bug report
 description: If something is not working as expected please open up a bug to help us fix the issue ASAP and improve the product.
 title: "🐞 Bug report: "
-labels: ["🐞 bug"]
+labels: ["🐞 bug", "👀 needs peer review"]
+type: "Bug"
 body:
   - type: markdown
     attributes:
