@@ -135,7 +135,7 @@ export const RegisterEntraAppRegView: React.FunctionComponent<IRegisterEntraAppR
                 </ul>
                 These URIs are required for the extension to successfully complete authentication.
               </li>
-              <li>We can skip over the <code>Supported account type</code> section, as this is defaulted to <code>Accounts in this organizational directory only (tenant only - Single tenant)</code> meaning, that only users within the current tenant directory can use this application.</li>
+             <li>We can skip over the <code>Supported account type</code> section, as this is defaulted to <code>Accounts in this organizational directory only (tenant only - Single tenant)</code> - meaning only users within the current tenant directory can use this application.</li>
               <li>In the <code>Advanced settings</code> section, we need to enable the <code>Allow public client flows</code> toggle, as we are using the <code>Device code flow</code> method to authenticate to our tenant using the CLI for Microsoft 365.</li>
               <li>To make sure all these changes are applied, select the <code>Save</code> button before moving on.</li>
               <li>Now that we have configured the application to work with the SPFx Toolkit, we next need to grant the required permissions. Select the <code>API permissions</code> in the menu option.
@@ -177,9 +177,7 @@ export const RegisterEntraAppRegView: React.FunctionComponent<IRegisterEntraAppR
                 </div>
               </li>
               <li>Go to <code>Overview</code> page and note down the <code>Application (client) ID</code> and <code>Directory (tenant) ID</code></li>
-              <li>
-                Back in the PnP SPFx extension in VS Code, click on <code>Sign in to Microsoft 365</code> and provide the noted down <code>Client Id</code> and <code>Tenant Id</code>.
-              </li>
+              <li>Back in the PnP SPFx extension in VS Code, click on <code>Sign in to Microsoft 365</code> and provide the noted down <code>Client Id</code> and <code>Tenant Id</code>.</li>
             </ul>
           </div>
         </div>
