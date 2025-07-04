@@ -86,3 +86,40 @@
     flex-wrap: wrap;
     gap: .5rem;
 }
+
+.hero h1 {
+    font-size: 2.5rem;
+    line-height: 1.2;
+    margin-bottom: 0.5rem;
+}
+
+
+.hero .hero-image-wrapper {
+    display: flex;
+    justify-content: center;
+    margin: 0; 
+    width: 100%;
+    order: -1;
+}
+
+.hero .hero-gif {
+    height: auto;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    filter: drop-shadow(0 0 3rem rgba(168, 210, 215, 0.77));
+    width: 600px;
+    outline: none;
+    border: none;
+}
+
+
+@media (max-width: 768px) {
+    .hero .hero-gif {
+        width: 400px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero .hero-gif {
+        width: 300px;
+    }
+}
