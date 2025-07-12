@@ -7406,6 +7406,29 @@
       "sampleType": "samples"
     },
     {
+      "name": "pnp-sp-dev-spfx-web-parts-react-migrate-settings-approot",
+      "title": "SPFx Legacy App Files Browser",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-migrate-settings-approot",
+      "description": "A SharePoint Framework web part for browsing and viewing files in the legacy 'SharePoint Online Client Extensibility Web Application Principal' folder using native SPFx MSGraphClientV3.",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-migrate-settings-approot/assets/migrate-personal-settings-01.png",
+      "authors": [
+        {
+          "name": "Paolo Pialorsi",
+          "pictureUrl": "https://github.com/paolopia.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2025-07-09",
+      "updateDate": "2025-07-09",
+      "version": "1.21.1",
+      "componentType": "webpart",
+      "extensionType": null,
+      "sampleGalerry": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
       "name": "pnp-sp-dev-spfx-web-parts-react-minesweeper",
       "title": "Minesweeper Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-minesweeper",
