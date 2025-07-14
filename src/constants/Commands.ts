@@ -100,5 +100,10 @@ export const Commands = {
   removeSiteAppCatalog: `${EXTENSION_NAME}.removeSiteAppCatalog`,
 
   // Set form customizer
-  setFormCustomizer: `${EXTENSION_NAME}.setFormCustomizer`
+  setFormCustomizer: `${EXTENSION_NAME}.setFormCustomizer`,
+
+  // Tenant-wide extension actions
+  removeTenantWideExtension: `${EXTENSION_NAME}.removeTenantWideExtension`,
+  enableTenantWideExtension: `${EXTENSION_NAME}.enableTenantWideExtension`,
+  disableTenantWideExtension: `${EXTENSION_NAME}.disableTenantWideExtension`
 };
