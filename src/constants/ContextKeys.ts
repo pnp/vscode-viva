@@ -12,5 +12,9 @@ export const ContextKeys = {
   disableApp: 'pnp.etv.app.disable',
   upgradeApp: 'pnp.etv.app.upgrade',
   installApp: 'pnp.etv.app.install',
-  uninstallApp: 'pnp.etv.app.uninstall'
+  uninstallApp: 'pnp.etv.app.uninstall',
+  hasTenantWideExtension: 'pnp.etv.hasTenantWideExtension',
+  removeTenantWideExtension: 'pnp.etv.removeTenantWideExtension',
+  enableTenantWideExtension: 'pnp.etv.enableTenantWideExtension',
+  disableTenantWideExtension: 'pnp.etv.disableTenantWideExtension'
 };
