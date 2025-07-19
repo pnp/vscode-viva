@@ -717,7 +717,7 @@
         "SharePoint"
       ],
       "createDate": "2023-07-02",
-      "updateDate": "2023-07-02",
+      "updateDate": "2025-05-25",
       "version": "1.20.0",
       "componentType": "extension",
       "extensionType": "ApplicationCustomizer",
@@ -811,6 +811,29 @@
       "createDate": "2018-03-28",
       "updateDate": "2024-10-05",
       "version": "1.20.0",
+      "componentType": "extension",
+      "extensionType": "ApplicationCustomizer",
+      "sampleGalerry": "sp-dev-fx-extensions",
+      "sampleType": "samples"
+    },
+    {
+      "name": "pnp-sp-dev-spfx-extensions-react-YOUR-SOLUTION-NAME-GOES-HERE",
+      "title": "Microsoft 365 Service Health Extension",
+      "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/YOUR-SOLUTION-NAME-GOES-HERE",
+      "description": "This extension provides real-time monitoring of Microsoft 365 service health directly within your SharePoint environment. It enables users to quickly check the availability status of core M365 services, helping organizations stay informed about outages or incidents.",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-application-m365-service-health/assets/m365ServiceHealth01.png",
+      "authors": [
+        {
+          "name": "João Mendes",
+          "pictureUrl": "https://github.com/joaojmendes.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2021-05-24",
+      "updateDate": "2021-05-24",
+      "version": "1.21.1",
       "componentType": "extension",
       "extensionType": "ApplicationCustomizer",
       "sampleGalerry": "sp-dev-fx-extensions",
@@ -8488,6 +8511,29 @@
       "createDate": "2023-10-27",
       "updateDate": "2023-10-27",
       "version": "1.16.1",
+      "componentType": "webpart",
+      "extensionType": null,
+      "sampleGalerry": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
+      "name": "pnp-sp-dev-spfx-web-parts-react-people-slick",
+      "title": "React People Slick",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-people-slick",
+      "description": "Show a list of people using react-slick",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-people-slick/assets/react-people-slick.gif",
+      "authors": [
+        {
+          "name": "Lew Chin Hoong",
+          "pictureUrl": "https://github.com/ChinHoongLew.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2025-07-08",
+      "updateDate": "2025-07-08",
+      "version": "1.21.1",
       "componentType": "webpart",
       "extensionType": null,
       "sampleGalerry": "sp-dev-fx-webparts",
