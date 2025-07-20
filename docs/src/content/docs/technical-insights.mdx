@@ -1,18 +1,9 @@
 ---
-title: Technical Reference & Contributing Guidelines
-description: Find the technical details, contribution guidelines, and project structure for the SPFx Toolkit extension.
+title: Technical Insights
+description: Explore the technical insights of this project, including its architecture, auth, and development practices.
 ---
 
-## 🙋‍♂️ Contribution guidance 
-
-👉 Before you start working on an issue, be sure to check out our [Contribution guidelines](https://github.com/pnp/vscode-viva/blob/main/contributing.md)👍.
-
-## 👉 Repository branches
-
-You may have already noticed that this repo maintains two branches: `main` and `dev`. What's even more important is that every feature branch should be created based on `dev` branch and Pull Requests should target `dev` branch not `main`. It's important to understand why the meaning and purpose of each branch:
-
-- `main` - based on this branch new major and minor releases are created. Only critical bug fixes or feature updates go directly to this branch. All others should first be merged to `dev` branch and then merged to from `dev` to `main` with a separate PR. This branch is main repository branch and keeping clean changes history is important.
-- `dev` - based on this branch pre-releases are created. Every change should be merged to this branch first with a PR before they get merged to `main` branch. During the release flow, this branch may be rebased and force pushed against `main` branch, so it may be recreated based on the current `main` branch state.
+This section provides a deeper understanding of the technical aspects of the SharePoint Framework Toolkit, including its project structure, authentication mechanisms, deployment flows, and development practices. 
 
 ## 📃 Solution details 
 
@@ -83,17 +74,6 @@ Currently in the project we have 4 pipelines:
 - [Update samples data](https://github.com/pnp/vscode-viva/blob/main/.github/workflows/update-samples.yml) - It actually does not matter on which branch this pipeline will run as it does not work with the source files of this project. It may be triggered manually or it will trigger as scheduled, once a week on Saturday. The aim of this pipeline is to recheck the PnP SPFx web parts, SPFx extensions, ACE's sample repos and create local `json` files kept in the data folder which will have the info about each sample. The pipeline creates a PR so that the changes may be reviewed and merged manually (they have to be merged to the `main` branch). The SharePoint Framework Toolkit uses those files in order to create the sample gallery views. That way allows us to keep the samples up to date without the need to release a new version of the extension. There are no prerequisites that need to be met in order to run this pipeline.
 - [Create .vsix package](https://github.com/pnp/vscode-viva/blob/main/.github/workflows/release-local.yml) - The aim of this workflow is to create .vsix package to be downloaded from the artifacts and tested locally.
 
-## 🧪 Tests
+## 🔐 Authentication
 
-To run tests in debug:
-
-1. install extension https://marketplace.visualstudio.com/items?itemName=ms-vscode.extension-test-runner
-2. run `npm run package && npm run compile-tests`
-3. run `Extension Tests` in debug
-
-![image](https://github.com/user-attachments/assets/f9f69bd3-2da7-4208-b24a-ed84aa0d0700)
-
-To run:
-
-1. run `npm run package && npm run compile-tests`
-2. run `npm run test` and check the result in terminal
+// TODO: Add details about authentication

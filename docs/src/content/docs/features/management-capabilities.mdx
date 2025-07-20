@@ -1,0 +1,43 @@
+---
+title: Management capabilities
+description: Manage your app catalogs and SPFx apps directly from VS Code.
+---
+
+SharePoint Framework Toolkit provides a set of management capabilities that allow you to manage your app catalogs and SPFx apps directly from VS Code.
+
+## Environment details and tenant health
+
+After signing in to your tenant, the extension will retrieve the environment details and helpful URLs from your tenant like link to: 
+
+- SharePoint main site 
+- SharePoint admin site
+- SharePoint web API permission management page
+
+Additionally, the extension will check and retrieve tenant service health incidents that are currently happening in your tenant so that you gain quick insights on your tenant health.
+
+![tenant-links](../../../../../assets/images/tenant-links.png)
+
+## Tenant wide extensions management
+
+SPFx Toolkit will also check your tenant for any tenant-wide extensions that are currently deployed. If there are any, it will display them in the app catalogs details view. You can then perform actions on those extensions like:
+
+- **Remove**: Removes the tenant wide extension from the tenant wide extension list. It does not remove the SPFx package from the app catalog.
+- **Enable**: Enables the extension on your tenant.
+- **Disable**: Disables the extension on your tenant.
+
+## App Catalogs management
+
+After successful sign in, an additional view is presented that shows a list of links to app catalogs available in the tenant, both tenant-level and all site-level app catalogs. The extension also allows you to add a new tenant-level app catalog if it does not exist yet as well as site-level app catalogs.
+
+You can expand each app catalog to reveal the list of apps contained within. Selecting an app navigates you to its details page. Additionally, hovering over an app node presents a set of actions, allowing you to perform various operations directly on the selected app.
+
+- **Deploy**: Makes the solution available for installation in sites but does not automatically install it.
+- **Retract**: Reverses the deployment, preventing the solution from being installed in sites.
+- **Remove**: Removes the app from the app catalog.
+- **Enable**: Allows end users to add the solution to their SharePoint sites.
+- **Disable**: Hides the solution from end users, preventing them from adding it to sites.
+- **Install**: Install the solution from tenant or site collection app catalog to a site.
+- **Uninstall**: Uninstall the solution from a site.
+- **Upgrade**: Upgrades the solution to the latest version available in the app catalog for the specified site.
+
+![app-catalog-list](../../../../../assets/images/app-catalog-list.png)
