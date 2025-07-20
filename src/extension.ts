@@ -15,6 +15,7 @@ import { EntraAppRegistration } from './services/actions/EntraAppRegistration';
 import { CopilotActions } from './services/actions/CopilotActions';
 import { ChatTools } from './chat/tools/ChatTools';
 import { SpfxAppCLIActions } from './services/actions/SpfxAppCLIActions';
+import { IncreaseVersionActions } from './services/actions/IncreaseVersionActions';
 
 
 export async function activate(context: vscode.ExtensionContext) {
@@ -36,6 +37,7 @@ export async function activate(context: vscode.ExtensionContext) {
 	SpfxAppCLIActions.registerCommands();
 	EntraAppRegistration.registerCommands(context);
 	CopilotActions.registerCommands();
+	IncreaseVersionActions.registerCommands();
 
 	CommandPanel.register();
 
