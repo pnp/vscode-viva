@@ -10,7 +10,6 @@ on:
 
 jobs:
   build_docs:
-    if: github.repository_owner == 'pnp'
     name: "Build and release docs"
     runs-on: ubuntu-latest
 
@@ -46,7 +45,6 @@ jobs:
           path: docs/dist
 
   deploy_docs:
-    if: github.repository_owner == 'pnp'
     needs: build_docs
     runs-on: ubuntu-latest
 
