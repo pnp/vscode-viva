@@ -174,6 +174,7 @@ export class CommandPanel {
                     new ActionTreeItem('Remove', '', undefined, undefined, Commands.removeTenantWideExtension, [extension.Title, extension.Url, tenantAppCatalogUrl], ContextKeys.removeTenantWideExtension),
                     new ActionTreeItem('Enable', '', undefined, undefined, Commands.enableTenantWideExtension, [extension.Title, extension.Url, tenantAppCatalogUrl, extension.extensionDisabled], ContextKeys.enableTenantWideExtension),
                     new ActionTreeItem('Disable', '', undefined, undefined, Commands.disableTenantWideExtension, [extension.Title, extension.Url, tenantAppCatalogUrl, extension.extensionDisabled], ContextKeys.disableTenantWideExtension),
+                    new ActionTreeItem('Update', '', undefined, undefined, Commands.updateTenantWideExtension, [extension, extension.Url, tenantAppCatalogUrl], ContextKeys.updateTenantWideExtension)
                   ]
                 )
               );

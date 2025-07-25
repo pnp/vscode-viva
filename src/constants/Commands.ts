@@ -105,5 +105,6 @@ export const Commands = {
   // Tenant-wide extension actions
   removeTenantWideExtension: `${EXTENSION_NAME}.removeTenantWideExtension`,
   enableTenantWideExtension: `${EXTENSION_NAME}.enableTenantWideExtension`,
-  disableTenantWideExtension: `${EXTENSION_NAME}.disableTenantWideExtension`
+  disableTenantWideExtension: `${EXTENSION_NAME}.disableTenantWideExtension`,
+  updateTenantWideExtension: `${EXTENSION_NAME}.updateTenantWideExtension`
 };
