@@ -62,6 +62,9 @@ export class SpfxAppCLIActions {
                 SpfxAppCLIActions.toggleExtensionEnabled(node, ContextKeys.disableTenantWideExtension, 'disable')
             )
         );
+        subscriptions.push(
+            commands.registerCommand(Commands.updateTenantWideExtension, SpfxAppCLIActions.updateTenantWideExtension)
+        );
     }
 
     /**
@@ -571,5 +574,149 @@ export class SpfxAppCLIActions {
         }, async () => {
             await CliExecuter.execute('spo listitem set', 'json', commandOptions);
         });
+    }
+
+    /**
+     * Updates a tenant-wide extension.
+     *
+     * @param node The tree item representing the tenant-wide extension to be updated.
+     */
+    public static async updateTenantWideExtension(node: ActionTreeItem) {
+        const actionNode = node.children?.find(child => child.contextValue === ContextKeys.updateTenantWideExtension);
+
+        if (!actionNode?.command?.arguments) {
+            Notifications.error('Failed to retrieve the extension details for update.');
+            return;
+        }
+
+        const [extension, extensionUrl, tenantAppCatalogUrl] = actionNode.command.arguments;
+        const url = new URL(extensionUrl);
+        const extensionId = url.searchParams.get('ID');
+
+        if (!extensionId) {
+            Notifications.error('Failed to retrieve the extension ID from the extension URL.');
+            return;
+        }
+
+        try {
+            const properties = [
+                { label: 'Title', description: `${extension.Title}`, property: 'Title' },
+                { label: 'Component Properties', description: `${extension.TenantWideExtensionComponentProperties || 'Not set'}`, property: 'TenantWideExtensionComponentProperties' },
+                { label: 'Web Template', description: `${extension.TenantWideExtensionWebTemplate || 'Not set'}`, property: 'TenantWideExtensionWebTemplate' },
+                { label: 'List Template', description: `${extension.TenantWideExtensionListTemplate || 'Not set'}`, property: 'TenantWideExtensionListTemplate' },
+                { label: 'Sequence', description: `${extension.TenantWideExtensionSequence?.toString() || 'Not set'}`, property: 'TenantWideExtensionSequence' },
+                { label: 'Host Properties', description: `${extension.TenantWideExtensionHostProperties || 'Not set'}`, property: 'TenantWideExtensionHostProperties' }
+            ];
+
+            const selectedProps = await window.showQuickPick([...properties], {
+                title: `Update Extension: ${extension.Title}`,
+                placeHolder: 'Select properties to update (you can select multiple)',
+                canPickMany: true,
+                ignoreFocusOut: true
+            });
+
+            if (!selectedProps?.length) {
+                Notifications.warning('No properties selected for update.');
+                return;
+            }
+
+            const updatedProperties: { [key: string]: any } = {};
+
+            for (const prop of selectedProps) {
+                const currentValue = extension[prop.property];
+                let newValue: string | undefined;
+
+                if (prop.property === 'TenantWideExtensionWebTemplate') {
+                    const webTemplateOptions = ['Clear', 'GROUP#0', 'SITEPAGEPUBLISHING#0', 'STS#3', 'STS#0', 'BLANKINTERNET#0'];
+
+                    newValue = await window.showQuickPick([...webTemplateOptions], {
+                        title: 'Select Web Template',
+                        placeHolder: currentValue || 'Select a web template or clear to apply to all sites',
+                        ignoreFocusOut: true
+                    });
+
+                    if (newValue === 'Clear') {
+                        newValue = '';
+                    }
+                } else if (prop.property === 'TenantWideExtensionListTemplate') {
+                    const listTemplateOptions = ['Clear', '100', '101'];
+
+                    newValue = await window.showQuickPick([...listTemplateOptions], {
+                        title: 'Select List Template',
+                        placeHolder: currentValue || 'Select a list template or clear to apply to all lists',
+                        ignoreFocusOut: true
+                    });
+
+                    if (newValue === 'Clear') {
+                        newValue = '';
+                    }
+                } else if (prop.property === 'TenantWideExtensionSequence') {
+                    newValue = await window.showInputBox({
+                        prompt: 'Enter sequence number (numeric)',
+                        value: currentValue?.toString() || '',
+                        ignoreFocusOut: true,
+                        validateInput: val => val.trim() === '' || !isNaN(Number(val)) ? undefined : 'Please enter a valid number'
+                    });
+                    if (newValue?.trim()) {
+                        updatedProperties[prop.property] = parseInt(newValue.trim(), 10);
+                        continue;
+                    }
+                } else {
+                    newValue = await window.showInputBox({
+                        prompt: `Enter new value for ${prop.label}`,
+                        value: currentValue || '',
+                        ignoreFocusOut: true,
+                        validateInput: val => val.trim() ? undefined : `${prop.label} cannot be empty`
+                    });
+                }
+
+                if (newValue === undefined) {
+                    Notifications.warning('Update cancelled.');
+                    return;
+                }
+
+                const trimmed = newValue.trim();
+                if ((trimmed !== currentValue) &&
+                    (trimmed ||
+                        prop.property === 'TenantWideExtensionWebTemplate' ||
+                        prop.property === 'TenantWideExtensionSequence' ||
+                        prop.property === 'TenantWideExtensionListTemplate')
+                ) {
+                    updatedProperties[prop.property] = trimmed;
+                }
+            }
+
+            if (!Object.keys(updatedProperties).length) {
+                Notifications.info('No changes detected.');
+                return;
+            }
+
+            const changesSummary = Object.entries(updatedProperties)
+                .map(([key, value]) => `${key}: ${value}`)
+                .join('\n');
+
+            const confirmOptions = ['Yes', 'No'];
+            const confirm = await window.showQuickPick([...confirmOptions], {
+                title: 'Confirm Changes',
+                placeHolder: `Apply the following changes?\n\n${changesSummary}`,
+                ignoreFocusOut: true
+            });
+
+            if (confirm !== 'Yes') {
+                Notifications.warning('Update cancelled.');
+                return;
+            }
+
+            const listUrl = `${tenantAppCatalogUrl.replace(new URL(tenantAppCatalogUrl).origin, '')}/Lists/TenantWideExtensions`;
+
+            await SpfxAppCLIActions.updateExtensionProperties(extensionId, listUrl, updatedProperties, tenantAppCatalogUrl);
+
+            Notifications.info(`Extension '${extension.Title}' has been successfully updated.`);
+
+            // refresh the environmentTreeView
+            await commands.executeCommand('spfx-toolkit.refreshAppCatalogTreeView');
+        } catch (e: any) {
+            Notifications.error(e?.error?.message || e?.message || 'Failed to update extension');
+        }
     }
 }
