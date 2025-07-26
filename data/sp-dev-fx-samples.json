@@ -9156,14 +9156,18 @@
         {
           "name": "Venkadesh Sundaramurthy",
           "pictureUrl": "https://github.com/VenkadeshSundaramurthy.png"
+        },
+        {
+          "name": "Adam Wójcik",
+          "pictureUrl": "https://github.com/Adam-it.png"
         }
       ],
       "tags": [
         "SharePoint"
       ],
       "createDate": "2024-08-11",
-      "updateDate": "2024-08-11",
-      "version": "1.19.0",
+      "updateDate": "2025-07-18",
+      "version": "1.21.1",
       "componentType": "webpart",
       "extensionType": null,
       "sampleGalerry": "sp-dev-fx-webparts",
@@ -9863,6 +9867,29 @@
       ],
       "createDate": "2025-01-27",
       "updateDate": "2025-01-27",
+      "version": "1.20.0",
+      "componentType": "webpart",
+      "extensionType": null,
+      "sampleGalerry": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
+      "name": "pnp-sp-dev-spfx-web-parts-react-sp-countdown-timer",
+      "title": "Countdown Timer Web Part",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-sp-countdown-timer",
+      "description": "This SharePoint Framework (SPFx) web part displays a countdown timer for upcoming events from a SharePoint list. It helps organizations keep users informed about important dates and deadlines by showing a live countdown for each event.",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-sp-countdown-timer/assets/screenshot.png",
+      "authors": [
+        {
+          "name": "Sudeep Ghatak",
+          "pictureUrl": "https://github.com/sudeepghatak.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2024-12-25",
+      "updateDate": "2024-12-31",
       "version": "1.20.0",
       "componentType": "webpart",
       "extensionType": null,
