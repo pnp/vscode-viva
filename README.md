@@ -94,7 +94,7 @@ Switch between the list and grid view and don't worry about the size of your VS 
 Check out how easy it is to create a new project based on a existing sample 👇. 
 ![Create project based on web part sample](./assets/images/sample-gallery.gif)
 
-[Check out our docs for more details](https://pnp.github.io/vscode-viva/) // TODO: add a link to sample gallery docs
+<!-- [Check out our docs for more details](https://pnp.github.io/vscode-viva/) // TODO: add a link to sample gallery docs -->
 
 ### 4️⃣ Start from an ACE scenario
 

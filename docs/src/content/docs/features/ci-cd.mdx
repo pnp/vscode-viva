@@ -4,7 +4,7 @@ description: Generate GitHub workflow or Azure DevOps pipeline for SPFx projects
 ---
 
 
-This action will allow you to generate yaml GitHub workflow or Azure DevOps pipeline to bundle, package, and deploy your project to any app catalog on every code push or on the manual run
+This action will allow you to generate YAML GitHub workflow or Azure DevOps pipeline to bundle, package, and deploy your project to any app catalog on every code push or on a manual run
  
 ![CICD-pipeline](https://github.com/pnp/vscode-viva/assets/58668583/b6a2d052-987b-48e2-8a86-caadcd697ff4)
 
@@ -53,7 +53,7 @@ jobs:
 ```
 Scaffolding form
 
-**1 step**
+**step 1**
 
 ![wf-scaffolding-step1](../../../../assets/images/ghwf-scaffolding-step1.png)
 
@@ -61,7 +61,7 @@ In the first section of the form you may provide general information about your 
 
 ![wf-scaffolding-runwf](../../../../assets/images/ghwf-scaffolding-runwf.png)
 
-**2 step**
+**step 2**
 
 ![wf-scaffolding-step2](../../../../assets/images/ghwf-scaffolding-step2.png)
 
@@ -91,7 +91,7 @@ for `user`, the following yaml will be generated for this step
           ADMIN_PASSWORD: ${{ secrets.ADMIN_PASSWORD }}
 ```
 
-**3 step**
+**step 3**
 
 ![wf-scaffolding-step3](../../../../assets/images/ghwf-scaffolding-step3.png)
 
@@ -201,13 +201,13 @@ stages:
 
 Scaffolding form
 
-**1 step**
+**step 1**
 
 ![azdo-scaffolding-step1](../../../../assets/images/azdo-scaffolding-step1.png)
 
 Here we need to specify what will be the name of the pipeline and what will be the branch name that will trigger the pipeline on every code push.
 
-**2 step**
+**step 2**
 
 ![azdo-scaffolding-step2](../../../../assets/images/azdo-scaffolding-step2.png)
 
@@ -225,7 +225,7 @@ It is also possible to generate a certificate and create a new Entra ID app regi
 
 ![azdo-scaffolding-appreg](../../../../assets/images/azdo-scaffolding-appreg.png)
 
-**3 step**
+**step 3**
 
 ![azdo-scaffolding-step3](../../../../assets/images/azdo-scaffolding-step3.png)
 
@@ -244,11 +244,11 @@ In order to create a new pipeline go pipelines page in your Azure DevOps project
 
 Then select the `New pipeline` button in the top right corner of the page. This will open a new page where you may select the location of your repo. Select `Azure Repos Git` and then select the repo where you pushed the YAML file.
 
-Next in the top right corner of the page hit on the `New pipline` button. After that follow the for by selecting the location of your repo, next the branch on which the YAML file is present and then select the option to create a new pipeline based on `Existing Azure Pipelines YAML file`
+Next in the top right corner of the page hit on the `New pipeline` button. After that follow the form by selecting the location of your repo, next the branch on which the YAML file is present and then select the option to create a new pipeline based on `Existing Azure Pipelines YAML file`
 
 ![azdo-scaffolding-pipeconfig](../../../../assets/images/azdo-scaffolding-pipeconfig.png)
 
-After that just confirm the create process and your ready to go!
+After that just confirm the create process and you are ready to go!
 
 Check it out in action 👇
 
