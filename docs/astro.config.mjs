@@ -29,41 +29,46 @@ export default defineConfig({
 				},
 				{
 					label: 'Get Started',
-					link: 'guides/getting-started',
+					link: 'getting-started',
 				},
 				{
-					label: 'Welcome Experience',
-					link: 'guides/welcome-experience',
+					label: 'Scenarios',
+					link: 'scenarios',
 				},
 				{
-					label: 'Toolkit Features',
+					label: 'Features',
 					items: [
-						{ label: 'Validate and set up a local workspace', link: 'features/setup-workspace' },
-						{ label: 'Scaffolding', link: 'features/scaffolding' },
-						{ label: 'Login to your tenant & retrieve environment details', link: 'features/login-tenant' },
-						{ label: 'Gulp Tasks', link: 'features/gulp-tasks' },
+						{ label: 'Welcome experience & Walkthrough', link: 'features/welcome-experience-and-walkthrough' },
+						{ label: 'Setup', link: 'features/setup' },
+						{ label: 'Sign in', link: 'features/sign-in' },
+						// { label: 'Create new project', link: '/' }, //TODO: merge work
+						{ label: 'GitHub Copilot Capabilities', link: 'features/github-copilot-capabilities' },
 						{ label: 'Actions', link: 'features/actions' },
-						{ label: 'App Management', link: 'features/app-management' },
-					],
-				},
-				{
-					label: 'Extended Capabilities',
-					items: [
-						{ label: 'SPFx Toolkit AI capabilities', link: 'guides/ai-capabilities' },
-						{ label: 'Coding Snippets', link: 'guides/snippets' },
-						{ label: 'Microsoft 365 Agents Toolkit Integration', link: 'guides/m365-agents-toolkit' }
+						{ label: 'Management capabilities', link: 'features/management-capabilities' },
+						{ label: 'CI/CD scaffolding', link: 'features/ci-cd' },
+						{ label: 'Coding support', link: 'features/coding' },
+						{ label: 'Better Together', link: 'features/m365-agents-toolkit' },
 					],
 				},
 				{
 					label: 'Support & Contribution',
-					items: [
-						{ label: 'Technical reference & contributing guidance', link: 'guides/contributing-guidance' },
-						{ label: 'Help & Feedback', link: 'guides/help-feedback' },
-					],
+					link: 'contributing-guidance',
 				},
 				{
-					label: 'Marketing Resources',
-					link: 'reference/marketing-resources',
+					label: 'Technical insights',
+					link: 'technical-insights',
+				},
+				{
+					label: 'About',
+					items: [
+						{ label: 'Changelog', link: 'about/changelog' },
+						{ label: 'Meet the Team', link: 'about/meet-the-team' },
+						{ label: 'Telemetry', link: 'about/telemetry' },
+						{ label: 'Marketing Resources', link: 'about/marketing-resources' },
+						{ label: 'License', link: 'about/license' },
+						{ label: 'Code of Conduct', link: 'about/code-of-conduct' },
+						{ label: 'Disclaimer', link: 'about/disclaimer' },
+					],
 				},
 			]
 

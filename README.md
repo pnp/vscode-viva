@@ -54,6 +54,8 @@ When running the extension for the first time it will present you a walkthrough 
 
 ![Walkthrough](./assets/images/walkthrough.png)
 
+You may also sign in to your Microsoft 365 tenant to gain access to the extension management capabilities allowing you to manage you app catalogs and deployed solutions.
+
 [Check out our docs for more details](https://pnp.github.io/vscode-viva/guides/welcome-experience/)
 
 ### 2️⃣ Set up your development environment
@@ -75,7 +77,7 @@ In case you do not have all dependencies installed, or some are incorrect versio
 >  [!NOTE]
 >  The list of valid dependencies is based on [set up your development environment recommendations](https://learn.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-development-environment)
 
-[Check out our docs for more details](https://pnp.github.io/vscode-viva/features/setup-workspace/)
+[Check out our docs for more details](https://pnp.github.io/vscode-viva/features/setup)
 
 ### 3️⃣ Don't Start from scratch. Reuse an SPFx web part or extension or ACE sample
 
@@ -92,7 +94,7 @@ Switch between the list and grid view and don't worry about the size of your VS 
 Check out how easy it is to create a new project based on a existing sample 👇. 
 ![Create project based on web part sample](./assets/images/sample-gallery.gif)
 
-[Check out our docs for more details](https://pnp.github.io/vscode-viva/features/scaffolding/#2-dont-start-from-scratch---sample-galleries)
+<!-- [Check out our docs for more details](https://pnp.github.io/vscode-viva/) // TODO: add a link to sample gallery docs -->
 
 ### 4️⃣ Start from an ACE scenario
 
@@ -112,7 +114,7 @@ Install additional dependencies with a single click straight from the scaffoldin
 
 ![Additional dependency step](./assets/images/scaffolding-additional-step.png)
 
-[Check out our docs for more details](https://pnp.github.io/vscode-viva/features/scaffolding/#1-scaffold-a-new-spfx-project)
+[Check out our docs for more details](https://pnp.github.io/vscode-viva/) // TODO: add a link to create new project docs
 
 ### 6️⃣ Sign in to your tenant & retrieve environment details
 
@@ -168,7 +170,7 @@ Using the extension settings you may choose to show or hide the apps in app cata
 
 Sign-in is also required for some actions to work properly like the deploy action which allows you to upload of the .sppkg file to the tenant or site-level App Catalog.
 
-[Check out our docs for more details](https://pnp.github.io/vscode-viva/features/login-tenant/)
+[Check out our docs for more details](https://pnp.github.io/vscode-viva/features/sign-in)
 
 ### 7️⃣ Gulp tasks
 
@@ -176,7 +178,7 @@ The extension shows all possible Gulp tasks one may run on an SPFx project. The 
 
 ![Gulp Tasks](./assets/images/tasks.png)
 
-[Check out our docs for more details](https://pnp.github.io/vscode-viva/features/gulp-tasks/)
+[Check out our docs for more details](https://pnp.github.io/vscode-viva/features/coding#gulp-tasks-view)
 
 ### 8️⃣ Actions
 
@@ -198,7 +200,7 @@ And for Azure DevOps👇
 
 ![Azure DevOps CI CD pipeline](./assets/images/azdo-ci-cd.gif)
 
-[Check out our docs for more details](https://pnp.github.io/vscode-viva/features/actions/)
+[Check out our docs for more details](https://pnp.github.io/vscode-viva/features/ci-cd)
 
 - **Upgrade project** - Uses CLI for Microsoft 365 to create a .md and/or code tour report with upgrade guidance to the latest supported SPFx version by the extension. The upgrade guidance provides optional as well as required steps a user needs to take manually in order to upgrade the project. At the end of the guidance file, the user may find a summary of the steps in a single script and a couple of manual steps that need to be taken.
 
@@ -208,61 +210,59 @@ And the code tour guidance will provide you upgrade tips directly in your code!
 
 ![Upgrade project](./assets/images/upgrade-project-code-tour.png)
 
-[Check out our docs for more details](https://pnp.github.io/vscode-viva/features/actions/#upgrade-project)
+[Check out our docs for more details](https://pnp.github.io/vscode-viva/features/actions#upgrade-project)
 
 - **Validate project** - Creates a validation .md report and/or code tour validation guidance for the currently open SPFx project. The action will automatically detect the SPFx version used and will validate if the project is properly set up.
 
 ![Upgrade project](./assets/images/validate-project.png)
 
-[Check out our docs for more details](https://pnp.github.io/vscode-viva/features/actions/#validate-current-project)
+[Check out our docs for more details](https://pnp.github.io/vscode-viva/features/actions#validate-current-project)
 
 - **Rename project** - Forget about manual work and let the extension rename your project and generate a new solution ID. 
 
 ![Rename](./assets/images/rename.png)
 
-[Check out our docs for more details](https://pnp.github.io/vscode-viva/features/actions/#rename-current-project)
+[Check out our docs for more details](https://pnp.github.io/vscode-viva/features/actions#rename-current-project)
 
 - **Grant API permissions** - The action will Grant all API permissions specified in the package-solution.json of the current project. This is especially helpful if you just want to debug your SPFx solution using Workbench. No longer do you need to bundle, package, and deploy the project to then go to the SharePoint admin portal and consent to the permissions. All of that is now done with just a single click. 
 
 ![Grant permissions](./assets/images/grant-permissions.png)
 
-[Check out our docs for more details](https://pnp.github.io/vscode-viva/features/actions/#grant-api-permissions)
+[Check out our docs for more details](https://pnp.github.io/vscode-viva/features/actions#grant-api-permissions)
 
 - **Deploy project** - This action will only work when the user is logged in to tenant and the sppkg file is present. The action will deploy the project to the selected (tenant or site) app catalog. 
 
 ![Deploy](./assets/images/deploy.png)
 
-[Check out our docs for more details](https://pnp.github.io/vscode-viva/features/actions/#deploy-project)
+[Check out our docs for more details](https://pnp.github.io/vscode-viva/features/actions#deploy-project)
 
 - **Add new component** - Allows scaffolding a new SPFx project as a new component of the currently opened project. The action under the hood uses the same SharePoint Yeoman generator to scaffold a new project and this feature is an abstraction UI layer. 
 
 ![Add component](./assets/images/add-component.png)
 
-[Check out our docs for more details](https://pnp.github.io/vscode-viva/features/actions/#add-new-component)
+[Check out our docs for more details](https://pnp.github.io/vscode-viva/features/actions#add-new-component)
 
 - **Set Form Customizer** - Allows to update the New, Edit or View from of any SharePoint List to a given SPFx Form Customizer based on provided GUID. 
 
 ![Set Form Customizer](./assets/images/set-form-customizer-action.png)
 
-[Check out our docs for more details](https://pnp.github.io/vscode-viva/features/actions/#set-form-customizer)
+[Check out our docs for more details](https://pnp.github.io/vscode-viva/features/actions#set-form-customizer)
 
 - **Increase project version** - This action allows you to increase project major, minor or patch varsion and automatically align the versioning between `package.json` and `package-solution.json` files.
 
 ![Increase project version](./assets/images/increase-versioning.png)
 
-[Check out our docs for more details](https://pnp.github.io/vscode-viva/features/actions/#increase-project-version)
+[Check out our docs for more details](https://pnp.github.io/vscode-viva/features/actions#increase-project-version)
 
 - **Open sample/scenario galleries of the SPFx web part, extensions, or ACEs projects** - SharePoint Framework Toolkit supports a couple of sample galleries that may be used to scaffold a new SPFx project. 
 
-[Check out our docs for more details](https://pnp.github.io/vscode-viva/features/actions/#open-samplescenario-galleries-of-the-spfx-web-part-extensions-or-aces-projects)
+[Check out our docs for more details](https://pnp.github.io/vscode-viva/features/actions#open-samplescenario-galleries-of-the-spfx-web-part-extensions-or-aces-projects)
 
 ### 9️⃣ Help and feedback section
 
 The help and feedback section is a group of links that will direct you to the right Microsoft documentation and learning paths. It also contains links to additional tooling that may be helpful in your development process as well as links to connect with the Microsoft 365 and Power Platform Community. 
 
 ![help and feedback](./assets/images/help-and-feedback.png)
-
-[Check out our docs for more details](https://pnp.github.io/vscode-viva/guides/help-feedback/)
 
 ### 1️⃣0️⃣ Coding Snippets
 
@@ -292,7 +292,7 @@ Check it out in action 👇
 
 ![Microsoft 365 Agents Toolkit integration](./assets/images/better-together.png)
 
-[Check out our docs for more details](https://pnp.github.io/vscode-viva/guides/m365-agents-toolkit/)
+[Check out our docs for more details](https://pnp.github.io/vscode-viva/features/m365-agents-toolkit)
 
 ### 1️⃣2️⃣ Node.js Version Manager Support
 
@@ -341,7 +341,7 @@ In order to use the tool you may #hashtag mention it, otherwise if your prompt w
 
 ![Language Model Tools in Action](./assets/images/language-model-tools-in-action.png)
 
-[Check out our docs for more details](https://pnp.github.io/vscode-viva/guides/ai-capabilities/)
+[Check out our docs for more details](https://pnp.github.io/vscode-viva/features/github-copilot-capabilities)
 
 ## ⚙️ Architecture
 

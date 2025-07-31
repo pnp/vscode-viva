@@ -1,28 +1,58 @@
 ---
-title: SPFx Toolkit AI capabilities
-description: Learn how to use the SPFx Toolkit as a GitHub Copilot chat participant and languages model tools to streamline SharePoint Framework development with predefined commands and AI assistance.
+title: GitHub Copilot Capabilities 
+description: Explore the capabilities of SPFx Toolkit in GitHub Copilot
 ---
 
-# SPFx Toolkit GitHub Chat Participant 
+SPFx Toolkit provides a set of AI capabilities that may be used in GitHub Copilot Chat extension. The chat participant allows you to have a discussion grounded for SharePoint Framework development and the Language Model tools will provide you with several capabilities to manage your SharePoint Online tenant.
+
+## Agent Mode - Language Model Tools
+
+SPFx Toolkit provides a set of language model tools that are available in GitHub Copilot agent mode. Some of them are designed to work in the context of your SharePoint Framework project but other may work regardless of what you have opened in VS Code and aim to do common task on your SharePoint Online tenant.
+
+![language-model-tools](../../../../../assets/images/language-model-tools.png)
+
+You don't need to do anything specific to use any of the language model tools in GitHub Copilot agent mode. Copilot should figure out the best tool that it may use to fulfill your prompt. Optionally you may `#` hashtag a tool in your prompt to make it clear what you want to be used.
+
+![language-model-tools-in-action](../../../../../assets/images/language-model-tools-in-action.png)
+
+### SharePoint Online Management
+
+This set of tools aim to allow you to perform common management tasks on your SharePoint Online tenant. In order to use them you need to be first signed in to your tenant in SPFx Toolkit. 
+
+The extension provides the following tools
+
+| Tool                 | Description                                               |
+|----------------------|-----------------------------------------------------------|
+| SharePointAppList    | Lists apps from the tenant app catalog                    |
+| SharePointAppInstall | Installs an app from tenant app catalog in the site       |
+| SharePointListAdd    | Creates list in the specified site                        |
+| SharePointListGet    | Gets information about the specific list                  |
+| SharePointListRemove | Removes the specified list                                |
+| SharePointPageAdd    | Creates a page                                            |
+| SharePointSiteAdd    | Create a new SharePoint Online site                       |
+| SharePointSiteRemove | Remove a SharePoint Online site                           |
+| SharePointSiteGet    | Gets information about the specific site                  |
+
+## Chat Participant
 
 ![chat-intro](../../../../../assets/images/chat-intro.png)
 
-Now you may use SPFx Toolkit as a chat participant in GitHub Copilot chat extension. Simply, mention @spfx in the chat to ask dedicated questions regarding SharePoint Framework development. 
+SPFx Toolkit comes along with a chat participant that you may use in GitHub Copilot ask mode. Simply, mention @spfx in the chat to ask dedicated questions regarding SharePoint Framework development. 
 
-@spfx is your dedicated AI Copilot that will help you with anything that is needed to develop your SharePoint Framework project. It has predefined commands that are tailored toward a specific activity for which you require guidance.
+@spfx is your dedicated AI assistant that will help you with anything that is needed to develop your SharePoint Framework project. It has predefined commands that are tailored toward a specific activity for which you require guidance.
 
 ![chat-commands](../../../../../assets/images/chat-commands.png)
 
-Currently, we support the following commands:
+Lets explore the available commands that you may use in the chat participant.
 
-## `/setup` 
+### `/setup` 
 
 Dedicated to providing information on how to setup your local workspace for SharePoint Framework development. 
 Check it out in action 👇
 
 ![chat-in-action-setup](../../../../../assets/images/chat-in-action-setup.gif)
 
-## `/new`
+### `/new`
 
 May be used to get guidance on how to create a new solution or find and reuse an existing sample from the PnP SPFx sample gallery
 Check it out in action 👇
@@ -30,13 +60,15 @@ Check it out in action 👇
 ![chat-in-action-new](../../../../../assets/images/chat-in-action-new.gif)
 ![chat-in-action-new2](../../../../../assets/images/chat-in-action-new2.gif)
 
-## `/code` (beta)
+### `/code` (beta)
 
 This command is beta and is fine-tuned to provide help in coding your SharePoint Framework project and provides additional boosters like validating the correctness of your SPFx project, scaffolding a CI/CD workflow, or renaming your project, and many more.
 
-## `/info` 
+### `/info` 
 
-This command will allow you to ask and retrieve any kind of data from you SharePoint Online tenant. This command will only work if your are signed in to your tenant. It uses CLI for Microsoft 365 commands under the hood to retrieve and explain data and assets from your SharePoint Online tenant. Currently, it does support only retrieving information, it will not support you in creating, updating or removing any resources. For example, you want to check if some list item or file exists. Or how many items with specific metadata do you have on a list? Or ask for content type columns to generate an interface based on the response quickly.
+This command will allow you to ask and retrieve any kind of data from your SharePoint Online tenant. This command will only work if you are signed in to your tenant. It uses CLI for Microsoft 365 commands under the hood to retrieve and explain data from your SharePoint Online tenant. Currently, it does support only retrieving information, it will not support you in creating, updating or removing any resources for this you should be using Language Model tools in agent mode. 
+
+For example, you may check if some list item or file exists. Or how many items with specific metadata do you have on a list? Or ask for content type columns to generate an interface based on the response quickly.
 
 <video width="100%" controls>
   <source src="https://github.com/user-attachments/assets/be808a6f-6533-4e36-bb46-019682e41158" type="video/mp4" />
@@ -46,7 +78,7 @@ This command will allow you to ask and retrieve any kind of data from you ShareP
   </a>
 </video>
 
-This command has the following skills:
+This command understands and uses the following CLI for Microsoft 365 commands:
 
 | Command                        | Description                                           |
 |--------------------------------|-------------------------------------------------------|
@@ -162,15 +194,3 @@ This command has the following skills:
 | m365 spo site appcatalog list  | List all site collection app catalogs within the tenant |
 | m365 spo folder get            | Gets information about the specified folder           |
 | m365 spo cdn get               | View current status of the specified Microsoft 365 CDN |
-
-
-# SPFx Toolkit Language Model Tools
-
-The SPFx Toolkit Language Model Tools provide a set of skills may be used by GitHub Copilot in agent mode to assist you in your SharePoint Framework development tasks and managing your SharePoint Online tenant. 
-
-![Language Model Tools](../../../../../assets/images/language-model-tools.png)
-
-Language model tools may only be used in agent mode, which is available in the GitHub Copilot chat extension. Currently it allows you to do basic operations to manage your SharePoint Online tenant like getting information about specific site, creating and removing a site, listing apps from your tenant app catalog, installing an app, creating a page, etc. 
-In order to use the tool you may #hashtag mention it, otherwise if your prompt will be well defined then GitHub Copilot should figure out which tool should be used to proceed with the task.
-
-![Language Model Tools in Action](../../../../../assets/images/language-model-tools-in-action.png)

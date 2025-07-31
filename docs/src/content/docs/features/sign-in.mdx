@@ -1,7 +1,9 @@
 ---
-title: Tenant Sign-In and Management
-description: Learn how to sign in to your tenant, configure Entra App Registrations, and manage tenant capabilities using the SPFx Toolkit.
+title: Sign in
+description: Learn how to sign in to your tenant, configure Entra App Registrations.
 ---
+
+SharePoint Framework Toolkit requires you to sign in to your Microsoft 365 tenant to be able to perform some actions like deploying solutions to the tenant or site-level app catalog, managing app catalogs, and more. The sign-in process is simple and straightforward, allowing you to quickly get started with your SPFx development. You may use an existing Entra App Registration or create a new one with a single click. The extension will guide you through the process of signing in and configuring the app registration if needed. If needed, you may also perform the manual setup of the Entra App Registration.
 
 ## Sign in process
 
@@ -9,12 +11,11 @@ In order to sign in to your tenant you must have SPFx Toolkit opened in the cont
 
 ![login](../../../../../assets/images/login.png)
 
-Alternatively, you may use the `>SharePoint Framework Toolkit: Sign in to Microsoft 365` command to do the same
+Alternatively, you may use the `>SPFx Toolkit: Sign in to Microsoft 365` command to do the same
 
-SPFx Toolkit needs and Entra App Registration to be able to sign in to your tenant. You may either use an existing app registration or create a new one with a single click using a dedicated form. 
+SPFx Toolkit needs an Entra App Registration to be able to sign in to your tenant. You may either use an existing app registration or create a new one with a single click using a dedicated form. 
 
 ![sign-in-options](../../../../../assets/images/sign-in-options.png)
-
 
 SPFx Toolkit will guide you through the process of creating a new app registration either manually by providing step-by-step guidance or automatically by creating the app registration for you.
 
@@ -28,10 +29,9 @@ If you already have an Entra App Registration you may use it to sign in to your 
 
 ![sign-in](../../../../../assets/images/sign-in-existing-app.gif)
 
+## Manual setup of Entra App Registration
 
-### Manual setup of Entra App Registration
-
-If possible it is recommended to use the automated way to setup the SPFx Toolkit App Registration.
+If possible it is recommended to use the automated way to set up the SPFx Toolkit App Registration.
 Otherwise please follow the manual steps to perform it manually (this is required only one time on each tenant)
 
 - Navigate to the [Azure Portal](https://portal.azure.com/)
@@ -97,33 +97,3 @@ Add the following permissions:
 - Go to <code>Overview</code> page and note down the <code>Application (client) ID</code> and <code>Directory (tenant) ID</code>
 - Click on the <code>Sign in to Microsoft 365</code> and provide the noted down <code>Client Id</code> and <code>Tenant Id</code>
 
-## Environment details and manage capabilities 
-
-The extension will retrieve helpful URLs from your tenant like link to: 
-
-- SharePoint main site 
-- SharePoint admin site
-- SharePoint web API permission management page
-
-Additionally, the extension will check and retrieve tenant service health incidents that are currently happening in your tenant so that you gain quick insights on your tenant health.
-
-![tenant-links](../../../../../assets/images/tenant-links.png)
-
-After successful sign in, an additional view is presented that shows a list of links to app catalogs available in the tenant, both tenant-level and all site-level app catalogs. You can expand each app catalog to reveal the list of apps contained within. Selecting an app navigates you to its details page. Additionally, hovering over an app node presents a set of actions, allowing you to perform various operations directly on the selected app.
-
-- **Deploy**: Makes the solution available for installation in sites but does not automatically install it.
-- **Retract**: Reverses the deployment, preventing the solution from being installed in sites.
-- **Remove**: Removes the app from the app catalog.
-- **Enable**: Allows end users to add the solution to their SharePoint sites.
-- **Disable**: Hides the solution from end users, preventing them from adding it to sites.
-- **Install**: Install the solution from tenant or site collection app catalog to a site.
-- **Uninstall**: Uninstall the solution from a site.
-- **Upgrade**: Upgrades the solution to the latest version available in the app catalog for the specified site.
-
-![app-catalog-list](../../../../../assets/images/app-catalog-list.png)
-
-Using the extension settings you may choose show or hide the tenant-wide extensions list and tenant health incidents list.
-
-![spfx-manage-settings](../../../../assets/images/spfx-manage-settings.png)
-
-Sign-in is also required for some actions to work properly like the deploy action which allows you to upload of the .sppkg file to the tenant or site-level App Catalog.
