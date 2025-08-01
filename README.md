@@ -94,7 +94,7 @@ Switch between the list and grid view and don't worry about the size of your VS 
 Check out how easy it is to create a new project based on a existing sample 👇. 
 ![Create project based on web part sample](./assets/images/sample-gallery.gif)
 
-<!-- [Check out our docs for more details](https://pnp.github.io/vscode-viva/) // TODO: add a link to sample gallery docs -->
+[Check out our docs for more details](https://pnp.github.io/vscode-viva/features/scaffolding#sample-gallery-start-with-a-sample)
 
 ### 4️⃣ Start from an ACE scenario
 
@@ -114,7 +114,7 @@ Install additional dependencies with a single click straight from the scaffoldin
 
 ![Additional dependency step](./assets/images/scaffolding-additional-step.png)
 
-[Check out our docs for more details](https://pnp.github.io/vscode-viva/) // TODO: add a link to create new project docs
+[Check out our docs for more details](https://pnp.github.io/vscode-viva/features/scaffolding)
 
 ### 6️⃣ Sign in to your tenant & retrieve environment details
 

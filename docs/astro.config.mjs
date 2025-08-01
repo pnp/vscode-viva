@@ -41,7 +41,7 @@ export default defineConfig({
 						{ label: 'Welcome experience & Walkthrough', link: 'features/welcome-experience-and-walkthrough' },
 						{ label: 'Setup', link: 'features/setup' },
 						{ label: 'Sign in', link: 'features/sign-in' },
-						// { label: 'Create new project', link: '/' }, //TODO: merge work
+						{ label: 'Create new project', link: 'features/scaffolding' },
 						{ label: 'GitHub Copilot Capabilities', link: 'features/github-copilot-capabilities' },
 						{ label: 'Actions', link: 'features/actions' },
 						{ label: 'Management capabilities', link: 'features/management-capabilities' },
