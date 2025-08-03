@@ -631,7 +631,7 @@ export class CliActions {
     }, async (progress: Progress<{ message?: string; increment?: number }>) => {
       try {
         const projectUpgradeOutputMode: string = getExtensionSettings('projectUpgradeOutputMode', 'both');
-        const projectUpgradeShellType: string = getExtensionSettings('upgradeShellType', 'bash');
+        const projectUpgradeShellType: string = getExtensionSettings('upgradeShellType', 'powershell');
 
         const commandOptions: any = {
           shell: projectUpgradeShellType

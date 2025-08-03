@@ -516,13 +516,13 @@
 				"spfx-toolkit.upgradeShellType": {
 					"title": "Project upgrade shell type",
 					"type": "string",
-					"default": "bash",
+					"default": "powershell",
 					"enum": [
 						"bash",
 						"powershell",
 						"cmd"
 					],
-					"description": "Choose the shell type to be used for the upgrade command. You can choose between `bash`, `powershell`, or `cmd`."
+					"description": "Choose the shell type to be used for the upgrade action. You can choose between `bash`, `powershell`, or `cmd`."
 				},
 				"spfx-toolkit.projectValidateOutputMode": {
 					"title": "Project validate output mode",
