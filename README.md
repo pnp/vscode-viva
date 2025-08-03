@@ -19,7 +19,7 @@
 </p>
 
 <h2 align="center">
-  <a href="https://pnp.github.io/vscode-viva/" title="Demo Time Documentation">
+  <a href="https://pnp.github.io/vscode-viva/" title="SPFx Toolkit Documentation">
   👉 SPFx Toolkit Documentation
   </a>
 </h2>
