@@ -18,6 +18,12 @@
   </a>
 </p>
 
+<h2 align="center">
+  <a href="https://pnp.github.io/vscode-viva/" title="Demo Time Documentation">
+  👉 SPFx Toolkit Documentation
+  </a>
+</h2>
+
 <p align="center">SharePoint Framework Toolkit is a Visual Studio Code extension that aims to boost your productivity in developing and managing SharePoint Framework solutions helping at every stage of your development flow, from setting up your development workspace to deploying a solution straight to your tenant without the need to leave VS Code. With SharePoint Framework, you can use modern web technologies and tools in your preferred development environment to build productive experiences and apps that are responsive and mobile-ready allowing you to create solutions to extend SharePoint, Microsoft Teams, Microsoft Viva Connections, Outlook and Microsoft365.com.</p>
 
 <p align="center">
