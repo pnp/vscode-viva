@@ -76,4 +76,8 @@ Currently in the project we have 4 pipelines:
 
 ## 🔐 Authentication
 
-// TODO: Add details about authentication
+SPFx Toolkit uses the [CLI for Microsoft 365](https://pnp.github.io/cli-microsoft365/user-guide/connecting-microsoft-365#authorize-with-microsoft-365) as its authentication provider to sign in to Microsoft 365. In order to do that, SPFx Toolkit uses an Entra ID app registration that is created on your tenant either manually or automatically. 
+The VS Code extension will always use your default browser to sign in to Microsoft 365 that way allows you to use the latest security features like passwordless authentication or multi-factor authentication. 
+SPFx Toolkit's aim is always to use the least privileges required that will unlock the features of the extension. The permissions present in the correlated Entra ID app registration are delegated permissions, which means the application acts on behalf of a signed-in user.
+For more information regarding the Entra app registration and the permissions required by the SPFx Toolkit, please refer to the [Manual setup of Entra App Registration](features/sign-in). Although it is not recommended, it is possible to use fewer permissions than the ones required by the SPFx Toolkit, but in that case, some features may not work as expected or at all.
+SPFx Toolkit tries to make it clear what app registration and permissions are used, exposing the direct link to the Entra ID app registration in the account panel.
