@@ -1,7 +1,7 @@
 import { commands, Progress, ProgressLocation, window } from 'vscode';
 import { Subscription } from '../../models';
 import { Extension } from '../dataType/Extension';
-import { Commands, ContextKeys } from '../../constants';
+import { Commands, ContextKeys, WebTemplates, ListTemplates } from '../../constants';
 import { ActionTreeItem } from '../../providers/ActionTreeDataProvider';
 import { Notifications } from '../dataType/Notifications';
 import { CliExecuter } from '../executeWrappers/CliCommandExecuter';
@@ -626,48 +626,23 @@ export class SpfxAppCLIActions {
                 const currentValue = extension[prop.property];
                 let newValue: string | undefined;
 
-                if (prop.property === 'TenantWideExtensionWebTemplate') {
-                    const webTemplateOptions = ['Clear', 'GROUP#0', 'SITEPAGEPUBLISHING#0', 'STS#3', 'STS#0', 'BLANKINTERNET#0'];
+                switch (prop.property) {
+                    case 'TenantWideExtensionWebTemplate':
+                        newValue = await SpfxAppCLIActions.handleTemplateInput('web', currentValue);
+                        break;
 
-                    newValue = await window.showQuickPick([...webTemplateOptions], {
-                        title: 'Select Web Template',
-                        placeHolder: currentValue || 'Select a web template or clear to apply to all sites',
-                        ignoreFocusOut: true
-                    });
+                    case 'TenantWideExtensionListTemplate':
+                        newValue = await SpfxAppCLIActions.handleTemplateInput('list', currentValue);
+                        break;
 
-                    if (newValue === 'Clear') {
-                        newValue = '';
-                    }
-                } else if (prop.property === 'TenantWideExtensionListTemplate') {
-                    const listTemplateOptions = ['Clear', '100', '101'];
+                    case 'TenantWideExtensionSequence':
+                        newValue = await SpfxAppCLIActions.handleSequenceInput(currentValue);
+                        break;
 
-                    newValue = await window.showQuickPick([...listTemplateOptions], {
-                        title: 'Select List Template',
-                        placeHolder: currentValue || 'Select a list template or clear to apply to all lists',
-                        ignoreFocusOut: true
-                    });
+                    default:
+                        newValue = await SpfxAppCLIActions.handleDefaultInput(prop.label, currentValue);
+                        break;
 
-                    if (newValue === 'Clear') {
-                        newValue = '';
-                    }
-                } else if (prop.property === 'TenantWideExtensionSequence') {
-                    newValue = await window.showInputBox({
-                        prompt: 'Enter sequence number (numeric)',
-                        value: currentValue?.toString() || '',
-                        ignoreFocusOut: true,
-                        validateInput: val => val.trim() === '' || !isNaN(Number(val)) ? undefined : 'Please enter a valid number'
-                    });
-                    if (newValue?.trim()) {
-                        updatedProperties[prop.property] = parseInt(newValue.trim(), 10);
-                        continue;
-                    }
-                } else {
-                    newValue = await window.showInputBox({
-                        prompt: `Enter new value for ${prop.label}`,
-                        value: currentValue || '',
-                        ignoreFocusOut: true,
-                        validateInput: val => val.trim() ? undefined : `${prop.label} cannot be empty`
-                    });
                 }
 
                 if (newValue === undefined) {
@@ -676,13 +651,25 @@ export class SpfxAppCLIActions {
                 }
 
                 const trimmed = newValue.trim();
-                if ((trimmed !== currentValue) &&
-                    (trimmed ||
-                        prop.property === 'TenantWideExtensionWebTemplate' ||
-                        prop.property === 'TenantWideExtensionSequence' ||
-                        prop.property === 'TenantWideExtensionListTemplate')
-                ) {
-                    updatedProperties[prop.property] = trimmed;
+                if (trimmed !== currentValue) {
+                    switch (prop.property) {
+                        case 'TenantWideExtensionWebTemplate':
+                        case 'TenantWideExtensionListTemplate':
+                            updatedProperties[prop.property] = trimmed;
+                            break;
+
+                        case 'TenantWideExtensionSequence':
+                            if (trimmed && !isNaN(Number(trimmed))) {
+                                updatedProperties[prop.property] = parseInt(trimmed, 10);
+                            }
+                            break;
+
+                        default:
+                            if (trimmed) {
+                                updatedProperties[prop.property] = trimmed;
+                            }
+                            break;
+                    }
                 }
             }
 
@@ -718,5 +705,66 @@ export class SpfxAppCLIActions {
         } catch (e: any) {
             Notifications.error(e?.error?.message || e?.message || 'Failed to update extension');
         }
+    }
+
+    /**
+     * Handles the selection of a template (web or list) from the available options.
+     *
+     * @param templateType the type of template to handle ('web' or 'list')
+     * @param currentValue the current value of the template, used as a placeholder
+     * @returns the selected template value or undefined if cancelled
+     */
+    private static async handleTemplateInput(templateType: 'web' | 'list', currentValue: string): Promise<string | undefined> {
+        const isWebTemplate = templateType === 'web';
+
+        const templates = isWebTemplate ? WebTemplates : ListTemplates;
+        const title = `Select ${isWebTemplate ? 'Web' : 'List'} Template`;
+        const placeholder = currentValue ||
+            `Select a ${isWebTemplate ? 'web' : 'list'} template or clear to apply to all ${isWebTemplate ? 'sites' : 'lists'}`;
+
+        const options = templates.map(template => ({
+            label: template.name,
+            description: template.description,
+            value: template.value
+        }));
+
+        const selectedOption = await window.showQuickPick([...options], {
+            title,
+            placeHolder: placeholder,
+            ignoreFocusOut: true
+        });
+
+        return selectedOption?.value;
+    }
+
+    /**
+     * Handles the input for the sequence number.
+     *
+     * @param currentValue the current value of the sequence number
+     * @returns the new sequence number value or undefined if cancelled
+     */
+    private static async handleSequenceInput(currentValue: string): Promise<string | undefined> {
+        return await window.showInputBox({
+            prompt: 'Enter sequence number (numeric)',
+            value: currentValue?.toString() || '',
+            ignoreFocusOut: true,
+            validateInput: val => val.trim() === '' || !isNaN(Number(val)) ? undefined : 'Please enter a valid number'
+        });
+    }
+
+    /**
+     * Handles the input for a default property.
+     *
+     * @param propertyLabel the label of the property
+     * @param currentValue the current value of the property
+     * @returns the new value for the property or undefined if cancelled
+     */
+    private static async handleDefaultInput(propertyLabel: string, currentValue: string): Promise<string | undefined> {
+        return await window.showInputBox({
+            prompt: `Enter new value for ${propertyLabel}`,
+            value: currentValue || '',
+            ignoreFocusOut: true,
+            validateInput: val => val.trim() ? undefined : `${propertyLabel} cannot be empty`
+        });
     }
 }
