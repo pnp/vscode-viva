@@ -631,14 +631,19 @@ export class CliActions {
     }, async (progress: Progress<{ message?: string; increment?: number }>) => {
       try {
         const projectUpgradeOutputMode: string = getExtensionSettings('projectUpgradeOutputMode', 'both');
+        const projectUpgradeShellType: string = getExtensionSettings('upgradeShellType', 'powershell');
+
+        const commandOptions: any = {
+          shell: projectUpgradeShellType
+        };
 
         if (projectUpgradeOutputMode === 'markdown' || projectUpgradeOutputMode === 'both') {
-          const resultMd = await CliExecuter.execute('spfx project upgrade', 'md');
+          const resultMd = await CliExecuter.execute('spfx project upgrade', 'md', commandOptions);
           CliActions.handleMarkdownResult(resultMd, wsFolder, 'upgrade');
         }
 
         if (projectUpgradeOutputMode === 'code tour' || projectUpgradeOutputMode === 'both') {
-          await CliExecuter.execute('spfx project upgrade', 'tour');
+          await CliExecuter.execute('spfx project upgrade', 'tour', commandOptions);
           CliActions.handleTourResult(wsFolder, 'upgrade');
         }
       } catch (e: any) {
