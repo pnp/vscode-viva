@@ -6,7 +6,7 @@ Thank you for your interest in contributing to the SharePoint Framework Toolkit 
 
 In order to help us process your contributions, please make sure you do the following:
 
-- Don't surprise us with big PR's. Instead, create an issue and start a discussion so we can agree on a direction before you invest a large amount of time.
+- Don't surprise us with big PRs. Instead, create an issue and start a discussion so we can agree on a direction before you invest a large amount of time.
 - Create your branch from `dev` (NOT `main`). This will make it easier for us to merge your changes.
 - Submit your PR to the `dev` branch of this repo (NOT `main`). PRs submitted to other branches will be declined.
 - Let us know what's in the PR: sometimes code is not enough and in order to help us understand your awesome work please follow the PR template to provide required information.
@@ -16,7 +16,7 @@ Don't be afraid to ask questions. We are here to help you succeed in making this
 
 ## 👣 How to start - Minimal path to awesome
 
-> ⚠️ **Important**: Before you start, note that this product uses the CLI for Microsoft 365 under the hood. Currently, VS Code extension do not support ECMAScript Modules (ESM), and starting from version 7.x, the CLI has been refactored to use ESM. To overcome this, we are using a fork of CLI that is still maintained in CommonJS (CJS). You can find it in the following Github repo/branch [cli-cjs](https://github.com/Adam-it/cli-microsoft365/tree/cli-cjs).
+> ⚠️ **Important**: Before you start, note that this product uses the CLI for Microsoft 365 under the hood. Currently, VS Code extensions do not support ECMAScript Modules (ESM), and starting from version 7.x, the CLI has been refactored to use ESM. To overcome this, we are using a fork of CLI that is still maintained in CommonJS (CJS). You can find it in the following Github repo/branch [cli-cjs](https://github.com/Adam-it/cli-microsoft365/tree/cli-cjs).
 
 - Fork this project. When creating the fork, deselect the checkbox 'Copy the `main` branch only' to get both `main` and `dev` branches.
 - Clone the forked repository.
@@ -36,6 +36,73 @@ root:
 
 > ⚠️ **Important**: When debugging the SharePoint Framework Toolkit extension in the context of an SPFx project, you may notice errors in the debug console if the following folders are missing: `.\.vscode\tours` and `.\.github\tours`. These errors are caused by the `CodeTour` extension, a dependency of the SPFx Toolkit, and they do not affect the functionality of the SPFx Toolkit extension. To suppress these errors during debugging, you can create empty `.tours` folders in your project. Alternatively, you can safely ignore these errors as they do not impact the extension's behavior.
 
+## 👉 Repository branches
+
+You may have already noticed that this repo maintains two branches: `main` and `dev`. What's even more important is that every feature branch should be created based on `dev` branch and Pull Requests should target `dev` branch not `main`. It's important to understand why the meaning and purpose of each branch:
+
+- `main` - based on this branch new major and minor releases are created. Only critical bug fixes or feature updates go directly to this branch. All others should first be merged to `dev` branch and then merged to from `dev` to `main` with a separate PR. This branch is main repository branch and keeping clean change history is important.
+- `dev` - based on this branch pre-releases are created. Every change should be merged to this branch first with a PR before they get merged to `main` branch. During the release flow, this branch may be rebased and force pushed against `main` branch, so it may be recreated based on the current `main` branch state.
+
+## 🧪 Tests
+
+To run tests in debug mode:
+
+1. install extension https://marketplace.visualstudio.com/items?itemName=ms-vscode.extension-test-runner
+2. run `npm run package && npm run compile-tests`
+3. run `Extension Tests` in debug
+
+![image](https://github.com/user-attachments/assets/f9f69bd3-2da7-4208-b24a-ed84aa0d0700)
+
+To run:
+
+1. run `npm run package && npm run compile-tests`
+2. run `npm run test` and check the result in terminal
+
+## 📝 Documentation
+
+SPFx Toolkit documentation is built using Astro Starlight and hosted at https://pnp.github.io/vscode-viva
+
+When you open a PR, make sure the relevant documentation is updated as well.
+
+All documentation pages are written in **MDX format (`.mdx`)** and located in the `/docs` folder. Here's an overview of the folder structure:
+
+```plaintext
+docs/
+├── assets/                   # Images and other static assets
+├── public/                   # Public assets accessible via URL
+├── src/
+│   ├── components/           # Astro components
+│   ├── content/
+│   │   └── docs/             # All documentation pages (.mdx files)
+│   │       ├── about/        # About pages (changelog, team, etc.)
+│   │       ├── features/     # Feature pages (setup, sign in, etc.)
+│   │       ├── index.mdx     # Homepage
+│   │       └── ...
+│   └── styles/
+│       └── docs.css          # Custom styling
+└── astro.config.mjs          # Astro configuration and sidebar navigation
+```
+
+> ⚠️ **Important**: If your page includes screenshots or other static assets, store them under `docs/assets/images/`. This ensures they are not bundled into the VSIX extension package.
+
+### 🚀 Running Documentation Locally
+
+To run docs locally and preview your changes:
+
+1. run `cd docs`
+2. run `npm install`
+3. run `npm run start`
+4. Open the URL shown in the terminal (usually `http://localhost:4321`). The site reloads automatically when changes are saved.
+
+### ✍️ Documentation Writing Guidelines
+
+When writing or editing documentation, follow these guidelines:
+
+- Use a friendly but professional tone
+- Avoid slang or overly casual language
+- Do not use 100% AI-generated content
+- Place your file in the correct folder based on its purpose
+
 ## ❓ More guidance and tips
 
-For more contributing guidance and tips and technical documentation of this extension please go to the repo [Docs](https://pnp.github.io/vscode-viva/).
+For more guidance, tips, and technical documentation of this extension, please go to the repo [Docs](https://pnp.github.io/vscode-viva/).
