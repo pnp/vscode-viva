@@ -1,6 +1,6 @@
 import * as vscode from 'vscode';
 import { Logger } from '../services/dataType/Logger';
-import { AdaptiveCardTypes, Commands, ComponentTypes, ExtensionTypes, msSampleGalleryLink, promptCodeContext, promptContext, promptExplainSharePointData, promptGeneralContext, promptInfoContext, promptNewContext, promptSetupContext } from '../constants';
+import { AdaptiveCardTypes, Commands, ComponentTypes, ExtensionTypes, msSampleGalleryLink, promptContext, promptExplainSharePointData, promptGeneralContext, promptInfoContext, promptNewContext, promptSetupContext } from '../constants';
 import { ProjectInformation } from '../services/dataType/ProjectInformation';
 import { CliActions } from '../services/actions/CliActions';
 import { AuthProvider } from '../providers/AuthProvider';
@@ -124,8 +124,6 @@ export class PromptHandlers {
         context += `\n Here is some more information regarding each component type ${JSON.stringify(ComponentTypes)}`;
         context += `\n Here is some more information regarding each extension type ${JSON.stringify(ExtensionTypes)}`;
         context += `\n Here is some more information regarding each ACE type ${JSON.stringify(AdaptiveCardTypes)}`;
-      case 'code':
-        context += promptCodeContext;
       case 'info':
         // TODO: since we are already retrieving list of sites app catalog we could add it as additional context here
         context += promptInfoContext;
@@ -187,26 +185,6 @@ export class PromptHandlers {
           return [{
             command: Commands.checkDependencies,
             title: vscode.l10n.t('Check if my local workspace is ready'),
-          }];
-        }
-        return [];
-      case 'code':
-        if (ProjectInformation.isSPFxProject) {
-          return [{
-            command: Commands.upgradeProject,
-            title: vscode.l10n.t('Get upgrade guidance to latest SPFx version'),
-          },
-          {
-            command: Commands.validateProject,
-            title: vscode.l10n.t('Validate your project'),
-          },
-          {
-            command: Commands.renameProject,
-            title: vscode.l10n.t('Rename your project'),
-          },
-          {
-            command: Commands.pipeline,
-            title: vscode.l10n.t('Create a CI/CD workflow'),
           }];
         }
 
