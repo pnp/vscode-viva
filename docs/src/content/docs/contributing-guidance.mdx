@@ -60,3 +60,48 @@ To run:
 
 1. run `npm run package && npm run compile-tests`
 2. run `npm run test` and check the result in terminal
+
+## 📝 Documentation
+
+SPFx Toolkit documentation is built using Astro Starlight and hosted at https://pnp.github.io/vscode-viva
+
+When you open a PR, make sure the relevant documentation is updated as well.
+
+All documentation pages are written in **MDX format (`.mdx`)** and located in the `/docs` folder. Here's an overview of the folder structure:
+
+```plaintext
+docs/
+├── assets/                   # Images and other static assets
+├── public/                   # Public assets accessible via URL
+├── src/
+│   ├── components/           # Astro components
+│   ├── content/
+│   │   └── docs/             # All documentation pages (.mdx files)
+│   │       ├── about/        # About pages (changelog, team, etc.)
+│   │       ├── features/     # Feature pages (setup, sign in, etc.)
+│   │       ├── index.mdx     # Homepage
+│   │       └── ...
+│   └── styles/
+│       └── docs.css          # Custom styling
+└── astro.config.mjs          # Astro configuration and sidebar navigation
+```
+
+> ⚠️ **Important**: If your page includes screenshots or other static assets, store them under `docs/assets/images/`. This ensures they are not bundled into the VSIX extension package.
+
+### 🚀 Running Documentation Locally
+
+To run docs locally and preview your changes:
+
+1. run `cd docs`
+2. run `npm install`
+3. run `npm run start`
+4. Open the URL shown in the terminal (usually `http://localhost:4321`). The site reloads automatically when changes are saved.
+
+### ✍️ Documentation Writing Guidelines
+
+When writing or editing documentation, follow these guidelines:
+
+- Use a friendly but professional tone
+- Avoid slang or overly casual language
+- Do not use 100% AI-generated content
+- Place your file in the correct folder based on its purpose
