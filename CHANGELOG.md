@@ -1,5 +1,14 @@
 # Change Log
 
+## [4.9.0] - 2025-08-14
+
+- Adds product integration tests
+- Adds LM Tool to perform SPFx project upgrade by GitHub Copilot agent mode
+- Adds management capabilities to tenant-wide extension: Enable/Disable, Remove, Update
+- Updates welcome experience, allowing users to always use the extension management capabilities
+- Adds new extension settings that allow specifying the shell type for SPFx project upgrade action
+- Removes/Deprecates code chat participant command
+
 ## [4.8.0] - 2025-06-07
 
 - Added LLM Tools for GitHub Copilot agent mode

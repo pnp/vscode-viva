@@ -164,9 +164,16 @@ You can expand each app catalog to reveal the list of apps contained within. Sel
 - **Uninstall**: Uninstall the solution from a site.
 - **Upgrade**: Upgrades the solution to the latest version available in the app catalog for the specified site.
 
-Additionally, it will show you all tenant-wide extensions installed on your tenant.
-
 ![tenant details](./assets/images/app-catalog-list.png)
+
+Additionally, on the tenant app catalog level, SPFx Toolkit presents all tenant-wide extensions that are available on your tenant with additional management capabilities:
+
+- **Remove**: Allows to remove tenant-wide extension.
+- **Enable**: Enables tenant-wide extension.
+- **Disable**: Disables tenant-wide extension.
+- **Update**: Allows to update all of the tenant-wide extension properties like: Title, Properties, Web template in which the extension will be present, List template, sequence and host properties.
+
+![tenant wide extensions management capabilities](./assets/images/tenant-wide-extensions-management-capabilities.png)
 
 Using the extension settings you may choose to show or hide the apps in app catalog list and tenant health incidents list.
 
@@ -333,7 +340,6 @@ Now you may use SPFx Toolkit as a chat participant in GitHub Copilot chat extens
 Currently, we support the following commands:
 - `/setup` - that is dedicated to providing information on how to setup your local workspace for SharePoint Framework development
 - `/new` - that may be used to get guidance on how to create a new solution or find and reuse an existing sample from the PnP SPFx sample gallery
-- `/code` - [beta] this command is fine-tuned to provide help in coding your SharePoint Framework project and provides additional boosters like validating the correctness of your SPFx project, scaffolding a CI/CD workflow, or renaming your project, and many more.
 - `/info` - this command will allow you to ask and retrieve any kind of data from you SharePoint Online tenant. This command will only work if your are signed in to your tenant. It uses CLI for Microsoft 365 commands under the hood to retrieve and explain data and assets from your SharePoint Online tenant. It does support only retrieving information, it will not support you in creating, updating or removing any resources. For example, you want to check if some list item or file exists. Or how many items with specific metadata do you have on a list? Or ask for content type columns to generate an interface based on the response quickly.
 
 The SPFx Toolkit Language Model Tools provide a set of skills may be used by GitHub Copilot in agent mode to assist you in your SharePoint Framework development tasks and managing your SharePoint Online tenant. 
