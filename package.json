@@ -872,6 +872,12 @@
 				"title": "Disable",
 				"category": "SPFx Toolkit",
 				"icon": "$(circle-slash)"
+			},
+			{
+				"command": "spfx-toolkit.updateTenantWideExtension",
+				"title": "Update",
+				"category": "SPFx Toolkit",
+				"icon": "$(sync)"
 			}
 		],
 		"menus": {
@@ -942,6 +948,10 @@
 				},
 				{
 					"command": "spfx-toolkit.disableTenantWideExtension",
+					"when": "false"
+				},
+				{
+					"command": "spfx-toolkit.updateTenantWideExtension",
 					"when": "false"
 				}
 			],
@@ -1040,6 +1050,10 @@
 				{
 					"command": "spfx-toolkit.disableTenantWideExtension",
 					"group": "actions.more@3"
+				},
+				{
+					"command": "spfx-toolkit.updateTenantWideExtension",
+					"group": "actions.more@4"
 				}
 			],
 			"explorer/context": [

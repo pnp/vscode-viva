@@ -123,7 +123,7 @@ export class CliActions {
    * @returns A promise that resolves to an array of objects containing the URL and title of each tenant-wide extension,
    *          or undefined if no extensions are found.
    */
-  public static async getTenantWideExtensions(tenantAppCatalogUrl: string): Promise<{ Url: string, Title: string, extensionDisabled: boolean }[] | undefined> {
+  public static async getTenantWideExtensions(tenantAppCatalogUrl: string): Promise<any[] | undefined> {
     const origin = new URL(tenantAppCatalogUrl).origin;
     const commandOptions: any = {
       listUrl: `${tenantAppCatalogUrl.replace(origin, '')}/Lists/TenantWideExtensions`,
@@ -139,8 +139,8 @@ export class CliActions {
       const tenantWideExtensionsJson: any[] = JSON.parse(tenantWideExtensions);
       const tenantWideExtensionList = tenantWideExtensionsJson.map((extension) => {
         return {
+          ...extension,
           Url: `${tenantAppCatalogUrl}/Lists/TenantWideExtensions/DispForm.aspx?ID=${extension.Id}`,
-          Title: extension.Title,
           extensionDisabled: extension.TenantWideExtensionDisabled || false
         };
       });
