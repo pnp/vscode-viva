@@ -128,7 +128,14 @@ export const RegisterEntraAppRegView: React.FunctionComponent<IRegisterEntraAppR
               <li>Leave the <code>Supported account types</code> and <code>Redirect URI</code> values as they are and select the <code>Register</code> button at the foot of the form to create your custom application</li>
               <li>Next we need to configure the <code>Authentication</code> for our new app. Go to the <code>Authentication</code> page and select the <code>Add a platform</code> button to open up the <code>Configure platforms</code> menu and under the <code>Mobile and desktop applications</code> heading, select <code>Mobile and desktop applications</code>. This will open another menu called <code>Configure Desktop + Devices</code> displaying a section called <code>Redirect URIs</code> and a list of checkboxes with some pre-defined URIs.</li>
               <li>Select the first option in the list, <code>https://login.microsoftonline.com/common/oauth2/nativeclient</code> and select the <code>Configure</code> button at the foot of the menu.</li>
-              <li>we can skip over the <code>Supported account type</code> section, as this is defaulted to <code>Accounts in this organizational directory only (tenant only - Single tenant)</code> meaning, that only users within the current tenant directory can use this application.</li>
+              <li>Under Mobile and desktop applications, click on Add URI and enter the following redirect URIs:
+                <ul>
+                  <li><code>http://localhost</code></li>
+                  <li><code>https://localhost</code></li>
+                </ul>
+                These URIs are required for the extension to successfully complete authentication.
+              </li>
+              <li>We can skip over the <code>Supported account type</code> section, as this is defaulted to <code>Accounts in this organizational directory only (tenant only - Single tenant)</code> meaning, that only users within the current tenant directory can use this application.</li>
               <li>In the <code>Advanced settings</code> section, we need to enable the <code>Allow public client flows</code> toggle, as we are using the <code>Device code flow</code> method to authenticate to our tenant using the CLI for Microsoft 365.</li>
               <li>To make sure all these changes are applied, select the <code>Save</code> button before moving on.</li>
               <li>Now that we have configured the application to work with the SPFx Toolkit, we next need to grant the required permissions. Select the <code>API permissions</code> in the menu option.
@@ -170,7 +177,9 @@ export const RegisterEntraAppRegView: React.FunctionComponent<IRegisterEntraAppR
                 </div>
               </li>
               <li>Go to <code>Overview</code> page and note down the <code>Application (client) ID</code> and <code>Directory (tenant) ID</code></li>
-              <li>Click on the <code>Sign in to Microsoft 365</code> and provide the noted down <code>Client Id</code> and <code>Tenant Id</code></li>
+              <li>
+                Back in the PnP SPFx extension in VS Code, click on <code>Sign in to Microsoft 365</code> and provide the noted down <code>Client Id</code> and <code>Tenant Id</code>.
+              </li>
             </ul>
           </div>
         </div>

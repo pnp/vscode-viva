@@ -33,9 +33,16 @@ After successful sign in, an additional view is presented that shows a list of l
 - **Install**: Install the solution from tenant or site collection app catalog to a site.
 - **Uninstall**: Uninstall the solution from a site.
 
-Additionally, it will show you all tenant-wide extensions installed on your tenant.
-
 ![tenant details](../images/app-catalog-list.png)
+
+Additionally, on the tenant app catalog level, SPFx Toolkit presents all tenant-wide extensions that are available on your tenant with additional management capabilities:
+
+- **Remove**: Allows to remove tenant-wide extension.
+- **Enable**: Enables tenant-wide extension.
+- **Disable**: Disables tenant-wide extension.
+- **Update**: Allows to update all of the tenant-wide extension properties like: Title, Properties, Web template in which the extension will be present, List template, sequence and host properties.
+
+![tenant wide extensions management capabilities](../images/tenant-wide-extensions-management-capabilities.png)
 
 Using the extension settings you may choose show or hide the tenant-wide extensions list and tenant health incidents list.
 

@@ -2,10 +2,10 @@
 	"name": "viva-connections-toolkit",
 	"displayName": "SharePoint Framework Toolkit",
 	"description": "SharePoint Framework Toolkit aims to boost your productivity in developing and managing SharePoint Framework solutions helping at every stage of your development flow, from setting up your development workspace to deploying a solution straight to your tenant without the need to leave VS Code and now even create a CI/CD pipeline to introduce automate deployment of your app. This toolkit is provided by the community.",
-	"version": "4.8.0",
+	"version": "4.9.0",
 	"publisher": "m365pnp",
 	"preview": false,
-	"homepage": "https://github.com/pnp/vscode-viva",
+	"homepage": "https://pnp.github.io/vscode-viva",
 	"icon": "assets/logo-large.png",
 	"engines": {
 		"vscode": "^1.93.0"
@@ -38,8 +38,7 @@
 	],
 	"activationEvents": [
 		"workspaceContains:**/project.pnp",
-		"onAuthenticationRequest:m365-pnp-auth",
-		"onStartupFinished"
+		"onView:pnp-view"
 	],
 	"extensionDependencies": [
 		"vsls-contrib.codetour",
@@ -53,7 +52,7 @@
 				"id": "spfx-toolkit.pnp",
 				"fullName": "SPFx Toolkit",
 				"name": "spfx",
-				"description": "How can I help you with SPFx development? Use /setup, /new, /info, /code commands for job specific support.",
+				"description": "How can I help you with SPFx development? Use /setup, /new, /info commands for job specific support.",
 				"isSticky": true,
 				"commands": [
 					{
@@ -70,11 +69,6 @@
 						"name": "info",
 						"isSticky": true,
 						"description": "Retrieve information from your SharePoint Online tenant"
-					},
-					{
-						"name": "code",
-						"isSticky": true,
-						"description": "[beta] Let's write some SPFx code"
 					}
 				]
 			}
@@ -351,6 +345,23 @@
 						}
 					}
 				}
+			},
+			{
+				"name": "upgrade_spfx_project",
+				"tags": [
+					"sharepoint framework",
+					"SPFx",
+					"project",
+					"upgrade",
+					"spfx-toolkit"
+				],
+				"toolReferenceName": "SharePointFrameworkProjectUpgrade",
+				"displayName": "Upgrade SharePoint Framework project",
+				"modelDescription": "Allows retrieval of the steps required to upgrade a SharePoint Framework (SPFx) project to the latest version. The retrieved steps may be executed by the GitHub Copilot Agent to perform the upgrade.",
+				"userDescription": "Upgrade SharePoint Framework project.",
+				"canBeReferencedInPrompt": true,
+				"icon": "$(arrow-up)",
+				"inputSchema": {}
 			}
 		],
 		"walkthroughs": [
@@ -497,6 +508,17 @@
 					],
 					"description": "Choose the output mode for the project upgrade. You can choose between `both`, `markdown`, or `code tour`."
 				},
+				"spfx-toolkit.upgradeShellType": {
+					"title": "Project upgrade shell type",
+					"type": "string",
+					"default": "powershell",
+					"enum": [
+						"bash",
+						"powershell",
+						"cmd"
+					],
+					"description": "Choose the shell type to be used for the upgrade action. You can choose between `bash`, `powershell`, or `cmd`."
+				},
 				"spfx-toolkit.projectValidateOutputMode": {
 					"title": "Project validate output mode",
 					"type": "string",
@@ -573,19 +595,13 @@
 		"views": {
 			"pnp-view": [
 				{
-					"id": "pnp-view-empty",
-					"name": "SPFx Toolkit",
-					"when": "pnp.project.showWelcome"
-				},
-				{
 					"id": "pnp-view-account",
-					"name": "Account",
-					"when": "pnp.project.isSPFxProject"
+					"name": "Account"
 				},
 				{
 					"id": "pnp-view-environment",
 					"name": "App Catalog details",
-					"when": "pnp.project.isSPFxProject && pnp.project.isLoggedIn"
+					"when": "pnp.project.isLoggedIn"
 				},
 				{
 					"id": "pnp-view-tasks",
@@ -594,22 +610,14 @@
 				},
 				{
 					"id": "pnp-view-actions",
-					"name": "Actions",
-					"when": "pnp.project.isSPFxProject"
+					"name": "Actions"
 				},
 				{
 					"id": "pnp-view-help",
-					"name": "Help and feedback",
-					"when": "pnp.project.isSPFxProject"
+					"name": "Help and feedback"
 				}
 			]
 		},
-		"viewsWelcome": [
-			{
-				"view": "pnp-view-empty",
-				"contents": "Welcome to SharePoint Framework Toolkit\n\n\nTo start create a new SharePoint Framework project. \n[Create a new project](command:spfx-toolkit.createProject)\n\n\n\n\n\nUse a sample to kick off a new project and boost your development.\n[View samples](command:spfx-toolkit.samplesGallery)\n\n\n\n\n\nYou can also open an existing app.\n[Open folder](command:vscode.openFolder)\n\n\n\n\n\nValidate your local workspace and check if you have the required dependencies.\n[Validate local setup](command:spfx-toolkit.checkDependencies)\n\n\n\n\n\nInstall the required dependencies.\n[Install dependencies](command:spfx-toolkit.installDependencies)\n\n\n\nLearn more about SharePoint Framework and this toolkit.\n[Walkthrough](command:spfx-toolkit.welcome)\n\n\n\nStart effortlessly with GitHub Copilot. Get SPFx tailored support in setting up your local workspace, creating a new project, or managing your tenant.\n[Use @SPFx in GitHub Copilot](command:spfx-toolkit.openCopilot) \n\n\n\n\n\nFor additional help or resources visit the [SPFX Toolkit docs](https://pnp.github.io/vscode-viva)."
-			}
-		],
 		"commands": [
 			{
 				"command": "spfx-toolkit.welcome",
@@ -840,6 +848,36 @@
 				"title": "Remove Site App Catalog",
 				"category": "SPFx Toolkit",
 				"icon": "$(trash)"
+			},
+			{
+				"command": "spfx-toolkit.moreTenantWideExtensionActions",
+				"title": "...",
+				"category": "SPFx Toolkit",
+				"icon": "$(ellipsis)"
+			},
+			{
+				"command": "spfx-toolkit.removeTenantWideExtension",
+				"title": "Remove",
+				"category": "SPFx Toolkit",
+				"icon": "$(trash)"
+			},
+			{
+				"command": "spfx-toolkit.enableTenantWideExtension",
+				"title": "Enable",
+				"category": "SPFx Toolkit",
+				"icon": "$(check)"
+			},
+			{
+				"command": "spfx-toolkit.disableTenantWideExtension",
+				"title": "Disable",
+				"category": "SPFx Toolkit",
+				"icon": "$(circle-slash)"
+			},
+			{
+				"command": "spfx-toolkit.updateTenantWideExtension",
+				"title": "Update",
+				"category": "SPFx Toolkit",
+				"icon": "$(sync)"
 			}
 		],
 		"menus": {
@@ -895,6 +933,26 @@
 				{
 					"command": "spfx-toolkit.uninstallAppCatalogApp",
 					"when": "false"
+				},
+				{
+					"command": "spfx-toolkit.moreTenantWideExtensionActions",
+					"when": "false"
+				},
+				{
+					"command": "spfx-toolkit.removeTenantWideExtension",
+					"when": "false"
+				},
+				{
+					"command": "spfx-toolkit.enableTenantWideExtension",
+					"when": "false"
+				},
+				{
+					"command": "spfx-toolkit.disableTenantWideExtension",
+					"when": "false"
+				},
+				{
+					"command": "spfx-toolkit.updateTenantWideExtension",
+					"when": "false"
 				}
 			],
 			"view/title": [
@@ -939,6 +997,11 @@
 					"command": "spfx-toolkit.removeSiteAppCatalog",
 					"when": "viewItem == sp-app-catalog-url",
 					"group": "inline"
+				},
+				{
+					"submenu": "spfx-toolkit.moreTenantWideExtensionActions",
+					"when": "view == pnp-view-environment && viewItem == pnp.etv.hasTenantWideExtension",
+					"group": "inline@2"
 				}
 			],
 			"spfx-toolkit.showMoreActions": [
@@ -975,6 +1038,24 @@
 					"group": "actions.more@5"
 				}
 			],
+			"spfx-toolkit.moreTenantWideExtensionActions": [
+				{
+					"command": "spfx-toolkit.removeTenantWideExtension",
+					"group": "actions.more@1"
+				},
+				{
+					"command": "spfx-toolkit.enableTenantWideExtension",
+					"group": "actions.more@2"
+				},
+				{
+					"command": "spfx-toolkit.disableTenantWideExtension",
+					"group": "actions.more@3"
+				},
+				{
+					"command": "spfx-toolkit.updateTenantWideExtension",
+					"group": "actions.more@4"
+				}
+			],
 			"explorer/context": [
 				{
 					"command": "spfx-toolkit.deployProject",
@@ -986,6 +1067,11 @@
 		"submenus": [
 			{
 				"id": "spfx-toolkit.showMoreActions",
+				"label": "More Actions...",
+				"icon": "$(ellipsis)"
+			},
+			{
+				"id": "spfx-toolkit.moreTenantWideExtensionActions",
 				"label": "More Actions...",
 				"icon": "$(ellipsis)"
 			}
@@ -1028,6 +1114,7 @@
 		"@types/react": "18.0.8",
 		"@types/react-dom": "18.0.3",
 		"@types/react-router-dom": "5.3.3",
+		"@types/sinon": "^17.0.4",
 		"@types/vscode": "^1.93.0",
 		"@typescript-eslint/eslint-plugin": "8.31.1",
 		"@typescript-eslint/parser": "8.31.1",
@@ -1052,6 +1139,7 @@
 		"react-dom": "^18.1.0",
 		"react-router-dom": "^6.3.0",
 		"rimraf": "^6.0.1",
+		"sinon": "^21.0.0",
 		"style-loader": "^4.0.0",
 		"tailwindcss": "^3.3.0",
 		"ts-loader": "^9.5.2",

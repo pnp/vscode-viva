@@ -13,7 +13,8 @@ import { Subscription } from '../models';
 import { Extension } from '../services/dataType/Extension';
 import { getExtensionSettings } from '../utils';
 import { Notifications } from '../services/dataType/Notifications';
-import { increaseVersion } from '../utils/increaseVersion';
+import { helpCommands } from './HelpTreeData';
+import { gulpTaskCommands } from './TaskTreeData';
 
 
 export class CommandPanel {
@@ -30,52 +31,30 @@ export class CommandPanel {
     subscriptions.push(
       commands.registerCommand(Commands.welcome, () => commands.executeCommand('workbench.action.openWalkthrough', 'm365pnp.viva-connections-toolkit#spfx-toolkit-intro', false))
     );
-    subscriptions.push(
-      commands.registerCommand(Commands.increaseVersion, CommandPanel.increaseVersion)
-    );
 
     CommandPanel.init();
   }
 
   private static async init() {
     try {
-      let isM365AgentsToolkitProject = false;
-      let files = await workspace.findFiles('.yo-rc.json', '**/node_modules/**');
+      const isM365AgentsToolkitProject = await CommandPanel.isM365AgentsToolkitProject();
+      const isSPFxProject = isM365AgentsToolkitProject ? true : await CommandPanel.isSPFxProject();
 
-      if (files.length <= 0) {
-        files = await workspace.findFiles('src/.yo-rc.json', '**/node_modules/**');
-        isM365AgentsToolkitProject = true;
-      }
-
-      if (files.length <= 0) {
-        CommandPanel.showWelcome();
-        return;
-      }
-
-      const file = files[0];
-      const content = readFileSync(file.fsPath, 'utf8');
-      if (!content) {
-        CommandPanel.showWelcome();
-        return;
-      }
-
-      const json = JSON.parse(content);
-      if (!json || !json['@microsoft/generator-sharepoint']) {
-        CommandPanel.showWelcome();
-        return;
-      }
-
-      commands.executeCommand('setContext', ContextKeys.isSPFxProject, true);
-      commands.executeCommand('setContext', ContextKeys.showWelcome, false);
-
-      ProjectInformation.isSPFxProject = true;
+      commands.executeCommand('setContext', ContextKeys.isSPFxProject, isSPFxProject);
+      ProjectInformation.isSPFxProject = isSPFxProject;
       M365AgentsToolkitIntegration.isM365AgentsToolkitProject = isM365AgentsToolkitProject;
 
-      AdaptiveCardCheck.validateACEComponent();
       CommandPanel.registerTreeView();
       AuthProvider.verify();
+
+      if (isSPFxProject){
+        AdaptiveCardCheck.validateACEComponent();
+      }
+
     } catch (error) {
-      CommandPanel.showWelcome();
+      commands.executeCommand('setContext', ContextKeys.isSPFxProject, false);
+      ProjectInformation.isSPFxProject = false;
+      M365AgentsToolkitIntegration.isM365AgentsToolkitProject = false;
       Notifications.error('Error initializing the extension, please verify the project and try again.');
     }
   }
@@ -94,8 +73,15 @@ export class CommandPanel {
       });
     }
 
-    CommandPanel.taskTreeView();
-    CommandPanel.helpTreeView();
+    if (ProjectInformation.isSPFxProject) {
+      window.registerTreeDataProvider('pnp-view-tasks', new ActionTreeDataProvider(gulpTaskCommands));
+    }
+
+    window.createTreeView('pnp-view-help',
+      {
+        treeDataProvider: new ActionTreeDataProvider(helpCommands),
+        showCollapseAll: true
+      });
   }
 
   private static refreshAccountTreeView() {
@@ -183,7 +169,14 @@ export class CommandPanel {
           if (tenantWideExtensions && tenantWideExtensions.length > 0) {
             tenantWideExtensions.forEach((extension) => {
               tenantWideExtensionsList.push(
-                new ActionTreeItem(extension.Title, '', { name: 'spo-app', custom: true }, TreeItemCollapsibleState.None, 'vscode.open', Uri.parse(extension.Url), 'sp-app-catalog-tenant-wide-extensions-url')
+                new ActionTreeItem(extension.Title, '', { name: 'spo-app', custom: true }, TreeItemCollapsibleState.None, 'vscode.open', Uri.parse(extension.Url), ContextKeys.hasTenantWideExtension,
+                  [
+                    new ActionTreeItem('Remove', '', undefined, undefined, Commands.removeTenantWideExtension, [extension.Title, extension.Url, tenantAppCatalogUrl], ContextKeys.removeTenantWideExtension),
+                    new ActionTreeItem('Enable', '', undefined, undefined, Commands.enableTenantWideExtension, [extension.Title, extension.Url, tenantAppCatalogUrl, extension.extensionDisabled], ContextKeys.enableTenantWideExtension),
+                    new ActionTreeItem('Disable', '', undefined, undefined, Commands.disableTenantWideExtension, [extension.Title, extension.Url, tenantAppCatalogUrl, extension.extensionDisabled], ContextKeys.disableTenantWideExtension),
+                    new ActionTreeItem('Update', '', undefined, undefined, Commands.updateTenantWideExtension, [extension, extension.Url, tenantAppCatalogUrl], ContextKeys.updateTenantWideExtension)
+                  ]
+                )
               );
             });
           } else {
@@ -281,102 +274,71 @@ export class CommandPanel {
       }
 
       environmentCommands.push(
-          new ActionTreeItem('Site App Catalogs', '', { name: 'spo-logo', custom: true }, TreeItemCollapsibleState.Collapsed, Commands.addSiteAppCatalog , undefined, 'sp-app-catalog-root', siteAppCatalogActionItems)
-        );
+        new ActionTreeItem('Site App Catalogs', '', { name: 'spo-logo', custom: true }, TreeItemCollapsibleState.Collapsed, Commands.addSiteAppCatalog, undefined, 'sp-app-catalog-root', siteAppCatalogActionItems)
+      );
     }
 
     window.createTreeView('pnp-view-environment', { treeDataProvider: new ActionTreeDataProvider(environmentCommands), showCollapseAll: true });
   }
 
-  private static taskTreeView() {
-    const taskCommands: ActionTreeItem[] = [
-      new ActionTreeItem('Build project', '', { name: 'gear', custom: false }, undefined, Commands.buildProject),
-      new ActionTreeItem('Bundle project', '', { name: 'package', custom: false }, undefined, Commands.bundleProject),
-      new ActionTreeItem('Clean project', '', { name: 'clear-all', custom: false }, undefined, Commands.cleanProject),
-      new ActionTreeItem('Deploy project assets to Azure Storage', '', { name: 'cloud-upload', custom: false }, undefined, Commands.deployToAzureStorage),
-      new ActionTreeItem('Package', '', { name: 'zap', custom: false }, undefined, Commands.packageProject),
-      new ActionTreeItem('Publish', '', { name: 'rocket', custom: false }, undefined, Commands.publishProject),
-      new ActionTreeItem('Serve', '', { name: 'play-circle', custom: false }, undefined, Commands.serveProject),
-      new ActionTreeItem('Test', '', { name: 'beaker', custom: false }, undefined, Commands.testProject),
-      new ActionTreeItem('Trust self-signed developer certificate', '', { name: 'verified', custom: false }, undefined, Commands.trustDevCert),
-    ];
-
-    window.registerTreeDataProvider('pnp-view-tasks', new ActionTreeDataProvider(taskCommands));
-  }
-
   private static async actionsTreeView() {
     const actionCommands: ActionTreeItem[] = [];
-    actionCommands.push(new ActionTreeItem('Upgrade project SPFx version', '', { name: 'arrow-up', custom: false }, undefined, Commands.upgradeProject));
-    actionCommands.push(new ActionTreeItem('Validate project correctness', '', { name: 'check-all', custom: false }, undefined, Commands.validateProject));
-    actionCommands.push(new ActionTreeItem('Rename project', '', { name: 'whole-word', custom: false }, undefined, Commands.renameProject));
-    actionCommands.push(new ActionTreeItem('Increase project version', '', { name: 'fold-up', custom: false }, undefined, Commands.increaseVersion));
 
-    if (EnvironmentInformation.account) {
-      actionCommands.push(new ActionTreeItem('Grant API permissions', '', { name: 'workspace-trusted', custom: false }, undefined, Commands.grantAPIPermissions));
-      actionCommands.push(new ActionTreeItem('Deploy project to app catalog', '', { name: 'cloud-upload', custom: false }, undefined, Commands.deployProject));
+    if (ProjectInformation.isSPFxProject) {
+      actionCommands.push(new ActionTreeItem('Upgrade project SPFx version', '', { name: 'arrow-up', custom: false }, undefined, Commands.upgradeProject));
+      actionCommands.push(new ActionTreeItem('Validate project correctness', '', { name: 'check-all', custom: false }, undefined, Commands.validateProject));
+      actionCommands.push(new ActionTreeItem('Rename project', '', { name: 'whole-word', custom: false }, undefined, Commands.renameProject));
+      actionCommands.push(new ActionTreeItem('Increase project version', '', { name: 'fold-up', custom: false }, undefined, Commands.increaseVersion));
+
+      if (EnvironmentInformation.account) {
+        actionCommands.push(new ActionTreeItem('Grant API permissions', '', { name: 'workspace-trusted', custom: false }, undefined, Commands.grantAPIPermissions));
+        actionCommands.push(new ActionTreeItem('Deploy project to app catalog', '', { name: 'cloud-upload', custom: false }, undefined, Commands.deployProject));
+        actionCommands.push(new ActionTreeItem('Set Form Customizer', '', { name: 'checklist', custom: false }, undefined, Commands.setFormCustomizer));
+      }
+
+      actionCommands.push(new ActionTreeItem('Scaffold CI/CD Workflow', '', { name: 'rocket', custom: false }, undefined, Commands.pipeline));
+      actionCommands.push(new ActionTreeItem('Add new component', '', { name: 'add', custom: false }, undefined, Commands.addToProject));
+      actionCommands.push(new ActionTreeItem('View samples', '', { name: 'library', custom: false }, undefined, Commands.samplesGallery));
+      actionCommands.push(new ActionTreeItem('Use @spfx in GitHub Copilot ', '', { name: 'copilot', custom: false }, undefined, Commands.openCopilot));
+    } else {
+      actionCommands.push(new ActionTreeItem('Create new project', '', { name: 'add', custom: false }, undefined, Commands.createProject));
+      actionCommands.push(new ActionTreeItem('View samples', '', { name: 'library', custom: false }, undefined, Commands.samplesGallery));
+
+      if (EnvironmentInformation.account) {
+        actionCommands.push(new ActionTreeItem('Set Form Customizer', '', { name: 'checklist', custom: false }, undefined, Commands.setFormCustomizer));
+      }
+
+      actionCommands.push(new ActionTreeItem('Validate local setup', '', { name: 'verified', custom: false }, undefined, Commands.checkDependencies));
+      actionCommands.push(new ActionTreeItem('Install dependencies', '', { name: 'cloud-download', custom: false }, undefined, Commands.installDependencies));
+      actionCommands.push(new ActionTreeItem('Use @spfx in GitHub Copilot ', '', { name: 'copilot', custom: false }, undefined, Commands.openCopilot));
     }
-
-    actionCommands.push(new ActionTreeItem('Add new component', '', { name: 'add', custom: false }, undefined, Commands.addToProject));
-    actionCommands.push(new ActionTreeItem('Scaffold CI/CD Workflow', '', { name: 'rocket', custom: false }, undefined, Commands.pipeline));
-    actionCommands.push(new ActionTreeItem('Set Form Customizer', '', { name: 'checklist', custom: false }, undefined, Commands.setFormCustomizer));
-    actionCommands.push(new ActionTreeItem('View samples', '', { name: 'library', custom: false }, undefined, Commands.samplesGallery));
 
     window.registerTreeDataProvider('pnp-view-actions', new ActionTreeDataProvider(actionCommands));
   }
 
-  private static helpTreeView() {
-    const helpCommands: ActionTreeItem[] = [
-      new ActionTreeItem('Docs & Learning', '', undefined, TreeItemCollapsibleState.Expanded, undefined, undefined, undefined, [
-        new ActionTreeItem('Overview of the SharePoint Framework', '', { name: 'book', custom: false }, undefined, 'vscode.open', Uri.parse('https://learn.microsoft.com/en-us/sharepoint/dev/spfx/sharepoint-framework-overview')),
-        new ActionTreeItem('Overview of Viva Connections Extensibility', '', { name: 'book', custom: false }, undefined, 'vscode.open', Uri.parse('https://learn.microsoft.com/en-us/sharepoint/dev/spfx/viva/overview-viva-connections')),
-        new ActionTreeItem('Overview of Microsoft Graph', '', { name: 'book', custom: false }, undefined, 'vscode.open', Uri.parse('https://learn.microsoft.com/en-us/graph/overview?view=graph-rest-1.0')),
-        new ActionTreeItem('Learning path: Extend Microsoft SharePoint - Associate', '', { name: 'mortar-board', custom: false }, undefined, 'vscode.open', Uri.parse('https://learn.microsoft.com/en-us/training/paths/m365-sharepoint-associate/')),
-        new ActionTreeItem('Learning path: Extend Microsoft Viva Connections', '', { name: 'mortar-board', custom: false }, undefined, 'vscode.open', Uri.parse('https://learn.microsoft.com/en-us/training/paths/m365-extend-viva-connections/')),
-        new ActionTreeItem('Learning path: Microsoft Graph Fundamentals', '', { name: 'mortar-board', custom: false }, undefined, 'vscode.open', Uri.parse('https://learn.microsoft.com/en-us/training/paths/m365-msgraph-fundamentals/'))
-      ]),
-      new ActionTreeItem('Resources & Tooling', '', undefined, TreeItemCollapsibleState.Expanded, undefined, undefined, undefined, [
-        new ActionTreeItem('Microsoft Graph Explorer', '', { name: 'globe', custom: false }, undefined, 'vscode.open', Uri.parse('https://developer.microsoft.com/en-us/graph/graph-explorer')),
-        new ActionTreeItem('Microsoft 365 Agents Toolkit', '', { name: 'tools', custom: false }, undefined, 'vscode.open', Uri.parse('https://marketplace.visualstudio.com/items?itemName=TeamsDevApp.ms-teams-vscode-extension')),
-        new ActionTreeItem('Adaptive Card Previewer', '', { name: 'tools', custom: false }, undefined, 'vscode.open', Uri.parse('https://marketplace.visualstudio.com/items?itemName=TeamsDevApp.vscode-adaptive-cards')),
-        new ActionTreeItem('SharePoint Embedded', '', { name: 'tools', custom: false }, undefined, 'vscode.open', Uri.parse('https://marketplace.visualstudio.com/items?itemName=SharepointEmbedded.ms-sharepoint-embedded-vscode-extension')),
-        new ActionTreeItem('Adaptive Card Designer', '', { name: 'globe', custom: false }, undefined, 'vscode.open', Uri.parse('https://adaptivecards.io/designer/')),
-        new ActionTreeItem('Join the Microsoft 365 Developer Program', '', { name: 'star-empty', custom: false }, undefined, 'vscode.open', Uri.parse('https://developer.microsoft.com/en-us/microsoft-365/dev-program')),
-        new ActionTreeItem('Sample Solution Gallery', '', { name: 'library', custom: false }, undefined, 'vscode.open', Uri.parse('https://adoption.microsoft.com/en-us/sample-solution-gallery/'))
-      ]),
-      new ActionTreeItem('Community', '', undefined, TreeItemCollapsibleState.Expanded, undefined, undefined, undefined, [
-        new ActionTreeItem('Microsoft 365 & Power Platform Community Home', '', { name: 'organization', custom: false }, undefined, 'vscode.open', Uri.parse('https://pnp.github.io/')),
-        new ActionTreeItem('Join the Microsoft 365 & Power Platform Community Discord Server', '', { name: 'feedback', custom: false }, undefined, 'vscode.open', Uri.parse('https://aka.ms/community/discord'))
-      ]),
-      new ActionTreeItem('Support', '', undefined, TreeItemCollapsibleState.Expanded, undefined, undefined, undefined, [
-        new ActionTreeItem('Docs', '', { name: 'question', custom: false }, undefined, 'vscode.open', Uri.parse('https://pnp.github.io/vscode-viva/')),
-        new ActionTreeItem('Report an issue', '', { name: 'github', custom: false }, undefined, 'vscode.open', Uri.parse('https://github.com/pnp/vscode-viva/issues/new/choose')),
-        new ActionTreeItem('Start Walkthrough', '', { name: 'info', custom: false }, undefined, Commands.welcome)
-      ])
-    ];
-
-    window.createTreeView('pnp-view-help', { treeDataProvider: new ActionTreeDataProvider(helpCommands), showCollapseAll: true });
+  private static async isM365AgentsToolkitProject(): Promise<boolean> {
+    const files = await workspace.findFiles('src/.yo-rc.json', '**/node_modules/**');
+    return files.length > 0 ? true : false;
   }
 
-  private static showWelcome() {
-    commands.executeCommand('setContext', ContextKeys.showWelcome, true);
-  }
+  private static async isSPFxProject(): Promise<boolean> {
+    const files = await workspace.findFiles('.yo-rc.json', '**/node_modules/**');
 
-  /**
-   * Increases the version of the project.
-   */
-  public static async increaseVersion() {
-    const versionType = await window.showQuickPick(['major', 'minor', 'patch'], {
-      placeHolder: 'Select the version type to increase',
-      ignoreFocusOut: true,
-      canPickMany: false,
-      title: 'Increase Version'
-    });
-
-    if (!versionType) {
-      return;
+    if (files.length <= 0) {
+      return false;
     }
 
-    await increaseVersion(versionType as 'major' | 'minor' | 'patch');
-    Notifications.info('Version increased successfully.');
+    const file = files[0];
+    const content = readFileSync(file.fsPath, 'utf8');
+    if (!content) {
+      return false;
+    }
+
+    const json = JSON.parse(content);
+    if (!json || !json['@microsoft/generator-sharepoint']) {
+      return false;
+    }
+
+    return true;
   }
 }

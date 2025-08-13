@@ -18,6 +18,12 @@
   </a>
 </p>
 
+<h2 align="center">
+  <a href="https://pnp.github.io/vscode-viva/" title="SPFx Toolkit Documentation">
+  👉 SPFx Toolkit Documentation
+  </a>
+</h2>
+
 <p align="center">SharePoint Framework Toolkit is a Visual Studio Code extension that aims to boost your productivity in developing and managing SharePoint Framework solutions helping at every stage of your development flow, from setting up your development workspace to deploying a solution straight to your tenant without the need to leave VS Code. With SharePoint Framework, you can use modern web technologies and tools in your preferred development environment to build productive experiences and apps that are responsive and mobile-ready allowing you to create solutions to extend SharePoint, Microsoft Teams, Microsoft Viva Connections, Outlook and Microsoft365.com.</p>
 
 <p align="center">
@@ -45,8 +51,6 @@ The extension automatically detects if you have a SharePoint Framework project o
 ![Welcome experience](./assets/images/welcome-experience.png)
 
 Directly from this view, you may create a new project from scratch or from an existing web part, extension or ACE sample, or ACE scenario.
-
-It is also possible to open an already existing project using Open folder button.
 
 Last but not least it is possible to check your local workspace for the needed global dependencies to develop the SPFx solutions, like the correct Node version, gulp, yeoman etc., and install them if needed with a single click.
 
@@ -160,9 +164,16 @@ You can expand each app catalog to reveal the list of apps contained within. Sel
 - **Uninstall**: Uninstall the solution from a site.
 - **Upgrade**: Upgrades the solution to the latest version available in the app catalog for the specified site.
 
-Additionally, it will show you all tenant-wide extensions installed on your tenant.
-
 ![tenant details](./assets/images/app-catalog-list.png)
+
+Additionally, on the tenant app catalog level, SPFx Toolkit presents all tenant-wide extensions that are available on your tenant with additional management capabilities:
+
+- **Remove**: Allows to remove tenant-wide extension.
+- **Enable**: Enables tenant-wide extension.
+- **Disable**: Disables tenant-wide extension.
+- **Update**: Allows to update all of the tenant-wide extension properties like: Title, Properties, Web template in which the extension will be present, List template, sequence and host properties.
+
+![tenant wide extensions management capabilities](./assets/images/tenant-wide-extensions-management-capabilities.png)
 
 Using the extension settings you may choose to show or hide the apps in app catalog list and tenant health incidents list.
 
@@ -329,7 +340,6 @@ Now you may use SPFx Toolkit as a chat participant in GitHub Copilot chat extens
 Currently, we support the following commands:
 - `/setup` - that is dedicated to providing information on how to setup your local workspace for SharePoint Framework development
 - `/new` - that may be used to get guidance on how to create a new solution or find and reuse an existing sample from the PnP SPFx sample gallery
-- `/code` - [beta] this command is fine-tuned to provide help in coding your SharePoint Framework project and provides additional boosters like validating the correctness of your SPFx project, scaffolding a CI/CD workflow, or renaming your project, and many more.
 - `/info` - this command will allow you to ask and retrieve any kind of data from you SharePoint Online tenant. This command will only work if your are signed in to your tenant. It uses CLI for Microsoft 365 commands under the hood to retrieve and explain data and assets from your SharePoint Online tenant. It does support only retrieving information, it will not support you in creating, updating or removing any resources. For example, you want to check if some list item or file exists. Or how many items with specific metadata do you have on a list? Or ask for content type columns to generate an interface based on the response quickly.
 
 The SPFx Toolkit Language Model Tools provide a set of skills may be used by GitHub Copilot in agent mode to assist you in your SharePoint Framework development tasks and managing your SharePoint Online tenant. 

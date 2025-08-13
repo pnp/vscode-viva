@@ -1,5 +1,4 @@
 export const ContextKeys = {
-  showWelcome: 'pnp.project.showWelcome',
   isSPFxProject: 'pnp.project.isSPFxProject',
   isLoggedIn: 'pnp.project.isLoggedIn',
   hasAppCatalog: 'pnp.project.hasAppCatalog',
@@ -12,5 +11,10 @@ export const ContextKeys = {
   disableApp: 'pnp.etv.app.disable',
   upgradeApp: 'pnp.etv.app.upgrade',
   installApp: 'pnp.etv.app.install',
-  uninstallApp: 'pnp.etv.app.uninstall'
+  uninstallApp: 'pnp.etv.app.uninstall',
+  hasTenantWideExtension: 'pnp.etv.hasTenantWideExtension',
+  removeTenantWideExtension: 'pnp.etv.removeTenantWideExtension',
+  enableTenantWideExtension: 'pnp.etv.enableTenantWideExtension',
+  disableTenantWideExtension: 'pnp.etv.disableTenantWideExtension',
+  updateTenantWideExtension: 'pnp.etv.updateTenantWideExtension'
 };
