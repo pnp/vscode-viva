@@ -587,7 +587,7 @@
 				"spfx-toolkit.nodeVersionManager": {
 					"title": "Node.js Version Manager",
 					"type": "string",
-					"default": "nvm",
+					"default": "none",
 					"enum": [
 						"nvm",
 						"nvs",

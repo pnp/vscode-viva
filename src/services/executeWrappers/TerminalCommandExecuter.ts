@@ -1,4 +1,4 @@
-import { commands, ThemeIcon, workspace, window, Terminal } from 'vscode';
+import { commands, ThemeIcon, workspace, window, Terminal, Disposable } from 'vscode';
 import { Commands, NodeVersionManagers } from '../../constants';
 import { Subscription } from '../../models';
 import { Extension } from '../dataType/Extension';
@@ -83,6 +83,53 @@ export class TerminalCommandExecuter {
     }
 
     TerminalCommandExecuter.runInTerminal(command, terminal);
+  }
+
+  /**
+   * Runs a command in a terminal and waits for it to complete.
+   * @param command - The command to run.
+   * @param terminalTitle - The title of the terminal.
+   * @param terminalIcon - The icon of the terminal.
+   * @returns A promise that resolves when the command completes with exit code 0, or rejects on non-zero exit.
+   */
+  public static async runCommandAndWait(command: string, terminalTitle: string = 'Task', terminalIcon: string = 'terminal'): Promise<void> {
+    return new Promise<void>(async (resolve, reject) => {
+      const terminal = await TerminalCommandExecuter.createTerminal(terminalTitle, terminalIcon);
+
+      if (!terminal) {
+        reject(new Error('Failed to create terminal'));
+        return;
+      }
+
+      const wsFolder = await Folders.getWorkspaceFolder();
+      if (wsFolder) {
+        let currentProjectPath = wsFolder.uri.fsPath;
+
+        if (M365AgentsToolkitIntegration.isM365AgentsToolkitProject) {
+          currentProjectPath = join(currentProjectPath, 'src');
+        }
+
+        terminal.sendText(`cd "${currentProjectPath}"`);
+      }
+
+      // Listen for terminal close event
+      const disposable: Disposable = window.onDidCloseTerminal(async (closedTerminal) => {
+        if (closedTerminal === terminal) {
+          disposable.dispose();
+          // Terminal was closed, check exit status
+          const exitStatus = await closedTerminal.exitStatus;
+          if (exitStatus && exitStatus.code !== 0) {
+            reject(new Error(`Command failed with exit code ${exitStatus.code}`));
+          } else {
+            resolve();
+          }
+        }
+      });
+
+      terminal.show(true);
+      // Send the command with exit appended to close the terminal when done
+      terminal.sendText(`${command} && exit`);
+    });
   }
 
   /**
