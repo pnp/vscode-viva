@@ -182,7 +182,7 @@ suite('Help and feedback', () => {
             },
             {
                 label: 'Adaptive Card Designer',
-                url: 'https://adaptivecards.io/designer/'
+                url: 'https://adaptivecards.microsoft.com/designer'
             },
             {
                 label: 'Join the Microsoft 365 Developer Program',
