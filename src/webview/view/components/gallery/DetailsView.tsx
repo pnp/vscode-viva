@@ -36,16 +36,20 @@ export const DetailsView: React.FunctionComponent<IDetailsViewProps> = ({ }: Rea
       const json = await res.json();
       const map = new Map<string, string>();
 
-      if (!json.tree) return map;
+      if (!json.tree) {
+        return map;
+      }
 
-      json.tree.forEach((item: any) => {
+      json.tree.forEach((node: any) => {
         if (
-          item.type === 'blob' &&
-          item.path.startsWith(`${path}/`) &&
-          /\.(png|jpe?g|gif|svg)$/i.test(item.path)
+          node.type === 'blob' &&
+          node.path.startsWith(`${path}/`) &&
+          /\.(png|jpe?g|gif|svg)$/i.test(node.path)
         ) {
-          const fileName = item.path.split('/').pop()?.toLowerCase();
-          if (fileName) map.set(fileName, item.path);
+          const fileName = node.path.split('/').pop()?.toLowerCase();
+          if (fileName) {
+            map.set(fileName, node.path);
+          }
         }
       });
 
@@ -54,7 +58,7 @@ export const DetailsView: React.FunctionComponent<IDetailsViewProps> = ({ }: Rea
 
     const fixImageReferences = (markdown: string, imageMap: Map<string, string>): string => {
       return markdown.replace(/(!\[[^\]]*\]\()([^\)\s]+)(\s*("[^"]*")?\))/gi, (match, p1, p2, p3) => {
-        const cleanUrl = p2.split('?')[0]; 
+        const cleanUrl = p2.split('?')[0];
         const parts = cleanUrl.split('/');
         const fileName = parts.pop()?.toLowerCase();
         const correctedPath = imageMap.get(fileName || '');
@@ -103,7 +107,7 @@ export const DetailsView: React.FunctionComponent<IDetailsViewProps> = ({ }: Rea
         .replace(/<img src="\.\/images/g, `<img src="${url}/images`)
         .replace(/<img src="images/g, `<img src="${url}/images`)
         .replace(/(\]\([^)]+) ([^)]+\))/g, '$1%20$2')
-        .replace(/<img src='([^']+)' alt='([^']+)' \/>/g, `<img src="$1" alt="$2" />`)
+        .replace(/<img src='([^']+)' alt='([^']+)' \/>/g, '<img src="$1" alt="$2" />')
         .replace(/(<img src="[^"]+) ([^"]+")/g, '$1%20$2')
         .replace(/<img src="https:\/\/m365-visitor-stats\.azurewebsites\.net\/[^"]*" \/>/g, '');
     };
@@ -163,7 +167,7 @@ export const DetailsView: React.FunctionComponent<IDetailsViewProps> = ({ }: Rea
         </div>
       </div>
       <div className={'sample_details_md mt-16 pb-10'}>
-        <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}  >{docs}</ReactMarkdown>
+        <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{docs}</ReactMarkdown>
       </div>
     </div>
   );
