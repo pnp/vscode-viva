@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
+import rehypeRaw from 'rehype-raw';
 import { VSCodeButton } from '@vscode/webview-ui-toolkit/react';
 import { Messenger } from '@estruyf/vscode/dist/client';
 import { WebviewCommand } from '../../../../constants';
@@ -23,18 +24,109 @@ export const DetailsView: React.FunctionComponent<IDetailsViewProps> = ({ }: Rea
     setSample(item);
     window.scrollTo(0, 0);
     const url = item.url.replace('github.com', 'raw.githubusercontent.com').replace('/blob', '').replace('/tree', '');
+    const urlParts = item.url.replace('https://github.com/', '').split('/');
+    const user = urlParts[0];
+    const repo = urlParts[1];
+    const branch = urlParts[3];
+    const path = urlParts.slice(4).join('/');
 
-    const fetchData = async () => {
-      const response = await fetch(`${url}/README.md`);
-      let data = await response.text();
-      data = data.replace(/\]\(assets/g, `](${url}/assets`);
-      data = data.replace(/\]\(\.\/assets/g, `](${url}/assets`);
-      data = data.replace(/<img src="https:\/\/m365-visitor-stats\.azurewebsites\.net\/[^"]*" \/>/g, '');
-      setDocs(data);
+    const getImageMap = async (): Promise<Map<string, string>> => {
+      const apiUrl = `https://api.github.com/repos/${user}/${repo}/git/trees/${branch}?recursive=1`;
+      const res = await fetch(apiUrl);
+      const json = await res.json();
+      const map = new Map<string, string>();
+
+      if (!json.tree) {
+        return map;
+      }
+
+      json.tree.forEach((node: any) => {
+        if (
+          node.type === 'blob' &&
+          node.path.startsWith(`${path}/`) &&
+          /\.(png|jpe?g|gif|svg)$/i.test(node.path)
+        ) {
+          const fileName = node.path.split('/').pop()?.toLowerCase();
+          if (fileName) {
+            map.set(fileName, node.path);
+          }
+        }
+      });
+
+      return map;
     };
 
-    fetchData();
-  }, []);
+    const fixImageReferences = (markdown: string, imageMap: Map<string, string>): string => {
+      return markdown.replace(/(!\[[^\]]*\]\()([^\)\s]+)(\s*("[^"]*")?\))/gi, (match, p1, p2, p3) => {
+        const cleanUrl = p2.split('?')[0];
+        const parts = cleanUrl.split('/');
+        const fileName = parts.pop()?.toLowerCase();
+        const correctedPath = imageMap.get(fileName || '');
+        if (correctedPath) {
+          const fullUrl = `https://raw.githubusercontent.com/${user}/${repo}/${branch}/${correctedPath}`;
+          return `${p1}${fullUrl}${p3}`;
+        }
+        return match;
+      });
+    };
+
+    const fixHtmlImageTags = (
+      markdown: string,
+      imageMap: Map<string, string>
+    ): string => {
+      return markdown.replace(/<img[^>]*src=['"]([^'"]+)['"][^>]*>/gi, (match, src) => {
+        const cleanUrl = src.split('?')[0];
+        const parts = cleanUrl.split('/');
+        const fileName = parts.pop()?.toLowerCase();
+        const correctedPath = imageMap.get(fileName || '');
+
+        if (correctedPath) {
+          const fullUrl = `https://raw.githubusercontent.com/${user}/${repo}/${branch}/${correctedPath}`;
+          return match.replace(src, fullUrl);
+        }
+
+        return match;
+      });
+    };
+
+
+    const fixRelativePaths = (markdown: string): string => {
+      return markdown
+        .replace(/\]\(<assets\/([^>]+)>\)/g, `](${url}/assets/$1)`)
+        .replace(/\]\(assets /g, `](${url}/assets/`)
+        .replace(/\]\(<images\/([^>]+)>\)/g, `](${url}/images/$1)`)
+        .replace(/\]\(images /g, `](${url}/images/`)
+        .replace(/\]\(<assets/g, `](${url}/assets`)
+        .replace(/\]\(assets/g, `](${url}/assets`)
+        .replace(/\]\(<images/g, `](${url}/images`)
+        .replace(/\]\(images/g, `](${url}/images`)
+        .replace(/\]\(\.\/assets/g, `](${url}/assets`)
+        .replace(/\]\(\.\/images/g, `](${url}/images`)
+        .replace(/<img src="\.\/assets/g, `<img src="${url}/assets`)
+        .replace(/<img src="assets/g, `<img src="${url}/assets`)
+        .replace(/<img src="\.\/images/g, `<img src="${url}/images`)
+        .replace(/<img src="images/g, `<img src="${url}/images`)
+        .replace(/(\]\([^)]+) ([^)]+\))/g, '$1%20$2')
+        .replace(/<img src='([^']+)' alt='([^']+)' \/>/g, '<img src="$1" alt="$2" />')
+        .replace(/(<img src="[^"]+) ([^"]+")/g, '$1%20$2')
+        .replace(/<img src="https:\/\/m365-visitor-stats\.azurewebsites\.net\/[^"]*" \/>/g, '');
+    };
+
+    const fetchData = async () => {
+      const readmeRes = await fetch(`${url}/README.md`);
+      let content = await readmeRes.text();
+      const imageMap = await getImageMap();
+
+      content = fixImageReferences(content, imageMap);
+      content = fixRelativePaths(content);
+      content = fixHtmlImageTags(content, imageMap);
+
+      setDocs(content);
+    };
+
+  fetchData();
+}, []);
+
 
   const onRepoClick = () => {
     if(sample?.url) {
@@ -75,7 +167,7 @@ export const DetailsView: React.FunctionComponent<IDetailsViewProps> = ({ }: Rea
         </div>
       </div>
       <div className={'sample_details_md mt-16 pb-10'}>
-        <ReactMarkdown remarkPlugins={[remarkGfm]}>{docs}</ReactMarkdown>
+        <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{docs}</ReactMarkdown>
       </div>
     </div>
   );
