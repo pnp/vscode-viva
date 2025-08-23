@@ -7137,7 +7137,7 @@
         "SharePoint"
       ],
       "createDate": "2020-12-20",
-      "updateDate": "2024-10-02",
+      "updateDate": "2025-08-14",
       "version": "1.20.0",
       "componentType": "webpart",
       "extensionType": null,
@@ -8205,6 +8205,29 @@
       "sampleType": "samples"
     },
     {
+      "name": "pnp-sp-dev-spfx-web-parts-react-okr-tracker",
+      "title": "Goals OKR Tracker",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-okr-tracker",
+      "description": "This SharePoint web part is an Objectives and Key Results (OKR) tracking system with a modern, responsive UI. It allows users to create, track, and manage organizational objectives and their associated key results. The application provides a structured way to set goals, track progress, and maintain alignment across teams. Built with React, TypeScript, and Fluent UI, it integrates seamlessly with SharePoint while providing advanced functionality for performance management.",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-okr-tracker/assets/Screenshot.png",
+      "authors": [
+        {
+          "name": "Sudeep Ghatak",
+          "pictureUrl": "https://github.com/sudeepghatak.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2025-08-03",
+      "updateDate": "2025-08-03",
+      "version": "1.20.0",
+      "componentType": "webpart",
+      "extensionType": null,
+      "sampleGalerry": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
       "name": "pnp-sp-dev-spfx-web-parts-react-onedrive-finder",
       "title": "OneDrive Finder Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-onedrive-finder",
@@ -9133,13 +9156,17 @@
         {
           "name": "Dan Toft",
           "pictureUrl": "https://github.com/Tanddant.png"
+        },
+        {
+          "name": "Jeppe Spanggaard",
+          "pictureUrl": "https://github.com/jeppesc11.png"
         }
       ],
       "tags": [
         "SharePoint"
       ],
       "createDate": "2023-03-05",
-      "updateDate": "2023-03-05",
+      "updateDate": "2025-07-31",
       "version": "1.15.2",
       "componentType": "webpart",
       "extensionType": null,
