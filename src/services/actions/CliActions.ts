@@ -66,7 +66,7 @@ export class CliActions {
     try {
       const appCatalogUrls: string[] = [];
       const tenantAppCatalog = (await CliExecuter.execute('spo tenant appcatalogurl get', 'json')).stdout || undefined;
-      const siteAppCatalogs = (await CliExecuter.execute('spo site appcatalog list', 'json')).stdout || undefined;
+      const siteAppCatalogs = (await CliExecuter.execute('spo site appcatalog list', 'json', { excludeDeletedSites: true })).stdout || undefined;
 
       if (tenantAppCatalog) {
         appCatalogUrls.push(JSON.parse(tenantAppCatalog));
