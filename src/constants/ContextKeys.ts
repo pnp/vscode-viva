@@ -16,5 +16,7 @@ export const ContextKeys = {
   removeTenantWideExtension: 'pnp.etv.removeTenantWideExtension',
   enableTenantWideExtension: 'pnp.etv.enableTenantWideExtension',
   disableTenantWideExtension: 'pnp.etv.disableTenantWideExtension',
-  updateTenantWideExtension: 'pnp.etv.updateTenantWideExtension'
+  updateTenantWideExtension: 'pnp.etv.updateTenantWideExtension',
+  copyApp: 'pnp.etv.app.copy',
+  moveApp: 'pnp.etv.app.move'
 };

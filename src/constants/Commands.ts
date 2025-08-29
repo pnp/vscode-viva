@@ -92,6 +92,8 @@ export const Commands = {
   upgradeAppCatalogApp: `${EXTENSION_NAME}.upgradeAppCatalogApp`,
   installAppCatalogApp: `${EXTENSION_NAME}.installAppCatalogApp`,
   uninstallAppCatalogApp: `${EXTENSION_NAME}.uninstallAppCatalogApp`,
+  copyAppCatalogApp: `${EXTENSION_NAME}.copyAppCatalogApp`,
+  moveAppCatalogApp: `${EXTENSION_NAME}.moveAppCatalogApp`,
   showMoreActions: `${EXTENSION_NAME}.showMoreActions`,
 
   // App Catalog actions

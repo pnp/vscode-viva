@@ -204,14 +204,16 @@ export class CommandPanel {
               tenantAppCatalogAppsList.push(
                 new ActionTreeItem(app.Title, '', { name: 'package', custom: false }, undefined, 'vscode.open', Uri.parse(appStoreUrl), ContextKeys.hasAppCatalogApp,
                   [
+                    new ActionTreeItem('Copy', '', undefined, undefined, Commands.copyAppCatalogApp, [app.ID, app.Title, tenantAppCatalogUrl, appCatalogUrls], ContextKeys.copyApp),
                     new ActionTreeItem('Deploy', '', undefined, undefined, Commands.deployAppCatalogApp, [app.ID, app.Title, undefined, app.Deployed], ContextKeys.deployApp),
-                    new ActionTreeItem('Retract', '', undefined, undefined, Commands.retractAppCatalogApp, [app.ID, app.Title, undefined, app.Deployed], ContextKeys.retractApp),
-                    new ActionTreeItem('Remove', '', undefined, undefined, Commands.removeAppCatalogApp, [app.ID, app.Title], ContextKeys.removeApp),
-                    new ActionTreeItem('Enable', '', undefined, undefined, Commands.enableAppCatalogApp, [app.Title, tenantAppCatalogUrl, app.Enabled], ContextKeys.enableApp),
                     new ActionTreeItem('Disable', '', undefined, undefined, Commands.disableAppCatalogApp, [app.Title, tenantAppCatalogUrl, app.Enabled], ContextKeys.disableApp),
-                    new ActionTreeItem('Upgrade', '', undefined, undefined, Commands.upgradeAppCatalogApp, [app.ID, app.Title, tenantAppCatalogUrl, true], ContextKeys.upgradeApp),
+                    new ActionTreeItem('Enable', '', undefined, undefined, Commands.enableAppCatalogApp, [app.Title, tenantAppCatalogUrl, app.Enabled], ContextKeys.enableApp),
                     new ActionTreeItem('Install', '', undefined, undefined, Commands.installAppCatalogApp, [app.ID, app.Title], ContextKeys.installApp),
-                    new ActionTreeItem('Uninstall', '', undefined, undefined, Commands.uninstallAppCatalogApp, [app.ID, app.Title], ContextKeys.uninstallApp)
+                    new ActionTreeItem('Move', '', undefined, undefined, Commands.moveAppCatalogApp, [app.ID, app.Title, tenantAppCatalogUrl, appCatalogUrls], ContextKeys.moveApp),
+                    new ActionTreeItem('Remove', '', undefined, undefined, Commands.removeAppCatalogApp, [app.ID, app.Title], ContextKeys.removeApp),
+                    new ActionTreeItem('Retract', '', undefined, undefined, Commands.retractAppCatalogApp, [app.ID, app.Title, undefined, app.Deployed], ContextKeys.retractApp),
+                    new ActionTreeItem('Uninstall', '', undefined, undefined, Commands.uninstallAppCatalogApp, [app.ID, app.Title], ContextKeys.uninstallApp),
+                    new ActionTreeItem('Upgrade', '', undefined, undefined, Commands.upgradeAppCatalogApp, [app.ID, app.Title, tenantAppCatalogUrl, true], ContextKeys.upgradeApp)
                   ]
                 )
               );
@@ -246,14 +248,16 @@ export class CommandPanel {
                 siteAppCatalogAppsList.push(
                   new ActionTreeItem(app.Title, '', { name: 'package', custom: false }, undefined, 'vscode.open', Uri.parse(appStoreUrl), ContextKeys.hasAppCatalogApp,
                     [
+                      new ActionTreeItem('Copy', '', undefined, undefined, Commands.copyAppCatalogApp, [app.ID, app.Title, siteAppCatalogUrl, appCatalogUrls], ContextKeys.copyApp),
                       new ActionTreeItem('Deploy', '', undefined, undefined, Commands.deployAppCatalogApp, [app.ID, app.Title, siteAppCatalogUrl, app.Deployed], ContextKeys.deployApp),
-                      new ActionTreeItem('Retract', '', undefined, undefined, Commands.retractAppCatalogApp, [app.ID, app.Title, siteAppCatalogUrl, app.Deployed], ContextKeys.retractApp),
-                      new ActionTreeItem('Remove', '', undefined, undefined, Commands.removeAppCatalogApp, [app.ID, app.Title, siteAppCatalogUrl], ContextKeys.removeApp),
-                      new ActionTreeItem('Enable', '', undefined, undefined, Commands.enableAppCatalogApp, [app.Title, siteAppCatalogUrl, app.Enabled], ContextKeys.enableApp),
                       new ActionTreeItem('Disable', '', undefined, undefined, Commands.disableAppCatalogApp, [app.Title, siteAppCatalogUrl, app.Enabled], ContextKeys.disableApp),
-                      new ActionTreeItem('Upgrade', '', undefined, undefined, Commands.upgradeAppCatalogApp, [app.ID, app.Title, siteAppCatalogUrl, false], ContextKeys.upgradeApp),
+                      new ActionTreeItem('Enable', '', undefined, undefined, Commands.enableAppCatalogApp, [app.Title, siteAppCatalogUrl, app.Enabled], ContextKeys.enableApp),
                       new ActionTreeItem('Install', '', undefined, undefined, Commands.installAppCatalogApp, [app.ID, app.Title, siteAppCatalogUrl], ContextKeys.installApp),
-                      new ActionTreeItem('Uninstall', '', undefined, undefined, Commands.uninstallAppCatalogApp, [app.ID, app.Title, siteAppCatalogUrl], ContextKeys.uninstallApp)
+                      new ActionTreeItem('Move', '', undefined, undefined, Commands.moveAppCatalogApp, [app.ID, app.Title, siteAppCatalogUrl, appCatalogUrls], ContextKeys.moveApp),
+                      new ActionTreeItem('Remove', '', undefined, undefined, Commands.removeAppCatalogApp, [app.ID, app.Title, siteAppCatalogUrl], ContextKeys.removeApp),
+                      new ActionTreeItem('Retract', '', undefined, undefined, Commands.retractAppCatalogApp, [app.ID, app.Title, siteAppCatalogUrl, app.Deployed], ContextKeys.retractApp),
+                      new ActionTreeItem('Uninstall', '', undefined, undefined, Commands.uninstallAppCatalogApp, [app.ID, app.Title, siteAppCatalogUrl], ContextKeys.uninstallApp),
+                      new ActionTreeItem('Upgrade', '', undefined, undefined, Commands.upgradeAppCatalogApp, [app.ID, app.Title, siteAppCatalogUrl, false], ContextKeys.upgradeApp)
                     ]
                   )
                 );
