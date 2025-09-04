@@ -767,6 +767,18 @@
 				"icon": "$(remove)"
 			},
 			{
+				"command": "spfx-toolkit.copyAppCatalogApp",
+				"title": "Copy",
+				"category": "SPFx Toolkit",
+				"icon": "$(package)"
+			},
+			{
+				"command": "spfx-toolkit.moveAppCatalogApp",
+				"title": "Move",
+				"category": "SPFx Toolkit",
+				"icon": "$(package)"
+			},
+			{
 				"command": "spfx-toolkit.setFormCustomizer",
 				"title": "Set Form Customizer",
 				"category": "SPFx Toolkit"
@@ -935,6 +947,14 @@
 					"when": "false"
 				},
 				{
+					"command": "spfx-toolkit.copyAppCatalogApp",
+					"when": "false"
+				},
+				{
+					"command": "spfx-toolkit.moveAppCatalogApp",
+					"when": "false"
+				},
+				{
 					"command": "spfx-toolkit.moreTenantWideExtensionActions",
 					"when": "false"
 				},
@@ -1006,36 +1026,44 @@
 			],
 			"spfx-toolkit.showMoreActions": [
 				{
+					"command": "spfx-toolkit.copyAppCatalogApp",
+					"group": "actions.more@1"
+				},
+				{
 					"command": "spfx-toolkit.deployAppCatalogApp",
-					"group": "actions.more@1"
-				},
-				{
-					"command": "spfx-toolkit.retractAppCatalogApp",
-					"group": "actions.more@1"
-				},
-				{
-					"command": "spfx-toolkit.removeAppCatalogApp",
 					"group": "actions.more@2"
 				},
 				{
-					"command": "spfx-toolkit.enableAppCatalogApp",
+					"command": "spfx-toolkit.disableAppCatalogApp",
 					"group": "actions.more@3"
 				},
 				{
-					"command": "spfx-toolkit.disableAppCatalogApp",
+					"command": "spfx-toolkit.enableAppCatalogApp",
 					"group": "actions.more@4"
-				},
-				{
-					"command": "spfx-toolkit.upgradeAppCatalogApp",
-					"group": "actions.more@5"
 				},
 				{
 					"command": "spfx-toolkit.installAppCatalogApp",
 					"group": "actions.more@5"
 				},
 				{
+					"command": "spfx-toolkit.moveAppCatalogApp",
+					"group": "actions.more@6"
+				},
+				{
+					"command": "spfx-toolkit.removeAppCatalogApp",
+					"group": "actions.more@7"
+				},
+				{
+					"command": "spfx-toolkit.retractAppCatalogApp",
+					"group": "actions.more@8"
+				},
+				{
 					"command": "spfx-toolkit.uninstallAppCatalogApp",
-					"group": "actions.more@5"
+					"group": "actions.more@9"
+				},
+				{
+					"command": "spfx-toolkit.upgradeAppCatalogApp",
+					"group": "actions.more@10"
 				}
 			],
 			"spfx-toolkit.moreTenantWideExtensionActions": [
