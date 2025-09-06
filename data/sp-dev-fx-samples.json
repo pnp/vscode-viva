@@ -1905,6 +1905,29 @@
       "sampleType": "samples"
     },
     {
+      "name": "pnp-sp-dev-spfx-extensions-react-command-movedoc2blob",
+      "title": "Move Document to Blob Storage Command",
+      "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-command-movedoc2blob",
+      "description": "The sample demonstrates how to create a command that moves a document to Azure Blob Storage.",
+      "image": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-command-movedoc2blob/assets/select_move_document.png",
+      "authors": [
+        {
+          "name": "Peter Paul Kirschner",
+          "pictureUrl": "https://github.com/petkir.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2025-09-02",
+      "updateDate": "2025-09-02",
+      "version": "1.21.1",
+      "componentType": "webpart",
+      "extensionType": null,
+      "sampleGalerry": "sp-dev-fx-extensions",
+      "sampleType": "samples"
+    },
+    {
       "name": "pnp-sp-dev-spfx-extensions-react-command-page-model-pnpjs",
       "title": "Modern Page Model with PnP/PnPjs",
       "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-command-page-model-pnpjs",
