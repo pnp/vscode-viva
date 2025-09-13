@@ -10258,6 +10258,29 @@
       "sampleType": "samples"
     },
     {
+      "name": "pnp-sp-dev-spfx-web-parts-react-styled-list",
+      "title": "Styled List",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-styled-list",
+      "description": "This SharePoint web part displays items from a SharePoint list in a modern, responsive, and styled grid layout.",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-styled-list/assets/screenshot1.png",
+      "authors": [
+        {
+          "name": "Sudeep Ghatak",
+          "pictureUrl": "https://github.com/sudeepghatak.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2025-08-23",
+      "updateDate": "2025-08-23",
+      "version": "1.20.0",
+      "componentType": "webpart",
+      "extensionType": null,
+      "sampleGalerry": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
       "name": "pnp-sp-dev-spfx-web-parts-react-svg-to-json-converter",
       "title": "SVG to JSON Converter",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-svg-to-json-converter",
