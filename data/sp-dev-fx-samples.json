@@ -4129,8 +4129,8 @@
         "SharePoint"
       ],
       "createDate": "2024-01-02",
-      "updateDate": "2024-02-08",
-      "version": "1.18.2",
+      "updateDate": "2025-09-12",
+      "version": "1.21.1",
       "componentType": "webpart",
       "extensionType": null,
       "sampleGalerry": "sp-dev-fx-webparts",
@@ -4436,10 +4436,10 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-cascadingdropdowns",
-      "title": "Cascading Dropdowns Web Part",
+      "title": "Cascading Dropdowns",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-cascadingdropdowns",
-      "description": "Shows how to use Cascading Dropdowns in property panes.",
-      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-cascadingdropdowns/assets/webpartpreview.png",
+      "description": "Shows how to use Cascading Dropdowns in property panes. Based on the instructions found at Use cascading dropdowns in web part properties.",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-cascadingdropdowns/assets/propertypane.png",
       "authors": [
         {
           "name": "Hugo Bernier",
@@ -4449,32 +4449,493 @@
       "tags": [
         "SharePoint"
       ],
-      "createDate": "2023-09-12",
-      "updateDate": "2023-09-12",
-      "version": "1.18.0",
+      "createDate": "2024-12-25",
+      "updateDate": "2025-09-12",
+      "version": "1.21.1",
       "componentType": "webpart",
       "extensionType": null,
       "sampleGalerry": "sp-dev-fx-webparts",
       "sampleType": "samples"
     },
     {
-      "name": "pnp-sp-dev-spfx-web-parts-react-chartcontrol",
-      "title": "Chart Control Sample Web Parts",
+      "name": "pnp-sp-dev-spfx-web-parts-react-accessible-chart",
+      "title": "Accessible Chart",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-chartcontrol",
-      "description": "This sample contains several web parts that demonstrate how to use the ChartControl from @pnp/spfx-controls-react.",
-      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-chartcontrol/assets/WebPartList.png",
+      "description": "Demonstrates the accessibility features of the Chart Control, including the auto-generated data table.",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-chartcontrol/assets/AccessibleChart.png",
       "authors": [
         {
           "name": "Hugo Bernier",
           "pictureUrl": "https://github.com/hugoabernier.png"
+        },
+        {
+          "name": "Nello D'Andrea",
+          "pictureUrl": "https://github.com/ferrarirosso.png"
         }
       ],
       "tags": [
         "SharePoint"
       ],
       "createDate": "2020-12-13",
-      "updateDate": "2020-12-13",
-      "version": "1.11.0",
+      "updateDate": "2025-09-12",
+      "version": "1.21.1",
+      "componentType": "webpart",
+      "extensionType": null,
+      "sampleGalerry": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
+      "name": "pnp-sp-dev-spfx-web-parts-react-area-chart",
+      "title": "Area Chart",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-chartcontrol",
+      "description": "Renders an area chart with gradient fills and configurable line styles.",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-chartcontrol/assets/AreaChart.png",
+      "authors": [
+        {
+          "name": "Hugo Bernier",
+          "pictureUrl": "https://github.com/hugoabernier.png"
+        },
+        {
+          "name": "Nello D'Andrea",
+          "pictureUrl": "https://github.com/ferrarirosso.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2020-12-13",
+      "updateDate": "2025-09-12",
+      "version": "1.21.1",
+      "componentType": "webpart",
+      "extensionType": null,
+      "sampleGalerry": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
+      "name": "pnp-sp-dev-spfx-web-parts-react-bar-chart-static",
+      "title": "Bar Chart (Static Data)",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-chartcontrol",
+      "description": "Uses static data to demonstrate basic ChartControl features.",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-chartcontrol/assets/BarChartStatic.png",
+      "authors": [
+        {
+          "name": "Hugo Bernier",
+          "pictureUrl": "https://github.com/hugoabernier.png"
+        },
+        {
+          "name": "Nello D'Andrea",
+          "pictureUrl": "https://github.com/ferrarirosso.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2020-12-13",
+      "updateDate": "2025-09-12",
+      "version": "1.21.1",
+      "componentType": "webpart",
+      "extensionType": null,
+      "sampleGalerry": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
+      "name": "pnp-sp-dev-spfx-web-parts-react-bar-chart",
+      "title": "Bar Chart",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-chartcontrol",
+      "description": "Loads data asynchronously from a (fake) service to render a bar chart.",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-chartcontrol/assets/BarChart.png",
+      "authors": [
+        {
+          "name": "Hugo Bernier",
+          "pictureUrl": "https://github.com/hugoabernier.png"
+        },
+        {
+          "name": "Nello D'Andrea",
+          "pictureUrl": "https://github.com/ferrarirosso.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2020-12-13",
+      "updateDate": "2025-09-12",
+      "version": "1.21.1",
+      "componentType": "webpart",
+      "extensionType": null,
+      "sampleGalerry": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
+      "name": "pnp-sp-dev-spfx-web-parts-react-bubble-chart",
+      "title": "Bubble Chart",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-chartcontrol",
+      "description": "Demonstrates the use of X, Y, and R values to create a bubble chart.",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-chartcontrol/assets/BubbleChart.png",
+      "authors": [
+        {
+          "name": "Hugo Bernier",
+          "pictureUrl": "https://github.com/hugoabernier.png"
+        },
+        {
+          "name": "Nello D'Andrea",
+          "pictureUrl": "https://github.com/ferrarirosso.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2020-12-13",
+      "updateDate": "2025-09-12",
+      "version": "1.21.1",
+      "componentType": "webpart",
+      "extensionType": null,
+      "sampleGalerry": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
+      "name": "pnp-sp-dev-spfx-web-parts-react-chartinator",
+      "title": "Chartinator",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-chartcontrol",
+      "description": "A Chart Control version of SharePoint Quick Charts with many configuration options.",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-chartcontrol/assets/Chartinator.png",
+      "authors": [
+        {
+          "name": "Hugo Bernier",
+          "pictureUrl": "https://github.com/hugoabernier.png"
+        },
+        {
+          "name": "Nello D'Andrea",
+          "pictureUrl": "https://github.com/ferrarirosso.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2020-12-13",
+      "updateDate": "2025-09-12",
+      "version": "1.21.1",
+      "componentType": "webpart",
+      "extensionType": null,
+      "sampleGalerry": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
+      "name": "pnp-sp-dev-spfx-web-parts-react-combo-chart",
+      "title": "Combo Chart",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-chartcontrol",
+      "description": "Demonstrates how to create combination charts with multiple datasets.",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-chartcontrol/assets/ComboBar.png",
+      "authors": [
+        {
+          "name": "Hugo Bernier",
+          "pictureUrl": "https://github.com/hugoabernier.png"
+        },
+        {
+          "name": "Nello D'Andrea",
+          "pictureUrl": "https://github.com/ferrarirosso.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2020-12-13",
+      "updateDate": "2025-09-12",
+      "version": "1.21.1",
+      "componentType": "webpart",
+      "extensionType": null,
+      "sampleGalerry": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
+      "name": "pnp-sp-dev-spfx-web-parts-react-custom-plugin",
+      "title": "Custom Plugin",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-chartcontrol",
+      "description": "Shows how to implement a custom Chart.js plugin with the ChartControl.",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-chartcontrol/assets/CustomPlugin.png",
+      "authors": [
+        {
+          "name": "Hugo Bernier",
+          "pictureUrl": "https://github.com/hugoabernier.png"
+        },
+        {
+          "name": "Nello D'Andrea",
+          "pictureUrl": "https://github.com/ferrarirosso.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2020-12-13",
+      "updateDate": "2025-09-12",
+      "version": "1.21.1",
+      "componentType": "webpart",
+      "extensionType": null,
+      "sampleGalerry": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
+      "name": "pnp-sp-dev-spfx-web-parts-react-doughnut-patterns",
+      "title": "Doughnut with Patterns",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-chartcontrol",
+      "description": "Renders a donut chart with patterns instead of colors.",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-chartcontrol/assets/DoughnutPatterns.png",
+      "authors": [
+        {
+          "name": "Hugo Bernier",
+          "pictureUrl": "https://github.com/hugoabernier.png"
+        },
+        {
+          "name": "Nello D'Andrea",
+          "pictureUrl": "https://github.com/ferrarirosso.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2020-12-13",
+      "updateDate": "2025-09-12",
+      "version": "1.21.1",
+      "componentType": "webpart",
+      "extensionType": null,
+      "sampleGalerry": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
+      "name": "pnp-sp-dev-spfx-web-parts-react-dynamic-data-callable",
+      "title": "Dynamic Data Callable",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-chartcontrol",
+      "description": "Calls the GitHub REST APIs and shows contributors for a given repository.",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-chartcontrol/assets/DynamicDataCallable.png",
+      "authors": [
+        {
+          "name": "Hugo Bernier",
+          "pictureUrl": "https://github.com/hugoabernier.png"
+        },
+        {
+          "name": "Nello D'Andrea",
+          "pictureUrl": "https://github.com/ferrarirosso.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2020-12-13",
+      "updateDate": "2025-09-12",
+      "version": "1.21.1",
+      "componentType": "webpart",
+      "extensionType": null,
+      "sampleGalerry": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
+      "name": "pnp-sp-dev-spfx-web-parts-react-dynamic-data-consumer",
+      "title": "Dynamic Data Consumer",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-chartcontrol",
+      "description": "Renders a chart by receiving events from a dynamic data connection.",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-chartcontrol/assets/DynamicDataConsumer.png",
+      "authors": [
+        {
+          "name": "Hugo Bernier",
+          "pictureUrl": "https://github.com/hugoabernier.png"
+        },
+        {
+          "name": "Nello D'Andrea",
+          "pictureUrl": "https://github.com/ferrarirosso.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2020-12-13",
+      "updateDate": "2025-09-12",
+      "version": "1.21.1",
+      "componentType": "webpart",
+      "extensionType": null,
+      "sampleGalerry": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
+      "name": "pnp-sp-dev-spfx-web-parts-react-horizontal-bar",
+      "title": "Horizontal Bar",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-chartcontrol",
+      "description": "Renders a horizontal bar chart and demonstrates stacked bars.",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-chartcontrol/assets/HorizontalBarChart.png",
+      "authors": [
+        {
+          "name": "Hugo Bernier",
+          "pictureUrl": "https://github.com/hugoabernier.png"
+        },
+        {
+          "name": "Nello D'Andrea",
+          "pictureUrl": "https://github.com/ferrarirosso.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2020-12-13",
+      "updateDate": "2025-09-12",
+      "version": "1.21.1",
+      "componentType": "webpart",
+      "extensionType": null,
+      "sampleGalerry": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
+      "name": "pnp-sp-dev-spfx-web-parts-react-line-chart",
+      "title": "Line Chart",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-chartcontrol",
+      "description": "Demonstrates how to render line charts.",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-chartcontrol/assets/LineChart.png",
+      "authors": [
+        {
+          "name": "Hugo Bernier",
+          "pictureUrl": "https://github.com/hugoabernier.png"
+        },
+        {
+          "name": "Nello D'Andrea",
+          "pictureUrl": "https://github.com/ferrarirosso.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2020-12-13",
+      "updateDate": "2025-09-12",
+      "version": "1.21.1",
+      "componentType": "webpart",
+      "extensionType": null,
+      "sampleGalerry": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
+      "name": "pnp-sp-dev-spfx-web-parts-react-pie-chart",
+      "title": "Pie Chart",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-chartcontrol",
+      "description": "Demonstrates how to create a pie chart.",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-chartcontrol/assets/PieChart.png",
+      "authors": [
+        {
+          "name": "Hugo Bernier",
+          "pictureUrl": "https://github.com/hugoabernier.png"
+        },
+        {
+          "name": "Nello D'Andrea",
+          "pictureUrl": "https://github.com/ferrarirosso.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2020-12-13",
+      "updateDate": "2025-09-12",
+      "version": "1.21.1",
+      "componentType": "webpart",
+      "extensionType": null,
+      "sampleGalerry": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
+      "name": "pnp-sp-dev-spfx-web-parts-react-polar-chart",
+      "title": "Polar Chart",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-chartcontrol",
+      "description": "Creates a polar area chart with add/remove data functionality.",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-chartcontrol/assets/PolarChart.png",
+      "authors": [
+        {
+          "name": "Hugo Bernier",
+          "pictureUrl": "https://github.com/hugoabernier.png"
+        },
+        {
+          "name": "Nello D'Andrea",
+          "pictureUrl": "https://github.com/ferrarirosso.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2020-12-13",
+      "updateDate": "2025-09-12",
+      "version": "1.21.1",
+      "componentType": "webpart",
+      "extensionType": null,
+      "sampleGalerry": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
+      "name": "pnp-sp-dev-spfx-web-parts-react-radar-chart",
+      "title": "Radar Chart",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-chartcontrol",
+      "description": "Renders a multi-dataset radar chart.",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-chartcontrol/assets/RadarChart.png",
+      "authors": [
+        {
+          "name": "Hugo Bernier",
+          "pictureUrl": "https://github.com/hugoabernier.png"
+        },
+        {
+          "name": "Nello D'Andrea",
+          "pictureUrl": "https://github.com/ferrarirosso.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2020-12-13",
+      "updateDate": "2025-09-12",
+      "version": "1.21.1",
+      "componentType": "webpart",
+      "extensionType": null,
+      "sampleGalerry": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
+      "name": "pnp-sp-dev-spfx-web-parts-react-realtime-chart",
+      "title": "Real-Time Chart",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-chartcontrol",
+      "description": "Uses a plugin to create a scrolling/real-time chart with time series X axis.",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-chartcontrol/assets/RealTime.png",
+      "authors": [
+        {
+          "name": "Hugo Bernier",
+          "pictureUrl": "https://github.com/hugoabernier.png"
+        },
+        {
+          "name": "Nello D'Andrea",
+          "pictureUrl": "https://github.com/ferrarirosso.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2020-12-13",
+      "updateDate": "2025-09-12",
+      "version": "1.21.1",
+      "componentType": "webpart",
+      "extensionType": null,
+      "sampleGalerry": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
+      "name": "pnp-sp-dev-spfx-web-parts-react-scatter-chart",
+      "title": "Scatter Chart",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-chartcontrol",
+      "description": "Shows how to use X and Y coordinate data elements in a scatter chart.",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-chartcontrol/assets/ScatterChart.png",
+      "authors": [
+        {
+          "name": "Hugo Bernier",
+          "pictureUrl": "https://github.com/hugoabernier.png"
+        },
+        {
+          "name": "Nello D'Andrea",
+          "pictureUrl": "https://github.com/ferrarirosso.png"
+        }
+      ],
+      "tags": null,
+      "createDate": "2020-12-13",
+      "updateDate": "2025-09-12",
+      "version": "1.21.1",
       "componentType": "webpart",
       "extensionType": null,
       "sampleGalerry": "sp-dev-fx-webparts",
@@ -4815,8 +5276,8 @@
         "SharePoint"
       ],
       "createDate": "2022-08-29",
-      "updateDate": "2023-02-09",
-      "version": "1.16.1",
+      "updateDate": "2025-09-12",
+      "version": "1.21.1",
       "componentType": "webpart",
       "extensionType": null,
       "sampleGalerry": "sp-dev-fx-webparts",
@@ -5851,6 +6312,29 @@
       "createDate": "2021-10-31",
       "updateDate": "2021-10-31",
       "version": "1.13.0",
+      "componentType": "webpart",
+      "extensionType": null,
+      "sampleGalerry": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
+      "name": "pnp-sp-dev-spfx-web-parts-react-flag-template",
+      "title": "React Flag Template",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-flag-template",
+      "description": "Displays SharePoint list items as colorful hanging banner cards with an optional logo, title, (optional) description and a full‑card link. Each banner can have its own background and text colors.",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-flag-template/assets/Screenshot.png",
+      "authors": [
+        {
+          "name": "sudeepghatak",
+          "pictureUrl": "https://github.com/sudeepghatak.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2025-09-14",
+      "updateDate": "2025-09-14",
+      "version": "1.20.0",
       "componentType": "webpart",
       "extensionType": null,
       "sampleGalerry": "sp-dev-fx-webparts",
@@ -9625,34 +10109,34 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-rss-reader",
-      "title": "SharePoint Framework RSS Reader Web Part",
+      "title": "RSS Reader",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-rss-reader",
-      "description": "A RSS Reader original based on work completed by Olivier Carpentier's",
-      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-rss-reader/assets/react-rss-reader.gif",
+      "description": "A RSS Reader original based on work by Olivier Carpentier, part of the SPFx Fantastic 40 Web Parts",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-rss-reader/assets/react-rss-reader-original.gif",
       "authors": [
+        {
+          "name": "Abderahman Moujahid",
+          "pictureUrl": "https://github.com/Abderahman88.png"
+        },
         {
           "name": "Eric Overfield",
           "pictureUrl": "https://github.com/eoverfield.png"
         },
         {
-          "name": "Abhishek Garg",
-          "pictureUrl": "https://avatars.githubusercontent.com/u/5449154?s=400&v=4"
-        },
-        {
-          "name": "Abderahman Moujahid",
-          "pictureUrl": "https://avatars.githubusercontent.com/u/36161889?s=460&u=afdd5f6681bc375ee3811482dec79824c12d8170&v=4"
-        },
-        {
           "name": "Kalle Mansikkaniemi",
           "pictureUrl": "https://github.com/djsladi.png"
+        },
+        {
+          "name": "Lauri Koskimies",
+          "pictureUrl": "https://github.com/koskimiesl.png"
         }
       ],
       "tags": [
         "SharePoint"
       ],
-      "createDate": "2020-11-22",
-      "updateDate": "2024-11-20",
-      "version": "1.20.0",
+      "createDate": "2024-12-25",
+      "updateDate": "2025-09-12",
+      "version": "1.21.1",
       "componentType": "webpart",
       "extensionType": null,
       "sampleGalerry": "sp-dev-fx-webparts",
@@ -9764,10 +10248,10 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-securitygrid",
-      "title": "Security Grid Web Part",
+      "title": "Security Grid",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-securitygrid",
-      "description": "React-securitygrid is an SPFX web part that uses React and Office-UI-Fabric to render a grid showing which users have access to which lists/libraries/folders/files on a Web",
-      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-securitygrid/src/images/MainDisplay.gif",
+      "description": "React-securitygrid is an SPFX web part that uses React and Office-UI-Fabric to render a grid showing which users have access to which lists/libraries/folders/files on a Web as shown here:",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-securitygrid/assets/MainDisplay.PNG",
       "authors": [
         {
           "name": "Russell Gove",
@@ -9778,8 +10262,8 @@
         "SharePoint"
       ],
       "createDate": "2021-03-06",
-      "updateDate": "2024-10-20",
-      "version": "1.20.0",
+      "updateDate": "2025-09-12",
+      "version": "1.21.1",
       "componentType": "webpart",
       "extensionType": null,
       "sampleGalerry": "sp-dev-fx-webparts",
@@ -9804,6 +10288,29 @@
       "updateDate": "2017-05-11",
       "version": "1.0.2",
       "componentType": null,
+      "extensionType": null,
+      "sampleGalerry": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
+      "name": "pnp-sp-dev-spfx-web-parts-react-site-content",
+      "title": "Site Content Web Part",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-site-content",
+      "description": "Site Content solution contains SPFx web part that provides",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-site-content/assets/SiteContent.png",
+      "authors": [
+        {
+          "name": "Harminder Singh",
+          "pictureUrl": "https://github.com/HarminderSethi.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2025-09-07",
+      "updateDate": "2025-09-07",
+      "version": "1.21.1",
+      "componentType": "webpart",
       "extensionType": null,
       "sampleGalerry": "sp-dev-fx-webparts",
       "sampleType": "samples"
