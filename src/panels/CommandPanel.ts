@@ -14,7 +14,7 @@ import { Extension } from '../services/dataType/Extension';
 import { getExtensionSettings } from '../utils';
 import { Notifications } from '../services/dataType/Notifications';
 import { helpCommands } from './HelpTreeData';
-import { gulpTaskCommands } from './TaskTreeData';
+import { getCombinedTaskCommands } from './TaskTreeData';
 
 
 export class CommandPanel {
@@ -44,7 +44,7 @@ export class CommandPanel {
       ProjectInformation.isSPFxProject = isSPFxProject;
       M365AgentsToolkitIntegration.isM365AgentsToolkitProject = isM365AgentsToolkitProject;
 
-      CommandPanel.registerTreeView();
+      await CommandPanel.registerTreeView();
       AuthProvider.verify();
 
       if (isSPFxProject){
@@ -59,7 +59,12 @@ export class CommandPanel {
     }
   }
 
-  private static registerTreeView() {
+  private static async registerTasksTreeView() {
+    const combinedCommands = await getCombinedTaskCommands();
+    window.registerTreeDataProvider('pnp-view-tasks', new ActionTreeDataProvider(combinedCommands));
+  }
+
+  private static async registerTreeView() {
     const authInstance = AuthProvider.getInstance();
     if (authInstance) {
       authInstance.getAccount().then(account => CommandPanel.accountTreeView(account));
@@ -74,7 +79,7 @@ export class CommandPanel {
     }
 
     if (ProjectInformation.isSPFxProject) {
-      window.registerTreeDataProvider('pnp-view-tasks', new ActionTreeDataProvider(gulpTaskCommands));
+      await CommandPanel.registerTasksTreeView();
     }
 
     window.createTreeView('pnp-view-help',
