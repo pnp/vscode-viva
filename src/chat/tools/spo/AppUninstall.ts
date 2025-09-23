@@ -3,15 +3,15 @@ import { CliExecuter } from '../../../services/executeWrappers/CliCommandExecute
 import { validateAuth } from './ToolAuthValidationUtil';
 
 
-interface ISharePointAppInstallParameters {
+interface ISharePointAppUninstallParameters {
     siteUrl: string;
     id: string;
     appCatalogScope?: string;
 }
 
-export class SharePointAppInstall implements LanguageModelTool<ISharePointAppInstallParameters> {
+export class SharePointAppUninstall implements LanguageModelTool<ISharePointAppUninstallParameters> {
     async invoke(
-        options: LanguageModelToolInvocationOptions<ISharePointAppInstallParameters>,
+        options: LanguageModelToolInvocationOptions<ISharePointAppUninstallParameters>,
         _token: CancellationToken
     ) {
         const params = options.input;
@@ -22,38 +22,35 @@ export class SharePointAppInstall implements LanguageModelTool<ISharePointAppIns
 
         const commandOptions: any = {
             siteUrl: params.siteUrl,
-            id: params.id
+            id: params.id,
+            force: true
         };
 
         if (params.appCatalogScope && params.appCatalogScope.toLowerCase() === 'sitecollection') {
             commandOptions.appCatalogScope = 'sitecollection';
         }
 
-        const result = await CliExecuter.execute('spo app install', 'json', commandOptions);
+        const result = await CliExecuter.execute('spo app uninstall', 'json', commandOptions);
         if (result.stderr) {
             return new LanguageModelToolResult([new LanguageModelTextPart(`Error: ${result.stderr}`)]);
         }
 
-        const isSiteCollection = commandOptions.appCatalogScope === 'sitecollection';
-
-        return new LanguageModelToolResult([new LanguageModelTextPart(`App installed successfully from ${isSiteCollection ? 'site collection' : 'tenant'} app catalog to site ${params.siteUrl}${(result.stdout !== '' ? `\nResult: ${result.stdout}` : '')}`)]);
+        return new LanguageModelToolResult([new LanguageModelTextPart(`App uninstalled successfully from site ${params.siteUrl}${(result.stdout !== '' ? `\nResult: ${result.stdout}` : '')}`)]);
     }
 
     async prepareInvocation(
-        options: LanguageModelToolInvocationPrepareOptions<ISharePointAppInstallParameters>,
+        options: LanguageModelToolInvocationPrepareOptions<ISharePointAppUninstallParameters>,
         _token: CancellationToken
     ) {
         const params = options.input;
-        const isSiteCollection = params.appCatalogScope?.toLowerCase() === 'sitecollection';
-        const scope = isSiteCollection ? 'site collection' : 'tenant';
 
         const confirmationMessages = {
-            title: `Install an app from ${scope} app catalog`,
-            message: new MarkdownString(`Should I install an app with ID ${params.id} from ${scope} app catalog to site ${params.siteUrl}?`),
+            title: 'Uninstall an app from site',
+            message: new MarkdownString(`Should I uninstall app with ID ${params.id} from site ${params.siteUrl}?`),
         };
 
         return {
-            invocationMessage: `Installing app from ${scope} app catalog to site ${params.siteUrl}`,
+            invocationMessage: `Uninstalling app from site ${params.siteUrl}`,
             confirmationMessages,
         };
     }
