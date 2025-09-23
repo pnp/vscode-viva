@@ -1,17 +1,17 @@
 import { CancellationToken, LanguageModelTextPart, LanguageModelTool, LanguageModelToolInvocationOptions, LanguageModelToolInvocationPrepareOptions, LanguageModelToolResult, MarkdownString } from 'vscode';
-import { CliExecuter } from '../../../../services/executeWrappers/CliCommandExecuter';
-import { validateAuth } from '../utils/ToolAuthValidationUtil';
+import { CliExecuter } from '../../../services/executeWrappers/CliCommandExecuter';
+import { validateAuth } from './ToolAuthValidationUtil';
 
 
-interface ISharePointAppInstallParameters {
+interface ISharePointAppUpgradeParameters {
     siteUrl: string;
     id: string;
     appCatalogScope?: string;
 }
 
-export class SharePointAppInstall implements LanguageModelTool<ISharePointAppInstallParameters> {
+export class SharePointAppUpgrade implements LanguageModelTool<ISharePointAppUpgradeParameters> {
     async invoke(
-        options: LanguageModelToolInvocationOptions<ISharePointAppInstallParameters>,
+        options: LanguageModelToolInvocationOptions<ISharePointAppUpgradeParameters>,
         _token: CancellationToken
     ) {
         const params = options.input;
@@ -29,18 +29,18 @@ export class SharePointAppInstall implements LanguageModelTool<ISharePointAppIns
             commandOptions.appCatalogScope = 'sitecollection';
         }
 
-        const result = await CliExecuter.execute('spo app install', 'json', commandOptions);
+        const result = await CliExecuter.execute('spo app upgrade', 'json', commandOptions);
         if (result.stderr) {
             return new LanguageModelToolResult([new LanguageModelTextPart(`Error: ${result.stderr}`)]);
         }
 
         const isSiteCollection = commandOptions.appCatalogScope === 'sitecollection';
 
-        return new LanguageModelToolResult([new LanguageModelTextPart(`App installed successfully from ${isSiteCollection ? 'site collection' : 'tenant'} app catalog to site ${params.siteUrl}${(result.stdout !== '' ? `\nResult: ${result.stdout}` : '')}`)]);
+        return new LanguageModelToolResult([new LanguageModelTextPart(`App upgraded successfully from ${isSiteCollection ? 'site collection' : 'tenant'} app catalog on site ${params.siteUrl}${(result.stdout !== '' ? `\nResult: ${result.stdout}` : '')}`)]);
     }
 
     async prepareInvocation(
-        options: LanguageModelToolInvocationPrepareOptions<ISharePointAppInstallParameters>,
+        options: LanguageModelToolInvocationPrepareOptions<ISharePointAppUpgradeParameters>,
         _token: CancellationToken
     ) {
         const params = options.input;
@@ -48,12 +48,12 @@ export class SharePointAppInstall implements LanguageModelTool<ISharePointAppIns
         const scope = isSiteCollection ? 'site collection' : 'tenant';
 
         const confirmationMessages = {
-            title: `Install an app from ${scope} app catalog`,
-            message: new MarkdownString(`Should I install an app with ID ${params.id} from ${scope} app catalog to site ${params.siteUrl}?`),
+            title: `Upgrade an app from ${scope} app catalog`,
+            message: new MarkdownString(`Should I upgrade app with ID ${params.id} from ${scope} app catalog to its latest version on site ${params.siteUrl}?`),
         };
 
         return {
-            invocationMessage: `Installing app from ${scope} app catalog to site ${params.siteUrl}`,
+            invocationMessage: `Upgrading app from ${scope} app catalog to latest version on site ${params.siteUrl}`,
             confirmationMessages,
         };
     }
