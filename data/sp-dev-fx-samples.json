@@ -630,21 +630,21 @@
     },
     {
       "name": "pnp-sp-dev-spfx-extensions-react-application-alert-banner",
-      "title": "Alert Banner",
+      "title": "Alert Banner SPFx Extension",
       "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-application-alert-banner",
-      "description": "Designed to display alert notifications prominently in the Banner of Modern SharePoint sites",
-      "image": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-alert-banner/assets/Screenshot2024-08-17170932.png",
+      "description": "The Alert Banner SPFx Extension is a custom SharePoint Framework (SPFx) extension designed to display alert notifications prominently in the Banner of Modern SharePoint sites. These alerts are dynamically retrieved from a SharePoint list using the Microsoft Graph API, ensuring users receive important updates and information seamlessly integrated with Microsoft 365 services.",
+      "image": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-alert-banner/assets/preview.gif",
       "authors": [
         {
           "name": "Nicolas Kheirallah",
-          "pictureUrl": "https://github.com/nicolasKheirallah.png"
+          "pictureUrl": "https://github.com/NicolasKheirallah.png"
         }
       ],
       "tags": [
         "SharePoint"
       ],
       "createDate": "2023-12-25",
-      "updateDate": "2025-03-06",
+      "updateDate": "2025-09-03",
       "version": "1.19.0",
       "componentType": "extension",
       "extensionType": "ApplicationCustomizer",
@@ -742,6 +742,29 @@
       "createDate": "2023-07-02",
       "updateDate": "2025-05-25",
       "version": "1.20.0",
+      "componentType": "extension",
+      "extensionType": "ApplicationCustomizer",
+      "sampleGalerry": "sp-dev-fx-extensions",
+      "sampleType": "samples"
+    },
+    {
+      "name": "pnp-sp-dev-spfx-extensions-react-application-customizer-notification",
+      "title": "Notification Application Customizer with Webhooks",
+      "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-application-customizer-notification",
+      "description": "This project demonstrates a SharePoint Framework (SPFx) Application Customizer that uses webhooks to display notifications when a SharePoint list changes.",
+      "image": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-customizer-notification/assets/Light theme.gif",
+      "authors": [
+        {
+          "name": "Guido Zambarda",
+          "pictureUrl": "https://avatars.githubusercontent.com/u/13046662?v=4"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2025-08-30",
+      "updateDate": "2025-08-30",
+      "version": "1.21.1",
       "componentType": "extension",
       "extensionType": "ApplicationCustomizer",
       "sampleGalerry": "sp-dev-fx-extensions",
@@ -1027,13 +1050,21 @@
         {
           "name": "Ari Gunawan",
           "pictureUrl": "https://github.com/AriGunawan.png"
+        },
+        {
+          "name": "Sudharsan Kesavanarayanan",
+          "pictureUrl": "https://github.com/sudharsank.png"
+        },
+        {
+          "name": "Nicolas Kheirallah",
+          "pictureUrl": "https://github.com/NicolasKheirallah.png"
         }
       ],
       "tags": [
         "SharePoint"
       ],
       "createDate": "2021-04-19",
-      "updateDate": "2024-10-24",
+      "updateDate": "2025-09-08",
       "version": "1.20.0",
       "componentType": "extension",
       "extensionType": "ApplicationCustomizer",
@@ -1519,13 +1550,17 @@
         {
           "name": "Mikael Svenson",
           "pictureUrl": "https://github.com/wobba.png"
+        },
+        {
+          "name": "Nicolas Kheirallah",
+          "pictureUrl": "https://github.com/NicolasKheirallah.png"
         }
       ],
       "tags": [
         "SharePoint"
       ],
       "createDate": "2021-02-23",
-      "updateDate": "2024-10-23",
+      "updateDate": "2025-09-03",
       "version": "1.20.0",
       "componentType": "extension",
       "extensionType": "ListViewCommandSet",
@@ -2147,6 +2182,29 @@
       "version": "1.20.0",
       "componentType": "extension",
       "extensionType": "ApplicationCustomizer",
+      "sampleGalerry": "sp-dev-fx-extensions",
+      "sampleType": "samples"
+    },
+    {
+      "name": "pnp-sp-dev-spfx-extensions-react-driveitem-properties",
+      "title": "Drive Item Properties List view command set extension",
+      "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-driveitem-properties",
+      "description": "List view command set extensions with below functionalities",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-driveitem-properties/assets/DriveItemProperties.png",
+      "authors": [
+        {
+          "name": "Harminder Singh",
+          "pictureUrl": "https://github.com/HarminderSethi.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2025-08-30",
+      "updateDate": "2025-08-30",
+      "version": "1.20.2",
+      "componentType": "extension",
+      "extensionType": "ListViewCommandSet",
       "sampleGalerry": "sp-dev-fx-extensions",
       "sampleType": "samples"
     },
