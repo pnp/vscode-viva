@@ -216,7 +216,7 @@
 				}
 			},
 			{
-				"name": "spo_page_add",
+				"name": "add_spo_page",
 				"tags": [
 					"sharepoint",
 					"page",
@@ -224,7 +224,7 @@
 				],
 				"toolReferenceName": "SharePointPageAdd",
 				"displayName": "Add a SharePoint Page",
-				"modelDescription": "Creates a page. This tool may be used to add a page on a SharePoint site.",
+				"modelDescription": "This tool creates a new SharePoint page on a specified site. Upon success this tool will not provide any response. Use this tool to add a page on an existing SharePoint site to a sitePages library.",
 				"userDescription": "Creates a page.",
 				"canBeReferencedInPrompt": true,
 				"icon": "$(add)",
@@ -248,7 +248,22 @@
 						},
 						"layoutType": {
 							"type": "string",
-							"description": "Layout of the page. Allowed values Article, Home, SingleWebPartAppPage, RepostPage, HeaderlessSearchResults, Spaces, Topic. Default Article. This option is optional.",
+							"description": "Layout of the page. Allowed values: 'Article', 'Home', 'SingleWebPartAppPage', 'RepostPage', 'HeaderlessSearchResults', 'Spaces', 'Topic'. Default 'Article'. This option is optional.",
+							"default": "Article"
+						},
+						"promoteAs": {
+							"type": "string",
+							"description": "Create the page for a specific purpose. Allowed values 'HomePage', 'NewsPage', 'Template'. This option is optional.",
+							"default": ""
+						},
+						"commentsEnabled": {
+							"type": "boolean",
+							"description": "Set to enable comments on the page. This option is optional.",
+							"default": false
+						},
+						"description": {
+							"type": "string",
+							"description": "The description to set for the page. This option is optional.",
 							"default": ""
 						}
 					}

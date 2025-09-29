@@ -1,6 +1,6 @@
 import { CancellationToken, LanguageModelTextPart, LanguageModelTool, LanguageModelToolInvocationOptions, LanguageModelToolInvocationPrepareOptions, LanguageModelToolResult, MarkdownString } from 'vscode';
-import { CliExecuter } from '../../../services/executeWrappers/CliCommandExecuter';
-import { validateAuth } from './ToolAuthValidationUtil';
+import { CliExecuter } from '../../../../services/executeWrappers/CliCommandExecuter';
+import { validateAuth } from '../utils/ToolAuthValidationUtil';
 
 
 interface ISharePointListRemoveParameters {
