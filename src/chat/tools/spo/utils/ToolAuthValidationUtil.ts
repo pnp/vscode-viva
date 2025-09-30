@@ -1,5 +1,5 @@
 import { LanguageModelTextPart, LanguageModelToolResult } from 'vscode';
-import { AuthProvider } from '../../../providers/AuthProvider';
+import { AuthProvider } from '../../../../providers/AuthProvider';
 
 
 export const validateAuth = async () : Promise<LanguageModelToolResult | boolean> => {
