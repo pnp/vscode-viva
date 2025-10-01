@@ -1,6 +1,6 @@
 import { CancellationToken, LanguageModelTextPart, LanguageModelTool, LanguageModelToolInvocationOptions, LanguageModelToolInvocationPrepareOptions, LanguageModelToolResult, MarkdownString } from 'vscode';
-import { CliExecuter } from '../../../services/executeWrappers/CliCommandExecuter';
-import { validateAuth } from './ToolAuthValidationUtil';
+import { CliExecuter } from '../../../../services/executeWrappers/CliCommandExecuter';
+import { validateAuth } from '../utils/ToolAuthValidationUtil';
 
 
 interface ISharePointAppInstanceListParameters {
@@ -18,11 +18,7 @@ export class SharePointAppInstanceList implements LanguageModelTool<ISharePointA
             return authValidationResult as LanguageModelToolResult;
         }
 
-        const commandOptions: any = {
-            siteUrl: params.siteUrl
-        };
-
-        const result = await CliExecuter.execute('spo app instance list', 'json', commandOptions);
+        const result = await CliExecuter.execute('spo app instance list', 'json', params);
         if (result.stderr) {
             return new LanguageModelToolResult([new LanguageModelTextPart(`Error: ${result.stderr}`)]);
         }

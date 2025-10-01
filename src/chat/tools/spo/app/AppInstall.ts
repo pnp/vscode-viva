@@ -20,21 +20,12 @@ export class SharePointAppInstall implements LanguageModelTool<ISharePointAppIns
             return authValidationResult as LanguageModelToolResult;
         }
 
-        const commandOptions: any = {
-            siteUrl: params.siteUrl,
-            id: params.id
-        };
-
-        if (params.appCatalogScope && params.appCatalogScope.toLowerCase() === 'sitecollection') {
-            commandOptions.appCatalogScope = 'sitecollection';
-        }
-
-        const result = await CliExecuter.execute('spo app install', 'json', commandOptions);
+        const result = await CliExecuter.execute('spo app install', 'json', params);
         if (result.stderr) {
             return new LanguageModelToolResult([new LanguageModelTextPart(`Error: ${result.stderr}`)]);
         }
 
-        const isSiteCollection = commandOptions.appCatalogScope === 'sitecollection';
+        const isSiteCollection = params.appCatalogScope?.toLowerCase() === 'sitecollection';
 
         return new LanguageModelToolResult([new LanguageModelTextPart(`App installed successfully from ${isSiteCollection ? 'site collection' : 'tenant'} app catalog to site ${params.siteUrl}${(result.stdout !== '' ? `\nResult: ${result.stdout}` : '')}`)]);
     }

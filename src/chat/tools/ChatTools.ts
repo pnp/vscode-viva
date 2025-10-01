@@ -25,25 +25,25 @@ export class ChatTools {
             lm.registerTool('upgrade_spo_app', new SharePointAppUpgrade())
         );
         subscriptions.push(
-            lm.registerTool('add_spo_list', new SharePointListAdd())
+            lm.registerTool('spo_list_add', new SharePointListAdd())
         );
         subscriptions.push(
-            lm.registerTool('get_spo_list', new SharePointListGet())
+            lm.registerTool('spo_list_get', new SharePointListGet())
         );
         subscriptions.push(
-            lm.registerTool('remove_spo_list', new SharePointListRemove())
+            lm.registerTool('spo_list_remove', new SharePointListRemove())
         );
         subscriptions.push(
             lm.registerTool('add_spo_page', new SharePointPageAdd())
         );
         subscriptions.push(
-            lm.registerTool('add_spo_site', new SharePointSiteAdd())
+            lm.registerTool('spo_site_add', new SharePointSiteAdd())
         );
         subscriptions.push(
-            lm.registerTool('get_spo_site', new SharePointSiteGet())
+            lm.registerTool('spo_site_get', new SharePointSiteGet())
         );
         subscriptions.push(
-            lm.registerTool('remove_spo_site', new SharePointSiteRemove())
+            lm.registerTool('spo_site_remove', new SharePointSiteRemove())
         );
         subscriptions.push(
             lm.registerTool('upgrade_spfx_project', new SharePointFrameworkProjectUpgrade())

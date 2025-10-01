@@ -1,6 +1,6 @@
 import { CancellationToken, LanguageModelTextPart, LanguageModelTool, LanguageModelToolInvocationOptions, LanguageModelToolInvocationPrepareOptions, LanguageModelToolResult, MarkdownString } from 'vscode';
-import { CliExecuter } from '../../../services/executeWrappers/CliCommandExecuter';
-import { validateAuth } from './ToolAuthValidationUtil';
+import { CliExecuter } from '../../../../services/executeWrappers/CliCommandExecuter';
+import { validateAuth } from '../utils/ToolAuthValidationUtil';
 
 
 interface ISharePointAppUninstallParameters {
@@ -20,17 +20,7 @@ export class SharePointAppUninstall implements LanguageModelTool<ISharePointAppU
             return authValidationResult as LanguageModelToolResult;
         }
 
-        const commandOptions: any = {
-            siteUrl: params.siteUrl,
-            id: params.id,
-            force: true
-        };
-
-        if (params.appCatalogScope && params.appCatalogScope.toLowerCase() === 'sitecollection') {
-            commandOptions.appCatalogScope = 'sitecollection';
-        }
-
-        const result = await CliExecuter.execute('spo app uninstall', 'json', commandOptions);
+        const result = await CliExecuter.execute('spo app uninstall', 'json', { ...params, force: true });
         if (result.stderr) {
             return new LanguageModelToolResult([new LanguageModelTextPart(`Error: ${result.stderr}`)]);
         }
