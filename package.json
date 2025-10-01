@@ -73,36 +73,7 @@
 				]
 			}
 		],
-		"languageModelTools": [
-			{
-				"name": "list_spo_app",
-				"tags": [
-					"sharepoint",
-					"app",
-					"spfx-toolkit"
-				],
-				"toolReferenceName": "SharePointAppList",
-				"displayName": "List SharePoint apps",
-				"modelDescription": "Returns the list of SharePoint Framework apps from the specified app catalog. This tool can list apps from the tenant-wide app catalog (default) or from a specific site collection app catalog when appCatalogScope is set to 'sitecollection' and appCatalogUrl is provided. This tool returns detailed information about each app including ID, title, deployment status, enablement state, and more. Use this tool when you need to inventory apps, check deployment status, or verify which apps are available in app catalogs before performing app management operations. The tool requires Microsoft 365 authentication and appropriate permissions to access the specified app catalog.",
-				"userDescription": "Lists SharePoint apps from the tenant or site collection app catalog.",
-				"canBeReferencedInPrompt": true,
-				"icon": "$(search)",
-				"inputSchema": {
-					"type": "object",
-					"properties": {
-						"appCatalogScope": {
-							"type": "string",
-							"description": "Scope of the app catalog. Allowed values: tenant, sitecollection. Defaults to tenant. This option is optional.",
-							"default": ""
-						},
-						"appCatalogUrl": {
-							"type": "string",
-							"description": "URL of the tenant or site collection app catalog. It must be specified when the appCatalogScope is sitecollection.",
-							"default": ""
-						}
-					}
-				}
-			},
+		"languageModelTools": [			
 			{
 				"name": "install_spo_app",
 				"tags": [
@@ -132,6 +103,59 @@
 						"appCatalogScope": {
 							"type": "string",
 							"description": "Scope of the app catalog. Allowed values: tenant, sitecollection. Defaults to tenant. This option is optional.",
+							"default": ""
+						}
+					}
+				}
+			},
+			{
+				"name": "list_spo_app_instances",
+				"tags": [
+					"sharepoint",
+					"app",
+					"spfx-toolkit"
+				],
+				"toolReferenceName": "SharePointAppInstanceList",
+				"displayName": "List installed SharePoint apps in a site",
+				"modelDescription": "Retrieves a list of SharePoint Framework (SPFx) applications that are currently installed and deployed on a specific SharePoint Online site. This tool shows the actual app instances running on the site, including details like app ID, title, description, app status, and more. Use this tool to inventory installed apps on a site. The tool requires Microsoft 365 authentication and read permissions to the target site. This is different from listing apps in catalogs, this shows only the apps that are actually installed and running on the specified site.",
+				"userDescription": "Lists all SharePoint apps currently installed on the specified site.",
+				"canBeReferencedInPrompt": true,
+				"icon": "$(list-unordered)",
+				"inputSchema": {
+					"type": "object",
+					"properties": {
+						"siteUrl": {
+							"type": "string",
+							"description": "URL of the site collection to retrieve the installed apps for. This option is required.",
+							"default": ""
+						}
+					}
+				}
+			},
+			{
+				"name": "list_spo_app",
+				"tags": [
+					"sharepoint",
+					"app",
+					"spfx-toolkit"
+				],
+				"toolReferenceName": "SharePointAppList",
+				"displayName": "List SharePoint apps",
+				"modelDescription": "Returns the list of SharePoint Framework apps from the specified app catalog. This tool can list apps from the tenant-wide app catalog (default) or from a specific site collection app catalog when appCatalogScope is set to 'sitecollection' and appCatalogUrl is provided. This tool returns detailed information about each app including ID, title, deployment status, enablement state, and more. Use this tool when you need to inventory apps, check deployment status, or verify which apps are available in app catalogs before performing app management operations. The tool requires Microsoft 365 authentication and appropriate permissions to access the specified app catalog.",
+				"userDescription": "Lists SharePoint apps from the tenant or site collection app catalog.",
+				"canBeReferencedInPrompt": true,
+				"icon": "$(search)",
+				"inputSchema": {
+					"type": "object",
+					"properties": {
+						"appCatalogScope": {
+							"type": "string",
+							"description": "Scope of the app catalog. Allowed values: tenant, sitecollection. Defaults to tenant. This option is optional.",
+							"default": ""
+						},
+						"appCatalogUrl": {
+							"type": "string",
+							"description": "URL of the tenant or site collection app catalog. It must be specified when the appCatalogScope is sitecollection.",
 							"default": ""
 						}
 					}
@@ -206,31 +230,7 @@
 				}
 			},
 			{
-				"name": "list_spo_app_instances",
-				"tags": [
-					"sharepoint",
-					"app",
-					"spfx-toolkit"
-				],
-				"toolReferenceName": "SharePointAppInstanceList",
-				"displayName": "List installed SharePoint apps in a site",
-				"modelDescription": "Retrieves a list of SharePoint Framework (SPFx) applications that are currently installed and deployed on a specific SharePoint Online site. This tool shows the actual app instances running on the site, including details like app ID, title, description, app status, and more. Use this tool to inventory installed apps on a site. The tool requires Microsoft 365 authentication and read permissions to the target site. This is different from listing apps in catalogs, this shows only the apps that are actually installed and running on the specified site.",
-				"userDescription": "Lists all SharePoint apps currently installed on the specified site.",
-				"canBeReferencedInPrompt": true,
-				"icon": "$(list-unordered)",
-				"inputSchema": {
-					"type": "object",
-					"properties": {
-						"siteUrl": {
-							"type": "string",
-							"description": "URL of the site collection to retrieve the installed apps for. This option is required.",
-							"default": ""
-						}
-					}
-				}
-			},
-			{
-				"name": "add_spo_list",
+				"name": "spo_list_add",
 				"tags": [
 					"sharepoint",
 					"list",
@@ -269,7 +269,7 @@
 				}
 			},
 			{
-				"name": "get_spo_list",
+				"name": "spo_list_get",
 				"tags": [
 					"sharepoint",
 					"list",
@@ -298,7 +298,7 @@
 				}
 			},
 			{
-				"name": "remove_spo_list",
+				"name": "spo_list_remove",
 				"tags": [
 					"sharepoint",
 					"list",
@@ -381,7 +381,7 @@
 				}
 			},
 			{
-				"name": "add_spo_site",
+				"name": "spo_site_add",
 				"tags": [
 					"sharepoint",
 					"site",
@@ -425,7 +425,7 @@
 				}
 			},
 			{
-				"name": "remove_spo_site",
+				"name": "spo_site_remove",
 				"tags": [
 					"sharepoint",
 					"site",
@@ -449,7 +449,7 @@
 				}
 			},
 			{
-				"name": "get_spo_site",
+				"name": "spo_site_get",
 				"tags": [
 					"sharepoint",
 					"site",
