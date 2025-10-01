@@ -20,6 +20,7 @@ import { getExtensionSettings } from '../../utils/getExtensionSettings';
 import * as fs from 'fs';
 import { ActionTreeItem } from '../../providers/ActionTreeDataProvider';
 import { timezones } from '../../constants/Timezones';
+import { timezones } from '../../constants/Timezones';
 
 export class CliActions {
 
@@ -462,10 +463,13 @@ export class CliActions {
 
     if (!selectedTimezone) {
       Notifications.error('Time zone selection is required to create a Tenant App Catalog.');
+    if (!selectedTimezone) {
+      Notifications.error('Time zone selection is required to create a Tenant App Catalog.');
       return;
     }
 
     const confirmation = await window.showQuickPick(['Yes', 'No'], {
+      placeHolder: `Are you sure you want to create a Tenant App Catalog at '${appCatalogUrl}' with owner '${owner}' and time zone '${selectedTimezone.label}'?`,
       placeHolder: `Are you sure you want to create a Tenant App Catalog at '${appCatalogUrl}' with owner '${owner}' and time zone '${selectedTimezone.label}'?`,
       ignoreFocusOut: true,
     });
@@ -483,6 +487,7 @@ export class CliActions {
         const commandOptions: any = {
           url: appCatalogUrl,
           owner,
+          timeZone: selectedTimezone.timeZoneId,
           timeZone: selectedTimezone.timeZoneId,
         };
         const result = await CliExecuter.execute('spo tenant appcatalog add', 'json', commandOptions);
