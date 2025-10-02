@@ -1192,11 +1192,12 @@
 		"webpack-dev-server": "^4.8.1"
 	},
 	"dependencies": {
+		"@grconrad/vscode-extension-feedback": "^1.0.0",
 		"@pnp/cli-microsoft365": "6.11.0",
 		"node-forge": "1.3.1",
 		"react-markdown": "10.1.0",
 		"remark-gfm": "4.0.1",
-		"use-debounce": "10.0.4",
-		"rehype-raw": "^7.0.0"
-	}
+		"use-debounce": "10.0.4"
+	},
+	"feedbackFormUrl": "https://forms.office.com/e/ZTfqAissqt"
 }
