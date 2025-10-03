@@ -32,6 +32,8 @@ After successful sign in, an additional view is presented that shows a list of l
 - **Upgrade**: Upgrades the solution to the latest version available in the app catalog for the specified site.
 - **Install**: Install the solution from tenant or site collection app catalog to a site.
 - **Uninstall**: Uninstall the solution from a site.
+- **Copy**: Copies the solution to a different app catalog.
+- **Move**: Moves the solution to a different app catalog.
 
 ![tenant details](../images/app-catalog-list.png)
 

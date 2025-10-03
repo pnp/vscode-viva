@@ -2,7 +2,7 @@
 	"name": "viva-connections-toolkit",
 	"displayName": "SharePoint Framework Toolkit",
 	"description": "SharePoint Framework Toolkit aims to boost your productivity in developing and managing SharePoint Framework solutions helping at every stage of your development flow, from setting up your development workspace to deploying a solution straight to your tenant without the need to leave VS Code and now even create a CI/CD pipeline to introduce automate deployment of your app. This toolkit is provided by the community.",
-	"version": "4.9.0",
+	"version": "4.9.7",
 	"publisher": "m365pnp",
 	"preview": false,
 	"homepage": "https://pnp.github.io/vscode-viva",
@@ -216,7 +216,7 @@
 				}
 			},
 			{
-				"name": "spo_page_add",
+				"name": "add_spo_page",
 				"tags": [
 					"sharepoint",
 					"page",
@@ -224,7 +224,7 @@
 				],
 				"toolReferenceName": "SharePointPageAdd",
 				"displayName": "Add a SharePoint Page",
-				"modelDescription": "Creates a page. This tool may be used to add a page on a SharePoint site.",
+				"modelDescription": "This tool creates a new SharePoint page on a specified site. Upon success this tool will not provide any response. Use this tool to add a page on an existing SharePoint site to a sitePages library.",
 				"userDescription": "Creates a page.",
 				"canBeReferencedInPrompt": true,
 				"icon": "$(add)",
@@ -248,7 +248,22 @@
 						},
 						"layoutType": {
 							"type": "string",
-							"description": "Layout of the page. Allowed values Article, Home, SingleWebPartAppPage, RepostPage, HeaderlessSearchResults, Spaces, Topic. Default Article. This option is optional.",
+							"description": "Layout of the page. Allowed values: 'Article', 'Home', 'SingleWebPartAppPage', 'RepostPage', 'HeaderlessSearchResults', 'Spaces', 'Topic'. Default 'Article'. This option is optional.",
+							"default": "Article"
+						},
+						"promoteAs": {
+							"type": "string",
+							"description": "Create the page for a specific purpose. Allowed values 'HomePage', 'NewsPage', 'Template'. This option is optional.",
+							"default": ""
+						},
+						"commentsEnabled": {
+							"type": "boolean",
+							"description": "Set to enable comments on the page. This option is optional.",
+							"default": false
+						},
+						"description": {
+							"type": "string",
+							"description": "The description to set for the page. This option is optional.",
 							"default": ""
 						}
 					}
@@ -767,6 +782,18 @@
 				"icon": "$(remove)"
 			},
 			{
+				"command": "spfx-toolkit.copyAppCatalogApp",
+				"title": "Copy",
+				"category": "SPFx Toolkit",
+				"icon": "$(package)"
+			},
+			{
+				"command": "spfx-toolkit.moveAppCatalogApp",
+				"title": "Move",
+				"category": "SPFx Toolkit",
+				"icon": "$(package)"
+			},
+			{
 				"command": "spfx-toolkit.setFormCustomizer",
 				"title": "Set Form Customizer",
 				"category": "SPFx Toolkit"
@@ -935,6 +962,14 @@
 					"when": "false"
 				},
 				{
+					"command": "spfx-toolkit.copyAppCatalogApp",
+					"when": "false"
+				},
+				{
+					"command": "spfx-toolkit.moveAppCatalogApp",
+					"when": "false"
+				},
+				{
 					"command": "spfx-toolkit.moreTenantWideExtensionActions",
 					"when": "false"
 				},
@@ -1006,36 +1041,44 @@
 			],
 			"spfx-toolkit.showMoreActions": [
 				{
+					"command": "spfx-toolkit.copyAppCatalogApp",
+					"group": "actions.more@1"
+				},
+				{
 					"command": "spfx-toolkit.deployAppCatalogApp",
-					"group": "actions.more@1"
-				},
-				{
-					"command": "spfx-toolkit.retractAppCatalogApp",
-					"group": "actions.more@1"
-				},
-				{
-					"command": "spfx-toolkit.removeAppCatalogApp",
 					"group": "actions.more@2"
 				},
 				{
-					"command": "spfx-toolkit.enableAppCatalogApp",
+					"command": "spfx-toolkit.disableAppCatalogApp",
 					"group": "actions.more@3"
 				},
 				{
-					"command": "spfx-toolkit.disableAppCatalogApp",
+					"command": "spfx-toolkit.enableAppCatalogApp",
 					"group": "actions.more@4"
-				},
-				{
-					"command": "spfx-toolkit.upgradeAppCatalogApp",
-					"group": "actions.more@5"
 				},
 				{
 					"command": "spfx-toolkit.installAppCatalogApp",
 					"group": "actions.more@5"
 				},
 				{
+					"command": "spfx-toolkit.moveAppCatalogApp",
+					"group": "actions.more@6"
+				},
+				{
+					"command": "spfx-toolkit.removeAppCatalogApp",
+					"group": "actions.more@7"
+				},
+				{
+					"command": "spfx-toolkit.retractAppCatalogApp",
+					"group": "actions.more@8"
+				},
+				{
 					"command": "spfx-toolkit.uninstallAppCatalogApp",
-					"group": "actions.more@5"
+					"group": "actions.more@9"
+				},
+				{
+					"command": "spfx-toolkit.upgradeAppCatalogApp",
+					"group": "actions.more@10"
 				}
 			],
 			"spfx-toolkit.moreTenantWideExtensionActions": [
@@ -1153,6 +1196,7 @@
 		"node-forge": "1.3.1",
 		"react-markdown": "10.1.0",
 		"remark-gfm": "4.0.1",
-		"use-debounce": "10.0.4"
+		"use-debounce": "10.0.4",
+		"rehype-raw": "^7.0.0"
 	}
 }
