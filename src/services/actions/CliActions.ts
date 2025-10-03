@@ -19,7 +19,7 @@ import path = require('path');
 import { getExtensionSettings } from '../../utils/getExtensionSettings';
 import * as fs from 'fs';
 import { ActionTreeItem } from '../../providers/ActionTreeDataProvider';
-
+import { timezones } from '../../constants/Timezones';
 
 export class CliActions {
 
@@ -66,26 +66,18 @@ export class CliActions {
     try {
       const appCatalogUrls: string[] = [];
       const tenantAppCatalog = (await CliExecuter.execute('spo tenant appcatalogurl get', 'json')).stdout || undefined;
-      const siteAppCatalogs = (await CliExecuter.execute('spo site appcatalog list', 'json', { excludeDeletedSites: true })).stdout || undefined;
+      const siteAppCatalogs = (await CliExecuter.execute('spo site appcatalog list', 'json')).stdout || undefined;
 
-      let tenantUrl: string | undefined;
       if (tenantAppCatalog) {
-        tenantUrl = JSON.parse(tenantAppCatalog);
-        if (tenantUrl) {
-          appCatalogUrls.push(tenantUrl);
-        }
+        appCatalogUrls.push(JSON.parse(tenantAppCatalog));
       }
 
       if (siteAppCatalogs) {
         const siteAppCatalogsJson: SiteAppCatalog[] = JSON.parse(siteAppCatalogs);
-        siteAppCatalogsJson.forEach((siteAppCatalog) => {
-          if (!tenantUrl || siteAppCatalog.AbsoluteUrl !== tenantUrl) {
-            appCatalogUrls.push(`${siteAppCatalog.AbsoluteUrl}`);
-          }
-        });
+        siteAppCatalogsJson.forEach((siteAppCatalog) => appCatalogUrls.push(`${siteAppCatalog.AbsoluteUrl}`));
       }
 
-      EnvironmentInformation.appCatalogUrls = appCatalogUrls.length > 0 ? appCatalogUrls : undefined;
+      EnvironmentInformation.appCatalogUrls = appCatalogUrls ? appCatalogUrls : undefined;
       return EnvironmentInformation.appCatalogUrls;
     } catch {
       return undefined;
@@ -131,7 +123,7 @@ export class CliActions {
    * @returns A promise that resolves to an array of objects containing the URL and title of each tenant-wide extension,
    *          or undefined if no extensions are found.
    */
-  public static async getTenantWideExtensions(tenantAppCatalogUrl: string): Promise<any[] | undefined> {
+  public static async getTenantWideExtensions(tenantAppCatalogUrl: string): Promise<{ Url: string, Title: string }[] | undefined> {
     const origin = new URL(tenantAppCatalogUrl).origin;
     const commandOptions: any = {
       listUrl: `${tenantAppCatalogUrl.replace(origin, '')}/Lists/TenantWideExtensions`,
@@ -147,9 +139,8 @@ export class CliActions {
       const tenantWideExtensionsJson: any[] = JSON.parse(tenantWideExtensions);
       const tenantWideExtensionList = tenantWideExtensionsJson.map((extension) => {
         return {
-          ...extension,
           Url: `${tenantAppCatalogUrl}/Lists/TenantWideExtensions/DispForm.aspx?ID=${extension.Id}`,
-          extensionDisabled: extension.TenantWideExtensionDisabled || false
+          Title: extension.Title
         };
       });
       return tenantWideExtensionList;
@@ -329,9 +320,9 @@ export class CliActions {
     return result.stdout;
   }
 
-  /**
-    * Sets the form customizer for a content type on a list.
-    */
+ /**
+   * Sets the form customizer for a content type on a list.
+   */
   public static async setFormCustomizer() {
     const relativeUrl = await window.showInputBox({
       prompt: 'Enter the relative URL of the site',
@@ -432,11 +423,11 @@ export class CliActions {
     });
   }
 
-  /**
-     * Adds a Tenant App Catalog.
-     * The URL is fixed to "https://domain.sharepoint.com/sites/appcatalog".
-     * Prompts the user for the owner and timeZone.
-     */
+/**
+   * Adds a Tenant App Catalog.
+   * The URL is fixed to "https://domain.sharepoint.com/sites/appcatalog".
+   * Prompts the user for the owner and timeZone.
+   */
   public static async addTenantAppCatalog() {
     const tenantUrl = EnvironmentInformation.tenantUrl;
     if (!tenantUrl) {
@@ -457,24 +448,26 @@ export class CliActions {
       return;
     }
 
-    const timeZoneInput = await window.showInputBox({
-      prompt: 'Enter the time zone as an integer (e.g., 4 for UTC+4). Refer to the guidelines: https://msdn.microsoft.com/library/microsoft.sharepoint.spregionalsettings.timezones.aspx',
-      ignoreFocusOut: true,
-      validateInput: (value) => {
-        const parsed = parseInt(value, 10);
-        return isNaN(parsed) ? 'Time zone must be an integer' : undefined;
-      },
-    });
+    const selectedTimezone = await window.showQuickPick(
+      timezones.map(tz => ({
+        label: tz.displayName,
+        description: `ID: ${tz.id}`,
+        timeZoneId: tz.id
+      })), {
+        placeHolder: 'Select your time zone (e.g., 4 for UTC+4). Refer to the guidelines: https://msdn.microsoft.com/library/microsoft.sharepoint.spregionalsettings.timezones.aspx',
+        ignoreFocusOut: true,
+        matchOnDescription: true,
+        matchOnDetail: true
+      }
+    );
 
-    if (!timeZoneInput) {
-      Notifications.error('Time zone is required to create a Tenant App Catalog.');
+    if (!selectedTimezone) {
+      Notifications.error('Time zone selection is required to create a Tenant App Catalog.');
       return;
     }
 
-    const timeZone = parseInt(timeZoneInput, 10);
-
     const confirmation = await window.showQuickPick(['Yes', 'No'], {
-      placeHolder: `Are you sure you want to create a Tenant App Catalog at '${appCatalogUrl}' with owner '${owner}' and time zone '${timeZone}'?`,
+      placeHolder: `Are you sure you want to create a Tenant App Catalog at '${appCatalogUrl}' with owner '${owner}' and time zone '${selectedTimezone.label}'?`,
       ignoreFocusOut: true,
     });
 
@@ -491,7 +484,7 @@ export class CliActions {
         const commandOptions: any = {
           url: appCatalogUrl,
           owner,
-          timeZone,
+          timeZone: selectedTimezone.timeZoneId,
         };
         const result = await CliExecuter.execute('spo tenant appcatalog add', 'json', commandOptions);
 
@@ -527,8 +520,7 @@ export class CliActions {
             return 'Please provide a relative URL without a leading slash.';
           }
           return undefined;
-        }
-      });
+        }});
 
       if (!relativeUrl) {
         Notifications.warning('No site URL provided. Operation aborted.');
@@ -639,19 +631,14 @@ export class CliActions {
     }, async (progress: Progress<{ message?: string; increment?: number }>) => {
       try {
         const projectUpgradeOutputMode: string = getExtensionSettings('projectUpgradeOutputMode', 'both');
-        const projectUpgradeShellType: string = getExtensionSettings('upgradeShellType', 'powershell');
-
-        const commandOptions: any = {
-          shell: projectUpgradeShellType
-        };
 
         if (projectUpgradeOutputMode === 'markdown' || projectUpgradeOutputMode === 'both') {
-          const resultMd = await CliExecuter.execute('spfx project upgrade', 'md', commandOptions);
+          const resultMd = await CliExecuter.execute('spfx project upgrade', 'md');
           CliActions.handleMarkdownResult(resultMd, wsFolder, 'upgrade');
         }
 
         if (projectUpgradeOutputMode === 'code tour' || projectUpgradeOutputMode === 'both') {
-          await CliExecuter.execute('spfx project upgrade', 'tour', commandOptions);
+          await CliExecuter.execute('spfx project upgrade', 'tour');
           CliActions.handleTourResult(wsFolder, 'upgrade');
         }
       } catch (e: any) {

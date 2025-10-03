@@ -9,6 +9,7 @@ export * from './ListTemplates';
 export * from './NodeVersionManagers';
 export * from './ProjectFileContent';
 export * from './Prompts';
+export * from './Timezones';
 export * from './WebTemplates';
 export * from './WebviewCommand';
 export * from './WebViewTypes';
