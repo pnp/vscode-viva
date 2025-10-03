@@ -1,7 +1,7 @@
 import { lm } from 'vscode';
 import { Subscription } from '../../models';
 import { Extension } from '../../services/dataType/Extension';
-import { SharePointAppInstall, SharePointAppList, SharePointListAdd, SharePointListGet, SharePointListRemove, SharePointPageAdd, SharePointSiteAdd, SharePointSiteGet, SharePointSiteRemove } from './spo/index';
+import { SharePointAppInstall, SharePointAppInstanceList, SharePointAppList, SharePointAppUninstall, SharePointAppUpgrade, SharePointListAdd, SharePointListGet, SharePointListRemove, SharePointPageAdd, SharePointSiteAdd, SharePointSiteGet, SharePointSiteRemove } from './spo/index';
 import { SharePointFrameworkProjectUpgrade } from './spfx';
 
 
@@ -10,10 +10,19 @@ export class ChatTools {
         const subscriptions: Subscription[] = Extension.getInstance().subscriptions;
 
         subscriptions.push(
-            lm.registerTool('spo_app_list', new SharePointAppList())
+            lm.registerTool('install_spo_app', new SharePointAppInstall())
         );
         subscriptions.push(
-            lm.registerTool('spo_app_install', new SharePointAppInstall())
+            lm.registerTool('list_spo_app_instances', new SharePointAppInstanceList())
+        );
+        subscriptions.push(
+            lm.registerTool('list_spo_app', new SharePointAppList())
+        );
+        subscriptions.push(
+            lm.registerTool('uninstall_spo_app', new SharePointAppUninstall())
+        );
+        subscriptions.push(
+            lm.registerTool('upgrade_spo_app', new SharePointAppUpgrade())
         );
         subscriptions.push(
             lm.registerTool('spo_list_add', new SharePointListAdd())
@@ -31,10 +40,10 @@ export class ChatTools {
             lm.registerTool('spo_site_add', new SharePointSiteAdd())
         );
         subscriptions.push(
-            lm.registerTool('spo_site_remove', new SharePointSiteRemove())
+            lm.registerTool('spo_site_get', new SharePointSiteGet())
         );
         subscriptions.push(
-            lm.registerTool('spo_site_get', new SharePointSiteGet())
+            lm.registerTool('spo_site_remove', new SharePointSiteRemove())
         );
         subscriptions.push(
             lm.registerTool('upgrade_spfx_project', new SharePointFrameworkProjectUpgrade())
