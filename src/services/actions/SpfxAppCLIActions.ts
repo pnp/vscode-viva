@@ -65,6 +65,16 @@ export class SpfxAppCLIActions {
         subscriptions.push(
             commands.registerCommand(Commands.updateTenantWideExtension, SpfxAppCLIActions.updateTenantWideExtension)
         );
+        subscriptions.push(
+            commands.registerCommand(Commands.copyAppCatalogApp, (node: ActionTreeItem) =>
+                SpfxAppCLIActions.handleAppCatalogAppTransfer(node, ContextKeys.copyApp, 'copy')
+            )
+        );
+        subscriptions.push(
+            commands.registerCommand(Commands.moveAppCatalogApp, (node: ActionTreeItem) =>
+                SpfxAppCLIActions.handleAppCatalogAppTransfer(node, ContextKeys.moveApp, 'move')
+            )
+        );
     }
 
     /**
@@ -766,5 +776,61 @@ export class SpfxAppCLIActions {
             ignoreFocusOut: true,
             validateInput: val => val.trim() ? undefined : `${propertyLabel} cannot be empty`
         });
+    }
+
+    /**
+     * Copies or Moves an SPFx app from one App Catalog to another.
+     *
+     * @param node the tree item representing the app to copy
+     */
+    public static async handleAppCatalogAppTransfer(node: ActionTreeItem, ctxValue: string, action: 'copy' | 'move') {
+        try {
+            const actionNode = node.children?.find(child => child.contextValue === ctxValue);
+
+            if (!actionNode?.command?.arguments) {
+                Notifications.error(`Failed to retrieve app details for ${action}.`);
+                return;
+            }
+
+            const [appID, appTitle, appCatalogUrl, appCatalogUrls] = actionNode.command.arguments;
+
+            if (!appCatalogUrls || appCatalogUrls.length === 0) {
+                Notifications.error('No App Catalog URLs found.');
+                return;
+            }
+
+            const selectedUrl = await window.showQuickPick(appCatalogUrls, {
+                placeHolder: 'Select target App Catalog URL',
+                ignoreFocusOut: true
+            });
+
+            if (!selectedUrl) {
+                Notifications.error('No target App Catalog URL selected.');
+                return;
+            }
+
+            const commandOptions: any = {
+                webUrl: appCatalogUrl,
+                sourceId: appID,
+                targetUrl: `${selectedUrl}/AppCatalog`,
+                nameConflictBehavior: 'replace'
+            };
+
+            await window.withProgress({
+                location: ProgressLocation.Notification,
+                title: `${action === 'move' ? 'Moving' : 'Copying'} SPFx app... Check [output window](command:${Commands.showOutputChannel}) to follow the progress.`,
+                cancellable: true
+            }, async (progress: Progress<{ message?: string; increment?: number }>) => {
+                await CliExecuter.execute(action === 'move' ? 'spo file move' : 'spo file copy', 'json', commandOptions);
+            });
+
+            Notifications.info(`App '${appTitle}' has been successfully ${action === 'move' ? 'moved' : 'copied'} to '${selectedUrl}'.`);
+
+            // refresh the environmentTreeView
+            await commands.executeCommand('spfx-toolkit.refreshAppCatalogTreeView');
+        } catch (e: any) {
+            const message = e?.message || `An unexpected error occurred during the app ${action}.`;
+            Notifications.error(message);
+        }
     }
 }

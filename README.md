@@ -163,6 +163,8 @@ You can expand each app catalog to reveal the list of apps contained within. Sel
 - **Install**: Install the solution from tenant or site collection app catalog to a site.
 - **Uninstall**: Uninstall the solution from a site.
 - **Upgrade**: Upgrades the solution to the latest version available in the app catalog for the specified site.
+- **Copy**: Copies the solution to a different app catalog.
+- **Move**: Moves the solution to a different app catalog.
 
 ![tenant details](./assets/images/app-catalog-list.png)
 
@@ -350,6 +352,21 @@ Language model tools may only be used in agent mode, which is available in the G
 In order to use the tool you may #hashtag mention it, otherwise if your prompt will be well defined then GitHub Copilot should figure out which tool should be used to proceed with the task.
 
 ![Language Model Tools in Action](./assets/images/language-model-tools-in-action.png)
+
+The extension provides the following tools
+
+| Tool                              | Description                                               |
+|-----------------------------------|-----------------------------------------------------------|
+| SharePointAppInstall              | Installs an app from tenant app catalog in the site       |
+| SharePointAppList                 | Lists apps from the tenant app catalog                    |
+| SharePointFrameworkProjectUpgrade | Upgrade SharePoint Framework project                      |
+| SharePointListAdd                 | Creates list in the specified site                        |
+| SharePointListGet                 | Gets information about the specific list                  |
+| SharePointListRemove              | Removes the specified list                                |
+| SharePointPageAdd                 | Creates a page                                            |
+| SharePointSiteAdd                 | Create a new SharePoint Online site                       |
+| SharePointSiteGet                 | Gets information about the specific site                  |
+| SharePointSiteRemove              | Remove a SharePoint Online site                           |
 
 [Check out our docs for more details](https://pnp.github.io/vscode-viva/features/github-copilot-capabilities)
 

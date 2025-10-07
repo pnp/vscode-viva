@@ -10,6 +10,7 @@ In order to help us process your contributions, please make sure you do the foll
 - Create your branch from `dev` (NOT `main`). This will make it easier for us to merge your changes.
 - Submit your PR to the `dev` branch of this repo (NOT `main`). PRs submitted to other branches will be declined.
 - Let us know what's in the PR: sometimes code is not enough and in order to help us understand your awesome work please follow the PR template to provide required information.
+- If your PR includes new images or screenshots, please compress them using [TinyPNG](https://tinypng.com/) to reduce file size and improve performance.
 - Don't commit code you didn't write. Sure, Copilot may help 😉.
 
 Don't be afraid to ask questions. We are here to help you succeed in making this a better product together.

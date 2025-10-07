@@ -1,5 +1,16 @@
 # Change Log
 
+## [4.12.0] - 2025-10-07
+
+- Compressed images in extension and docs
+- Updated Adaptive Card Designer link to new Microsoft URL
+- Fixed broken image links for proper rendering
+- Fixed app catalog view not to show deleted sites
+- Added copy/move app actions
+- Added CLI for Microsoft 365 package clean up
+- Updated spo_page_add Language Model Tool
+- Added try catch safe guards in sample gallery
+
 ## [4.11.0] - 2025-10-07 
 
 - Technical Release to address VS Code Marketplace issue
@@ -10,12 +21,12 @@
 
 ## [4.9.0] - 2025-08-14
 
-- Adds product integration tests
-- Adds LM Tool to perform SPFx project upgrade by GitHub Copilot agent mode
-- Adds management capabilities to tenant-wide extension: Enable/Disable, Remove, Update
-- Updates welcome experience, allowing users to always use the extension management capabilities
-- Adds new extension settings that allow specifying the shell type for SPFx project upgrade action
-- Removes/Deprecates code chat participant command
+- Added product integration tests
+- Added LM Tool to perform SPFx project upgrade by GitHub Copilot agent mode
+- Added management capabilities to tenant-wide extension: Enable/Disable, Remove, Update
+- Updated welcome experience, allowing users to always use the extension management capabilities
+- Added new extension settings that allow specifying the shell type for SPFx project upgrade action
+- Removed/Deprecated code chat participant command
 
 ## [4.8.0] - 2025-06-07
 
