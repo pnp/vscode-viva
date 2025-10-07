@@ -1,5 +1,13 @@
 # Change Log
 
+## [4.11.0] - 2025-10-07 
+
+- Technical Release to address VS Code Marketplace issue
+
+## [4.10.0] - 2025-10-04
+
+- Technical Release to address VS Code Marketplace issue
+
 ## [4.9.0] - 2025-08-14
 
 - Adds product integration tests
