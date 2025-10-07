@@ -353,6 +353,21 @@ In order to use the tool you may #hashtag mention it, otherwise if your prompt w
 
 ![Language Model Tools in Action](./assets/images/language-model-tools-in-action.png)
 
+The extension provides the following tools
+
+| Tool                              | Description                                               |
+|-----------------------------------|-----------------------------------------------------------|
+| SharePointAppInstall              | Installs an app from tenant app catalog in the site       |
+| SharePointAppList                 | Lists apps from the tenant app catalog                    |
+| SharePointFrameworkProjectUpgrade | Upgrade SharePoint Framework project                      |
+| SharePointListAdd                 | Creates list in the specified site                        |
+| SharePointListGet                 | Gets information about the specific list                  |
+| SharePointListRemove              | Removes the specified list                                |
+| SharePointPageAdd                 | Creates a page                                            |
+| SharePointSiteAdd                 | Create a new SharePoint Online site                       |
+| SharePointSiteGet                 | Gets information about the specific site                  |
+| SharePointSiteRemove              | Remove a SharePoint Online site                           |
+
 [Check out our docs for more details](https://pnp.github.io/vscode-viva/features/github-copilot-capabilities)
 
 ## ⚙️ Architecture
