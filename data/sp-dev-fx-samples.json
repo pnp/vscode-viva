@@ -4990,7 +4990,7 @@
           "pictureUrl": "https://github.com/ferrarirosso.png"
         }
       ],
-      "tags": [],
+      "tags": null,
       "createDate": "2020-12-13",
       "updateDate": "2025-09-12",
       "version": "1.21.1",
@@ -7275,8 +7275,8 @@
         "SharePoint"
       ],
       "createDate": "2021-01-29",
-      "updateDate": "2025-04-26",
-      "version": "1.21.0",
+      "updateDate": "2025-09-28",
+      "version": "1.21.1",
       "componentType": "adaptiveCardExtension",
       "extensionType": null,
       "sampleGalerry": "sp-dev-fx-webparts",
@@ -7925,6 +7925,29 @@
       "sampleType": "samples"
     },
     {
+      "name": "pnp-sp-dev-spfx-web-parts-react-manage-schema-extensions",
+      "title": "Manage Schema Extensions",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-manage-schema-extensions",
+      "description": "Manage Schema Extensions is a SharePoint Framework (SPFx) solution (also Microsoft Teams / Microsoft 365 host ready) that provides a full UI to Create, Read, Update and Delete (CRUD) Microsoft Graph Schema Extensions and to track the extensions you have created in your tenant. It leverages Microsoft Graph (v1.0) /schemaExtensions endpoint together with SharePoint Tenant Properties (App Catalog site) to persist the list of schema extension IDs that were created through the tool so they can be rediscovered later.",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-manage-schema-extensions/assets/Screenshot 2025-09-26 at 21.30.22.png",
+      "authors": [
+        {
+          "name": "João Mendes",
+          "pictureUrl": "https://github.com/joaojmendes.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2025-09-27",
+      "updateDate": "2025-09-27",
+      "version": "1.21.1",
+      "componentType": "webpart",
+      "extensionType": null,
+      "sampleGalerry": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
       "name": "pnp-sp-dev-spfx-web-parts-react-manage-sitedesigns",
       "title": "Site Designs Manager Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-manage-sitedesigns",
@@ -8563,7 +8586,7 @@
       ],
       "createDate": "2021-01-24",
       "updateDate": "2025-04-27",
-      "version": "1.21.0",
+      "version": "1.21.1",
       "componentType": "adaptiveCardExtension",
       "extensionType": null,
       "sampleGalerry": "sp-dev-fx-webparts",
@@ -9031,7 +9054,7 @@
         "SharePoint"
       ],
       "createDate": "2019-09-05",
-      "updateDate": "2025-03-15",
+      "updateDate": "2025-10-01",
       "version": "1.20.0",
       "componentType": "webpart",
       "extensionType": null,
