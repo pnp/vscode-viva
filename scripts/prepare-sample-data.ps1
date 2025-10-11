@@ -69,6 +69,11 @@ function Parse-SampleJsonFiles {
                     }
                 }
 
+                $tags = @()
+                if ($null -ne $sampleJson.products) {
+                    $tags = $sampleJson.products
+                }
+
                 $samples += [pscustomobject]@{
                     name          = $sampleJson.name; 
                     title         = $sampleJson.title; 
@@ -76,13 +81,13 @@ function Parse-SampleJsonFiles {
                     description   = $sampleJson.shortDescription; 
                     image         = $sampleJson.thumbnails[0].url; 
                     authors       = $sampleAuthors;
-                    tags          = $sampleJson.products;
+                    tags          = $tags;
                     createDate    = $sampleJson.creationDateTime;
                     updateDate    = $sampleJson.updateDateTime;
                     version       = $version;  
                     componentType = $componentType;
                     extensionType = $extensionType;       
-                    sampleGalerry = $sampleRepo
+                    sampleGallery = $sampleRepo
                     sampleType    = $folder
                 }
             }
