@@ -87,7 +87,7 @@ function Parse-SampleJsonFiles {
                     version       = $version;  
                     componentType = $componentType;
                     extensionType = $extensionType;       
-                    sampleGallery = $sampleRepo
+                    sampleGallery = $sampleRepo;
                     sampleType    = $folder
                 }
             }
