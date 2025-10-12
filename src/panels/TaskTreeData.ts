@@ -1,8 +1,12 @@
-import { workspace } from 'vscode';
+import { TreeItemCollapsibleState, workspace } from 'vscode';
 import { readFileSync } from 'fs';
 import { ActionTreeItem } from '../providers/ActionTreeDataProvider';
 import { Commands } from '../constants';
+import { Notifications } from '../services/dataType/Notifications';
 
+interface PackageJsonScripts {
+    [script: string]: string;
+}
 
 export const gulpTaskCommands: ActionTreeItem[] = [
     new ActionTreeItem('Build project', '', { name: 'gear', custom: false }, undefined, Commands.buildProject),
@@ -15,10 +19,6 @@ export const gulpTaskCommands: ActionTreeItem[] = [
     new ActionTreeItem('Test', '', { name: 'beaker', custom: false }, undefined, Commands.testProject),
     new ActionTreeItem('Trust self-signed developer certificate', '', { name: 'verified', custom: false }, undefined, Commands.trustDevCert),
 ];
-
-interface PackageJsonScripts {
-    [script: string]: string;
-}
 
 export async function getNpmScriptCommands(): Promise<ActionTreeItem[]> {
     const npmScriptCommands: ActionTreeItem[] = [];
@@ -38,20 +38,11 @@ export async function getNpmScriptCommands(): Promise<ActionTreeItem[]> {
 
             for (const [scriptName, scriptCommand] of Object.entries(scripts)) {
                 const icon = getNpmScriptIcon(scriptName, scriptCommand);
-                npmScriptCommands.push(
-                    new ActionTreeItem(
-                        scriptName,
-                        scriptCommand,
-                        { name: icon, custom: false },
-                        undefined,
-                        Commands.executeTerminalCommand,
-                        `npm run ${scriptName}`
-                    )
-                );
+                npmScriptCommands.push(new ActionTreeItem(scriptName, scriptCommand, { name: icon, custom: false }, undefined, Commands.executeTerminalCommand, `npm run ${scriptName}`));
             }
         }
     } catch (error) {
-        console.error('Error reading package.json for npm scripts:', error);
+        Notifications.error('Error reading package.json for npm scripts:', error);
     }
 
     return npmScriptCommands;
@@ -79,19 +70,23 @@ function getNpmScriptIcon(scriptName: string, scriptCommand: string): string {
         return 'checklist';
     } else if (lowerScriptName.includes('compile') || lowerCommand.includes('compile')) {
         return 'gear';
-    } else {
-        return 'terminal';
     }
+
+    return 'terminal';
 }
 
 export async function getCombinedTaskCommands(): Promise<ActionTreeItem[]> {
     const npmCommands = await getNpmScriptCommands();
     const combinedCommands: ActionTreeItem[] = [];
 
-    combinedCommands.push(...gulpTaskCommands);
+    combinedCommands.push(
+        new ActionTreeItem('Gulp Tasks', '', { name: 'tasklist', custom: false }, TreeItemCollapsibleState.Expanded, undefined, undefined, undefined, gulpTaskCommands)
+    );
 
     if (npmCommands.length > 0) {
-        combinedCommands.push(...npmCommands);
+        combinedCommands.push(
+            new ActionTreeItem('NPM Scripts', '', { name: 'terminal', custom: false }, TreeItemCollapsibleState.Expanded, undefined, undefined, undefined, npmCommands)
+        );
     }
 
     return combinedCommands;
