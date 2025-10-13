@@ -6,6 +6,7 @@ import { validateAuth } from '../utils/ToolAuthValidationUtil';
 interface ISharePointAppInstallParameters {
     siteUrl: string;
     id: string;
+    appCatalogScope?: string;
 }
 
 export class SharePointAppInstall implements LanguageModelTool<ISharePointAppInstallParameters> {
@@ -24,20 +25,26 @@ export class SharePointAppInstall implements LanguageModelTool<ISharePointAppIns
             return new LanguageModelToolResult([new LanguageModelTextPart(`Error: ${result.stderr}`)]);
         }
 
-        return new LanguageModelToolResult([new LanguageModelTextPart(`App installed successfully ${(result.stdout !== '' ? `\nResult: ${result.stdout}` : '')}`)]);
+        const isSiteCollection = params.appCatalogScope?.toLowerCase() === 'sitecollection';
+
+        return new LanguageModelToolResult([new LanguageModelTextPart(`App installed successfully from ${isSiteCollection ? 'site collection' : 'tenant'} app catalog to site ${params.siteUrl}${(result.stdout !== '' ? `\nResult: ${result.stdout}` : '')}`)]);
     }
 
     async prepareInvocation(
         options: LanguageModelToolInvocationPrepareOptions<ISharePointAppInstallParameters>,
         _token: CancellationToken
     ) {
+        const params = options.input;
+        const isSiteCollection = params.appCatalogScope?.toLowerCase() === 'sitecollection';
+        const scope = isSiteCollection ? 'site collection' : 'tenant';
+
         const confirmationMessages = {
-            title: 'Install an app in the site',
-            message: new MarkdownString('Should I install an app in the site?'),
+            title: `Install an app from ${scope} app catalog`,
+            message: new MarkdownString(`Should I install an app with ID ${params.id} from ${scope} app catalog to site ${params.siteUrl}?`),
         };
 
         return {
-            invocationMessage: 'Installing an app in the site',
+            invocationMessage: `Installing app from ${scope} app catalog to site ${params.siteUrl}`,
             confirmationMessages,
         };
     }

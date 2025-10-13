@@ -2,7 +2,7 @@
 	"name": "viva-connections-toolkit",
 	"displayName": "SharePoint Framework Toolkit",
 	"description": "SharePoint Framework Toolkit aims to boost your productivity in developing and managing SharePoint Framework solutions helping at every stage of your development flow, from setting up your development workspace to deploying a solution straight to your tenant without the need to leave VS Code and now even create a CI/CD pipeline to introduce automate deployment of your app. This toolkit is provided by the community.",
-	"version": "4.9.8",
+	"version": "4.13.2",
 	"publisher": "m365pnp",
 	"preview": false,
 	"homepage": "https://pnp.github.io/vscode-viva",
@@ -73,24 +73,9 @@
 				]
 			}
 		],
-		"languageModelTools": [
+		"languageModelTools": [			
 			{
-				"name": "spo_app_list",
-				"tags": [
-					"sharepoint",
-					"app",
-					"spfx-toolkit"
-				],
-				"toolReferenceName": "SharePointAppList",
-				"displayName": "List SharePoint apps",
-				"modelDescription": "Lists apps from the tenant app catalog. This tool may be used to list all apps from the tenant app catalog.",
-				"userDescription": "Lists apps from the tenant app catalog",
-				"canBeReferencedInPrompt": true,
-				"icon": "$(search)",
-				"inputSchema": {}
-			},
-			{
-				"name": "spo_app_install",
+				"name": "install_spo_app",
 				"tags": [
 					"sharepoint",
 					"app",
@@ -98,8 +83,8 @@
 				],
 				"toolReferenceName": "SharePointAppInstall",
 				"displayName": "Install a SharePoint app in a site",
-				"modelDescription": "Installs an app from tenant app catalog in the site. This tool may be used to install a specified app by its GUID to a specified site.",
-				"userDescription": "Installs an app from tenant app catalog in the site",
+				"modelDescription": "Installs a SharePoint Framework (SPFx) application from the specified app catalog to a SharePoint Online site using the app's unique identifier (GUID). Use this tool after an app has been uploaded to either the tenant or a site collection app catalog to make it available on a specific site. It requires Microsoft 365 authentication and permissions to both the app catalog and the target site. Apps from tenant app catalog can be installed on any site, but apps from site collection app catalogs can only be installed within the same site collection. Only one app can be installed per operation, and the exact app GUID must exist in the specified catalog. The target site must be accessible, the app must already be deployed in the catalog, and installation may fail if dependencies are not met. If the app is already installed, the operation will fail with an error.",
+				"userDescription": "Installs an app from the specified app catalog in the site.",
 				"canBeReferencedInPrompt": true,
 				"icon": "$(package)",
 				"inputSchema": {
@@ -113,6 +98,132 @@
 						"id": {
 							"type": "string",
 							"description": "GUID of the app to install. This option is required.",
+							"default": ""
+						},
+						"appCatalogScope": {
+							"type": "string",
+							"description": "Scope of the app catalog. Allowed values: tenant, sitecollection. Defaults to tenant. This option is optional.",
+							"default": ""
+						}
+					}
+				}
+			},
+			{
+				"name": "list_spo_app_instances",
+				"tags": [
+					"sharepoint",
+					"app",
+					"spfx-toolkit"
+				],
+				"toolReferenceName": "SharePointAppInstanceList",
+				"displayName": "List installed SharePoint apps in a site",
+				"modelDescription": "Retrieves a list of SharePoint Framework (SPFx) applications that are currently installed and deployed on a specific SharePoint Online site. This tool shows the actual app instances running on the site, including details like app ID, title, description, app status, and more. Use this tool to inventory installed apps on a site. The tool requires Microsoft 365 authentication and read permissions to the target site. This is different from listing apps in catalogs, this shows only the apps that are actually installed and running on the specified site.",
+				"userDescription": "Lists all SharePoint apps currently installed on the specified site.",
+				"canBeReferencedInPrompt": true,
+				"icon": "$(list-unordered)",
+				"inputSchema": {
+					"type": "object",
+					"properties": {
+						"siteUrl": {
+							"type": "string",
+							"description": "URL of the site collection to retrieve the installed apps for. This option is required.",
+							"default": ""
+						}
+					}
+				}
+			},
+			{
+				"name": "list_spo_app",
+				"tags": [
+					"sharepoint",
+					"app",
+					"spfx-toolkit"
+				],
+				"toolReferenceName": "SharePointAppList",
+				"displayName": "List SharePoint apps",
+				"modelDescription": "Returns the list of SharePoint Framework apps from the specified app catalog. This tool can list apps from the tenant-wide app catalog (default) or from a specific site collection app catalog when appCatalogScope is set to 'sitecollection' and appCatalogUrl is provided. This tool returns detailed information about each app including ID, title, deployment status, enablement state, and more. Use this tool when you need to inventory apps, check deployment status, or verify which apps are available in app catalogs before performing app management operations. The tool requires Microsoft 365 authentication and appropriate permissions to access the specified app catalog.",
+				"userDescription": "Lists SharePoint apps from the tenant or site collection app catalog.",
+				"canBeReferencedInPrompt": true,
+				"icon": "$(search)",
+				"inputSchema": {
+					"type": "object",
+					"properties": {
+						"appCatalogScope": {
+							"type": "string",
+							"description": "Scope of the app catalog. Allowed values: tenant, sitecollection. Defaults to tenant. This option is optional.",
+							"default": ""
+						},
+						"appCatalogUrl": {
+							"type": "string",
+							"description": "URL of the tenant or site collection app catalog. It must be specified when the appCatalogScope is sitecollection.",
+							"default": ""
+						}
+					}
+				}
+			},
+			{
+				"name": "uninstall_spo_app",
+				"tags": [
+					"sharepoint",
+					"app",
+					"spfx-toolkit"
+				],
+				"toolReferenceName": "SharePointAppUninstall",
+				"displayName": "Uninstall a SharePoint app from a site",
+				"modelDescription": "Uninstalls SharePoint Framework applications from specific SharePoint Online sites, making them unavailable to end users on that site while keeping the app available in the app catalog. This tool uninstalls apps that are currently deployed to a site by using the app's unique identifier (GUID). Use this tool when you need to uninstall apps from specific sites, clean up unused applications, or manage app lifecycle. The app remains in the app catalog and can be reinstalled later. Apps from tenant app catalog can be uninstalled from any site, but apps from site collection app catalogs can only be uninstalled within the same site collection. The tool requires Microsoft 365 authentication and appropriate permissions to the target site. Additional constraints: Can only uninstall one app per operation, requires exact app GUID, target site must be accessible and exist, will not fail if the app is not currently installed on the target site (operation will complete successfully with no action taken), and may fail if there are dependencies or active usage of the app.",
+				"userDescription": "Uninstalls an app from the specified site without prompting for confirmation.",
+				"canBeReferencedInPrompt": true,
+				"icon": "$(remove)",
+				"inputSchema": {
+					"type": "object",
+					"properties": {
+						"siteUrl": {
+							"type": "string",
+							"description": "URL of the site. This option is required.",
+							"default": ""
+						},
+						"id": {
+							"type": "string",
+							"description": "GUID of the app to uninstall. This option is required.",
+							"default": ""
+						},
+						"appCatalogScope": {
+							"type": "string",
+							"description": "Scope of the app catalog. Allowed values: tenant, sitecollection. Defaults to tenant. This option is optional.",
+							"default": ""
+						}
+					}
+				}
+			},
+			{
+				"name": "upgrade_spo_app",
+				"tags": [
+					"sharepoint",
+					"app",
+					"spfx-toolkit"
+				],
+				"toolReferenceName": "SharePointAppUpgrade",
+				"displayName": "Upgrade a SharePoint app in the specified site",
+				"modelDescription": "Upgrades a SharePoint Framework (SPFx) application in a SharePoint Online site using the app's unique identifier (GUID). Use this tool to upgrade an existing app to its latest version. It requires Microsoft 365 authentication and permissions to both the app catalog and the target site. Apps from tenant app catalog can be upgraded on any site, but apps from site collection app catalogs can only be upgraded within the same site collection. Only one app can be upgraded per operation, and the exact app GUID must exist in the specified catalog. The target site must be accessible, the app must already be deployed in the catalog, and upgrading may fail if dependencies are not met.",
+				"userDescription": "Upgrades an app from the specified app catalog in the site.",
+				"canBeReferencedInPrompt": true,
+				"icon": "$(sync)",
+				"inputSchema": {
+					"type": "object",
+					"properties": {
+						"siteUrl": {
+							"type": "string",
+							"description": "Absolute URL of the site to upgrade the app in. This option is required.",
+							"default": ""
+						},
+						"id": {
+							"type": "string",
+							"description": "GUID of the app to upgrade. This option is required.",
+							"default": ""
+						},
+						"appCatalogScope": {
+							"type": "string",
+							"description": "Scope of the app catalog. Allowed values: tenant, sitecollection. Defaults to tenant. This option is optional.",
 							"default": ""
 						}
 					}
@@ -360,7 +471,7 @@
 						}
 					}
 				}
-			},
+			},			
 			{
 				"name": "upgrade_spfx_project",
 				"tags": [

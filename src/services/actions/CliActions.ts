@@ -66,18 +66,26 @@ export class CliActions {
     try {
       const appCatalogUrls: string[] = [];
       const tenantAppCatalog = (await CliExecuter.execute('spo tenant appcatalogurl get', 'json')).stdout || undefined;
-      const siteAppCatalogs = (await CliExecuter.execute('spo site appcatalog list', 'json')).stdout || undefined;
+      const siteAppCatalogs = (await CliExecuter.execute('spo site appcatalog list', 'json', { excludeDeletedSites: true })).stdout || undefined;
 
+      let tenantUrl: string | undefined;
       if (tenantAppCatalog) {
-        appCatalogUrls.push(JSON.parse(tenantAppCatalog));
+        tenantUrl = JSON.parse(tenantAppCatalog);
+        if (tenantUrl) {
+          appCatalogUrls.push(tenantUrl);
+        }
       }
 
       if (siteAppCatalogs) {
         const siteAppCatalogsJson: SiteAppCatalog[] = JSON.parse(siteAppCatalogs);
-        siteAppCatalogsJson.forEach((siteAppCatalog) => appCatalogUrls.push(`${siteAppCatalog.AbsoluteUrl}`));
+        siteAppCatalogsJson.forEach((siteAppCatalog) => {
+          if (!tenantUrl || siteAppCatalog.AbsoluteUrl !== tenantUrl) {
+            appCatalogUrls.push(`${siteAppCatalog.AbsoluteUrl}`);
+          }
+        });
       }
 
-      EnvironmentInformation.appCatalogUrls = appCatalogUrls ? appCatalogUrls : undefined;
+      EnvironmentInformation.appCatalogUrls = appCatalogUrls.length > 0 ? appCatalogUrls : undefined;
       return EnvironmentInformation.appCatalogUrls;
     } catch {
       return undefined;
