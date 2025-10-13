@@ -47,7 +47,7 @@ export class CommandPanel {
       CommandPanel.registerTreeView();
       AuthProvider.verify();
 
-      if (isSPFxProject){
+      if (isSPFxProject) {
         AdaptiveCardCheck.validateACEComponent();
       }
 
@@ -172,8 +172,8 @@ export class CommandPanel {
                 new ActionTreeItem(extension.Title, '', { name: 'spo-app', custom: true }, TreeItemCollapsibleState.None, 'vscode.open', Uri.parse(extension.Url), ContextKeys.hasTenantWideExtension,
                   [
                     new ActionTreeItem('Remove', '', undefined, undefined, Commands.removeTenantWideExtension, [extension.Title, extension.Url, tenantAppCatalogUrl], ContextKeys.removeTenantWideExtension),
-                    new ActionTreeItem('Enable', '', undefined, undefined, Commands.enableTenantWideExtension, [extension.Title, extension.Url, tenantAppCatalogUrl], ContextKeys.enableTenantWideExtension),
-                    new ActionTreeItem('Disable', '', undefined, undefined, Commands.disableTenantWideExtension, [extension.Title, extension.Url, tenantAppCatalogUrl], ContextKeys.disableTenantWideExtension),
+                    new ActionTreeItem('Enable', '', undefined, undefined, Commands.enableTenantWideExtension, [extension.Title, extension.Url, tenantAppCatalogUrl, extension.extensionDisabled], ContextKeys.enableTenantWideExtension),
+                    new ActionTreeItem('Disable', '', undefined, undefined, Commands.disableTenantWideExtension, [extension.Title, extension.Url, tenantAppCatalogUrl, extension.extensionDisabled], ContextKeys.disableTenantWideExtension),
                     new ActionTreeItem('Update', '', undefined, undefined, Commands.updateTenantWideExtension, [extension, extension.Url, tenantAppCatalogUrl], ContextKeys.updateTenantWideExtension)
                   ]
                 )

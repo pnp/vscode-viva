@@ -21,6 +21,7 @@ import * as fs from 'fs';
 import { ActionTreeItem } from '../../providers/ActionTreeDataProvider';
 import { timezones } from '../../constants/Timezones';
 
+
 export class CliActions {
 
   public static registerCommands() {
@@ -328,9 +329,9 @@ export class CliActions {
     return result.stdout;
   }
 
- /**
-   * Sets the form customizer for a content type on a list.
-   */
+  /**
+    * Sets the form customizer for a content type on a list.
+    */
   public static async setFormCustomizer() {
     const relativeUrl = await window.showInputBox({
       prompt: 'Enter the relative URL of the site',
@@ -431,11 +432,11 @@ export class CliActions {
     });
   }
 
-/**
-   * Adds a Tenant App Catalog.
-   * The URL is fixed to "https://domain.sharepoint.com/sites/appcatalog".
-   * Prompts the user for the owner and timeZone.
-   */
+  /**
+     * Adds a Tenant App Catalog.
+     * The URL is fixed to "https://domain.sharepoint.com/sites/appcatalog".
+     * Prompts the user for the owner and timeZone.
+     */
   public static async addTenantAppCatalog() {
     const tenantUrl = EnvironmentInformation.tenantUrl;
     if (!tenantUrl) {
@@ -462,11 +463,11 @@ export class CliActions {
         description: `ID: ${tz.id}`,
         timeZoneId: tz.id
       })), {
-        placeHolder: 'Select your time zone (e.g., 4 for UTC+4). Refer to the guidelines: https://msdn.microsoft.com/library/microsoft.sharepoint.spregionalsettings.timezones.aspx',
-        ignoreFocusOut: true,
-        matchOnDescription: true,
-        matchOnDetail: true
-      }
+      placeHolder: 'Select your time zone (e.g., 4 for UTC+4).',
+      ignoreFocusOut: true,
+      matchOnDescription: true,
+      matchOnDetail: true
+    }
     );
 
     if (!selectedTimezone) {
@@ -528,7 +529,8 @@ export class CliActions {
             return 'Please provide a relative URL without a leading slash.';
           }
           return undefined;
-        }});
+        }
+      });
 
       if (!relativeUrl) {
         Notifications.warning('No site URL provided. Operation aborted.');
