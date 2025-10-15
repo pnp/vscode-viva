@@ -197,8 +197,9 @@ suite('Gulp task commands', () => {
 
     test('should load combined task commands including npm scripts', async () => {
         const combinedCommands = await getCombinedTaskCommands();
+        const combinedGulpCommands = combinedCommands[0].children || [];
 
-        assert(combinedCommands.length >= gulpTaskCommands.length, 'Combined commands should include all gulp commands');
+        assert(combinedGulpCommands.length === gulpTaskCommands.length, 'Combined commands should include all gulp commands');
 
         const combinedCommandNames = combinedCommands.map(command => command.label);
         const gulpCommandNames = gulpTaskCommands.map(command => command.label);
