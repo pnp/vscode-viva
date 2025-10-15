@@ -201,7 +201,7 @@ suite('Gulp task commands', () => {
 
         assert(combinedGulpCommands.length === gulpTaskCommands.length, 'Combined commands should include all gulp commands');
 
-        const combinedCommandNames = combinedCommands.map(command => command.label);
+        const combinedCommandNames = combinedGulpCommands.map(command => command.label);
         const gulpCommandNames = gulpTaskCommands.map(command => command.label);
 
         gulpCommandNames.forEach(gulpCommandName => {
