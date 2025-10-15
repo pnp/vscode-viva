@@ -16,7 +16,10 @@ import { CopilotActions } from './services/actions/CopilotActions';
 import { ChatTools } from './chat/tools/ChatTools';
 import { SpfxAppCLIActions } from './services/actions/SpfxAppCLIActions';
 import { IncreaseVersionActions } from './services/actions/IncreaseVersionActions';
+import { scheduleFeedbackChecks } from '@grconrad/vscode-extension-feedback';
 
+
+const feedbackFormUrl = 'https://forms.office.com/e/ZTfqAissqt';
 
 export async function activate(context: vscode.ExtensionContext) {
 
@@ -42,6 +45,35 @@ export async function activate(context: vscode.ExtensionContext) {
 	CommandPanel.register();
 
 	PnPWebview.register();
+
+	const channel = vscode.window.createOutputChannel('SPFx Toolkit Extension');
+
+	scheduleFeedbackChecks(
+		{
+			memento: context.globalState,
+			logFn: (text: string) => {
+				channel.appendLine(text);
+			}
+		},
+		{
+			feedbackFormUrl,
+			timings: {
+				firstAskInterval: 2 * 1000, // 2 days
+				reminderInterval: 7 * 1000, // 1 week
+			}
+			,
+			localizedText: {
+				promptText: 'Enjoying the SPFx Toolkit? Please take 5–7 minutes to share your feedback.',
+				giveFeedbackText: 'Give feedback',
+				notNowText: 'Maybe later',
+				dontAskAgainText: 'Don\'t ask again'
+			}
+		}
+	).then((disposable: vscode.Disposable) => {
+		context.subscriptions.push(disposable);
+	}).catch((reason: any) => {
+		channel.appendLine(`Failed to schedule feedback checks: ${reason}`);
+	});
 
 	workspace.findFiles(PROJECT_FILE, '**/node_modules/**').then(async (files) => {
 		if (files.length > 0) {
