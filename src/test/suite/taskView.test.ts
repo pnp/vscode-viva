@@ -1,6 +1,6 @@
 import * as assert from 'assert';
 import * as vscode from 'vscode';
-import { gulpTaskCommands } from '../../panels/TaskTreeData';
+import { gulpTaskCommands, getCombinedTaskCommands } from '../../panels/TaskTreeData';
 import { EXTENSION_ID } from '../testConstants';
 import * as sinon from 'sinon';
 import { TerminalCommandExecuter } from '../../services/executeWrappers/TerminalCommandExecuter';
@@ -193,5 +193,19 @@ suite('Gulp task commands', () => {
             'spfx-toolkit.executeTerminalCommand',
             'gulp trust-dev-cert'
         ));
+    });
+
+    test('should load combined task commands including npm scripts', async () => {
+        const combinedCommands = await getCombinedTaskCommands();
+        const combinedGulpCommands = combinedCommands[0].children || [];
+
+        assert(combinedGulpCommands.length === gulpTaskCommands.length, 'Combined commands should include all gulp commands');
+
+        const combinedCommandNames = combinedGulpCommands.map(command => command.label);
+        const gulpCommandNames = gulpTaskCommands.map(command => command.label);
+
+        gulpCommandNames.forEach(gulpCommandName => {
+            assert(combinedCommandNames.includes(gulpCommandName), `Gulp command ${gulpCommandName} should be included in combined commands`);
+        });
     });
 });
