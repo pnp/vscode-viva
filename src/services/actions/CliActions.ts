@@ -472,7 +472,7 @@ export class CliActions {
     );
 
     if (!selectedTimezone) {
-      Notifications.error('Time zone is selection required to create a Tenant App Catalog.');
+      Notifications.error('Time zone selection is required to create a Tenant App Catalog.');
       return;
     }
 
