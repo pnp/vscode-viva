@@ -19,6 +19,7 @@ import path = require('path');
 import { getExtensionSettings } from '../../utils/getExtensionSettings';
 import * as fs from 'fs';
 import { ActionTreeItem } from '../../providers/ActionTreeDataProvider';
+import { timezones } from '../../constants/Timezones';
 
 
 export class CliActions {
@@ -457,24 +458,26 @@ export class CliActions {
       return;
     }
 
-    const timeZoneInput = await window.showInputBox({
-      prompt: 'Enter the time zone as an integer (e.g., 4 for UTC+4). Refer to the guidelines: https://msdn.microsoft.com/library/microsoft.sharepoint.spregionalsettings.timezones.aspx',
+    const selectedTimezone = await window.showQuickPick(
+      timezones.map(tz => ({
+        label: tz.displayName,
+        description: `ID: ${tz.id}`,
+        timeZoneId: tz.id
+      })), {
+      placeHolder: 'Select your time zone (e.g., 4 for UTC+4).',
       ignoreFocusOut: true,
-      validateInput: (value) => {
-        const parsed = parseInt(value, 10);
-        return isNaN(parsed) ? 'Time zone must be an integer' : undefined;
-      },
-    });
+      matchOnDescription: true,
+      matchOnDetail: true
+    }
+    );
 
-    if (!timeZoneInput) {
-      Notifications.error('Time zone is required to create a Tenant App Catalog.');
+    if (!selectedTimezone) {
+      Notifications.error('Time zone selection is required to create a Tenant App Catalog.');
       return;
     }
 
-    const timeZone = parseInt(timeZoneInput, 10);
-
     const confirmation = await window.showQuickPick(['Yes', 'No'], {
-      placeHolder: `Are you sure you want to create a Tenant App Catalog at '${appCatalogUrl}' with owner '${owner}' and time zone '${timeZone}'?`,
+      placeHolder: `Are you sure you want to create a Tenant App Catalog at '${appCatalogUrl}' with owner '${owner}' and time zone '${selectedTimezone.label}'?`,
       ignoreFocusOut: true,
     });
 
@@ -491,7 +494,7 @@ export class CliActions {
         const commandOptions: any = {
           url: appCatalogUrl,
           owner,
-          timeZone,
+          timeZone: selectedTimezone.timeZoneId,
         };
         const result = await CliExecuter.execute('spo tenant appcatalog add', 'json', commandOptions);
 
