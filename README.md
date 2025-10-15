@@ -185,9 +185,9 @@ Sign-in is also required for some actions to work properly like the deploy actio
 
 [Check out our docs for more details](https://pnp.github.io/vscode-viva/features/sign-in)
 
-### 7️⃣ Gulp tasks
+### 7️⃣ Tasks
 
-The extension shows all possible Gulp tasks one may run on an SPFx project. The tasks allow you to clean, bundle, package, serve the project with a single click.
+The extension shows all possible tasks one may run on an SPFx project. The tasks view will show all relevant Gulp tasks that are available for the current SPFx project and all npm scripts that are defined in the package.json file.
 
 ![Gulp Tasks](./docs/assets/images-vscode/tasks.png)
 
