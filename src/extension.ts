@@ -19,8 +19,7 @@ import { IncreaseVersionActions } from './services/actions/IncreaseVersionAction
 import { scheduleFeedbackChecks } from '@grconrad/vscode-extension-feedback';
 
 
-const feedbackFormUrl = "https://forms.office.com/e/ZTfqAissqt";
-
+const feedbackFormUrl = 'https://forms.office.com/e/ZTfqAissqt';
 
 export async function activate(context: vscode.ExtensionContext) {
 
