@@ -68,15 +68,11 @@ To ensure that you can develop SPFx solutions, you may use the **Validate local 
 
 ![Validate dependency](./assets/images/validate-dependency.png)
 
-This action will check if you have the required dependencies such as:
+This action checks if your local development environment meets the required versions of Node.js and global dependencies for the SPFx version you have installed, and in case you do not have any SPFx generator installed, it will validate against the latest SPFx version.
 
-- Node version: 22
-- NPM dependencies:
-  - gulp
-  - yo
-  - @microsoft/generator-sharepoint
+It is also possible to install the required Node.js version and global dependencies for any SPFx version using the **Install dependencies** action.
 
-In case you do not have all dependencies installed, or some are incorrect version, you can use the **install dependencies** action to install them.
+![install dependencies](./assets/images/install-dependencies.png)
 
 >  [!NOTE]
 >  The list of valid dependencies is based on [set up your development environment recommendations](https://learn.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-development-environment)
