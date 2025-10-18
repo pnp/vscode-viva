@@ -4363,13 +4363,17 @@
         {
           "name": "Eli H. Schei",
           "pictureUrl": "https://github.com/Eli-Schei"
+        },
+        {
+          "name": "Dhananjay Pant",
+          "pictureUrl": "https://github.com/Dhananjay-12.png"
         }
       ],
       "tags": [
         "SharePoint"
       ],
       "createDate": "2020-12-04",
-      "updateDate": "2025-01-15",
+      "updateDate": "2025-10-07",
       "version": "1.20.0",
       "componentType": "webpart",
       "extensionType": null,
@@ -8086,6 +8090,29 @@
       "sampleType": "samples"
     },
     {
+      "name": "pnp-sp-dev-spfx-web-parts-react-microsoft-learn-agent",
+      "title": "Microsoft Learn Agent (Copilot Studio) for SPFx",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-microsoft-learn-agent",
+      "description": "- Connects to a Copilot Studio / Power Virtual Agents agent and renders a chat UI in a SharePoint web part. - Supports both a full WebChat UI (fast setup) and a custom Studio Client UI (full control). - Uses MSAL in the browser to acquire tokens scoped to the Power Platform APIs so the client can call the Copilot Studio endpoints.",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-microsoft-learn-agent/assets/copilot-studio-client-api.png",
+      "authors": [
+        {
+          "name": "Ejaz Hussain",
+          "pictureUrl": "https://github.com/ejazhussain.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2025-10-11",
+      "updateDate": "2025-10-11",
+      "version": "1.21.1",
+      "componentType": "webpart",
+      "extensionType": null,
+      "sampleGalerry": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
       "name": "pnp-sp-dev-spfx-web-parts-react-migrate-settings-approot",
       "title": "SPFx Legacy App Files Browser",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-migrate-settings-approot",
@@ -10389,7 +10416,7 @@
         "SharePoint"
       ],
       "createDate": "2025-09-07",
-      "updateDate": "2025-09-07",
+      "updateDate": "2025-10-12",
       "version": "1.21.1",
       "componentType": "webpart",
       "extensionType": null,

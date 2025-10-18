@@ -2,6 +2,23 @@ param ([string[]]$workspacePath)
 
 $sampleRepos = @("sp-dev-fx-aces", "sp-dev-fx-extensions", "sp-dev-fx-library-components", "sp-dev-fx-webparts")
 
+function Test-JsonContent {
+    param (
+        [string]$FilePath,
+        [string]$JsonContent
+    )
+    
+    try {
+        $null = ConvertFrom-Json -InputObject $JsonContent -ErrorAction Stop
+        return $true
+    }
+    catch {
+        Write-Warning "Invalid JSON in: $FilePath"
+        Write-Warning "Error: $($_.Exception.Message)"
+        return $false
+    }
+}
+
 function Parse-SampleJsonFiles {
     param (
         [string]$sampleRepo,
@@ -14,6 +31,11 @@ function Parse-SampleJsonFiles {
 
         try {
             $sampleContent = Get-Content -Path $sample.FullName -Raw
+            
+            if (-not (Test-JsonContent -FilePath $sample.FullName -JsonContent $sampleContent)) {
+                continue 
+            }
+
             $sampleJsons = ConvertFrom-Json -InputObject $sampleContent
             
             foreach ($sampleJson in $sampleJsons) {
