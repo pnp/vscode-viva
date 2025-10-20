@@ -32,10 +32,6 @@ export default defineConfig({
 					link: 'getting-started',
 				},
 				{
-					label: 'Scenarios',
-					link: 'scenarios',
-				},
-				{
 					label: 'Features',
 					items: [
 						{ label: 'Welcome experience & Walkthrough', link: 'features/welcome-experience-and-walkthrough' },
@@ -48,6 +44,12 @@ export default defineConfig({
 						{ label: 'CI/CD scaffolding', link: 'features/ci-cd' },
 						{ label: 'Coding support', link: 'features/coding' },
 						{ label: 'Better Together', link: 'features/m365-agents-toolkit' },
+					],
+				},
+				{
+					label: 'Scenarios',
+					items: [
+						{ label: 'Upgrade SPFx project using SPFx Toolkit language model tools in GitHub Copilot Chat', link: 'scenarios/spfx-project-upgrade-lm-tool' }
 					],
 				},
 				{
