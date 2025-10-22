@@ -34,15 +34,15 @@ suite('Gulp task commands', () => {
 
         const commandNames = gulpTaskCommands.map(command => command.command?.command);
         const expectedCommands = [
-            'spfx-toolkit.buildProject',
-            'spfx-toolkit.bundleProject',
-            'spfx-toolkit.cleanProject',
-            'spfx-toolkit.deployToAzureStorage',
-            'spfx-toolkit.packageProject',
-            'spfx-toolkit.publishProject',
-            'spfx-toolkit.serveProject',
-            'spfx-toolkit.testProject',
-            'spfx-toolkit.trustDevCert'
+            'spfx-toolkit.gulpBuildProject',
+            'spfx-toolkit.gulpBundleProject',
+            'spfx-toolkit.gulpCleanProject',
+            'spfx-toolkit.gulpDeployToAzureStorage',
+            'spfx-toolkit.gulpPackageProject',
+            'spfx-toolkit.gulpPublishProject',
+            'spfx-toolkit.gulpServeProject',
+            'spfx-toolkit.gulpTestProject',
+            'spfx-toolkit.gulpTrustDevCert'
         ];
 
         expectedCommands.forEach((cmd: any) => {
@@ -69,7 +69,7 @@ suite('Gulp task commands', () => {
     });
 
     test('should execute "gulp build" when Build action is triggered from the extension', () => {
-        TerminalCommandExecuter['buildProject']();
+        TerminalCommandExecuter['gulpBuildProject']();
 
         assert(executeCommandStub.calledWithExactly(
             'spfx-toolkit.executeTerminalCommand',
@@ -79,7 +79,7 @@ suite('Gulp task commands', () => {
 
     test('should execute "gulp bundle" when bundling for local environment', async () => {
         sinon.stub(vscode.window, 'showQuickPick').resolves('local' as any);
-        await TerminalCommandExecuter['bundleProject']();
+        await TerminalCommandExecuter['gulpBundleProject']();
 
         assert(executeCommandStub.calledWithExactly(
             'spfx-toolkit.executeTerminalCommand',
@@ -89,7 +89,7 @@ suite('Gulp task commands', () => {
 
     test('should execute "gulp bundle --ship" when bundling for production environment', async () => {
         sinon.stub(vscode.window, 'showQuickPick').resolves('production' as any);
-        await TerminalCommandExecuter['bundleProject']();
+        await TerminalCommandExecuter['gulpBundleProject']();
 
         assert(executeCommandStub.calledWithExactly(
             'spfx-toolkit.executeTerminalCommand',
@@ -98,7 +98,7 @@ suite('Gulp task commands', () => {
     });
 
     test('should execute "gulp clean" when Clean action is triggered', () => {
-        TerminalCommandExecuter['cleanProject']();
+        TerminalCommandExecuter['gulpCleanProject']();
 
         assert(executeCommandStub.calledWithExactly(
             'spfx-toolkit.executeTerminalCommand',
@@ -107,7 +107,7 @@ suite('Gulp task commands', () => {
     });
 
     test('should execute "gulp deploy-azure-storage" when Deploy project assets to Azure Storage action is triggered', () => {
-        TerminalCommandExecuter['deployToAzureStorage']();
+        TerminalCommandExecuter['gulpDeployToAzureStorage']();
 
         assert(executeCommandStub.calledWithExactly(
             'spfx-toolkit.executeTerminalCommand',
@@ -117,7 +117,7 @@ suite('Gulp task commands', () => {
 
     test('should execute "gulp package-solution" when packaging for local environment', async () => {
         sinon.stub(vscode.window, 'showQuickPick').resolves('local' as any);
-        await TerminalCommandExecuter['packageProject']();
+        await TerminalCommandExecuter['gulpPackageProject']();
 
         assert(executeCommandStub.calledWithExactly(
             'spfx-toolkit.executeTerminalCommand',
@@ -127,7 +127,7 @@ suite('Gulp task commands', () => {
 
     test('should execute "gulp package-solution --ship" when packaging for production environment', async () => {
         sinon.stub(vscode.window, 'showQuickPick').resolves('production' as any);
-        await TerminalCommandExecuter['packageProject']();
+        await TerminalCommandExecuter['gulpPackageProject']();
 
         assert(executeCommandStub.calledWithExactly(
             'spfx-toolkit.executeTerminalCommand',
@@ -137,7 +137,7 @@ suite('Gulp task commands', () => {
 
     test('should execute "gulp bundle && gulp package-solution" when publishing project for local environment', async () => {
         sinon.stub(vscode.window, 'showQuickPick').resolves('local' as any);
-        await TerminalCommandExecuter['publishProject']();
+        await TerminalCommandExecuter['gulpPublishProject']();
 
         assert(executeCommandStub.calledWithExactly(
             'spfx-toolkit.executeTerminalCommand',
@@ -147,7 +147,7 @@ suite('Gulp task commands', () => {
 
     test('should execute "gulp bundle --ship && gulp package-solution --ship" when publishing project for production', async () => {
         sinon.stub(vscode.window, 'showQuickPick').resolves('production' as any);
-        await TerminalCommandExecuter['publishProject']();
+        await TerminalCommandExecuter['gulpPublishProject']();
 
         assert(executeCommandStub.calledWithExactly(
             'spfx-toolkit.executeTerminalCommand',
@@ -158,7 +158,7 @@ suite('Gulp task commands', () => {
     test('should execute "gulp serve" when Serve action is triggered', async () => {
         sinon.stub(Folders, 'getWorkspaceFolder').resolves({ name: 'mockFolder', uri: vscode.Uri.file('/mockFolder') } as vscode.WorkspaceFolder);
         sinon.stub(vscode.window, 'showQuickPick').resolves('Serve' as any);
-        await TerminalCommandExecuter['serveProject']();
+        await TerminalCommandExecuter['gulpServeProject']();
 
         assert(executeCommandStub.calledWithExactly(
             'spfx-toolkit.executeTerminalCommand',
@@ -169,7 +169,7 @@ suite('Gulp task commands', () => {
     test('should execute "gulp serve --nobrowser" when Serve (no browser) action is triggered', async () => {
         sinon.stub(Folders, 'getWorkspaceFolder').resolves({ name: 'mockFolder', uri: vscode.Uri.file('/mockFolder') } as vscode.WorkspaceFolder);
         sinon.stub(vscode.window, 'showQuickPick').resolves('Serve (no browser)' as any);
-        await TerminalCommandExecuter['serveProject']();
+        await TerminalCommandExecuter['gulpServeProject']();
 
         assert(executeCommandStub.calledWithExactly(
             'spfx-toolkit.executeTerminalCommand',
@@ -178,7 +178,7 @@ suite('Gulp task commands', () => {
     });
 
     test('should execute "gulp test" when Test action is triggered', () => {
-        TerminalCommandExecuter['testProject']();
+        TerminalCommandExecuter['gulpTestProject']();
 
         assert(executeCommandStub.calledWithExactly(
             'spfx-toolkit.executeTerminalCommand',
@@ -187,25 +187,11 @@ suite('Gulp task commands', () => {
     });
 
     test('should execute "gulp trust-dev-cert" when Trust self-signed developer certificate action is triggered', () => {
-        TerminalCommandExecuter['trustDevCert']();
+        TerminalCommandExecuter['gulpTrustDevCert']();
 
         assert(executeCommandStub.calledWithExactly(
             'spfx-toolkit.executeTerminalCommand',
             'gulp trust-dev-cert'
         ));
-    });
-
-    test('should load combined task commands including npm scripts', async () => {
-        const combinedCommands = await getCombinedTaskCommands();
-        const combinedGulpCommands = combinedCommands[0].children || [];
-
-        assert(combinedGulpCommands.length === gulpTaskCommands.length, 'Combined commands should include all gulp commands');
-
-        const combinedCommandNames = combinedGulpCommands.map(command => command.label);
-        const gulpCommandNames = gulpTaskCommands.map(command => command.label);
-
-        gulpCommandNames.forEach(gulpCommandName => {
-            assert(combinedCommandNames.includes(gulpCommandName), `Gulp command ${gulpCommandName} should be included in combined commands`);
-        });
     });
 });

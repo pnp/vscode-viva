@@ -9,15 +9,27 @@ interface PackageJsonScripts {
 }
 
 export const gulpTaskCommands: ActionTreeItem[] = [
-    new ActionTreeItem('Build project', '', { name: 'gear', custom: false }, undefined, Commands.buildProject),
-    new ActionTreeItem('Bundle project', '', { name: 'package', custom: false }, undefined, Commands.bundleProject),
-    new ActionTreeItem('Clean project', '', { name: 'clear-all', custom: false }, undefined, Commands.cleanProject),
-    new ActionTreeItem('Deploy project assets to Azure Storage', '', { name: 'cloud-upload', custom: false }, undefined, Commands.deployToAzureStorage),
-    new ActionTreeItem('Package', '', { name: 'zap', custom: false }, undefined, Commands.packageProject),
-    new ActionTreeItem('Publish', '', { name: 'rocket', custom: false }, undefined, Commands.publishProject),
-    new ActionTreeItem('Serve', '', { name: 'play-circle', custom: false }, undefined, Commands.serveProject),
-    new ActionTreeItem('Test', '', { name: 'beaker', custom: false }, undefined, Commands.testProject),
-    new ActionTreeItem('Trust self-signed developer certificate', '', { name: 'verified', custom: false }, undefined, Commands.trustDevCert),
+    new ActionTreeItem('Build project', '', { name: 'gear', custom: false }, undefined, Commands.gulpBuildProject),
+    new ActionTreeItem('Bundle project', '', { name: 'combine', custom: false }, undefined, Commands.gulpBundleProject),
+    new ActionTreeItem('Clean project', '', { name: 'clear-all', custom: false }, undefined, Commands.gulpCleanProject),
+    new ActionTreeItem('Deploy project assets to Azure Storage', '', { name: 'cloud-upload', custom: false }, undefined, Commands.gulpDeployToAzureStorage),
+    new ActionTreeItem('Package', '', { name: 'package', custom: false }, undefined, Commands.gulpPackageProject),
+    new ActionTreeItem('Publish', '', { name: 'rocket', custom: false }, undefined, Commands.gulpPublishProject),
+    new ActionTreeItem('Serve', '', { name: 'play-circle', custom: false }, undefined, Commands.gulpServeProject),
+    new ActionTreeItem('Test', '', { name: 'beaker', custom: false }, undefined, Commands.gulpTestProject),
+    new ActionTreeItem('Trust self-signed developer certificate', '', { name: 'verified', custom: false }, undefined, Commands.gulpTrustDevCert),
+];
+
+export const heftTaskCommands: ActionTreeItem[] = [
+    new ActionTreeItem('Build project', '', { name: 'combine', custom: false }, undefined, Commands.heftBuildProject),
+    new ActionTreeItem('Clean project', '', { name: 'clear-all', custom: false }, undefined, Commands.heftCleanProject),
+    new ActionTreeItem('Deploy project assets to Azure Storage', '', { name: 'cloud-upload', custom: false }, undefined, Commands.heftDeployToAzureStorage),
+    new ActionTreeItem('Eject', '', { name: 'git-stash', custom: false }, undefined, Commands.heftEjectProject),
+    new ActionTreeItem('Package', '', { name: 'package', custom: false }, undefined, Commands.heftPackageProject),
+    new ActionTreeItem('Publish', '', { name: 'rocket', custom: false }, undefined, Commands.heftPublishProject),
+    new ActionTreeItem('Start', '', { name: 'play-circle', custom: false }, undefined, Commands.heftStartProject),
+    new ActionTreeItem('Test', '', { name: 'beaker', custom: false }, undefined, Commands.heftTestProject),
+    new ActionTreeItem('Trust self-signed developer certificate', '', { name: 'verified', custom: false }, undefined, Commands.heftTrustDevCert),
 ];
 
 export async function getNpmScriptCommands(): Promise<ActionTreeItem[]> {
@@ -48,6 +60,31 @@ export async function getNpmScriptCommands(): Promise<ActionTreeItem[]> {
     return npmScriptCommands;
 }
 
+export async function getCombinedTaskCommands(): Promise<ActionTreeItem[]> {
+    const npmCommands = await getNpmScriptCommands();
+    const combinedCommands: ActionTreeItem[] = [];
+
+    if (await shouldShowGulpTasks()) {
+        combinedCommands.push(
+            new ActionTreeItem('Gulp Tasks', '', { name: 'tasklist', custom: false }, TreeItemCollapsibleState.Expanded, undefined, undefined, undefined, gulpTaskCommands)
+        );
+    }
+
+    if (await shouldShowHeftTasks()) {
+        combinedCommands.push(
+            new ActionTreeItem('Heft Tasks', '', { name: 'tasklist', custom: false }, TreeItemCollapsibleState.Expanded, undefined, undefined, undefined, heftTaskCommands)
+        );
+    }
+
+    if (npmCommands.length > 0) {
+        combinedCommands.push(
+            new ActionTreeItem('NPM Scripts', '', { name: 'terminal', custom: false }, TreeItemCollapsibleState.Expanded, undefined, undefined, undefined, npmCommands)
+        );
+    }
+
+    return combinedCommands;
+}
+
 function getNpmScriptIcon(scriptName: string, scriptCommand: string): string {
     const lowerScriptName = scriptName.toLowerCase();
     const lowerCommand = scriptCommand.toLowerCase();
@@ -75,19 +112,34 @@ function getNpmScriptIcon(scriptName: string, scriptCommand: string): string {
     return 'terminal';
 }
 
-export async function getCombinedTaskCommands(): Promise<ActionTreeItem[]> {
-    const npmCommands = await getNpmScriptCommands();
-    const combinedCommands: ActionTreeItem[] = [];
+async function shouldShowGulpTasks(): Promise<boolean> {
+    try {
+        const files = await workspace.findFiles('gulpfile.js', '**/node_modules/**');
+        if (files.length === 0) {
+            return false;
+        }
 
-    combinedCommands.push(
-        new ActionTreeItem('Gulp Tasks', '', { name: 'tasklist', custom: false }, TreeItemCollapsibleState.Expanded, undefined, undefined, undefined, gulpTaskCommands)
-    );
-
-    if (npmCommands.length > 0) {
-        combinedCommands.push(
-            new ActionTreeItem('NPM Scripts', '', { name: 'terminal', custom: false }, TreeItemCollapsibleState.Expanded, undefined, undefined, undefined, npmCommands)
-        );
+        return true;
+    } catch (error) {
+        return false;
     }
+}
 
-    return combinedCommands;
+async function shouldShowHeftTasks(): Promise<boolean> {
+    try {
+        const files = await workspace.findFiles('package.json', '**/node_modules/**');
+        if (files.length === 0) {
+            return false;
+        }
+
+        const packageJsonFile = files[0];
+        const content = readFileSync(packageJsonFile.fsPath, 'utf8');
+        const packageJson = JSON.parse(content);
+
+        const hasHeftDevDependency = packageJson.devDependencies && '@rushstack/heft' in packageJson.devDependencies;
+
+        return hasHeftDevDependency;
+    } catch (error) {
+        return false;
+    }
 }
