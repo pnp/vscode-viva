@@ -97,7 +97,7 @@ export class CliActions {
             abortOption
           ).then(selectedOption => {
             if (selectedOption === installLatestVersion) {
-              Dependencies.install(SpfxCompatibilityMatrix[SpfxCompatibilityMatrix.length - 1].Version);
+              Dependencies.install(SpfxCompatibilityMatrix[0].Version);
             }
           });
         } else {

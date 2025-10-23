@@ -93,30 +93,27 @@ export class TerminalCommandExecuter {
    * @returns A promise that resolves when the command completes with exit code 0, or rejects on non-zero exit.
    */
   public static async runCommandAndWait(command: string, terminalTitle: string = 'Task', terminalIcon: string = 'terminal'): Promise<void> {
-    return new Promise<void>(async (resolve, reject) => {
-      const terminal = await TerminalCommandExecuter.createTerminal(terminalTitle, terminalIcon);
+    const terminal = await TerminalCommandExecuter.createTerminal(terminalTitle, terminalIcon);
 
-      if (!terminal) {
-        reject(new Error('Failed to create terminal'));
-        return;
+    if (!terminal) {
+      throw new Error('Failed to create terminal');
+    }
+
+    const wsFolder = await Folders.getWorkspaceFolder();
+    if (wsFolder) {
+      let currentProjectPath = wsFolder.uri.fsPath;
+
+      if (M365AgentsToolkitIntegration.isM365AgentsToolkitProject) {
+        currentProjectPath = join(currentProjectPath, 'src');
       }
 
-      const wsFolder = await Folders.getWorkspaceFolder();
-      if (wsFolder) {
-        let currentProjectPath = wsFolder.uri.fsPath;
+      terminal.sendText(`cd "${currentProjectPath}"`);
+    }
 
-        if (M365AgentsToolkitIntegration.isM365AgentsToolkitProject) {
-          currentProjectPath = join(currentProjectPath, 'src');
-        }
-
-        terminal.sendText(`cd "${currentProjectPath}"`);
-      }
-
-      // Listen for terminal close event
+    return new Promise<void>((resolve, reject) => {
       const disposable: Disposable = window.onDidCloseTerminal(async (closedTerminal) => {
         if (closedTerminal === terminal) {
           disposable.dispose();
-          // Terminal was closed, check exit status
           const exitStatus = await closedTerminal.exitStatus;
           if (exitStatus && exitStatus.code !== 0) {
             reject(new Error(`Command failed with exit code ${exitStatus.code}`));
@@ -127,7 +124,6 @@ export class TerminalCommandExecuter {
       });
 
       terminal.show(true);
-      // Send the command with exit appended to close the terminal when done
       terminal.sendText(`${command} && exit`);
     });
   }
