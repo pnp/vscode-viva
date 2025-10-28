@@ -12,7 +12,8 @@ import { Logger } from '../dataType/Logger';
 
 
 interface ShellSetting {
-  source: string;
+  source?: string;
+  path?: string;
 }
 
 export class TerminalCommandExecuter {
@@ -288,10 +289,10 @@ export class TerminalCommandExecuter {
    * If the shell path is undefined, it sets the `shellPath` to undefined.
    */
   private static initShellPath() {
-    const shell: string | { source: string } | undefined = TerminalCommandExecuter.getShellPath();
+    const shell: string | ShellSetting | undefined = TerminalCommandExecuter.getShellPath();
 
     if (typeof shell !== 'string' && !!shell) {
-      TerminalCommandExecuter.shellPath = shell.source;
+      TerminalCommandExecuter.shellPath = shell.path || shell.source;
     } else {
       TerminalCommandExecuter.shellPath = shell || undefined;
     }
@@ -386,9 +387,9 @@ export class TerminalCommandExecuter {
   }
 
   private static getCommandChainOperator(): string {
-    const shell = TerminalCommandExecuter.shell?.toLowerCase() || '';
+    const shell = TerminalCommandExecuter.shell || '';
 
-    if (shell.includes('powershell') || shell.includes('pwsh')) {
+    if (shell.includes('PowerShell') || shell.includes('pwsh')) {
       return ';';
     }
 

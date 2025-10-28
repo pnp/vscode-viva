@@ -74,7 +74,7 @@ export class Dependencies {
 
             let canProceedWithDependencyCheck = false;
             if (!isValidNode) {
-              progress.report({ message: 'It looks like your Node.js version is not supported. Let me check what options are available to resolve this...' });
+                progress.report({ message: 'Node.js version not supported. Checking options...' });
               canProceedWithDependencyCheck = await Dependencies.HandleNotValidNodeVersion(spfxVersion.SupportedNodeVersions[spfxVersion.SupportedNodeVersions.length - 1], spfxVersion.SupportedNodeVersions);
             }
 
@@ -167,8 +167,9 @@ export class Dependencies {
       const useNvsOption = 'Use NVS';
 
       Notifications.warning(
-        `Your Node.js version is not supported with SPFx development. Make sure you are using version: v${requiredNodeVersions}. 
-        It is recommended to use a Node Version Manager to handle multiple Node.js versions on your machine and align SPFx Toolkit setting with your preferred Node Version Manager.
+        `Your Node.js version is not supported for SPFx v${requiredNodeVersions}. 
+        It is recommended to use a Node Version Manager to handle multiple Node.js versions
+        and set SPFx Toolkit setting with your preferred Node Version Manager.
         Please select one of the options below to get help on installing or updating your Node.js version.`,
         installNodeJSOption,
         useNvmOption,
