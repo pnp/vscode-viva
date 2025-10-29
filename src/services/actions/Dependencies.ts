@@ -75,7 +75,7 @@ export class Dependencies {
             let canProceedWithDependencyCheck = false;
             if (!isValidNode) {
                 progress.report({ message: 'Node.js version not supported. Checking options...' });
-              canProceedWithDependencyCheck = await Dependencies.HandleNotValidNodeVersion(spfxVersion.SupportedNodeVersions[spfxVersion.SupportedNodeVersions.length - 1], spfxVersion.SupportedNodeVersions);
+              canProceedWithDependencyCheck = await Dependencies.HandleNotValidNodeVersion(spfxVersion.SupportedNodeVersions[spfxVersion.SupportedNodeVersions.length - 1], spfxVersion.SupportedNodeVersions, spfxVersion.Version);
             }
 
             if (isValidNode || canProceedWithDependencyCheck) {
@@ -119,7 +119,7 @@ export class Dependencies {
    */
   public static isValidNodeJs(SupportedNodeVersions: string[], NodeVersion: string | null = null): boolean {
     try {
-      const output = NodeVersion ? `v${NodeVersion}` : execSync('node --version', { shell: TerminalCommandExecuter.shell });
+      const output = NodeVersion ? `v${NodeVersion}` : execSync('node --version');
       const match = /v(?<major_version>\d+)\.(?<minor_version>\d+)\.(?<patch_version>\d+)/gm.exec(output.toString());
 
       Logger.info(`Node.js version: ${output}`);
@@ -157,7 +157,7 @@ export class Dependencies {
    * @param supportedNodeVersions - An array of strings representing the supported Node.js versions for SPFx development
    * @returns A boolean indicating whether the invalid Node.js version was successfully handled
    */
-  private static HandleNotValidNodeVersion(requiredNodeVersions: string, supportedNodeVersions: string[]): boolean {
+  private static HandleNotValidNodeVersion(requiredNodeVersions: string, supportedNodeVersions: string[], spfxVersion: string): boolean {
     const nodeVersionManager = getExtensionSettings<string>('nodeVersionManager', 'none');
     const isWindows = os.platform() === 'win32';
 
@@ -167,7 +167,7 @@ export class Dependencies {
       const useNvsOption = 'Use NVS';
 
       Notifications.warning(
-        `Your Node.js version is not supported for SPFx v${requiredNodeVersions}. 
+        `Node.js v${requiredNodeVersions} is not supported for SPFx ${spfxVersion}. 
         It is recommended to use a Node Version Manager to handle multiple Node.js versions
         and set SPFx Toolkit setting with your preferred Node Version Manager.
         Please select one of the options below to get help on installing or updating your Node.js version.`,
@@ -193,7 +193,7 @@ export class Dependencies {
       const requiredNodeVersionToInstall = requiredNodeVersions.replace(/x/g, '0');
       if (nodeVersionManager === NodeVersionManagers.nvm) {
         const nvmListCommand = isWindows ? 'list' : 'ls --no-alias';
-        const nodeVersions = execSync(`nvm ${nvmListCommand}`, { shell: TerminalCommandExecuter.shell });
+        const nodeVersions = execSync(`nvm ${nvmListCommand}`);
         const versions = isWindows ?
           nodeVersions.toString().split('\n').map(v => v.trim().replace(/^\*?\s*/, '').replace(/\s*\(.*\)$/, '').trim()).filter(v => v && /^\d+\.\d+\.\d+$/.test(v))
           : nodeVersions.toString().split('\n').map(v => v.trim().replace(/^(\*|->)?\s*/, '').replace(/\s*\(.*\)$/, '').replace(/^v/, '').trim()).filter(v => v && /^\d+\.\d+\.\d+$/.test(v));
@@ -203,7 +203,7 @@ export class Dependencies {
         const nvmInstallAndUseCommand = `nvm install ${requiredNodeVersionToInstall} && nvm use ${requiredNodeVersionToInstall}`;
         useNodeVersionOption = firstNodeValidVersion ? nvmUseCommand : nvmInstallAndUseCommand;
       } else {
-        const nodeVersions = execSync('nvs list', { shell: TerminalCommandExecuter.shell });
+        const nodeVersions = execSync('nvs list');
         const versions = nodeVersions.toString().split('\n').map(v => {
           const match = /node\/(\d+\.\d+\.\d+)/.exec(v.trim());
           return match ? match[1] : '';

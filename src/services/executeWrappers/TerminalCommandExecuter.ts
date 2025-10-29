@@ -17,7 +17,7 @@ interface ShellSetting {
 }
 
 export class TerminalCommandExecuter {
-  private static shellPath: string | undefined = undefined;
+  private static shellPath: ShellSetting;
 
   public static register() {
     const subscriptions: Subscription[] = Extension.getInstance().subscriptions;
@@ -292,9 +292,9 @@ export class TerminalCommandExecuter {
     const shell: string | ShellSetting | undefined = TerminalCommandExecuter.getShellPath();
 
     if (typeof shell !== 'string' && !!shell) {
-      TerminalCommandExecuter.shellPath = shell.path || shell.source;
+      TerminalCommandExecuter.shellPath = shell;
     } else {
-      TerminalCommandExecuter.shellPath = shell || undefined;
+      TerminalCommandExecuter.shellPath.path = shell || undefined;
     }
   }
 
@@ -389,7 +389,7 @@ export class TerminalCommandExecuter {
   private static getCommandChainOperator(): string {
     const shell = TerminalCommandExecuter.shell || '';
 
-    if (shell.includes('PowerShell') || shell.includes('pwsh')) {
+    if (shell.path?.includes('PowerShell') || shell.path?.includes('pwsh') || shell.source?.includes('PowerShell') || shell.source?.includes('pwsh')) {
       return ';';
     }
 
