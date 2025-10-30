@@ -17,7 +17,7 @@ interface ShellSetting {
 }
 
 export class TerminalCommandExecuter {
-  private static shellPath: ShellSetting;
+  private static shellPath: ShellSetting = {};
 
   public static register() {
     const subscriptions: Subscription[] = Extension.getInstance().subscriptions;
