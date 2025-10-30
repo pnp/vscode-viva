@@ -1,8 +1,8 @@
 import { readFileSync, writeFileSync } from 'fs';
 import { Folders } from '../check/Folders';
 import { commands, Progress, ProgressLocation, Uri, window, workspace, WorkspaceFolder } from 'vscode';
-import { Commands, WebViewType, WebviewCommand, WorkflowType } from '../../constants';
-import { AppCatalogApp, GenerateWorkflowCommandInput, SiteAppCatalog, SolutionAddResult, Subscription } from '../../models';
+import { Commands, SpfxCompatibilityMatrix, WebViewType, WebviewCommand, WorkflowType } from '../../constants';
+import { AppCatalogApp, GenerateWorkflowCommandInput, SiteAppCatalog, SolutionAddResult, SpfxDoctorOutput, Subscription } from '../../models';
 import { Extension } from '../dataType/Extension';
 import { CliExecuter } from '../executeWrappers/CliCommandExecuter';
 import { Notifications } from '../dataType/Notifications';
@@ -20,6 +20,7 @@ import { getExtensionSettings } from '../../utils/getExtensionSettings';
 import * as fs from 'fs';
 import { ActionTreeItem } from '../../providers/ActionTreeDataProvider';
 import { timezones } from '../../constants/Timezones';
+import { Dependencies } from './Dependencies';
 
 
 export class CliActions {
@@ -57,6 +58,90 @@ export class CliActions {
     subscriptions.push(
       commands.registerCommand(Commands.removeSiteAppCatalog, CliActions.removeSiteAppCatalog)
     );
+  }
+
+  /**
+   * Runs the 'spfx doctor' command to validate the local development environment setup.
+   */
+  public static async spfxDoctor() {
+    try {
+      // Change the current working directory to the root of the Project
+      const wsFolder = await Folders.getWorkspaceFolder();
+      if (wsFolder) {
+        let fsPath = wsFolder.uri.fsPath;
+
+        if (M365AgentsToolkitIntegration.isM365AgentsToolkitProject) {
+          fsPath = join(fsPath, 'src');
+        }
+
+        process.chdir(fsPath);
+      }
+
+      await window.withProgress({
+        location: ProgressLocation.Notification,
+        title: `Validating local setup... Check [output window](command:${Commands.showOutputChannel}) to follow the progress.`,
+        cancellable: false,
+      }, async () => {
+        const result = await CliExecuter.execute('spfx doctor', 'json');
+
+        const doctorOutput: SpfxDoctorOutput[] = result.stdout ? JSON.parse(result.stdout) : [];
+        const sPFxCheck = doctorOutput.find(output => output.check === 'SharePoint Framework');
+
+        if (!sPFxCheck?.passed) {
+          const installLatestVersion = 'Yes, setup for latest SPFx version';
+          const abortOption = 'No';
+
+          Notifications.warning(
+            'No SharePoint Framework version detected. Do you want to set up your environment for the latest SPFx version?',
+            installLatestVersion,
+            abortOption
+          ).then(selectedOption => {
+            if (selectedOption === installLatestVersion) {
+              Dependencies.install(SpfxCompatibilityMatrix[0].Version);
+            }
+          });
+        } else {
+          const spfxVersion = SpfxCompatibilityMatrix.find(spfx => spfx.Version === sPFxCheck.version);
+          const nodeCheck = Dependencies.isValidNodeJs(spfxVersion?.SupportedNodeVersions || []);
+          if (!nodeCheck) {
+            const installForSpecifiedVersion = `Yes, setup for SPFx v${sPFxCheck.version}`;
+            const abortOption = 'No';
+
+            Notifications.warning(
+              `Your Node.js version is not compatible with SPFx v${sPFxCheck.version}. Do you want to set up your environment for SPFx v${sPFxCheck.version}?`,
+              installForSpecifiedVersion,
+              abortOption
+            ).then(selectedOption => {
+              if (selectedOption === installForSpecifiedVersion) {
+                Dependencies.install(sPFxCheck.version);
+              }
+            });
+          } else {
+            const notPassedChecks = doctorOutput.filter(check => !['SharePoint Framework', 'Node', 'env', 'typescript'].some(name => name.toLowerCase() === check.check.toLowerCase()) && !check.passed);
+            if (notPassedChecks.length === 0) {
+              Notifications.info('Your local development environment is set up correctly to work with SharePoint Framework. You are ready to go!');
+              return;
+            }
+
+            const installForSpecifiedVersion = `Yes, setup for SPFx v${sPFxCheck.version}`;
+            const abortOption = 'No';
+
+            Notifications.warning(
+              `The following dependencies are not set up correctly: ${notPassedChecks.map(c => c.check).join(', ')}. Do you want to set up your environment for SPFx v${sPFxCheck.version}?`,
+              installForSpecifiedVersion,
+              abortOption
+            ).then(selectedOption => {
+              if (selectedOption === installForSpecifiedVersion) {
+                Dependencies.install(sPFxCheck.version, false);
+              }
+            });
+          }
+        }
+      });
+    } catch (e: any) {
+      const message = e?.error?.message || 'An unexpected error occurred.';
+      Notifications.error(message);
+    }
   }
 
   /**

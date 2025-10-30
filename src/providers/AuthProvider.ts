@@ -215,7 +215,7 @@ export class AuthProvider implements AuthenticationProvider, Disposable {
 
         // Bring the editor to the front
         const wsFolder = await Folders.getWorkspaceFolder();
-        exec('code .', { cwd: wsFolder?.uri.fsPath, shell: TerminalCommandExecuter.shell });
+        exec('code .', { cwd: wsFolder?.uri.fsPath });
 
         this.onDidChangeEventEmit.fire({ added: [account as any], removed: [], changed: [] });
 
