@@ -530,8 +530,8 @@
 					},
 					{
 						"id": "tasks",
-						"title": "Gulp tasks",
-						"description": "Get to know the Gulp tasks that are available in your SharePoint Framework project",
+						"title": "Tasks",
+						"description": "Get to know the Gulp tasks and NPM scripts that are available in your SharePoint Framework project",
 						"media": {
 							"markdown": "assets/walkthrough/tasks.md"
 						}
@@ -587,7 +587,7 @@
 				"spfx-toolkit.nodeVersionManager": {
 					"title": "Node.js Version Manager",
 					"type": "string",
-					"default": "nvm",
+					"default": "none",
 					"enum": [
 						"nvm",
 						"nvs",

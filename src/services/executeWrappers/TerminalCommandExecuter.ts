@@ -1,4 +1,4 @@
-import { commands, ThemeIcon, workspace, window, Terminal } from 'vscode';
+import { commands, ThemeIcon, workspace, window, Terminal, Disposable } from 'vscode';
 import { Commands, NodeVersionManagers } from '../../constants';
 import { Subscription } from '../../models';
 import { Extension } from '../dataType/Extension';
@@ -12,11 +12,12 @@ import { Logger } from '../dataType/Logger';
 
 
 interface ShellSetting {
-  path: string;
+  source?: string;
+  path?: string;
 }
 
 export class TerminalCommandExecuter {
-  private static shellPath: string | undefined = undefined;
+  private static shellPath: ShellSetting = {};
 
   public static register() {
     const subscriptions: Subscription[] = Extension.getInstance().subscriptions;
@@ -83,6 +84,49 @@ export class TerminalCommandExecuter {
     }
 
     TerminalCommandExecuter.runInTerminal(command, terminal);
+  }
+
+  /**
+   * Runs a command in a terminal and waits for it to complete.
+   * @param command - The command to run.
+   * @param terminalTitle - The title of the terminal.
+   * @param terminalIcon - The icon of the terminal.
+   * @returns A promise that resolves when the command completes with exit code 0, or rejects on non-zero exit.
+   */
+  public static async runCommandAndWait(command: string, terminalTitle: string = 'Task', terminalIcon: string = 'terminal'): Promise<void> {
+    const terminal = await TerminalCommandExecuter.createTerminal(terminalTitle, terminalIcon);
+
+    if (!terminal) {
+      throw new Error('Failed to create terminal');
+    }
+
+    const wsFolder = await Folders.getWorkspaceFolder();
+    if (wsFolder) {
+      let currentProjectPath = wsFolder.uri.fsPath;
+
+      if (M365AgentsToolkitIntegration.isM365AgentsToolkitProject) {
+        currentProjectPath = join(currentProjectPath, 'src');
+      }
+
+      terminal.sendText(`cd "${currentProjectPath}"`);
+    }
+
+    return new Promise<void>((resolve, reject) => {
+      const disposable: Disposable = window.onDidCloseTerminal(async (closedTerminal) => {
+        if (closedTerminal === terminal) {
+          disposable.dispose();
+          const exitStatus = await closedTerminal.exitStatus;
+          if (exitStatus && exitStatus.code !== 0) {
+            reject(new Error(`Command failed with exit code ${exitStatus.code}`));
+          } else {
+            resolve();
+          }
+        }
+      });
+
+      terminal.show(true);
+      terminal.sendText(`${command}${TerminalCommandExecuter.getCommandChainOperator()} exit`);
+    });
   }
 
   /**
@@ -245,12 +289,12 @@ export class TerminalCommandExecuter {
    * If the shell path is undefined, it sets the `shellPath` to undefined.
    */
   private static initShellPath() {
-    const shell: string | { path: string } | undefined = TerminalCommandExecuter.getShellPath();
+    const shell: string | ShellSetting | undefined = TerminalCommandExecuter.getShellPath();
 
     if (typeof shell !== 'string' && !!shell) {
-      TerminalCommandExecuter.shellPath = shell.path;
+      TerminalCommandExecuter.shellPath = shell;
     } else {
-      TerminalCommandExecuter.shellPath = shell || undefined;
+      TerminalCommandExecuter.shellPath.path = shell || undefined;
     }
   }
 
@@ -340,5 +384,15 @@ export class TerminalCommandExecuter {
       terminal.show(true);
       terminal.sendText(` ${command}`);
     }
+  }
+
+  private static getCommandChainOperator(): string {
+    const shell = TerminalCommandExecuter.shell || '';
+
+    if (shell.path?.includes('PowerShell') || shell.path?.includes('pwsh') || shell.source?.includes('PowerShell') || shell.source?.includes('pwsh')) {
+      return ';';
+    }
+
+    return ' &&';
   }
 }
