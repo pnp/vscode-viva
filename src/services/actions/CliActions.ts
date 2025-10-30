@@ -104,11 +104,11 @@ export class CliActions {
           const spfxVersion = SpfxCompatibilityMatrix.find(spfx => spfx.Version === sPFxCheck.version);
           const nodeCheck = Dependencies.isValidNodeJs(spfxVersion?.SupportedNodeVersions || []);
           if (!nodeCheck) {
-            const installForSpecifiedVersion = `Yes, setup for v${sPFxCheck.version} SPFx version`;
+            const installForSpecifiedVersion = `Yes, setup for SPFx v${sPFxCheck.version}`;
             const abortOption = 'No';
 
             Notifications.warning(
-              `Your Node version is not supported for v${sPFxCheck.version} SPFx version. Do you want to set up your environment for the v${sPFxCheck.version} SPFx version?`,
+              `Your Node.js version is not compatible with SPFx v${sPFxCheck.version}. Do you want to set up your environment for SPFx v${sPFxCheck.version}?`,
               installForSpecifiedVersion,
               abortOption
             ).then(selectedOption => {
@@ -123,11 +123,11 @@ export class CliActions {
               return;
             }
 
-            const installForSpecifiedVersion = `Yes, setup for v${sPFxCheck.version} SPFx version`;
+            const installForSpecifiedVersion = `Yes, setup for SPFx v${sPFxCheck.version}`;
             const abortOption = 'No';
 
             Notifications.warning(
-              `The following dependencies are not set up correctly: ${notPassedChecks.map(c => c.check).join(', ')}. Do you want to set up your environment for the v${sPFxCheck.version} SPFx version?`,
+              `The following dependencies are not set up correctly: ${notPassedChecks.map(c => c.check).join(', ')}. Do you want to set up your environment for SPFx v${sPFxCheck.version}?`,
               installForSpecifiedVersion,
               abortOption
             ).then(selectedOption => {

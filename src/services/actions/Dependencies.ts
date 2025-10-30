@@ -61,6 +61,17 @@ export class Dependencies {
       return;
     }
 
+    const isValidNode = shouldValidateNode ? Dependencies.isValidNodeJs(spfxVersion.SupportedNodeVersions) : true;
+
+    let canProceedWithDependencyCheck = false;
+    if (!isValidNode) {
+      canProceedWithDependencyCheck = await Dependencies.HandleNotValidNodeVersion(spfxVersion.SupportedNodeVersions[spfxVersion.SupportedNodeVersions.length - 1], spfxVersion.SupportedNodeVersions, spfxVersion.Version);
+    }
+
+    if (!isValidNode && !canProceedWithDependencyCheck) {
+      return;
+    }
+
     await window.withProgress({
       location: ProgressLocation.Notification,
       cancellable: false,
@@ -69,28 +80,14 @@ export class Dependencies {
       return new Promise((resolve) => {
         setTimeout(async () => {
           try {
-            progress.report({ message: 'Validating node version...' });
-            const isValidNode = shouldValidateNode ? Dependencies.isValidNodeJs(spfxVersion.SupportedNodeVersions) : true;
+            progress.report({ message: 'Installing dependencies...' });
+            const dependencies = spfxVersion.Dependencies.map(dep => `${dep.Name}@${dep.InstallVersion}`).join(' ');
+            Logger.info(`Installing dependencies: ${dependencies}`);
 
-            let canProceedWithDependencyCheck = false;
-            if (!isValidNode) {
-                progress.report({ message: 'Node.js version not supported. Checking options...' });
-              canProceedWithDependencyCheck = await Dependencies.HandleNotValidNodeVersion(spfxVersion.SupportedNodeVersions[spfxVersion.SupportedNodeVersions.length - 1], spfxVersion.SupportedNodeVersions, spfxVersion.Version);
-            }
+            await TerminalCommandExecuter.runCommandAndWait(`npm install -g ${dependencies} @microsoft/generator-sharepoint@${spfxVersion.Version}`, 'Installing dependencies', 'cloud-download');
 
-            if (isValidNode || canProceedWithDependencyCheck) {
-              progress.report({ message: 'installing npm global dependencies...' });
-              const dependencies = spfxVersion.Dependencies.map(dep => `${dep.Name}@${dep.InstallVersion}`).join(' ');
-              Logger.info(`Installing dependencies: ${dependencies}`);
-
-              await TerminalCommandExecuter.runCommandAndWait(`npm install -g ${dependencies} @microsoft/generator-sharepoint@${spfxVersion.Version}`, 'Installing dependencies', 'cloud-download');
-            } else {
-              resolve(null);
-              return;
-            }
-
-            const releaseNotes = 'Check out the release notes';
-            const learningPath = 'Go to Learning path';
+            const releaseNotes = 'Release Notes';
+            const learningPath = 'Learn SPFx';
             Notifications.info(
               `You are all set for SPFx v${spfxVersion.Version}!`,
               releaseNotes,
@@ -114,13 +111,31 @@ export class Dependencies {
   }
 
   /**
+   * Gets the current installed Node.js version.
+   * @returns The current Node.js version.
+   */
+  public static getCurrentNodeVersion(): string | null {
+    try {
+      const output = execSync('node --version', { encoding: 'utf8' }).trim();
+      return output;
+    } catch (e) {
+      Logger.error(`Failed to get current Node.js version: ${(e as Error).message}`);
+      return null;
+    }
+  }
+
+  /**
    * Checks if the installed version of Node.js is valid.
    * @returns Returns true if the installed version of Node.js is valid, otherwise false.
    */
   public static isValidNodeJs(SupportedNodeVersions: string[], NodeVersion: string | null = null): boolean {
     try {
-      const output = NodeVersion ? `v${NodeVersion}` : execSync('node --version');
-      const match = /v(?<major_version>\d+)\.(?<minor_version>\d+)\.(?<patch_version>\d+)/gm.exec(output.toString());
+      const output = NodeVersion ? `v${NodeVersion}` : Dependencies.getCurrentNodeVersion();
+      if (!output) {
+        return false;
+      }
+
+      const match = /v(?<major_version>\d+)\.(?<minor_version>\d+)\.(?<patch_version>\d+)/gm.exec(output);
 
       Logger.info(`Node.js version: ${output}`);
 
@@ -146,7 +161,7 @@ export class Dependencies {
 
       return !!supported;
     } catch (e) {
-      Logger.error(`Failed checking node version: ${(e as Error).message}`);
+      Logger.error(`Failed to check Node.js version: ${(e as Error).message}`);
       return false;
     }
   }
@@ -155,22 +170,22 @@ export class Dependencies {
    * Handles the case when the Node.js version is not valid for SPFx development.
    * @param requiredNodeVersions - A string representing the required Node.js version(s) for SPFx development
    * @param supportedNodeVersions - An array of strings representing the supported Node.js versions for SPFx development
+   * @param spfxVersion - The SPFx version being installed
    * @returns A boolean indicating whether the invalid Node.js version was successfully handled
    */
   private static HandleNotValidNodeVersion(requiredNodeVersions: string, supportedNodeVersions: string[], spfxVersion: string): boolean {
     const nodeVersionManager = getExtensionSettings<string>('nodeVersionManager', 'none');
     const isWindows = os.platform() === 'win32';
+    const currentNodeVersion = Dependencies.getCurrentNodeVersion();
 
     if (nodeVersionManager === NodeVersionManagers.none) {
-      const installNodeJSOption = 'Install Node.js';
-      const useNvmOption = isWindows ? 'Use NVM for Windows' : 'Use NVM';
-      const useNvsOption = 'Use NVS';
+      const installNodeJSOption = 'Download Node.js';
+      const useNvmOption = isWindows ? 'Install NVM for Windows' : 'Install NVM';
+      const useNvsOption = 'Install NVS';
 
       Notifications.warning(
-        `Node.js v${requiredNodeVersions} is not supported for SPFx ${spfxVersion}. 
-        It is recommended to use a Node Version Manager to handle multiple Node.js versions
-        and set SPFx Toolkit setting with your preferred Node Version Manager.
-        Please select one of the options below to get help on installing or updating your Node.js version.`,
+        `Node.js ${currentNodeVersion} is incompatible with SPFx v${spfxVersion}. Required: ${requiredNodeVersions}. 
+        It is recommended to use a Node Version Manager and update the SPFx Toolkit setting (File > Preferences > Settings > search "Node Version Manager").`,
         installNodeJSOption,
         useNvmOption,
         useNvsOption
@@ -191,40 +206,22 @@ export class Dependencies {
     } else if (nodeVersionManager === NodeVersionManagers.nvm || nodeVersionManager === NodeVersionManagers.nvs) {
       let useNodeVersionOption: string = '';
       const requiredNodeVersionToInstall = requiredNodeVersions.replace(/x/g, '0');
+
       if (nodeVersionManager === NodeVersionManagers.nvm) {
-        const nvmListCommand = isWindows ? 'list' : 'ls --no-alias';
-        const nodeVersions = execSync(`nvm ${nvmListCommand}`);
-        const versions = isWindows ?
-          nodeVersions.toString().split('\n').map(v => v.trim().replace(/^\*?\s*/, '').replace(/\s*\(.*\)$/, '').trim()).filter(v => v && /^\d+\.\d+\.\d+$/.test(v))
-          : nodeVersions.toString().split('\n').map(v => v.trim().replace(/^(\*|->)?\s*/, '').replace(/\s*\(.*\)$/, '').replace(/^v/, '').trim()).filter(v => v && /^\d+\.\d+\.\d+$/.test(v));
-        const firstNodeValidVersion = versions.find(v => Dependencies.isValidNodeJs(supportedNodeVersions, v))?.replace(/x/g, '0');
-
-        const nvmUseCommand = `nvm use ${firstNodeValidVersion}`;
-        const nvmInstallAndUseCommand = `nvm install ${requiredNodeVersionToInstall} && nvm use ${requiredNodeVersionToInstall}`;
-        useNodeVersionOption = firstNodeValidVersion ? nvmUseCommand : nvmInstallAndUseCommand;
+        useNodeVersionOption = `nvm install ${requiredNodeVersionToInstall} && nvm use ${requiredNodeVersionToInstall}`;
       } else {
-        const nodeVersions = execSync('nvs list');
-        const versions = nodeVersions.toString().split('\n').map(v => {
-          const match = /node\/(\d+\.\d+\.\d+)/.exec(v.trim());
-          return match ? match[1] : '';
-        }).filter(v => v);
-        const firstNodeValidVersion = versions.find(v => Dependencies.isValidNodeJs(supportedNodeVersions, v))?.replace(/x/g, '0');
-
-        const nvsUseCommand = `nvs use ${firstNodeValidVersion}`;
-        const nvsInstallAndUseCommand = `nvs add ${requiredNodeVersionToInstall} && nvs use ${requiredNodeVersionToInstall}`;
-        useNodeVersionOption = firstNodeValidVersion ? nvsUseCommand : nvsInstallAndUseCommand;
+        useNodeVersionOption = `nvs add ${requiredNodeVersionToInstall} && nvs use ${requiredNodeVersionToInstall}`;
       }
 
-      const abortOption = 'I will handle it myself';
+      const abortOption = 'I will handle it manually';
+      const switchVersionButton = 'Switch to compatible Node.js version';
       const output = Notifications.warning(
-        `Your Node.js version is not supported with SPFx development. Make sure you are using version: v${requiredNodeVersions}. 
-        It looks like you are using ${nodeVersionManager === NodeVersionManagers.nvm ? 'NVM' : 'NVS'}. You can use the command '${useNodeVersionOption}' to set the correct Node.js version for SPFx development.
-        Please select one of the options below to get help on installing or updating your Node.js version.`,
-        useNodeVersionOption,
+        `Node.js ${currentNodeVersion} is incompatible with SPFx v${spfxVersion}. Need Node.js ${requiredNodeVersions}.`,
+        switchVersionButton,
         abortOption
       ).then(async (selectedOption): Promise<boolean> => {
-        if (selectedOption === useNodeVersionOption) {
-          await TerminalCommandExecuter.runCommandAndWait(useNodeVersionOption, 'Installing Node.js version', 'cloud-download');
+        if (selectedOption === switchVersionButton) {
+          await TerminalCommandExecuter.runCommandAndWait(useNodeVersionOption, 'Switching Node.js version', 'cloud-download');
           return true;
         } else if (selectedOption === abortOption) {
           return false;
