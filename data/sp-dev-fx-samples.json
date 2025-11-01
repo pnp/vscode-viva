@@ -2984,8 +2984,8 @@
         "SharePoint"
       ],
       "createDate": "2020-02-05",
-      "updateDate": "2024-10-03",
-      "version": "1.20.0",
+      "updateDate": "2025-10-28",
+      "version": "1.21.1",
       "componentType": "webpart",
       "extensionType": null,
       "sampleGalerry": "sp-dev-fx-webparts",
@@ -3230,8 +3230,8 @@
         "SharePoint"
       ],
       "createDate": "2020-06-05",
-      "updateDate": "2024-10-05",
-      "version": "1.20.0",
+      "updateDate": "2025-10-16",
+      "version": "1.21.1",
       "componentType": "webpart",
       "extensionType": null,
       "sampleGalerry": "sp-dev-fx-webparts",
@@ -3399,8 +3399,8 @@
         "SharePoint"
       ],
       "createDate": "2020-06-01",
-      "updateDate": "2020-06-01",
-      "version": "1.10.0",
+      "updateDate": "2025-10-28",
+      "version": "1.21.1",
       "componentType": "webpart",
       "extensionType": null,
       "sampleGalerry": "sp-dev-fx-webparts",
@@ -4029,8 +4029,8 @@
       "name": "pnp-sp-dev-spfx-web-parts-react-appinsights-usage",
       "title": "React AppInsights Usage WebParts",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-appinsights-usage",
-      "description": "This web parts shows different use cases for capturing data in your application and store it into the Azure Application Insights service.",
-      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-appinsights-dashboard/assets/AppInsights_Dashboard.gif",
+      "description": "Three interactive web parts demonstrating Application Insights integration with real-time event tracking, custom logging, and page view analytics. Features visual feedback showing exactly what data is sent to Azure.",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-appinsights-usage/assets/AllWebparts.gif",
       "authors": [
         {
           "name": "Peter Paul Kirschner",
@@ -4041,8 +4041,8 @@
         "SharePoint"
       ],
       "createDate": "2024-05-26",
-      "updateDate": "2024-05-26",
-      "version": "1.18.2",
+      "updateDate": "2025-10-25",
+      "version": "1.21.1",
       "componentType": "webpart",
       "extensionType": null,
       "sampleGalerry": "sp-dev-fx-webparts",
@@ -4050,7 +4050,7 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-associated-sites-links",
-      "title": "Associated Sites Links Web Part",
+      "title": "Associated Sites Links",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-associated-sites-links",
       "description": "Web part that will display links to all associated sites that registered to the current site. Current site should be a hub site.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-associated-sites-links/assets/result.png",
@@ -4064,8 +4064,8 @@
         "SharePoint"
       ],
       "createDate": "2021-04-19",
-      "updateDate": "2022-11-11",
-      "version": "1.15.2",
+      "updateDate": "2025-10-25",
+      "version": "1.21.1",
       "componentType": "webpart",
       "extensionType": null,
       "sampleGalerry": "sp-dev-fx-webparts",
@@ -4137,8 +4137,8 @@
         "SharePoint"
       ],
       "createDate": "2020-08-01",
-      "updateDate": "2022-11-18",
-      "version": "1.11.0",
+      "updateDate": "2052-10-25",
+      "version": "1.21.1",
       "componentType": "webpart",
       "extensionType": null,
       "sampleGalerry": "sp-dev-fx-webparts",
@@ -4291,8 +4291,8 @@
         "SharePoint"
       ],
       "createDate": "2022-12-03",
-      "updateDate": "2022-12-03",
-      "version": "1.15.2",
+      "updateDate": "2025-10-25",
+      "version": "1.21.1",
       "componentType": "webpart",
       "extensionType": null,
       "sampleGalerry": "sp-dev-fx-webparts",
@@ -4324,6 +4324,29 @@
       "createDate": "2020-04-15",
       "updateDate": "2020-04-15",
       "version": "1.10.0",
+      "componentType": "webpart",
+      "extensionType": null,
+      "sampleGalerry": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
+      "name": "pnp-sp-dev-spfx-web-parts-react-bubble-template",
+      "title": "React Bubble Template",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-bubble-template",
+      "description": "Displays SharePoint list items as interactive circular bubbles. Each bubble can show an optional logo, title, optional description and act as a link. The bubbles use customizable background and text colors, and a soft shadow to give a lifted appearance. On hover bubbles gently enlarge and return to their original size.",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-bubble-template/assets/Screenshot.png",
+      "authors": [
+        {
+          "name": "sudeepghatak",
+          "pictureUrl": "https://github.com/sudeepghatak.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2025-10-12",
+      "updateDate": "2025-10-12",
+      "version": "1.20.0",
       "componentType": "webpart",
       "extensionType": null,
       "sampleGalerry": "sp-dev-fx-webparts",
@@ -4489,8 +4512,8 @@
         "SharePoint"
       ],
       "createDate": "2020-10-31",
-      "updateDate": "2024-10-15",
-      "version": "1.20.0",
+      "updateDate": "2025-10-25",
+      "version": "1.21.1",
       "componentType": "webpart",
       "extensionType": null,
       "sampleGalerry": "sp-dev-fx-webparts",
@@ -5019,8 +5042,31 @@
         "SharePoint"
       ],
       "createDate": "2023-02-04",
-      "updateDate": "2023-02-04",
-      "version": "1.16.1",
+      "updateDate": "2025-10-25",
+      "version": "1.21.1",
+      "componentType": "webpart",
+      "extensionType": null,
+      "sampleGalerry": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
+      "name": "pnp-sp-dev-spfx-web-parts-react-chat-sk",
+      "title": "Chat with Semantic Kernel with Tools",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-chat-sk",
+      "description": "A SharePoint Framework web part that integrates OpenAI's GPT-4 and Semantic Kernel to provide advanced chat capabilities with tool usage, including Microsoft Graph.",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-chat-sk/assets/ChatUI.png",
+      "authors": [
+        {
+          "name": "Peter Paul Kirschner",
+          "pictureUrl": "https://github.com/petkir.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2025-10-15",
+      "updateDate": "2025-10-15",
+      "version": "1.21.1",
       "componentType": "webpart",
       "extensionType": null,
       "sampleGalerry": "sp-dev-fx-webparts",
@@ -5065,8 +5111,8 @@
         "SharePoint"
       ],
       "createDate": "2019-09-17",
-      "updateDate": "2019-09-17",
-      "version": "1.10.0",
+      "updateDate": "2025-10-25",
+      "version": "1.21.1",
       "componentType": "webpart",
       "extensionType": null,
       "sampleGalerry": "sp-dev-fx-webparts",
@@ -5323,6 +5369,29 @@
       "sampleType": "samples"
     },
     {
+      "name": "pnp-sp-dev-spfx-web-parts-react-copilot-retrieval-api",
+      "title": "Copilot Retrieval API Playground",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-copilot-retrieval-api",
+      "description": "This SPFx sample shows how to integrate a Copilot retrieval API into an SPFx web part and provides a hands‑on workflow to evaluate and tune search relevance.",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-copilot-retrieval-api/assets/page.png",
+      "authors": [
+        {
+          "name": "Peter Paul Kirschner",
+          "pictureUrl": "https://github.com/petkir.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2025-01-01",
+      "updateDate": "2025-01-01",
+      "version": "1.21.1",
+      "componentType": "webpart",
+      "extensionType": null,
+      "sampleGalerry": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
       "name": "pnp-sp-dev-spfx-web-parts-react-copy-views",
       "title": "Copy Views Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-copy-views",
@@ -5530,6 +5599,29 @@
       "sampleType": "samples"
     },
     {
+      "name": "pnp-sp-dev-spfx-web-parts-react-data-access-options",
+      "title": "SharePoint - Use different options to access SharePoint data",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-data-access-options",
+      "description": "This sample SPFx web part demonstrates multiple ways to read data from a SharePoint list/library. It includes side‑by‑side implementations using the native Fetch API, SPHttpClient, Microsoft Graph, and PnPjs.",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-data-access-options/assets/ui-webpart.png",
+      "authors": [
+        {
+          "name": "Marc André Schröder-Zhou",
+          "pictureUrl": "https://github.com/maschroeder-z.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2025-10-18",
+      "updateDate": "2025-10-18",
+      "version": "1.21.1",
+      "componentType": "webpart",
+      "extensionType": null,
+      "sampleGalerry": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
       "name": "pnp-sp-dev-spfx-web-parts-react-datatable",
       "title": "Data Table Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-datatable",
@@ -5676,8 +5768,8 @@
         "SharePoint"
       ],
       "createDate": "2019-07-29",
-      "updateDate": "2025-04-06",
-      "version": "1.20.0",
+      "updateDate": "2025-10-22",
+      "version": "1.21.1",
       "componentType": "webpart",
       "extensionType": null,
       "sampleGalerry": "sp-dev-fx-webparts",
@@ -5968,8 +6060,8 @@
         "SharePoint"
       ],
       "createDate": "2025-04-27",
-      "updateDate": "2025-05-04",
-      "version": "1.20.0",
+      "updateDate": "2025-10-22",
+      "version": "1.21.1",
       "componentType": "webpart",
       "extensionType": null,
       "sampleGalerry": "sp-dev-fx-webparts",
@@ -7141,7 +7233,7 @@
       "title": "Web Part Report",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-graph-webpart-report",
       "description": "This sample web part shows a report of the web parts used on the current site.",
-      "image": "https://raw.githubusercontent.com/pnp/sp-dev-fx-webparts/main/samples/react-graph-webpart-report/assets/Animated.gif",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-graph-webpart-report/assets/Animated.gif",
       "authors": [
         {
           "name": "Aimery Thomas",
@@ -7151,9 +7243,9 @@
       "tags": [
         "SharePoint"
       ],
-      "createDate": "2023-05-13",
-      "updateDate": "2023-07-11",
-      "version": "1.18.2",
+      "createDate": "2023-03-23",
+      "updateDate": "2025-10-24",
+      "version": "1.21.1",
       "componentType": "webpart",
       "extensionType": null,
       "sampleGalerry": "sp-dev-fx-webparts",
@@ -7752,7 +7844,7 @@
         "SharePoint"
       ],
       "createDate": "2020-12-20",
-      "updateDate": "2025-08-14",
+      "updateDate": "2025-10-17",
       "version": "1.20.0",
       "componentType": "webpart",
       "extensionType": null,
@@ -7930,9 +8022,9 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-manage-schema-extensions",
-      "title": "Manage Schema Extensions",
+      "title": "Schema Extensions Manager",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-manage-schema-extensions",
-      "description": "Manage Schema Extensions is a SharePoint Framework (SPFx) solution (also Microsoft Teams / Microsoft 365 host ready) that provides a full UI to Create, Read, Update and Delete (CRUD) Microsoft Graph Schema Extensions and to track the extensions you have created in your tenant. It leverages Microsoft Graph (v1.0) /schemaExtensions endpoint together with SharePoint Tenant Properties (App Catalog site) to persist the list of schema extension IDs that were created through the tool so they can be rediscovered later.",
+      "description": "Schema Extensions Manager is a SharePoint Framework (SPFx) solution (also Microsoft Teams / Microsoft 365 host ready) that provides a full UI to Create, Read, Update and Delete (CRUD) Microsoft Graph Schema Extensions and to track the extensions you have created in your tenant. It leverages Microsoft Graph (v1.0) /schemaExtensions endpoint together with SharePoint Tenant Properties (App Catalog site) to persist the list of schema extension IDs that were created through the tool so they can be rediscovered later.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-manage-schema-extensions/assets/Screenshot 2025-09-26 at 21.30.22.png",
       "authors": [
         {
@@ -8843,6 +8935,29 @@
       "sampleType": "samples"
     },
     {
+      "name": "pnp-sp-dev-spfx-web-parts-react-office-breakout",
+      "title": "Office Breakout",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-office-breakout",
+      "description": "A modern take on the classic breakout game built with React 17, TypeScript, and HTML5 Canvas. Features Office-themed blocks with authentic Microsoft app icons, demonstrates advanced React patterns including Context API and custom hooks. Perfect for SharePoint Framework environments and showcases high-performance Canvas rendering with responsive keyboard controls.",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-office-breakout/assets/gameplay.png",
+      "authors": [
+        {
+          "name": "Peter Paul Kirschner",
+          "pictureUrl": "https://github.com/petkir.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2025-10-12",
+      "updateDate": "2025-10-12",
+      "version": "1.21.1",
+      "componentType": "webpart",
+      "extensionType": null,
+      "sampleGalerry": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
       "name": "pnp-sp-dev-spfx-web-parts-react-office-offer-creation",
       "title": "SharePoint document generator - Offer Creation Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-office-offer-creation",
@@ -9004,8 +9119,8 @@
         "SharePoint"
       ],
       "createDate": "2021-05-03",
-      "updateDate": "2024-10-04",
-      "version": "1.20.0",
+      "updateDate": "2025-10-16",
+      "version": "1.21.1",
       "componentType": "webpart",
       "extensionType": null,
       "sampleGalerry": "sp-dev-fx-webparts",
@@ -9885,6 +10000,30 @@
       "sampleType": "samples"
     },
     {
+      "name": "pnp-sp-dev-spfx-web-parts-react-quick-links-pro",
+      "title": "Quick Links Pro",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-quick-links-pro",
+      "description": "A modern SharePoint Framework web part that provides dynamic quick-access links with inline editing capabilities directly from the page.",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-quick-links-pro/assets/quick-links-pro-demo.mp4",
+      "authors": [
+        {
+          "name": "Sai Siva Ram Bandaru",
+          "pictureUrl": "https://github.com/saiiiiiii.png"
+        }
+      ],
+      "tags": [
+        "SharePoint",
+        "Office"
+      ],
+      "createDate": "2025-10-30",
+      "updateDate": "2025-10-30",
+      "version": "1.21.1",
+      "componentType": "webpart",
+      "extensionType": null,
+      "sampleGalerry": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
       "name": "pnp-sp-dev-spfx-web-parts-react-quick-poll",
       "title": "Quick Poll Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-quick-poll",
@@ -10243,7 +10382,7 @@
         "SharePoint"
       ],
       "createDate": "2024-12-25",
-      "updateDate": "2025-09-12",
+      "updateDate": "2025-10-24",
       "version": "1.21.1",
       "componentType": "webpart",
       "extensionType": null,
@@ -11751,7 +11890,7 @@
         "SharePoint"
       ],
       "createDate": "2021-02-28",
-      "updateDate": "2024-10-06",
+      "updateDate": "2025-10-15",
       "version": "1.20.0",
       "componentType": "webpart",
       "extensionType": null,
