@@ -14,6 +14,6 @@ The toolchain consists of the following gulp tasks defined in the @microsoft/sp-
 
 SPFx Toolkit VS Code extension shows all possible Gulp tasks one may run on an SPFx project. Don't worry about remembering all the commands, just click on the task you want to run and the extension will do the rest.
 
-![Gulp Tasks](../images/tasks.png)
+![Gulp Tasks](../../docs/assets/images-vscode/tasks.png)
 
 [Check out our docs for more details](https://pnp.github.io/vscode-viva/features/gulp-tasks/)

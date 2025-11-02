@@ -38,7 +38,7 @@
   <a href="#-additional-resources">Additional resources</a>
 </p>
 
-![Sample Gallery](./assets/images/start.png)
+![Sample Gallery](./docs/assets/images-vscode/start.png)
 
 ## ⭐ Capabilities
 
@@ -48,7 +48,7 @@ The extension provides the following capabilities:
 
 The extension automatically detects if you have a SharePoint Framework project opened. If not, it will start with a welcome experience that will guide you through the process of creating a new project and validating your local environment.
 
-![Welcome experience](./assets/images/welcome-experience.png)
+![Welcome experience](./docs/assets/images-vscode/welcome-experience.png)
 
 Directly from this view, you may create a new project from scratch or from an existing web part, extension or ACE sample, or ACE scenario.
 
@@ -56,7 +56,7 @@ Last but not least it is possible to check your local workspace for the needed g
 
 When running the extension for the first time it will present you a walkthrough that will give you a step-by-step guide to get started with SharePoint Framework development and will go over the main functionalities of SharePoint Framework (SPFx) Toolkit.
 
-![Walkthrough](./assets/images/walkthrough.png)
+![Walkthrough](./docs/assets/images-vscode/walkthrough.png)
 
 You may also sign in to your Microsoft 365 tenant to gain access to the extension management capabilities allowing you to manage you app catalogs and deployed solutions.
 
@@ -66,7 +66,7 @@ You may also sign in to your Microsoft 365 tenant to gain access to the extensio
 
 To ensure that you can develop SPFx solutions, you may use the **Validate local setup** functionality. 
 
-![Validate dependency](./assets/images/validate-dependency.png)
+![Validate dependency](./docs/assets/images-vscode/validate-dependency.png)
 
 This action will check if you have the required dependencies such as:
 
@@ -87,16 +87,16 @@ In case you do not have all dependencies installed, or some are incorrect versio
 
 You may kick-start your development with a new project based on an existing ACE or SPFx web part or extension with a click of a button. All of the provided samples are powered by [PnP Samples repositories](https://pnp.github.io/sp-dev-fx-webparts/samples/type/).
 
-![Sample gallery](./assets/images/samples.png)
+![Sample gallery](./docs/assets/images-vscode/samples.png)
 
 The extension provides a set of filters to help you find the right sample for your needs. You may search by: author, title, description, SPFx version, and component type. It is also possible browse sample details view directly from VS Code checking all sample details before you create a new project.
 
 Switch between the list and grid view and don't worry about the size of your VS Code as it is fully responsive.
 
-![Sample gallery is responsive](./assets/images/samples-responsive.png)
+![Sample gallery is responsive](./docs/assets/images-vscode/samples-responsive.png)
 
 Check out how easy it is to create a new project based on a existing sample 👇. 
-![Create project based on web part sample](./assets/images/sample-gallery.gif)
+![Create project based on web part sample](./docs/assets/images-vscode/sample-gallery.gif)
 
 [Check out our docs for more details](https://pnp.github.io/vscode-viva/features/scaffolding#sample-gallery-start-with-a-sample)
 
@@ -108,15 +108,15 @@ Start your solution based on the provided set of ACE scenarios with ready-to-use
 
 Creating a new project was never easier. Just use the **create a new project** action, and the extension will guide you through the process with a dedicated scaffolding form.
 
-![Create new project](./assets/images/scaffolding.png)
+![Create new project](./docs/assets/images-vscode/scaffolding.png)
 
 It's possible to scaffold any kind of SPFx project.
 
-![All SPFx project support](./assets/images/scaffolding-support.png)
+![All SPFx project support](./docs/assets/images-vscode/scaffolding-support.png)
 
 Install additional dependencies with a single click straight from the scaffolding form. Currently we support installing [PnP reusable property pane controls](https://pnp.github.io/sp-dev-fx-property-controls/), [PnP reusable React controls](https://pnp.github.io/sp-dev-fx-controls-react/), [PnPjs](https://pnp.github.io/pnpjs/). Add and preconfigure [SPFx Fast Serve](https://github.com/s-KaiNet/spfx-fast-serve) and add a Node Version Manager configuration file either for NVM or NVS.
 
-![Additional dependency step](./assets/images/scaffolding-additional-step.png)
+![Additional dependency step](./docs/assets/images-vscode/scaffolding-additional-step.png)
 
 [Check out our docs for more details](https://pnp.github.io/vscode-viva/features/scaffolding)
 
@@ -124,23 +124,23 @@ Install additional dependencies with a single click straight from the scaffoldin
 
 The extension allows you to sign in to your Microsoft 365 tenant using CLI for Microsoft 365.
 
-![login](./assets/images/login.png)
+![login](./docs/assets/images-vscode/login.png)
 
 SPFx Toolkit needs and Entra App Registration to be able to sign in to your tenant. You may either use an existing app registration or create a new one with a single click using a dedicated form. 
 
-![sign in options](./assets/images/sign-in-options.png)
+![sign in options](./docs/assets/images-vscode/sign-in-options.png)
 
 SPFx Toolkit will guide you through the process of creating a new app registration either manually by providing step-by-step guidance or automatically by creating the app registration for you.
 
-![entra app reg form](./assets/images/sign-in-entra-app-reg-form.png)
+![entra app reg form](./docs/assets/images-vscode/sign-in-entra-app-reg-form.png)
 
 Check it out in action 👇
 
-![app registration](./assets/images/sign-in.gif)
+![app registration](./docs/assets/images-vscode/sign-in.gif)
 
 If you already have an Entra App Registration you may use it to sign in to your tenant by providing the Client Id and Tenant Id.
 
-![app registration](./assets/images/sign-in-existing-app.gif)
+![app registration](./docs/assets/images-vscode/sign-in-existing-app.gif)
 
 Thanks to that the extension will retrieve helpful URLs from your tenant like link to: 
 
@@ -150,7 +150,7 @@ Thanks to that the extension will retrieve helpful URLs from your tenant like li
 
 Additionally, the extension will check and retrieve tenant service health incidents that are currently happening in your tenant so that you gain quick insights on your tenant health.
 
-![tenant details](./assets/images/tenant-links.png)
+![tenant details](./docs/assets/images-vscode/tenant-links.png)
 
 After successful sign in, an additional view is presented that shows a list of links to app catalogs available in the tenant, both tenant-level and all site-level app catalogs. If you don't have a tenant app catalog you may create on directly from this extension. It is also possible to create a site-level app catalog and deactivate them if needed.
 You can expand each app catalog to reveal the list of apps contained within. Selecting an app navigates you to its details page. Additionally, hovering over an app node presents a set of actions, allowing you to perform various operations directly on the selected app.
@@ -166,7 +166,7 @@ You can expand each app catalog to reveal the list of apps contained within. Sel
 - **Copy**: Copies the solution to a different app catalog.
 - **Move**: Moves the solution to a different app catalog.
 
-![tenant details](./assets/images/app-catalog-list.png)
+![tenant details](./docs/assets/images-vscode/app-catalog-list.png)
 
 Additionally, on the tenant app catalog level, SPFx Toolkit presents all tenant-wide extensions that are available on your tenant with additional management capabilities:
 
@@ -175,11 +175,11 @@ Additionally, on the tenant app catalog level, SPFx Toolkit presents all tenant-
 - **Disable**: Disables tenant-wide extension.
 - **Update**: Allows to update all of the tenant-wide extension properties like: Title, Properties, Web template in which the extension will be present, List template, sequence and host properties.
 
-![tenant wide extensions management capabilities](./assets/images/tenant-wide-extensions-management-capabilities.png)
+![tenant wide extensions management capabilities](./docs/assets/images-vscode/tenant-wide-extensions-management-capabilities.png)
 
 Using the extension settings you may choose to show or hide the apps in app catalog list and tenant health incidents list.
 
-![settings](./assets/images/settings.png)
+![settings](./docs/assets/images-vscode/settings.png)
 
 Sign-in is also required for some actions to work properly like the deploy action which allows you to upload of the .sppkg file to the tenant or site-level App Catalog.
 
@@ -189,7 +189,7 @@ Sign-in is also required for some actions to work properly like the deploy actio
 
 The extension shows all possible Gulp tasks one may run on an SPFx project. The tasks allow you to clean, bundle, package, serve the project with a single click.
 
-![Gulp Tasks](./assets/images/tasks.png)
+![Gulp Tasks](./docs/assets/images-vscode/tasks.png)
 
 [Check out our docs for more details](https://pnp.github.io/vscode-viva/features/coding#gulp-tasks-view)
 
@@ -197,73 +197,73 @@ The extension shows all possible Gulp tasks one may run on an SPFx project. The 
 
 The actions section allows unique functionalities that may significantly boost productivity when working with SPFx projects.
 
-![Actions](./assets/images/actions.png)
+![Actions](./docs/assets/images-vscode/actions.png)
 
 Currently the extension allows you to:
 
 - **CI/CD Workflow** - This action will allow you to generate yaml CI/CD GitHub Workflow or Azure DevOps Pipeline to bundle, package, and deploy your project to any app catalog on every code push. 
 
-![CI CD pipeline](./assets/images/CICD-pipeline.png)
+![CI CD pipeline](./docs/assets/images-vscode/CICD-pipeline.png)
 
 Check it out in action for GitHub👇
 
-![GitHub CI CD workflow](./assets/images/gh-ci-cd.gif)
+![GitHub CI CD workflow](./docs/assets/images-vscode/gh-ci-cd.gif)
 
 And for Azure DevOps👇
 
-![Azure DevOps CI CD pipeline](./assets/images/azdo-ci-cd.gif)
+![Azure DevOps CI CD pipeline](./docs/assets/images-vscode/azdo-ci-cd.gif)
 
 [Check out our docs for more details](https://pnp.github.io/vscode-viva/features/ci-cd)
 
 - **Upgrade project** - Uses CLI for Microsoft 365 to create a .md and/or code tour report with upgrade guidance to the latest supported SPFx version by the extension. The upgrade guidance provides optional as well as required steps a user needs to take manually in order to upgrade the project. At the end of the guidance file, the user may find a summary of the steps in a single script and a couple of manual steps that need to be taken.
 
-![Upgrade project](./assets/images/upgrade-project.png)
+![Upgrade project](./docs/assets/images-vscode/upgrade-project.png)
 
 And the code tour guidance will provide you upgrade tips directly in your code!
 
-![Upgrade project](./assets/images/upgrade-project-code-tour.png)
+![Upgrade project](./docs/assets/images-vscode/upgrade-project-code-tour.png)
 
 [Check out our docs for more details](https://pnp.github.io/vscode-viva/features/actions#upgrade-project)
 
 - **Validate project** - Creates a validation .md report and/or code tour validation guidance for the currently open SPFx project. The action will automatically detect the SPFx version used and will validate if the project is properly set up.
 
-![Upgrade project](./assets/images/validate-project.png)
+![Upgrade project](./docs/assets/images-vscode/validate-project.png)
 
 [Check out our docs for more details](https://pnp.github.io/vscode-viva/features/actions#validate-current-project)
 
 - **Rename project** - Forget about manual work and let the extension rename your project and generate a new solution ID. 
 
-![Rename](./assets/images/rename.png)
+![Rename](./docs/assets/images-vscode/rename.png)
 
 [Check out our docs for more details](https://pnp.github.io/vscode-viva/features/actions#rename-current-project)
 
 - **Grant API permissions** - The action will Grant all API permissions specified in the package-solution.json of the current project. This is especially helpful if you just want to debug your SPFx solution using Workbench. No longer do you need to bundle, package, and deploy the project to then go to the SharePoint admin portal and consent to the permissions. All of that is now done with just a single click. 
 
-![Grant permissions](./assets/images/grant-permissions.png)
+![Grant permissions](./docs/assets/images-vscode/grant-permissions.png)
 
 [Check out our docs for more details](https://pnp.github.io/vscode-viva/features/actions#grant-api-permissions)
 
 - **Deploy project** - This action will only work when the user is logged in to tenant and the sppkg file is present. The action will deploy the project to the selected (tenant or site) app catalog. 
 
-![Deploy](./assets/images/deploy.png)
+![Deploy](./docs/assets/images-vscode/deploy.png)
 
 [Check out our docs for more details](https://pnp.github.io/vscode-viva/features/actions#deploy-project)
 
 - **Add new component** - Allows scaffolding a new SPFx project as a new component of the currently opened project. The action under the hood uses the same SharePoint Yeoman generator to scaffold a new project and this feature is an abstraction UI layer. 
 
-![Add component](./assets/images/add-component.png)
+![Add component](./docs/assets/images-vscode/add-component.png)
 
 [Check out our docs for more details](https://pnp.github.io/vscode-viva/features/actions#add-new-component)
 
 - **Set Form Customizer** - Allows to update the New, Edit or View from of any SharePoint List to a given SPFx Form Customizer based on provided GUID. 
 
-![Set Form Customizer](./assets/images/set-form-customizer-action.png)
+![Set Form Customizer](./docs/assets/images-vscode/set-form-customizer-action.png)
 
 [Check out our docs for more details](https://pnp.github.io/vscode-viva/features/actions#set-form-customizer)
 
 - **Increase project version** - This action allows you to increase project major, minor or patch varsion and automatically align the versioning between `package.json` and `package-solution.json` files.
 
-![Increase project version](./assets/images/increase-versioning.png)
+![Increase project version](./docs/assets/images-vscode/increase-versioning.png)
 
 [Check out our docs for more details](https://pnp.github.io/vscode-viva/features/actions#increase-project-version)
 
@@ -275,7 +275,7 @@ And the code tour guidance will provide you upgrade tips directly in your code!
 
 The help and feedback section is a group of links that will direct you to the right Microsoft documentation and learning paths. It also contains links to additional tooling that may be helpful in your development process as well as links to connect with the Microsoft 365 and Power Platform Community. 
 
-![help and feedback](./assets/images/help-and-feedback.png)
+![help and feedback](./docs/assets/images-vscode/help-and-feedback.png)
 
 ### 1️⃣0️⃣ Coding Snippets
 
@@ -291,19 +291,19 @@ It contains snippets for working in:
 
 In order to start using it simply start typing from `spfx-` and you should see a full list of snippets that will inject code into the current file.
 
-![code snippets](./assets/images/code-snippets.png)
+![code snippets](./docs/assets/images-vscode/code-snippets.png)
 
 Check out the extension [details to find out more](https://github.com/estruyf/vscode-spfx-snippets#usage) 
 
 Check it out in action 👇
 
-![code snippets](./assets/images/code-snippets.gif)
+![code snippets](./docs/assets/images-vscode/code-snippets.gif)
 
 ### 1️⃣1️⃣ Microsoft 365 Agents Toolkit Integration
 
 [Microsoft 365 Agents Toolkit](https://marketplace.visualstudio.com/items?itemName=TeamsDevApp.ms-teams-vscode-extension) is a widely used VS Code extension that aims to help you develop solutions that will allow you to extend Microsoft Teams. SharePoint Framework Toolkit aims to boost your productivity in SharePoint Framework solutions that may be used to extend SharePoint, Microsoft Teams, Microsoft Viva Connections, Outlook, and Microsoft365.com. Among many awesome functionalities, Microsoft 365 Agents Toolkit allows you to create a project to extend Teams Tab with SPFx project, and that’s where both of those extensions may cooperate.
 
-![Microsoft 365 Agents Toolkit integration](./assets/images/better-together.png)
+![Microsoft 365 Agents Toolkit integration](./docs/assets/images-vscode/better-together.png)
 
 [Check out our docs for more details](https://pnp.github.io/vscode-viva/features/m365-agents-toolkit)
 
@@ -313,31 +313,31 @@ By default, the SharePoint Framework Toolkit will use the Node.js version that i
 
 It's possible to use the settings to change which Node.js version manager you want to use. You may choose between `nvm` and `nvs`. If you wish to avoid using a Node.js version manager, you can set the value to `none`
 
-![Settings Node version manager](./assets/images/settings-node-version-manager.png)
+![Settings Node version manager](./docs/assets/images-vscode/settings-node-version-manager.png)
 
 Other than selecting the Node.js version manager you may also select which file should be used to store the Node.js version. By default, the extension will use `.nvmrc` file, but you may change it to `.node-version` if you are using `nvs`.
 
-![Settings Node version file](./assets/images/settings-node-version-manager-file.png)
+![Settings Node version file](./docs/assets/images-vscode/settings-node-version-manager-file.png)
 
 It is also possible to set the default behavior when you're about to scaffold a new project. To do so there is a specific setting named `Create Node Version File Default Value`.
 
-![Settings Node version file default value](./assets/images/settings-node-version-manager-file-default-value.png)
+![Settings Node version file default value](./docs/assets/images-vscode/settings-node-version-manager-file-default-value.png)
 
 ### 1️⃣3️⃣ SPFx Toolkit GitHub Chat Participant 
 
-![SPFx Toolkit chat](./assets/images/chat-intro.png)
+![SPFx Toolkit chat](./docs/assets/images-vscode/chat-intro.png)
 
 Now you may use SPFx Toolkit as a chat participant in GitHub Copilot chat extension. Simply, mention @spfx in the chat to ask dedicated questions regarding SharePoint Framework development. 
 
-![SPFx Toolkit chat in action](./assets/images/chat-in-action-new.gif)
+![SPFx Toolkit chat in action](./docs/assets/images-vscode/chat-in-action-new.gif)
 
-![SPFx Toolkit chat in action](./assets/images/chat-in-action-new2.gif)
+![SPFx Toolkit chat in action](./docs/assets/images-vscode/chat-in-action-new2.gif)
 
-![SPFx Toolkit chat in action](./assets/images/chat-in-action-setup.gif)
+![SPFx Toolkit chat in action](./docs/assets/images-vscode/chat-in-action-setup.gif)
 
 @spfx is your dedicated AI Copilot that will help you with anything that is needed to develop your SharePoint Framework project. It has predefined commands that are tailored toward a specific activity for which you require guidance.
 
-![SPFx Toolkit chat commands](./assets/images/chat-commands.png)
+![SPFx Toolkit chat commands](./docs/assets/images-vscode/chat-commands.png)
 
 Currently, we support the following commands:
 - `/setup` - that is dedicated to providing information on how to setup your local workspace for SharePoint Framework development
@@ -346,12 +346,12 @@ Currently, we support the following commands:
 
 The SPFx Toolkit Language Model Tools provide a set of skills may be used by GitHub Copilot in agent mode to assist you in your SharePoint Framework development tasks and managing your SharePoint Online tenant. 
 
-![Language Model Tools](./assets/images/language-model-tools.png)
+![Language Model Tools](./docs/assets/images-vscode/language-model-tools.png)
 
 Language model tools may only be used in agent mode, which is available in the GitHub Copilot chat extension. Currently it allows you to do basic operations to manage your SharePoint Online tenant like getting information about specific site, creating and removing a site, listing apps from your tenant app catalog, installing an app, creating a page, etc. 
 In order to use the tool you may #hashtag mention it, otherwise if your prompt will be well defined then GitHub Copilot should figure out which tool should be used to proceed with the task.
 
-![Language Model Tools in Action](./assets/images/language-model-tools-in-action.png)
+![Language Model Tools in Action](./docs/assets/images-vscode/language-model-tools-in-action.png)
 
 The extension provides the following tools
 
@@ -408,7 +408,7 @@ See the [changelog](./CHANGELOG.md) for the latest changes.
 ## 😍 "Sharing is Caring"
 
 <h1 align="center">
-  <img alt="Microsoft 365 & Power Platform Community" src="./assets/images/parker-pnp.png" width="200px" />
+  <img alt="Microsoft 365 & Power Platform Community" src="./docs/assets/images-vscode/parker-pnp.png" width="200px" />
 </h1>
 
 ## 🔍 Additional resources

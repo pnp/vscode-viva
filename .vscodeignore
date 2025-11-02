@@ -19,3 +19,5 @@ scripts
 data
 cli-microsoft365
 docs
+!docs/assets/images-vscode
+!docs/assets/images-vscode/**

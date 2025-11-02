@@ -12,10 +12,10 @@ It contains snippets for working in:
 
 In order to start using it simply start typing from `spfx-` and you should see a full list of snippets that will inject code into the current file.
 
-![code snippets](../images/code-snippets.png)
+![code snippets](../../docs/assets/images-vscode/code-snippets.png)
 
 Check out the extension [details to find out more](https://github.com/estruyf/vscode-spfx-snippets#usage) 
 
 Check it out in action 👇
 
-![code snippets](../images/code-snippets.gif)
+![code snippets](../../docs/assets/images-vscode/code-snippets.gif)
