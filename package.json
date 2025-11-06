@@ -454,7 +454,7 @@
 						"title": "Continue your learning and get additional tooling",
 						"description": "SharePoint Framework Toolkit is your single point to get to the official Microsoft documentation and learning regarding SharePoint Framework and additional tooling that will help you create apps for Microsoft 365.",
 						"media": {
-							"image": "assets/images/help-and-feedback.png",
+							"image": "docs/assets/images-vscode/help-and-feedback.png",
 							"altText": "help and feedback section"
 						}
 					},
@@ -463,7 +463,7 @@
 						"title": "Connect with the Microsoft 365 and Power Platform community",
 						"description": "Stay up to date and connected. \nVisit the [Microsoft 365 and Power Platform community](https://pnp.github.io/) to get more learning materials, guidance, tooling, and engage in community calls. \nJoin the [community Discord server](https://aka.ms/community/discord) to stay connected and help out others. \n Sharing is caring!",
 						"media": {
-							"image": "assets/images/parker-pnp.png",
+							"image": "docs/assets/images-vscode/parker-pnp.png",
 							"altText": "PnP Parker"
 						}
 					}

@@ -15,6 +15,6 @@ npm install gulp-cli yo @microsoft/generator-sharepoint --global
 
 or you can use SPFx toolkit to validate and install these dependencies for you.
 
-![setup local workspace](../images/validate-dependency.png)
+![setup local workspace](../../docs/assets/images-vscode/validate-dependency.png)
 
 Check out the [docs for more details](https://learn.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-development-environment) on the required node and dependency versions.

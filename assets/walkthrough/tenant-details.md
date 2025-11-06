@@ -2,15 +2,15 @@
 
 The extension allows you to sign in to your Microsoft 365 tenant using CLI for Microsoft 365.
 
-![login](../images/login.png)
+![login](../../docs/assets/images-vscode/login.png)
 
 SPFx Toolkit needs and Entra App Registration to sign in to your tenant. You may either use an existing app registration or create a new one with a single click using a dedicated form. SPFx Toolkit will guide you through the process of creating a new app registration either manually by providing step-by-step guidance or automatically by creating the app registration for you.
 
-![app registration](../images/sign-in.gif)
+![app registration](../../docs/assets/images-vscode/sign-in.gif)
 
 If you already have an Entra App Registration you may use it to sign in to your tenant by providing the Client Id and Tenant Id.
 
-![app registration](../images/sign-in-existing-app.gif)
+![app registration](../../docs/assets/images-vscode/sign-in-existing-app.gif)
 
 Thanks to that the extension will retrieve helpful URLs from your tenant like link to: 
 
@@ -20,7 +20,7 @@ Thanks to that the extension will retrieve helpful URLs from your tenant like li
 
 Additionally, the extension will check and retrieve tenant service health incidents that are currently happening in your tenant so that you gain quick insights on your tenant health.
 
-![tenant details](../images/tenant-links.png)
+![tenant details](../../docs/assets/images-vscode/tenant-links.png)
 
 After successful sign in, an additional view is presented that shows a list of links to app catalogs available in the tenant, both tenant-level and all site-level app catalogs. You can expand each app catalog to reveal the list of apps contained within. Selecting an app navigates you to its details page. Additionally, hovering over an app node presents a set of actions, allowing you to perform various operations directly on the selected app.
 
@@ -35,7 +35,7 @@ After successful sign in, an additional view is presented that shows a list of l
 - **Copy**: Copies the solution to a different app catalog.
 - **Move**: Moves the solution to a different app catalog.
 
-![tenant details](../images/app-catalog-list.png)
+![tenant details](../../docs/assets/images-vscode/app-catalog-list.png)
 
 Additionally, on the tenant app catalog level, SPFx Toolkit presents all tenant-wide extensions that are available on your tenant with additional management capabilities:
 
@@ -44,11 +44,11 @@ Additionally, on the tenant app catalog level, SPFx Toolkit presents all tenant-
 - **Disable**: Disables tenant-wide extension.
 - **Update**: Allows to update all of the tenant-wide extension properties like: Title, Properties, Web template in which the extension will be present, List template, sequence and host properties.
 
-![tenant wide extensions management capabilities](../images/tenant-wide-extensions-management-capabilities.png)
+![tenant wide extensions management capabilities](../../docs/assets/images-vscode/tenant-wide-extensions-management-capabilities.png)
 
 Using the extension settings you may choose show or hide the tenant-wide extensions list and tenant health incidents list.
 
-![settings](../images/settings.png)
+![settings](../../docs/assets/images-vscode/settings.png)
 
 Sign-in is also required for some actions to work properly, such as the deploy action, which allows you to upload of the .sppkg file to the tenant or site-level App Catalog.
 
