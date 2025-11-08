@@ -10004,7 +10004,7 @@
       "title": "Quick Links Pro",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-quick-links-pro",
       "description": "A modern SharePoint Framework web part that provides dynamic quick-access links with inline editing capabilities directly from the page.",
-      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-quick-links-pro/assets/quick-links-pro-demo.mp4",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-quick-links-pro/assets/quick-links-pro-demo.gif",
       "authors": [
         {
           "name": "Sai Siva Ram Bandaru",
