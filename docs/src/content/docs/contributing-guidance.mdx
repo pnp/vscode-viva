@@ -24,16 +24,7 @@ Don't be afraid to ask questions. We are here to help you succeed in making this
 
 - Fork this project. When creating the fork, deselect the checkbox 'Copy the `main` branch only' to get both `main` and `dev` branches.
 - Clone the forked repository.
-- In the cloned repository, run the npm install command: `npm install`. Please note that the recommended node version is 18.17.X or higher.
-- Clone the CJS version of CLI for Microsoft 365 from the following Github repo/branch [cli-cjs](https://github.com/Adam-it/cli-microsoft365/tree/cli-cjs)
-- In the cloned CLI for Microsoft 365 repository, run: `npm install`, `npm run clean`, `npm run build` to generate the CLI for Microsoft 365 output. Make sure the cloned CLI for Microsoft 365 repository is in the same workspace as the SharePoint Framework Toolkit repository. For example, your folder structure should look like this:
-
-```plaintext
-root:
-  - cli-microsoft365
-  - vscode-viva
-```
-- From the cloned fork of the SharePoint Framework Toolkit repository, navigate to the `scripts` folder and run the script [cli-for-microsoft365-copy-local-version](./scripts/cli-for-microsoft365-copy-local-version.ps1), passing the `workspacePath` (full path to the root folder of your workspace). This script will copy the output of the CLI for Microsoft 365 to the SharePoint Framework Toolkit extension's `node_modules` folder.
+- In the cloned repository, run the npm install command: `npm install`. Please note that the recommended node version is v20 or higher.
 - Open the SharePoint Framework Toolkit project in Visual Studio Code.
 - Run the watch command: `npm run watch`.
 - Press `F5` to start debugging the extension.

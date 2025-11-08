@@ -9,7 +9,7 @@ import { Notifications } from '../dataType/Notifications';
 import { basename, join } from 'path';
 import { EnvironmentInformation } from '../dataType/EnvironmentInformation';
 import { AuthProvider } from '../../providers/AuthProvider';
-import { CommandOutput } from '@pnp/cli-microsoft365';
+import { CommandOutput } from '@pnp/cli-microsoft365-spfx-toolkit';
 import { M365AgentsToolkitIntegration } from '../dataType/M365AgentsToolkitIntegration';
 import { PnPWebview } from '../../webview/PnPWebview';
 import { parseYoRc } from '../../utils/parseYoRc';
