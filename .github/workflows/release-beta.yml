@@ -26,32 +26,8 @@ jobs:
           path: vscode-viva
         
       - name: Install the dependencies
-        run: npm ci
+        run: npm install --omit=optional
         working-directory: vscode-viva
-
-      - name: Checkout cli-microsoft365
-        uses: actions/checkout@v4
-        with:
-          repository: Adam-it/cli-microsoft365
-          path: cli-microsoft365
-          ref: cli-cjs
-
-      - name: Print dir
-        run: |
-          dir
-
-      - name: Restore dependencies for cli-microsoft365
-        run: npm i
-        working-directory: cli-microsoft365
-
-      - name: Build cli-microsoft365
-        run: npm run build
-        working-directory: cli-microsoft365
-
-      - name: Run script copy local CLI for M365    
-        run: .\vscode-viva\scripts\cli-for-microsoft365-copy-local-version.ps1 -workspacePath "${{ github.workspace }}"
-        shell: pwsh
-        continue-on-error: false
 
       - name: Publish 
         run: npx @vscode/vsce@3.3.2 publish -p ${{ secrets.VSCE_PAT }} --pre-release --baseImagesUrl https://raw.githubusercontent.com/pnp/vscode-viva/dev

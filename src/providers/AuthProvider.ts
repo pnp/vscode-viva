@@ -5,7 +5,7 @@ import { Commands } from '../constants';
 import { Logger } from '../services/dataType/Logger';
 import { Notifications } from '../services/dataType/Notifications';
 import { Extension } from '../services/dataType/Extension';
-import { executeCommand } from '@pnp/cli-microsoft365';
+import { executeCommand } from '@pnp/cli-microsoft365-spfx-toolkit';
 import { exec } from 'child_process';
 import { Folders } from '../services/check/Folders';
 import { TerminalCommandExecuter } from '../services/executeWrappers/TerminalCommandExecuter';

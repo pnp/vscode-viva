@@ -1,7 +1,7 @@
 import { CancellationToken, LanguageModelTextPart, LanguageModelTool, LanguageModelToolInvocationOptions, LanguageModelToolInvocationPrepareOptions, LanguageModelToolResult, MarkdownString } from 'vscode';
 import { CliExecuter } from '../../../services/executeWrappers/CliCommandExecuter';
 import { Folders } from '../../../services/check/Folders';
-import { CommandOutput } from '@pnp/cli-microsoft365';
+import { CommandOutput } from '@pnp/cli-microsoft365-spfx-toolkit';
 
 
 interface ISharePointFrameworkProjectUpgrade { }

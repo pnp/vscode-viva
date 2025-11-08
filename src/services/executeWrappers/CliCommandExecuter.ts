@@ -1,5 +1,5 @@
 import { Logger } from '../dataType/Logger';
-import { CommandOutput, executeCommand } from '@pnp/cli-microsoft365';
+import { CommandOutput, executeCommand } from '@pnp/cli-microsoft365-spfx-toolkit';
 
 
 export class CliExecuter {
