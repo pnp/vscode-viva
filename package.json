@@ -298,7 +298,7 @@
 				}
 			},
 			{
-				"name": "spo_list_remove",
+				"name": "remove_spo_list",
 				"tags": [
 					"sharepoint",
 					"list",
@@ -306,8 +306,8 @@
 				],
 				"toolReferenceName": "SharePointListRemove",
 				"displayName": "Remove a SharePoint list",
-				"modelDescription": "Removes the specified list. This tool may be used to remove a SharePoint list from a site.",
-				"userDescription": "Removes the specified list.",
+				"modelDescription": "Permanently removes or recycles a SharePoint list from a specified site using the list's title. This tool deletes lists from SharePoint Online sites, either sending them to the site's recycle bin (when recycle is true) or permanently removing them (when recycle is false or omitted). Use this tool to clean up unused lists, remove test data, or manage site content. The tool requires Microsoft 365 authentication and appropriate permissions (at minimum, site owner or Full Control permissions) to the target site. Lists can only be removed one at a time using their exact title. The operation will fail if the list is in use, has active workflows, or if the user lacks sufficient permissions. When recycling, the list can be restored from the recycle bin; when permanently deleting, the list cannot be recovered. This tool returns a success message indicating whether the list was recycled or permanently removed. Do not use this tool if you need to preserve list data or maintain site history, or if multiple users actively use the list.",
+				"userDescription": "Removes the specified list from the site.",
 				"canBeReferencedInPrompt": true,
 				"icon": "$(trash)",
 				"inputSchema": {
@@ -321,6 +321,11 @@
 						"webUrl": {
 							"type": "string",
 							"description": "URL of the site where the list to remove is located. This option is required.",
+							"default": ""
+						},
+						"recycle": {
+							"type": "boolean",
+							"description": "Sends the list to the site's recycle bin instead of permanently removing it. When true, the list can be restored from the recycle bin. When false or omitted, the list is permanently removed. This option is optional.",
 							"default": ""
 						}
 					}
