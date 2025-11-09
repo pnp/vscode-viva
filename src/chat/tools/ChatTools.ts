@@ -28,7 +28,7 @@ export class ChatTools {
             lm.registerTool('add_spo_list', new SharePointListAdd())
         );
         subscriptions.push(
-            lm.registerTool('spo_list_get', new SharePointListGet())
+            lm.registerTool('get_spo_list', new SharePointListGet())
         );
         subscriptions.push(
             lm.registerTool('remove_spo_list', new SharePointListRemove())
