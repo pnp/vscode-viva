@@ -230,7 +230,7 @@
 				}
 			},
 			{
-				"name": "spo_list_add",
+				"name": "add_spo_list",
 				"tags": [
 					"sharepoint",
 					"list",
@@ -238,7 +238,7 @@
 				],
 				"toolReferenceName": "SharePointListAdd",
 				"displayName": "Create a SharePoint list",
-				"modelDescription": "Creates list in the specified site. This tool may be used to create a SharePoint list in a site.",
+				"modelDescription": "Creates a new SharePoint list in a specified site collection with customizable settings including list template, versioning, content types, permissions, and metadata options. This tool creates lists based on predefined SharePoint list templates (e.g., GenericList, DocumentLibrary, Events) and allows configuration of advanced features such as versioning controls, folder creation, commenting capabilities, and content type management. Returns confirmation of list creation with the list's details. Use this tool when you need to provision new lists for data storage, document management, task tracking, or other collaborative scenarios in SharePoint Online. This tool should NOT be used to modify existing lists (use other list management tools), create site collections (use site tools), or manage list items (use list item tools). The tool requires Microsoft 365 authentication and appropriate site permissions (typically Site Owner or Full Control). Important constraints: Only one list can be created per operation, the list title must be unique within the site, some list templates may not be available depending on site features, certain settings like content types or versioning may require additional permissions, and list creation may fail if site storage quotas are exceeded or site features are disabled.",
 				"userDescription": "Creates list in the specified site.",
 				"canBeReferencedInPrompt": true,
 				"icon": "$(add)",
@@ -257,13 +257,68 @@
 						},
 						"baseTemplate": {
 							"type": "string",
-							"description": "The list definition type on which the list is based. Allowed values Announcements, Contacts, CustomGrid, DataSources,DiscussionBoard, DocumentLibrary, Events, GanttTasks, GenericList, IssuesTracking, Links, NoCodeWorkflows,PictureLibrary, Survey, Tasks, WebPageLibrary, WorkflowHistory, WorkflowProcess, XmlForm. Default value is GenericList. This option is optional.",
+							"description": "The list definition type on which the list is based. Allowed values Announcements, Contacts, CustomGrid, DataSources, DiscussionBoard, DocumentLibrary, Events, GanttTasks, GenericList, IssuesTracking, Links, NoCodeWorkflows, PictureLibrary, Survey, Tasks, WebPageLibrary, WorkflowHistory, WorkflowProcess, XmlForm. Default value is GenericList. This option is optional.",
 							"default": ""
 						},
 						"description": {
 							"type": "string",
 							"description": "The description for the list. This option is optional.",
 							"default": ""
+						},
+						"allowDeletion": {
+							"type": "boolean",
+							"description": "Specifies whether the list can be deleted. This option is optional.",
+							"default": false
+						},
+						"contentTypesEnabled": {
+							"type": "boolean",
+							"description": "Specifies whether content types are enabled for the list. This option is optional.",
+							"default": false
+						},
+						"disableCommenting": {
+							"type": "boolean",
+							"description": "Specifies whether commenting on list items is disabled. This option is optional.",
+							"default": false
+						},
+						"disableGridEditing": {
+							"type": "boolean",
+							"description": "Specifies whether grid editing is disabled for the list. This option is optional.",
+							"default": false
+						},
+						"draftVersionVisibility": {
+							"type": "string",
+							"description": "Specifies the visibility of draft versions in the list. Allowed values: Reader, Author, Approver. This option is optional.",
+							"default": ""
+						},
+						"enableFolderCreation": {
+							"type": "boolean",
+							"description": "Specifies whether folder creation is enabled for the list. This option is optional.",
+							"default": false
+						},
+						"enableMinorVersions": {
+							"type": "boolean",
+							"description": "Specifies whether minor versions are enabled for the list. This option is optional.",
+							"default": false
+						},
+						"enableVersioning": {
+							"type": "boolean",
+							"description": "Specifies whether versioning is enabled for the list. This option is optional.",
+							"default": false
+						},
+						"forceCheckout": {
+							"type": "boolean",
+							"description": "Specifies whether forced checkout is enabled for the list. This option is optional.",
+							"default": false
+						},
+						"hidden": {
+							"type": "boolean",
+							"description": "Specifies whether the list is hidden from the browser. This option is optional.",
+							"default": false
+						},
+						"noCrawl": {
+							"type": "boolean",
+							"description": "Specifies whether the list should be excluded from search crawling. This option is optional.",
+							"default": false
 						}
 					}
 				}
