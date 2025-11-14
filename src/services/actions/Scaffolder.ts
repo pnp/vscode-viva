@@ -1,6 +1,7 @@
 import { parseWinPath } from '../../utils/parseWinPath';
 import { Folders } from '../check/Folders';
 import { Notifications } from '../dataType/Notifications';
+import { execSync } from 'child_process';
 import { Logger } from '../dataType/Logger';
 import { commands, ProgressLocation, QuickPickItem, Uri, window, workspace } from 'vscode';
 import { Commands, ComponentType, ProjectFileContent, WebviewCommand, WebViewType } from '../../constants';
@@ -228,6 +229,35 @@ export class Scaffolder {
   }
 
   /**
+   * Validates required dependencies for SPFx scaffolding.
+   * @returns A promise that resolves to an object indicating whether the dependencies are valid or an error message.
+   */
+  private static async validateDependencies(): Promise<{ isValid: boolean, errorMessage?: string }> {
+    Logger.info('Validating required dependencies...');
+
+    try {
+      execSync('yo @microsoft/sharepoint --help', { encoding: 'utf8', stdio: 'pipe' });
+      return { isValid: true };
+    } catch (error: any) {
+      const errorMessage = error.stderr || 'Failed to validate dependencies';
+      const validateLocalSetupOption = 'Validate local setup';
+      Notifications.error(
+        errorMessage,
+        validateLocalSetupOption
+      ).then((selectedOption) => {
+        if (selectedOption === validateLocalSetupOption) {
+          commands.executeCommand(Commands.checkDependencies);
+        }
+      });
+
+      return {
+        isValid: false,
+        errorMessage
+      };
+    }
+  }
+
+  /**
    * Scaffold method for creating a new project.
    * @param input - The input for the scaffold command.
    * @param isNewProject - A boolean indicating whether it's a new project or not.
@@ -235,6 +265,12 @@ export class Scaffolder {
    */
   private static async scaffold(input: SpfxScaffoldCommandInput | SpfxAddComponentCommandInput, isNewProject: boolean) {
     Logger.info('Start creating a new project');
+
+    const dependencyCheck = await Scaffolder.validateDependencies();
+    if (!dependencyCheck.isValid) {
+      PnPWebview.postMessage(WebviewCommand.toWebview.resetFormState, {});
+      return;
+    }
 
     let yoCommand = '';
 
@@ -284,6 +320,7 @@ export class Scaffolder {
 
         const result = await Executer.executeCommand(folderPath, yoCommand);
         if (result !== 0) {
+          PnPWebview.postMessage(WebviewCommand.toWebview.resetFormState, {});
           Notifications.errorNoLog(`Error creating the component. Check [output window](command:${Commands.showOutputChannel}) for more details.`);
           return;
         }
@@ -346,6 +383,7 @@ export class Scaffolder {
         Notifications.info('Component successfully created.');
       } catch (e) {
         Logger.error((e as Error).message);
+        PnPWebview.postMessage(WebviewCommand.toWebview.resetFormState, {});
         Notifications.errorNoLog(`Error creating the component. Check [output window](command:${Commands.showOutputChannel}) for more details.`);
       }
     });
