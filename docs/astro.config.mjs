@@ -53,7 +53,7 @@ export default defineConfig({
 					],
 				},
 				{
-					label: 'Contribution guidance',
+					label: 'Contributing guidance',
 					link: 'contributing-guidance',
 				},
 				{
