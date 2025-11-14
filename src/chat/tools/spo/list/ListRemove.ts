@@ -20,17 +20,12 @@ export class SharePointListRemove implements LanguageModelTool<ISharePointListRe
             return authValidationResult as LanguageModelToolResult;
         }
 
-        const commandParams: Record<string, string | boolean> = {
+        const result = await CliExecuter.execute('spo list remove', 'json', {
             title: params.title,
             webUrl: params.webUrl,
+            recycle: params.recycle ?? false,
             force: true
-        };
-
-        if (params.recycle !== undefined) {
-            commandParams.recycle = params.recycle;
-        }
-
-        const result = await CliExecuter.execute('spo list remove', 'json', commandParams);
+        });
         if (result.stderr) {
             return new LanguageModelToolResult([new LanguageModelTextPart(`Error: ${result.stderr}`)]);
         }
