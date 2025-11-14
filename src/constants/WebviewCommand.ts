@@ -9,6 +9,7 @@ export const WebviewCommand = {
     nodeVersionManager: 'node-version-manager',
     nodeVersionManagerFile: 'node-version-manager-file',
     createNodeVersionManagerFile: 'node-version-manager-file',
+    resetFormState: 'reset-form-state',
   },
   toVSCode: {
     useSample: 'use-sample',

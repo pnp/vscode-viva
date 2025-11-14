@@ -41,6 +41,19 @@ export const ScaffoldSpfxProjectView: React.FunctionComponent<IScaffoldSpfxProje
   }, [location]);
 
   useEffect(() => {
+    const handleMessage = (event: MessageEvent) => {
+      const message = event.data;
+      if (message.command === WebviewCommand.toWebview.resetFormState) {
+        setIsSubmitting(false);
+      }
+    };
+
+    window.addEventListener('message', handleMessage);
+
+    return () => window.removeEventListener('message', handleMessage);
+  }, []);
+
+  useEffect(() => {
     if (isNewProject) {
       if (!folderPath || !solutionName || !componentName) {
         setIsFormValid(false);
