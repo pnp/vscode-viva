@@ -8,6 +8,17 @@ interface ISharePointListAddParameters {
     webUrl: string;
     baseTemplate?: string;
     description?: string;
+    allowDeletion?: boolean;
+    contentTypesEnabled?: boolean;
+    disableCommenting?: boolean;
+    disableGridEditing?: boolean;
+    draftVersionVisibility?: string;
+    enableFolderCreation?: boolean;
+    enableMinorVersions?: boolean;
+    enableVersioning?: boolean;
+    forceCheckout?: boolean;
+    hidden?: boolean;
+    noCrawl?: boolean;
 }
 
 export class SharePointListAdd implements LanguageModelTool<ISharePointListAddParameters> {

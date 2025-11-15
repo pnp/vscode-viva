@@ -25,7 +25,7 @@ export class ChatTools {
             lm.registerTool('upgrade_spo_app', new SharePointAppUpgrade())
         );
         subscriptions.push(
-            lm.registerTool('spo_list_add', new SharePointListAdd())
+            lm.registerTool('add_spo_list', new SharePointListAdd())
         );
         subscriptions.push(
             lm.registerTool('spo_list_get', new SharePointListGet())
