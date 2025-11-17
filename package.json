@@ -46,6 +46,7 @@
 	],
 	"license": "MIT",
 	"main": "./dist/extension.js",
+	"aiConnectionString": "InstrumentationKey=137865b8-3555-4866-a2c9-7e35ead3d578;IngestionEndpoint=https://northeurope-2.in.applicationinsights.azure.com/;LiveEndpoint=https://northeurope.livediagnostics.monitor.azure.com/;ApplicationId=d253fe5b-d38c-41f5-841d-afed5bcd9557",
 	"contributes": {
 		"chatParticipants": [
 			{
@@ -1585,10 +1586,11 @@
 	"dependencies": {
 		"@grconrad/vscode-extension-feedback": "^1.0.0",
 		"@pnp/cli-microsoft365-spfx-toolkit": "1.8.0",
+		"@vscode/extension-telemetry": "^1.2.0",
 		"node-forge": "1.3.2",
 		"react-markdown": "10.1.0",
+		"rehype-raw": "7.0.0",
 		"remark-gfm": "4.0.1",
-		"use-debounce": "10.0.4",
-		"rehype-raw": "7.0.0"
+		"use-debounce": "10.0.4"
 	}
 }

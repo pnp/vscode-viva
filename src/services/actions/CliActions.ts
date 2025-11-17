@@ -21,6 +21,7 @@ import * as fs from 'fs';
 import { ActionTreeItem } from '../../providers/ActionTreeDataProvider';
 import { timezones } from '../../constants/Timezones';
 import { Dependencies } from './Dependencies';
+import { TelemetryService } from '../../utils/telemetry';
 
 
 export class CliActions {
@@ -29,34 +30,34 @@ export class CliActions {
     const subscriptions: Subscription[] = Extension.getInstance().subscriptions;
 
     subscriptions.push(
-      commands.registerCommand(Commands.upgradeProject, CliActions.upgrade)
+      commands.registerCommand(Commands.upgradeProject, TelemetryService.withTelemetry(Commands.upgradeProject, CliActions.upgrade))
     );
     subscriptions.push(
-      commands.registerCommand(Commands.deployProject, CliActions.deploy)
+      commands.registerCommand(Commands.deployProject, TelemetryService.withTelemetry(Commands.deployProject, CliActions.deploy))
     );
     subscriptions.push(
-      commands.registerCommand(Commands.validateProject, CliActions.validateProject)
+      commands.registerCommand(Commands.validateProject, TelemetryService.withTelemetry(Commands.validateProject, CliActions.validateProject))
     );
     subscriptions.push(
-      commands.registerCommand(Commands.renameProject, CliActions.renameProject)
+      commands.registerCommand(Commands.renameProject, TelemetryService.withTelemetry(Commands.renameProject, CliActions.renameProject))
     );
     subscriptions.push(
-      commands.registerCommand(Commands.grantAPIPermissions, CliActions.grantAPIPermissions)
+      commands.registerCommand(Commands.grantAPIPermissions, TelemetryService.withTelemetry(Commands.grantAPIPermissions, CliActions.grantAPIPermissions))
     );
     subscriptions.push(
-      commands.registerCommand(Commands.pipeline, CliActions.showGenerateWorkflowForm)
+      commands.registerCommand(Commands.pipeline, TelemetryService.withTelemetry(Commands.pipeline, CliActions.showGenerateWorkflowForm))
     );
     subscriptions.push(
-      commands.registerCommand(Commands.setFormCustomizer, CliActions.setFormCustomizer)
+      commands.registerCommand(Commands.setFormCustomizer, TelemetryService.withTelemetry(Commands.setFormCustomizer, CliActions.setFormCustomizer))
     );
     subscriptions.push(
-      commands.registerCommand(Commands.addTenantAppCatalog, CliActions.addTenantAppCatalog)
+      commands.registerCommand(Commands.addTenantAppCatalog, TelemetryService.withTelemetry(Commands.addTenantAppCatalog, CliActions.addTenantAppCatalog))
     );
     subscriptions.push(
-      commands.registerCommand(Commands.addSiteAppCatalog, CliActions.addSiteAppCatalog)
+      commands.registerCommand(Commands.addSiteAppCatalog, TelemetryService.withTelemetry(Commands.addSiteAppCatalog, CliActions.addSiteAppCatalog))
     );
     subscriptions.push(
-      commands.registerCommand(Commands.removeSiteAppCatalog, CliActions.removeSiteAppCatalog)
+      commands.registerCommand(Commands.removeSiteAppCatalog, TelemetryService.withTelemetry(Commands.removeSiteAppCatalog, CliActions.removeSiteAppCatalog))
     );
   }
 
