@@ -17,11 +17,14 @@ import { ChatTools } from './chat/tools/ChatTools';
 import { SpfxAppCLIActions } from './services/actions/SpfxAppCLIActions';
 import { IncreaseVersionActions } from './services/actions/IncreaseVersionActions';
 import { scheduleFeedbackChecks } from '@grconrad/vscode-extension-feedback';
+import { TelemetryService } from './utils/telemetry';
 
 
 const feedbackFormUrl = 'https://forms.office.com/e/ZTfqAissqt';
+let telemetryService: TelemetryService;
 
 export async function activate(context: vscode.ExtensionContext) {
+	const activationStartTime = Date.now();
 
 	const chatParticipant = vscode.chat.createChatParticipant(CHAT_PARTICIPANT_NAME, PromptHandlers.handle);
 	chatParticipant.iconPath = vscode.Uri.joinPath(context.extensionUri, 'assets', 'images', 'parker-pnp.png');
@@ -45,6 +48,23 @@ export async function activate(context: vscode.ExtensionContext) {
 	CommandPanel.register();
 
 	PnPWebview.register();
+
+	telemetryService = TelemetryService.getInstance();
+	const packageJson = context.extension?.packageJSON;
+	const connectionString = packageJson?.aiConnectionString;
+	if (connectionString) {
+		telemetryService.initialize(context, connectionString);
+
+		const activationDuration = Date.now() - activationStartTime;
+
+		telemetryService.sendEvent('Extension Activated', {
+			version: context.extension.packageJSON.version,
+			nodeVersion: process.version,
+			platform: process.platform
+		}, {
+			activationTimeMs: activationDuration
+		});
+	}
 
 	const channel = vscode.window.createOutputChannel('SPFx Toolkit Extension');
 
@@ -130,4 +150,9 @@ export async function activate(context: vscode.ExtensionContext) {
 }
 
 // this method is called when your extension is deactivated
-export function deactivate() { }
+export function deactivate() {
+	if (telemetryService) {
+		telemetryService.sendEvent('Extension Deactivated');
+		telemetryService.dispose();
+	}
+}

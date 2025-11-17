@@ -4,6 +4,7 @@ import { Subscription } from '../../models';
 import { Extension } from '../dataType/Extension';
 import { Notifications } from '../dataType/Notifications';
 import { increaseVersion } from '../../utils/increaseVersion';
+import { TelemetryService } from '../../utils/telemetry';
 
 
 export class IncreaseVersionActions {
@@ -12,7 +13,7 @@ export class IncreaseVersionActions {
     const subscriptions: Subscription[] = Extension.getInstance().subscriptions;
 
     subscriptions.push(
-      commands.registerCommand(Commands.increaseVersion, IncreaseVersionActions.increaseVersion)
+      commands.registerCommand(Commands.increaseVersion, TelemetryService.withTelemetry(Commands.increaseVersion, IncreaseVersionActions.increaseVersion))
     );
   }
 
