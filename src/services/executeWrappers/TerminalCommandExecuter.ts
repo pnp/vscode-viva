@@ -9,6 +9,7 @@ import { join } from 'path';
 import { ServeConfig } from '../../models/ServeConfig';
 import { readFileSync } from 'fs';
 import { Logger } from '../dataType/Logger';
+import { TelemetryService } from '../../utils/telemetry';
 
 
 interface ShellSetting {
@@ -22,34 +23,34 @@ export class TerminalCommandExecuter {
   public static register() {
     const subscriptions: Subscription[] = Extension.getInstance().subscriptions;
     subscriptions.push(
-      commands.registerCommand(Commands.serveProject, TerminalCommandExecuter.serveProject)
+      commands.registerCommand(Commands.serveProject, TelemetryService.withTelemetry(Commands.serveProject, TerminalCommandExecuter.serveProject))
     );
     subscriptions.push(
-      commands.registerCommand(Commands.bundleProject, TerminalCommandExecuter.bundleProject)
+      commands.registerCommand(Commands.bundleProject, TelemetryService.withTelemetry(Commands.bundleProject, TerminalCommandExecuter.bundleProject))
     );
     subscriptions.push(
-      commands.registerCommand(Commands.packageProject, TerminalCommandExecuter.packageProject)
+      commands.registerCommand(Commands.packageProject, TelemetryService.withTelemetry(Commands.packageProject, TerminalCommandExecuter.packageProject))
     );
     subscriptions.push(
-      commands.registerCommand(Commands.publishProject, TerminalCommandExecuter.publishProject)
+      commands.registerCommand(Commands.publishProject, TelemetryService.withTelemetry(Commands.publishProject, TerminalCommandExecuter.publishProject))
     );
     subscriptions.push(
-      commands.registerCommand(Commands.executeTerminalCommand, TerminalCommandExecuter.runCommand)
+      commands.registerCommand(Commands.executeTerminalCommand, TelemetryService.withTelemetry(Commands.executeTerminalCommand, TerminalCommandExecuter.runCommand))
     );
     subscriptions.push(
-      commands.registerCommand(Commands.cleanProject, TerminalCommandExecuter.cleanProject)
+      commands.registerCommand(Commands.cleanProject, TelemetryService.withTelemetry(Commands.cleanProject, TerminalCommandExecuter.cleanProject))
     );
     subscriptions.push(
-      commands.registerCommand(Commands.buildProject, TerminalCommandExecuter.buildProject)
+      commands.registerCommand(Commands.buildProject, TelemetryService.withTelemetry(Commands.buildProject, TerminalCommandExecuter.buildProject))
     );
     subscriptions.push(
-      commands.registerCommand(Commands.testProject, TerminalCommandExecuter.testProject)
+      commands.registerCommand(Commands.testProject, TelemetryService.withTelemetry(Commands.testProject, TerminalCommandExecuter.testProject))
     );
     subscriptions.push(
-      commands.registerCommand(Commands.trustDevCert, TerminalCommandExecuter.trustDevCert)
+      commands.registerCommand(Commands.trustDevCert, TelemetryService.withTelemetry(Commands.trustDevCert, TerminalCommandExecuter.trustDevCert))
     );
     subscriptions.push(
-      commands.registerCommand(Commands.deployToAzureStorage, TerminalCommandExecuter.deployToAzureStorage)
+      commands.registerCommand(Commands.deployToAzureStorage, TelemetryService.withTelemetry(Commands.deployToAzureStorage, TerminalCommandExecuter.deployToAzureStorage))
     );
 
     TerminalCommandExecuter.initShellPath();
@@ -256,28 +257,28 @@ export class TerminalCommandExecuter {
 
   /**
    * Builds the project by executing the Gulp build command.
-  */
+   */
   private static buildProject() {
     commands.executeCommand(Commands.executeTerminalCommand, 'gulp build');
   }
 
   /**
    * Tests the project by executing the Gulp test command.
-  */
+   */
   private static testProject() {
     commands.executeCommand(Commands.executeTerminalCommand, 'gulp test');
   }
 
   /**
    * Trusts the development certificate by executing the Gulp trust-dev-cert command.
-  */
+   */
   private static trustDevCert() {
     commands.executeCommand(Commands.executeTerminalCommand, 'gulp trust-dev-cert');
   }
 
   /**
    * Deploys to Azure CDN by executing the Gulp deploy-to-azure-storage command.
-  */
+   */
   private static deployToAzureStorage() {
     commands.executeCommand(Commands.executeTerminalCommand, 'gulp deploy-azure-storage');
   }
