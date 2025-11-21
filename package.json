@@ -324,7 +324,7 @@
 				}
 			},
 			{
-				"name": "spo_list_get",
+				"name": "get_spo_list",
 				"tags": [
 					"sharepoint",
 					"list",
@@ -332,8 +332,8 @@
 				],
 				"toolReferenceName": "SharePointListGet",
 				"displayName": "Get a SharePoint list",
-				"modelDescription": "Gets information about the specific list. This tool may be used to check if a list on a SharePoint site exists or to retrieve more information about it.",
-				"userDescription": "Gets information about the specific list.",
+				"modelDescription": "Use this tool when you need to verify if a specific list exists on a site, retrieve list metadata for validation or documentation purposes, check list properties before performing operations, or inspect permissions assigned to the list. Do not use this tool to list all lists on a site.",
+				"userDescription": "Gets information about a specific SharePoint list.",
 				"canBeReferencedInPrompt": true,
 				"icon": "$(search)",
 				"inputSchema": {
@@ -348,6 +348,11 @@
 							"type": "string",
 							"description": "URL of the site where the list to retrieve is located. This option is required.",
 							"default": ""
+						},
+						"withPermissions": {
+							"type": "boolean",
+							"description": "Set to true if you want to return associated roles and permissions of the list. This option is optional.",
+							"default": false
 						}
 					}
 				}
