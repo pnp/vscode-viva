@@ -6,6 +6,7 @@ import { validateAuth } from '../utils/ToolAuthValidationUtil';
 interface ISharePointListGetParameters {
     title: string;
     webUrl: string;
+    withPermissions?: boolean;
 }
 
 export class SharePointListGet implements LanguageModelTool<ISharePointListGetParameters> {
