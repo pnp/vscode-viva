@@ -6,6 +6,7 @@ import { validateAuth } from '../utils/ToolAuthValidationUtil';
 interface ISharePointListRemoveParameters {
     title: string;
     webUrl: string;
+    recycle?: boolean;
 }
 
 export class SharePointListRemove implements LanguageModelTool<ISharePointListRemoveParameters> {
@@ -22,13 +23,15 @@ export class SharePointListRemove implements LanguageModelTool<ISharePointListRe
         const result = await CliExecuter.execute('spo list remove', 'json', {
             title: params.title,
             webUrl: params.webUrl,
+            recycle: params.recycle ?? false,
             force: true
         });
         if (result.stderr) {
             return new LanguageModelToolResult([new LanguageModelTextPart(`Error: ${result.stderr}`)]);
         }
 
-        return new LanguageModelToolResult([new LanguageModelTextPart(`List removed successfully ${(result.stdout !== '' ? `\nResult: ${result.stdout}` : '')}`)]);
+        const recycleAction = params.recycle ? 'recycled' : 'permanently removed';
+        return new LanguageModelToolResult([new LanguageModelTextPart(`List ${recycleAction} successfully ${(result.stdout !== '' ? `\nResult: ${result.stdout}` : '')}`)]);
     }
 
     async prepareInvocation(
