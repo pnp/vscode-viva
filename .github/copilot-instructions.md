@@ -69,7 +69,7 @@ npm run test           # Run VS Code extension tests
 ### Language Model Tools
 The extension exposes SharePoint Online operations as GitHub Copilot tools:
 - `list_spo_app`, `install_spo_app`, `uninstall_spo_app`, `upgrade_spo_app`, `list_spo_app_instances` - App catalog management
-- `spo_list_add`, `get_spo_list`, `spo_list_remove` - List operations
+- `add_spo_list`, `get_spo_list`, `remove_spo_list` - List operations
 - `spo_page_add` - Page creation
 - `spo_site_add`, `spo_site_get`, `spo_site_remove` - Site management
 - `upgrade_spfx_project` - SPFx project upgrade

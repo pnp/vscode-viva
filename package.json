@@ -332,7 +332,7 @@
 				],
 				"toolReferenceName": "SharePointListGet",
 				"displayName": "Get a SharePoint list",
-				"modelDescription": "Retrieves detailed information about a specific SharePoint list from a SharePoint Online site, including metadata such as list ID, title, description, item count, template type, creation date, and last modified date. Optionally, this tool can also retrieve associated roles and permissions when the withPermissions parameter is set to true. Use this tool when you need to verify if a specific list exists on a site, retrieve list metadata for validation or documentation purposes, check list properties before performing operations, or inspect permissions assigned to the list. Do not use this tool to list all lists on a site (use list enumeration commands instead), create or modify lists (use add/update commands), or retrieve list items (use list item commands). The tool requires Microsoft 365 authentication and read permissions to the target site and list. Important limitations: Can only retrieve one list per operation, requires exact list title or ID, target site must be accessible and the list must exist, and permission retrieval may fail if the user lacks adequate permissions even if list metadata is accessible.",
+				"modelDescription": "Use this tool when you need to verify if a specific list exists on a site, retrieve list metadata for validation or documentation purposes, check list properties before performing operations, or inspect permissions assigned to the list. Do not use this tool to list all lists on a site.",
 				"userDescription": "Gets information about a specific SharePoint list.",
 				"canBeReferencedInPrompt": true,
 				"icon": "$(search)",
