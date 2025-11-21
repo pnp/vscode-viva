@@ -10,7 +10,7 @@
 			"license": "MIT",
 			"dependencies": {
 				"@grconrad/vscode-extension-feedback": "^1.0.0",
-				"@pnp/cli-microsoft365-spfx-toolkit": "1.4.0",
+				"@pnp/cli-microsoft365-spfx-toolkit": "1.5.0",
 				"node-forge": "1.3.2",
 				"react-markdown": "10.1.0",
 				"rehype-raw": "7.0.0",
@@ -858,9 +858,9 @@
 			}
 		},
 		"node_modules/@pnp/cli-microsoft365-spfx-toolkit": {
-			"version": "1.4.0",
-			"resolved": "https://registry.npmjs.org/@pnp/cli-microsoft365-spfx-toolkit/-/cli-microsoft365-spfx-toolkit-1.4.0.tgz",
-			"integrity": "sha512-U+62Tzl4ocSeRaFzVTGlRNRychVYofbOfuN9O/S8cWpHY6pBT0m2WYCCk5+U5J6TeO7Dw1DqbfxHVpvQVh6gNQ==",
+			"version": "1.5.0",
+			"resolved": "https://registry.npmjs.org/@pnp/cli-microsoft365-spfx-toolkit/-/cli-microsoft365-spfx-toolkit-1.5.0.tgz",
+			"integrity": "sha512-JF/X9UIkUKCHn1doEHf1DjK9zM71XJYK8UHqAPIHuyZQwLLFxDyiRE9tZH4fm6EXNfb+XdCmpzUxzpIqUSTx+g==",
 			"hasShrinkwrap": true,
 			"license": "MIT",
 			"dependencies": {
