@@ -2,6 +2,7 @@ import { CancellationToken, LanguageModelTextPart, LanguageModelTool, LanguageMo
 import { CliExecuter } from '../../../services/executeWrappers/CliCommandExecuter';
 import { Folders } from '../../../services/check/Folders';
 import { CommandOutput } from '@pnp/cli-microsoft365-spfx-toolkit';
+import { getPackageManager } from '../../../utils';
 
 
 interface ISharePointFrameworkProjectUpgrade { }
@@ -14,12 +15,13 @@ export class SharePointFrameworkProjectUpgrade implements LanguageModelTool<ISha
         try {
             let result: CommandOutput;
             const wsFolder = await Folders.getWorkspaceFolder();
+            const packageManager = getPackageManager();
 
             if (wsFolder) {
                 const workspacePath = wsFolder.uri.fsPath;
-                result = await CliExecuter.execute('spfx project upgrade', 'json', { path: workspacePath });
+                result = await CliExecuter.execute('spfx project upgrade', 'json', { path: workspacePath, packageManager });
             } else {
-                result = await CliExecuter.execute('spfx project upgrade', 'json');
+                result = await CliExecuter.execute('spfx project upgrade', 'json', { packageManager });
             }
 
             if (result.stderr) {
