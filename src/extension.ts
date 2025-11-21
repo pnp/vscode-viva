@@ -88,7 +88,7 @@ export async function activate(context: vscode.ExtensionContext) {
 				const packageManager = getPackageManager();
 
 				if (fileContents.indexOf(ProjectFileContent.init) > -1 || fileContents.indexOf(ProjectFileContent.initScenario) > -1) {
-					await TerminalCommandExecuter.runCommand(`${packageManager} ${packageManager === 'npm' ? 'i' : 'install'}`, terminalTitle, terminalIcon);
+					await TerminalCommandExecuter.runCommand(`${packageManager} install`, terminalTitle, terminalIcon);
 				}
 
 				if (fileContents.indexOf(ProjectFileContent.initScenario) > -1) {
