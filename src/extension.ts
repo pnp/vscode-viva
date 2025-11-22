@@ -17,20 +17,10 @@ import { ChatTools } from './chat/tools/ChatTools';
 import { SpfxAppCLIActions } from './services/actions/SpfxAppCLIActions';
 import { IncreaseVersionActions } from './services/actions/IncreaseVersionActions';
 import { scheduleFeedbackChecks } from '@grconrad/vscode-extension-feedback';
-import { getPackageManager } from './utils';
-import { PackageManagers } from './constants';
+import { getPackageManager, getInstallCommand } from './utils';
 
 
 const feedbackFormUrl = 'https://forms.office.com/e/ZTfqAissqt';
-
-/**
- * Helper function to get the appropriate install command for the package manager.
- * @param packageManager - The package manager to use
- * @returns The install command ('install' for npm, 'add' for pnpm/yarn)
- */
-function getInstallCommand(packageManager: PackageManagers): string {
-	return packageManager === PackageManagers.npm ? 'install' : 'add';
-}
 
 export async function activate(context: vscode.ExtensionContext) {
 

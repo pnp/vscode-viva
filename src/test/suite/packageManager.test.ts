@@ -3,7 +3,6 @@ import * as vscode from 'vscode';
 import { EXTENSION_ID } from '../testConstants';
 import { PackageManagers } from '../../constants';
 
-
 suite('Package Manager Settings', () => {
 	test('should verify that "spfx-toolkit.packageManager" setting is contributed', () => {
 		const extension = vscode.extensions.getExtension(EXTENSION_ID);
