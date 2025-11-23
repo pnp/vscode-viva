@@ -206,7 +206,8 @@ export class TerminalCommandExecuter {
     const answer = await TerminalCommandExecuter.environmentTypePrompt();
 
     if (answer) {
-      commands.executeCommand(Commands.executeTerminalCommand, `gulp bundle${answer === 'local' ? '' : ' --ship'} && gulp package-solution${answer === 'local' ? '' : ' --ship'}`);
+      const cmdChainOperator = TerminalCommandExecuter.getCommandChainOperator();
+      commands.executeCommand(Commands.executeTerminalCommand, `gulp bundle${answer === 'local' ? '' : ' --ship'}${cmdChainOperator} gulp package-solution${answer === 'local' ? '' : ' --ship'}`);
     }
   }
 
