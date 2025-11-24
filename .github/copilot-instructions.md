@@ -11,6 +11,37 @@ This is a **VS Code extension** that serves as an **abstraction layer** over the
 - **Service Layer**: Abstraction over CLI for Microsoft 365 commands
 - **Authentication**: Microsoft 365 authentication via `AuthProvider`
 
+## Key Considerations
+
+### Contribution & Branching Rules
+- Always read and follow contributing.md before starting work; use it as the primary source for workflow, coding standards, testing, and PR requirements.
+- Start new work from the dev branch:
+  - Create feature/fix branches off dev.
+  - Open Pull Requests that target dev. Do not open PRs targeting main.
+- PRs must include: summary, linked issue (if any), testing steps, and listed reviewers.
+- Use descriptive commit messages and reference issue numbers when applicable.
+- If uncertain about any change (dependency, behavior, or architecture), open an issue or ask a human reviewer instead of guessing.
+
+### Extension Dependency Rules
+- Do not introduce new npm packages to the repository without explicit human approval. Agents must not add dependencies to package.json.
+- Do not update npm-shrinkwrap.json (or lockfiles) except when:
+  - A new dependency is intentionally added to package.json, AND
+  - A human reviewer has approved the addition in the PR. Mention dependency changes in the PR and request approver review.
+- Do not modify npm-shrinkwrap.json or lockfiles locally to "fix" builds; report and request guidance.
+
+### File Changes & Documentation
+- Do not change existing file contents unless the change is required and documented in contributing.md, an open issue, or the PR description.
+- When editing docs or config, preserve existing formatting and context; keep changes minimal and explain why in the PR.
+
+### Testing & Validation
+- Add or update unit tests when changing logic.
+- Run `npm run test` or `npm run watch-tests` locally before opening a PR.
+- Manual testing: verify refactored input prompts, error handling, and edge cases for user prompts.
+
+### Security and privacy
+- Never embed secrets, tokens, or credentials in code or docs.
+- If work requires sensitive information, request a secure workflow from maintainers.
+
 ## Development Workflow
 
 ### Build System
@@ -70,7 +101,7 @@ npm run test           # Run VS Code extension tests
 The extension exposes SharePoint Online operations as GitHub Copilot tools:
 - `list_spo_app`, `install_spo_app`, `uninstall_spo_app`, `upgrade_spo_app`, `list_spo_app_instances` - App catalog management
 - `add_spo_list`, `get_spo_list`, `remove_spo_list` - List operations
-- `spo_page_add` - Page creation
+- `add_spo_page` - Page creation
 - `spo_site_add`, `spo_site_get`, `spo_site_remove` - Site management
 - `upgrade_spfx_project` - SPFx project upgrade
 
