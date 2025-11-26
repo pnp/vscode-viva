@@ -16,7 +16,7 @@ import { parseYoRc } from '../../utils/parseYoRc';
 import { parseCliCommand } from '../../utils/parseCliCommand';
 import { CertificateActions } from './CertificateActions';
 import path = require('path');
-import { getExtensionSettings } from '../../utils/getExtensionSettings';
+import { getExtensionSettings, getPackageManager } from '../../utils';
 import * as fs from 'fs';
 import { ActionTreeItem } from '../../providers/ActionTreeDataProvider';
 import { timezones } from '../../constants/Timezones';
@@ -728,9 +728,11 @@ export class CliActions {
       try {
         const projectUpgradeOutputMode: string = getExtensionSettings('projectUpgradeOutputMode', 'both');
         const projectUpgradeShellType: string = getExtensionSettings('upgradeShellType', 'powershell');
+        const packageManager = getPackageManager();
 
         const commandOptions: any = {
-          shell: projectUpgradeShellType
+          shell: projectUpgradeShellType,
+          packageManager: packageManager
         };
 
         if (projectUpgradeOutputMode === 'markdown' || projectUpgradeOutputMode === 'both') {

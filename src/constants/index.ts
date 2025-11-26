@@ -7,6 +7,7 @@ export * from './FrameworkTypes';
 export * from './General';
 export * from './ListTemplates';
 export * from './NodeVersionManagers';
+export * from './PackageManagers';
 export * from './ProjectFileContent';
 export * from './Prompts';
 export * from './SpfxCompatibilityMatrix';
