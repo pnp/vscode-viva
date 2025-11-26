@@ -11,36 +11,27 @@ This is a **VS Code extension** that serves as an **abstraction layer** over the
 - **Service Layer**: Abstraction over CLI for Microsoft 365 commands
 - **Authentication**: Microsoft 365 authentication via `AuthProvider`
 
-## Key Considerations
+## Key Constraints
 
-### Contribution & Branching Rules
-- Always read and follow contributing.md before starting work; use it as the primary source for workflow, coding standards, testing, and PR requirements.
-- Start new work from the dev branch:
-  - Create feature/fix branches off dev.
-  - Open Pull Requests that target dev. Do not open PRs targeting main.
-- PRs must include: summary, linked issue (if any), testing steps, and listed reviewers.
-- Use descriptive commit messages and reference issue numbers when applicable.
-- If uncertain about any change (dependency, behavior, or architecture), open an issue or ask a human reviewer instead of guessing.
+### Contribution Workflow
+- Always review `contributing.md` before starting work to understand the workflow, branching strategy, PR requirements, and documentation updates
+- Create feature/fix branches from `dev` branch (never from `main`)
+- Target all PRs to `dev` branch (PRs targeting `main` will be declined)
+- PRs must include summary, linked issue (if applicable), and testing steps
+- Update relevant documentation in `/docs` folder when making changes
+- Use descriptive commit messages that reference issue numbers (e.g., `fixes #123`)
 
-### Extension Dependency Rules
-- Do not introduce new npm packages to the repository without explicit human approval. Agents must not add dependencies to package.json.
-- Do not update npm-shrinkwrap.json (or lockfiles) except when:
-  - A new dependency is intentionally added to package.json, AND
-  - A human reviewer has approved the addition in the PR. Mention dependency changes in the PR and request approver review.
-- Do not modify npm-shrinkwrap.json or lockfiles locally to "fix" builds; report and request guidance.
+### Dependency Management
+- Do not add entries to `package.json` as new dependencies require maintainer evaluation and manual approval
+- Do not modify `npm-shrinkwrap.json` as lock files are regenerated after dependency changes via `npm install`
+- If resolving an issue requires a new npm package:
+  - Create a draft PR with a comment explaining which dependency is needed, why, and what alternatives were considered
+  - Do not attempt workarounds that duplicate functionality available in potential dependencies
+- Work within the constraints of existing dependencies whenever possible
 
-### File Changes & Documentation
-- Do not change existing file contents unless the change is required and documented in contributing.md, an open issue, or the PR description.
-- When editing docs or config, preserve existing formatting and context; keep changes minimal and explain why in the PR.
-
-### Testing & Validation
-- Add or update unit tests when changing logic.
-- Run `npm run test` or `npm run watch-tests` locally before opening a PR.
-- Manual testing: verify refactored input prompts, error handling, and edge cases for user prompts.
-
-### Security and privacy
-- Never embed secrets, tokens, or credentials in code or docs.
-- If work requires sensitive information, request a secure workflow from maintainers.
+### Security and Privacy
+- Never embed secrets, tokens, or credentials in code or docs
+- If an issue requires sensitive information (API keys, tokens, credentials) create a draft PR explaining what configuration is needed and flag it for manual setup by maintainers
 
 ## Development Workflow
 
