@@ -552,7 +552,16 @@
 				"userDescription": "Upgrade SharePoint Framework project.",
 				"canBeReferencedInPrompt": true,
 				"icon": "$(arrow-up)",
-				"inputSchema": {}
+				"inputSchema": {
+					"type": "object",
+					"properties": {
+						"toVersion": {
+							"type": "string",
+							"description": "Target version to upgrade the SharePoint Framework project to. This option is optional.",
+							"default": ""
+						}
+					}
+				}
 			}
 		],
 		"walkthroughs": [

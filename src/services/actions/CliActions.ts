@@ -720,6 +720,32 @@ export class CliActions {
       process.chdir(fsPath);
     }
 
+    let toVersion: string | undefined;
+    const yoRc = await parseYoRc();
+    if (yoRc && yoRc['@microsoft/generator-sharepoint']?.version) {
+      const currentVersion = yoRc['@microsoft/generator-sharepoint']?.version;
+      const currentVersionIndex = SpfxCompatibilityMatrix.findIndex(spfx => spfx.Version === currentVersion);
+      const higherVersions = SpfxCompatibilityMatrix.slice(0, currentVersionIndex).map(spfx => spfx.Version);
+
+      if (higherVersions.length === 0) {
+        Notifications.info(`Your project is already at the latest SharePoint Framework version (${currentVersion}). No upgrade is necessary.`);
+        return;
+      }
+
+      const selectedSPFxVersion = await window.showQuickPick(higherVersions, {
+        placeHolder: 'Select the SharePoint Framework version to upgrade to',
+        ignoreFocusOut: true,
+        canPickMany: false,
+        title: 'Select the SharePoint Framework version'
+      });
+
+      if (!selectedSPFxVersion) {
+        return;
+      }
+
+      toVersion = selectedSPFxVersion;
+    }
+
     await window.withProgress({
       location: ProgressLocation.Notification,
       title: `Generating the upgrade steps... Check [output window](command:${Commands.showOutputChannel}) to follow the progress.`,
@@ -727,11 +753,9 @@ export class CliActions {
     }, async (progress: Progress<{ message?: string; increment?: number }>) => {
       try {
         const projectUpgradeOutputMode: string = getExtensionSettings('projectUpgradeOutputMode', 'both');
-        const projectUpgradeShellType: string = getExtensionSettings('upgradeShellType', 'powershell');
+        const shell: string = getExtensionSettings('upgradeShellType', 'powershell');
 
-        const commandOptions: any = {
-          shell: projectUpgradeShellType
-        };
+        const commandOptions: any = { shell, toVersion };
 
         if (projectUpgradeOutputMode === 'markdown' || projectUpgradeOutputMode === 'both') {
           const resultMd = await CliExecuter.execute('spfx project upgrade', 'md', commandOptions);
