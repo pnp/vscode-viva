@@ -1,7 +1,7 @@
 import { lm } from 'vscode';
 import { Subscription } from '../../models';
 import { Extension } from '../../services/dataType/Extension';
-import { SharePointAppInstall, SharePointAppInstanceList, SharePointAppList, SharePointAppUninstall, SharePointAppUpgrade, SharePointListAdd, SharePointListGet, SharePointListRemove, SharePointPageAdd, SharePointSiteAdd, SharePointSiteGet, SharePointSiteRemove } from './spo/index';
+import { SharePointAppInstall, SharePointAppInstanceList, SharePointAppList, SharePointAppUninstall, SharePointAppUpgrade, SharePointListAdd, SharePointListGet, SharePointListRemove, SharePointPageAdd, SharePointPageList, SharePointSiteAdd, SharePointSiteGet, SharePointSiteRemove } from './spo/index';
 import { SharePointFrameworkProjectUpgrade } from './spfx';
 
 
@@ -35,6 +35,9 @@ export class ChatTools {
         );
         subscriptions.push(
             lm.registerTool('add_spo_page', new SharePointPageAdd())
+        );
+        subscriptions.push(
+            lm.registerTool('list_spo_page', new SharePointPageList())
         );
         subscriptions.push(
             lm.registerTool('spo_site_add', new SharePointSiteAdd())

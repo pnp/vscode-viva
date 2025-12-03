@@ -446,6 +446,30 @@
 				}
 			},
 			{
+				"name": "list_spo_page",
+				"tags": [
+					"sharepoint",
+					"page",
+					"spfx-toolkit"
+				],
+				"toolReferenceName": "SharePointPageList",
+				"displayName": "List SharePoint Pages",
+				"modelDescription": "Retrieves a list of all modern SharePoint pages from a site. Returns page metadata including page names, URLs, and properties. Use this tool to inventory pages or check what pages exist on a site. Do not use this tool to retrieve detailed information about a single specific page. Requires Microsoft 365 authentication and read permissions on the target site.",
+				"userDescription": "Lists all modern pages from a SharePoint site.",
+				"canBeReferencedInPrompt": true,
+				"icon": "$(list-unordered)",
+				"inputSchema": {
+					"type": "object",
+					"properties": {
+						"webUrl": {
+							"type": "string",
+							"description": "URL of the site from which to retrieve pages. This option is required.",
+							"default": ""
+						}
+					}
+				}
+			},
+			{
 				"name": "spo_site_add",
 				"tags": [
 					"sharepoint",
