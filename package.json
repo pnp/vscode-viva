@@ -509,6 +509,45 @@
 				}
 			},
 			{
+				"name": "remove_spo_page",
+				"tags": [
+					"sharepoint",
+					"page",
+					"spfx-toolkit"
+				],
+				"toolReferenceName": "SharePointPageRemove",
+				"displayName": "Remove a SharePoint Page",
+				"modelDescription": "Permanently removes or recycles a specific modern SharePoint page from a site. Use this tool when the user explicitly requests to delete a page. This action is destructive. Requires Microsoft 365 authentication and read permissions on the target site.",
+				"userDescription": "Removes a page.",
+				"canBeReferencedInPrompt": true,
+				"icon": "$(trash)",
+				"inputSchema": {
+					"type": "object",
+					"properties": {
+						"name": {
+							"type": "string",
+							"description": "Name of the page to remove. This option is required.",
+							"default": ""
+						},
+						"webUrl": {
+							"type": "string",
+							"description": "URL of the site where the page is located. This option is required.",
+							"default": ""
+						},
+						"recycle": {
+							"type": "boolean",
+							"description": "If true, moves the page to the recycle bin instead of permanently deleting it. Highly recommended.",
+							"default": false
+						},
+						"bypassSharedLock": {
+							"type": "boolean",
+							"description": "If true, removes the page even if it is locked for shared use.",
+							"default": false
+						}
+					}
+				}
+			},
+			{
 				"name": "spo_site_add",
 				"tags": [
 					"sharepoint",
