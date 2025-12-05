@@ -9,6 +9,7 @@ export * from './list/ListRemove';
 export * from './page/PageAdd';
 export * from './page/PageGet';
 export * from './page/PageList';
+export * from './page/PageRemove';
 export * from './site/SiteAdd';
 export * from './site/SiteGet';
 export * from './site/SiteRemove';
