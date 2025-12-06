@@ -5165,6 +5165,29 @@
       "sampleType": "samples"
     },
     {
+      "name": "pnp-sp-dev-spfx-web-parts-react-chrome-built-in-ai-summarise-page-content",
+      "title": "Page Summarization with Chrome Built-in AI",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-chrome-built-in-ai-summarise-page-content",
+      "description": "This sample demonstrates a SharePoint Framework web part that uses Chrome's built-in Summarizer API (Gemini Nano) to summarize SharePoint page content.",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-chrome-built-in-ai-summarise-page-content/assets/demo.gif",
+      "authors": [
+        {
+          "name": "Anoop T",
+          "pictureUrl": "https://github.com/anoopt.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2025-11-17",
+      "updateDate": "2025-11-17",
+      "version": "1.21.1",
+      "componentType": "webpart",
+      "extensionType": null,
+      "sampleGalerry": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
       "name": "pnp-sp-dev-spfx-web-parts-react-company-stories",
       "title": "Company Stories Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-company-stories",
@@ -5843,6 +5866,30 @@
       "createDate": "2025-03-10",
       "updateDate": "2025-03-10",
       "version": "1.20.0",
+      "componentType": "webpart",
+      "extensionType": null,
+      "sampleGalerry": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
+      "name": "pnp-sp-dev-spfx-web-parts-react-document-explorer",
+      "title": "Document Library Explorer",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-document-explorer",
+      "description": "A comprehensive SharePoint Framework web part for browsing, searching, and filtering documents across multiple document libraries with folder tree navigation.",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-document-explorer/assets/document-explorer-demo.gif",
+      "authors": [
+        {
+          "name": "Sai Siva Ram Bandaru",
+          "pictureUrl": "https://github.com/saiiiiiii.png"
+        }
+      ],
+      "tags": [
+        "SharePoint",
+        "Office"
+      ],
+      "createDate": "2025-11-09",
+      "updateDate": "2025-11-09",
+      "version": "1.21.1",
       "componentType": "webpart",
       "extensionType": null,
       "sampleGalerry": "sp-dev-fx-webparts",
@@ -10625,7 +10672,7 @@
         "SharePoint"
       ],
       "createDate": "2025-09-07",
-      "updateDate": "2025-10-12",
+      "updateDate": "2025-11-20",
       "version": "1.21.1",
       "componentType": "webpart",
       "extensionType": null,
@@ -11710,6 +11757,29 @@
       "sampleType": "samples"
     },
     {
+      "name": "pnp-sp-dev-spfx-web-parts-react-telemetry-event-sender-sample",
+      "title": "Telemetry Event Sender Web Part",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-telemetry-event-sender-sample",
+      "description": "SPFx React web part that sends telemetry events via CustomEvent to a tenant-wide telemetry Application Customizer.",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-telemetry-event-sender-sample/assets/preview.png",
+      "authors": [
+        {
+          "name": "Valeras Narbutas",
+          "pictureUrl": "https://github.com/ValerasNarbutas.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2025-11-18",
+      "updateDate": "2025-11-18",
+      "version": "1.21.1",
+      "componentType": "webpart",
+      "extensionType": null,
+      "sampleGalerry": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
       "name": "pnp-sp-dev-spfx-web-parts-react-tenant-properties",
       "title": "Tenant Properties Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-tenant-properties",
@@ -12197,6 +12267,29 @@
       "createDate": "2020-06-13",
       "updateDate": "2020-06-13",
       "version": "1.10.0",
+      "componentType": "webpart",
+      "extensionType": null,
+      "sampleGalerry": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
+      "name": "pnp-sp-dev-spfx-web-parts-react-whos-in",
+      "title": "React Who's In",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-whos-in",
+      "description": "A web part that shows who is in the office and when:",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-whos-in/assets/screenshot.png",
+      "authors": [
+        {
+          "name": "Sudeep Ghatak",
+          "pictureUrl": "https://github.com/sudeepghatak.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2025-06-29",
+      "updateDate": "2025-11-08",
+      "version": "1.20.0",
       "componentType": "webpart",
       "extensionType": null,
       "sampleGalerry": "sp-dev-fx-webparts",
