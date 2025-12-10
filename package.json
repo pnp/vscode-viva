@@ -2,7 +2,7 @@
 	"name": "viva-connections-toolkit",
 	"displayName": "SharePoint Framework Toolkit",
 	"description": "SharePoint Framework Toolkit aims to boost your productivity in developing and managing SharePoint Framework solutions helping at every stage of your development flow, from setting up your development workspace to deploying a solution straight to your tenant without the need to leave VS Code and now even create a CI/CD pipeline to introduce automate deployment of your app. This toolkit is provided by the community.",
-	"version": "4.13.7",
+	"version": "4.13.12",
 	"publisher": "m365pnp",
 	"preview": false,
 	"homepage": "https://pnp.github.io/vscode-viva",
@@ -73,7 +73,7 @@
 				]
 			}
 		],
-		"languageModelTools": [			
+		"languageModelTools": [
 			{
 				"name": "install_spo_app",
 				"tags": [
@@ -446,6 +446,108 @@
 				}
 			},
 			{
+				"name": "get_spo_page",
+				"tags": [
+					"sharepoint",
+					"page",
+					"spfx-toolkit"
+				],
+				"toolReferenceName": "SharePointPageGet",
+				"displayName": "Get a SharePoint Page",
+				"modelDescription": "Retrieves detailed information about a specific modern SharePoint page. Returns page metadata including title, layout type, canvas content, and status. Use this tool to get details for a specific page by name, OR use the default parameter to get the site's home page. Do not provide both name and default. Do not use this tool to list multiple pages. Requires Microsoft 365 authentication and read permissions on the target site.",
+				"userDescription": "Gets information about a specific SharePoint page.",
+				"canBeReferencedInPrompt": true,
+				"icon": "$(info)",
+				"inputSchema": {
+					"type": "object",
+					"properties": {
+						"webUrl": {
+							"type": "string",
+							"description": "URL of the site where the page is located. This option is required.",
+							"default": ""
+						},
+						"name": {
+							"type": "string",
+							"description": "Name of the page to retrieve (e.g., 'home.aspx'). Do not use if 'default' is true.",
+							"default": ""
+						},
+						"default": {
+							"type": "boolean",
+							"description": "Set to true to retrieve the site's home page. Do not use if 'name' is specified.",
+							"default": false
+						},
+						"metadataOnly": {
+							"type": "boolean",
+							"description": "Set to only retrieve page metadata without canvas content. This option is optional.",
+							"default": false
+						}
+					}
+				}
+			},
+			{
+				"name": "list_spo_page",
+				"tags": [
+					"sharepoint",
+					"page",
+					"spfx-toolkit"
+				],
+				"toolReferenceName": "SharePointPageList",
+				"displayName": "List SharePoint Pages",
+				"modelDescription": "Retrieves a list of all modern SharePoint pages from a site. Returns page metadata including page names, URLs, and properties. Use this tool to inventory pages or check what pages exist on a site. Do not use this tool to retrieve detailed information about a single specific page. Requires Microsoft 365 authentication and read permissions on the target site.",
+				"userDescription": "Lists all modern pages from a SharePoint site.",
+				"canBeReferencedInPrompt": true,
+				"icon": "$(list-unordered)",
+				"inputSchema": {
+					"type": "object",
+					"properties": {
+						"webUrl": {
+							"type": "string",
+							"description": "URL of the site from which to retrieve pages. This option is required.",
+							"default": ""
+						}
+					}
+				}
+			},
+			{
+				"name": "remove_spo_page",
+				"tags": [
+					"sharepoint",
+					"page",
+					"spfx-toolkit"
+				],
+				"toolReferenceName": "SharePointPageRemove",
+				"displayName": "Remove a SharePoint Page",
+				"modelDescription": "Permanently removes or recycles a specific modern SharePoint page from a site. Use this tool when the user explicitly requests to delete a page. This action is destructive. Requires Microsoft 365 authentication and read permissions on the target site.",
+				"userDescription": "Removes a page.",
+				"canBeReferencedInPrompt": true,
+				"icon": "$(trash)",
+				"inputSchema": {
+					"type": "object",
+					"properties": {
+						"name": {
+							"type": "string",
+							"description": "Name of the page to remove. This option is required.",
+							"default": ""
+						},
+						"webUrl": {
+							"type": "string",
+							"description": "URL of the site where the page is located. This option is required.",
+							"default": ""
+						},
+						"recycle": {
+							"type": "boolean",
+							"description": "If true, moves the page to the recycle bin instead of permanently deleting it. Highly recommended.",
+							"default": false
+						},
+						"bypassSharedLock": {
+							"type": "boolean",
+							"description": "If true, removes the page even if it is locked for shared use.",
+							"default": false
+						}
+					}
+				}
+			},
+			{
 				"name": "spo_site_add",
 				"tags": [
 					"sharepoint",
@@ -536,7 +638,7 @@
 						}
 					}
 				}
-			},			
+			},
 			{
 				"name": "upgrade_spfx_project",
 				"tags": [
@@ -552,7 +654,16 @@
 				"userDescription": "Upgrade SharePoint Framework project.",
 				"canBeReferencedInPrompt": true,
 				"icon": "$(arrow-up)",
-				"inputSchema": {}
+				"inputSchema": {
+					"type": "object",
+					"properties": {
+						"toVersion": {
+							"type": "string",
+							"description": "Target version to upgrade the SharePoint Framework project to. This option is optional.",
+							"default": ""
+						}
+					}
+				}
 			}
 		],
 		"walkthroughs": [
@@ -992,56 +1103,110 @@
 				"icon": "$(ellipsis)"
 			},
 			{
-				"command": "spfx-toolkit.bundleProject",
-				"title": "Bundle",
+				"command": "spfx-toolkit.gulpBundleProject",
+				"title": "Gulp Bundle",
+				"category": "SPFx Toolkit",
+				"icon": "$(combine)"
+			},
+			{
+				"command": "spfx-toolkit.heftEjectProject",
+				"title": "Heft Eject",
+				"category": "SPFx Toolkit",
+				"icon": "$(git-stash)"
+			},
+			{
+				"command": "spfx-toolkit.gulpPackageProject",
+				"title": "Gulp Package",
 				"category": "SPFx Toolkit",
 				"icon": "$(package)"
 			},
 			{
-				"command": "spfx-toolkit.packageProject",
-				"title": "Package",
+				"command": "spfx-toolkit.heftPackageProject",
+				"title": "Heft Package",
 				"category": "SPFx Toolkit",
-				"icon": "$(zap)"
+				"icon": "$(package)"
 			},
 			{
-				"command": "spfx-toolkit.publishProject",
-				"title": "Publish",
+				"command": "spfx-toolkit.gulpPublishProject",
+				"title": "Gulp Publish",
 				"category": "SPFx Toolkit",
 				"icon": "$(rocket)"
 			},
 			{
-				"command": "spfx-toolkit.serveProject",
-				"title": "Serve",
+				"command": "spfx-toolkit.heftPublishProject",
+				"title": "Heft Publish",
+				"category": "SPFx Toolkit",
+				"icon": "$(rocket)"
+			},
+			{
+				"command": "spfx-toolkit.gulpServeProject",
+				"title": "Gulp Serve",
 				"category": "SPFx Toolkit",
 				"icon": "$(play-circle)"
 			},
 			{
-				"command": "spfx-toolkit.cleanProject",
-				"title": "Clean",
+				"command": "spfx-toolkit.heftStartProject",
+				"title": "Heft Start",
+				"category": "SPFx Toolkit",
+				"icon": "$(play-circle)"
+			},
+			{
+				"command": "spfx-toolkit.gulpCleanProject",
+				"title": "Gulp Clean",
 				"category": "SPFx Toolkit",
 				"icon": "$(clear-all)"
 			},
 			{
-				"command": "spfx-toolkit.buildProject",
-				"title": "Build",
+				"command": "spfx-toolkit.heftCleanProject",
+				"title": "Heft Clean",
+				"category": "SPFx Toolkit",
+				"icon": "$(clear-all)"
+			},
+			{
+				"command": "spfx-toolkit.gulpBuildProject",
+				"title": "Gulp Build",
 				"category": "SPFx Toolkit",
 				"icon": "$(gear)"
 			},
 			{
-				"command": "spfx-toolkit.testProject",
-				"title": "Test",
+				"command": "spfx-toolkit.heftBuildProject",
+				"title": "Heft Build",
+				"category": "SPFx Toolkit",
+				"icon": "$(gear)"
+			},
+			{
+				"command": "spfx-toolkit.gulpTestProject",
+				"title": "Gulp Test",
 				"category": "SPFx Toolkit",
 				"icon": "$(beaker)"
 			},
 			{
-				"command": "spfx-toolkit.trustDevCert",
-				"title": "Trust self-signed developer certificate",
+				"command": "spfx-toolkit.heftTestProject",
+				"title": "Heft Test",
+				"category": "SPFx Toolkit",
+				"icon": "$(beaker)"
+			},
+			{
+				"command": "spfx-toolkit.gulpTrustDevCert",
+				"title": "Gulp Trust self-signed developer certificate",
 				"category": "SPFx Toolkit",
 				"icon": "$(verified)"
 			},
 			{
-				"command": "spfx-toolkit.deployToAzureStorage",
-				"title": "Deploy project assets to Azure Storage",
+				"command": "spfx-toolkit.heftTrustDevCert",
+				"title": "Heft Trust self-signed developer certificate",
+				"category": "SPFx Toolkit",
+				"icon": "$(verified)"
+			},
+			{
+				"command": "spfx-toolkit.gulpDeployToAzureStorage",
+				"title": "Gulp Deploy project assets to Azure Storage",
+				"category": "SPFx Toolkit",
+				"icon": "$(cloud-upload)"
+			},
+			{
+				"command": "spfx-toolkit.heftDeployToAzureStorage",
+				"title": "Heft Deploy project assets to Azure Storage",
 				"category": "SPFx Toolkit",
 				"icon": "$(cloud-upload)"
 			},
@@ -1380,7 +1545,7 @@
 	},
 	"dependencies": {
 		"@grconrad/vscode-extension-feedback": "^1.0.0",
-		"@pnp/cli-microsoft365-spfx-toolkit": "1.5.0",
+		"@pnp/cli-microsoft365-spfx-toolkit": "1.6.0",
 		"node-forge": "1.3.1",
 		"react-markdown": "10.1.0",
 		"remark-gfm": "4.0.1",
