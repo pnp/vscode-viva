@@ -46,7 +46,7 @@ export async function activate(context: vscode.ExtensionContext) {
 
 	PnPWebview.register();
 
-	const channel = vscode.window.createOutputChannel('SPFx Toolkit Extension');
+	const channel = vscode.window.createOutputChannel('SharePoint Framework Toolkit');
 
 	scheduleFeedbackChecks(
 		{
