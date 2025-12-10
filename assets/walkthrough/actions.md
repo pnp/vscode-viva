@@ -18,9 +18,9 @@ And for Azure DevOps👇
 
 ![Azure DevOps CI CD pipeline](../../docs/assets/images-vscode/azdo-ci-cd.gif)
 
-[Check out our docs for more details](https://pnp.github.io/vscode-viva/features/actions/#cicd-workflow)
+[Check out our docs for more details](https://pnp.github.io/vscode-viva/features/ci-cd/)
 
-- **Upgrade project** - Uses CLI for Microsoft 365 to create a .md and/or code tour report with upgrade guidance to the latest supported SPFx version by the extension. The upgrade guidance provides optional as well as required steps a user needs to take manually in order to upgrade the project. At the end of the guidance file, the user may find a summary of the steps in a single script and a couple of manual steps that need to be taken.
+- **Upgrade project** - Generates a detailed upgrade report (`.md` and/or code tour) to guide users from their current SPFx version to a selected target version using CLI for Microsoft 365. The report includes both required and optional upgrade steps, with a consolidated script at the end for automated actions and a list of remaining manual steps.
 
 ![Upgrade project](../../docs/assets/images-vscode/upgrade-project.png)
 

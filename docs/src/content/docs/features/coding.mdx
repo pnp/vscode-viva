@@ -7,9 +7,33 @@ SPFx Toolkit comes with a set of features that will speed up your development pr
 
 ## Tasks view
 
-This view shows all possible Gulp tasks one may run on an SPFx project. SPFx Toolkit also provides a set of new tasks that are a combination of existing tasks
+### Heft
 
-Additionally the view will show all npm scripts that are present in your package.json file to help you easily discover and run any custom scripts you may have defined.
+For newer versions of SPFx (1.22 and above), Heft is used as the pluggable build system for developing with the SharePoint Framework.
+
+SPFx Toolkit will show all Heft tasks that are supported in SPFx projects and will allow you to run them even if you do not have Heft installed globally.
+
+Additionally, the view will show all npm scripts that are present in your package.json file to help you easily discover and run any custom scripts you may have defined.
+
+![tasks](../../../../../assets/images/heft-tasks.png)
+
+Here is a brief explanation of the available Heft tasks that are included in this view:
+
+- **Build project**: Compiles the SPFx project.
+- **Clean project**: Removes temporary files and build artifacts.
+- **Deploy project assets to Azure Storage**: Uploads project assets to Azure Storage.
+- **Eject**: Ejects the project from Heft, allowing for custom build configurations.
+- **Package**: Packages the project into a deployable solution.
+- **Publish**: Builds and Packages the project for deployment.
+- **Start**: Starts a local development server to preview the project.
+- **Test**: Runs the project's test cases.
+- **Trust self-signed developer certificate**: Trusts the self-signed certificate required for local development.
+
+### Gulp
+
+For SPFx projects created with versions below 1.22, Gulp is used as the task runner to handle building, bundling, and packaging of the client-side solution project.
+
+In this case, SPFx Toolkit will also show all npm scripts that are present in your package.json file to help you easily discover and run any custom scripts you may have defined.
 
 ![tasks](../../../../assets/images-vscode/tasks.png)
 
