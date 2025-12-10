@@ -1092,56 +1092,110 @@
 				"icon": "$(ellipsis)"
 			},
 			{
-				"command": "spfx-toolkit.bundleProject",
-				"title": "Bundle",
+				"command": "spfx-toolkit.gulpBundleProject",
+				"title": "Gulp Bundle",
+				"category": "SPFx Toolkit",
+				"icon": "$(combine)"
+			},
+			{
+				"command": "spfx-toolkit.heftEjectProject",
+				"title": "Heft Eject",
+				"category": "SPFx Toolkit",
+				"icon": "$(git-stash)"
+			},
+			{
+				"command": "spfx-toolkit.gulpPackageProject",
+				"title": "Gulp Package",
 				"category": "SPFx Toolkit",
 				"icon": "$(package)"
 			},
 			{
-				"command": "spfx-toolkit.packageProject",
-				"title": "Package",
+				"command": "spfx-toolkit.heftPackageProject",
+				"title": "Heft Package",
 				"category": "SPFx Toolkit",
-				"icon": "$(zap)"
+				"icon": "$(package)"
 			},
 			{
-				"command": "spfx-toolkit.publishProject",
-				"title": "Publish",
+				"command": "spfx-toolkit.gulpPublishProject",
+				"title": "Gulp Publish",
 				"category": "SPFx Toolkit",
 				"icon": "$(rocket)"
 			},
 			{
-				"command": "spfx-toolkit.serveProject",
-				"title": "Serve",
+				"command": "spfx-toolkit.heftPublishProject",
+				"title": "Heft Publish",
+				"category": "SPFx Toolkit",
+				"icon": "$(rocket)"
+			},
+			{
+				"command": "spfx-toolkit.gulpServeProject",
+				"title": "Gulp Serve",
 				"category": "SPFx Toolkit",
 				"icon": "$(play-circle)"
 			},
 			{
-				"command": "spfx-toolkit.cleanProject",
-				"title": "Clean",
+				"command": "spfx-toolkit.heftStartProject",
+				"title": "Heft Start",
+				"category": "SPFx Toolkit",
+				"icon": "$(play-circle)"
+			},
+			{
+				"command": "spfx-toolkit.gulpCleanProject",
+				"title": "Gulp Clean",
 				"category": "SPFx Toolkit",
 				"icon": "$(clear-all)"
 			},
 			{
-				"command": "spfx-toolkit.buildProject",
-				"title": "Build",
+				"command": "spfx-toolkit.heftCleanProject",
+				"title": "Heft Clean",
+				"category": "SPFx Toolkit",
+				"icon": "$(clear-all)"
+			},
+			{
+				"command": "spfx-toolkit.gulpBuildProject",
+				"title": "Gulp Build",
 				"category": "SPFx Toolkit",
 				"icon": "$(gear)"
 			},
 			{
-				"command": "spfx-toolkit.testProject",
-				"title": "Test",
+				"command": "spfx-toolkit.heftBuildProject",
+				"title": "Heft Build",
+				"category": "SPFx Toolkit",
+				"icon": "$(gear)"
+			},
+			{
+				"command": "spfx-toolkit.gulpTestProject",
+				"title": "Gulp Test",
 				"category": "SPFx Toolkit",
 				"icon": "$(beaker)"
 			},
 			{
-				"command": "spfx-toolkit.trustDevCert",
-				"title": "Trust self-signed developer certificate",
+				"command": "spfx-toolkit.heftTestProject",
+				"title": "Heft Test",
+				"category": "SPFx Toolkit",
+				"icon": "$(beaker)"
+			},
+			{
+				"command": "spfx-toolkit.gulpTrustDevCert",
+				"title": "Gulp Trust self-signed developer certificate",
 				"category": "SPFx Toolkit",
 				"icon": "$(verified)"
 			},
 			{
-				"command": "spfx-toolkit.deployToAzureStorage",
-				"title": "Deploy project assets to Azure Storage",
+				"command": "spfx-toolkit.heftTrustDevCert",
+				"title": "Heft Trust self-signed developer certificate",
+				"category": "SPFx Toolkit",
+				"icon": "$(verified)"
+			},
+			{
+				"command": "spfx-toolkit.gulpDeployToAzureStorage",
+				"title": "Gulp Deploy project assets to Azure Storage",
+				"category": "SPFx Toolkit",
+				"icon": "$(cloud-upload)"
+			},
+			{
+				"command": "spfx-toolkit.heftDeployToAzureStorage",
+				"title": "Heft Deploy project assets to Azure Storage",
 				"category": "SPFx Toolkit",
 				"icon": "$(cloud-upload)"
 			},

@@ -183,9 +183,15 @@ Sign-in is also required for some actions to work properly like the deploy actio
 
 ### 7️⃣ Tasks
 
-The extension shows all possible tasks one may run on an SPFx project. The tasks view will show all relevant Gulp tasks that are available for the current SPFx project and all npm scripts that are defined in the package.json file.
+The extension shows all possible tasks that can be run on an SPFx project. The tasks view displays all relevant tasks available for the current SPFx project, as well as all npm scripts defined in the `package.json` file.
+
+For SPFx projects created with versions below 1.22, Gulp tasks will be shown in the tasks view:
 
 ![Gulp Tasks](./assets/images/tasks.png)
+
+For SPFx projects created with version 1.22 and above, Heft tasks will be shown in the tasks view:
+
+![Tasks](../images/heft-tasks.png)
 
 [Check out our docs for more details](https://pnp.github.io/vscode-viva/features/coding#gulp-tasks-view)
 
@@ -211,7 +217,7 @@ And for Azure DevOps👇
 
 [Check out our docs for more details](https://pnp.github.io/vscode-viva/features/ci-cd)
 
-- **Upgrade project** - Uses CLI for Microsoft 365 to create a .md and/or code tour report with upgrade guidance to the latest supported SPFx version by the extension. The upgrade guidance provides optional as well as required steps a user needs to take manually in order to upgrade the project. At the end of the guidance file, the user may find a summary of the steps in a single script and a couple of manual steps that need to be taken.
+- **Upgrade project** - Generates a detailed upgrade report (`.md` and/or code tour) to guide users from their current SPFx version to a selected target version using CLI for Microsoft 365. The report includes both required and optional upgrade steps, with a consolidated script at the end for automated actions and a list of remaining manual steps.
 
 ![Upgrade project](./assets/images/upgrade-project.png)
 
