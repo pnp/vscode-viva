@@ -21,7 +21,7 @@ export const gulpTaskCommands: ActionTreeItem[] = [
 ];
 
 export const heftTaskCommands: ActionTreeItem[] = [
-    new ActionTreeItem('Build project', '', { name: 'combine', custom: false }, undefined, Commands.heftBuildProject),
+    new ActionTreeItem('Build project', '', { name: 'gear', custom: false }, undefined, Commands.heftBuildProject),
     new ActionTreeItem('Clean project', '', { name: 'clear-all', custom: false }, undefined, Commands.heftCleanProject),
     new ActionTreeItem('Deploy project assets to Azure Storage', '', { name: 'cloud-upload', custom: false }, undefined, Commands.heftDeployToAzureStorage),
     new ActionTreeItem('Eject', '', { name: 'git-stash', custom: false }, undefined, Commands.heftEjectProject),
@@ -78,7 +78,7 @@ export async function getCombinedTaskCommands(): Promise<ActionTreeItem[]> {
 
     if (npmCommands.length > 0) {
         combinedCommands.push(
-            new ActionTreeItem('NPM Scripts', '', { name: 'terminal', custom: false }, TreeItemCollapsibleState.Expanded, undefined, undefined, undefined, npmCommands)
+            new ActionTreeItem('NPM Scripts', '', { name: 'terminal', custom: false }, TreeItemCollapsibleState.Collapsed, undefined, undefined, undefined, npmCommands)
         );
     }
 

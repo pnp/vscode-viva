@@ -183,7 +183,7 @@ Sign-in is also required for some actions to work properly like the deploy actio
 
 ### 7️⃣ Tasks
 
-The extension shows all possible tasks one may run on an SPFx project. The tasks view will show all relevan tasks that are available for the current SPFx project and all npm scripts that are defined in the package.json file.
+The extension shows all possible tasks that can be run on an SPFx project. The tasks view displays all relevant tasks available for the current SPFx project, as well as all npm scripts defined in the `package.json` file.
 
 For SPFx projects created with versions below 1.22, Gulp tasks will be shown in the tasks view:
 

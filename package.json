@@ -1095,7 +1095,7 @@
 				"command": "spfx-toolkit.gulpBundleProject",
 				"title": "Gulp Bundle",
 				"category": "SPFx Toolkit",
-				"icon": "$(package)"
+				"icon": "$(combine)"
 			},
 			{
 				"command": "spfx-toolkit.heftEjectProject",
@@ -1107,13 +1107,13 @@
 				"command": "spfx-toolkit.gulpPackageProject",
 				"title": "Gulp Package",
 				"category": "SPFx Toolkit",
-				"icon": "$(zap)"
+				"icon": "$(package)"
 			},
 			{
 				"command": "spfx-toolkit.heftPackageProject",
 				"title": "Heft Package",
 				"category": "SPFx Toolkit",
-				"icon": "$(zap)"
+				"icon": "$(package)"
 			},
 			{
 				"command": "spfx-toolkit.gulpPublishProject",

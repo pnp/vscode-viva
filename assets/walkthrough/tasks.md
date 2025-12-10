@@ -18,20 +18,20 @@ The task view will also show all npm scripts that are defined in your package.js
 
 ![Tasks](../images/tasks.png)
 
-From 1.22 version onwards, SharePoint Framework uses [Heft](https://heft.rushstack.io/) as the pluggable build system for developing for the SharePoint Framework.
+From version 1.22 onwards, SharePoint Framework uses [Heft](https://heft.rushstack.io/) as the pluggable build system for developing with the SharePoint Framework.
 
-SPFx Toolkit will continue to support Gulp tasks for existing projects, but for new projects created with SPFx 1.22 and above, Heft tasks will be shown in the tasks view along side npm scripts.
+SPFx Toolkit will continue to support Gulp tasks for existing projects, but for new projects created with SPFx 1.22 and above, Heft tasks will be shown in the tasks view alongside npm scripts.
 
 The view allows you to run all Heft tasks that are supported in SPFx projects:
 
 - build - Builds the client-side solution project.
-- clean - Cleans the client-side solution project's build artifacts from the previous build and from the build target directories (lib and dist).
+- clean - Cleans the client-side solution project's build artifacts from the previous builds and from the build target directories (lib and dist).
 - start - Serves the client-side solution project and assets from the local machine.
 - test - Runs unit tests, if available, for the client-side solution project.
 - package-solution - Packages the client-side solution into a SharePoint package.
 - deploy-azure-storage - Deploys client-side solution project assets to Azure Storage.
 
-and more...
+and more.
 
 ![Tasks](../images/heft-tasks.png)
 

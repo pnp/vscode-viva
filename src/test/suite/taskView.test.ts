@@ -1,13 +1,13 @@
 import * as assert from 'assert';
 import * as vscode from 'vscode';
-import { gulpTaskCommands, getCombinedTaskCommands } from '../../panels/TaskTreeData';
+import { gulpTaskCommands, heftTaskCommands, getCombinedTaskCommands } from '../../panels/TaskTreeData';
 import { EXTENSION_ID } from '../testConstants';
 import * as sinon from 'sinon';
 import { TerminalCommandExecuter } from '../../services/executeWrappers/TerminalCommandExecuter';
 import { Folders } from '../../services/check/Folders';
 
 
-suite('Gulp task commands', () => {
+suite('Task commands', () => {
     let executeCommandStub: sinon.SinonStub;
 
     setup(() => {
@@ -50,7 +50,28 @@ suite('Gulp task commands', () => {
         });
     });
 
-    test('should check that all tasks have correct names', () => {
+    test('should verify that all heft task commands are defined', () => {
+        assert.strictEqual(heftTaskCommands.length, 9, 'Expected 9 heft task commands');
+
+        const commandNames = heftTaskCommands.map(command => command.command?.command);
+        const expectedCommands = [
+            'spfx-toolkit.heftBuildProject',
+            'spfx-toolkit.heftCleanProject',
+            'spfx-toolkit.heftDeployToAzureStorage',
+            'spfx-toolkit.heftEjectProject',
+            'spfx-toolkit.heftPackageProject',
+            'spfx-toolkit.heftPublishProject',
+            'spfx-toolkit.heftStartProject',
+            'spfx-toolkit.heftTestProject',
+            'spfx-toolkit.heftTrustDevCert'
+        ];
+
+        expectedCommands.forEach((cmd: any) => {
+            assert(commandNames.includes(cmd), `Command ${cmd} is not defined`);
+        });
+    });
+
+    test('should check that all gulp tasks have correct names', () => {
         const expectedNames = [
             'Build project',
             'Bundle project',
@@ -68,12 +89,50 @@ suite('Gulp task commands', () => {
         });
     });
 
+    test('should check that all heft tasks have correct names', () => {
+        const expectedNames = [
+            'Build project',
+            'Clean project',
+            'Deploy project assets to Azure Storage',
+            'Eject',
+            'Package',
+            'Publish',
+            'Start',
+            'Test',
+            'Trust self-signed developer certificate'
+        ];
+
+        heftTaskCommands.forEach((command, index) => {
+            assert.strictEqual(command.label, expectedNames[index], `Command label mismatch for ${command.command?.command}`);
+        });
+    });
+
     test('should execute "gulp build" when Build action is triggered from the extension', () => {
         TerminalCommandExecuter['gulpBuildProject']();
 
         assert(executeCommandStub.calledWithExactly(
             'spfx-toolkit.executeTerminalCommand',
             'gulp build'
+        ));
+    });
+
+    test('should execute "npx heft build" when heft Build action is triggered for local environment', async () => {
+        sinon.stub(vscode.window, 'showQuickPick').resolves('local' as any);
+        await TerminalCommandExecuter['heftBuildProject']();
+
+        assert(executeCommandStub.calledWithExactly(
+            'spfx-toolkit.executeTerminalCommand',
+            'npx heft build'
+        ));
+    });
+
+    test('should execute "npx heft build --production" when heft Build action is triggered for production environment', async () => {
+        sinon.stub(vscode.window, 'showQuickPick').resolves('production' as any);
+        await TerminalCommandExecuter['heftBuildProject']();
+
+        assert(executeCommandStub.calledWithExactly(
+            'spfx-toolkit.executeTerminalCommand',
+            'npx heft build --production'
         ));
     });
 
@@ -106,12 +165,39 @@ suite('Gulp task commands', () => {
         ));
     });
 
+    test('should execute "npx heft clean" when heft Clean action is triggered', () => {
+        TerminalCommandExecuter['heftCleanProject']();
+
+        assert(executeCommandStub.calledWithExactly(
+            'spfx-toolkit.executeTerminalCommand',
+            'npx heft clean'
+        ));
+    });
+
     test('should execute "gulp deploy-azure-storage" when Deploy project assets to Azure Storage action is triggered', () => {
         TerminalCommandExecuter['gulpDeployToAzureStorage']();
 
         assert(executeCommandStub.calledWithExactly(
             'spfx-toolkit.executeTerminalCommand',
             'gulp deploy-azure-storage'
+        ));
+    });
+
+    test('should execute "npx heft deploy-azure-storage" when heft Deploy project assets to Azure Storage action is triggered', () => {
+        TerminalCommandExecuter['heftDeployToAzureStorage']();
+
+        assert(executeCommandStub.calledWithExactly(
+            'spfx-toolkit.executeTerminalCommand',
+            'npx heft deploy-azure-storage'
+        ));
+    });
+
+    test('should execute "npx heft eject-webpack" when heft Eject action is triggered', async () => {
+        await TerminalCommandExecuter['heftEjectProject']();
+
+        assert(executeCommandStub.calledWithExactly(
+            'spfx-toolkit.executeTerminalCommand',
+            'npx heft eject-webpack'
         ));
     });
 
@@ -135,6 +221,26 @@ suite('Gulp task commands', () => {
         ));
     });
 
+    test('should execute "npx heft package-solution" when heft packaging for local environment', async () => {
+        sinon.stub(vscode.window, 'showQuickPick').resolves('local' as any);
+        await TerminalCommandExecuter['heftPackageProject']();
+
+        assert(executeCommandStub.calledWithExactly(
+            'spfx-toolkit.executeTerminalCommand',
+            'npx heft package-solution'
+        ));
+    });
+
+    test('should execute "npx heft package-solution --production" when heft packaging for production environment', async () => {
+        sinon.stub(vscode.window, 'showQuickPick').resolves('production' as any);
+        await TerminalCommandExecuter['heftPackageProject']();
+
+        assert(executeCommandStub.calledWithExactly(
+            'spfx-toolkit.executeTerminalCommand',
+            'npx heft package-solution --production'
+        ));
+    });
+
     test('should execute "gulp bundle && gulp package-solution" when publishing project for local environment', async () => {
         sinon.stub(vscode.window, 'showQuickPick').resolves('local' as any);
         await TerminalCommandExecuter['gulpPublishProject']();
@@ -152,6 +258,26 @@ suite('Gulp task commands', () => {
         assert(executeCommandStub.calledWithExactly(
             'spfx-toolkit.executeTerminalCommand',
             'gulp bundle --ship && gulp package-solution --ship'
+        ));
+    });
+
+    test('should execute "npx heft build; npx heft package-solution" when heft publishing project for local environment', async () => {
+        sinon.stub(vscode.window, 'showQuickPick').resolves('local' as any);
+        await TerminalCommandExecuter['heftPublishProject']();
+
+        assert(executeCommandStub.calledWithExactly(
+            'spfx-toolkit.executeTerminalCommand',
+            'npx heft build && npx heft package-solution'
+        ));
+    });
+
+    test('should execute "npx heft build --production; npx heft package-solution --production" when heft publishing project for production', async () => {
+        sinon.stub(vscode.window, 'showQuickPick').resolves('production' as any);
+        await TerminalCommandExecuter['heftPublishProject']();
+
+        assert(executeCommandStub.calledWithExactly(
+            'spfx-toolkit.executeTerminalCommand',
+            'npx heft build --production && npx heft package-solution --production'
         ));
     });
 
@@ -177,12 +303,111 @@ suite('Gulp task commands', () => {
         ));
     });
 
+    test('should execute "gulp serve --config=myconfig" when Serve from configuration is triggered', async () => {
+        sinon.stub(Folders, 'getWorkspaceFolder').resolves({ name: 'mockFolder', uri: vscode.Uri.file('/mockFolder') } as vscode.WorkspaceFolder);
+
+        const fs = require('fs');
+        const readFileSyncStub = sinon.stub(fs, 'readFileSync');
+        readFileSyncStub.returns(JSON.stringify({
+            '$schema': 'https://developer.microsoft.com/json-schemas/spfx-build/spfx-serve.schema.json',
+            'port': 4321,
+            'https': true,
+            'serveConfigurations': {
+                'default': {
+                    'pageUrl': 'https://contoso.sharepoint.com/sites/mySite/SitePages/myPage.aspx'
+                },
+                'myconfig': {
+                    'pageUrl': 'https://contoso.sharepoint.com/sites/teamSite/SitePages/home.aspx'
+                }
+            }
+        }));
+
+        const findFilesStub = sinon.stub(vscode.workspace, 'findFiles');
+        findFilesStub.resolves([{ fsPath: '/fake/config/serve.json' } as any]);
+
+        const quickPickStub = sinon.stub(vscode.window, 'showQuickPick');
+        quickPickStub.onCall(0).resolves('Serve from configuration' as any);
+        quickPickStub.onCall(1).resolves('myconfig' as any);
+
+        await TerminalCommandExecuter['gulpServeProject']();
+
+        assert(executeCommandStub.calledWithExactly(
+            'spfx-toolkit.executeTerminalCommand',
+            'gulp serve --config=myconfig'
+        ));
+    });
+
+    test('should execute "npx heft start" when heft Start action is triggered', async () => {
+        sinon.stub(Folders, 'getWorkspaceFolder').resolves({ name: 'mockFolder', uri: vscode.Uri.file('/mockFolder') } as vscode.WorkspaceFolder);
+        sinon.stub(vscode.window, 'showQuickPick').resolves('Start' as any);
+        await TerminalCommandExecuter['heftStartProject']();
+
+        assert(executeCommandStub.calledWithExactly(
+            'spfx-toolkit.executeTerminalCommand',
+            'npx heft start'
+        ));
+    });
+
+    test('should execute "npx heft start --nobrowser" when heft Start (no browser) action is triggered', async () => {
+        sinon.stub(Folders, 'getWorkspaceFolder').resolves({ name: 'mockFolder', uri: vscode.Uri.file('/mockFolder') } as vscode.WorkspaceFolder);
+        sinon.stub(vscode.window, 'showQuickPick').resolves('Start (no browser)' as any);
+        await TerminalCommandExecuter['heftStartProject']();
+
+        assert(executeCommandStub.calledWithExactly(
+            'spfx-toolkit.executeTerminalCommand',
+            'npx heft start --nobrowser'
+        ));
+    });
+
+    test('should execute "npx heft start --serve-config=myconfig" when heft Start from configuration is triggered', async () => {
+        sinon.stub(Folders, 'getWorkspaceFolder').resolves({ name: 'mockFolder', uri: vscode.Uri.file('/mockFolder') } as vscode.WorkspaceFolder);
+
+        const fs = require('fs');
+        const readFileSyncStub = sinon.stub(fs, 'readFileSync');
+        readFileSyncStub.returns(JSON.stringify({
+            '$schema': 'https://developer.microsoft.com/json-schemas/spfx-build/spfx-serve.schema.json',
+            'port': 4321,
+            'https': true,
+            'serveConfigurations': {
+                'default': {
+                    'pageUrl': 'https://contoso.sharepoint.com/sites/mySite/SitePages/myPage.aspx'
+                },
+                'myconfig': {
+                    'pageUrl': 'https://contoso.sharepoint.com/sites/teamSite/SitePages/home.aspx'
+                }
+            }
+        }));
+
+        const findFilesStub = sinon.stub(vscode.workspace, 'findFiles');
+        findFilesStub.resolves([{ fsPath: '/fake/config/serve.json' } as any]);
+
+        const quickPickStub = sinon.stub(vscode.window, 'showQuickPick');
+        quickPickStub.onCall(0).resolves('Start from configuration' as any);
+        quickPickStub.onCall(1).resolves('myconfig' as any);
+
+        await TerminalCommandExecuter['heftStartProject']();
+
+        assert(executeCommandStub.calledWithExactly(
+            'spfx-toolkit.executeTerminalCommand',
+            'npx heft start --serve-config=myconfig'
+        ));
+    });
+
     test('should execute "gulp test" when Test action is triggered', () => {
         TerminalCommandExecuter['gulpTestProject']();
 
         assert(executeCommandStub.calledWithExactly(
             'spfx-toolkit.executeTerminalCommand',
             'gulp test'
+        ));
+    });
+
+    test('should execute "npx heft test" when heft Test action is triggered', () => {
+        TerminalCommandExecuter['heftTestProject']();
+
+        assert(executeCommandStub.calledWithExactly(
+            'spfx-toolkit.executeTerminalCommand',
+            'npx heft test'
         ));
     });
 
@@ -193,5 +418,57 @@ suite('Gulp task commands', () => {
             'spfx-toolkit.executeTerminalCommand',
             'gulp trust-dev-cert'
         ));
+    });
+
+    test('should execute "npx heft trust-dev-cert" when heft Trust self-signed developer certificate action is triggered', () => {
+        TerminalCommandExecuter['heftTrustDevCert']();
+
+        assert(executeCommandStub.calledWithExactly(
+            'spfx-toolkit.executeTerminalCommand',
+            'npx heft trust-dev-cert'
+        ));
+    });
+
+    test('should load combined task commands including gulp and heft tasks', async () => {
+        const findFilesStub = sinon.stub(vscode.workspace, 'findFiles');
+        findFilesStub.withArgs('gulpfile.js', sinon.match.any).resolves([{ fsPath: '/fake/gulpfile.js' } as any]);
+        findFilesStub.withArgs('package.json', sinon.match.any).resolves([{ fsPath: '/fake/package.json' } as any]);
+
+        const fs = require('fs');
+        const readFileSyncStub = sinon.stub(fs, 'readFileSync');
+        readFileSyncStub.returns(JSON.stringify({
+            devDependencies: {
+                '@rushstack/heft': '^0.50.0'
+            },
+            scripts: {}
+        }));
+
+        const combinedCommands = await getCombinedTaskCommands();
+
+        const gulpTasksGroup = combinedCommands.find(cmd => cmd.label === 'Gulp Tasks');
+        assert(gulpTasksGroup, 'Gulp Tasks should exist');
+        const combinedGulpCommands = gulpTasksGroup.children || [];
+
+        assert.strictEqual(combinedGulpCommands.length, gulpTaskCommands.length, 'Combined commands should include all gulp commands');
+
+        const combinedGulpCommandNames = combinedGulpCommands.map(command => command.label);
+        const gulpCommandNames = gulpTaskCommands.map(command => command.label);
+
+        gulpCommandNames.forEach(gulpCommandName => {
+            assert(combinedGulpCommandNames.includes(gulpCommandName), `Gulp command ${gulpCommandName} should be included in combined commands`);
+        });
+
+        const heftTasksGroup = combinedCommands.find(cmd => cmd.label === 'Heft Tasks');
+        assert(heftTasksGroup, 'Heft Tasks should exist');
+        const combinedHeftCommands = heftTasksGroup.children || [];
+
+        assert.strictEqual(combinedHeftCommands.length, heftTaskCommands.length, 'Combined commands should include all heft commands');
+
+        const combinedHeftCommandNames = combinedHeftCommands.map(command => command.label);
+        const heftCommandNames = heftTaskCommands.map(command => command.label);
+
+        heftCommandNames.forEach(heftCommandName => {
+            assert(combinedHeftCommandNames.includes(heftCommandName), `Heft command ${heftCommandName} should be included in combined commands`);
+        });
     });
 });

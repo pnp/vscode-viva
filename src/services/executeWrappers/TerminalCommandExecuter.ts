@@ -178,7 +178,7 @@ export class TerminalCommandExecuter {
         commands.executeCommand(Commands.executeTerminalCommand, 'gulp serve --nobrowser');
         break;
       case 'Serve from configuration':
-        TerminalCommandExecuter.serveFromConfiguration('gulp serve --config=');
+        await TerminalCommandExecuter.serveFromConfiguration('gulp serve --config=');
         break;
     }
   }
@@ -205,7 +205,7 @@ export class TerminalCommandExecuter {
         commands.executeCommand(Commands.executeTerminalCommand, 'npx heft start --nobrowser');
         break;
       case 'Start from configuration':
-        TerminalCommandExecuter.serveFromConfiguration('npx heft start --serve-config=');
+        await TerminalCommandExecuter.serveFromConfiguration('npx heft start --serve-config=');
         break;
     }
   }
@@ -301,7 +301,7 @@ export class TerminalCommandExecuter {
    * Gets the names of the serve configurations from the serve.json file.
    */
   private static async getServeConfigNames(): Promise<string[]> {
-    const wsFolder = Folders.getWorkspaceFolder();
+    const wsFolder = await Folders.getWorkspaceFolder();
     if (!wsFolder) {
       return [];
     }
