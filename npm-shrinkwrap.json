@@ -1,12 +1,12 @@
 {
 	"name": "viva-connections-toolkit",
-	"version": "4.13.12",
+	"version": "4.13.13",
 	"lockfileVersion": 3,
 	"requires": true,
 	"packages": {
 		"": {
 			"name": "viva-connections-toolkit",
-			"version": "4.13.12",
+			"version": "4.13.13",
 			"license": "MIT",
 			"dependencies": {
 				"@grconrad/vscode-extension-feedback": "^1.0.0",
