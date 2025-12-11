@@ -771,6 +771,17 @@
 					],
 					"description": "Choose your preferred Node.js version manager. Choose between `nvs`, `nvm`, or `none`."
 				},
+				"spfx-toolkit.packageManager": {
+					"title": "Node Package Manager",
+					"type": "string",
+					"default": "npm",
+					"enum": [
+						"npm",
+						"pnpm",
+						"yarn"
+					],
+					"description": "Choose your preferred Node package manager. Choose between `npm`, `pnpm`, or `yarn`."
+				},
 				"spfx-toolkit.showServiceIncidentList": {
 					"title": "Show service health incidents",
 					"type": "boolean",

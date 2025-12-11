@@ -17,6 +17,7 @@ import { ChatTools } from './chat/tools/ChatTools';
 import { SpfxAppCLIActions } from './services/actions/SpfxAppCLIActions';
 import { IncreaseVersionActions } from './services/actions/IncreaseVersionActions';
 import { scheduleFeedbackChecks } from '@grconrad/vscode-extension-feedback';
+import { getPackageManager, getInstallCommand } from './utils';
 import { Logger } from './services/dataType/Logger';
 
 
@@ -85,9 +86,11 @@ export async function activate(context: vscode.ExtensionContext) {
 
 				const terminalTitle = 'Installing dependencies';
 				const terminalIcon = 'cloud-download';
+				const packageManager = getPackageManager();
+				const installCmd = getInstallCommand(packageManager);
 
 				if (fileContents.indexOf(ProjectFileContent.init) > -1 || fileContents.indexOf(ProjectFileContent.initScenario) > -1) {
-					await TerminalCommandExecuter.runCommand('npm i', terminalTitle, terminalIcon);
+					await TerminalCommandExecuter.runCommand(`${packageManager} install`, terminalTitle, terminalIcon);
 				}
 
 				if (fileContents.indexOf(ProjectFileContent.initScenario) > -1) {
@@ -95,23 +98,24 @@ export async function activate(context: vscode.ExtensionContext) {
 				}
 
 				if (fileContents.indexOf(ProjectFileContent.installReusablePropertyPaneControls) > -1) {
-					await TerminalCommandExecuter.runCommand('npm install @pnp/spfx-property-controls --save --save-exact', terminalTitle, terminalIcon);
+					await TerminalCommandExecuter.runCommand(`${packageManager} ${installCmd} @pnp/spfx-property-controls --save --save-exact`, terminalTitle, terminalIcon);
 				}
 
 				if (fileContents.indexOf(ProjectFileContent.installReusableReactControls) > -1) {
-					await TerminalCommandExecuter.runCommand('npm install @pnp/spfx-controls-react --save --save-exact', terminalTitle, terminalIcon);
+					await TerminalCommandExecuter.runCommand(`${packageManager} ${installCmd} @pnp/spfx-controls-react --save --save-exact`, terminalTitle, terminalIcon);
 				}
 
 				if (fileContents.indexOf(ProjectFileContent.installPnPJs) > -1) {
-					await TerminalCommandExecuter.runCommand('npm install @pnp/sp @pnp/graph --save', terminalTitle, terminalIcon);
+					await TerminalCommandExecuter.runCommand(`${packageManager} ${installCmd} @pnp/sp @pnp/graph --save`, terminalTitle, terminalIcon);
 				}
 
+				// spfx-fast-serve has its own package manager detection mechanism
 				if (fileContents.indexOf(ProjectFileContent.installSPFxFastServe) > -1) {
 					await TerminalCommandExecuter.runCommand('spfx-fast-serve --force-install', terminalTitle, terminalIcon);
 				}
 
 				if (fileContents.indexOf(ProjectFileContent.installReact) > -1) {
-					await TerminalCommandExecuter.runCommand('npm install react@17.0.1 react-dom@17.0.1', terminalTitle, terminalIcon);
+					await TerminalCommandExecuter.runCommand(`${packageManager} ${installCmd} react@17.0.1 react-dom@17.0.1`, terminalTitle, terminalIcon);
 				}
 
 				// If either of the following strings are found in the project file, run the command to get the node version
