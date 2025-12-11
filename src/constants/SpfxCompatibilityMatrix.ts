@@ -1,23 +1,18 @@
 import { CompatibilityItem } from '../models';
 
 export const SpfxCompatibilityMatrix: CompatibilityItem[] = [
-    // {
-    //     Version: '1.22.0',
-    //     SupportedNodeVersions: ['22.14.x'], // TODO: to be confirmed upon release
-    //     ReleaseNotes: '', // TODO: to be confirmed upon release
-    //     Dependencies: [
-    //         {
-    //             Name: 'heft',
-    //             SupportedVersions: ['1.0.0'], // TODO: to be confirmed upon release
-    //             InstallVersion: '1.0.0'
-    //         },
-    //         {
-    //             Name: 'yo',
-    //             SupportedVersions: ['4.x', '5.x'],
-    //             InstallVersion: '5'
-    //         }
-    //     ]
-    // },
+    {
+        Version: '1.22.0',
+        SupportedNodeVersions: ['22.14.x'],
+        ReleaseNotes: 'https://learn.microsoft.com/en-us/sharepoint/dev/spfx/release-1.22',
+        Dependencies: [
+            {
+                Name: 'yo',
+                SupportedVersions: ['4.x', '5.x', '6.x'],
+                InstallVersion: '6'
+            }
+        ]
+    },
     {
         Version: '1.21.1',
         SupportedNodeVersions: ['22.14.x'],

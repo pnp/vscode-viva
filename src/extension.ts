@@ -18,6 +18,7 @@ import { SpfxAppCLIActions } from './services/actions/SpfxAppCLIActions';
 import { IncreaseVersionActions } from './services/actions/IncreaseVersionActions';
 import { scheduleFeedbackChecks } from '@grconrad/vscode-extension-feedback';
 import { getPackageManager, getInstallCommand } from './utils';
+import { Logger } from './services/dataType/Logger';
 
 
 const feedbackFormUrl = 'https://forms.office.com/e/ZTfqAissqt';
@@ -47,13 +48,13 @@ export async function activate(context: vscode.ExtensionContext) {
 
 	PnPWebview.register();
 
-	const channel = vscode.window.createOutputChannel('SPFx Toolkit Extension');
+	Logger.getInstance();
 
 	scheduleFeedbackChecks(
 		{
 			memento: context.globalState,
 			logFn: (text: string) => {
-				channel.appendLine(text);
+				Logger.channel?.appendLine(text);
 			}
 		},
 		{
@@ -73,7 +74,7 @@ export async function activate(context: vscode.ExtensionContext) {
 	).then((disposable: vscode.Disposable) => {
 		context.subscriptions.push(disposable);
 	}).catch((reason: any) => {
-		channel.appendLine(`Failed to schedule feedback checks: ${reason}`);
+		Logger.channel?.appendLine(`Failed to schedule feedback checks: ${reason}`);
 	});
 
 	workspace.findFiles(PROJECT_FILE, '**/node_modules/**').then(async (files) => {
