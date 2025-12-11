@@ -16,7 +16,7 @@ import { parseYoRc } from '../../utils/parseYoRc';
 import { parseCliCommand } from '../../utils/parseCliCommand';
 import { CertificateActions } from './CertificateActions';
 import path = require('path');
-import { getExtensionSettings } from '../../utils/getExtensionSettings';
+import { getExtensionSettings, getPackageManager } from '../../utils';
 import * as fs from 'fs';
 import { ActionTreeItem } from '../../providers/ActionTreeDataProvider';
 import { timezones } from '../../constants/Timezones';
@@ -753,9 +753,14 @@ export class CliActions {
     }, async (progress: Progress<{ message?: string; increment?: number }>) => {
       try {
         const projectUpgradeOutputMode: string = getExtensionSettings('projectUpgradeOutputMode', 'both');
-        const shell: string = getExtensionSettings('upgradeShellType', 'powershell');
+        const projectUpgradeShellType: string = getExtensionSettings('upgradeShellType', 'powershell');
+        const packageManager = getPackageManager();
 
-        const commandOptions: any = { shell, toVersion };
+        const commandOptions: any = {
+          shell: projectUpgradeShellType,
+          packageManager: packageManager,
+          toVersion: toVersion
+        };
 
         if (projectUpgradeOutputMode === 'markdown' || projectUpgradeOutputMode === 'both') {
           const resultMd = await CliExecuter.execute('spfx project upgrade', 'md', commandOptions);

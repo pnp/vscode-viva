@@ -1,6 +1,8 @@
 import { CancellationToken, LanguageModelTextPart, LanguageModelTool, LanguageModelToolInvocationOptions, LanguageModelToolInvocationPrepareOptions, LanguageModelToolResult, MarkdownString } from 'vscode';
 import { CliExecuter } from '../../../services/executeWrappers/CliCommandExecuter';
 import { Folders } from '../../../services/check/Folders';
+import { CommandOutput } from '@pnp/cli-microsoft365-spfx-toolkit';
+import { getPackageManager } from '../../../utils';
 import { SpfxCompatibilityMatrix } from '../../../constants';
 
 
@@ -15,6 +17,7 @@ export class SharePointFrameworkProjectUpgrade implements LanguageModelTool<ISha
     ) {
         try {
             const wsFolder = await Folders.getWorkspaceFolder();
+            const packageManager = getPackageManager();
             const params = options.input;
             let toVersion = params.toVersion && params.toVersion.trim() !== '' ? params.toVersion : undefined;
 
@@ -27,12 +30,13 @@ export class SharePointFrameworkProjectUpgrade implements LanguageModelTool<ISha
                 }
             }
 
-            let path: string | undefined;
+            let result = undefined;
             if (wsFolder) {
-                path = wsFolder.uri.fsPath;
+                const workspacePath = wsFolder.uri.fsPath;
+                result = await CliExecuter.execute('spfx project upgrade', 'json', { path: workspacePath, packageManager, toVersion });
+            } else {
+                result = await CliExecuter.execute('spfx project upgrade', 'json', { packageManager, toVersion });
             }
-
-            const result = await CliExecuter.execute('spfx project upgrade', 'json', { path, toVersion });
 
             if (result.stderr) {
                 return new LanguageModelToolResult([new LanguageModelTextPart(`Error: ${result.stderr}`)]);

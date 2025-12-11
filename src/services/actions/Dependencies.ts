@@ -5,10 +5,10 @@ import * as os from 'os';
 import { Logger } from '../dataType/Logger';
 import { Subscription } from '../../models';
 import { Extension } from '../dataType/Extension';
-import { NodeVersionManagers, SpfxCompatibilityMatrix } from '../../constants';
+import { NodeVersionManagers, SpfxCompatibilityMatrix, PackageManagers } from '../../constants';
 import { execSync } from 'child_process';
 import { TerminalCommandExecuter } from '../executeWrappers/TerminalCommandExecuter';
-import { getExtensionSettings } from '../../utils';
+import { getExtensionSettings, getPackageManager } from '../../utils';
 import { CliActions } from './CliActions';
 
 export class Dependencies {
@@ -84,7 +84,19 @@ export class Dependencies {
             const dependencies = spfxVersion.Dependencies.map(dep => `${dep.Name}@${dep.InstallVersion}`).join(' ');
             Logger.info(`Installing dependencies: ${dependencies}`);
 
-            await TerminalCommandExecuter.runCommandAndWait(`npm install -g ${dependencies} @microsoft/generator-sharepoint@${spfxVersion.Version}`, 'Installing dependencies', 'cloud-download');
+            const packageManager = getPackageManager();
+            let installCommand: string;
+
+            // Handle different global installation syntax for each package manager
+            if (packageManager === PackageManagers.yarn) {
+              installCommand = `${packageManager} global add ${dependencies} @microsoft/generator-sharepoint@${spfxVersion.Version}`;
+            } else {
+              // npm and pnpm both use: <manager> <add/install> -g <packages>
+              const cmd = packageManager === PackageManagers.npm ? 'install' : 'add';
+              installCommand = `${packageManager} ${cmd} -g ${dependencies} @microsoft/generator-sharepoint@${spfxVersion.Version}`;
+            }
+
+            await TerminalCommandExecuter.runCommandAndWait(installCommand, 'Installing dependencies', 'cloud-download');
 
             const releaseNotes = 'Release Notes';
             const learningPath = 'Learn SPFx';
