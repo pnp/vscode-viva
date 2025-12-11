@@ -30,7 +30,6 @@ export class SharePointFrameworkProjectUpgrade implements LanguageModelTool<ISha
                 }
             }
 
-            let path: string | undefined;
             let result = undefined;
             if (wsFolder) {
                 const workspacePath = wsFolder.uri.fsPath;

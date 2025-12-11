@@ -86,7 +86,7 @@ export class Dependencies {
 
             const packageManager = getPackageManager();
             let installCommand: string;
-            
+
             // Handle different global installation syntax for each package manager
             if (packageManager === PackageManagers.yarn) {
               installCommand = `${packageManager} global add ${dependencies} @microsoft/generator-sharepoint@${spfxVersion.Version}`;
@@ -95,7 +95,7 @@ export class Dependencies {
               const cmd = packageManager === PackageManagers.npm ? 'install' : 'add';
               installCommand = `${packageManager} ${cmd} -g ${dependencies} @microsoft/generator-sharepoint@${spfxVersion.Version}`;
             }
-            
+
             await TerminalCommandExecuter.runCommandAndWait(installCommand, 'Installing dependencies', 'cloud-download');
 
             const releaseNotes = 'Release Notes';
