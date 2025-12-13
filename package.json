@@ -452,9 +452,10 @@
 					"enum": [
 						"nvm",
 						"nvs",
+						"fnm",
 						"none"
 					],
-					"description": "Choose your preferred Node.js version manager. Choose between `nvs`, `nvm`, or `none`."
+					"description": "Choose your preferred Node.js version manager. Choose between `nvs`, `fnm`, `nvm`, or `none`."
 				},
 				"spfx-toolkit.showServiceIncidentList": {
 					"title": "Show service health incidents",

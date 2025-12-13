@@ -47,12 +47,14 @@ export class Dependencies {
               const installNodeJSOption = 'Install Node.js';
               const useNvmOption = os.platform() === 'win32' ? 'Use NVM for Windows' : 'Use NVM';
               const useNvsOption = 'Use NVS';
+              const useFnmOption = 'Use FNM';
 
               Notifications.warning(
                 'Your Node.js version is not supported with SPFx development. Make sure you are using version: >=22.14.0 and <23.0.0',
                 installNodeJSOption,
                 useNvmOption,
-                useNvsOption
+                useNvsOption,
+                useFnmOption
               ).then((selectedOption) => {
                 if (selectedOption === installNodeJSOption) {
                   commands.executeCommand('vscode.open', Uri.parse('https://nodejs.org/en/download/'));
@@ -64,6 +66,9 @@ export class Dependencies {
                 } else if (selectedOption === useNvsOption) {
                   const nvsInstallUrl = 'https://github.com/jasongin/nvs?tab=readme-ov-file#nvs-node-version-switcher';
                   commands.executeCommand('vscode.open', Uri.parse(nvsInstallUrl));
+                } else if (selectedOption === useFnmOption) {
+                  const fnmInstallUrl = 'https://github.com/Schniz/fnm#--fast-node-manager-fnm----';
+                  commands.executeCommand('vscode.open', Uri.parse(fnmInstallUrl));
                 }
               });
               resolve(null);

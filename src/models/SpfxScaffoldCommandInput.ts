@@ -12,5 +12,5 @@ export interface SpfxScaffoldCommandInput extends SpfxAddComponentCommandInput {
   shouldInstallSPFxFastServe: boolean;
   shouldCreateNodeVersionFile: boolean;
   nodeVersionManagerFile: '.nvmrc' | '.node-version';
-  nodeVersionManager: 'nvm' | 'nvs' | 'none';
+  nodeVersionManager: 'nvm' | 'nvs' | 'fnm' |'none';
 }

@@ -29,7 +29,7 @@ export const ScaffoldSpfxProjectView: React.FunctionComponent<IScaffoldSpfxProje
   const [shouldInstallPnPJs, setShouldInstallPnPJs] = useState<boolean>(false);
   const [shouldInstallSPFxFastServe, setShouldInstallSPFxFastServe] = useState<boolean>(false);
   const [shouldCreateNodeVersionFile, setShouldCreateNodeVersionFile] = useState<boolean>(false);
-  const [nodeVersionManager, setNodeVersionManager] = useState<'nvm' | 'nvs' | 'none'>('nvm');
+  const [nodeVersionManager, setNodeVersionManager] = useState<'nvm' | 'nvs' | 'fnm' | 'none'>('nvm');
   const [nodeVersionManagerFile, setNodeVersionManagerFile] = useState<'.nvmrc' | '.node-version'>('.nvmrc');
   const location: any = useLocation();
 

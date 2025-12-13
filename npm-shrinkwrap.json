@@ -1301,6 +1301,7 @@
 			"version": "1.4.1",
 			"resolved": "https://registry.npmjs.org/@opentelemetry/api/-/api-1.4.1.tgz",
 			"integrity": "sha512-O2yRJce1GOc6PAy3QxFM4NzFiWzvScDC1/5ihYBL6BUEVdq0XMWN01sppE+H6bBXbaFYipjwFLEWLg5PaSOThA==",
+			"peer": true,
 			"engines": {
 				"node": ">=8.0.0"
 			}
@@ -2926,7 +2927,6 @@
 			"version": "4.0.6",
 			"resolved": "https://registry.npmjs.org/dom7/-/dom7-4.0.6.tgz",
 			"integrity": "sha512-emjdpPLhpNubapLFdjNL9tP06Sr+GZkrIHEXLWvOGsytACUrkbeIdjO5g77m00BrHTznnlcNqgmn7pCN192TBA==",
-			"peer": true,
 			"dependencies": {
 				"ssr-window": "^4.0.0"
 			}
@@ -3951,6 +3951,19 @@
 			"resolved": "https://registry.npmjs.org/fs.realpath/-/fs.realpath-1.0.0.tgz",
 			"integrity": "sha1-FQStJSMVjKpA20onh8sBQRmU6k8=",
 			"extraneous": true
+		},
+		"node_modules/@pnp/cli-microsoft365/node_modules/fsevents": {
+			"version": "2.3.2",
+			"resolved": "https://registry.npmjs.org/fsevents/-/fsevents-2.3.2.tgz",
+			"integrity": "sha512-xiqMQR4xAeHTuB9uWm+fFRcIOgKBMiOBP+eXiyT7jsgVCq1bkVygt00oASowB7EdtpOHaaPgKt812P9ab+DDKA==",
+			"extraneous": true,
+			"hasInstallScript": true,
+			"os": [
+				"darwin"
+			],
+			"engines": {
+				"node": "^8.16.0 || ^10.6.0 || >=11.0.0"
+			}
 		},
 		"node_modules/@pnp/cli-microsoft365/node_modules/function-bind": {
 			"version": "1.1.1",
@@ -6251,8 +6264,7 @@
 		"node_modules/@pnp/cli-microsoft365/node_modules/ssr-window": {
 			"version": "4.0.2",
 			"resolved": "https://registry.npmjs.org/ssr-window/-/ssr-window-4.0.2.tgz",
-			"integrity": "sha512-ISv/Ch+ig7SOtw7G2+qkwfVASzazUnvlDTwypdLoPoySv+6MqlOV10VwPSE6EWkGjhW50lUmghPmpYZXMu/+AQ==",
-			"peer": true
+			"integrity": "sha512-ISv/Ch+ig7SOtw7G2+qkwfVASzazUnvlDTwypdLoPoySv+6MqlOV10VwPSE6EWkGjhW50lUmghPmpYZXMu/+AQ=="
 		},
 		"node_modules/@pnp/cli-microsoft365/node_modules/stack-chain": {
 			"version": "1.3.7",
@@ -6628,6 +6640,7 @@
 			"version": "4.9.5",
 			"resolved": "https://registry.npmjs.org/typescript/-/typescript-4.9.5.tgz",
 			"integrity": "sha512-1FXk9E2Hm+QzZQ7z+McJiHL4NW1F2EzMu9Nq9i3zAaGqibafqYwCVU6WyWAuyQRRzOlxou8xZSyXLEN8oKj24g==",
+			"peer": true,
 			"bin": {
 				"tsc": "bin/tsc",
 				"tsserver": "bin/tsserver"
@@ -7216,6 +7229,7 @@
 		"node_modules/@types/react": {
 			"version": "18.2.37",
 			"license": "MIT",
+			"peer": true,
 			"dependencies": {
 				"@types/prop-types": "*",
 				"@types/scheduler": "*",
@@ -7226,6 +7240,7 @@
 			"version": "18.2.15",
 			"dev": true,
 			"license": "MIT",
+			"peer": true,
 			"dependencies": {
 				"@types/react": "*"
 			}
@@ -7359,6 +7374,7 @@
 			"version": "5.62.0",
 			"dev": true,
 			"license": "BSD-2-Clause",
+			"peer": true,
 			"dependencies": {
 				"@typescript-eslint/scope-manager": "5.62.0",
 				"@typescript-eslint/types": "5.62.0",
@@ -7995,6 +8011,7 @@
 			"version": "8.11.2",
 			"dev": true,
 			"license": "MIT",
+			"peer": true,
 			"bin": {
 				"acorn": "bin/acorn"
 			},
@@ -8031,6 +8048,7 @@
 			"version": "6.12.6",
 			"dev": true,
 			"license": "MIT",
+			"peer": true,
 			"dependencies": {
 				"fast-deep-equal": "^3.1.1",
 				"fast-json-stable-stringify": "^2.0.0",
@@ -8432,6 +8450,7 @@
 				}
 			],
 			"license": "MIT",
+			"peer": true,
 			"dependencies": {
 				"caniuse-lite": "^1.0.30001541",
 				"electron-to-chromium": "^1.4.535",
@@ -9371,6 +9390,7 @@
 			"version": "8.53.0",
 			"dev": true,
 			"license": "MIT",
+			"peer": true,
 			"dependencies": {
 				"@eslint-community/eslint-utils": "^4.2.0",
 				"@eslint-community/regexpp": "^4.6.1",
@@ -9963,6 +9983,21 @@
 			"version": "1.0.0",
 			"dev": true,
 			"license": "ISC"
+		},
+		"node_modules/fsevents": {
+			"version": "2.3.3",
+			"resolved": "https://registry.npmjs.org/fsevents/-/fsevents-2.3.3.tgz",
+			"integrity": "sha512-5xoDfX+fL7faATnagmWPpbFtwh/R77WmMMqqHGS65C3vvB0YHrgF+B1YmZ3441tMj5n63k0212XNoJwzlhffQw==",
+			"dev": true,
+			"hasInstallScript": true,
+			"license": "MIT",
+			"optional": true,
+			"os": [
+				"darwin"
+			],
+			"engines": {
+				"node": "^8.16.0 || ^10.6.0 || >=11.0.0"
+			}
 		},
 		"node_modules/function-bind": {
 			"version": "1.1.2",
@@ -13823,7 +13858,7 @@
 			}
 		},
 		"node_modules/npm/node_modules/ip": {
-			"version": "2.0.1",
+			"version": "2.0.0",
 			"dev": true,
 			"inBundle": true,
 			"license": "MIT"
@@ -14960,7 +14995,7 @@
 			"inBundle": true,
 			"license": "MIT",
 			"dependencies": {
-				"ip": "^2.0.1",
+				"ip": "^2.0.0",
 				"smart-buffer": "^4.2.0"
 			},
 			"engines": {
@@ -15769,6 +15804,7 @@
 				}
 			],
 			"license": "MIT",
+			"peer": true,
 			"dependencies": {
 				"nanoid": "^3.3.6",
 				"picocolors": "^1.0.0",
@@ -16100,6 +16136,7 @@
 		"node_modules/react": {
 			"version": "18.2.0",
 			"license": "MIT",
+			"peer": true,
 			"dependencies": {
 				"loose-envify": "^1.1.0"
 			},
@@ -16111,6 +16148,7 @@
 			"version": "18.2.0",
 			"dev": true,
 			"license": "MIT",
+			"peer": true,
 			"dependencies": {
 				"loose-envify": "^1.1.0",
 				"scheduler": "^0.23.0"
@@ -17546,6 +17584,7 @@
 			"version": "4.9.5",
 			"dev": true,
 			"license": "Apache-2.0",
+			"peer": true,
 			"bin": {
 				"tsc": "bin/tsc",
 				"tsserver": "bin/tsserver"
@@ -17856,6 +17895,7 @@
 			"version": "5.89.0",
 			"dev": true,
 			"license": "MIT",
+			"peer": true,
 			"dependencies": {
 				"@types/eslint-scope": "^3.7.3",
 				"@types/estree": "^1.0.0",
@@ -17902,6 +17942,7 @@
 			"version": "4.10.0",
 			"dev": true,
 			"license": "MIT",
+			"peer": true,
 			"dependencies": {
 				"@discoveryjs/json-ext": "^0.5.0",
 				"@webpack-cli/configtest": "^1.2.0",
@@ -17978,6 +18019,7 @@
 			"version": "8.12.0",
 			"dev": true,
 			"license": "MIT",
+			"peer": true,
 			"dependencies": {
 				"fast-deep-equal": "^3.1.1",
 				"json-schema-traverse": "^1.0.0",
@@ -18085,6 +18127,7 @@
 			"version": "8.12.0",
 			"dev": true,
 			"license": "MIT",
+			"peer": true,
 			"dependencies": {
 				"fast-deep-equal": "^3.1.1",
 				"json-schema-traverse": "^1.0.0",
