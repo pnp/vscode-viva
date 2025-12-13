@@ -5346,6 +5346,29 @@
       "sampleType": "samples"
     },
     {
+      "name": "pnp-sp-dev-spfx-web-parts-react-copilot-apis",
+      "title": "Microsoft 365 Copilot Chat and Search with Work IQ in SPFx",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-copilot-apis",
+      "description": "SharePoint Framework web parts that integrate Microsoft 365 Copilot Chat and Search APIs to create interactive AI assistants with conversational history and intelligent document search.",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-copilot-apis/assets/preview-chat.png",
+      "authors": [
+        {
+          "name": "Paolo Pialorsi",
+          "pictureUrl": "https://github.com/paolopia.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2025-12-08",
+      "updateDate": "2025-12-08",
+      "version": "1.22.0-rc.0",
+      "componentType": "webpart",
+      "extensionType": null,
+      "sampleGalerry": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
       "name": "pnp-sp-dev-spfx-web-parts-react-copilot-hr-assistant",
       "title": "Copilot Chat Bubble - With SSO integrated to SharePoint which summarizes sessions at ESPC 2024",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-copilot-chatbubble-with-sso",
