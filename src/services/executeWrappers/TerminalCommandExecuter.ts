@@ -199,13 +199,13 @@ export class TerminalCommandExecuter {
 
     switch (startTaskType) {
       case 'Start':
-        commands.executeCommand(Commands.executeTerminalCommand, 'npx heft start');
+        commands.executeCommand(Commands.executeTerminalCommand, 'heft start');
         break;
       case 'Start (no browser)':
-        commands.executeCommand(Commands.executeTerminalCommand, 'npx heft start --nobrowser');
+        commands.executeCommand(Commands.executeTerminalCommand, 'heft start --nobrowser');
         break;
       case 'Start from configuration':
-        await TerminalCommandExecuter.serveFromConfiguration('npx heft start --serve-config=');
+        await TerminalCommandExecuter.serveFromConfiguration('heft start --serve-config=');
         break;
     }
   }
@@ -244,7 +244,7 @@ export class TerminalCommandExecuter {
    * Heft command to eject the project
    */
   public static async heftEjectProject() {
-    commands.executeCommand(Commands.executeTerminalCommand, 'npx heft eject-webpack');
+    commands.executeCommand(Commands.executeTerminalCommand, 'heft eject-webpack');
   }
 
   /**
@@ -267,7 +267,7 @@ export class TerminalCommandExecuter {
     const answer = await TerminalCommandExecuter.environmentTypePrompt();
 
     if (answer) {
-      commands.executeCommand(Commands.executeTerminalCommand, `npx heft package-solution${answer === 'local' ? '' : ' --production'}`);
+      commands.executeCommand(Commands.executeTerminalCommand, `heft package-solution${answer === 'local' ? '' : ' --production'}`);
     }
   }
 
@@ -293,7 +293,7 @@ export class TerminalCommandExecuter {
 
     if (answer) {
       const cmdChainOperator = TerminalCommandExecuter.getCommandChainOperator();
-      commands.executeCommand(Commands.executeTerminalCommand, `npx heft build${answer === 'local' ? '' : ' --production'}${cmdChainOperator} npx heft package-solution${answer === 'local' ? '' : ' --production'}`);
+      commands.executeCommand(Commands.executeTerminalCommand, `heft build${answer === 'local' ? '' : ' --production'}${cmdChainOperator} heft package-solution${answer === 'local' ? '' : ' --production'}`);
     }
   }
 
@@ -345,7 +345,7 @@ export class TerminalCommandExecuter {
    * Cleans the project by executing the Heft clean command.
    */
   private static heftCleanProject() {
-    commands.executeCommand(Commands.executeTerminalCommand, 'npx heft clean');
+    commands.executeCommand(Commands.executeTerminalCommand, 'heft clean');
   }
 
   /**
@@ -362,7 +362,7 @@ export class TerminalCommandExecuter {
     const answer = await TerminalCommandExecuter.environmentTypePrompt();
 
     if (answer) {
-      commands.executeCommand(Commands.executeTerminalCommand, `npx heft build${answer === 'local' ? '' : ' --production'}`);
+      commands.executeCommand(Commands.executeTerminalCommand, `heft build${answer === 'local' ? '' : ' --production'}`);
     }
   }
 
@@ -377,7 +377,7 @@ export class TerminalCommandExecuter {
    * Tests the project by executing the Heft test command.
   */
   private static heftTestProject() {
-    commands.executeCommand(Commands.executeTerminalCommand, 'npx heft test');
+    commands.executeCommand(Commands.executeTerminalCommand, 'heft test');
   }
 
   /**
@@ -391,7 +391,7 @@ export class TerminalCommandExecuter {
    * Trusts the development certificate by executing the Heft trust-dev-cert command.
   */
   private static heftTrustDevCert() {
-    commands.executeCommand(Commands.executeTerminalCommand, 'npx heft trust-dev-cert');
+    commands.executeCommand(Commands.executeTerminalCommand, 'heft trust-dev-cert');
   }
 
   /**
@@ -405,7 +405,7 @@ export class TerminalCommandExecuter {
    * Deploys to Azure CDN by executing the Heft deploy-azure-storage command.
   */
   private static heftDeployToAzureStorage() {
-    commands.executeCommand(Commands.executeTerminalCommand, 'npx heft deploy-azure-storage');
+    commands.executeCommand(Commands.executeTerminalCommand, 'heft deploy-azure-storage');
   }
 
   /**
