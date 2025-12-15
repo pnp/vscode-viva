@@ -509,6 +509,45 @@
 				}
 			},
 			{
+				"name": "copy_spo_page",
+				"tags": [
+					"sharepoint",
+					"page",
+					"spfx-toolkit"
+				],
+				"toolReferenceName": "SharePointPageCopy",
+				"displayName": "Copy a SharePoint Page",
+				"modelDescription": "Copies a modern SharePoint page within the same site or to a different site. Supports copying page templates. Use relative path in targetUrl for same-site copies or absolute URL for cross-site copies. Set overwrite to true to replace existing pages. Requires Microsoft 365 authentication and read permissions on the source site, write permissions on the target site.",
+				"userDescription": "Copies a page.",
+				"canBeReferencedInPrompt": true,
+				"icon": "$(copy)",
+				"inputSchema": {
+					"type": "object",
+					"properties": {
+						"webUrl": {
+							"type": "string",
+							"description": "URL of the site where the source page is located. This option is required.",
+							"default": ""
+						},
+						"sourceName": {
+							"type": "string",
+							"description": "Name of the source page to copy (e.g., 'home.aspx' or 'templates/PageTemplate.aspx'). This option is required.",
+							"default": ""
+						},
+						"targetUrl": {
+							"type": "string",
+							"description": "Target URL for the copied page. Use relative path (e.g., 'home-copy.aspx') for same-site copies or absolute URL for cross-site copies. This option is required.",
+							"default": ""
+						},
+						"overwrite": {
+							"type": "boolean",
+							"description": "Set to true to overwrite the target page if it already exists.",
+							"default": false
+						}
+					}
+				}
+			},
+			{
 				"name": "remove_spo_page",
 				"tags": [
 					"sharepoint",
