@@ -116,23 +116,23 @@ suite('Task commands', () => {
         ));
     });
 
-    test('should execute "npx heft build" when heft Build action is triggered for local environment', async () => {
+    test('should execute "heft build" when heft Build action is triggered for local environment', async () => {
         sinon.stub(vscode.window, 'showQuickPick').resolves('local' as any);
         await TerminalCommandExecuter['heftBuildProject']();
 
         assert(executeCommandStub.calledWithExactly(
             'spfx-toolkit.executeTerminalCommand',
-            'npx heft build'
+            'heft build'
         ));
     });
 
-    test('should execute "npx heft build --production" when heft Build action is triggered for production environment', async () => {
+    test('should execute "heft build --production" when heft Build action is triggered for production environment', async () => {
         sinon.stub(vscode.window, 'showQuickPick').resolves('production' as any);
         await TerminalCommandExecuter['heftBuildProject']();
 
         assert(executeCommandStub.calledWithExactly(
             'spfx-toolkit.executeTerminalCommand',
-            'npx heft build --production'
+            'heft build --production'
         ));
     });
 
@@ -165,12 +165,12 @@ suite('Task commands', () => {
         ));
     });
 
-    test('should execute "npx heft clean" when heft Clean action is triggered', () => {
+    test('should execute "heft clean" when heft Clean action is triggered', () => {
         TerminalCommandExecuter['heftCleanProject']();
 
         assert(executeCommandStub.calledWithExactly(
             'spfx-toolkit.executeTerminalCommand',
-            'npx heft clean'
+            'heft clean'
         ));
     });
 
@@ -183,21 +183,21 @@ suite('Task commands', () => {
         ));
     });
 
-    test('should execute "npx heft deploy-azure-storage" when heft Deploy project assets to Azure Storage action is triggered', () => {
+    test('should execute "heft deploy-azure-storage" when heft Deploy project assets to Azure Storage action is triggered', () => {
         TerminalCommandExecuter['heftDeployToAzureStorage']();
 
         assert(executeCommandStub.calledWithExactly(
             'spfx-toolkit.executeTerminalCommand',
-            'npx heft deploy-azure-storage'
+            'heft deploy-azure-storage'
         ));
     });
 
-    test('should execute "npx heft eject-webpack" when heft Eject action is triggered', async () => {
+    test('should execute "heft eject-webpack" when heft Eject action is triggered', async () => {
         await TerminalCommandExecuter['heftEjectProject']();
 
         assert(executeCommandStub.calledWithExactly(
             'spfx-toolkit.executeTerminalCommand',
-            'npx heft eject-webpack'
+            'heft eject-webpack'
         ));
     });
 
@@ -221,23 +221,23 @@ suite('Task commands', () => {
         ));
     });
 
-    test('should execute "npx heft package-solution" when heft packaging for local environment', async () => {
+    test('should execute "heft package-solution" when heft packaging for local environment', async () => {
         sinon.stub(vscode.window, 'showQuickPick').resolves('local' as any);
         await TerminalCommandExecuter['heftPackageProject']();
 
         assert(executeCommandStub.calledWithExactly(
             'spfx-toolkit.executeTerminalCommand',
-            'npx heft package-solution'
+            'heft package-solution'
         ));
     });
 
-    test('should execute "npx heft package-solution --production" when heft packaging for production environment', async () => {
+    test('should execute "heft package-solution --production" when heft packaging for production environment', async () => {
         sinon.stub(vscode.window, 'showQuickPick').resolves('production' as any);
         await TerminalCommandExecuter['heftPackageProject']();
 
         assert(executeCommandStub.calledWithExactly(
             'spfx-toolkit.executeTerminalCommand',
-            'npx heft package-solution --production'
+            'heft package-solution --production'
         ));
     });
 
@@ -261,23 +261,23 @@ suite('Task commands', () => {
         ));
     });
 
-    test('should execute "npx heft build; npx heft package-solution" when heft publishing project for local environment', async () => {
+    test('should execute "heft build; heft package-solution" when heft publishing project for local environment', async () => {
         sinon.stub(vscode.window, 'showQuickPick').resolves('local' as any);
         await TerminalCommandExecuter['heftPublishProject']();
 
         assert(executeCommandStub.calledWithExactly(
             'spfx-toolkit.executeTerminalCommand',
-            'npx heft build && npx heft package-solution'
+            'heft build && heft package-solution'
         ));
     });
 
-    test('should execute "npx heft build --production; npx heft package-solution --production" when heft publishing project for production', async () => {
+    test('should execute "heft build --production; heft package-solution --production" when heft publishing project for production', async () => {
         sinon.stub(vscode.window, 'showQuickPick').resolves('production' as any);
         await TerminalCommandExecuter['heftPublishProject']();
 
         assert(executeCommandStub.calledWithExactly(
             'spfx-toolkit.executeTerminalCommand',
-            'npx heft build --production && npx heft package-solution --production'
+            'heft build --production && heft package-solution --production'
         ));
     });
 
@@ -337,29 +337,29 @@ suite('Task commands', () => {
         ));
     });
 
-    test('should execute "npx heft start" when heft Start action is triggered', async () => {
+    test('should execute "heft start" when heft Start action is triggered', async () => {
         sinon.stub(Folders, 'getWorkspaceFolder').resolves({ name: 'mockFolder', uri: vscode.Uri.file('/mockFolder') } as vscode.WorkspaceFolder);
         sinon.stub(vscode.window, 'showQuickPick').resolves('Start' as any);
         await TerminalCommandExecuter['heftStartProject']();
 
         assert(executeCommandStub.calledWithExactly(
             'spfx-toolkit.executeTerminalCommand',
-            'npx heft start'
+            'heft start'
         ));
     });
 
-    test('should execute "npx heft start --nobrowser" when heft Start (no browser) action is triggered', async () => {
+    test('should execute "heft start --nobrowser" when heft Start (no browser) action is triggered', async () => {
         sinon.stub(Folders, 'getWorkspaceFolder').resolves({ name: 'mockFolder', uri: vscode.Uri.file('/mockFolder') } as vscode.WorkspaceFolder);
         sinon.stub(vscode.window, 'showQuickPick').resolves('Start (no browser)' as any);
         await TerminalCommandExecuter['heftStartProject']();
 
         assert(executeCommandStub.calledWithExactly(
             'spfx-toolkit.executeTerminalCommand',
-            'npx heft start --nobrowser'
+            'heft start --nobrowser'
         ));
     });
 
-    test('should execute "npx heft start --serve-config=myconfig" when heft Start from configuration is triggered', async () => {
+    test('should execute "heft start --serve-config=myconfig" when heft Start from configuration is triggered', async () => {
         sinon.stub(Folders, 'getWorkspaceFolder').resolves({ name: 'mockFolder', uri: vscode.Uri.file('/mockFolder') } as vscode.WorkspaceFolder);
 
         const fs = require('fs');
@@ -389,7 +389,7 @@ suite('Task commands', () => {
 
         assert(executeCommandStub.calledWithExactly(
             'spfx-toolkit.executeTerminalCommand',
-            'npx heft start --serve-config=myconfig'
+            'heft start --serve-config=myconfig'
         ));
     });
 
@@ -402,12 +402,12 @@ suite('Task commands', () => {
         ));
     });
 
-    test('should execute "npx heft test" when heft Test action is triggered', () => {
+    test('should execute "heft test" when heft Test action is triggered', () => {
         TerminalCommandExecuter['heftTestProject']();
 
         assert(executeCommandStub.calledWithExactly(
             'spfx-toolkit.executeTerminalCommand',
-            'npx heft test'
+            'heft test'
         ));
     });
 
@@ -420,12 +420,12 @@ suite('Task commands', () => {
         ));
     });
 
-    test('should execute "npx heft trust-dev-cert" when heft Trust self-signed developer certificate action is triggered', () => {
+    test('should execute "heft trust-dev-cert" when heft Trust self-signed developer certificate action is triggered', () => {
         TerminalCommandExecuter['heftTrustDevCert']();
 
         assert(executeCommandStub.calledWithExactly(
             'spfx-toolkit.executeTerminalCommand',
-            'npx heft trust-dev-cert'
+            'heft trust-dev-cert'
         ));
     });
 
