@@ -9,9 +9,17 @@ Usually the most important and the hardest part is always the setup of the local
 
 ![validate-dependency](../../../../assets/images-vscode/validate-dependency.png)
 
-The extension will first check if you have Node.js installed and if the version you have is compatible with the latest version SharePoint Framework. If not, it will prompt you to install the correct version. 
-Then it will check if you have gulp-cli, yeoman, and SharePoint Generator installed globally.
+The extension will validate your setup for the SPFx generator version you have installed in your machine. In case you do not have any SPFx generator installed, it will validate against the latest SPFx version.
+In case your Node.js version is not correct or you do not have the required global dependencies installed, SPFx Toolkit will fix that for you by running the install dependencies action.
 
 ## Install dependencies
 
-If you are just getting started with SharePoint Framework development on a clean machine you may use the "Install dependencies" button to install all the needed global dependencies in one go without any additional validation. This action will always install the dependencies overwriting the existing ones if you had any of them.
+If you are just getting started with SharePoint Framework development on a clean machine, you may use the "Install dependencies" button to install all the needed global dependencies in one go for any version of SPFx.
+
+![install-dependency](../../../../assets/images-vscode/Install-dependencies.png)
+
+SPFx Toolkit may also help you install and switch to the correct version of Node.js using either `nvm` (Node Version Manager) or `nvs` (Node Version Switcher). First, you need to make sure you have set the Node.js Version Manager setting in SPFx Toolkit to either `nvm` or `nvs`.
+
+Then, during dependency installation, SPFx Toolkit will check if you have the correct version of Node.js installed, and if not, it will offer to install and switch to the correct version for you using the selected Node version manager.
+
+![node installation](../../../../assets/images-vscode/install-node-support.png)

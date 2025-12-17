@@ -3,15 +3,13 @@ import { CliExecuter } from '../../../../services/executeWrappers/CliCommandExec
 import { validateAuth } from '../utils/ToolAuthValidationUtil';
 
 
-interface ISharePointListGetParameters {
-    title: string;
-    webUrl: string;
-    withPermissions?: boolean;
+interface ISharePointAppInstanceListParameters {
+    siteUrl: string;
 }
 
-export class SharePointListGet implements LanguageModelTool<ISharePointListGetParameters> {
+export class SharePointAppInstanceList implements LanguageModelTool<ISharePointAppInstanceListParameters> {
     async invoke(
-        options: LanguageModelToolInvocationOptions<ISharePointListGetParameters>,
+        options: LanguageModelToolInvocationOptions<ISharePointAppInstanceListParameters>,
         _token: CancellationToken
     ) {
         const params = options.input;
@@ -20,25 +18,27 @@ export class SharePointListGet implements LanguageModelTool<ISharePointListGetPa
             return authValidationResult as LanguageModelToolResult;
         }
 
-        const result = await CliExecuter.execute('spo list get', 'json', params);
+        const result = await CliExecuter.execute('spo app instance list', 'json', params);
         if (result.stderr) {
             return new LanguageModelToolResult([new LanguageModelTextPart(`Error: ${result.stderr}`)]);
         }
 
-        return new LanguageModelToolResult([new LanguageModelTextPart(`List retrieved successfully ${(result.stdout !== '' ? `\nResult: ${result.stdout}` : '')}`)]);
+        return new LanguageModelToolResult([new LanguageModelTextPart(`Installed apps from ${params.siteUrl} retrieved successfully ${(result.stdout !== '' ? `\nResult: ${result.stdout}` : '')}`)]);
     }
 
     async prepareInvocation(
-        options: LanguageModelToolInvocationPrepareOptions<ISharePointListGetParameters>,
+        options: LanguageModelToolInvocationPrepareOptions<ISharePointAppInstanceListParameters>,
         _token: CancellationToken
     ) {
+        const params = options.input;
+
         const confirmationMessages = {
-            title: 'Get a SharePoint Online list',
-            message: new MarkdownString('Should I get a list with the following parameters?'),
+            title: `List installed apps from ${params.siteUrl}`,
+            message: new MarkdownString(`Should I retrieve all installed apps from ${params.siteUrl}?`),
         };
 
         return {
-            invocationMessage: 'Getting a new SharePoint Online list',
+            invocationMessage: `Getting installed apps from ${params.siteUrl}`,
             confirmationMessages,
         };
     }

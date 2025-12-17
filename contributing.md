@@ -1,4 +1,4 @@
-# Contribution guidelines
+# Contributing guidelines
 
 Thank you for your interest in contributing to the SharePoint Framework Toolkit extension. In this guide, we will walk you through the steps to get started.
 
@@ -21,16 +21,7 @@ Don't be afraid to ask questions. We are here to help you succeed in making this
 
 - Fork this project. When creating the fork, deselect the checkbox 'Copy the `main` branch only' to get both `main` and `dev` branches.
 - Clone the forked repository.
-- In the cloned repository, run the npm install command: `npm install`. Please note that the recommended node version is 18.17.X or higher.
-- Clone the CJS version of CLI for Microsoft 365 from the following Github repo/branch [cli-cjs](https://github.com/Adam-it/cli-microsoft365/tree/cli-cjs)
-- In the cloned CLI for Microsoft 365 repository, run: `npm install`, `npm run clean`, `npm run build` to generate the CLI for Microsoft 365 output. Make sure the cloned CLI for Microsoft 365 repository is in the same workspace as the SharePoint Framework Toolkit repository. For example, your folder structure should look like this:
-
-```plaintext
-root:
-  - cli-microsoft365
-  - vscode-viva
-```
-- From the cloned fork of the SharePoint Framework Toolkit repository, navigate to the `scripts` folder and run the script [cli-for-microsoft365-copy-local-version](./scripts/cli-for-microsoft365-copy-local-version.ps1), passing the `workspacePath` (full path to the root folder of your workspace). This script will copy the output of the CLI for Microsoft 365 to the SharePoint Framework Toolkit extension's `node_modules` folder.
+- In the cloned repository, run the npm install command: `npm install`. Please note that the recommended node version is v20 or higher.
 - Open the SharePoint Framework Toolkit project in Visual Studio Code.
 - Run the watch command: `npm run watch`.
 - Press `F5` to start debugging the extension.
@@ -43,6 +34,163 @@ You may have already noticed that this repo maintains two branches: `main` and `
 
 - `main` - based on this branch new major and minor releases are created. Only critical bug fixes or feature updates go directly to this branch. All others should first be merged to `dev` branch and then merged to from `dev` to `main` with a separate PR. This branch is main repository branch and keeping clean change history is important.
 - `dev` - based on this branch pre-releases are created. Every change should be merged to this branch first with a PR before they get merged to `main` branch. During the release flow, this branch may be rebased and force pushed against `main` branch, so it may be recreated based on the current `main` branch state.
+
+## 🚀 Step-by-step contributing guide
+Follow these steps to contribute to the SPFx Toolkit extension.
+
+### **1.** Pick an issue
+
+Browse the [Issues tab](https://github.com/pnp/vscode-viva/issues) in the main repository and look for issues labeled `good first issue` or `help wanted` to work on.
+
+Comment on the issue to let maintainers know you are interested in working on it. In order to prevent multiple contributors from working on the same issue, wait to get assigned to the issue by a maintainer before starting work.
+
+### **2.** Fork, clone, and set up development environment (first-time)
+
+Follow the complete setup process from the ["How to start"](#-how-to-start---minimal-path-to-awesome) section above. This includes forking the repository (ensure you get both `main` and `dev` branches), cloning your fork, installing dependencies, and verifying everything works with `npm run watch` and `F5` for debugging.
+
+After completing the setup, configure the upstream remote to stay in sync with the main repository:
+
+```bash
+# Navigate to your cloned repository
+cd vscode-viva
+
+# Add the upstream repository as a remote
+git remote add upstream https://github.com/pnp/vscode-viva.git
+
+# Verify your remotes
+git remote -v
+```
+
+### **3.** Create your feature branch
+
+Create a new branch for your work. Always start from the latest `dev` branch to minimize potential conflicts:
+
+```bash
+# Always start from the latest dev branch
+git checkout dev
+git fetch upstream
+git pull --rebase upstream dev
+
+# Create your feature branch (use a meaningful name)
+git checkout -b fix-issue-123
+```
+
+Use descriptive branch names that reference the issue number and describe what you are fixing. This makes it easier to track changes across the project.
+
+### **4.** Make your changes
+
+Implement and test your changes thoroughly by running the extension in debug mode (`F5`) and verifying the functionality works as expected. Also, consider updating documentation in the `/docs` folder if your changes affect user-facing functionality.
+
+### **5.** Commit and push your changes
+
+Commit your changes with clear messages that explain what was modified and why:
+
+```bash
+# Stage your changes
+git add .
+
+# Commit with a clear message
+git commit -m "<commit message>. Closes #123"
+
+# Push your feature branch to your fork
+git push origin fix-issue-123
+```
+### **6.** Create a pull request
+Navigate to your forked repository, create a pull request targeting the dev branch, and fill out the PR template with all relevant details.
+
+**Important:** Set the base branch to `dev`, not `main`. All contributions must go through the `dev` branch first, unless specifically asked in the issue.
+
+### **7.** Respond to review feedback
+
+Monitor your pull request for comments and review feedback from maintainers. When reviewers request changes, follow the proper workflow to maintain a clean commit history:
+
+First, ensure you have the latest changes and rebase your branch:
+
+```bash
+# Switch to dev and get latest changes
+git checkout dev
+git fetch upstream
+git pull --rebase upstream dev
+
+# Switch back to your feature branch and rebase
+git checkout fix-issue-123
+git rebase dev
+```
+
+Next, make the requested changes and amend your existing commits rather than creating new ones:
+
+```bash
+# Stage the changes
+git add .
+
+# Amend the existing commit to keep the history clean
+git commit --amend
+
+# Force push updated branch
+git push --force-with-lease origin fix-issue-123
+```
+
+#### 🛠️ Recommended tool: GitLens interactive rebase editor
+
+For a better rebasing experience, install the [GitLens extension](https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens) which includes an Interactive Rebase Editor. This tool allows you to:
+
+- Easily visualize and configure interactive rebase operations
+- Drag & drop to reorder commits
+- Select which commits to edit, squash, or drop through an intuitive UI
+
+#### Understanding rebasing and when it's needed
+
+**Why Rebasing Becomes Necessary**
+
+Rebasing may become necessary when your pull request branch falls behind the latest dev branch. This usually happens if other contributors have modified the same files or nearby code, or if maintainers have merged newer changes into dev after your branch was created. The longer your branch remains open, the higher the chance of such conflicts. Rebasing ensures your branch stays aligned with the latest codebase and prevents merge issues when your pull request is reviewed.
+
+**What to Expect from Maintainers**
+
+You will usually know a rebase is needed when a maintainer comments on your pull request asking you to rebase your branch with the latest dev. This is simply because new changes have been merged since your branch was created, not because there's an issue with your work.
+
+#### Rebase process
+
+When you need to rebase your branch, follow these detailed steps:
+
+```bash
+# Get latest dev branch
+git checkout dev
+git fetch upstream
+git pull --rebase upstream dev
+
+# Switch back to your feature branch and rebase
+git checkout fix-issue-123
+git rebase dev
+```
+
+#### Handling conflicts
+
+During the rebase, you might encounter conflicts:
+
+- **Automatic Resolution**: Git resolves simple conflicts automatically
+- **Manual Resolution**: For complex conflicts, open the conflicted files in VS Code, resolve conflicts, stage with `git add <filename>`, and continue the rebase with `git rebase --continue` until done.
+
+#### Troubleshooting rebase issues
+
+If you encounter issues during the rebase process, you can abort the rebase and return to your previous state:
+
+```bash
+git rebase --abort
+```
+
+If the issue remains, ask maintainers for help.
+
+#### Pushing after rebase
+
+After rebasing, you will need to force push since the commit history has changed:
+
+```bash
+# Recommended approach
+git push --force-with-lease origin fix-issue-123
+
+# Alternative (use only if you are certain no one else pushed to your branch)
+git push --force origin fix-issue-123
+```
 
 ## 🧪 Tests
 
@@ -86,7 +234,7 @@ docs/
 
 > ⚠️ **Important**: If your page includes screenshots or other static assets, store them under `docs/assets/images/`. This ensures they are not bundled into the VSIX extension package.
 
-### 🚀 Running Documentation Locally
+### 🚀 Running documentation locally
 
 To run docs locally and preview your changes:
 
@@ -95,7 +243,7 @@ To run docs locally and preview your changes:
 3. run `npm run start`
 4. Open the URL shown in the terminal (usually `http://localhost:4321`). The site reloads automatically when changes are saved.
 
-### ✍️ Documentation Writing Guidelines
+### ✍️ Documentation writing guidelines
 
 When writing or editing documentation, follow these guidelines:
 

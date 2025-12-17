@@ -1,10 +1,14 @@
 import { CancellationToken, LanguageModelTextPart, LanguageModelTool, LanguageModelToolInvocationOptions, LanguageModelToolInvocationPrepareOptions, LanguageModelToolResult, MarkdownString } from 'vscode';
 import { CliExecuter } from '../../../services/executeWrappers/CliCommandExecuter';
 import { Folders } from '../../../services/check/Folders';
-import { CommandOutput } from '@pnp/cli-microsoft365';
+import { CommandOutput } from '@pnp/cli-microsoft365-spfx-toolkit';
+import { getPackageManager } from '../../../utils';
+import { SpfxCompatibilityMatrix } from '../../../constants';
 
 
-interface ISharePointFrameworkProjectUpgrade { }
+interface ISharePointFrameworkProjectUpgrade {
+    toVersion?: string;
+}
 
 export class SharePointFrameworkProjectUpgrade implements LanguageModelTool<ISharePointFrameworkProjectUpgrade> {
     async invoke(
@@ -12,14 +16,26 @@ export class SharePointFrameworkProjectUpgrade implements LanguageModelTool<ISha
         _token: CancellationToken
     ) {
         try {
-            let result: CommandOutput;
             const wsFolder = await Folders.getWorkspaceFolder();
+            const packageManager = getPackageManager();
+            const params = options.input;
+            let toVersion = params.toVersion && params.toVersion.trim() !== '' ? params.toVersion : undefined;
 
+            // in case toVersion is provided we need to set it to format x.y.z and validate if such a version exists in the SpfxCompatibilityMatrix
+            toVersion = toVersion ? toVersion.match(/^(\d+\.\d+\.\d+)$/)?.[1] : undefined;
+            if (toVersion) {
+                const versionExists = SpfxCompatibilityMatrix.some(spfx => spfx.Version === toVersion);
+                if (!versionExists) {
+                    return new LanguageModelToolResult([new LanguageModelTextPart(`Error: The specified version ${toVersion} is not a valid SharePoint Framework version.`)]);
+                }
+            }
+
+            let result = undefined;
             if (wsFolder) {
                 const workspacePath = wsFolder.uri.fsPath;
-                result = await CliExecuter.execute('spfx project upgrade', 'json', { path: workspacePath });
+                result = await CliExecuter.execute('spfx project upgrade', 'json', { path: workspacePath, packageManager, toVersion });
             } else {
-                result = await CliExecuter.execute('spfx project upgrade', 'json');
+                result = await CliExecuter.execute('spfx project upgrade', 'json', { packageManager, toVersion });
             }
 
             if (result.stderr) {

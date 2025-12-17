@@ -1,5 +1,35 @@
 # Change Log
 
+## [4.14.0] - 2025-12-18
+
+- Added Support for SPFx 1.22.0 and 1.22.1
+- Added preferred node package manager setting
+- Added Heft tasks view
+- Added remove_spo_page language model tool for SharePoint
+- Added get_spo_page language model tool for SharePoint
+- Added list_spo_page language model tool for modern SharePoint page listing
+- Added support for all SPFx versions to upgrade action and language model upgrade project tool
+- Fixed bug with publish solution
+- Extended copilot-instructions
+- Refactored spo_list_get language model tool
+- Refactored spo_list_add language model tool
+- Refactored spo_list_remove language model tool
+- Fixed Toolkit getting stuck during component creation if `yo` is not installed
+- Updated Contribution guidelines
+- Refactored the way we add CLI for Microsoft 365 to SPFx Toolkit
+- Updated install dependencies and validate local setup to support all SPFx versions
+- Added Timezone Dropdown for Tenant App Catalog Creation
+- Added Feedback form
+- Added npm scripts as part of Tasks view
+- Fixed sample gallery script
+- Added link for CLI for Microsoft 365 MCP server in the help and feedback section
+- Improved model description for list_spo_app, install_spo_app language model tools
+- Enhanced list_spo_app to support listing apps from site collection app catalog
+- Enhanced install_spo_app to install app from site level app catalog
+- Added new uninstall_spo_app language model tools
+- Added new upgrade_spo_app language model tool
+- Added new list_spo_app_instances language model tool
+
 ## [4.12.0] - 2025-10-07
 
 - Compressed images in extension and docs

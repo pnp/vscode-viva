@@ -2,7 +2,7 @@
 	"name": "viva-connections-toolkit",
 	"displayName": "SharePoint Framework Toolkit",
 	"description": "SharePoint Framework Toolkit aims to boost your productivity in developing and managing SharePoint Framework solutions helping at every stage of your development flow, from setting up your development workspace to deploying a solution straight to your tenant without the need to leave VS Code and now even create a CI/CD pipeline to introduce automate deployment of your app. This toolkit is provided by the community.",
-	"version": "4.12.0",
+	"version": "4.14.0",
 	"publisher": "m365pnp",
 	"preview": false,
 	"homepage": "https://pnp.github.io/vscode-viva",
@@ -75,22 +75,7 @@
 		],
 		"languageModelTools": [
 			{
-				"name": "spo_app_list",
-				"tags": [
-					"sharepoint",
-					"app",
-					"spfx-toolkit"
-				],
-				"toolReferenceName": "SharePointAppList",
-				"displayName": "List SharePoint apps",
-				"modelDescription": "Lists apps from the tenant app catalog. This tool may be used to list all apps from the tenant app catalog.",
-				"userDescription": "Lists apps from the tenant app catalog",
-				"canBeReferencedInPrompt": true,
-				"icon": "$(search)",
-				"inputSchema": {}
-			},
-			{
-				"name": "spo_app_install",
+				"name": "install_spo_app",
 				"tags": [
 					"sharepoint",
 					"app",
@@ -98,8 +83,8 @@
 				],
 				"toolReferenceName": "SharePointAppInstall",
 				"displayName": "Install a SharePoint app in a site",
-				"modelDescription": "Installs an app from tenant app catalog in the site. This tool may be used to install a specified app by its GUID to a specified site.",
-				"userDescription": "Installs an app from tenant app catalog in the site",
+				"modelDescription": "Installs a SharePoint Framework (SPFx) application from the specified app catalog to a SharePoint Online site using the app's unique identifier (GUID). Use this tool after an app has been uploaded to either the tenant or a site collection app catalog to make it available on a specific site. It requires Microsoft 365 authentication and permissions to both the app catalog and the target site. Apps from tenant app catalog can be installed on any site, but apps from site collection app catalogs can only be installed within the same site collection. Only one app can be installed per operation, and the exact app GUID must exist in the specified catalog. The target site must be accessible, the app must already be deployed in the catalog, and installation may fail if dependencies are not met. If the app is already installed, the operation will fail with an error.",
+				"userDescription": "Installs an app from the specified app catalog in the site.",
 				"canBeReferencedInPrompt": true,
 				"icon": "$(package)",
 				"inputSchema": {
@@ -114,12 +99,138 @@
 							"type": "string",
 							"description": "GUID of the app to install. This option is required.",
 							"default": ""
+						},
+						"appCatalogScope": {
+							"type": "string",
+							"description": "Scope of the app catalog. Allowed values: tenant, sitecollection. Defaults to tenant. This option is optional.",
+							"default": ""
 						}
 					}
 				}
 			},
 			{
-				"name": "spo_list_add",
+				"name": "list_spo_app_instances",
+				"tags": [
+					"sharepoint",
+					"app",
+					"spfx-toolkit"
+				],
+				"toolReferenceName": "SharePointAppInstanceList",
+				"displayName": "List installed SharePoint apps in a site",
+				"modelDescription": "Retrieves a list of SharePoint Framework (SPFx) applications that are currently installed and deployed on a specific SharePoint Online site. This tool shows the actual app instances running on the site, including details like app ID, title, description, app status, and more. Use this tool to inventory installed apps on a site. The tool requires Microsoft 365 authentication and read permissions to the target site. This is different from listing apps in catalogs, this shows only the apps that are actually installed and running on the specified site.",
+				"userDescription": "Lists all SharePoint apps currently installed on the specified site.",
+				"canBeReferencedInPrompt": true,
+				"icon": "$(list-unordered)",
+				"inputSchema": {
+					"type": "object",
+					"properties": {
+						"siteUrl": {
+							"type": "string",
+							"description": "URL of the site collection to retrieve the installed apps for. This option is required.",
+							"default": ""
+						}
+					}
+				}
+			},
+			{
+				"name": "list_spo_app",
+				"tags": [
+					"sharepoint",
+					"app",
+					"spfx-toolkit"
+				],
+				"toolReferenceName": "SharePointAppList",
+				"displayName": "List SharePoint apps",
+				"modelDescription": "Returns the list of SharePoint Framework apps from the specified app catalog. This tool can list apps from the tenant-wide app catalog (default) or from a specific site collection app catalog when appCatalogScope is set to 'sitecollection' and appCatalogUrl is provided. This tool returns detailed information about each app including ID, title, deployment status, enablement state, and more. Use this tool when you need to inventory apps, check deployment status, or verify which apps are available in app catalogs before performing app management operations. The tool requires Microsoft 365 authentication and appropriate permissions to access the specified app catalog.",
+				"userDescription": "Lists SharePoint apps from the tenant or site collection app catalog.",
+				"canBeReferencedInPrompt": true,
+				"icon": "$(search)",
+				"inputSchema": {
+					"type": "object",
+					"properties": {
+						"appCatalogScope": {
+							"type": "string",
+							"description": "Scope of the app catalog. Allowed values: tenant, sitecollection. Defaults to tenant. This option is optional.",
+							"default": ""
+						},
+						"appCatalogUrl": {
+							"type": "string",
+							"description": "URL of the tenant or site collection app catalog. It must be specified when the appCatalogScope is sitecollection.",
+							"default": ""
+						}
+					}
+				}
+			},
+			{
+				"name": "uninstall_spo_app",
+				"tags": [
+					"sharepoint",
+					"app",
+					"spfx-toolkit"
+				],
+				"toolReferenceName": "SharePointAppUninstall",
+				"displayName": "Uninstall a SharePoint app from a site",
+				"modelDescription": "Uninstalls SharePoint Framework applications from specific SharePoint Online sites, making them unavailable to end users on that site while keeping the app available in the app catalog. This tool uninstalls apps that are currently deployed to a site by using the app's unique identifier (GUID). Use this tool when you need to uninstall apps from specific sites, clean up unused applications, or manage app lifecycle. The app remains in the app catalog and can be reinstalled later. Apps from tenant app catalog can be uninstalled from any site, but apps from site collection app catalogs can only be uninstalled within the same site collection. The tool requires Microsoft 365 authentication and appropriate permissions to the target site. Additional constraints: Can only uninstall one app per operation, requires exact app GUID, target site must be accessible and exist, will not fail if the app is not currently installed on the target site (operation will complete successfully with no action taken), and may fail if there are dependencies or active usage of the app.",
+				"userDescription": "Uninstalls an app from the specified site without prompting for confirmation.",
+				"canBeReferencedInPrompt": true,
+				"icon": "$(remove)",
+				"inputSchema": {
+					"type": "object",
+					"properties": {
+						"siteUrl": {
+							"type": "string",
+							"description": "URL of the site. This option is required.",
+							"default": ""
+						},
+						"id": {
+							"type": "string",
+							"description": "GUID of the app to uninstall. This option is required.",
+							"default": ""
+						},
+						"appCatalogScope": {
+							"type": "string",
+							"description": "Scope of the app catalog. Allowed values: tenant, sitecollection. Defaults to tenant. This option is optional.",
+							"default": ""
+						}
+					}
+				}
+			},
+			{
+				"name": "upgrade_spo_app",
+				"tags": [
+					"sharepoint",
+					"app",
+					"spfx-toolkit"
+				],
+				"toolReferenceName": "SharePointAppUpgrade",
+				"displayName": "Upgrade a SharePoint app in the specified site",
+				"modelDescription": "Upgrades a SharePoint Framework (SPFx) application in a SharePoint Online site using the app's unique identifier (GUID). Use this tool to upgrade an existing app to its latest version. It requires Microsoft 365 authentication and permissions to both the app catalog and the target site. Apps from tenant app catalog can be upgraded on any site, but apps from site collection app catalogs can only be upgraded within the same site collection. Only one app can be upgraded per operation, and the exact app GUID must exist in the specified catalog. The target site must be accessible, the app must already be deployed in the catalog, and upgrading may fail if dependencies are not met.",
+				"userDescription": "Upgrades an app from the specified app catalog in the site.",
+				"canBeReferencedInPrompt": true,
+				"icon": "$(sync)",
+				"inputSchema": {
+					"type": "object",
+					"properties": {
+						"siteUrl": {
+							"type": "string",
+							"description": "Absolute URL of the site to upgrade the app in. This option is required.",
+							"default": ""
+						},
+						"id": {
+							"type": "string",
+							"description": "GUID of the app to upgrade. This option is required.",
+							"default": ""
+						},
+						"appCatalogScope": {
+							"type": "string",
+							"description": "Scope of the app catalog. Allowed values: tenant, sitecollection. Defaults to tenant. This option is optional.",
+							"default": ""
+						}
+					}
+				}
+			},
+			{
+				"name": "add_spo_list",
 				"tags": [
 					"sharepoint",
 					"list",
@@ -127,7 +238,7 @@
 				],
 				"toolReferenceName": "SharePointListAdd",
 				"displayName": "Create a SharePoint list",
-				"modelDescription": "Creates list in the specified site. This tool may be used to create a SharePoint list in a site.",
+				"modelDescription": "This tool creates lists based on predefined SharePoint list templates (e.g., GenericList, DocumentLibrary, Events) and allows configuration of advanced features such as versioning controls, folder creation, commenting capabilities, and content type management. Returns confirmation of list creation with the list's details. Use this tool when you need to provision new lists for data storage, document management, task tracking, or other collaborative scenarios in SharePoint Online. This tool should NOT be used to modify existing lists.",
 				"userDescription": "Creates list in the specified site.",
 				"canBeReferencedInPrompt": true,
 				"icon": "$(add)",
@@ -146,19 +257,74 @@
 						},
 						"baseTemplate": {
 							"type": "string",
-							"description": "The list definition type on which the list is based. Allowed values Announcements, Contacts, CustomGrid, DataSources,DiscussionBoard, DocumentLibrary, Events, GanttTasks, GenericList, IssuesTracking, Links, NoCodeWorkflows,PictureLibrary, Survey, Tasks, WebPageLibrary, WorkflowHistory, WorkflowProcess, XmlForm. Default value is GenericList. This option is optional.",
+							"description": "The list definition type on which the list is based. Allowed values Announcements, Contacts, CustomGrid, DataSources, DiscussionBoard, DocumentLibrary, Events, GanttTasks, GenericList, IssuesTracking, Links, NoCodeWorkflows, PictureLibrary, Survey, Tasks, WebPageLibrary, WorkflowHistory, WorkflowProcess, XmlForm. Default value is GenericList. This option is optional.",
 							"default": ""
 						},
 						"description": {
 							"type": "string",
 							"description": "The description for the list. This option is optional.",
 							"default": ""
+						},
+						"allowDeletion": {
+							"type": "boolean",
+							"description": "Specifies whether the list can be deleted. This option is optional.",
+							"default": false
+						},
+						"contentTypesEnabled": {
+							"type": "boolean",
+							"description": "Specifies whether content types are enabled for the list. This option is optional.",
+							"default": false
+						},
+						"disableCommenting": {
+							"type": "boolean",
+							"description": "Specifies whether commenting on list items is disabled. This option is optional.",
+							"default": false
+						},
+						"disableGridEditing": {
+							"type": "boolean",
+							"description": "Specifies whether grid editing is disabled for the list. This option is optional.",
+							"default": false
+						},
+						"draftVersionVisibility": {
+							"type": "string",
+							"description": "Specifies the visibility of draft versions in the list. Allowed values: Reader, Author, Approver. This option is optional.",
+							"default": ""
+						},
+						"enableFolderCreation": {
+							"type": "boolean",
+							"description": "Specifies whether folder creation is enabled for the list. This option is optional.",
+							"default": false
+						},
+						"enableMinorVersions": {
+							"type": "boolean",
+							"description": "Specifies whether minor versions are enabled for the list. This option is optional.",
+							"default": false
+						},
+						"enableVersioning": {
+							"type": "boolean",
+							"description": "Specifies whether versioning is enabled for the list. This option is optional.",
+							"default": false
+						},
+						"forceCheckout": {
+							"type": "boolean",
+							"description": "Specifies whether forced checkout is enabled for the list. This option is optional.",
+							"default": false
+						},
+						"hidden": {
+							"type": "boolean",
+							"description": "Specifies whether the list is hidden from the browser. This option is optional.",
+							"default": false
+						},
+						"noCrawl": {
+							"type": "boolean",
+							"description": "Specifies whether the list should be excluded from search crawling. This option is optional.",
+							"default": false
 						}
 					}
 				}
 			},
 			{
-				"name": "spo_list_get",
+				"name": "get_spo_list",
 				"tags": [
 					"sharepoint",
 					"list",
@@ -166,8 +332,8 @@
 				],
 				"toolReferenceName": "SharePointListGet",
 				"displayName": "Get a SharePoint list",
-				"modelDescription": "Gets information about the specific list. This tool may be used to check if a list on a SharePoint site exists or to retrieve more information about it.",
-				"userDescription": "Gets information about the specific list.",
+				"modelDescription": "Use this tool when you need to verify if a specific list exists on a site, retrieve list metadata for validation or documentation purposes, check list properties before performing operations, or inspect permissions assigned to the list. Do not use this tool to list all lists on a site.",
+				"userDescription": "Gets information about a specific SharePoint list.",
 				"canBeReferencedInPrompt": true,
 				"icon": "$(search)",
 				"inputSchema": {
@@ -182,12 +348,17 @@
 							"type": "string",
 							"description": "URL of the site where the list to retrieve is located. This option is required.",
 							"default": ""
+						},
+						"withPermissions": {
+							"type": "boolean",
+							"description": "Set to true if you want to return associated roles and permissions of the list. This option is optional.",
+							"default": false
 						}
 					}
 				}
 			},
 			{
-				"name": "spo_list_remove",
+				"name": "remove_spo_list",
 				"tags": [
 					"sharepoint",
 					"list",
@@ -195,8 +366,8 @@
 				],
 				"toolReferenceName": "SharePointListRemove",
 				"displayName": "Remove a SharePoint list",
-				"modelDescription": "Removes the specified list. This tool may be used to remove a SharePoint list from a site.",
-				"userDescription": "Removes the specified list.",
+				"modelDescription": "This tool deletes lists from SharePoint Online sites, either sending them to the site's recycle bin (when recycle is true) or permanently removing them (when recycle is false or omitted). Use this tool to clean up unused lists, remove test data, or manage site content.",
+				"userDescription": "Removes the specified list from the site.",
 				"canBeReferencedInPrompt": true,
 				"icon": "$(trash)",
 				"inputSchema": {
@@ -211,6 +382,11 @@
 							"type": "string",
 							"description": "URL of the site where the list to remove is located. This option is required.",
 							"default": ""
+						},
+						"recycle": {
+							"type": "boolean",
+							"description": "When set to true, sends the list to the site's recycle bin instead of permanently removing it. This option is optional.",
+							"default": false
 						}
 					}
 				}
@@ -265,6 +441,108 @@
 							"type": "string",
 							"description": "The description to set for the page. This option is optional.",
 							"default": ""
+						}
+					}
+				}
+			},
+			{
+				"name": "get_spo_page",
+				"tags": [
+					"sharepoint",
+					"page",
+					"spfx-toolkit"
+				],
+				"toolReferenceName": "SharePointPageGet",
+				"displayName": "Get a SharePoint Page",
+				"modelDescription": "Retrieves detailed information about a specific modern SharePoint page. Returns page metadata including title, layout type, canvas content, and status. Use this tool to get details for a specific page by name, OR use the default parameter to get the site's home page. Do not provide both name and default. Do not use this tool to list multiple pages. Requires Microsoft 365 authentication and read permissions on the target site.",
+				"userDescription": "Gets information about a specific SharePoint page.",
+				"canBeReferencedInPrompt": true,
+				"icon": "$(info)",
+				"inputSchema": {
+					"type": "object",
+					"properties": {
+						"webUrl": {
+							"type": "string",
+							"description": "URL of the site where the page is located. This option is required.",
+							"default": ""
+						},
+						"name": {
+							"type": "string",
+							"description": "Name of the page to retrieve (e.g., 'home.aspx'). Do not use if 'default' is true.",
+							"default": ""
+						},
+						"default": {
+							"type": "boolean",
+							"description": "Set to true to retrieve the site's home page. Do not use if 'name' is specified.",
+							"default": false
+						},
+						"metadataOnly": {
+							"type": "boolean",
+							"description": "Set to only retrieve page metadata without canvas content. This option is optional.",
+							"default": false
+						}
+					}
+				}
+			},
+			{
+				"name": "list_spo_page",
+				"tags": [
+					"sharepoint",
+					"page",
+					"spfx-toolkit"
+				],
+				"toolReferenceName": "SharePointPageList",
+				"displayName": "List SharePoint Pages",
+				"modelDescription": "Retrieves a list of all modern SharePoint pages from a site. Returns page metadata including page names, URLs, and properties. Use this tool to inventory pages or check what pages exist on a site. Do not use this tool to retrieve detailed information about a single specific page. Requires Microsoft 365 authentication and read permissions on the target site.",
+				"userDescription": "Lists all modern pages from a SharePoint site.",
+				"canBeReferencedInPrompt": true,
+				"icon": "$(list-unordered)",
+				"inputSchema": {
+					"type": "object",
+					"properties": {
+						"webUrl": {
+							"type": "string",
+							"description": "URL of the site from which to retrieve pages. This option is required.",
+							"default": ""
+						}
+					}
+				}
+			},
+			{
+				"name": "remove_spo_page",
+				"tags": [
+					"sharepoint",
+					"page",
+					"spfx-toolkit"
+				],
+				"toolReferenceName": "SharePointPageRemove",
+				"displayName": "Remove a SharePoint Page",
+				"modelDescription": "Permanently removes or recycles a specific modern SharePoint page from a site. Use this tool when the user explicitly requests to delete a page. This action is destructive. Requires Microsoft 365 authentication and read permissions on the target site.",
+				"userDescription": "Removes a page.",
+				"canBeReferencedInPrompt": true,
+				"icon": "$(trash)",
+				"inputSchema": {
+					"type": "object",
+					"properties": {
+						"name": {
+							"type": "string",
+							"description": "Name of the page to remove. This option is required.",
+							"default": ""
+						},
+						"webUrl": {
+							"type": "string",
+							"description": "URL of the site where the page is located. This option is required.",
+							"default": ""
+						},
+						"recycle": {
+							"type": "boolean",
+							"description": "If true, moves the page to the recycle bin instead of permanently deleting it. Highly recommended.",
+							"default": false
+						},
+						"bypassSharedLock": {
+							"type": "boolean",
+							"description": "If true, removes the page even if it is locked for shared use.",
+							"default": false
 						}
 					}
 				}
@@ -376,7 +654,16 @@
 				"userDescription": "Upgrade SharePoint Framework project.",
 				"canBeReferencedInPrompt": true,
 				"icon": "$(arrow-up)",
-				"inputSchema": {}
+				"inputSchema": {
+					"type": "object",
+					"properties": {
+						"toVersion": {
+							"type": "string",
+							"description": "Target version to upgrade the SharePoint Framework project to. This option is optional.",
+							"default": ""
+						}
+					}
+				}
 			}
 		],
 		"walkthroughs": [
@@ -419,8 +706,8 @@
 					},
 					{
 						"id": "tasks",
-						"title": "Gulp tasks",
-						"description": "Get to know the Gulp tasks that are available in your SharePoint Framework project",
+						"title": "Tasks",
+						"description": "Get to know the Gulp tasks and NPM scripts that are available in your SharePoint Framework project",
 						"media": {
 							"markdown": "assets/walkthrough/tasks.md"
 						}
@@ -476,13 +763,24 @@
 				"spfx-toolkit.nodeVersionManager": {
 					"title": "Node.js Version Manager",
 					"type": "string",
-					"default": "nvm",
+					"default": "none",
 					"enum": [
 						"nvm",
 						"nvs",
 						"none"
 					],
 					"description": "Choose your preferred Node.js version manager. Choose between `nvs`, `nvm`, or `none`."
+				},
+				"spfx-toolkit.packageManager": {
+					"title": "Node Package Manager",
+					"type": "string",
+					"default": "npm",
+					"enum": [
+						"npm",
+						"pnpm",
+						"yarn"
+					],
+					"description": "Choose your preferred Node package manager. Choose between `npm`, `pnpm`, or `yarn`."
 				},
 				"spfx-toolkit.showServiceIncidentList": {
 					"title": "Show service health incidents",
@@ -805,56 +1103,110 @@
 				"icon": "$(ellipsis)"
 			},
 			{
-				"command": "spfx-toolkit.bundleProject",
-				"title": "Bundle",
+				"command": "spfx-toolkit.gulpBundleProject",
+				"title": "Gulp Bundle",
+				"category": "SPFx Toolkit",
+				"icon": "$(combine)"
+			},
+			{
+				"command": "spfx-toolkit.heftEjectProject",
+				"title": "Heft Eject",
+				"category": "SPFx Toolkit",
+				"icon": "$(git-stash)"
+			},
+			{
+				"command": "spfx-toolkit.gulpPackageProject",
+				"title": "Gulp Package",
 				"category": "SPFx Toolkit",
 				"icon": "$(package)"
 			},
 			{
-				"command": "spfx-toolkit.packageProject",
-				"title": "Package",
+				"command": "spfx-toolkit.heftPackageProject",
+				"title": "Heft Package",
 				"category": "SPFx Toolkit",
-				"icon": "$(zap)"
+				"icon": "$(package)"
 			},
 			{
-				"command": "spfx-toolkit.publishProject",
-				"title": "Publish",
+				"command": "spfx-toolkit.gulpPublishProject",
+				"title": "Gulp Publish",
 				"category": "SPFx Toolkit",
 				"icon": "$(rocket)"
 			},
 			{
-				"command": "spfx-toolkit.serveProject",
-				"title": "Serve",
+				"command": "spfx-toolkit.heftPublishProject",
+				"title": "Heft Publish",
+				"category": "SPFx Toolkit",
+				"icon": "$(rocket)"
+			},
+			{
+				"command": "spfx-toolkit.gulpServeProject",
+				"title": "Gulp Serve",
 				"category": "SPFx Toolkit",
 				"icon": "$(play-circle)"
 			},
 			{
-				"command": "spfx-toolkit.cleanProject",
-				"title": "Clean",
+				"command": "spfx-toolkit.heftStartProject",
+				"title": "Heft Start",
+				"category": "SPFx Toolkit",
+				"icon": "$(play-circle)"
+			},
+			{
+				"command": "spfx-toolkit.gulpCleanProject",
+				"title": "Gulp Clean",
 				"category": "SPFx Toolkit",
 				"icon": "$(clear-all)"
 			},
 			{
-				"command": "spfx-toolkit.buildProject",
-				"title": "Build",
+				"command": "spfx-toolkit.heftCleanProject",
+				"title": "Heft Clean",
+				"category": "SPFx Toolkit",
+				"icon": "$(clear-all)"
+			},
+			{
+				"command": "spfx-toolkit.gulpBuildProject",
+				"title": "Gulp Build",
 				"category": "SPFx Toolkit",
 				"icon": "$(gear)"
 			},
 			{
-				"command": "spfx-toolkit.testProject",
-				"title": "Test",
+				"command": "spfx-toolkit.heftBuildProject",
+				"title": "Heft Build",
+				"category": "SPFx Toolkit",
+				"icon": "$(gear)"
+			},
+			{
+				"command": "spfx-toolkit.gulpTestProject",
+				"title": "Gulp Test",
 				"category": "SPFx Toolkit",
 				"icon": "$(beaker)"
 			},
 			{
-				"command": "spfx-toolkit.trustDevCert",
-				"title": "Trust self-signed developer certificate",
+				"command": "spfx-toolkit.heftTestProject",
+				"title": "Heft Test",
+				"category": "SPFx Toolkit",
+				"icon": "$(beaker)"
+			},
+			{
+				"command": "spfx-toolkit.gulpTrustDevCert",
+				"title": "Gulp Trust self-signed developer certificate",
 				"category": "SPFx Toolkit",
 				"icon": "$(verified)"
 			},
 			{
-				"command": "spfx-toolkit.deployToAzureStorage",
-				"title": "Deploy project assets to Azure Storage",
+				"command": "spfx-toolkit.heftTrustDevCert",
+				"title": "Heft Trust self-signed developer certificate",
+				"category": "SPFx Toolkit",
+				"icon": "$(verified)"
+			},
+			{
+				"command": "spfx-toolkit.gulpDeployToAzureStorage",
+				"title": "Gulp Deploy project assets to Azure Storage",
+				"category": "SPFx Toolkit",
+				"icon": "$(cloud-upload)"
+			},
+			{
+				"command": "spfx-toolkit.heftDeployToAzureStorage",
+				"title": "Heft Deploy project assets to Azure Storage",
 				"category": "SPFx Toolkit",
 				"icon": "$(cloud-upload)"
 			},
@@ -1192,11 +1544,12 @@
 		"webpack-dev-server": "^4.8.1"
 	},
 	"dependencies": {
-		"@pnp/cli-microsoft365": "6.11.0",
+		"@grconrad/vscode-extension-feedback": "^1.0.0",
+		"@pnp/cli-microsoft365-spfx-toolkit": "1.7.0",
 		"node-forge": "1.3.2",
 		"react-markdown": "10.1.0",
 		"remark-gfm": "4.0.1",
 		"use-debounce": "10.0.4",
-		"rehype-raw": "^7.0.0"
+		"rehype-raw": "7.0.0"
 	}
 }

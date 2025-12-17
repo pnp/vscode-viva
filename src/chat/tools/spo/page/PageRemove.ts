@@ -3,15 +3,16 @@ import { CliExecuter } from '../../../../services/executeWrappers/CliCommandExec
 import { validateAuth } from '../utils/ToolAuthValidationUtil';
 
 
-interface ISharePointListRemoveParameters {
-    title: string;
+interface ISharePointPageRemoveParameters {
+    name: string;
     webUrl: string;
     recycle?: boolean;
+    bypassSharedLock?: boolean;
 }
 
-export class SharePointListRemove implements LanguageModelTool<ISharePointListRemoveParameters> {
+export class SharePointPageRemove implements LanguageModelTool<ISharePointPageRemoveParameters> {
     async invoke(
-        options: LanguageModelToolInvocationOptions<ISharePointListRemoveParameters>,
+        options: LanguageModelToolInvocationOptions<ISharePointPageRemoveParameters>,
         _token: CancellationToken
     ) {
         const params = options.input;
@@ -20,31 +21,34 @@ export class SharePointListRemove implements LanguageModelTool<ISharePointListRe
             return authValidationResult as LanguageModelToolResult;
         }
 
-        const result = await CliExecuter.execute('spo list remove', 'json', {
-            title: params.title,
+        const result = await CliExecuter.execute('spo page remove', 'json', {
+            name: params.name,
             webUrl: params.webUrl,
             recycle: params.recycle ?? false,
+            bypassSharedLock: params.bypassSharedLock ?? false,
             force: true
         });
         if (result.stderr) {
             return new LanguageModelToolResult([new LanguageModelTextPart(`Error: ${result.stderr}`)]);
         }
 
-        const recycleAction = params.recycle ? 'recycled' : 'permanently removed';
-        return new LanguageModelToolResult([new LanguageModelTextPart(`List ${recycleAction} successfully ${(result.stdout !== '' ? `\nResult: ${result.stdout}` : '')}`)]);
+        const action = params.recycle ? 'recycled' : 'permanently deleted';
+        return new LanguageModelToolResult([new LanguageModelTextPart(`Page ${action} successfully${(result.stdout !== '' ? `\nResult: ${result.stdout}` : '')}`)]);
     }
 
     async prepareInvocation(
-        options: LanguageModelToolInvocationPrepareOptions<ISharePointListRemoveParameters>,
+        options: LanguageModelToolInvocationPrepareOptions<ISharePointPageRemoveParameters>,
         _token: CancellationToken
     ) {
+        const params = options.input;
+        const action = params.recycle ? 'recycle' : 'permanently delete';
         const confirmationMessages = {
-            title: 'Remove a SharePoint Online list',
-            message: new MarkdownString('Should I remove a List with the following parameters?'),
+            title: 'Remove a SharePoint Online page',
+            message: new MarkdownString(`Should I ${action} the page '${params.name}' from the site ${params.webUrl}?`),
         };
 
         return {
-            invocationMessage: 'Removing a SharePoint Online list',
+            invocationMessage: 'Removing a SharePoint Online page',
             confirmationMessages,
         };
     }

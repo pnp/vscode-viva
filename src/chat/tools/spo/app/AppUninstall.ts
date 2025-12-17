@@ -3,15 +3,15 @@ import { CliExecuter } from '../../../../services/executeWrappers/CliCommandExec
 import { validateAuth } from '../utils/ToolAuthValidationUtil';
 
 
-interface ISharePointListGetParameters {
-    title: string;
-    webUrl: string;
-    withPermissions?: boolean;
+interface ISharePointAppUninstallParameters {
+    siteUrl: string;
+    id: string;
+    appCatalogScope?: string;
 }
 
-export class SharePointListGet implements LanguageModelTool<ISharePointListGetParameters> {
+export class SharePointAppUninstall implements LanguageModelTool<ISharePointAppUninstallParameters> {
     async invoke(
-        options: LanguageModelToolInvocationOptions<ISharePointListGetParameters>,
+        options: LanguageModelToolInvocationOptions<ISharePointAppUninstallParameters>,
         _token: CancellationToken
     ) {
         const params = options.input;
@@ -20,25 +20,27 @@ export class SharePointListGet implements LanguageModelTool<ISharePointListGetPa
             return authValidationResult as LanguageModelToolResult;
         }
 
-        const result = await CliExecuter.execute('spo list get', 'json', params);
+        const result = await CliExecuter.execute('spo app uninstall', 'json', { ...params, force: true });
         if (result.stderr) {
             return new LanguageModelToolResult([new LanguageModelTextPart(`Error: ${result.stderr}`)]);
         }
 
-        return new LanguageModelToolResult([new LanguageModelTextPart(`List retrieved successfully ${(result.stdout !== '' ? `\nResult: ${result.stdout}` : '')}`)]);
+        return new LanguageModelToolResult([new LanguageModelTextPart(`App uninstalled successfully from site ${params.siteUrl}${(result.stdout !== '' ? `\nResult: ${result.stdout}` : '')}`)]);
     }
 
     async prepareInvocation(
-        options: LanguageModelToolInvocationPrepareOptions<ISharePointListGetParameters>,
+        options: LanguageModelToolInvocationPrepareOptions<ISharePointAppUninstallParameters>,
         _token: CancellationToken
     ) {
+        const params = options.input;
+
         const confirmationMessages = {
-            title: 'Get a SharePoint Online list',
-            message: new MarkdownString('Should I get a list with the following parameters?'),
+            title: 'Uninstall an app from site',
+            message: new MarkdownString(`Should I uninstall app with ID ${params.id} from site ${params.siteUrl}?`),
         };
 
         return {
-            invocationMessage: 'Getting a new SharePoint Online list',
+            invocationMessage: `Uninstalling app from site ${params.siteUrl}`,
             confirmationMessages,
         };
     }

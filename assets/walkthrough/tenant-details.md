@@ -52,4 +52,4 @@ Using the extension settings you may choose show or hide the tenant-wide extensi
 
 Sign-in is also required for some actions to work properly, such as the deploy action, which allows you to upload of the .sppkg file to the tenant or site-level App Catalog.
 
-[Check out our docs for more details](https://pnp.github.io/vscode-viva/features/login-tenant/)
+[Check out our docs for more details](https://pnp.github.io/vscode-viva/features/sign-in/)

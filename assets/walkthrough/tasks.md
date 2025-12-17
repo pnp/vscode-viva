@@ -1,4 +1,4 @@
-# Gulp tasks
+# Tasks
 
 The SharePoint Framework uses [Gulp](https://gulpjs.com/) as its task runner to handle building, bundling, and packaging of the client-side solution project.
 
@@ -14,6 +14,25 @@ The toolchain consists of the following gulp tasks defined in the @microsoft/sp-
 
 SPFx Toolkit VS Code extension shows all possible Gulp tasks one may run on an SPFx project. Don't worry about remembering all the commands, just click on the task you want to run and the extension will do the rest.
 
-![Gulp Tasks](../../docs/assets/images-vscode/tasks.png)
+The task view will also show all npm scripts that are defined in your package.json file. This way you can easily discover and run any custom scripts you may have defined with a single click.
 
-[Check out our docs for more details](https://pnp.github.io/vscode-viva/features/gulp-tasks/)
+![Tasks](../../docs/assets/images-vscode/tasks.png)
+
+From version 1.22 onwards, SharePoint Framework uses [Heft](https://heft.rushstack.io/) as the pluggable build system for developing with the SharePoint Framework.
+
+SPFx Toolkit will continue to support Gulp tasks for existing projects, but for new projects created with SPFx 1.22 and above, Heft tasks will be shown in the tasks view alongside npm scripts.
+
+The view allows you to run all Heft tasks that are supported in SPFx projects:
+
+- build - Builds the client-side solution project.
+- clean - Cleans the client-side solution project's build artifacts from the previous builds and from the build target directories (lib and dist).
+- start - Serves the client-side solution project and assets from the local machine.
+- test - Runs unit tests, if available, for the client-side solution project.
+- package-solution - Packages the client-side solution into a SharePoint package.
+- deploy-azure-storage - Deploys client-side solution project assets to Azure Storage.
+
+and more.
+
+![Tasks](../../docs/assets/images-vscode/heft-tasks.png)
+
+[Check out our docs for more details](https://pnp.github.io/vscode-viva/features/coding)

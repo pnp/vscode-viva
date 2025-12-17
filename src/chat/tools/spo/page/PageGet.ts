@@ -3,15 +3,16 @@ import { CliExecuter } from '../../../../services/executeWrappers/CliCommandExec
 import { validateAuth } from '../utils/ToolAuthValidationUtil';
 
 
-interface ISharePointListGetParameters {
-    title: string;
+interface ISharePointPageGetParameters {
     webUrl: string;
-    withPermissions?: boolean;
+    name?: string;
+    default?: boolean;
+    metadataOnly?: boolean;
 }
 
-export class SharePointListGet implements LanguageModelTool<ISharePointListGetParameters> {
+export class SharePointPageGet implements LanguageModelTool<ISharePointPageGetParameters> {
     async invoke(
-        options: LanguageModelToolInvocationOptions<ISharePointListGetParameters>,
+        options: LanguageModelToolInvocationOptions<ISharePointPageGetParameters>,
         _token: CancellationToken
     ) {
         const params = options.input;
@@ -20,25 +21,25 @@ export class SharePointListGet implements LanguageModelTool<ISharePointListGetPa
             return authValidationResult as LanguageModelToolResult;
         }
 
-        const result = await CliExecuter.execute('spo list get', 'json', params);
+        const result = await CliExecuter.execute('spo page get', 'json', params);
         if (result.stderr) {
             return new LanguageModelToolResult([new LanguageModelTextPart(`Error: ${result.stderr}`)]);
         }
 
-        return new LanguageModelToolResult([new LanguageModelTextPart(`List retrieved successfully ${(result.stdout !== '' ? `\nResult: ${result.stdout}` : '')}`)]);
+        return new LanguageModelToolResult([new LanguageModelTextPart(`Page retrieved successfully ${(result.stdout !== '' ? `\nResult: ${result.stdout}` : '')}`)]);
     }
 
     async prepareInvocation(
-        options: LanguageModelToolInvocationPrepareOptions<ISharePointListGetParameters>,
+        options: LanguageModelToolInvocationPrepareOptions<ISharePointPageGetParameters>,
         _token: CancellationToken
     ) {
         const confirmationMessages = {
-            title: 'Get a SharePoint Online list',
-            message: new MarkdownString('Should I get a list with the following parameters?'),
+            title: 'Get a SharePoint Online page',
+            message: new MarkdownString('Should I get a page with the following parameters?'),
         };
 
         return {
-            invocationMessage: 'Getting a new SharePoint Online list',
+            invocationMessage: 'Getting SharePoint Online page',
             confirmationMessages,
         };
     }

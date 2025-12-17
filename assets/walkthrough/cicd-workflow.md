@@ -14,4 +14,4 @@ And for Azure DevOps👇
 
 ![Azure DevOps CI CD pipeline](../../docs/assets/images-vscode/azdo-ci-cd.gif)
 
-[Check out our docs for more details and a step by step guide](https://pnp.github.io/vscode-viva/features/actions/#cicd-workflow)
+[Check out our docs for more details and a step by step guide](https://pnp.github.io/vscode-viva/features/ci-cd/)

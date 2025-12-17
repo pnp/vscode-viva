@@ -11,6 +11,28 @@ This is a **VS Code extension** that serves as an **abstraction layer** over the
 - **Service Layer**: Abstraction over CLI for Microsoft 365 commands
 - **Authentication**: Microsoft 365 authentication via `AuthProvider`
 
+## Key Constraints
+
+### Contribution Workflow
+- Always review `contributing.md` before starting work to understand the workflow, branching strategy, PR requirements, and documentation updates
+- Create feature/fix branches from `dev` branch (never from `main`)
+- Target all PRs to `dev` branch (PRs targeting `main` will be declined)
+- PRs must include summary, linked issue (if applicable), and testing steps
+- Update relevant documentation in `/docs` folder when making changes
+- Use descriptive commit messages that reference issue numbers (e.g., `fixes #123`)
+
+### Dependency Management
+- Do not add entries to `package.json` as new dependencies require maintainer evaluation and manual approval
+- Do not modify `npm-shrinkwrap.json` as lock files are regenerated after dependency changes via `npm install`
+- If resolving an issue requires a new npm package:
+  - Create a draft PR with a comment explaining which dependency is needed, why, and what alternatives were considered
+  - Do not attempt workarounds that duplicate functionality available in potential dependencies
+- Work within the constraints of existing dependencies whenever possible
+
+### Security and Privacy
+- Never embed secrets, tokens, or credentials in code or docs
+- If an issue requires sensitive information (API keys, tokens, credentials) create a draft PR explaining what configuration is needed and flag it for manual setup by maintainers
+
 ## Development Workflow
 
 ### Build System
@@ -68,10 +90,11 @@ npm run test           # Run VS Code extension tests
 
 ### Language Model Tools
 The extension exposes SharePoint Online operations as GitHub Copilot tools:
-- `spo_app_list`, `spo_app_install` - App catalog management
-- `spo_list_add`, `spo_list_get`, `spo_list_remove` - List operations
-- `spo_page_add` - Page creation
+- `list_spo_app`, `install_spo_app`, `uninstall_spo_app`, `upgrade_spo_app`, `list_spo_app_instances` - App catalog management
+- `add_spo_list`, `get_spo_list`, `remove_spo_list` - List operations
+- `add_spo_page` - Page creation
 - `spo_site_add`, `spo_site_get`, `spo_site_remove` - Site management
+- `upgrade_spfx_project` - SPFx project upgrade
 
 ## Development Conventions
 

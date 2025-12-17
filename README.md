@@ -68,15 +68,11 @@ To ensure that you can develop SPFx solutions, you may use the **Validate local 
 
 ![Validate dependency](./docs/assets/images-vscode/validate-dependency.png)
 
-This action will check if you have the required dependencies such as:
+This action checks if your local development environment meets the required versions of Node.js and global dependencies for the SPFx version you have installed, and in case you do not have any SPFx generator installed, it will validate against the latest SPFx version.
 
-- Node version: 22
-- NPM dependencies:
-  - gulp
-  - yo
-  - @microsoft/generator-sharepoint
+It is also possible to install the required Node.js version and global dependencies for any SPFx version using the **Install dependencies** action.
 
-In case you do not have all dependencies installed, or some are incorrect version, you can use the **install dependencies** action to install them.
+![install dependencies](./assets/images/install-dependencies.png)
 
 >  [!NOTE]
 >  The list of valid dependencies is based on [set up your development environment recommendations](https://learn.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-development-environment)
@@ -185,11 +181,17 @@ Sign-in is also required for some actions to work properly like the deploy actio
 
 [Check out our docs for more details](https://pnp.github.io/vscode-viva/features/sign-in)
 
-### 7️⃣ Gulp tasks
+### 7️⃣ Tasks
 
-The extension shows all possible Gulp tasks one may run on an SPFx project. The tasks allow you to clean, bundle, package, serve the project with a single click.
+The extension shows all possible tasks that can be run on an SPFx project. The tasks view displays all relevant tasks available for the current SPFx project, as well as all npm scripts defined in the `package.json` file.
+
+For SPFx projects created with versions below 1.22, Gulp tasks will be shown in the tasks view:
 
 ![Gulp Tasks](./docs/assets/images-vscode/tasks.png)
+
+For SPFx projects created with version 1.22 and above, Heft tasks will be shown in the tasks view:
+
+![Tasks](./docs/assets/images-vscode/heft-tasks.png)
 
 [Check out our docs for more details](https://pnp.github.io/vscode-viva/features/coding#gulp-tasks-view)
 
@@ -215,7 +217,7 @@ And for Azure DevOps👇
 
 [Check out our docs for more details](https://pnp.github.io/vscode-viva/features/ci-cd)
 
-- **Upgrade project** - Uses CLI for Microsoft 365 to create a .md and/or code tour report with upgrade guidance to the latest supported SPFx version by the extension. The upgrade guidance provides optional as well as required steps a user needs to take manually in order to upgrade the project. At the end of the guidance file, the user may find a summary of the steps in a single script and a couple of manual steps that need to be taken.
+- **Upgrade project** - Generates a detailed upgrade report (`.md` and/or code tour) to guide users from their current SPFx version to a selected target version using CLI for Microsoft 365. The report includes both required and optional upgrade steps, with a consolidated script at the end for automated actions and a list of remaining manual steps.
 
 ![Upgrade project](./docs/assets/images-vscode/upgrade-project.png)
 

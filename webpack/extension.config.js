@@ -21,7 +21,7 @@ const extensionConfig = {
   },
   externals: {
     vscode: 'commonjs vscode',
-    '@pnp/cli-microsoft365': 'commonjs @pnp/cli-microsoft365',
+    '@pnp/cli-microsoft365-spfx-toolkit': 'commonjs @pnp/cli-microsoft365-spfx-toolkit',
   },
   resolve: {
     // support reading TypeScript and JavaScript files, 📖 -> https://github.com/TypeStrong/ts-loader

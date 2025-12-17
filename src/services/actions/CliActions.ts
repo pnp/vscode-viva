@@ -1,24 +1,26 @@
 import { readFileSync, writeFileSync } from 'fs';
 import { Folders } from '../check/Folders';
 import { commands, Progress, ProgressLocation, Uri, window, workspace, WorkspaceFolder } from 'vscode';
-import { Commands, WebViewType, WebviewCommand, WorkflowType } from '../../constants';
-import { AppCatalogApp, GenerateWorkflowCommandInput, SiteAppCatalog, SolutionAddResult, Subscription } from '../../models';
+import { Commands, SpfxCompatibilityMatrix, WebViewType, WebviewCommand, WorkflowType } from '../../constants';
+import { AppCatalogApp, GenerateWorkflowCommandInput, SiteAppCatalog, SolutionAddResult, SpfxDoctorOutput, Subscription } from '../../models';
 import { Extension } from '../dataType/Extension';
 import { CliExecuter } from '../executeWrappers/CliCommandExecuter';
 import { Notifications } from '../dataType/Notifications';
 import { basename, join } from 'path';
 import { EnvironmentInformation } from '../dataType/EnvironmentInformation';
 import { AuthProvider } from '../../providers/AuthProvider';
-import { CommandOutput } from '@pnp/cli-microsoft365';
+import { CommandOutput } from '@pnp/cli-microsoft365-spfx-toolkit';
 import { M365AgentsToolkitIntegration } from '../dataType/M365AgentsToolkitIntegration';
 import { PnPWebview } from '../../webview/PnPWebview';
 import { parseYoRc } from '../../utils/parseYoRc';
 import { parseCliCommand } from '../../utils/parseCliCommand';
 import { CertificateActions } from './CertificateActions';
 import path = require('path');
-import { getExtensionSettings } from '../../utils/getExtensionSettings';
+import { getExtensionSettings, getPackageManager } from '../../utils';
 import * as fs from 'fs';
 import { ActionTreeItem } from '../../providers/ActionTreeDataProvider';
+import { timezones } from '../../constants/Timezones';
+import { Dependencies } from './Dependencies';
 
 
 export class CliActions {
@@ -56,6 +58,90 @@ export class CliActions {
     subscriptions.push(
       commands.registerCommand(Commands.removeSiteAppCatalog, CliActions.removeSiteAppCatalog)
     );
+  }
+
+  /**
+   * Runs the 'spfx doctor' command to validate the local development environment setup.
+   */
+  public static async spfxDoctor() {
+    try {
+      // Change the current working directory to the root of the Project
+      const wsFolder = await Folders.getWorkspaceFolder();
+      if (wsFolder) {
+        let fsPath = wsFolder.uri.fsPath;
+
+        if (M365AgentsToolkitIntegration.isM365AgentsToolkitProject) {
+          fsPath = join(fsPath, 'src');
+        }
+
+        process.chdir(fsPath);
+      }
+
+      await window.withProgress({
+        location: ProgressLocation.Notification,
+        title: `Validating local setup... Check [output window](command:${Commands.showOutputChannel}) to follow the progress.`,
+        cancellable: false,
+      }, async () => {
+        const result = await CliExecuter.execute('spfx doctor', 'json');
+
+        const doctorOutput: SpfxDoctorOutput[] = result.stdout ? JSON.parse(result.stdout) : [];
+        const sPFxCheck = doctorOutput.find(output => output.check === 'SharePoint Framework');
+
+        if (!sPFxCheck?.passed) {
+          const installLatestVersion = 'Yes, setup for latest SPFx version';
+          const abortOption = 'No';
+
+          Notifications.warning(
+            'No SharePoint Framework version detected. Do you want to set up your environment for the latest SPFx version?',
+            installLatestVersion,
+            abortOption
+          ).then(selectedOption => {
+            if (selectedOption === installLatestVersion) {
+              Dependencies.install(SpfxCompatibilityMatrix[0].Version);
+            }
+          });
+        } else {
+          const spfxVersion = SpfxCompatibilityMatrix.find(spfx => spfx.Version === sPFxCheck.version);
+          const nodeCheck = Dependencies.isValidNodeJs(spfxVersion?.SupportedNodeVersions || []);
+          if (!nodeCheck) {
+            const installForSpecifiedVersion = `Yes, setup for SPFx v${sPFxCheck.version}`;
+            const abortOption = 'No';
+
+            Notifications.warning(
+              `Your Node.js version is not compatible with SPFx v${sPFxCheck.version}. Do you want to set up your environment for SPFx v${sPFxCheck.version}?`,
+              installForSpecifiedVersion,
+              abortOption
+            ).then(selectedOption => {
+              if (selectedOption === installForSpecifiedVersion) {
+                Dependencies.install(sPFxCheck.version);
+              }
+            });
+          } else {
+            const notPassedChecks = doctorOutput.filter(check => !['SharePoint Framework', 'Node', 'env', 'typescript'].some(name => name.toLowerCase() === check.check.toLowerCase()) && !check.passed);
+            if (notPassedChecks.length === 0) {
+              Notifications.info('Your local development environment is set up correctly to work with SharePoint Framework. You are ready to go!');
+              return;
+            }
+
+            const installForSpecifiedVersion = `Yes, setup for SPFx v${sPFxCheck.version}`;
+            const abortOption = 'No';
+
+            Notifications.warning(
+              `The following dependencies are not set up correctly: ${notPassedChecks.map(c => c.check).join(', ')}. Do you want to set up your environment for SPFx v${sPFxCheck.version}?`,
+              installForSpecifiedVersion,
+              abortOption
+            ).then(selectedOption => {
+              if (selectedOption === installForSpecifiedVersion) {
+                Dependencies.install(sPFxCheck.version, false);
+              }
+            });
+          }
+        }
+      });
+    } catch (e: any) {
+      const message = e?.error?.message || 'An unexpected error occurred.';
+      Notifications.error(message);
+    }
   }
 
   /**
@@ -457,24 +543,26 @@ export class CliActions {
       return;
     }
 
-    const timeZoneInput = await window.showInputBox({
-      prompt: 'Enter the time zone as an integer (e.g., 4 for UTC+4). Refer to the guidelines: https://msdn.microsoft.com/library/microsoft.sharepoint.spregionalsettings.timezones.aspx',
+    const selectedTimezone = await window.showQuickPick(
+      timezones.map(tz => ({
+        label: tz.displayName,
+        description: `ID: ${tz.id}`,
+        timeZoneId: tz.id
+      })), {
+      placeHolder: 'Select your time zone (e.g., 4 for UTC+4).',
       ignoreFocusOut: true,
-      validateInput: (value) => {
-        const parsed = parseInt(value, 10);
-        return isNaN(parsed) ? 'Time zone must be an integer' : undefined;
-      },
-    });
+      matchOnDescription: true,
+      matchOnDetail: true
+    }
+    );
 
-    if (!timeZoneInput) {
-      Notifications.error('Time zone is required to create a Tenant App Catalog.');
+    if (!selectedTimezone) {
+      Notifications.error('Time zone selection is required to create a Tenant App Catalog.');
       return;
     }
 
-    const timeZone = parseInt(timeZoneInput, 10);
-
     const confirmation = await window.showQuickPick(['Yes', 'No'], {
-      placeHolder: `Are you sure you want to create a Tenant App Catalog at '${appCatalogUrl}' with owner '${owner}' and time zone '${timeZone}'?`,
+      placeHolder: `Are you sure you want to create a Tenant App Catalog at '${appCatalogUrl}' with owner '${owner}' and time zone '${selectedTimezone.label}'?`,
       ignoreFocusOut: true,
     });
 
@@ -491,7 +579,7 @@ export class CliActions {
         const commandOptions: any = {
           url: appCatalogUrl,
           owner,
-          timeZone,
+          timeZone: selectedTimezone.timeZoneId,
         };
         const result = await CliExecuter.execute('spo tenant appcatalog add', 'json', commandOptions);
 
@@ -632,6 +720,32 @@ export class CliActions {
       process.chdir(fsPath);
     }
 
+    let toVersion: string | undefined;
+    const yoRc = await parseYoRc();
+    if (yoRc && yoRc['@microsoft/generator-sharepoint']?.version) {
+      const currentVersion = yoRc['@microsoft/generator-sharepoint']?.version;
+      const currentVersionIndex = SpfxCompatibilityMatrix.findIndex(spfx => spfx.Version === currentVersion);
+      const higherVersions = SpfxCompatibilityMatrix.slice(0, currentVersionIndex).map(spfx => spfx.Version);
+
+      if (higherVersions.length === 0) {
+        Notifications.info(`Your project is already at the latest SharePoint Framework version (${currentVersion}). No upgrade is necessary.`);
+        return;
+      }
+
+      const selectedSPFxVersion = await window.showQuickPick(higherVersions, {
+        placeHolder: 'Select the SharePoint Framework version to upgrade to',
+        ignoreFocusOut: true,
+        canPickMany: false,
+        title: 'Select the SharePoint Framework version'
+      });
+
+      if (!selectedSPFxVersion) {
+        return;
+      }
+
+      toVersion = selectedSPFxVersion;
+    }
+
     await window.withProgress({
       location: ProgressLocation.Notification,
       title: `Generating the upgrade steps... Check [output window](command:${Commands.showOutputChannel}) to follow the progress.`,
@@ -640,9 +754,12 @@ export class CliActions {
       try {
         const projectUpgradeOutputMode: string = getExtensionSettings('projectUpgradeOutputMode', 'both');
         const projectUpgradeShellType: string = getExtensionSettings('upgradeShellType', 'powershell');
+        const packageManager = getPackageManager();
 
         const commandOptions: any = {
-          shell: projectUpgradeShellType
+          shell: projectUpgradeShellType,
+          packageManager: packageManager,
+          toVersion: toVersion
         };
 
         if (projectUpgradeOutputMode === 'markdown' || projectUpgradeOutputMode === 'both') {
