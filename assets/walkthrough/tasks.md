@@ -16,7 +16,7 @@ SPFx Toolkit VS Code extension shows all possible Gulp tasks one may run on an S
 
 The task view will also show all npm scripts that are defined in your package.json file. This way you can easily discover and run any custom scripts you may have defined with a single click.
 
-![Tasks](../images/tasks.png)
+![Tasks](../../docs/assets/images-vscode/tasks.png)
 
 From version 1.22 onwards, SharePoint Framework uses [Heft](https://heft.rushstack.io/) as the pluggable build system for developing with the SharePoint Framework.
 
@@ -33,6 +33,6 @@ The view allows you to run all Heft tasks that are supported in SPFx projects:
 
 and more.
 
-![Tasks](../images/heft-tasks.png)
+![Tasks](../../docs/assets/images-vscode/heft-tasks.png)
 
 [Check out our docs for more details](https://pnp.github.io/vscode-viva/features/coding)

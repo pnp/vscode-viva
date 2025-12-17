@@ -10,7 +10,7 @@ The following are some of the key features included as part of the SPFx:
 - The controls are responsive and accessible by nature.
 - It enables the developer to access the lifecycle in addition to render, load, serialize and deserialize, configuration changes, and more.
 - It's framework-agnostic. You can use any JavaScript framework that you like including, but not limited to, React, Handlebars, Knockout, Angular, and Vue.js.
-- The developer toolchain is based on popular open-source client development tools such as NPM, TypeScript, Yeoman, webpack, and gulp.
+- The developer toolchain is based on popular open-source client development tools such as NPM, TypeScript, Yeoman, webpack, and heft/gulp.
 - Performance is reliable.
 - End users can use SPFx client-side solutions that are approved by the tenant administrators (or their delegates) on all sites, including self-service team, group, or personal sites.
 - SPFx web parts can be added to both classic and modern pages.

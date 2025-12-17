@@ -191,7 +191,7 @@ For SPFx projects created with versions below 1.22, Gulp tasks will be shown in 
 
 For SPFx projects created with version 1.22 and above, Heft tasks will be shown in the tasks view:
 
-![Tasks](../images/heft-tasks.png)
+![Tasks](./docs/assets/images-vscode/heft-tasks.png)
 
 [Check out our docs for more details](https://pnp.github.io/vscode-viva/features/coding#gulp-tasks-view)
 
