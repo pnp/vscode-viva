@@ -1,12 +1,9 @@
-import { ExtensionContext, commands, env } from 'vscode';
+import { ExtensionContext, env } from 'vscode';
 import { TelemetryReporter } from '@vscode/extension-telemetry';
 import { Commands } from '../constants';
 
-export const TELEMETRY_EVENTS = {
-    // accountTreeView
-    [Commands.login]: 'Login',
-    [Commands.logout]: 'Logout',
 
+export const TELEMETRY_EVENTS = {
     // tasksTreeView
     [Commands.gulpBuildProject]: 'Gulp Build Project',
     [Commands.gulpBundleProject]: 'Gulp Bundle Project',
@@ -68,7 +65,7 @@ export const TELEMETRY_EVENTS = {
 export class TelemetryService {
     private static instance: TelemetryService;
     public reporter: TelemetryReporter | undefined;
-    private static isInternalCall: boolean = false;
+    private static activeExecutions: Set<string> = new Set();
 
     private constructor() { }
 
@@ -119,7 +116,10 @@ export class TelemetryService {
         return async (...args: any[]) => {
             const telemetryService = TelemetryService.getInstance();
 
-            if (telemetryService.reporter && !TelemetryService.isInternalCall) {
+            // consider this an internal call if there are ANY active executions
+            const isInternalCall = TelemetryService.activeExecutions.size > 0;
+
+            if (telemetryService.reporter && !isInternalCall) {
                 const telemetryProperties: Record<string, string> = { ...properties };
 
                 // additional properties for npm scripts
@@ -133,12 +133,14 @@ export class TelemetryService {
                 telemetryService.sendEvent(eventName, telemetryProperties, measurements);
             }
 
-            // to avoid twice tracking triggered by clean, build, bundle, etc. which internally calls executeTerminalCommand
-            TelemetryService.isInternalCall = true;
+            // Track this execution
+            const executionId = Math.random().toString(36).substring(7);
+            TelemetryService.activeExecutions.add(executionId);
+
             try {
                 return await originalCommand(...args);
             } finally {
-                TelemetryService.isInternalCall = false;
+                TelemetryService.activeExecutions.delete(executionId);
             }
         };
     }

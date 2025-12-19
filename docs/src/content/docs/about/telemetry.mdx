@@ -4,11 +4,29 @@ title: Telemetry
 
 The SPFx Toolkit collects basic usage telemetry to help us understand how the extension is used and improve its features. We follow the VS Code Telemetry extension authors guide and use the recommended `@vscode/extension-telemetry` package to send anonymized telemetry data to Azure Application Insights.
 
+## Privacy and Data Protection
+
+- All telemetry data is anonymized and does not contain personal information
+- No code, file paths, or project-specific data is collected
+- Data is used solely to understand feature usage and prioritize improvements
+- We comply with relevant privacy regulations and Microsoft's privacy policies
+- You can disable telemetry through VS Code's standard telemetry settings
+
+## How to Disable Telemetry
+
+To disable telemetry collection, you can use VS Code's built-in telemetry settings:
+1. Open VS Code Settings (File > Preferences > Settings)
+2. Search for "Telemetry"
+3. Set "Telemetry: Telemetry Level" to "off"
+
+This will disable telemetry for all VS Code extensions that respect the standard telemetry settings, including the SharePoint Framework Toolkit.
+
 ## What We Track
 
 We collect anonymized usage data for the following actions:
 
 ### Actions View
+
 - Create New Project
 - Add Component to Project
 - Upgrade Project
@@ -25,18 +43,32 @@ We collect anonymized usage data for the following actions:
 - Install Dependencies
 
 ### Tasks View
-- Build Project
-- Bundle Project
-- Clean Project
-- Deploy to Azure Storage
-- Package Project
-- Publish Project
-- Serve Project
-- Test Project
-- Trust Dev Cert
+
+**Gulp Tasks:**
+- gulp build
+- gulp bundle
+- gulp clean
+- gulp package-solution
+- gulp serve
+- gulp test
+- gulp trust-dev-cert
+- gulp deploy-azure-storage
+
+**Heft Tasks:**
+- heft build
+- heft clean
+- heft start
+- heft package
+- heft test
+- heft trust-dev-cert
+- heft deploy-azure-storage
+- heft eject
+
+**NPM Scripts:**
 - Execute Terminal Command (for NPM scripts with script name tracking)
 
 ### App Management (Environment View)
+
 - Add Tenant App Catalog
 - Add Site App Catalog
 - Remove Site App Catalog
@@ -54,23 +86,3 @@ We collect anonymized usage data for the following actions:
 - Enable Tenant Wide Extension
 - Disable Tenant Wide Extension
 - Update Tenant Wide Extension
-
-### Authentication
-- Microsoft 365 login and logout actions
-
-## Privacy and Data Protection
-
-- All telemetry data is anonymized and does not contain personal information
-- No code, file paths, or project-specific data is collected
-- Data is used solely to understand feature usage and prioritize improvements
-- We comply with relevant privacy regulations and Microsoft's privacy policies
-- You can disable telemetry through VS Code's standard telemetry settings
-
-## How to Disable Telemetry
-
-To disable telemetry collection, you can use VS Code's built-in telemetry settings:
-1. Open VS Code Settings (File > Preferences > Settings)
-2. Search for "Telemetry"
-3. Set "Telemetry: Telemetry Level" to "off"
-
-This will disable telemetry for all VS Code extensions that respect the standard telemetry settings, including the SharePoint Framework Toolkit.
