@@ -46,7 +46,7 @@
 	],
 	"license": "MIT",
 	"main": "./dist/extension.js",
-	"aiConnectionString": "InstrumentationKey=137865b8-3555-4866-a2c9-7e35ead3d578;IngestionEndpoint=https://northeurope-2.in.applicationinsights.azure.com/;LiveEndpoint=https://northeurope.livediagnostics.monitor.azure.com/;ApplicationId=d253fe5b-d38c-41f5-841d-afed5bcd9557",
+	"aiConnectionString": "",
 	"contributes": {
 		"chatParticipants": [
 			{

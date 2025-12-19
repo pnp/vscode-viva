@@ -56,10 +56,11 @@ export async function activate(context: vscode.ExtensionContext) {
 	telemetryService = TelemetryService.getInstance();
 	const packageJson = context.extension?.packageJSON;
 	const connectionString = packageJson?.aiConnectionString;
+
+	const activationDuration = Date.now() - activationStartTime;
+
 	if (connectionString) {
 		telemetryService.initialize(context, connectionString);
-
-		const activationDuration = Date.now() - activationStartTime;
 
 		telemetryService.sendEvent('Extension Activated', {
 			version: context.extension.packageJSON.version,
@@ -68,6 +69,8 @@ export async function activate(context: vscode.ExtensionContext) {
 		}, {
 			activationTimeMs: activationDuration
 		});
+	} else {
+		Logger.channel?.appendLine('No telemetry connection string configured.');
 	}
 
 	scheduleFeedbackChecks(

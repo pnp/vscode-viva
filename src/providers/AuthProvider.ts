@@ -12,7 +12,6 @@ import { TerminalCommandExecuter } from '../services/executeWrappers/TerminalCom
 import { isValidGUID } from '../utils/validateGuid';
 import { CliExecuter } from '../services/executeWrappers/CliCommandExecuter';
 import { EntraAppRegistration } from '../services/actions/EntraAppRegistration';
-import { TelemetryService } from '../utils/telemetry';
 
 
 export class M365AuthenticationSession implements AuthenticationSession {
@@ -53,10 +52,10 @@ export class AuthProvider implements AuthenticationProvider, Disposable {
     );
 
     subscriptions.push(
-      commands.registerCommand(Commands.login, TelemetryService.withTelemetry(Commands.login, AuthProvider.signIn))
+      commands.registerCommand(Commands.login, AuthProvider.signIn)
     );
     subscriptions.push(
-      commands.registerCommand(Commands.logout, TelemetryService.withTelemetry(Commands.logout, AuthProvider.logout))
+      commands.registerCommand(Commands.logout, AuthProvider.logout)
     );
   }
 
