@@ -1,5 +1,13 @@
 # Change Log
 
+## [4.16.0] - 2025-12-20
+
+- Fixed bug in project upgrade action
+
+## [4.15.0] - 2025-12-19
+
+- Technical Release to address VS Code Marketplace issue
+
 ## [4.14.0] - 2025-12-18
 
 - Added Support for SPFx 1.22.0 and 1.22.1
