@@ -9,6 +9,7 @@ import { join } from 'path';
 import { ServeConfig } from '../../models/ServeConfig';
 import { readFileSync } from 'fs';
 import { Logger } from '../dataType/Logger';
+import { TelemetryService } from '../../utils/telemetry';
 
 
 interface ShellSetting {
@@ -22,61 +23,61 @@ export class TerminalCommandExecuter {
   public static register() {
     const subscriptions: Subscription[] = Extension.getInstance().subscriptions;
     subscriptions.push(
-      commands.registerCommand(Commands.executeTerminalCommand, TerminalCommandExecuter.runCommand)
+      commands.registerCommand(Commands.executeTerminalCommand, TelemetryService.withTelemetry(Commands.executeTerminalCommand, TerminalCommandExecuter.runCommand))
     );
     subscriptions.push(
-      commands.registerCommand(Commands.gulpServeProject, TerminalCommandExecuter.gulpServeProject)
+      commands.registerCommand(Commands.gulpServeProject, TelemetryService.withTelemetry(Commands.gulpServeProject, TerminalCommandExecuter.gulpServeProject))
     );
     subscriptions.push(
-      commands.registerCommand(Commands.heftStartProject, TerminalCommandExecuter.heftStartProject)
+      commands.registerCommand(Commands.heftStartProject, TelemetryService.withTelemetry(Commands.heftStartProject, TerminalCommandExecuter.heftStartProject))
     );
     subscriptions.push(
-      commands.registerCommand(Commands.gulpBundleProject, TerminalCommandExecuter.gulpBundleProject)
+      commands.registerCommand(Commands.gulpBundleProject, TelemetryService.withTelemetry(Commands.gulpBundleProject, TerminalCommandExecuter.gulpBundleProject))
     );
     subscriptions.push(
-      commands.registerCommand(Commands.gulpPackageProject, TerminalCommandExecuter.gulpPackageProject)
+      commands.registerCommand(Commands.gulpPackageProject, TelemetryService.withTelemetry(Commands.gulpPackageProject, TerminalCommandExecuter.gulpPackageProject))
     );
     subscriptions.push(
-      commands.registerCommand(Commands.heftEjectProject, TerminalCommandExecuter.heftEjectProject)
+      commands.registerCommand(Commands.heftEjectProject, TelemetryService.withTelemetry(Commands.heftEjectProject, TerminalCommandExecuter.heftEjectProject))
     );
     subscriptions.push(
-      commands.registerCommand(Commands.heftPackageProject, TerminalCommandExecuter.heftPackageProject)
+      commands.registerCommand(Commands.heftPackageProject, TelemetryService.withTelemetry(Commands.heftPackageProject, TerminalCommandExecuter.heftPackageProject))
     );
     subscriptions.push(
-      commands.registerCommand(Commands.gulpPublishProject, TerminalCommandExecuter.gulpPublishProject)
+      commands.registerCommand(Commands.gulpPublishProject, TelemetryService.withTelemetry(Commands.gulpPublishProject, TerminalCommandExecuter.gulpPublishProject))
     );
     subscriptions.push(
-      commands.registerCommand(Commands.heftPublishProject, TerminalCommandExecuter.heftPublishProject)
+      commands.registerCommand(Commands.heftPublishProject, TelemetryService.withTelemetry(Commands.heftPublishProject, TerminalCommandExecuter.heftPublishProject))
     );
     subscriptions.push(
-      commands.registerCommand(Commands.gulpCleanProject, TerminalCommandExecuter.gulpCleanProject)
+      commands.registerCommand(Commands.gulpCleanProject, TelemetryService.withTelemetry(Commands.gulpCleanProject, TerminalCommandExecuter.gulpCleanProject))
     );
     subscriptions.push(
-      commands.registerCommand(Commands.heftCleanProject, TerminalCommandExecuter.heftCleanProject)
+      commands.registerCommand(Commands.heftCleanProject, TelemetryService.withTelemetry(Commands.heftCleanProject, TerminalCommandExecuter.heftCleanProject))
     );
     subscriptions.push(
-      commands.registerCommand(Commands.gulpBuildProject, TerminalCommandExecuter.gulpBuildProject)
+      commands.registerCommand(Commands.gulpBuildProject, TelemetryService.withTelemetry(Commands.gulpBuildProject, TerminalCommandExecuter.gulpBuildProject))
     );
     subscriptions.push(
-      commands.registerCommand(Commands.heftBuildProject, TerminalCommandExecuter.heftBuildProject)
+      commands.registerCommand(Commands.heftBuildProject, TelemetryService.withTelemetry(Commands.heftBuildProject, TerminalCommandExecuter.heftBuildProject))
     );
     subscriptions.push(
-      commands.registerCommand(Commands.gulpTestProject, TerminalCommandExecuter.gulpTestProject)
+      commands.registerCommand(Commands.gulpTestProject, TelemetryService.withTelemetry(Commands.gulpTestProject, TerminalCommandExecuter.gulpTestProject))
     );
     subscriptions.push(
-      commands.registerCommand(Commands.heftTestProject, TerminalCommandExecuter.heftTestProject)
+      commands.registerCommand(Commands.heftTestProject, TelemetryService.withTelemetry(Commands.heftTestProject, TerminalCommandExecuter.heftTestProject))
     );
     subscriptions.push(
-      commands.registerCommand(Commands.gulpTrustDevCert, TerminalCommandExecuter.gulpTrustDevCert)
+      commands.registerCommand(Commands.gulpTrustDevCert, TelemetryService.withTelemetry(Commands.gulpTrustDevCert, TerminalCommandExecuter.gulpTrustDevCert))
     );
     subscriptions.push(
-      commands.registerCommand(Commands.heftTrustDevCert, TerminalCommandExecuter.heftTrustDevCert)
+      commands.registerCommand(Commands.heftTrustDevCert, TelemetryService.withTelemetry(Commands.heftTrustDevCert, TerminalCommandExecuter.heftTrustDevCert))
     );
     subscriptions.push(
-      commands.registerCommand(Commands.gulpDeployToAzureStorage, TerminalCommandExecuter.gulpDeployToAzureStorage)
+      commands.registerCommand(Commands.gulpDeployToAzureStorage, TelemetryService.withTelemetry(Commands.gulpDeployToAzureStorage, TerminalCommandExecuter.gulpDeployToAzureStorage))
     );
     subscriptions.push(
-      commands.registerCommand(Commands.heftDeployToAzureStorage, TerminalCommandExecuter.heftDeployToAzureStorage)
+      commands.registerCommand(Commands.heftDeployToAzureStorage, TelemetryService.withTelemetry(Commands.heftDeployToAzureStorage, TerminalCommandExecuter.heftDeployToAzureStorage))
     );
 
     TerminalCommandExecuter.initShellPath();
@@ -446,7 +447,7 @@ export class TerminalCommandExecuter {
     const configNames = await TerminalCommandExecuter.getServeConfigNames();
     const options = ['Start', 'Start (no browser)'];
     if (configNames.length > 1) {
-       options.push('Start from configuration');
+      options.push('Start from configuration');
     }
     return await window.showQuickPick(options, {
       title: 'Select the start type',
