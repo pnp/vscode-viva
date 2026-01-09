@@ -39,48 +39,89 @@ function Parse-SampleJsonFiles {
             $sampleJsons = ConvertFrom-Json -InputObject $sampleContent
             
             foreach ($sampleJson in $sampleJsons) {
+                $version = $null
+                $componentType = $null
+                $extensionType = $null
+                $isSPFxProject = $false
+
                 $yoRcPath = $sample.FullName.ToLower().Replace("assets\sample.json", ".yo-rc.json")
 
-                if (-not (Test-Path -Path $yoRcPath)) {
+                if (Test-Path -Path $yoRcPath) {
+                    try {
+                        $yoRcContent = Get-Content -Path $yoRcPath -Raw
+                        $yoRcJson = ConvertFrom-Json -InputObject $yoRcContent
+                        $yoRcJson = $yoRcJson.PSObject.Properties.Value
+
+                        if ($null -ne $yoRcJson) {
+                            $isSPFxProject = $true
+
+                            if ($null -ne $yoRcJson.version -and $yoRcJson.version.GetType().BaseType -eq [System.Array]) {
+                                if ($null -ne $yoRcJson.version[$yoRcJson.version.Length - 1]) {
+                                    $version = $yoRcJson.version[$yoRcJson.version.Length - 1]
+                                }
+                                else {
+                                    $version = $yoRcJson.version[0]
+                                }
+                            }
+                            else {
+                                $version = $yoRcJson.version
+                            }
+
+                            if ($null -ne $yoRcJson.componentType -and $yoRcJson.componentType.GetType().BaseType -eq [System.Array]) {
+                                if ($null -ne $yoRcJson.componentType[$yoRcJson.componentType.Length - 1]) {
+                                    $componentType = $yoRcJson.componentType[$yoRcJson.componentType.Length - 1]
+                                }
+                                else {
+                                    $componentType = $yoRcJson.componentType[0]
+                                }
+                            }
+                            else {
+                                $componentType = $yoRcJson.componentType
+                            }
+
+                            if ($null -ne $yoRcJson.extensionType -and $yoRcJson.extensionType.GetType().BaseType -eq [System.Array]) {
+                                $extensionType = $yoRcJson.extensionType[$yoRcJson.extensionType.Length - 1]
+                            }
+                            else {
+                                $extensionType = $yoRcJson.extensionType
+                            }
+                        }
+                    }
+                    catch {
+                    }
+                }
+
+                if (-not $isSPFxProject) {
+                    $packageJsonPath = $sample.FullName.ToLower().Replace("assets\sample.json", "package.json")
+
+                    if (-not (Test-Path -Path $packageJsonPath)) {
+                        Continue
+                    }
+
+                    try {
+                        $packageJsonContent = Get-Content -Path $packageJsonPath -Raw
+                        $packageJson = ConvertFrom-Json -InputObject $packageJsonContent
+                        
+                        if ($null -ne $packageJson.dependencies.'@microsoft/sp-core-library') {
+                            $isSPFxProject = $true
+                            
+                            $coreLibVersion = $packageJson.dependencies.'@microsoft/sp-core-library'
+                            $version = $coreLibVersion -replace '[\^~>=<]', ''
+                            
+                            switch ($sampleRepo) {
+                                'sp-dev-fx-webparts' { $componentType = 'webPart' }
+                                'sp-dev-fx-extensions' { $componentType = 'extension' }
+                                'sp-dev-fx-aces' { $componentType = 'adaptiveCardExtension' }
+                                'sp-dev-fx-library-components' { $componentType = 'library' }
+                            }
+                        }
+                    }
+                    catch {
+                    }
+                }
+
+                if (-not $isSPFxProject) {
                     Continue
-                }
-
-                $yoRcContent = Get-Content -Path $yoRcPath -Raw
-                $yoRcJson = ConvertFrom-Json -InputObject $yoRcContent
-                $yoRcJson = $yoRcJson.PSObject.Properties.Value
-
-                $version = $null
-                if ($null -ne $yoRcJson.version -and $yoRcJson.version.GetType().BaseType -eq [System.Array]) {
-                    if ($null -ne $yoRcJson.version[$yoRcJson.version.Length - 1]) {
-                        $version = $yoRcJson.version[$yoRcJson.version.Length - 1]
-                    }
-                    else {
-                        $version = $yoRcJson.version[0]
-                    }
-                }
-                else {
-                    $version = $yoRcJson.version
-                }
-
-                $componentType = $null
-                if ($null -ne $yoRcJson.componentType -and $yoRcJson.componentType.GetType().BaseType -eq [System.Array]) {
-                    if ($null -ne $yoRcJson.componentType[$yoRcJson.componentType.Length - 1]) {
-                        $componentType = $yoRcJson.componentType[$yoRcJson.componentType.Length - 1]
-                    }
-                    else {
-                        $componentType = $yoRcJson.componentType[0]
-                    }
-                }
-                else {
-                    $componentType = $yoRcJson.componentType
-                }
-
-                $extensionType = $null
-                if ($null -ne $yoRcJson.extensionType -and $yoRcJson.extensionType.GetType().BaseType -eq [System.Array]) {
-                    $extensionType = $yoRcJson.extensionType[$yoRcJson.extensionType.Length - 1]
-                }
-                else {
-                    $extensionType = $yoRcJson.extensionType
                 }
 
                 $sampleAuthors = @()
