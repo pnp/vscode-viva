@@ -72,7 +72,7 @@ This action checks if your local development environment meets the required vers
 
 It is also possible to install the required Node.js version and global dependencies for any SPFx version using the **Install dependencies** action.
 
-![install dependencies](./assets/images/install-dependencies.png)
+![install dependencies](./docs/assets/images-vscode/Install-dependencies.png)
 
 >  [!NOTE]
 >  The list of valid dependencies is based on [set up your development environment recommendations](https://learn.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-development-environment)
