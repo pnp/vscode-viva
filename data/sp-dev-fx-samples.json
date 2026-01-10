@@ -472,7 +472,7 @@
       "title": "Animated Progress Field",
       "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/js-field-animated-progress",
       "description": "Displays an animated progress bar component",
-      "image": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/js-field-animated-progress/assets/preview.gif",
+      "image": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/js-field-animated-progress/assets/progressfield.png",
       "authors": [
         {
           "name": "Ari Gunawan",
@@ -702,7 +702,7 @@
       "sampleType": "samples"
     },
     {
-      "name": "pnp-sp-dev-spfx-extensions-react-react-application-collab-footer",
+      "name": "pnp-sp-dev-spfx-extensions-react-application-collab-footer",
       "title": "SharePoint Collaboration Footer v8.0.0",
       "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-application-collab-footer",
       "description": "Enterprise-grade SharePoint footer with hybrid architecture, advanced link management, and modern user experience",
@@ -725,7 +725,7 @@
       "sampleType": "samples"
     },
     {
-      "name": "pnp-sp-dev-spfx-extensions-react-react-application-customizer-feedback-widget",
+      "name": "pnp-sp-dev-spfx-extensions-react-application-customizer-feedback-widget",
       "title": "Sticky Feedback Widget Application Customizer",
       "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-application-customizer-feedback-widget",
       "description": "An SPFx Application Customizer Extension placed in the bottom placeholder which allows users to input their feedbacks without scrolling down to the end of the page.",
@@ -867,7 +867,7 @@
       "title": "Microsoft 365 Service Health Extension",
       "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-application-m365-service-health",
       "description": "This extension provides real-time monitoring of Microsoft 365 service health directly within your SharePoint environment. It enables users to quickly check the availability status of core M365 services, helping organizations stay informed about outages or incidents.",
-      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-application-m365-service-health/assets/m365ServiceHealth01.png",
+      "image": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-m365-service-health/assets/m365ServiceHealth01.png",
       "authors": [
         {
           "name": "João Mendes",
@@ -948,7 +948,7 @@
       "sampleType": "samples"
     },
     {
-      "name": "pnp-sp-dev-spfx-extensions-react-react-application-my-flows-list",
+      "name": "pnp-sp-dev-spfx-extensions-react-application-my-flows-list",
       "title": "My Flows List",
       "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-application-my-flows-list",
       "description": "Application extension that allows the user to check list of flows and their current status and details.",
@@ -1246,7 +1246,7 @@
       "title": "Quick Register to Appointment (SharePoint Event page)",
       "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-application-quick-register-to-appointment",
       "description": "SharePoint Online provides a list of appointments (events) on a site. The \"Events\" web part can be used to display them on a page. Users can access the appointment details via the web part and view all the details. The detailed view provides a link that allows them to add the appointment to their personal calendar. An appointment entry also allows them to maintain an attendee list. The \"Events\" list provides the \"Attendees\" column, where multiple people can be added. However, there is no automatic function for this; the list must be edited manually. The special app extension adds a registration and deregistration function to the detailed view. Users can register for a specific appointment and later deregister with a simple click. Attendees are automatically managed in the attendee column of the list.",
-      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-application-quick-register-to-appointment/assets/fastregisterappointment.png",
+      "image": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-quick-register-to-appointment/assets/fastregisterappointment.png",
       "authors": [
         {
           "name": "Marc André Schröder-Zhou",
@@ -1564,7 +1564,7 @@
       "sampleType": "samples"
     },
     {
-      "name": "pnp-sp-dev-spfx-extensions-react-react-command-change-page-layouttype",
+      "name": "pnp-sp-dev-spfx-extensions-react-command-change-page-layouttype",
       "title": "Change Page Layout Command Extension",
       "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-command-change-page-layouttype",
       "description": "Listview command extension that is available only for the Site Pages library to change the layout type. If the page is Article, it can be changed to Home which will remove the page title placeholder and vice versa.",
@@ -1614,7 +1614,7 @@
       "sampleType": "samples"
     },
     {
-      "name": "pnp-sp-dev-spfx-extensions-react-react-command-copy-move-items",
+      "name": "pnp-sp-dev-spfx-extensions-react-command-copy-move-items",
       "title": "Copy/Move Item(s)",
       "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-command-copy-move-items",
       "description": "Displays a command button named **Copy/Move Item(s)** in all the custom lists",
@@ -1637,7 +1637,7 @@
       "sampleType": "samples"
     },
     {
-      "name": "pnp-sp-dev-spfx-extensions-react-react-command-copy-pnp-search-webpart-settings",
+      "name": "pnp-sp-dev-spfx-extensions-react-command-copy-pnp-search-webpart-settings",
       "title": "Copy PnP search results webpart settings",
       "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-command-copy-pnp-search-webpart-settings",
       "description": "This list view command set, helps in copying the settings of the PnP search results web part present on a page to the settings of the  PnP search results web part present on the selected pages.",
@@ -1848,7 +1848,7 @@
       "sampleType": "samples"
     },
     {
-      "name": "pnp-sp-dev-spfx-extensions-react-react-command-follow-document",
+      "name": "pnp-sp-dev-spfx-extensions-react-command-follow-document",
       "title": "Follow Document",
       "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-command-follow-document",
       "description": "This solution has the goal to easily identify/follow user key documents from all Tenant and easily access them in Modern Pages.",
@@ -2681,7 +2681,7 @@
       "title": "My Sites Hub",
       "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-my-sites-hub",
       "description": "My Sites Hub is a SharePoint Framework (SPFx) Application Customizer Extension that provides users with a centralized “My Sites” dashboard accessible directly from any SharePoint site.",
-      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-my-sites-hub/assets/screenshot1.png",
+      "image": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-my-sites-hub/assets/screenshot1.png",
       "authors": [
         {
           "name": "Sandeep P S",
@@ -2750,7 +2750,7 @@
       "title": "Copy Path and Copy Name List view command set extensions",
       "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-utility-extensions",
       "description": "List view command set extensions with below functionalities",
-      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-utility-extensions/assets/CopyPathCopyNameExtenstions.png",
+      "image": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-utility-extensions/assets/CopyPathCopyNameExtenstions.png",
       "authors": [
         {
           "name": "Harminder Singh",
@@ -3011,7 +3011,7 @@
       "title": "Web Part with Handlebars.js",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/handlebarsjs-webpack-loader",
       "description": "This sample demonstrate how to set up SPFX to use Handlebars through webpack loader.",
-      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/gh-pages/img/_nopreview.png",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/handlebarsjs-webpack-loader/assets/_nopreview.png",
       "authors": [
         {
           "name": "Stefan Bauer",
@@ -3230,9 +3230,9 @@
       "sampleType": "samples"
     },
     {
-      "name": "pnp-sp-dev-spfx-web-parts-js-gitHubbadge",
+      "name": "pnp-sp-dev-spfx-web-parts-js-githubbadge",
       "title": "GitHub Badge Web Part",
-      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/js-gitHubbadge",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/js-gitHubBadge",
       "description": "",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/e92d0dac567cc4d59cdfc94186a52a3b776c6d21/samples/js-gitHubBadge/assets/1.png",
       "authors": [
@@ -3353,6 +3353,29 @@
       "sampleType": "samples"
     },
     {
+      "name": "pnp-sp-dev-spfx-web-parts-js-pi-canvas",
+      "title": "PiCanvas - Tabbed Page Sections",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/js-pi-canvas",
+      "description": "Organize SharePoint page sections and web parts into a tabbed interface with permission-based visibility, templates, and full customization.",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/js-pi-canvas/assets/screenshot.png",
+      "authors": [
+        {
+          "name": "Anthony Hopkins",
+          "pictureUrl": "https://github.com/anthonyrhopkins.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2024-11-15",
+      "updateDate": "2026-01-02",
+      "version": "1.20.0",
+      "componentType": "webpart",
+      "extensionType": null,
+      "sampleGallery": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
       "name": "pnp-sp-dev-spfx-web-parts-js-propertycontrols-svg",
       "title": "JS Property Controls SVG Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/js-propertycontrols-svg",
@@ -3453,11 +3476,11 @@
       "authors": [
         {
           "name": "David Warner II",
-          "pictureUrl": "https://avatars.githubusercontent.com/u/10676147?s=460&u=9e4e74223c4ffb430fb77c97892a84b286df1921&v=4"
+          "pictureUrl": "https://github.com/PopWarner.png"
         },
         {
           "name": "Beau Cameron",
-          "pictureUrl": "https://avatars.githubusercontent.com/u/7944457?s=460&u=cbea276e0125f71a183f8ad94475dbd1984c6afa&v=4"
+          "pictureUrl": "https://github.com/bcameron1231.png"
         },
         {
           "name": "Hugo Bernier",
@@ -4454,7 +4477,7 @@
         },
         {
           "name": "Eli H. Schei",
-          "pictureUrl": "https://github.com/Eli-Schei"
+          "pictureUrl": "https://github.com/Eli-Schei.png"
         },
         {
           "name": "Dhananjay Pant",
@@ -5086,7 +5109,9 @@
           "pictureUrl": "https://github.com/ferrarirosso.png"
         }
       ],
-      "tags": [],
+      "tags": [
+        "SharePoint"
+      ],
       "createDate": "2020-12-13",
       "updateDate": "2025-09-12",
       "version": "1.21.1",
@@ -6016,7 +6041,7 @@
       "title": "Documents Links Accordion Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-document-links-accordion",
       "description": "This web part allows user create a accordion with documents links grouped by any column of document library.",
-      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-document-links-accordion/assets/documentsLinksAccordion.gif",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-document-links-accordion/assets/documentsLinksAccordion1.png",
       "authors": [
         {
           "name": "João Mendes",
@@ -6213,10 +6238,6 @@
         {
           "name": "Sandeep P S",
           "pictureUrl": "https://github.com/Sandeep-FED.png"
-        },
-        {
-          "name": "AOAI SDK",
-          "pictureUrl": "https://github.com/Azure/azure-sdk-for-js/tree/main/sdk/openai/openai.png"
         }
       ],
       "tags": [
@@ -6564,10 +6585,6 @@
       "description": "This web part displays a sidebar that allows users to provide feedback on various sections of your site.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-feedback-sidebar/assets/preview.gif",
       "authors": [
-        {
-          "name": "Matteo Serpi",
-          "pictureUrl": "https://github.com/srpmtt.png"
-        },
         {
           "name": "Alessia De Martino",
           "pictureUrl": "https://github.com/AlessiaDeMartino.png"
@@ -7085,7 +7102,7 @@
       "title": "Graph Auto Batching Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-graph-auto-batching",
       "description": "This sample shows how to abstract batching graph requests",
-      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/gh-pages/img/_nopreview.png",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-graph-auto-batching/assets/_nopreview.png",
       "authors": [
         {
           "name": "Marcin Wojciechowski",
@@ -7447,14 +7464,6 @@
         {
           "name": "Nicolas Kheirallah",
           "pictureUrl": "https://github.com/NicolasKheirallah.png"
-        },
-        {
-          "name": "Nirav Raval",
-          "pictureUrl": "https://github.com/nrvrvl.png"
-        },
-        {
-          "name": "Microsoft Graph JavaScript SDK",
-          "pictureUrl": "https://github.com/microsoftgraph/msgraph-sdk-javascript.png"
         }
       ],
       "tags": [
@@ -9443,10 +9452,6 @@
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-pagecontributors/assets/pagecontributors_inaction.PNG",
       "authors": [
         {
-          "name": "Stéphane Magne",
-          "pictureUrl": "https://github.com/SPParseError.png"
-        },
-        {
           "name": "Ari Gunawan",
           "pictureUrl": "https://github.com/AriGunawan.png"
         }
@@ -10114,10 +10119,6 @@
         {
           "name": "João Livio",
           "pictureUrl": "https://github.com/jtlivio.png"
-        },
-        {
-          "name": "Create a new issue",
-          "pictureUrl": "https://github.com/pnp/sp-dev-fx-webparts/issues/new.png"
         }
       ],
       "tags": [
@@ -10296,7 +10297,7 @@
         },
         {
           "name": "Yves Habersaat",
-          "pictureUrl": "https://github.com/yhabersaat"
+          "pictureUrl": "https://github.com/yhabersaat.png"
         }
       ],
       "tags": [
@@ -10313,9 +10314,9 @@
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-react-query",
       "title": "Query Microsoft Graph Web Part",
-      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-graph-auto-batching",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-react-query",
       "description": "This sample shows how you can query Microsoft Graph from React in SharePoint Framework",
-      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/gh-pages/img/_nopreview.png",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-react-query/assets/_nopreview.png",
       "authors": [
         {
           "name": "Marcin Wojciechowski",
