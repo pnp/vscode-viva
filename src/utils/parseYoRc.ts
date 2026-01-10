@@ -1,5 +1,6 @@
 import { workspace } from 'vscode';
 import { YoRc } from '../models';
+import { Logger } from '../services/dataType/Logger';
 
 
 export const parseYoRc = async (): Promise<YoRc | undefined> => {
@@ -22,7 +23,11 @@ export const parseYoRc = async (): Promise<YoRc | undefined> => {
     }
   }
 
-  content = typeof content === 'string' ? JSON.parse(content) as YoRc : content;
-
-  return content;
+  try {
+    content = typeof content === 'string' ? JSON.parse(content) as YoRc : content;
+    return content;
+  } catch (error) {
+    Logger.error(`Failed to parse .yo-rc.json: ${error}`);
+    return undefined;
+  }
 };

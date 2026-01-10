@@ -88,6 +88,7 @@ function Parse-SampleJsonFiles {
                         }
                     }
                     catch {
+                        Write-Warning "Failed to parse package.json for $($sample.FullName): $($_.Exception.Message)"
                     }
                 }
 

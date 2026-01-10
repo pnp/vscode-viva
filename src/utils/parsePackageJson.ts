@@ -1,4 +1,3 @@
-import { readFileSync } from 'fs';
 import { workspace } from 'vscode';
 
 
@@ -20,7 +19,7 @@ export const parsePackageJson = async (): Promise<PackageJson | undefined> => {
         }
 
         const packageJsonFile = files[0];
-        const content = readFileSync(packageJsonFile.fsPath, 'utf8');
+        const content = await workspace.openTextDocument(packageJsonFile.fsPath).then(doc => doc.getText());
 
         if (!content) {
             return undefined;

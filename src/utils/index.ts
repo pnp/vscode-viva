@@ -7,3 +7,4 @@ export * from './getPackageManager';
 export * from './getInstallCommand';
 export * from './parseCliCommand';
 export * from './validateGuid';
+export * from './getVersion';
