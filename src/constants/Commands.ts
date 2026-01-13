@@ -91,6 +91,16 @@ export const Commands = {
   moveAppCatalogApp: `${EXTENSION_NAME}.moveAppCatalogApp`,
   showMoreActions: `${EXTENSION_NAME}.showMoreActions`,
 
+  // Bulk app catalog actions
+  bulkDeployAppCatalogApps: `${EXTENSION_NAME}.bulkDeployAppCatalogApps`,
+  bulkRetractAppCatalogApps: `${EXTENSION_NAME}.bulkRetractAppCatalogApps`,
+  bulkRemoveAppCatalogApps: `${EXTENSION_NAME}.bulkRemoveAppCatalogApps`,
+  bulkEnableAppCatalogApps: `${EXTENSION_NAME}.bulkEnableAppCatalogApps`,
+  bulkDisableAppCatalogApps: `${EXTENSION_NAME}.bulkDisableAppCatalogApps`,
+  bulkInstallAppCatalogApps: `${EXTENSION_NAME}.bulkInstallAppCatalogApps`,
+  bulkUninstallAppCatalogApps: `${EXTENSION_NAME}.bulkUninstallAppCatalogApps`,
+  bulkUpgradeAppCatalogApps: `${EXTENSION_NAME}.bulkUpgradeAppCatalogApps`,
+
   // App Catalog actions
   addTenantAppCatalog: `${EXTENSION_NAME}.addTenantAppCatalog`,
   addSiteAppCatalog: `${EXTENSION_NAME}.addSiteAppCatalog`,
