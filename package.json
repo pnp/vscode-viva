@@ -1140,6 +1140,46 @@
 				"icon": "$(remove)"
 			},
 			{
+				"command": "spfx-toolkit.bulkDeployAppCatalogApps",
+				"title": "Bulk: Deploy All Apps",
+				"category": "SPFx Toolkit"
+			},
+			{
+				"command": "spfx-toolkit.bulkRetractAppCatalogApps",
+				"title": "Bulk: Retract All Apps",
+				"category": "SPFx Toolkit"
+			},
+			{
+				"command": "spfx-toolkit.bulkRemoveAppCatalogApps",
+				"title": "Bulk: Remove All Apps",
+				"category": "SPFx Toolkit"
+			},
+			{
+				"command": "spfx-toolkit.bulkEnableAppCatalogApps",
+				"title": "Bulk: Enable All Apps",
+				"category": "SPFx Toolkit"
+			},
+			{
+				"command": "spfx-toolkit.bulkDisableAppCatalogApps",
+				"title": "Bulk: Disable All Apps",
+				"category": "SPFx Toolkit"
+			},
+			{
+				"command": "spfx-toolkit.bulkInstallAppCatalogApps",
+				"title": "Bulk: Install All Apps",
+				"category": "SPFx Toolkit"
+			},
+			{
+				"command": "spfx-toolkit.bulkUninstallAppCatalogApps",
+				"title": "Bulk: Uninstall All Apps",
+				"category": "SPFx Toolkit"
+			},
+			{
+				"command": "spfx-toolkit.bulkUpgradeAppCatalogApps",
+				"title": "Bulk: Upgrade All Apps",
+				"category": "SPFx Toolkit"
+			},
+			{
 				"command": "spfx-toolkit.copyAppCatalogApp",
 				"title": "Copy",
 				"category": "SPFx Toolkit",
@@ -1443,7 +1483,12 @@
 				{
 					"command": "spfx-toolkit.removeSiteAppCatalog",
 					"when": "viewItem == sp-app-catalog-url",
-					"group": "inline"
+					"group": "inline@1"
+				},
+				{
+					"submenu": "spfx-toolkit.bulkSiteActions",
+					"when": "viewItem == sp-app-catalog-url",
+					"group": "inline@2"
 				},
 				{
 					"submenu": "spfx-toolkit.moreTenantWideExtensionActions",
@@ -1511,6 +1556,40 @@
 					"group": "actions.more@4"
 				}
 			],
+			"spfx-toolkit.bulkSiteActions": [
+				{
+					"command": "spfx-toolkit.bulkDeployAppCatalogApps",
+					"group": "bulk.actions@1"
+				},
+				{
+					"command": "spfx-toolkit.bulkRetractAppCatalogApps",
+					"group": "bulk.actions@2"
+				},
+				{
+					"command": "spfx-toolkit.bulkRemoveAppCatalogApps",
+					"group": "bulk.actions@3"
+				},
+				{
+					"command": "spfx-toolkit.bulkEnableAppCatalogApps",
+					"group": "bulk.actions@4"
+				},
+				{
+					"command": "spfx-toolkit.bulkDisableAppCatalogApps",
+					"group": "bulk.actions@5"
+				},
+				{
+					"command": "spfx-toolkit.bulkInstallAppCatalogApps",
+					"group": "bulk.actions@6"
+				},
+				{
+					"command": "spfx-toolkit.bulkUninstallAppCatalogApps",
+					"group": "bulk.actions@7"
+				},
+				{
+					"command": "spfx-toolkit.bulkUpgradeAppCatalogApps",
+					"group": "bulk.actions@8"
+				}
+			],
 			"explorer/context": [
 				{
 					"command": "spfx-toolkit.deployProject",
@@ -1528,6 +1607,11 @@
 			{
 				"id": "spfx-toolkit.moreTenantWideExtensionActions",
 				"label": "More Actions...",
+				"icon": "$(ellipsis)"
+			},
+			{
+				"id": "spfx-toolkit.bulkSiteActions",
+				"label": "Bulk Actions...",
 				"icon": "$(ellipsis)"
 			}
 		],

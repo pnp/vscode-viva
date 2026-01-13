@@ -1,11 +1,13 @@
-import { commands, Progress, ProgressLocation, window } from 'vscode';
+import { commands, Progress, ProgressLocation, window, Uri } from 'vscode';
 import { Subscription } from '../../models';
 import { Extension } from '../dataType/Extension';
 import { Commands, ContextKeys, WebTemplates, ListTemplates } from '../../constants';
-import { ActionTreeItem } from '../../providers/ActionTreeDataProvider';
+import { ActionTreeItem, ActionTreeDataProvider } from '../../providers/ActionTreeDataProvider';
 import { Notifications } from '../dataType/Notifications';
 import { CliExecuter } from '../executeWrappers/CliCommandExecuter';
 import { EnvironmentInformation } from '../dataType/EnvironmentInformation';
+import { CliActions } from './CliActions';
+import { Logger } from '../dataType/Logger';
 
 
 export class SpfxAppCLIActions {
@@ -74,6 +76,30 @@ export class SpfxAppCLIActions {
             commands.registerCommand(Commands.moveAppCatalogApp, (node: ActionTreeItem) =>
                 SpfxAppCLIActions.handleAppCatalogAppTransfer(node, ContextKeys.moveApp, 'move')
             )
+        );
+        subscriptions.push(
+            commands.registerCommand(Commands.bulkDeployAppCatalogApps, (node: ActionTreeItem) => SpfxAppCLIActions.bulkDeployAppCatalogApps(node))
+        );
+        subscriptions.push(
+            commands.registerCommand(Commands.bulkRetractAppCatalogApps, (node: ActionTreeItem) => SpfxAppCLIActions.bulkRetractAppCatalogApps(node))
+        );
+        subscriptions.push(
+            commands.registerCommand(Commands.bulkRemoveAppCatalogApps, (node: ActionTreeItem) => SpfxAppCLIActions.bulkRemoveAppCatalogApps(node))
+        );
+        subscriptions.push(
+            commands.registerCommand(Commands.bulkEnableAppCatalogApps, (node: ActionTreeItem) => SpfxAppCLIActions.bulkEnableAppCatalogApps(node))
+        );
+        subscriptions.push(
+            commands.registerCommand(Commands.bulkDisableAppCatalogApps, (node: ActionTreeItem) => SpfxAppCLIActions.bulkDisableAppCatalogApps(node))
+        );
+        subscriptions.push(
+            commands.registerCommand(Commands.bulkInstallAppCatalogApps, (node: ActionTreeItem) => SpfxAppCLIActions.bulkInstallAppCatalogApps(node))
+        );
+        subscriptions.push(
+            commands.registerCommand(Commands.bulkUninstallAppCatalogApps, (node: ActionTreeItem) => SpfxAppCLIActions.bulkUninstallAppCatalogApps(node))
+        );
+        subscriptions.push(
+            commands.registerCommand(Commands.bulkUpgradeAppCatalogApps, (node: ActionTreeItem) => SpfxAppCLIActions.bulkUpgradeAppCatalogApps(node))
         );
     }
 
@@ -830,6 +856,696 @@ export class SpfxAppCLIActions {
             await commands.executeCommand('spfx-toolkit.refreshAppCatalogTreeView');
         } catch (e: any) {
             const message = e?.message || `An unexpected error occurred during the app ${action}.`;
+            Notifications.error(message);
+        }
+    }
+
+    /**
+     * Helper method to extract app catalog URL from a tree node.
+     */
+    private static getAppCatalogUrlFromNode(node: ActionTreeItem): string | undefined {
+        if (node.command?.arguments?.[0]) {
+            const uri = node.command.arguments[0] as Uri;
+            const urlString = uri.toString().replace('/AppCatalog', '');
+            return urlString;
+        }
+        return undefined;
+    }
+
+    /**
+     * Deploys all non-deployed apps in the specified app catalog.
+     *
+     * @param node The tree item representing the app catalog.
+     */
+    public static async bulkDeployAppCatalogApps(node: ActionTreeItem) {
+        try {
+            const appCatalogUrl = SpfxAppCLIActions.getAppCatalogUrlFromNode(node);
+
+            const confirm = await window.showQuickPick(['Yes', 'No'], {
+                title: `Are you sure you want to deploy all non-deployed apps in this app catalog?`,
+                ignoreFocusOut: true,
+                canPickMany: false
+            });
+
+            if (confirm !== 'Yes') {
+                Notifications.warning('Bulk deploy operation cancelled.');
+                return;
+            }
+
+            const apps = await CliActions.getAppCatalogApps(appCatalogUrl);
+
+            if (!apps || apps.length === 0) {
+                Notifications.info('No apps found in the app catalog.');
+                return;
+            }
+
+            const notDeployedApps = apps.filter(app => !app.Deployed);
+
+            if (notDeployedApps.length === 0) {
+                Notifications.info('No non-deployed apps found to deploy.');
+                return;
+            }
+
+            await window.withProgress({
+                location: ProgressLocation.Notification,
+                title: `Deploying ${notDeployedApps.length} app(s)... Check [output window](command:${Commands.showOutputChannel}) to follow the progress.`,
+                cancellable: false
+            }, async (progress: Progress<{ message?: string; increment?: number }>) => {
+                let completed = 0;
+                for (const app of notDeployedApps) {
+                    try {
+                        progress.report({ message: `Deploying '${app.Title}'...`, increment: (1 / notDeployedApps.length) * 100 });
+
+                        const commandOptions: any = {
+                            id: app.ID,
+                            ...(appCatalogUrl && {
+                                appCatalogScope: 'sitecollection',
+                                appCatalogUrl: appCatalogUrl
+                            })
+                        };
+
+                        await CliExecuter.execute('spo app deploy', 'json', commandOptions);
+                        Logger.info(`Deployed app '${app.Title}' with ID '${app.ID}'.`);
+                        completed++;
+                    } catch (e: any) {
+                        Logger.error(`Failed to deploy app '${app.Title}' with ID '${app.ID}': ${e?.error?.message || e?.message}`);
+                    }
+                }
+
+                if (completed === notDeployedApps.length) {
+                    Notifications.info(`Successfully deployed ${completed} app(s).`);
+                } else {
+                    Notifications.warning(`Deployed ${completed} out of ${notDeployedApps.length} app(s). Check [output window](command:${Commands.showOutputChannel}) for details.`);
+                }
+            });
+
+            // refresh the environmentTreeView
+            await commands.executeCommand('spfx-toolkit.refreshAppCatalogTreeView');
+        } catch (e: any) {
+            const message = e?.error?.message || e?.message;
+            Notifications.error(message);
+        }
+    }
+
+    /**
+     * Retracts all apps in the specified app catalog.
+     *
+     * @param node The tree item representing the app catalog.
+     */
+    public static async bulkRetractAppCatalogApps(node: ActionTreeItem) {
+        try {
+            const appCatalogUrl = SpfxAppCLIActions.getAppCatalogUrlFromNode(node);
+
+            const confirm = await window.showQuickPick(['Yes', 'No'], {
+                title: `Are you sure you want to retract all apps in this app catalog?`,
+                ignoreFocusOut: true,
+                canPickMany: false
+            });
+
+            if (confirm !== 'Yes') {
+                Notifications.warning('Bulk retract operation cancelled.');
+                return;
+            }
+
+            const apps = await CliActions.getAppCatalogApps(appCatalogUrl);
+
+            if (!apps || apps.length === 0) {
+                Notifications.info('No apps found in the app catalog.');
+                return;
+            }
+
+            const deployedApps = apps.filter(app => app.Deployed);
+
+            if (deployedApps.length === 0) {
+                Notifications.info('No deployed apps found to retract.');
+                return;
+            }
+
+            await window.withProgress({
+                location: ProgressLocation.Notification,
+                title: `Retracting ${deployedApps.length} app(s)... Check [output window](command:${Commands.showOutputChannel}) to follow the progress.`,
+                cancellable: false
+            }, async (progress: Progress<{ message?: string; increment?: number }>) => {
+                let completed = 0;
+                for (const app of deployedApps) {
+                    try {
+                        progress.report({ message: `Retracting '${app.Title}'...`, increment: (1 / deployedApps.length) * 100 });
+
+                        const commandOptions: any = {
+                            id: app.ID,
+                            force: true,
+                            ...(appCatalogUrl && {
+                                appCatalogScope: 'sitecollection',
+                                appCatalogUrl: appCatalogUrl
+                            })
+                        };
+
+                        await CliExecuter.execute('spo app retract', 'json', commandOptions);
+                        completed++;
+                    } catch (e: any) {
+                        Notifications.error(`Failed to retract '${app.Title}': ${e?.error?.message || e?.message}`);
+                    }
+                }
+
+                progress.report({ message: `Completed: ${completed} of ${deployedApps.length} app(s) retracted.` });
+            });
+
+            Notifications.info(`Bulk retract completed: ${deployedApps.length} app(s) processed.`);
+
+            // refresh the environmentTreeView
+            await commands.executeCommand('spfx-toolkit.refreshAppCatalogTreeView');
+        } catch (e: any) {
+            const message = e?.error?.message || e?.message;
+            Notifications.error(message);
+        }
+    }
+
+    /**
+     * Removes all apps from the specified app catalog.
+     *
+     * @param node The tree item representing the app catalog.
+     */
+    public static async bulkRemoveAppCatalogApps(node: ActionTreeItem) {
+        try {
+            const appCatalogUrl = SpfxAppCLIActions.getAppCatalogUrlFromNode(node);
+
+            const confirm = await window.showQuickPick(['Yes', 'No'], {
+                title: `Are you sure you want to remove all apps from this app catalog? This action cannot be undone.`,
+                ignoreFocusOut: true,
+                canPickMany: false
+            });
+
+            if (confirm !== 'Yes') {
+                Notifications.warning('Bulk remove operation cancelled.');
+                return;
+            }
+
+            const apps = await CliActions.getAppCatalogApps(appCatalogUrl);
+
+            if (!apps || apps.length === 0) {
+                Notifications.info('No apps found in the app catalog.');
+                return;
+            }
+
+            await window.withProgress({
+                location: ProgressLocation.Notification,
+                title: `Removing ${apps.length} app(s)... Check [output window](command:${Commands.showOutputChannel}) to follow the progress.`,
+                cancellable: false
+            }, async (progress: Progress<{ message?: string; increment?: number }>) => {
+                let completed = 0;
+                for (const app of apps) {
+                    try {
+                        progress.report({ message: `Removing '${app.Title}'...`, increment: (1 / apps.length) * 100 });
+
+                        const commandOptions: any = {
+                            id: app.ID,
+                            force: true,
+                            ...(appCatalogUrl && {
+                                appCatalogScope: 'sitecollection',
+                                appCatalogUrl: appCatalogUrl
+                            })
+                        };
+
+                        await CliExecuter.execute('spo app remove', 'json', commandOptions);
+                        completed++;
+                    } catch (e: any) {
+                        Notifications.error(`Failed to remove '${app.Title}': ${e?.error?.message || e?.message}`);
+                    }
+                }
+
+                progress.report({ message: `Completed: ${completed} of ${apps.length} app(s) removed.` });
+            });
+
+            Notifications.info(`Bulk remove completed: ${apps.length} app(s) processed.`);
+
+            // refresh the environmentTreeView
+            await commands.executeCommand('spfx-toolkit.refreshAppCatalogTreeView');
+        } catch (e: any) {
+            const message = e?.error?.message || e?.message;
+            Notifications.error(message);
+        }
+    }
+
+    /**
+     * Enables all apps in the specified app catalog.
+     *
+     * @param node The tree item representing the app catalog.
+     */
+    public static async bulkEnableAppCatalogApps(node: ActionTreeItem) {
+        try {
+            const appCatalogUrl = SpfxAppCLIActions.getAppCatalogUrlFromNode(node);
+
+            const confirm = await window.showQuickPick(['Yes', 'No'], {
+                title: `Are you sure you want to enable all apps in this app catalog?`,
+                ignoreFocusOut: true,
+                canPickMany: false
+            });
+
+            if (confirm !== 'Yes') {
+                Notifications.warning('Bulk enable operation cancelled.');
+                return;
+            }
+
+            const apps = await CliActions.getAppCatalogApps(appCatalogUrl);
+
+            if (!apps || apps.length === 0) {
+                Notifications.info('No apps found in the app catalog.');
+                return;
+            }
+
+            const disabledApps = apps.filter(app => !app.Enabled);
+
+            if (disabledApps.length === 0) {
+                Notifications.info('All apps are already enabled.');
+                return;
+            }
+
+            await window.withProgress({
+                location: ProgressLocation.Notification,
+                title: `Enabling ${disabledApps.length} app(s)... Check [output window](command:${Commands.showOutputChannel}) to follow the progress.`,
+                cancellable: false
+            }, async (progress: Progress<{ message?: string; increment?: number }>) => {
+                let completed = 0;
+                for (const app of disabledApps) {
+                    try {
+                        progress.report({ message: `Enabling '${app.Title}'...`, increment: (1 / disabledApps.length) * 100 });
+
+                        const appProductIdFilter = `Title eq '${app.Title}'`;
+                        const commandOptionsList: any = {
+                            listTitle: 'Apps for SharePoint',
+                            webUrl: appCatalogUrl,
+                            fields: 'Id, Title, IsAppPackageEnabled',
+                            filter: appProductIdFilter
+                        };
+
+                        const listItemsResponse = await CliExecuter.execute('spo listitem list', 'json', commandOptionsList);
+                        const listItems = JSON.parse(listItemsResponse.stdout || '[]');
+
+                        if (listItems.length > 0) {
+                            const appListItemId = listItems[0].Id;
+
+                            const commandOptionsSet: any = {
+                                listTitle: 'Apps for SharePoint',
+                                id: appListItemId,
+                                webUrl: appCatalogUrl,
+                                IsAppPackageEnabled: true
+                            };
+
+                            await CliExecuter.execute('spo listitem set', 'json', commandOptionsSet);
+                            completed++;
+                        }
+                    } catch (e: any) {
+                        Notifications.error(`Failed to enable '${app.Title}': ${e?.error?.message || e?.message}`);
+                    }
+                }
+
+                progress.report({ message: `Completed: ${completed} of ${disabledApps.length} app(s) enabled.` });
+            });
+
+            Notifications.info(`Bulk enable completed: ${disabledApps.length} app(s) processed.`);
+
+            // refresh the environmentTreeView
+            await commands.executeCommand('spfx-toolkit.refreshAppCatalogTreeView');
+        } catch (e: any) {
+            const message = e?.error?.message || e?.message;
+            Notifications.error(message);
+        }
+    }
+
+    /**
+     * Disables all apps in the specified app catalog.
+     *
+     * @param node The tree item representing the app catalog.
+     */
+    public static async bulkDisableAppCatalogApps(node: ActionTreeItem) {
+        try {
+            const appCatalogUrl = SpfxAppCLIActions.getAppCatalogUrlFromNode(node);
+
+            const confirm = await window.showQuickPick(['Yes', 'No'], {
+                title: `Are you sure you want to disable all apps in this app catalog?`,
+                ignoreFocusOut: true,
+                canPickMany: false
+            });
+
+            if (confirm !== 'Yes') {
+                Notifications.warning('Bulk disable operation cancelled.');
+                return;
+            }
+
+            const apps = await CliActions.getAppCatalogApps(appCatalogUrl);
+
+            if (!apps || apps.length === 0) {
+                Notifications.info('No apps found in the app catalog.');
+                return;
+            }
+
+            const enabledApps = apps.filter(app => app.Enabled);
+
+            if (enabledApps.length === 0) {
+                Notifications.info('All apps are already disabled.');
+                return;
+            }
+
+            await window.withProgress({
+                location: ProgressLocation.Notification,
+                title: `Disabling ${enabledApps.length} app(s)... Check [output window](command:${Commands.showOutputChannel}) to follow the progress.`,
+                cancellable: false
+            }, async (progress: Progress<{ message?: string; increment?: number }>) => {
+                let completed = 0;
+                for (const app of enabledApps) {
+                    try {
+                        progress.report({ message: `Disabling '${app.Title}'...`, increment: (1 / enabledApps.length) * 100 });
+
+                        const appProductIdFilter = `Title eq '${app.Title}'`;
+                        const commandOptionsList: any = {
+                            listTitle: 'Apps for SharePoint',
+                            webUrl: appCatalogUrl,
+                            fields: 'Id, Title, IsAppPackageEnabled',
+                            filter: appProductIdFilter
+                        };
+
+                        const listItemsResponse = await CliExecuter.execute('spo listitem list', 'json', commandOptionsList);
+                        const listItems = JSON.parse(listItemsResponse.stdout || '[]');
+
+                        if (listItems.length > 0) {
+                            const appListItemId = listItems[0].Id;
+
+                            const commandOptionsSet: any = {
+                                listTitle: 'Apps for SharePoint',
+                                id: appListItemId,
+                                webUrl: appCatalogUrl,
+                                IsAppPackageEnabled: false
+                            };
+
+                            await CliExecuter.execute('spo listitem set', 'json', commandOptionsSet);
+                            completed++;
+                        }
+                    } catch (e: any) {
+                        Notifications.error(`Failed to disable '${app.Title}': ${e?.error?.message || e?.message}`);
+                    }
+                }
+
+                progress.report({ message: `Completed: ${completed} of ${enabledApps.length} app(s) disabled.` });
+            });
+
+            Notifications.info(`Bulk disable completed: ${enabledApps.length} app(s) processed.`);
+
+            // refresh the environmentTreeView
+            await commands.executeCommand('spfx-toolkit.refreshAppCatalogTreeView');
+        } catch (e: any) {
+            const message = e?.error?.message || e?.message;
+            Notifications.error(message);
+        }
+    }
+
+    /**
+     * Installs all apps from the specified app catalog to a site.
+     * If installing to a site collection app catalog, apps will first be copied from tenant catalog.
+     *
+     * @param node The tree item representing the app catalog.
+     */
+    public static async bulkInstallAppCatalogApps(node: ActionTreeItem) {
+        try {
+            const appCatalogUrl = SpfxAppCLIActions.getAppCatalogUrlFromNode(node);
+            const isSiteCollectionCatalog = !!appCatalogUrl;
+
+            // Get apps from the correct catalog
+            const apps = await CliActions.getAppCatalogApps(appCatalogUrl);
+
+            if (!apps || apps.length === 0) {
+                Notifications.info(`No apps found in the ${isSiteCollectionCatalog ? 'site collection' : 'tenant'} app catalog.`);
+                return;
+            }
+
+            let siteUrl: string | undefined;
+            if (!appCatalogUrl) {
+                const relativeUrl = await window.showInputBox({
+                    prompt: 'Enter the relative URL of the site where all apps will be installed',
+                    ignoreFocusOut: true,
+                    placeHolder: 'e.g., sites/sales or leave blank for root site',
+                    validateInput: (input) => {
+                        const trimmedInput = input.trim();
+
+                        if (trimmedInput.startsWith('https://')) {
+                            return 'Please provide a relative URL, not an absolute URL.';
+                        }
+                        if (trimmedInput.startsWith('/')) {
+                            return 'Please provide a relative URL without a leading slash.';
+                        }
+
+                        return undefined;
+                    }
+                });
+
+                if (relativeUrl === undefined) {
+                    Notifications.warning('No site URL provided. Operation aborted.');
+                    return;
+                }
+
+                siteUrl = `${EnvironmentInformation.tenantUrl}/${relativeUrl.trim()}`;
+            } else {
+                siteUrl = appCatalogUrl;
+            }
+
+            const catalogType = isSiteCollectionCatalog ? 'site collection' : 'tenant';
+            const confirm = await window.showQuickPick(['Yes', 'No'], {
+                title: `Are you sure you want to install all ${apps.length} apps from ${catalogType} app catalog to site '${siteUrl}'?`,
+                ignoreFocusOut: true,
+                canPickMany: false
+            });
+
+            if (confirm !== 'Yes') {
+                Notifications.warning('Bulk install operation cancelled.');
+                return;
+            }
+
+            let completed = 0;
+            await window.withProgress({
+                location: ProgressLocation.Notification,
+                title: `Installing ${apps.length} app(s)... Check [output window](command:${Commands.showOutputChannel}) to follow the progress.`,
+                cancellable: false
+            }, async (progress: Progress<{ message?: string; increment?: number }>) => {
+                for (const app of apps) {
+                    try {
+                        progress.report({ message: `Installing '${app.Title}'...`, increment: (1 / apps.length) * 100 });
+
+                        const commandOptions: any = {
+                            id: app.ID,
+                            siteUrl: siteUrl,
+                            ...(isSiteCollectionCatalog && {
+                                appCatalogScope: 'sitecollection',
+                                appCatalogUrl: appCatalogUrl
+                            })
+                        };
+
+                        await CliExecuter.execute('spo app install', 'json', commandOptions);
+                        completed++;
+                    } catch (e: any) {
+                        Notifications.error(`Failed to install '${app.Title}': ${e?.error?.message || e?.message}`);
+                    }
+                }
+
+                progress.report({ message: `Completed: ${completed} of ${apps.length} app(s) installed.` });
+            });
+
+            Notifications.info(`Bulk install completed: ${completed} of ${apps.length} app(s) processed.`);
+
+            // refresh the environmentTreeView
+            await commands.executeCommand('spfx-toolkit.refreshAppCatalogTreeView');
+        } catch (e: any) {
+            const message = e?.error?.message || e?.message;
+            Notifications.error(message);
+        }
+    }
+
+    /**
+     * Uninstalls all apps from a site.
+     *
+     * @param node The tree item representing the app catalog.
+     */
+    public static async bulkUninstallAppCatalogApps(node: ActionTreeItem) {
+        try {
+            const appCatalogUrl = SpfxAppCLIActions.getAppCatalogUrlFromNode(node);
+            const isSiteCollectionCatalog = !!appCatalogUrl;
+
+            // Get apps from the correct catalog (same one they were installed from)
+            const apps = await CliActions.getAppCatalogApps(appCatalogUrl);
+
+            if (!apps || apps.length === 0) {
+                Notifications.info(`No apps found in the ${isSiteCollectionCatalog ? 'site collection' : 'tenant'} app catalog.`);
+                return;
+            }
+
+            let siteUrl: string | undefined;
+            if (!appCatalogUrl) {
+                const relativeUrl = await window.showInputBox({
+                    prompt: 'Enter the relative URL of the site where all apps will be uninstalled from',
+                    ignoreFocusOut: true,
+                    placeHolder: 'e.g., sites/sales or leave blank for root site',
+                    validateInput: (input) => {
+                        const trimmedInput = input.trim();
+
+                        if (trimmedInput.startsWith('https://')) {
+                            return 'Please provide a relative URL, not an absolute URL.';
+                        }
+                        if (trimmedInput.startsWith('/')) {
+                            return 'Please provide a relative URL without a leading slash.';
+                        }
+
+                        return undefined;
+                    }
+                });
+
+                if (relativeUrl === undefined) {
+                    Notifications.warning('No site URL provided. Operation aborted.');
+                    return;
+                }
+
+                siteUrl = `${EnvironmentInformation.tenantUrl}/${relativeUrl.trim()}`;
+            } else {
+                siteUrl = appCatalogUrl;
+            }
+
+            const catalogType = isSiteCollectionCatalog ? 'site collection' : 'tenant';
+            const confirm = await window.showQuickPick(['Yes', 'No'], {
+                title: `Are you sure you want to uninstall all ${apps.length} apps from ${catalogType} app catalog on site '${siteUrl}'?`,
+                ignoreFocusOut: true,
+                canPickMany: false
+            });
+
+            if (confirm !== 'Yes') {
+                Notifications.warning('Bulk uninstall operation cancelled.');
+                return;
+            }
+
+            await window.withProgress({
+                location: ProgressLocation.Notification,
+                title: `Uninstalling ${apps.length} app(s)... Check [output window](command:${Commands.showOutputChannel}) to follow the progress.`,
+                cancellable: false
+            }, async (progress: Progress<{ message?: string; increment?: number }>) => {
+                let completed = 0;
+                for (const app of apps) {
+                    try {
+                        progress.report({ message: `Uninstalling '${app.Title}'...`, increment: (1 / apps.length) * 100 });
+
+                        const commandOptions: any = {
+                            id: app.ID,
+                            siteUrl: siteUrl,
+                            force: true,
+                            ...(isSiteCollectionCatalog && {
+                                appCatalogScope: 'sitecollection',
+                                appCatalogUrl: appCatalogUrl
+                            })
+                        };
+
+                        await CliExecuter.execute('spo app uninstall', 'json', commandOptions);
+                        completed++;
+                    } catch (e: any) {
+                        Notifications.error(`Failed to uninstall '${app.Title}': ${e?.error?.message || e?.message}`);
+                    }
+                }
+
+                progress.report({ message: `Completed: ${completed} of ${apps.length} app(s) uninstalled.` });
+            });
+
+            Notifications.info(`Bulk uninstall completed: ${apps.length} app(s) processed.`);
+
+            // refresh the environmentTreeView
+            await commands.executeCommand('spfx-toolkit.refreshAppCatalogTreeView');
+        } catch (e: any) {
+            const message = e?.error?.message || e?.message;
+            Notifications.error(message);
+        }
+    }
+
+    /**
+     * Upgrades all apps on a site.
+     *
+     * @param node The tree item representing the app catalog.
+     */
+    public static async bulkUpgradeAppCatalogApps(node: ActionTreeItem) {
+        try {
+            const appCatalogUrl = SpfxAppCLIActions.getAppCatalogUrlFromNode(node);
+            const isTenantCatalog = !appCatalogUrl || (EnvironmentInformation.appCatalogUrls && appCatalogUrl === EnvironmentInformation.appCatalogUrls[0]);
+
+            // Always get apps from tenant app catalog for upgrade
+            const apps = await CliActions.getAppCatalogApps();
+
+            if (!apps || apps.length === 0) {
+                Notifications.info('No apps found in the tenant app catalog.');
+                return;
+            }
+
+            let siteUrl: string = appCatalogUrl || '';
+
+            if (isTenantCatalog) {
+                const relativeUrl = await window.showInputBox({
+                    prompt: 'Enter the relative URL of the site where all apps will be upgraded',
+                    placeHolder: 'e.g., sites/sales or leave blank for root site',
+                    validateInput: (input) => {
+                        const trimmedInput = input.trim();
+
+                        if (trimmedInput.startsWith('https://')) {
+                            return 'Please provide a relative URL, not an absolute URL.';
+                        }
+                        if (trimmedInput.startsWith('/')) {
+                            return 'Please provide a relative URL without a leading slash.';
+                        }
+
+                        return undefined;
+                    }
+                });
+
+                if (relativeUrl === undefined) {
+                    Notifications.warning('No site URL provided. Bulk upgrade aborted.');
+                    return;
+                }
+
+                const tenantAppCatalogUrl = EnvironmentInformation.appCatalogUrls?.[0] || appCatalogUrl || '';
+                siteUrl = `${new URL(tenantAppCatalogUrl).origin}/${relativeUrl.trim()}`;
+            }
+
+            const confirm = await window.showQuickPick(['Yes', 'No'], {
+                title: `Are you sure you want to upgrade all ${apps.length} apps on site '${siteUrl}'?`,
+                ignoreFocusOut: true,
+                canPickMany: false
+            });
+
+            if (confirm !== 'Yes') {
+                Notifications.warning('Bulk upgrade operation cancelled.');
+                return;
+            }
+
+            await window.withProgress({
+                location: ProgressLocation.Notification,
+                title: `Upgrading ${apps.length} app(s)... Check [output window](command:${Commands.showOutputChannel}) to follow the progress.`,
+                cancellable: false
+            }, async (progress: Progress<{ message?: string; increment?: number }>) => {
+                let completed = 0;
+                for (const app of apps) {
+                    try {
+                        progress.report({ message: `Upgrading '${app.Title}'...`, increment: (1 / apps.length) * 100 });
+
+                        const commandOptions: any = {
+                            id: app.ID,
+                            ...(isTenantCatalog
+                                ? { siteUrl }
+                                : { appCatalogScope: 'sitecollection', siteUrl })
+                        };
+
+                        await CliExecuter.execute('spo app upgrade', 'json', commandOptions);
+                        completed++;
+                    } catch (e: any) {
+                        Notifications.error(`Failed to upgrade '${app.Title}': ${e?.error?.message || e?.message}`);
+                    }
+                }
+
+                progress.report({ message: `Completed: ${completed} of ${apps.length} app(s) upgraded.` });
+            });
+
+            Notifications.info(`Bulk upgrade completed: ${apps.length} app(s) processed.`);
+        } catch (e: any) {
+            const message = e?.message || 'An unexpected error occurred during the bulk upgrade.';
             Notifications.error(message);
         }
     }
