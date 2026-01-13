@@ -18,5 +18,12 @@ export const ContextKeys = {
   disableTenantWideExtension: 'pnp.etv.disableTenantWideExtension',
   updateTenantWideExtension: 'pnp.etv.updateTenantWideExtension',
   copyApp: 'pnp.etv.app.copy',
-  moveApp: 'pnp.etv.app.move'
+  moveApp: 'pnp.etv.app.move',
+  bulkRetractApps: 'pnp.etv.bulk.retract',
+  bulkRemoveApps: 'pnp.etv.bulk.remove',
+  bulkEnableApps: 'pnp.etv.bulk.enable',
+  bulkDisableApps: 'pnp.etv.bulk.disable',
+  bulkInstallApps: 'pnp.etv.bulk.install',
+  bulkUninstallApps: 'pnp.etv.bulk.uninstall',
+  bulkUpgradeApps: 'pnp.etv.bulk.upgrade'
 };
