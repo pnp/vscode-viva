@@ -509,11 +509,17 @@ export class TerminalCommandExecuter {
         }
       } else if (nodeVersionManager === NodeVersionManagers.nvm) {
         if (nvmrcFiles.length > 0) {
-          const content = readFileSync(nvmrcFiles[0].fsPath, 'utf8').trim();
-          const version = content.startsWith('v') ? content.substring(1) : content;
-          if (version) {
-            terminal.sendText(`nvm use ${version}`);
-          } else {
+          const nvmrcPath = nvmrcFiles[0].fsPath;
+          try {
+            const content = readFileSync(nvmrcPath, 'utf8').trim();
+            const version = content.startsWith('v') ? content.substring(1) : content;
+            if (version) {
+              terminal.sendText(`nvm use ${version}`);
+            } else {
+              terminal.sendText('nvm use');
+            }
+          } catch (error) {
+            Logger.error(`Failed to read .nvmrc file at ${nvmrcPath}. Falling back to "nvm use" without version. Error: ${error}`);
             terminal.sendText('nvm use');
           }
         }
