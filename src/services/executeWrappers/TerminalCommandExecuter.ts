@@ -446,7 +446,7 @@ export class TerminalCommandExecuter {
     const configNames = await TerminalCommandExecuter.getServeConfigNames();
     const options = ['Start', 'Start (no browser)'];
     if (configNames.length > 1) {
-       options.push('Start from configuration');
+      options.push('Start from configuration');
     }
     return await window.showQuickPick(options, {
       title: 'Select the start type',
@@ -499,15 +499,23 @@ export class TerminalCommandExecuter {
       // Get the user's preferred node version manager -- nvm or nvs or none, if they don't want to use either
       const nodeVersionManager: string = getExtensionSettings('nodeVersionManager', 'nvm');
 
-      // Check if nvm is used
-      const nvmFiles = await workspace.findFiles('.nvmrc', '**/node_modules/**');
+      const nvmrcFiles = await workspace.findFiles('.nvmrc', '**/node_modules/**');
 
-      // If there are .nvmrc files and the user wants to use nvm, then use their preferred node version manager
-      if (nvmFiles.length > 0 && nodeVersionManager !== NodeVersionManagers.none) {
-        if (nodeVersionManager === NodeVersionManagers.nvs) {
+      if (nodeVersionManager === NodeVersionManagers.nvs) {
+        const nodeVersionFiles = await workspace.findFiles('.node-version', '**/node_modules/**');
+
+        if (nvmrcFiles.length > 0 || nodeVersionFiles.length > 0) {
           terminal.sendText('nvs use');
-        } else {
-          terminal.sendText('nvm use');
+        }
+      } else if (nodeVersionManager === NodeVersionManagers.nvm) {
+        if (nvmrcFiles.length > 0) {
+          const content = readFileSync(nvmrcFiles[0].fsPath, 'utf8').trim();
+          const version = content.startsWith('v') ? content.substring(1) : content;
+          if (version) {
+            terminal.sendText(`nvm use ${version}`);
+          } else {
+            terminal.sendText('nvm use');
+          }
         }
       }
     }
