@@ -5,6 +5,7 @@ import { useLocation } from 'react-router-dom';
 import { Messenger } from '@estruyf/vscode/dist/client';
 import { SpfxAddComponentCommandInput, SpfxScaffoldCommandInput } from '../../../../../models';
 import { FormHeader, GeneralInfoStep, ComponentDetailsStep, AdditionalStep, FormActions } from '../spfxProject';
+import { VersionNotification } from './VersionNotification';
 
 
 export interface IScaffoldSpfxProjectViewProps { }
@@ -27,7 +28,6 @@ export const ScaffoldSpfxProjectView: React.FunctionComponent<IScaffoldSpfxProje
   const [shouldInstallReusableReactControls, setShouldInstallReusableReactControls] = useState<boolean>(false);
   const [shouldInstallReact, setShouldInstallReact] = useState<boolean>(false);
   const [shouldInstallPnPJs, setShouldInstallPnPJs] = useState<boolean>(false);
-  const [shouldInstallSPFxFastServe, setShouldInstallSPFxFastServe] = useState<boolean>(false);
   const [shouldCreateNodeVersionFile, setShouldCreateNodeVersionFile] = useState<boolean>(false);
   const [nodeVersionManager, setNodeVersionManager] = useState<'nvm' | 'nvs' | 'none'>('nvm');
   const [nodeVersionManagerFile, setNodeVersionManagerFile] = useState<'.nvmrc' | '.node-version'>('.nvmrc');
@@ -98,7 +98,6 @@ export const ScaffoldSpfxProjectView: React.FunctionComponent<IScaffoldSpfxProje
         shouldInstallReusableReactControls,
         shouldInstallReact,
         shouldInstallPnPJs,
-        shouldInstallSPFxFastServe,
         shouldCreateNodeVersionFile,
         nodeVersionManagerFile,
         nodeVersionManager
@@ -109,6 +108,7 @@ export const ScaffoldSpfxProjectView: React.FunctionComponent<IScaffoldSpfxProje
   return (
     <div className={'w-full h-full max-w-2xl mx-auto py-16 sm:px-6 lg:px-16'}>
       <FormHeader isNewProject={isNewProject} />
+      <VersionNotification />
       <div className={'spfx__form'}>
         <GeneralInfoStep
           isNewProject={isNewProject}
@@ -152,8 +152,6 @@ export const ScaffoldSpfxProjectView: React.FunctionComponent<IScaffoldSpfxProje
             setShouldInstallReact={setShouldInstallReact}
             shouldInstallPnPJs={shouldInstallPnPJs}
             setShouldInstallPnPJs={setShouldInstallPnPJs}
-            shouldInstallSPFxFastServe={shouldInstallSPFxFastServe}
-            setShouldInstallSPFxFastServe={setShouldInstallSPFxFastServe}
             shouldCreateNodeVersionFile={shouldCreateNodeVersionFile}
             setShouldCreateNodeVersionFile={setShouldCreateNodeVersionFile}
             setNodeVersionManagerFile={setNodeVersionManagerFile}
