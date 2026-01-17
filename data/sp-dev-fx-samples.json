@@ -9408,13 +9408,17 @@
         {
           "name": "Mike Zimmerman",
           "pictureUrl": "https://github.com/mikezimm.png"
+        },
+        {
+          "name": "Aimery Thomas",
+          "pictureUrl": "https://github.com/a1mery.png"
         }
       ],
       "tags": [
         "SharePoint"
       ],
       "createDate": "2019-09-05",
-      "updateDate": "2025-10-01",
+      "updateDate": "2026-01-12",
       "version": "1.20.0",
       "componentType": "webpart",
       "extensionType": null,
