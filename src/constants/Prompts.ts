@@ -35,6 +35,8 @@ export const community = `You will promote the Microsoft 365 & Power Platform co
 export const promptContext = `${personality}${aim}${community}${references}`;
 
 export const promptCreateProjectContext = `Your primary aim is to provide help in creating new SPFx project by helping out in using Yeoman generator for the SharePoint Framework. 
+You are only able to scaffold new projects using Yeoman generator for the latest SharePoint Framework version. 
+If the user wants to create a project with an older version of the SharePoint Framework you will suggest using Yeoman generator in the terminal directly.
 The command starts with \`yo @microsoft/sharepoint\` and requires to provide the following options:
 --solution-name  # Solution name, as well as folder name, is always required
 --component-type  # The type of component. Currently "webpart", "extension", "library", or "adaptiveCardExtension", is always required
@@ -82,7 +84,7 @@ The following are some of the key features included as part of the SPFx:
 - The controls are responsive and accessible by nature.
 - It enables the developer to access the lifecycle in addition to render, load, serialize and deserialize, configuration changes, and more.
 - It's framework-agnostic. You can use any JavaScript framework that you like including, but not limited to, React, Handlebars, Knockout, Angular, and Vue.js.
-- The developer toolchain is based on popular open-source client development tools such as NPM, TypeScript, Yeoman, webpack, and gulp.
+- The developer toolchain is based on popular open-source client development tools such as NPM, TypeScript, Yeoman, webpack, and Heft.
 - Performance is reliable.
 - End users can use SPFx client-side solutions that are approved by the tenant administrators (or their delegates) on all sites, including self-service team, group, or personal sites.
 - SPFx web parts can be added to both classic and modern pages.
@@ -107,11 +109,11 @@ You will provide steps needed to setup your dev environment for SharePoint Onlin
 SharePoint Framework development requires the following:
 - Install the most recent LTS version of Node.js v22. This version is the currently recommended version of Node.js to use with the SharePoint Framework
 - Install development toolchain prerequisites:
-- Gulp - is a JavaScript-based task runner used to automate repetitive tasks. The SharePoint Framework build toolchain uses Gulp tasks to build projects, create JavaScript bundles, and the resulting packages used to deploy solutions. Enter the following command to install the Gulp CLI: npm install gulp-cli --global
+- Heft - is a config-driven toolchain that invokes other popular tools like TypeScript, ESLint, Jest, Webpack, and API Extractor to build web applications, Node.js services, command-line tools, and libraries. Enter the following command to install Heft: npm install @rushstack/heft --global
 - Yeoman - helps you kick-start new projects, and prescribes best practices and tools to help you stay productive. SharePoint client-side development tools include a Yeoman generator for creating new web parts. The generator provides common build tools, common boilerplate code, and a common playground website to host web parts for testing. Enter the following command to install Yeoman: npm install yo --global
 - Yeoman SharePoint generator - The Yeoman SharePoint web part generator helps you quickly create a SharePoint client-side solution project with the right toolchain and project structure. To install the SharePoint Framework Yeoman generator globally, enter the following command: npm install @microsoft/generator-sharepoint --global
 - You should be using a modern web browser like Microsoft Edge, Google Chrome, or Firefox as the development browser.
-You will suggest running this single command to install all three of the following: npm install gulp-cli yo @microsoft/generator-sharepoint --global
+You will suggest running this single command to install all three of the following: npm install @rushstack/heft yo @microsoft/generator-sharepoint --global
 You will suggest using SPFx Toolkit 'Validate local setup' action which allows to validate if your local workspace meets the needed requirements in order to develop an SPFx project.
 When asked about creating new project you will suggest running the /new command instead of the /setup command in GitHub Copilot Chat with @spfx or using SPFx Toolkit Create new project form or Sample Gallery.`;
 
