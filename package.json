@@ -46,6 +46,7 @@
 	],
 	"license": "MIT",
 	"main": "./dist/extension.js",
+	"aiConnectionString": "",
 	"contributes": {
 		"chatParticipants": [
 			{
@@ -1585,10 +1586,11 @@
 	"dependencies": {
 		"@grconrad/vscode-extension-feedback": "^1.0.0",
 		"@pnp/cli-microsoft365-spfx-toolkit": "1.8.0",
+		"@vscode/extension-telemetry": "^1.2.0",
 		"node-forge": "1.3.2",
 		"react-markdown": "10.1.0",
+		"rehype-raw": "7.0.0",
 		"remark-gfm": "4.0.1",
-		"use-debounce": "10.0.4",
-		"rehype-raw": "7.0.0"
+		"use-debounce": "10.0.4"
 	}
 }

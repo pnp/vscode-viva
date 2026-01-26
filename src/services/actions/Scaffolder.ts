@@ -17,6 +17,7 @@ import { PnPWebview } from '../../webview/PnPWebview';
 import { Executer } from '../executeWrappers/CommandExecuter';
 import { TerminalCommandExecuter } from '../executeWrappers/TerminalCommandExecuter';
 import { M365AgentsToolkitIntegration } from '../dataType/M365AgentsToolkitIntegration';
+import { TelemetryService } from '../../utils/telemetry';
 
 
 export const PROJECT_FILE = 'project.pnp';
@@ -27,10 +28,10 @@ export class Scaffolder {
     const subscriptions: Subscription[] = Extension.getInstance().subscriptions;
 
     subscriptions.push(
-      commands.registerCommand(Commands.createProject, Scaffolder.showCreateProjectForm)
+      commands.registerCommand(Commands.createProject, TelemetryService.withTelemetry(Commands.createProject, Scaffolder.showCreateProjectForm))
     );
     subscriptions.push(
-      commands.registerCommand(Commands.addToProject, Scaffolder.showAddProjectForm)
+      commands.registerCommand(Commands.addToProject, TelemetryService.withTelemetry(Commands.addToProject, Scaffolder.showAddProjectForm))
     );
     subscriptions.push(
       commands.registerCommand(Commands.createProjectCopilot, Scaffolder.createProjectCopilot)
