@@ -5487,6 +5487,29 @@
       "sampleType": "samples"
     },
     {
+      "name": "pnp-sp-dev-spfx-web-parts-react-copilot-chat-api-demo",
+      "title": "Copilot chat-api-playground",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-copilot-chat-api-demo",
+      "description": "The Copilot Chat API Demo is a SharePoint Framework (SPFx) web part that demonstrates how to consume the Microsoft 365 Copilot Chat API (beta) using the native MSGraphClientV3 HTTP client. This sample showcases best practices for integrating Microsoft Graph endpoints in SharePoint Framework solutions.",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-copilot-chat-api-demo/assets/copilot-chat-api-demo-screenshot.png",
+      "authors": [
+        {
+          "name": "Siddharth Vaghasia",
+          "pictureUrl": "https://github.com/siddharth-vaghasia.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2026-01-22",
+      "updateDate": "2026-01-22",
+      "version": "1.22.1",
+      "componentType": "webpart",
+      "extensionType": null,
+      "sampleGallery": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
       "name": "pnp-sp-dev-spfx-web-parts-react-copilot-hr-assistant",
       "title": "Copilot Chat Bubble - With SSO integrated to SharePoint which summarizes sessions at ESPC 2024",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-copilot-chatbubble-with-sso",
@@ -5932,8 +5955,8 @@
         "SharePoint"
       ],
       "createDate": "2019-07-29",
-      "updateDate": "2025-10-22",
-      "version": "1.21.1",
+      "updateDate": "2026-01-24",
+      "version": "1.22.1",
       "componentType": "webpart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
@@ -7946,8 +7969,8 @@
         "SharePoint"
       ],
       "createDate": "2020-07-02",
-      "updateDate": "2024-10-01",
-      "version": "1.20.0",
+      "updateDate": "2026-01-23",
+      "version": "1.22.1",
       "componentType": "webpart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
