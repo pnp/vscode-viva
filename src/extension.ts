@@ -15,6 +15,7 @@ import { EntraAppRegistration } from './services/actions/EntraAppRegistration';
 import { CopilotActions } from './services/actions/CopilotActions';
 import { ChatTools } from './chat/tools/ChatTools';
 import { SpfxAppCLIActions } from './services/actions/SpfxAppCLIActions';
+import { SpfxAppCLIBulkActions } from './services/actions/SpfxAppCLIBulkActions';
 import { IncreaseVersionActions } from './services/actions/IncreaseVersionActions';
 import { scheduleFeedbackChecks } from '@grconrad/vscode-extension-feedback';
 import { getPackageManager, getInstallCommand } from './utils';
@@ -40,6 +41,7 @@ export async function activate(context: vscode.ExtensionContext) {
 	Scaffolder.registerCommands();
 	CliActions.registerCommands();
 	SpfxAppCLIActions.registerCommands();
+	SpfxAppCLIBulkActions.registerCommands();
 	EntraAppRegistration.registerCommands(context);
 	CopilotActions.registerCommands();
 	IncreaseVersionActions.registerCommands();

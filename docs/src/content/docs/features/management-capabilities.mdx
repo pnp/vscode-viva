@@ -46,3 +46,20 @@ You can expand each app catalog to reveal the list of apps contained within. Sel
 - **Move**: Moves the solution to a different app catalog.
 
 ![app-catalog-list](../../../../assets/images-vscode/app-catalog-list.png)
+
+### Bulk app operations
+
+The extension provides bulk operation capabilities to help you manage multiple SPFx apps efficiently. These operations allow you to perform actions on all apps (or filtered sets) within an app catalog simultaneously.
+
+Available bulk operations include:
+
+- **Bulk Deploy**: Deploys all non-deployed apps in the specified app catalog.
+- **Bulk Retract**: Retracts all deployed apps in the specified app catalog.
+- **Bulk Remove**: Removes all apps from the specified app catalog.
+- **Bulk Enable**: Enables all disabled apps in the specified app catalog.
+- **Bulk Disable**: Disables all enabled apps in the specified app catalog.
+- **Bulk Install**: Installs all apps from the specified app catalog to a site.
+- **Bulk Uninstall**: Uninstalls all apps from a site.
+- **Bulk Upgrade**: Upgrades all apps on a site to their latest versions available in the app catalog.
+
+Each bulk operation displays a confirmation dialog and provides progress tracking with a detailed output window for monitoring the operations on individual apps.
