@@ -1118,6 +1118,30 @@
       "sampleType": "samples"
     },
     {
+      "name": "pnp-sp-dev-spfx-extensions-react-application-page-indexer",
+      "title": "SharePoint Page Indexer",
+      "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-application-page-indexer",
+      "description": "An SPFx Application Customizer that automatically indexes SharePoint modern pages, extracting page content, web parts, and metadata into a centralized SharePoint list.",
+      "image": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-page-indexer/assets/page-indexer-demo.gif",
+      "authors": [
+        {
+          "name": "Sai Siva Ram Bandaru",
+          "pictureUrl": "https://avatars.githubusercontent.com/u/46020510?v=4"
+        }
+      ],
+      "tags": [
+        "SharePoint",
+        "Office"
+      ],
+      "createDate": "2025-02-06",
+      "updateDate": "2025-02-06",
+      "version": "1.20.0",
+      "componentType": "webpart",
+      "extensionType": null,
+      "sampleGallery": "sp-dev-fx-extensions",
+      "sampleType": "samples"
+    },
+    {
       "name": "pnp-sp-dev-spfx-extensions-react-application-page-related-bing-news",
       "title": "Application Customiser sample using Bing Search API",
       "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-application-page-related-bing-news",
@@ -1357,6 +1381,29 @@
       "sampleType": "samples"
     },
     {
+      "name": "pnp-sp-dev-spfx-extensions-react-application-smart-context",
+      "title": "Smart Context - AI-Powered Page Insights",
+      "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-application-smart-context",
+      "description": "Get instant, personalized insights on any SharePoint page. This Application Customizer leverages the Microsoft Graph Copilot API to analyze page content alongside your emails, chats, meetings, and files — surfacing key people, pending actions, decisions, and context that matter to you.",
+      "image": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-smart-context/assets/smart-context-preview-1.png",
+      "authors": [
+        {
+          "name": "Federico Porceddu",
+          "pictureUrl": "https://github.com/fredupstair.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2026-02-01",
+      "updateDate": "2026-02-01",
+      "version": "1.22.1",
+      "componentType": "extension",
+      "extensionType": "ApplicationCustomizer",
+      "sampleGallery": "sp-dev-fx-extensions",
+      "sampleType": "samples"
+    },
+    {
       "name": "pnp-sp-dev-spfx-extensions-react-application-team-archived-notification",
       "title": "Displaying notification if a team is set as archived",
       "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-application-team-archived-notification",
@@ -1558,6 +1605,29 @@
       "createDate": "2023-12-25",
       "updateDate": "2023-12-31",
       "version": "1.20.0",
+      "componentType": "extension",
+      "extensionType": "ListViewCommandSet",
+      "sampleGallery": "sp-dev-fx-extensions",
+      "sampleType": "samples"
+    },
+    {
+      "name": "pnp-sp-dev-spfx-extensions-react-command-authenticated-flowtrigger",
+      "title": "Authenticated Power Automate Flow Trigger - SPFx CommandSet Extension",
+      "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-command-authenticated-flowtrigger",
+      "description": "This sample demonstrates how to trigger an authenticated Power Automate flow from a SharePoint document library using an SPFx ListView CommandSet extension. The extension uses the AadHttpClient to make authenticated HTTP requests to Power Automate flows configured with the \"When an HTTP request is received\" trigger and \"Any user in my tenant\" authentication.",
+      "image": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-command-authenticated-flowtrigger/assets/power-automate-trigger.png",
+      "authors": [
+        {
+          "name": "Ejaz Hussain",
+          "pictureUrl": "https://github.com/ejazhussain.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2026-01-26",
+      "updateDate": "2026-01-26",
+      "version": "1.22.0",
       "componentType": "extension",
       "extensionType": "ListViewCommandSet",
       "sampleGallery": "sp-dev-fx-extensions",
@@ -7545,6 +7615,29 @@
       "createDate": "2021-05-06",
       "updateDate": "2023-02-26",
       "version": "1.9.1",
+      "componentType": "webpart",
+      "extensionType": null,
+      "sampleGallery": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
+      "name": "pnp-sp-dev-spfx-web-parts-react-heft-plugin",
+      "title": "Building Custom Heft Plugins for SharePoint Framework",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-heft-plugin",
+      "description": "This sample demonstrates how to build and integrate custom Heft plugins into SharePoint Framework 1.22 projects. It includes a practical Version Incrementer Plugin that automatically manages version numbers during production builds.",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-heft-plugin/assets/screenshot.png",
+      "authors": [
+        {
+          "name": "Ejaz Hussain",
+          "pictureUrl": "https://github.com/ejazhussain.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2026-01-15",
+      "updateDate": "2026-01-15",
+      "version": "1.22.0",
       "componentType": "webpart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
