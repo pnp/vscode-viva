@@ -2,5 +2,87 @@
 title: Telemetry
 ---
 
-As of now we do not collect any telemetry data from the extension that would be sent to any external service allowing us to understand how the extension is used. We are considering adding telemetry in the future to help us improve the extension and its features. If we do so, we will ensure that it is done in a way that respects user privacy and complies with relevant regulations.
-Currently we only record the number of times the extension is installed and was it installed from the Marketplace website or the embedded VS Code Marketplace. This data is used to understand the popularity of the extension and to help us prioritize features and improvements.
+The SPFx Toolkit collects basic usage telemetry to help us understand how the extension is used and improve its features. We follow the VS Code Telemetry extension authors guide and use the recommended `@vscode/extension-telemetry` package to send anonymized telemetry data to Azure Application Insights.
+
+## Privacy and Data Protection
+
+- All telemetry data is anonymized and does not contain personal information
+- No code, file paths, or project-specific data is collected
+- Data is used solely to understand feature usage and prioritize improvements
+- We comply with relevant privacy regulations and Microsoft's privacy policies
+- You can disable telemetry through VS Code's standard telemetry settings
+
+## How to Disable Telemetry
+
+To disable telemetry collection, you can use VS Code's built-in telemetry settings:
+1. Open VS Code Settings (File > Preferences > Settings)
+2. Search for "Telemetry"
+3. Set "Telemetry: Telemetry Level" to "off"
+
+This will disable telemetry for all VS Code extensions that respect the standard telemetry settings, including the SharePoint Framework Toolkit.
+
+## What We Track
+
+We collect anonymized usage data for the following actions:
+
+### Actions View
+
+- Create New Project
+- Add Component to Project
+- Upgrade Project
+- Validate Project
+- Rename Project
+- Increase Project Version
+- Grant API Permissions
+- Deploy Project
+- Set Form Customizer
+- Scaffold CI/CD Workflow
+- View Samples Gallery
+- Use @spfx in GitHub Copilot
+- Validate Local Setup
+- Install Dependencies
+
+### Tasks View
+
+**Gulp Tasks:**
+- gulp build
+- gulp bundle
+- gulp clean
+- gulp package-solution
+- gulp serve
+- gulp test
+- gulp trust-dev-cert
+- gulp deploy-azure-storage
+
+**Heft Tasks:**
+- heft build
+- heft clean
+- heft start
+- heft package
+- heft test
+- heft trust-dev-cert
+- heft deploy-azure-storage
+- heft eject
+
+**NPM Scripts:**
+- Execute Terminal Command (for NPM scripts with script name tracking)
+
+### App Management (Environment View)
+
+- Add Tenant App Catalog
+- Add Site App Catalog
+- Remove Site App Catalog
+- Deploy App
+- Retract App
+- Enable App
+- Disable App
+- Install App
+- Uninstall App
+- Upgrade App
+- Remove App
+- Copy App
+- Move App
+- Remove Tenant Wide Extension
+- Enable Tenant Wide Extension
+- Disable Tenant Wide Extension
+- Update Tenant Wide Extension

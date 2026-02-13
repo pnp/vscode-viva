@@ -19,11 +19,14 @@ import { IncreaseVersionActions } from './services/actions/IncreaseVersionAction
 import { scheduleFeedbackChecks } from '@grconrad/vscode-extension-feedback';
 import { getPackageManager, getInstallCommand } from './utils';
 import { Logger } from './services/dataType/Logger';
+import { TelemetryService } from './utils/telemetry';
 
 
 const feedbackFormUrl = 'https://forms.office.com/e/ZTfqAissqt';
+let telemetryService: TelemetryService;
 
 export async function activate(context: vscode.ExtensionContext) {
+	const activationStartTime = Date.now();
 
 	const chatParticipant = vscode.chat.createChatParticipant(CHAT_PARTICIPANT_NAME, PromptHandlers.handle);
 	chatParticipant.iconPath = vscode.Uri.joinPath(context.extensionUri, 'assets', 'images', 'parker-pnp.png');
@@ -49,6 +52,26 @@ export async function activate(context: vscode.ExtensionContext) {
 	PnPWebview.register();
 
 	Logger.getInstance();
+
+	telemetryService = TelemetryService.getInstance();
+	const packageJson = context.extension?.packageJSON;
+	const connectionString = packageJson?.aiConnectionString;
+
+	const activationDuration = Date.now() - activationStartTime;
+
+	if (connectionString) {
+		telemetryService.initialize(context, connectionString);
+
+		telemetryService.sendEvent('Extension Activated', {
+			version: context.extension.packageJSON.version,
+			nodeVersion: process.version,
+			platform: process.platform
+		}, {
+			activationTimeMs: activationDuration
+		});
+	} else {
+		Logger.channel?.appendLine('No telemetry connection string configured.');
+	}
 
 	scheduleFeedbackChecks(
 		{
@@ -135,4 +158,9 @@ export async function activate(context: vscode.ExtensionContext) {
 }
 
 // this method is called when your extension is deactivated
-export function deactivate() { }
+export function deactivate() {
+	if (telemetryService) {
+		telemetryService.sendEvent('Extension Deactivated');
+		telemetryService.dispose();
+	}
+}
