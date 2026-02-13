@@ -16,7 +16,7 @@ import { parseYoRc } from '../../utils/parseYoRc';
 import { parseCliCommand } from '../../utils/parseCliCommand';
 import { CertificateActions } from './CertificateActions';
 import path = require('path');
-import { getExtensionSettings, getPackageManager } from '../../utils';
+import { getExtensionSettings, getPackageManager, getVersion } from '../../utils';
 import * as fs from 'fs';
 import { ActionTreeItem } from '../../providers/ActionTreeDataProvider';
 import { timezones } from '../../constants/Timezones';
@@ -721,9 +721,8 @@ export class CliActions {
     }
 
     let toVersion: string | undefined;
-    const yoRc = await parseYoRc();
-    if (yoRc && yoRc['@microsoft/generator-sharepoint']?.version) {
-      const currentVersion = yoRc['@microsoft/generator-sharepoint']?.version;
+    const currentVersion = await getVersion();
+    if (currentVersion) {
       const currentVersionIndex = SpfxCompatibilityMatrix.findIndex(spfx => spfx.Version === currentVersion);
       const higherVersions = SpfxCompatibilityMatrix.slice(0, currentVersionIndex).map(spfx => spfx.Version);
 
