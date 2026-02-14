@@ -6203,6 +6203,29 @@
       "sampleType": "samples"
     },
     {
+      "name": "pnp-sp-dev-spfx-web-parts-react-dynamic-poll",
+      "title": "React Dynamic Poll",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-dynamic-poll",
+      "description": "This web part allows users to vote on an active poll and immediately see the results. It is built using the SharePoint Framework (SPFx), React, and Fluent UI. The web part fetches the active poll question and options from a SharePoint list named 'Polls' and stores user answers in a 'Poll Answers' list.",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-dynamic-poll/assets/Answered.png",
+      "authors": [
+        {
+          "name": "Ari Gunawan",
+          "pictureUrl": "https://github.com/arigunawan.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2026-02-07",
+      "updateDate": "2026-02-07",
+      "version": "1.21.0",
+      "componentType": "webpart",
+      "extensionType": null,
+      "sampleGallery": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
       "name": "pnp-sp-dev-spfx-web-parts-react-dynamics-crm-api",
       "title": "Web Part Using Dynamics CRM API",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-dynamics-crm-api",
