@@ -1,5 +1,11 @@
 # Change Log
 
+## [4.17.0] - 2026-02-15
+
+- Added copy SharePoint Online page Language Model Tool
+- Updated 'add component form' to run install dependencies
+- Added support for SPFx 1.22.2
+
 ## [4.16.0] - 2025-12-20
 
 - Fixed bug in project upgrade action
