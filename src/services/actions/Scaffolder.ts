@@ -12,9 +12,10 @@ import * as glob from 'fast-glob';
 import { Extension } from '../dataType/Extension';
 import download from 'github-directory-downloader/esm';
 import { CliExecuter } from '../executeWrappers/CliCommandExecuter';
-import { getExtensionSettings, getPlatform } from '../../utils';
+import { getExtensionSettings, getPackageManager, getPlatform } from '../../utils';
 import { PnPWebview } from '../../webview/PnPWebview';
 import { Executer } from '../executeWrappers/CommandExecuter';
+import { TerminalCommandExecuter } from '../executeWrappers/TerminalCommandExecuter';
 import { M365AgentsToolkitIntegration } from '../dataType/M365AgentsToolkitIntegration';
 
 
@@ -377,6 +378,12 @@ export class Scaffolder {
 
           Scaffolder.createProjectFileAndOpen(newFolderPath, content);
         } else {
+          // always run package manager install after adding a component
+          const terminalTitle = 'Installing dependencies';
+          const terminalIcon = 'cloud-download';
+          const packageManager = getPackageManager();
+          await TerminalCommandExecuter.runCommandAndWait(`${packageManager} install`, terminalTitle, terminalIcon);
+
           PnPWebview.close();
         }
 

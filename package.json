@@ -2,7 +2,7 @@
 	"name": "viva-connections-toolkit",
 	"displayName": "SharePoint Framework Toolkit",
 	"description": "SharePoint Framework Toolkit aims to boost your productivity in developing and managing SharePoint Framework solutions helping at every stage of your development flow, from setting up your development workspace to deploying a solution straight to your tenant without the need to leave VS Code and now even create a CI/CD pipeline to introduce automate deployment of your app. This toolkit is provided by the community.",
-	"version": "4.16.0",
+	"version": "4.17.0",
 	"publisher": "m365pnp",
 	"preview": false,
 	"homepage": "https://pnp.github.io/vscode-viva",
@@ -504,6 +504,45 @@
 							"type": "string",
 							"description": "URL of the site from which to retrieve pages. This option is required.",
 							"default": ""
+						}
+					}
+				}
+			},
+			{
+				"name": "copy_spo_page",
+				"tags": [
+					"sharepoint",
+					"page",
+					"spfx-toolkit"
+				],
+				"toolReferenceName": "SharePointPageCopy",
+				"displayName": "Copy a SharePoint Page",
+				"modelDescription": "Copies a modern SharePoint page within the same site or to a different site. Supports copying page templates. Use relative path in targetUrl for same-site copies or absolute URL for cross-site copies. Set overwrite to true to replace existing pages. Requires Microsoft 365 authentication and read permissions on the source site, write permissions on the target site.",
+				"userDescription": "Copies a page.",
+				"canBeReferencedInPrompt": true,
+				"icon": "$(copy)",
+				"inputSchema": {
+					"type": "object",
+					"properties": {
+						"webUrl": {
+							"type": "string",
+							"description": "URL of the site where the source page is located. This option is required.",
+							"default": ""
+						},
+						"sourceName": {
+							"type": "string",
+							"description": "Name of the source page to copy (e.g., 'home.aspx' or 'templates/PageTemplate.aspx'). This option is required.",
+							"default": ""
+						},
+						"targetUrl": {
+							"type": "string",
+							"description": "Target URL for the copied page. Use relative path (e.g., 'home-copy.aspx') for same-site copies or absolute URL for cross-site copies. This option is required.",
+							"default": ""
+						},
+						"overwrite": {
+							"type": "boolean",
+							"description": "Set to true to overwrite the target page if it already exists.",
+							"default": false
 						}
 					}
 				}
@@ -1545,7 +1584,7 @@
 	},
 	"dependencies": {
 		"@grconrad/vscode-extension-feedback": "^1.0.0",
-		"@pnp/cli-microsoft365-spfx-toolkit": "1.8.0",
+		"@pnp/cli-microsoft365-spfx-toolkit": "1.9.0",
 		"node-forge": "1.3.2",
 		"react-markdown": "10.1.0",
 		"remark-gfm": "4.0.1",

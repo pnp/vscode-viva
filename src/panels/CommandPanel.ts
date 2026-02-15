@@ -1,4 +1,3 @@
-import { readFileSync } from 'fs';
 import { commands, workspace, window, Uri, TreeItemCollapsibleState } from 'vscode';
 import { Commands, ContextKeys } from '../constants';
 import { ActionTreeItem, ActionTreeDataProvider } from '../providers/ActionTreeDataProvider';
@@ -11,7 +10,7 @@ import { ProjectInformation } from '../services/dataType/ProjectInformation';
 import { AdaptiveCardCheck } from '../services/check/AdaptiveCardCheck';
 import { Subscription } from '../models';
 import { Extension } from '../services/dataType/Extension';
-import { getExtensionSettings } from '../utils';
+import { getExtensionSettings, parsePackageJson, parseYoRc } from '../utils';
 import { Notifications } from '../services/dataType/Notifications';
 import { helpCommands } from './HelpTreeData';
 import { getCombinedTaskCommands } from './TaskTreeData';
@@ -47,7 +46,7 @@ export class CommandPanel {
       await CommandPanel.registerTreeView();
       AuthProvider.verify();
 
-      if (isSPFxProject){
+      if (isSPFxProject) {
         AdaptiveCardCheck.validateACEComponent();
       }
 
@@ -331,23 +330,16 @@ export class CommandPanel {
   }
 
   private static async isSPFxProject(): Promise<boolean> {
-    const files = await workspace.findFiles('.yo-rc.json', '**/node_modules/**');
-
-    if (files.length <= 0) {
-      return false;
+    const yoRc = await parseYoRc();
+    if (yoRc?.['@microsoft/generator-sharepoint']) {
+      return true;
     }
 
-    const file = files[0];
-    const content = readFileSync(file.fsPath, 'utf8');
-    if (!content) {
-      return false;
+    const packageJson = await parsePackageJson();
+    if (packageJson?.dependencies?.['@microsoft/sp-core-library']) {
+      return true;
     }
 
-    const json = JSON.parse(content);
-    if (!json || !json['@microsoft/generator-sharepoint']) {
-      return false;
-    }
-
-    return true;
+    return false;
   }
 }
