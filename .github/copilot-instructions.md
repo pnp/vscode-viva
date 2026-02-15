@@ -6,7 +6,7 @@ This is a **VS Code extension** that serves as an **abstraction layer** over the
 
 **Key architectural components:**
 - **Extension Host**: Main entry point (`src/extension.ts`) that registers all services and providers
-- **Chat Participant**: AI-powered `@spfx` chat participant with `/setup`, `/new`, `/info`, `/code` commands
+- **Chat Participant**: AI-powered `@spfx` chat participant with `/new`, `/info` commands
 - **Webview Panel**: React-based UI for scaffolding, samples gallery, and project management
 - **Service Layer**: Abstraction over CLI for Microsoft 365 commands
 - **Authentication**: Microsoft 365 authentication via `AuthProvider`

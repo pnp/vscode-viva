@@ -52,14 +52,9 @@
 				"id": "spfx-toolkit.pnp",
 				"fullName": "SPFx Toolkit",
 				"name": "spfx",
-				"description": "How can I help you with SPFx development? Use /setup, /new, /info commands for job specific support.",
+				"description": "How can I help you with SPFx development? Use /new, /info commands for job specific support.",
 				"isSticky": true,
 				"commands": [
-					{
-						"name": "setup",
-						"isSticky": true,
-						"description": "Prepare your local workspace for SharePoint Framework development"
-					},
 					{
 						"name": "new",
 						"isSticky": true,
