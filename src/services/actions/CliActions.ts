@@ -12,11 +12,10 @@ import { AuthProvider } from '../../providers/AuthProvider';
 import { CommandOutput } from '@pnp/cli-microsoft365-spfx-toolkit';
 import { M365AgentsToolkitIntegration } from '../dataType/M365AgentsToolkitIntegration';
 import { PnPWebview } from '../../webview/PnPWebview';
-import { parseYoRc } from '../../utils/parseYoRc';
 import { parseCliCommand } from '../../utils/parseCliCommand';
 import { CertificateActions } from './CertificateActions';
 import path = require('path');
-import { getExtensionSettings, getPackageManager, getVersion } from '../../utils';
+import { getExtensionSettings, getPackageManager, getVersion, parsePackageJson } from '../../utils';
 import * as fs from 'fs';
 import { ActionTreeItem } from '../../providers/ActionTreeDataProvider';
 import { timezones } from '../../constants/Timezones';
@@ -897,9 +896,9 @@ export class CliActions {
    * @returns A promise that resolves when the form is displayed.
    */
   private static async showGenerateWorkflowForm() {
-    const content = await parseYoRc();
+    const packageJson = await parsePackageJson();
     const data = {
-      spfxPackageName: content ? content['@microsoft/generator-sharepoint'].solutionName : '',
+      spfxPackageName: packageJson ? packageJson.name : '',
       appCatalogUrls: EnvironmentInformation.appCatalogUrls && EnvironmentInformation.appCatalogUrls.length > 1 ? EnvironmentInformation.appCatalogUrls : [],
       isSignedIn: EnvironmentInformation.account ? true : false
     };
