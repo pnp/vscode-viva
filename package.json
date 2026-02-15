@@ -698,6 +698,32 @@
 						}
 					}
 				}
+			},
+			{
+				"name": "setup_spfx_environment",
+				"tags": [
+					"sharepoint framework",
+					"SPFx",
+					"project",
+					"setup",
+					"spfx-toolkit"
+				],
+				"toolReferenceName": "SharePointFrameworkLocalEnvironmentSetup",
+				"displayName": "Set up local environment for SharePoint Framework development",
+				"modelDescription": "This tool will validate and help you set up your local environment for any version of SharePoint Framework development.",
+				"userDescription": "Set up local environment for SharePoint Framework development",
+				"canBeReferencedInPrompt": true,
+				"icon": "$(package)",
+				"inputSchema": {
+					"type": "object",
+					"properties": {
+						"version": {
+							"type": "string",
+							"description": "SharePoint Framework version to which you want to set up your local environment. This option is optional. If not defined, it will set up the environment for the latest version of SharePoint Framework.",
+							"default": ""
+						}
+					}
+				}
 			}
 		],
 		"walkthroughs": [
