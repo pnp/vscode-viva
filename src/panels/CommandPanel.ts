@@ -12,7 +12,6 @@ import { Subscription } from '../models';
 import { Extension } from '../services/dataType/Extension';
 import { getExtensionSettings, parsePackageJson, parseYoRc } from '../utils';
 import { Notifications } from '../services/dataType/Notifications';
-import { Logger } from '../services/dataType/Logger';
 import { helpCommands } from './HelpTreeData';
 import { getCombinedTaskCommands } from './TaskTreeData';
 
