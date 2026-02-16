@@ -19,8 +19,6 @@ interface AdditionalStepProps {
     setShouldInstallReact: (value: boolean) => void;
     shouldInstallPnPJs: boolean;
     setShouldInstallPnPJs: (value: boolean) => void;
-    shouldInstallSPFxFastServe: boolean;
-    setShouldInstallSPFxFastServe: (value: boolean) => void;
     shouldCreateNodeVersionFile: boolean;
     setShouldCreateNodeVersionFile: (value: boolean) => void;
     nodeVersionManager: 'nvm' | 'nvs' | 'none';
@@ -42,8 +40,6 @@ export const AdditionalStep: React.FunctionComponent<AdditionalStepProps> = ({
     setShouldInstallReact,
     shouldInstallPnPJs,
     setShouldInstallPnPJs,
-    shouldInstallSPFxFastServe,
-    setShouldInstallSPFxFastServe,
     shouldCreateNodeVersionFile,
     setShouldCreateNodeVersionFile,
     setNodeVersionManagerFile,
@@ -142,12 +138,6 @@ export const AdditionalStep: React.FunctionComponent<AdditionalStepProps> = ({
                     setValue={setShouldInstallPnPJs}
                     label='Install PnPjs (@pnp/sp, @pnp/graph)'
                     link='https://pnp.github.io/pnpjs/' />
-
-                <PackageSelector
-                    value={shouldInstallSPFxFastServe}
-                    setValue={setShouldInstallSPFxFastServe}
-                    label='Configure SPFx Fast Serve'
-                    link='https://github.com/s-KaiNet/spfx-fast-serve' />
 
                 {nodeVersionManager !== 'none' &&
                     <PackageSelector
