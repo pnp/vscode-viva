@@ -18,7 +18,7 @@ export class SharePointPageList implements LanguageModelTool<ISharePointPageList
             return authValidationResult as LanguageModelToolResult;
         }
 
-        const result = await CliExecuter.execute('spo page list', 'json', params);
+        const result = await CliExecuter.execute('spo page list', 'csv', params);
         if (result.stderr) {
             return new LanguageModelToolResult([new LanguageModelTextPart(`Error: ${result.stderr}`)]);
         }
