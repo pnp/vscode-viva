@@ -19,7 +19,7 @@ Install additional dependencies with a single click straight from the scaffoldin
 
 ***Important!***
 
-As of now creating new project supports only latest version of SharePoint Framework (SPFx). If you need to create a project with an older version please use the the SharePoint Yeoman generator directly in the terminal.
+As of now, creating new project supports only latest version of SharePoint Framework (SPFx). If you need to create a project with an older version, please use the the SharePoint Yeoman generator directly in the terminal.
 
 [Check out our docs for more details](https://pnp.github.io/vscode-viva/features/scaffolding/#1-scaffold-a-new-spfx-project)
 

@@ -35,8 +35,8 @@ export const community = `You will promote the Microsoft 365 & Power Platform co
 export const promptContext = `${personality}${aim}${community}${references}`;
 
 export const promptCreateProjectContext = `Your primary aim is to provide help in creating new SPFx project by helping out in using Yeoman generator for the SharePoint Framework. 
-You are only able to scaffold new projects using Yeoman generator for the latest SharePoint Framework version. 
-If the user wants to create a project with an older version of the SharePoint Framework you will suggest using Yeoman generator in the terminal directly.
+You are only able to scaffold new projects using the Yeoman generator for the latest SharePoint Framework version. 
+If the user wants to create a project with an older version of the SharePoint Framework, you will suggest using the Yeoman generator in the terminal directly.
 The command starts with \`yo @microsoft/sharepoint\` and requires to provide the following options:
 --solution-name  # Solution name, as well as folder name, is always required
 --component-type  # The type of component. Currently "webpart", "extension", "library", or "adaptiveCardExtension", is always required
@@ -109,8 +109,8 @@ You will provide steps needed to setup your dev environment for SharePoint Onlin
 SharePoint Framework development requires the following:
 - Install the most recent LTS version of Node.js v22. This version is the currently recommended version of Node.js to use with the SharePoint Framework
 - Install development toolchain prerequisites:
-- Heft - is a config-driven toolchain that invokes other popular tools like TypeScript, ESLint, Jest, Webpack, and API Extractor to build web applications, Node.js services, command-line tools, and libraries. Enter the following command to install Heft: npm install @rushstack/heft --global
-- Yeoman - helps you kick-start new projects, and prescribes best practices and tools to help you stay productive. SharePoint client-side development tools include a Yeoman generator for creating new web parts. The generator provides common build tools, common boilerplate code, and a common playground website to host web parts for testing. Enter the following command to install Yeoman: npm install yo --global
+- Heft - is a config-driven toolchain that invokes other popular tools like TypeScript, ESLint, Jest, Webpack, and API Extractor to build web applications, Node.js services, command-line tools, and libraries. To install Heft, enter the following command: npm install @rushstack/heft --global
+- Yeoman - helps you kickstart new projects and prescribes best practices and tools to help you stay productive. SharePoint client-side development tools include a Yeoman generator for creating new web parts. The generator provides common build tools, common boilerplate code, and a common playground website to host web parts for testing. Enter the following command to install Yeoman: npm install yo --global
 - Yeoman SharePoint generator - The Yeoman SharePoint web part generator helps you quickly create a SharePoint client-side solution project with the right toolchain and project structure. To install the SharePoint Framework Yeoman generator globally, enter the following command: npm install @microsoft/generator-sharepoint --global
 - You should be using a modern web browser like Microsoft Edge, Google Chrome, or Firefox as the development browser.
 You will suggest running this single command to install all three of the following: npm install @rushstack/heft yo @microsoft/generator-sharepoint --global
