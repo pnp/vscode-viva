@@ -7,7 +7,6 @@ import { DebuggerCheck } from '../services/check/DebuggerCheck';
 import { EnvironmentInformation } from '../services/dataType/EnvironmentInformation';
 import { M365AgentsToolkitIntegration } from '../services/dataType/M365AgentsToolkitIntegration';
 import { ProjectInformation } from '../services/dataType/ProjectInformation';
-import { AdaptiveCardCheck } from '../services/check/AdaptiveCardCheck';
 import { Subscription } from '../models';
 import { Extension } from '../services/dataType/Extension';
 import { getExtensionSettings, parsePackageJson, parseYoRc } from '../utils';
@@ -45,10 +44,6 @@ export class CommandPanel {
 
       await CommandPanel.registerTreeView();
       AuthProvider.verify();
-
-      if (isSPFxProject) {
-        AdaptiveCardCheck.validateACEComponent();
-      }
 
     } catch (error) {
       commands.executeCommand('setContext', ContextKeys.isSPFxProject, false);
