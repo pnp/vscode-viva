@@ -52,14 +52,9 @@
 				"id": "spfx-toolkit.pnp",
 				"fullName": "SPFx Toolkit",
 				"name": "spfx",
-				"description": "How can I help you with SPFx development? Use /setup, /new, /info commands for job specific support.",
+				"description": "How can I help you with SPFx development? Use /new, /info commands for job specific support.",
 				"isSticky": true,
 				"commands": [
-					{
-						"name": "setup",
-						"isSticky": true,
-						"description": "Prepare your local workspace for SharePoint Framework development"
-					},
 					{
 						"name": "new",
 						"isSticky": true,
@@ -699,6 +694,32 @@
 						"toVersion": {
 							"type": "string",
 							"description": "Target version to upgrade the SharePoint Framework project to. This option is optional.",
+							"default": ""
+						}
+					}
+				}
+			},
+			{
+				"name": "setup_spfx_environment",
+				"tags": [
+					"sharepoint framework",
+					"SPFx",
+					"project",
+					"setup",
+					"spfx-toolkit"
+				],
+				"toolReferenceName": "SharePointFrameworkLocalEnvironmentSetup",
+				"displayName": "Set up local environment for SharePoint Framework development",
+				"modelDescription": "This tool will validate and help you set up your local environment for any version of SharePoint Framework development.",
+				"userDescription": "Set up local environment for SharePoint Framework development",
+				"canBeReferencedInPrompt": true,
+				"icon": "$(package)",
+				"inputSchema": {
+					"type": "object",
+					"properties": {
+						"version": {
+							"type": "string",
+							"description": "SharePoint Framework version to which you want to set up your local environment. This option is optional. If not defined, it will set up the environment for the latest version of SharePoint Framework.",
 							"default": ""
 						}
 					}

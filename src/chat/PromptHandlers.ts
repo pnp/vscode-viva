@@ -1,6 +1,6 @@
 import * as vscode from 'vscode';
 import { Logger } from '../services/dataType/Logger';
-import { AdaptiveCardTypes, Commands, ComponentTypes, ExtensionTypes, msSampleGalleryLink, promptContext, promptExplainSharePointData, promptGeneralContext, promptInfoContext, promptNewContext, promptSetupContext } from '../constants';
+import { AdaptiveCardTypes, Commands, ComponentTypes, ExtensionTypes, msSampleGalleryLink, promptContext, promptExplainSharePointData, promptGeneralContext, promptInfoContext, promptNewContext } from '../constants';
 import { ProjectInformation } from '../services/dataType/ProjectInformation';
 import { CliActions } from '../services/actions/CliActions';
 import { AuthProvider } from '../providers/AuthProvider';
@@ -14,7 +14,7 @@ export class PromptHandlers {
 
   public static async handle(request: vscode.ChatRequest, context: vscode.ChatContext, stream: vscode.ChatResponseStream, token: vscode.CancellationToken): Promise<any> {
     stream.progress(PromptHandlers.getRandomProgressMessage());
-    const chatCommand = (request.command && ['setup', 'new', 'code', 'info'].indexOf(request.command.toLowerCase()) > -1) ? request.command.toLowerCase() : '';
+    const chatCommand = (request.command && ['new', 'info'].indexOf(request.command.toLowerCase()) > -1) ? request.command.toLowerCase() : '';
 
     if (chatCommand === 'info') {
       const authInstance = AuthProvider.getInstance();
@@ -117,8 +117,6 @@ export class PromptHandlers {
   private static getChatCommandPrompt(chatCommand: string): string {
     let context: string = '';
     switch (chatCommand) {
-      case 'setup':
-        context += promptSetupContext;
       case 'new':
         context += promptNewContext;
         context += `\n Here is some more information regarding each component type ${JSON.stringify(ComponentTypes)}`;

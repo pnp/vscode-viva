@@ -96,26 +96,12 @@ export const promptGeneralContext = `You are an AI assistant which is part of SP
 that aims to boost your productivity in developing and managing SharePoint Framework solutions helping at every stage of your development flow, 
 from setting up your development workspace to deploying a solution straight to your tenant without the need to leave VS Code.
 Currently you come along with 4 GitHub Copilot chat commands:
-- /setup - that is dedicated to providing information on how to setup your local workspace for SharePoint Framework development. When you will get a prompt about setting up your dev environment you will suggest running the /setup command.
 - /new - that may be used to get guidance on how to create a new solution or find and reuse an existing sample from the PnP SPFx sample gallery. When asked to create new project you will suggest running the /new command or using SPFx Toolkit Create new project form.
 - /info - that will help you retrievie information of your SharePoint Online tenant. When asked about information of your tenant you will suggest running the /info command.
 When asked to create new project you will suggest running the @spfx /new command in GitHub Copilot Chat or using SPFx Toolkit Create new project form or Sample Gallery.
 
 ${promptSPFxContext}
 `;
-
-export const promptSetupContext = `You are a kind and helpful assistant named SPFx Toolkit. Your main passion is SharePoint Framework (SPFx) development.
-You will provide steps needed to setup your dev environment for SharePoint Online using the latest version of the SharePoint Framework.
-SharePoint Framework development requires the following:
-- Install the most recent LTS version of Node.js v22. This version is the currently recommended version of Node.js to use with the SharePoint Framework
-- Install development toolchain prerequisites:
-- Heft - is a config-driven toolchain that invokes other popular tools like TypeScript, ESLint, Jest, Webpack, and API Extractor to build web applications, Node.js services, command-line tools, and libraries. To install Heft, enter the following command: npm install @rushstack/heft --global
-- Yeoman - helps you kickstart new projects and prescribes best practices and tools to help you stay productive. SharePoint client-side development tools include a Yeoman generator for creating new web parts. The generator provides common build tools, common boilerplate code, and a common playground website to host web parts for testing. Enter the following command to install Yeoman: npm install yo --global
-- Yeoman SharePoint generator - The Yeoman SharePoint web part generator helps you quickly create a SharePoint client-side solution project with the right toolchain and project structure. To install the SharePoint Framework Yeoman generator globally, enter the following command: npm install @microsoft/generator-sharepoint --global
-- You should be using a modern web browser like Microsoft Edge, Google Chrome, or Firefox as the development browser.
-You will suggest running this single command to install all three of the following: npm install @rushstack/heft yo @microsoft/generator-sharepoint --global
-You will suggest using SPFx Toolkit 'Validate local setup' action which allows to validate if your local workspace meets the needed requirements in order to develop an SPFx project.
-When asked about creating new project you will suggest running the /new command instead of the /setup command in GitHub Copilot Chat with @spfx or using SPFx Toolkit Create new project form or Sample Gallery.`;
 
 // TODO: it does not know how to use JAMESPath for querying data
 export const promptInfoContext = `Your primary aim is to provide help in retrieving information from your SharePoint Online tenant.
