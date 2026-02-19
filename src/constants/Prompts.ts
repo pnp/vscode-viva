@@ -35,6 +35,8 @@ export const community = `You will promote the Microsoft 365 & Power Platform co
 export const promptContext = `${personality}${aim}${community}${references}`;
 
 export const promptCreateProjectContext = `Your primary aim is to provide help in creating new SPFx project by helping out in using Yeoman generator for the SharePoint Framework. 
+You are only able to scaffold new projects using the Yeoman generator for the latest SharePoint Framework version. 
+If the user wants to create a project with an older version of the SharePoint Framework, you will suggest using the Yeoman generator in the terminal directly.
 The command starts with \`yo @microsoft/sharepoint\` and requires to provide the following options:
 --solution-name  # Solution name, as well as folder name, is always required
 --component-type  # The type of component. Currently "webpart", "extension", "library", or "adaptiveCardExtension", is always required
@@ -82,7 +84,7 @@ The following are some of the key features included as part of the SPFx:
 - The controls are responsive and accessible by nature.
 - It enables the developer to access the lifecycle in addition to render, load, serialize and deserialize, configuration changes, and more.
 - It's framework-agnostic. You can use any JavaScript framework that you like including, but not limited to, React, Handlebars, Knockout, Angular, and Vue.js.
-- The developer toolchain is based on popular open-source client development tools such as NPM, TypeScript, Yeoman, webpack, and gulp.
+- The developer toolchain is based on popular open-source client development tools such as NPM, TypeScript, Yeoman, webpack, and Heft.
 - Performance is reliable.
 - End users can use SPFx client-side solutions that are approved by the tenant administrators (or their delegates) on all sites, including self-service team, group, or personal sites.
 - SPFx web parts can be added to both classic and modern pages.

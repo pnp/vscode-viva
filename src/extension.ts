@@ -109,11 +109,6 @@ export async function activate(context: vscode.ExtensionContext) {
 					await TerminalCommandExecuter.runCommand(`${packageManager} ${installCmd} @pnp/sp @pnp/graph --save`, terminalTitle, terminalIcon);
 				}
 
-				// spfx-fast-serve has its own package manager detection mechanism
-				if (fileContents.indexOf(ProjectFileContent.installSPFxFastServe) > -1) {
-					await TerminalCommandExecuter.runCommand('spfx-fast-serve --force-install', terminalTitle, terminalIcon);
-				}
-
 				if (fileContents.indexOf(ProjectFileContent.installReact) > -1) {
 					await TerminalCommandExecuter.runCommand(`${packageManager} ${installCmd} react@17.0.1 react-dom@17.0.1`, terminalTitle, terminalIcon);
 				}

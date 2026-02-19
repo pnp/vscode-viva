@@ -9,7 +9,6 @@ export interface SpfxScaffoldCommandInput extends SpfxAddComponentCommandInput {
   shouldInstallReusableReactControls: boolean;
   shouldInstallReact: boolean;
   shouldInstallPnPJs: boolean;
-  shouldInstallSPFxFastServe: boolean;
   shouldCreateNodeVersionFile: boolean;
   nodeVersionManagerFile: '.nvmrc' | '.node-version';
   nodeVersionManager: 'nvm' | 'nvs' | 'none';

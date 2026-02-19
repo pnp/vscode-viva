@@ -18,7 +18,7 @@ export class SharePointAppInstanceList implements LanguageModelTool<ISharePointA
             return authValidationResult as LanguageModelToolResult;
         }
 
-        const result = await CliExecuter.execute('spo app instance list', 'json', params);
+        const result = await CliExecuter.execute('spo app instance list', 'csv', params);
         if (result.stderr) {
             return new LanguageModelToolResult([new LanguageModelTextPart(`Error: ${result.stderr}`)]);
         }
