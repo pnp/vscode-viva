@@ -303,6 +303,29 @@
       "sampleType": "samples"
     },
     {
+      "name": "pnp-sp-dev-spfx-extensions-js-application-intranet-searchbox",
+      "title": "Intranet Search Box",
+      "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/js-application-intranet-searchbox",
+      "description": "This demonstrates how to use an SPFx Application Customiser to inject an additional search box into the header of each page, which uses the \"Search Settings\" (at either the Site Collection or Sub-Site level) to determine the redirect page.",
+      "image": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/js-application-intranet-searchbox/assets/IntranetSearchBox.gif",
+      "authors": [
+        {
+          "name": "Martin Hatch",
+          "pictureUrl": "https://github.com/MartinHatch.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2019-05-16",
+      "updateDate": "2019-05-16",
+      "version": "1.8.0",
+      "componentType": "extension",
+      "extensionType": null,
+      "sampleGallery": "sp-dev-fx-extensions",
+      "sampleType": "samples"
+    },
+    {
       "name": "pnp-sp-dev-spfx-extensions-js-application-listdrivenplaceholders",
       "title": "List-Driven Placeholders",
       "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/js-application-listdrivenplaceholders",
@@ -321,6 +344,33 @@
       "updateDate": "2017-09-05",
       "version": "1.2.0",
       "componentType": null,
+      "extensionType": null,
+      "sampleGallery": "sp-dev-fx-extensions",
+      "sampleType": "samples"
+    },
+    {
+      "name": "pnp-sp-dev-spfx-extensions-js-application-microsoft-clarity",
+      "title": "Microsoft Clarity for modern SharePoint",
+      "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/js-application-microsoft-clarity",
+      "description": "Microsoft Clarity will gives you the recording of the sessions and heat maps of the user interaction with the site, this will help to find and fix the areas of your pages that are not working as you expect",
+      "image": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/js-application-microsoft-clarity/assets/dashboard.gif",
+      "authors": [
+        {
+          "name": "João Ferreira",
+          "pictureUrl": "https://github.com/joaoferreira.png"
+        },
+        {
+          "name": "NIshkalank Bezawada (MVP)",
+          "pictureUrl": "https://github.com/NishkalankBezawada.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2021-11-23",
+      "updateDate": "2024-10-19",
+      "version": "1.20.0",
+      "componentType": "extension",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-extensions",
       "sampleType": "samples"
@@ -463,6 +513,29 @@
       "updateDate": "2017-12-20",
       "version": "1.4.0",
       "componentType": null,
+      "extensionType": null,
+      "sampleGallery": "sp-dev-fx-extensions",
+      "sampleType": "samples"
+    },
+    {
+      "name": "pnp-sp-dev-spfx-extensions-js-command-selecteditems-export",
+      "title": "Export Selected Items to Excel",
+      "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/js-command-selecteditems-export",
+      "description": "Exports selected items to excel spreadsheet in xlsx format, with the columns from the current modern list view.",
+      "image": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/js-command-selecteditems-export/assets/excel-export-preview.png",
+      "authors": [
+        {
+          "name": "Rajesh Sitaraman",
+          "pictureUrl": "https://github.com/rjesh-git.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2018-02-16",
+      "updateDate": "2018-02-16",
+      "version": "1.4.1",
+      "componentType": "extension",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-extensions",
       "sampleType": "samples"
@@ -679,6 +752,56 @@
       "sampleType": "samples"
     },
     {
+      "name": "pnp-sp-dev-spfx-extensions-react-application-botframework-chat",
+      "title": "Bot Framework Chat App Customizer",
+      "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-application-botframework-chat",
+      "description": "SPFx application extension that uses the Bot Framework React Webchat Component to render a Bot Framework chat window",
+      "image": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-botframework-chat/assets/bf_app_customizer01.png",
+      "authors": [
+        {
+          "name": "Stephan Bisser",
+          "pictureUrl": "https://github.com/stephanbisser.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2019-10-19",
+      "updateDate": "2019-10-19",
+      "version": "1.9.1",
+      "componentType": "extension",
+      "extensionType": null,
+      "sampleGallery": "sp-dev-fx-extensions",
+      "sampleType": "samples"
+    },
+    {
+      "name": "pnp-sp-dev-spfx-extensions-react-application-breadcrumb",
+      "title": "Breadcrumb application customizer",
+      "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-application-breadcrumb",
+      "description": "This sample shows how to create a breadcrumb element and append it to your site via the SharePoint Framework Application Customizer extension.",
+      "image": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-breadcrumb/assets/breadcrumb-sample.png",
+      "authors": [
+        {
+          "name": "Elio Struyf",
+          "pictureUrl": "https://github.com/estruyf.png"
+        },
+        {
+          "name": "Swaminathan Sriram",
+          "pictureUrl": "https://github.com/Swaminathan-Sriram.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2020-10-03",
+      "updateDate": "2024-10-05",
+      "version": "1.20.0",
+      "componentType": "extension",
+      "extensionType": null,
+      "sampleGallery": "sp-dev-fx-extensions",
+      "sampleType": "samples"
+    },
+    {
       "name": "pnp-sp-dev-spfx-extensions-react-application-chatbubble-copilot",
       "title": "Chatbot Integration for SharePoint Online",
       "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-application-chatbubble-copilot",
@@ -721,6 +844,29 @@
       "version": "1.20.0",
       "componentType": "extension",
       "extensionType": "ApplicationCustomizer",
+      "sampleGallery": "sp-dev-fx-extensions",
+      "sampleType": "samples"
+    },
+    {
+      "name": "pnp-sp-dev-spfx-extensions-react-application-copy-page",
+      "title": "Copy Page SPFx Application Customizer",
+      "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-application-copy-page",
+      "description": "This SPFx Application Customizer empowers content authors to copy modern site pages across sites with full control over:",
+      "image": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-copy-page/assets/preview-01.png",
+      "authors": [
+        {
+          "name": "Ahmad Jad Alhak",
+          "pictureUrl": "https://github.com/ahmad-jad-alhak.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2023-12-25",
+      "updateDate": "2023-12-31",
+      "version": "1.21.1",
+      "componentType": "extension",
+      "extensionType": null,
       "sampleGallery": "sp-dev-fx-extensions",
       "sampleType": "samples"
     },
@@ -863,6 +1009,29 @@
       "sampleType": "samples"
     },
     {
+      "name": "pnp-sp-dev-spfx-extensions-react-application-logo-festoon",
+      "title": "Logo Festoon",
+      "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-application-logo-festoon",
+      "description": "This simple SPFx extension can be used to decorate you SPO site logo with a festoon image of your choice. Keep users engaged by adding a personal touch to your site.",
+      "image": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-logo-festoon/assets/festoon-shot.png",
+      "authors": [
+        {
+          "name": "Rabia Williams",
+          "pictureUrl": "https://github.com/rabwill.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2019-03-17",
+      "updateDate": "2019-03-17",
+      "version": "1.8.0",
+      "componentType": "extension",
+      "extensionType": null,
+      "sampleGallery": "sp-dev-fx-extensions",
+      "sampleType": "samples"
+    },
+    {
       "name": "pnp-sp-dev-spfx-extensions-react-application-m365-service-health",
       "title": "Microsoft 365 Service Health Extension",
       "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-application-m365-service-health",
@@ -968,6 +1137,29 @@
       "version": "1.12.1",
       "componentType": "extension",
       "extensionType": "ApplicationCustomizer",
+      "sampleGallery": "sp-dev-fx-extensions",
+      "sampleType": "samples"
+    },
+    {
+      "name": "pnp-sp-dev-spfx-extensions-react-application-my-lists-notifications",
+      "title": "My Lists Notifications",
+      "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-application-my-lists-notifications",
+      "description": "This application extension alows user receive notifications from selected lists or libraries",
+      "image": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-my-lists-notifications/assets/myListsNotifications.gif",
+      "authors": [
+        {
+          "name": "João Mendes",
+          "pictureUrl": "https://github.com/joaojmendes.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2021-07-08",
+      "updateDate": "2021-07-08",
+      "version": "1.12.1",
+      "componentType": "extension",
+      "extensionType": null,
       "sampleGallery": "sp-dev-fx-extensions",
       "sampleType": "samples"
     },
@@ -3004,6 +3196,29 @@
       "sampleType": "samples"
     },
     {
+      "name": "pnp-sp-dev-spfx-web-parts-angular2-prototype",
+      "title": "Angular2 Web Part Prototype",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/angular2-prototype",
+      "description": "Sample To Do Web Part built with Angular2. This sample illustrates how you can use Angular2 with the SharePoint Framework.",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/angular2-prototype/assets/preview.png",
+      "authors": [
+        {
+          "name": "Daniel Gaeta",
+          "pictureUrl": "https://avatars.githubusercontent.com/u/1770329?s=460&v=4"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2017-01-20",
+      "updateDate": "2017-01-20",
+      "version": "0.1.2",
+      "componentType": "webPart",
+      "extensionType": null,
+      "sampleGallery": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
       "name": "pnp-sp-dev-spfx-web-parts-angularelements-helloworld",
       "title": "Angular Elements in SPFx web parts",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/angularelements-helloworld",
@@ -3095,6 +3310,29 @@
       "updateDate": "2018-03-21",
       "version": "1.0.0",
       "componentType": null,
+      "extensionType": null,
+      "sampleGallery": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
+      "name": "pnp-sp-dev-spfx-web-parts-jquery-photopile",
+      "title": "JQuery, Photopile.JS & Office UI Fabric Client-Side Web Part",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/jquery-photopile",
+      "description": "This is a sample web part that illustrated the use of JQuery and Photopile.Js with the SharePoint Framework.",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/jquery-photopile/assets/photopileoverview.gif",
+      "authors": [
+        {
+          "name": "Olivier Carpentier",
+          "pictureUrl": "https://github.com/OlivierCC.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2016-09-09",
+      "updateDate": "2016-09-09",
+      "version": "1.0.0",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -5764,6 +6002,29 @@
       "sampleType": "samples"
     },
     {
+      "name": "pnp-sp-dev-spfx-web-parts-react-custom-action-manager",
+      "title": "SharePoint Custom Action Manager",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-custom-action-manager",
+      "description": "The SharePoint Custom Action Manager is a comprehensive, enterprise-grade SharePoint Framework (SPFx) web part for managing SharePoint custom actions with advanced features including bulk operations, role-based access control, template gallery, and advanced search capabilities.",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-custom-action-manager/assets/image.png",
+      "authors": [
+        {
+          "name": "Nicolas Kheirallah",
+          "pictureUrl": "https://github.com/NicolasKheirallah.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2024-09-22",
+      "updateDate": "2025-10-30",
+      "version": "1.21.1",
+      "componentType": "webPart",
+      "extensionType": null,
+      "sampleGallery": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
       "name": "pnp-sp-dev-spfx-web-parts-react-custom-links",
       "title": "Custom Links Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-custom-links",
@@ -5805,6 +6066,33 @@
       "updateDate": "2025-01-24",
       "version": "1.18.2",
       "componentType": "webpart",
+      "extensionType": null,
+      "sampleGallery": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
+      "name": "pnp-sp-dev-spfx-web-parts-react-custompropertypanecontrols",
+      "title": "Custom property pane controls web part",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-custompropertypanecontrols",
+      "description": "Sample custom property pane controls built in React for use with SharePoint Framework client-side web parts.",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-custompropertypanecontrols/assets/async-dropdown-preview.gif",
+      "authors": [
+        {
+          "name": "Waldek Mastykarz",
+          "pictureUrl": "https://github.com/waldekmastykarz.png"
+        },
+        {
+          "name": "Alex Terentiev",
+          "pictureUrl": "https://github.com/AJIXuMuK.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2017-05-01",
+      "updateDate": "2022-01-26",
+      "version": "1.14.0-beta.5",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -6198,6 +6486,30 @@
       "updateDate": "2023-09-09",
       "version": "1.17.4",
       "componentType": "webpart",
+      "extensionType": null,
+      "sampleGallery": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
+      "name": "pnp-sp-dev-spfx-web-parts-react-dragmatch-game",
+      "title": "Drag Match",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-dragmatch-game",
+      "description": "An interactive drag-and-drop matching game for SharePoint with time-based scoring and rank bonuses.",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-dragmatch-game/assets/dragmatch-preview.gif",
+      "authors": [
+        {
+          "name": "Sai Siva Ram Bandaru",
+          "pictureUrl": "https://github.com/saiiiiiii.png"
+        }
+      ],
+      "tags": [
+        "SharePoint",
+        "Office"
+      ],
+      "createDate": "2026-02-07",
+      "updateDate": "2026-02-07",
+      "version": "1.20.0",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -6975,6 +7287,29 @@
       "updateDate": "2022-01-09",
       "version": "1.13.0",
       "componentType": "webpart",
+      "extensionType": null,
+      "sampleGallery": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
+      "name": "pnp-sp-dev-spfx-web-parts-react-form-builder",
+      "title": "SharePoint - Dynamic Form Builder (WebPart)",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-form-builder",
+      "description": "This WebPart (App) builds and creates an input form from a given SharePoint List and defined view. The view is used to determine the fields and the order of the fields in the form. This allows the form to be flexibly integrated into all SharePoint pages. The web part uses the latest version of the Fluent UI React Components library.",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-form-builder/assets/form-builder-screen-01.png",
+      "authors": [
+        {
+          "name": "Marc André Schröder-Zhou",
+          "pictureUrl": "https://github.com/maschroeder-z.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2023-10-08",
+      "updateDate": "2023-10-08",
+      "version": "1.21.1",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -8781,6 +9116,29 @@
       "sampleType": "samples"
     },
     {
+      "name": "pnp-sp-dev-spfx-web-parts-react-modern-link-presenter",
+      "title": "Modern Link Presenter",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-modern-link-presenter",
+      "description": "A modern, customizable web part for managing and displaying links in various layouts in SharePoint and Teams. Modern Link Presenter is a flexible SharePoint Framework (SPFx) web part that allows users to manage and present collections of links in various modern layouts. Features include: configurable link properties (title, URL, icon, description, summary, color, target, display format), multiple output formats (simple links, links with icons, inline tiles, and rich tile layouts), individual color and display customization per link, search and filter functionality, and support for opening links in new tabs, within the same tab, or in a modal dialog. The tile layout offers additional customization such as tile size, mouseover effects, and button text. The web part is fully localizable, supports accessibility, and is ideal for creating modern dashboards, resource panels, or curated link collections in SharePoint Online and Microsoft Teams.",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-modern-link-presenter/assets/modernlink-01.png",
+      "authors": [
+        {
+          "name": "Marc André Schröder-Zhou",
+          "pictureUrl": "https://github.com/maschroeder-z.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2024-12-25",
+      "updateDate": "2024-12-31",
+      "version": "1.21.1",
+      "componentType": "webPart",
+      "extensionType": null,
+      "sampleGallery": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
       "name": "pnp-sp-dev-spfx-web-parts-react-modern-organization-chart",
       "title": "Modern Organization Chart",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-modern-organization-chart",
@@ -9100,6 +9458,29 @@
       "sampleType": "samples"
     },
     {
+      "name": "pnp-sp-dev-spfx-web-parts-react-my-qr-code-generator",
+      "title": "QR Code Generator Web Part",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-my-qr-code-generator",
+      "description": "A modern, feature-rich SharePoint Framework (SPFx) web part for generating customizable QR codes directly within SharePoint. This solution provides an intuitive interface for creating QR codes for URLs, WiFi, Contacts, and now Teams Meetings, Meeting Rooms, and Calendar Events. It features advanced styling options, real-time preview, and seamless integration with SharePoint document libraries.",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-my-qr-code-generator/assets/qr-code-generator-preview-room.png",
+      "authors": [
+        {
+          "name": "Nicolas Kheirallah",
+          "pictureUrl": "https://github.com/NicolasKheirallah.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2025-11-28",
+      "updateDate": "2025-11-28",
+      "version": "1.21.1",
+      "componentType": "webPart",
+      "extensionType": null,
+      "sampleGallery": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
       "name": "pnp-sp-dev-spfx-web-parts-react-my-sites",
       "title": "My Sites Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-my-sites",
@@ -9333,6 +9714,29 @@
       "updateDate": "2023-01-05",
       "version": "1.16.0",
       "componentType": "webpart",
+      "extensionType": null,
+      "sampleGallery": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
+      "name": "pnp-sp-dev-spfx-web-parts-react-officegraph",
+      "title": "Office Graph Web Part samples",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-officegraph",
+      "description": "",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-officegraph/assets/trendinginthissite-preview.png",
+      "authors": [
+        {
+          "name": "Waldek Mastykarz",
+          "pictureUrl": "https://github.com/waldekmastykarz.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2017-05-31",
+      "updateDate": "2017-05-31",
+      "version": "1.0.0",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -10871,6 +11275,29 @@
       "sampleType": "samples"
     },
     {
+      "name": "pnp-sp-dev-spfx-web-parts-react-search",
+      "title": "Search Client-Side Web Part built with React and Flux",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-search",
+      "description": "Sample Search Web Part with internal and external template support. This sample illustrates how you can use React and Flux within the SharePoint Framework.",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-search/assets/preview.png",
+      "authors": [
+        {
+          "name": "Elio Struyf",
+          "pictureUrl": "https://github.com/estruyf.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2017-02-28",
+      "updateDate": "2017-02-28",
+      "version": "1.0.0",
+      "componentType": "webPart",
+      "extensionType": null,
+      "sampleGallery": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
       "name": "pnp-sp-dev-spfx-web-parts-react-securitygrid",
       "title": "Security Grid",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-securitygrid",
@@ -11302,6 +11729,30 @@
       "createDate": "2023-03-29",
       "updateDate": "2023-03-29",
       "version": "1.16.0",
+      "componentType": "webpart",
+      "extensionType": null,
+      "sampleGallery": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
+      "name": "pnp-sp-dev-spfx-web-parts-react-spin-wheel",
+      "title": "Spin Wheel Game",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-spin-wheel",
+      "description": "An interactive daily spin wheel game with probability-based rewards, built with React and PnPjs v4",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-spin-wheel/assets/spin-wheel-demo.gif",
+      "authors": [
+        {
+          "name": "Sai Siva Ram Bandaru",
+          "pictureUrl": "https://github.com/saiiiiiii.png"
+        }
+      ],
+      "tags": [
+        "SharePoint",
+        "Office"
+      ],
+      "createDate": "2026-02-08",
+      "updateDate": "2026-02-08",
+      "version": "1.20.0",
       "componentType": "webpart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
@@ -12367,6 +12818,29 @@
       "updateDate": "2020-08-27",
       "version": "1.4.0",
       "componentType": null,
+      "extensionType": null,
+      "sampleGallery": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
+      "name": "pnp-sp-dev-spfx-web-parts-react-use-reducer-hook",
+      "title": "React UseReducer Hook with PnPjs",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-use-reducer-hook",
+      "description": "This SPFx web part demonstrates how to use the React useReducer hook with the PnPjs library to fetch items from a SharePoint list. By using useReducer, developers can better manage complex state within their React components, making it easier to handle asynchronous data fetching, loading states, and error handling.",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-use-reducer-hook/assets/preview_01.png",
+      "authors": [
+        {
+          "name": "Ahmad Jad Alhak",
+          "pictureUrl": "https://github.com/ahmad-jad-alhak.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2025-01-17",
+      "updateDate": "2025-01-17",
+      "version": "1.20.0",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
