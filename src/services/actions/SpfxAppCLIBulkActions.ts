@@ -42,17 +42,6 @@ export class SpfxAppCLIBulkActions {
     }
 
     /**
-     * Helper method to extract app catalog URL from a tree node.
-     */
-    private static getAppCatalogUrlFromNode(node: ActionTreeItem): string | undefined {
-        if (node.command?.arguments?.[0]) {
-            const urlString = node.command.arguments[0] as string;
-            return urlString;
-        }
-        return undefined;
-    }
-
-    /**
      * Deploys all non-deployed apps in the specified app catalog.
      *
      * @param node The tree item representing the app catalog.
@@ -119,7 +108,6 @@ export class SpfxAppCLIBulkActions {
                 }
             });
 
-            // refresh the environmentTreeView
             await commands.executeCommand('spfx-toolkit.refreshAppCatalogTreeView');
         } catch (e: any) {
             const message = e?.error?.message || e?.message;
@@ -192,7 +180,6 @@ export class SpfxAppCLIBulkActions {
 
             Notifications.info(`Bulk retract completed: ${deployedApps.length} app(s) processed.`);
 
-            // refresh the environmentTreeView
             await commands.executeCommand('spfx-toolkit.refreshAppCatalogTreeView');
         } catch (e: any) {
             const message = e?.error?.message || e?.message;
@@ -258,7 +245,6 @@ export class SpfxAppCLIBulkActions {
 
             Notifications.info(`Bulk remove completed: ${apps.length} app(s) processed.`);
 
-            // refresh the environmentTreeView
             await commands.executeCommand('spfx-toolkit.refreshAppCatalogTreeView');
         } catch (e: any) {
             const message = e?.error?.message || e?.message;
@@ -309,31 +295,8 @@ export class SpfxAppCLIBulkActions {
                 for (const app of disabledApps) {
                     try {
                         progress.report({ message: `Enabling '${app.Title}'...`, increment: (1 / disabledApps.length) * 100 });
-
-                        const appProductIdFilter = `Title eq '${app.Title}'`;
-                        const commandOptionsList: any = {
-                            listTitle: 'Apps for SharePoint',
-                            webUrl: appCatalogUrl,
-                            fields: 'Id, Title, IsAppPackageEnabled',
-                            filter: appProductIdFilter
-                        };
-
-                        const listItemsResponse = await CliExecuter.execute('spo listitem list', 'json', commandOptionsList);
-                        const listItems = JSON.parse(listItemsResponse.stdout || '[]');
-
-                        if (listItems.length > 0) {
-                            const appListItemId = listItems[0].Id;
-
-                            const commandOptionsSet: any = {
-                                listTitle: 'Apps for SharePoint',
-                                id: appListItemId,
-                                webUrl: appCatalogUrl,
-                                IsAppPackageEnabled: true
-                            };
-
-                            await CliExecuter.execute('spo listitem set', 'json', commandOptionsSet);
-                            completed++;
-                        }
+                        await SpfxAppCLIBulkActions.updateAppPackageEnabledStatus(app, appCatalogUrl, true);
+                        completed++;
                     } catch (e: any) {
                         Notifications.error(`Failed to enable '${app.Title}': ${e?.error?.message || e?.message}`);
                     }
@@ -344,7 +307,6 @@ export class SpfxAppCLIBulkActions {
 
             Notifications.info(`Bulk enable completed: ${disabledApps.length} app(s) processed.`);
 
-            // refresh the environmentTreeView
             await commands.executeCommand('spfx-toolkit.refreshAppCatalogTreeView');
         } catch (e: any) {
             const message = e?.error?.message || e?.message;
@@ -395,31 +357,8 @@ export class SpfxAppCLIBulkActions {
                 for (const app of enabledApps) {
                     try {
                         progress.report({ message: `Disabling '${app.Title}'...`, increment: (1 / enabledApps.length) * 100 });
-
-                        const appProductIdFilter = `Title eq '${app.Title}'`;
-                        const commandOptionsList: any = {
-                            listTitle: 'Apps for SharePoint',
-                            webUrl: appCatalogUrl,
-                            fields: 'Id, Title, IsAppPackageEnabled',
-                            filter: appProductIdFilter
-                        };
-
-                        const listItemsResponse = await CliExecuter.execute('spo listitem list', 'json', commandOptionsList);
-                        const listItems = JSON.parse(listItemsResponse.stdout || '[]');
-
-                        if (listItems.length > 0) {
-                            const appListItemId = listItems[0].Id;
-
-                            const commandOptionsSet: any = {
-                                listTitle: 'Apps for SharePoint',
-                                id: appListItemId,
-                                webUrl: appCatalogUrl,
-                                IsAppPackageEnabled: false
-                            };
-
-                            await CliExecuter.execute('spo listitem set', 'json', commandOptionsSet);
-                            completed++;
-                        }
+                        await SpfxAppCLIBulkActions.updateAppPackageEnabledStatus(app, appCatalogUrl, false);
+                        completed++;
                     } catch (e: any) {
                         Notifications.error(`Failed to disable '${app.Title}': ${e?.error?.message || e?.message}`);
                     }
@@ -430,7 +369,6 @@ export class SpfxAppCLIBulkActions {
 
             Notifications.info(`Bulk disable completed: ${enabledApps.length} app(s) processed.`);
 
-            // refresh the environmentTreeView
             await commands.executeCommand('spfx-toolkit.refreshAppCatalogTreeView');
         } catch (e: any) {
             const message = e?.error?.message || e?.message;
@@ -449,7 +387,6 @@ export class SpfxAppCLIBulkActions {
             const appCatalogUrl = SpfxAppCLIBulkActions.getAppCatalogUrlFromNode(node);
             const isSiteCollectionCatalog = !!appCatalogUrl;
 
-            // Get apps from the correct catalog
             const apps = await CliActions.getAppCatalogApps(appCatalogUrl);
 
             if (!apps || apps.length === 0) {
@@ -457,81 +394,23 @@ export class SpfxAppCLIBulkActions {
                 return;
             }
 
-            let siteUrl: string | undefined;
-            if (!appCatalogUrl) {
-                const relativeUrl = await window.showInputBox({
-                    prompt: 'Enter the relative URL of the site where all apps will be installed',
-                    ignoreFocusOut: true,
-                    placeHolder: 'e.g., sites/sales or leave blank for root site',
-                    validateInput: (input) => {
-                        const trimmedInput = input.trim();
+                await SpfxAppCLIBulkActions.performBulkAppSiteAction(
+                    apps,
+                    appCatalogUrl,
+                    isSiteCollectionCatalog,
+                    'install',
+                    'spo app install',
+                    (app, siteUrl, isSiteCollectionCatalogParam, appCatalogUrlParam) => ({
+                        id: app.ID,
+                        siteUrl: siteUrl,
+                        ...(isSiteCollectionCatalogParam && {
+                            appCatalogScope: 'sitecollection',
+                            appCatalogUrl: appCatalogUrlParam
+                        })
+                    })
+                );
 
-                        if (trimmedInput.startsWith('https://')) {
-                            return 'Please provide a relative URL, not an absolute URL.';
-                        }
-                        if (trimmedInput.startsWith('/')) {
-                            return 'Please provide a relative URL without a leading slash.';
-                        }
-
-                        return undefined;
-                    }
-                });
-
-                if (relativeUrl === undefined) {
-                    Notifications.warning('No site URL provided. Operation aborted.');
-                    return;
-                }
-
-                siteUrl = `${EnvironmentInformation.tenantUrl}/${relativeUrl.trim()}`;
-            } else {
-                siteUrl = appCatalogUrl;
-            }
-
-            const catalogType = isSiteCollectionCatalog ? 'site collection' : 'tenant';
-            const confirm = await window.showQuickPick(['Yes', 'No'], {
-                title: `Are you sure you want to install all ${apps.length} apps from ${catalogType} app catalog to site '${siteUrl}'?`,
-                ignoreFocusOut: true,
-                canPickMany: false
-            });
-
-            if (confirm !== 'Yes') {
-                Notifications.warning('Bulk install operation cancelled.');
-                return;
-            }
-
-            let completed = 0;
-            await window.withProgress({
-                location: ProgressLocation.Notification,
-                title: `Installing ${apps.length} app(s)... Check [output window](command:${Commands.showOutputChannel}) to follow the progress.`,
-                cancellable: false
-            }, async (progress: Progress<{ message?: string; increment?: number }>) => {
-                for (const app of apps) {
-                    try {
-                        progress.report({ message: `Installing '${app.Title}'...`, increment: (1 / apps.length) * 100 });
-
-                        const commandOptions: any = {
-                            id: app.ID,
-                            siteUrl: siteUrl,
-                            ...(isSiteCollectionCatalog && {
-                                appCatalogScope: 'sitecollection',
-                                appCatalogUrl: appCatalogUrl
-                            })
-                        };
-
-                        await CliExecuter.execute('spo app install', 'json', commandOptions);
-                        completed++;
-                    } catch (e: any) {
-                        Notifications.error(`Failed to install '${app.Title}': ${e?.error?.message || e?.message}`);
-                    }
-                }
-
-                progress.report({ message: `Completed: ${completed} of ${apps.length} app(s) installed.` });
-            });
-
-            Notifications.info(`Bulk install completed: ${completed} of ${apps.length} app(s) processed.`);
-
-            // refresh the environmentTreeView
-            await commands.executeCommand('spfx-toolkit.refreshAppCatalogTreeView');
+                await commands.executeCommand('spfx-toolkit.refreshAppCatalogTreeView');
         } catch (e: any) {
             const message = e?.error?.message || e?.message;
             Notifications.error(message);
@@ -547,8 +426,6 @@ export class SpfxAppCLIBulkActions {
         try {
             const appCatalogUrl = SpfxAppCLIBulkActions.getAppCatalogUrlFromNode(node);
             const isSiteCollectionCatalog = !!appCatalogUrl;
-
-            // Get apps from the correct catalog (same one they were installed from)
             const apps = await CliActions.getAppCatalogApps(appCatalogUrl);
 
             if (!apps || apps.length === 0) {
@@ -556,81 +433,23 @@ export class SpfxAppCLIBulkActions {
                 return;
             }
 
-            let siteUrl: string | undefined;
-            if (!appCatalogUrl) {
-                const relativeUrl = await window.showInputBox({
-                    prompt: 'Enter the relative URL of the site where all apps will be uninstalled from',
-                    ignoreFocusOut: true,
-                    placeHolder: 'e.g., sites/sales or leave blank for root site',
-                    validateInput: (input) => {
-                        const trimmedInput = input.trim();
+            await SpfxAppCLIBulkActions.performBulkAppSiteAction(
+                apps,
+                appCatalogUrl,
+                isSiteCollectionCatalog,
+                'uninstall',
+                'spo app uninstall',
+                (app, siteUrl, isSiteCollectionCatalogParam, appCatalogUrlParam) => ({
+                    id: app.ID,
+                    siteUrl: siteUrl,
+                    force: true,
+                    ...(isSiteCollectionCatalogParam && {
+                        appCatalogScope: 'sitecollection',
+                        appCatalogUrl: appCatalogUrlParam
+                    })
+                })
+            );
 
-                        if (trimmedInput.startsWith('https://')) {
-                            return 'Please provide a relative URL, not an absolute URL.';
-                        }
-                        if (trimmedInput.startsWith('/')) {
-                            return 'Please provide a relative URL without a leading slash.';
-                        }
-
-                        return undefined;
-                    }
-                });
-
-                if (relativeUrl === undefined) {
-                    Notifications.warning('No site URL provided. Operation aborted.');
-                    return;
-                }
-
-                siteUrl = `${EnvironmentInformation.tenantUrl}/${relativeUrl.trim()}`;
-            } else {
-                siteUrl = appCatalogUrl;
-            }
-
-            const catalogType = isSiteCollectionCatalog ? 'site collection' : 'tenant';
-            const confirm = await window.showQuickPick(['Yes', 'No'], {
-                title: `Are you sure you want to uninstall all ${apps.length} apps from ${catalogType} app catalog on site '${siteUrl}'?`,
-                ignoreFocusOut: true,
-                canPickMany: false
-            });
-
-            if (confirm !== 'Yes') {
-                Notifications.warning('Bulk uninstall operation cancelled.');
-                return;
-            }
-
-            await window.withProgress({
-                location: ProgressLocation.Notification,
-                title: `Uninstalling ${apps.length} app(s)... Check [output window](command:${Commands.showOutputChannel}) to follow the progress.`,
-                cancellable: false
-            }, async (progress: Progress<{ message?: string; increment?: number }>) => {
-                let completed = 0;
-                for (const app of apps) {
-                    try {
-                        progress.report({ message: `Uninstalling '${app.Title}'...`, increment: (1 / apps.length) * 100 });
-
-                        const commandOptions: any = {
-                            id: app.ID,
-                            siteUrl: siteUrl,
-                            force: true,
-                            ...(isSiteCollectionCatalog && {
-                                appCatalogScope: 'sitecollection',
-                                appCatalogUrl: appCatalogUrl
-                            })
-                        };
-
-                        await CliExecuter.execute('spo app uninstall', 'json', commandOptions);
-                        completed++;
-                    } catch (e: any) {
-                        Notifications.error(`Failed to uninstall '${app.Title}': ${e?.error?.message || e?.message}`);
-                    }
-                }
-
-                progress.report({ message: `Completed: ${completed} of ${apps.length} app(s) uninstalled.` });
-            });
-
-            Notifications.info(`Bulk uninstall completed: ${apps.length} app(s) processed.`);
-
-            // refresh the environmentTreeView
             await commands.executeCommand('spfx-toolkit.refreshAppCatalogTreeView');
         } catch (e: any) {
             const message = e?.error?.message || e?.message;
@@ -648,7 +467,6 @@ export class SpfxAppCLIBulkActions {
             const appCatalogUrl = SpfxAppCLIBulkActions.getAppCatalogUrlFromNode(node);
             const isTenantCatalog = !appCatalogUrl || (EnvironmentInformation.appCatalogUrls && appCatalogUrl === EnvironmentInformation.appCatalogUrls[0]);
 
-            // Always get apps from tenant app catalog for upgrade
             const apps = await CliActions.getAppCatalogApps();
 
             if (!apps || apps.length === 0) {
@@ -728,5 +546,131 @@ export class SpfxAppCLIBulkActions {
             const message = e?.message || 'An unexpected error occurred during the bulk upgrade.';
             Notifications.error(message);
         }
+    }
+
+    /**
+     * Updates the IsAppPackageEnabled status for an app in the app catalog.
+     *
+     * @param app The app to update.
+     * @param appCatalogUrl The app catalog URL.
+     * @param isEnabled Whether to enable or disable the app.
+     */
+    private static async updateAppPackageEnabledStatus(
+        app: any,
+        appCatalogUrl: string | undefined,
+        isEnabled: boolean
+    ): Promise<void> {
+        const appProductIdFilter = `Title eq '${app.Title}'`;
+        const commandOptionsList: any = {
+            listTitle: 'Apps for SharePoint',
+            webUrl: appCatalogUrl,
+            fields: 'Id, Title, IsAppPackageEnabled',
+            filter: appProductIdFilter
+        };
+
+        const listItemsResponse = await CliExecuter.execute('spo listitem list', 'json', commandOptionsList);
+        const listItems = JSON.parse(listItemsResponse.stdout || '[]');
+
+        if (listItems.length > 0) {
+            const appListItemId = listItems[0].Id;
+
+            const commandOptionsSet: any = {
+                listTitle: 'Apps for SharePoint',
+                id: appListItemId,
+                webUrl: appCatalogUrl,
+                IsAppPackageEnabled: isEnabled
+            };
+
+            await CliExecuter.execute('spo listitem set', 'json', commandOptionsSet);
+        }
+    }
+
+    /**
+     * Performs a bulk action that requires a target site URL (install/uninstall/upgrade).
+     * Handles prompting for relative site URL when needed, confirmation, progress reporting and execution.
+     */
+    private static async performBulkAppSiteAction(
+        apps: any[],
+        appCatalogUrl: string | undefined,
+        isSiteCollectionCatalog: boolean,
+        actionVerb: string,
+        cliCommand: string,
+        buildCommandOptions: (app: any, siteUrl: string, isSiteCollectionCatalog: boolean, appCatalogUrl?: string) => any
+    ): Promise<void> {
+        let siteUrl: string | undefined;
+
+        if (!appCatalogUrl) {
+            const relativeUrl = await window.showInputBox({
+                prompt: `Enter the relative URL of the site where all apps will be ${actionVerb}ed`,
+                placeHolder: 'e.g., sites/sales or leave blank for root site',
+                validateInput: (input) => {
+                    const trimmedInput = input.trim();
+
+                    if (trimmedInput.startsWith('https://')) {
+                        return 'Please provide a relative URL, not an absolute URL.';
+                    }
+                    if (trimmedInput.startsWith('/')) {
+                        return 'Please provide a relative URL without a leading slash.';
+                    }
+
+                    return undefined;
+                }
+            });
+
+            if (relativeUrl === undefined) {
+                Notifications.warning('No site URL provided. Operation aborted.');
+                return;
+            }
+
+            siteUrl = `${EnvironmentInformation.tenantUrl}/${relativeUrl.trim()}`;
+        } else {
+            siteUrl = appCatalogUrl;
+        }
+
+        const catalogType = isSiteCollectionCatalog ? 'site collection' : 'tenant';
+        const confirm = await window.showQuickPick(['Yes', 'No'], {
+            title: `Are you sure you want to ${actionVerb} all ${apps.length} apps from ${catalogType} app catalog to site '${siteUrl}'?`,
+            ignoreFocusOut: true,
+            canPickMany: false
+        });
+
+        if (confirm !== 'Yes') {
+            Notifications.warning(`Bulk ${actionVerb} operation cancelled.`);
+            return;
+        }
+
+        let completed = 0;
+        await window.withProgress({
+            location: ProgressLocation.Notification,
+            title: `${actionVerb.charAt(0).toUpperCase() + actionVerb.slice(1)} ${apps.length} app(s)... Check [output window](command:${Commands.showOutputChannel}) to follow the progress.`,
+            cancellable: false
+        }, async (progress: Progress<{ message?: string; increment?: number }>) => {
+            for (const app of apps) {
+                try {
+                    progress.report({ message: `${actionVerb.charAt(0).toUpperCase() + actionVerb.slice(1)} '${app.Title}'...`, increment: (1 / apps.length) * 100 });
+
+                    const commandOptions: any = buildCommandOptions(app, siteUrl as string, isSiteCollectionCatalog, appCatalogUrl);
+                    await CliExecuter.execute(cliCommand, 'json', commandOptions);
+                    completed++;
+                } catch (e: any) {
+                    Notifications.error(`Failed to ${actionVerb} '${app.Title}': ${e?.error?.message || e?.message}`);
+                }
+            }
+
+            progress.report({ message: `Completed: ${completed} of ${apps.length} app(s) ${actionVerb}ed.` });
+        });
+
+        Notifications.info(`Bulk ${actionVerb} completed: ${completed} of ${apps.length} app(s) processed.`);
+    }
+
+    /**
+     * Helper method to extract app catalog URL from a tree node.
+     */
+    private static getAppCatalogUrlFromNode(node: ActionTreeItem): string | undefined {
+        if (node.command?.arguments?.[0]) {
+            const urlString = node.command.arguments[0] as string;
+            return urlString;
+        }
+        return undefined;
     }
 }
