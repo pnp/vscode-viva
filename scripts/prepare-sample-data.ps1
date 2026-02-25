@@ -44,7 +44,9 @@ function Parse-SampleJsonFiles {
                 $extensionType = $null
                 $isSPFxProject = $false
 
-                $yoRcPath = $sample.FullName.ToLower().Replace("assets\sample.json", ".yo-rc.json")
+                $sampleFolder = Split-Path -Path $sample.FullName -Parent
+                $sampleFolder = Split-Path -Path $sampleFolder -Parent
+                $yoRcPath = Join-Path -Path $sampleFolder -ChildPath ".yo-rc.json"
 
                 if (Test-Path -Path $yoRcPath) {
                     try {
@@ -93,7 +95,7 @@ function Parse-SampleJsonFiles {
                 }
 
                 if (-not $isSPFxProject) {
-                    $packageJsonPath = $sample.FullName.ToLower().Replace("assets\sample.json", "package.json")
+                    $packageJsonPath = Join-Path -Path $sampleFolder -ChildPath "package.json"
 
                     if (-not (Test-Path -Path $packageJsonPath)) {
                         Continue
@@ -170,13 +172,11 @@ foreach ($sampleRepo in $sampleRepos) {
     Write-Output $sampleRepo
 
     if (Test-Path -Path "$workspacePath\$sampleRepo\samples" -PathType Container) {
-        $output = Parse-SampleJsonFiles -sampleRepo $sampleRepo -folder 'samples'
+        $samples += Parse-SampleJsonFiles -sampleRepo $sampleRepo -folder 'samples'
     }
     if (Test-Path -Path "$workspacePath\$sampleRepo\scenarios" -PathType Container) {
-        $output = Parse-SampleJsonFiles -sampleRepo $sampleRepo -folder 'scenarios'
+        $samples += Parse-SampleJsonFiles -sampleRepo $sampleRepo -folder 'scenarios'
     }
-
-    $samples += $output
 }
 
 [hashtable]$sampleModel = @{}
