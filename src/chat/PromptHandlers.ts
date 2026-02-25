@@ -14,16 +14,7 @@ export class PromptHandlers {
 
   public static async handle(request: vscode.ChatRequest, context: vscode.ChatContext, stream: vscode.ChatResponseStream, token: vscode.CancellationToken): Promise<any> {
     stream.progress(PromptHandlers.getRandomProgressMessage());
-    const chatCommand = (request.command && ['new', 'info'].indexOf(request.command.toLowerCase()) > -1) ? request.command.toLowerCase() : '';
-
-    if (chatCommand === 'info') {
-      const authInstance = AuthProvider.getInstance();
-      const account = await authInstance.getAccount();
-      if (!account) {
-        stream.markdown('\n\n The `/info` command is only available when you are signed in. Please sign in first.');
-        return;
-      }
-    }
+    const chatCommand = (request.command && ['new'].indexOf(request.command.toLowerCase()) > -1) ? request.command.toLowerCase() : '';
 
     const messages: vscode.LanguageModelChatMessage[] = [];
     messages.push(vscode.LanguageModelChatMessage.Assistant(promptContext));

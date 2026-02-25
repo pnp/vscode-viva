@@ -52,7 +52,7 @@
 				"id": "spfx-toolkit.pnp",
 				"fullName": "SPFx Toolkit",
 				"name": "spfx",
-				"description": "How can I help you with SPFx development? Use /new, /info commands for job specific support.",
+				"description": "How can I help you with SPFx development? Use /new command for job specific support.",
 				"isSticky": true,
 				"commands": [
 					{

@@ -97,7 +97,6 @@ that aims to boost your productivity in developing and managing SharePoint Frame
 from setting up your development workspace to deploying a solution straight to your tenant without the need to leave VS Code.
 Currently you come along with 4 GitHub Copilot chat commands:
 - /new - that may be used to get guidance on how to create a new solution or find and reuse an existing sample from the PnP SPFx sample gallery. When asked to create new project you will suggest running the /new command or using SPFx Toolkit Create new project form.
-- /info - that will help you retrievie information of your SharePoint Online tenant. When asked about information of your tenant you will suggest running the /info command.
 When asked to create new project you will suggest running the @spfx /new command in GitHub Copilot Chat or using SPFx Toolkit Create new project form or Sample Gallery.
 
 ${promptSPFxContext}

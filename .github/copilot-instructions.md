@@ -6,7 +6,7 @@ This is a **VS Code extension** that serves as an **abstraction layer** over the
 
 **Key architectural components:**
 - **Extension Host**: Main entry point (`src/extension.ts`) that registers all services and providers
-- **Chat Participant**: AI-powered `@spfx` chat participant with `/new`, `/info` commands
+- **Chat Participant**: AI-powered `@spfx` chat participant with `/new` command
 - **Webview Panel**: React-based UI for scaffolding, samples gallery, and project management
 - **Service Layer**: Abstraction over CLI for Microsoft 365 commands
 - **Authentication**: Microsoft 365 authentication via `AuthProvider`
@@ -86,7 +86,6 @@ npm run test           # Run VS Code extension tests
 ### AuthProvider Pattern
 - Singleton authentication service in `src/providers/AuthProvider.ts`
 - Microsoft 365 authentication for tenant operations
-- Required for `/info` chat command and deployment actions
 
 ### Language Model Tools
 The extension exposes SharePoint Online operations as GitHub Copilot tools:
