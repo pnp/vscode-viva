@@ -1,11 +1,5 @@
 import * as vscode from 'vscode';
-import { Logger } from '../services/dataType/Logger';
 import { AdaptiveCardTypes, Commands, ComponentTypes, ExtensionTypes, msSampleGalleryLink, promptContext, promptExplainSharePointData, promptGeneralContext, promptInfoContext, promptNewContext } from '../constants';
-import { ProjectInformation } from '../services/dataType/ProjectInformation';
-import { CliActions } from '../services/actions/CliActions';
-import { AuthProvider } from '../providers/AuthProvider';
-import { EnvironmentInformation } from '../services/dataType/EnvironmentInformation';
-
 
 export class PromptHandlers {
   public static history: string[] = [];
@@ -41,32 +35,6 @@ export class PromptHandlers {
       PromptHandlers.history.push(query);
       PromptHandlers.getChatCommandButtons(chatCommand, query).forEach(button => stream.button(button));
 
-      if (chatCommand === 'info') {
-        try {
-          const data = await PromptHandlers.tryToGetDataFromSharePoint(query);
-          if (data) {
-            stream.markdown('\n\nThis is what I found...\n\n');
-            const explanationResponse = await PromptHandlers.explainOverSharePointData(data, token);
-            let explanationQuery = '';
-            for await (const fragment of explanationResponse.text) {
-              explanationQuery += fragment;
-              stream.markdown(fragment);
-            }
-            PromptHandlers.history.push(explanationQuery);
-          }
-        } catch (err: any) {
-          Logger.getInstance();
-          const errorText = err!.error ? err!.error.message.toString() : err.toString();
-          Logger.error(errorText);
-          stream.markdown('\n\nI was not able to retrieve the data from SharePoint. Please check the logs in output window for more information.');
-
-          const markdownString = new vscode.MarkdownString();
-          markdownString.supportHtml = true;
-          markdownString.appendMarkdown(`<span style="color:#f00;">${errorText}</span>`);
-          stream.markdown(markdownString);
-        }
-      }
-
       return { metadata: { command: chatCommand } };
     } catch (err) {
       if (err instanceof vscode.LanguageModelError) {
@@ -81,30 +49,6 @@ export class PromptHandlers {
     }
   }
 
-  private static async tryToGetDataFromSharePoint(chatResponse: string): Promise<string | undefined> {
-    const cliRegex = /```([^\n]*)\n(?=[\s\S]*?m365 spo.+)([\s\S]*?)\n?```/g;
-    const cliMatch = cliRegex.exec(chatResponse);
-
-    if (cliMatch && cliMatch[2]) {
-      const outputMode = cliMatch[2].toLowerCase().includes('list') ? 'text' : 'md';
-      const result = await CliActions.runCliCommand(cliMatch[2], outputMode);
-      return result;
-    }
-
-    return;
-  }
-
-  private static async explainOverSharePointData(data: string, token: vscode.CancellationToken): Promise<vscode.LanguageModelChatResponse> {
-    const [model] = await vscode.lm.selectChatModels({ vendor: 'copilot', family: PromptHandlers.modelFamily });
-    const messages = [
-      vscode.LanguageModelChatMessage.User(promptExplainSharePointData),
-      vscode.LanguageModelChatMessage.User('Analyze and explain the following response:'),
-      vscode.LanguageModelChatMessage.User(data)
-    ];
-    const chatResponse = await model.sendRequest(messages, {}, token);
-    return chatResponse;
-  }
-
   private static getChatCommandPrompt(chatCommand: string): string {
     let context: string = '';
     switch (chatCommand) {
@@ -113,12 +57,6 @@ export class PromptHandlers {
         context += `\n Here is some more information regarding each component type ${JSON.stringify(ComponentTypes)}`;
         context += `\n Here is some more information regarding each extension type ${JSON.stringify(ExtensionTypes)}`;
         context += `\n Here is some more information regarding each ACE type ${JSON.stringify(AdaptiveCardTypes)}`;
-      case 'info':
-        // TODO: since we are already retrieving list of sites app catalog we could add it as additional context here
-        context += promptInfoContext;
-        if (EnvironmentInformation.tenantUrl) {
-          context += `Tenant SharePoint URL is: ${EnvironmentInformation.tenantUrl}`;
-        }
       default:
         context += promptGeneralContext;
     }
