@@ -394,27 +394,6 @@ export class CliActions {
   }
 
   /**
-   * Runs a CLI command.
-   * @param command - The CLI command to run.
-   * @returns A promise that resolves to the output of the command
-   */
-  public static async runCliCommand(command: string, output: string = 'text'): Promise<string | undefined> {
-    if (!command) {
-      return;
-    }
-
-    const cliCommand = parseCliCommand(command);
-    const commandToRun = cliCommand.command.replace('m365 ', '');
-    const result = await CliExecuter.execute(commandToRun, output, cliCommand.options);
-    if (result.stderr) {
-      Notifications.error(result.stderr);
-      return;
-    }
-
-    return result.stdout;
-  }
-
-  /**
     * Sets the form customizer for a content type on a list.
     */
   public static async setFormCustomizer() {

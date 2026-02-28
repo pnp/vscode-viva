@@ -52,18 +52,13 @@
 				"id": "spfx-toolkit.pnp",
 				"fullName": "SPFx Toolkit",
 				"name": "spfx",
-				"description": "How can I help you with SPFx development? Use /new, /info commands for job specific support.",
+				"description": "How can I help you with SPFx development? Use /new command for job specific support.",
 				"isSticky": true,
 				"commands": [
 					{
 						"name": "new",
 						"isSticky": true,
 						"description": "Create a new SharePoint Framework project"
-					},
-					{
-						"name": "info",
-						"isSticky": true,
-						"description": "Retrieve information from your SharePoint Online tenant"
 					}
 				]
 			}
