@@ -1,5 +1,6 @@
 import * as vscode from 'vscode';
-import { AdaptiveCardTypes, Commands, ComponentTypes, ExtensionTypes, msSampleGalleryLink, promptContext, promptExplainSharePointData, promptGeneralContext, promptInfoContext, promptNewContext } from '../constants';
+import { AdaptiveCardTypes, Commands, ComponentTypes, ExtensionTypes, msSampleGalleryLink, promptContext, promptGeneralContext, promptNewContext } from '../constants';
+
 
 export class PromptHandlers {
   public static history: string[] = [];

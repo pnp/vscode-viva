@@ -59,11 +59,6 @@
 						"name": "new",
 						"isSticky": true,
 						"description": "Create a new SharePoint Framework project"
-					},
-					{
-						"name": "info",
-						"isSticky": true,
-						"description": "Retrieve information from your SharePoint Online tenant"
 					}
 				]
 			}
