@@ -13059,14 +13059,18 @@
         {
           "name": "Lauri Koskimies",
           "pictureUrl": "https://github.com/koskimiesl.png"
+        },
+        {
+          "name": "Nishkalank Bezawada",
+          "pictureUrl": "https://github.com/NishkalankBezawada.png"
         }
       ],
       "tags": [
         "SharePoint"
       ],
       "createDate": "2024-12-25",
-      "updateDate": "2025-10-24",
-      "version": "1.21.1",
+      "updateDate": "2026-02-27",
+      "version": "1.22.2",
       "componentType": "webpart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
