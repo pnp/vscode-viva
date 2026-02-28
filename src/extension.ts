@@ -26,7 +26,7 @@ const feedbackFormUrl = 'https://forms.office.com/e/ZTfqAissqt';
 export async function activate(context: vscode.ExtensionContext) {
 
 	const chatParticipant = vscode.chat.createChatParticipant(CHAT_PARTICIPANT_NAME, PromptHandlers.handle);
-	chatParticipant.iconPath = vscode.Uri.joinPath(context.extensionUri, 'assets', 'images', 'parker-pnp.png');
+	chatParticipant.iconPath = vscode.Uri.joinPath(context.extensionUri, 'docs', 'assets', 'images-vscode', 'parker-pnp.png');
 
 	Extension.getInstance(context);
 
