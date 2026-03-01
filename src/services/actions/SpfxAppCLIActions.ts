@@ -125,7 +125,6 @@ export class SpfxAppCLIActions {
 
             Notifications.info(`App '${appTitle}' has been successfully ${action === 'deploy' ? 'deployed' : 'retracted'}.`);
 
-            // refresh the environmentTreeView
             await commands.executeCommand('spfx-toolkit.refreshAppCatalogTreeView');
         } catch (e: any) {
             const message = e?.error?.message;
@@ -232,7 +231,6 @@ export class SpfxAppCLIActions {
 
             Notifications.info(`App '${appTitle}' has been successfully ${action === 'enable' ? 'enabled' : 'disabled'}.`);
 
-            // refresh the environmentTreeView
             await commands.executeCommand('spfx-toolkit.refreshAppCatalogTreeView');
         } catch (e: any) {
             const message = e?.error?.message;
@@ -324,8 +322,7 @@ export class SpfxAppCLIActions {
             });
 
             Notifications.info(`App '${appTitle}' has been successfully ${action === 'install' ? 'installed' : 'uninstalled'} on site '${siteUrl}'.`);
-
-            // refresh the environmentTreeView
+     
             await commands.executeCommand('spfx-toolkit.refreshAppCatalogTreeView');
         } catch (e: any) {
             const message = e?.error?.message;
@@ -442,7 +439,6 @@ export class SpfxAppCLIActions {
 
             Notifications.info(`App '${appTitle}' has been successfully removed.`);
 
-            // refresh the environmentTreeView
             await commands.executeCommand('spfx-toolkit.refreshAppCatalogTreeView');
         } catch (e: any) {
             const message = e?.error?.message;
@@ -499,8 +495,7 @@ export class SpfxAppCLIActions {
             });
 
             Notifications.info(`Tenant Wide Extension '${extensionTitle}' has been successfully removed.`);
-
-            // refresh the environmentTreeView
+  
             await commands.executeCommand('spfx-toolkit.refreshAppCatalogTreeView');
         } catch (e: any) {
             const message = e?.error?.message;
@@ -553,7 +548,6 @@ export class SpfxAppCLIActions {
 
             Notifications.info(`Extension '${extensionTitle}' has been successfully ${action === 'enable' ? 'enabled' : 'disabled'}.`);
 
-            // refresh the environmentTreeView
             await commands.executeCommand('spfx-toolkit.refreshAppCatalogTreeView');
         } catch (e: any) {
             const message = e?.error?.message;
@@ -710,7 +704,6 @@ export class SpfxAppCLIActions {
 
             Notifications.info(`Extension '${extension.Title}' has been successfully updated.`);
 
-            // refresh the environmentTreeView
             await commands.executeCommand('spfx-toolkit.refreshAppCatalogTreeView');
         } catch (e: any) {
             Notifications.error(e?.error?.message || e?.message || 'Failed to update extension');
@@ -826,7 +819,6 @@ export class SpfxAppCLIActions {
 
             Notifications.info(`App '${appTitle}' has been successfully ${action === 'move' ? 'moved' : 'copied'} to '${selectedUrl}'.`);
 
-            // refresh the environmentTreeView
             await commands.executeCommand('spfx-toolkit.refreshAppCatalogTreeView');
         } catch (e: any) {
             const message = e?.message || `An unexpected error occurred during the app ${action}.`;
