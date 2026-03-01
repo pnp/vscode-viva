@@ -1038,6 +1038,11 @@
 				"category": "SPFx Toolkit"
 			},
 			{
+				"command": "spfx-toolkit.validateEnvironmentForProject",
+				"title": "Validate local setup for current project",
+				"category": "SPFx Toolkit"
+			},
+			{
 				"command": "spfx-toolkit.renameProject",
 				"title": "Rename project",
 				"category": "SPFx Toolkit"
@@ -1330,6 +1335,10 @@
 				},
 				{
 					"command": "spfx-toolkit.validateProject",
+					"when": "pnp.project.isSPFxProject"
+				},
+				{
+					"command": "spfx-toolkit.validateEnvironmentForProject",
 					"when": "pnp.project.isSPFxProject"
 				},
 				{

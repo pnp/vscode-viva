@@ -31,6 +31,9 @@ export const Commands = {
   // Validation
   validateProject: `${EXTENSION_NAME}.validateProject`,
 
+  // Validation environment for project
+  validateEnvironmentForProject: `${EXTENSION_NAME}.validateEnvironmentForProject`,
+
   // Rename
   renameProject: `${EXTENSION_NAME}.renameProject`,
 
