@@ -5986,8 +5986,8 @@
         "SharePoint"
       ],
       "createDate": "2021-02-23",
-      "updateDate": "2021-08-02",
-      "version": "1.12.1",
+      "updateDate": "2026-02-26",
+      "version": "1.21.1",
       "componentType": "webpart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
