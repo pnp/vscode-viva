@@ -9290,6 +9290,29 @@
       "sampleType": "samples"
     },
     {
+      "name": "pnp-sp-dev-spfx-web-parts-react-gantt",
+      "title": "React Gantt Chart Web Part",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-gantt",
+      "description": "A SharePoint Framework (SPFx) web part that displays project tasks from a SharePoint list as an interactive Gantt chart. Built with @svar-ui/react-gantt and Fluent UI v9, it supports SharePoint pages, Microsoft Teams, and Microsoft 365 (Office) hosts.",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-gantt/assets/sp-react-gant-prop-pane.png",
+      "authors": [
+        {
+          "name": "João Mendes",
+          "pictureUrl": "https://github.com/joaojmendes.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2026-12-25",
+      "updateDate": "2026-12-31",
+      "version": "1.22.2",
+      "componentType": "webpart",
+      "extensionType": null,
+      "sampleGallery": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
       "name": "pnp-sp-dev-spfx-web-parts-react-github-badge",
       "title": "GitHub Badge Web Part (React)",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-github-badge",
