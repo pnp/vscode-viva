@@ -322,7 +322,7 @@ export class SpfxAppCLIActions {
             });
 
             Notifications.info(`App '${appTitle}' has been successfully ${action === 'install' ? 'installed' : 'uninstalled'} on site '${siteUrl}'.`);
-     
+
             await commands.executeCommand('spfx-toolkit.refreshAppCatalogTreeView');
         } catch (e: any) {
             const message = e?.error?.message;
@@ -495,7 +495,7 @@ export class SpfxAppCLIActions {
             });
 
             Notifications.info(`Tenant Wide Extension '${extensionTitle}' has been successfully removed.`);
-  
+
             await commands.executeCommand('spfx-toolkit.refreshAppCatalogTreeView');
         } catch (e: any) {
             const message = e?.error?.message;

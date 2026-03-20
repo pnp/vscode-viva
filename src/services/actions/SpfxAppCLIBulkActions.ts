@@ -1,7 +1,7 @@
 import { commands, Progress, ProgressLocation, window } from 'vscode';
 import { Subscription } from '../../models';
 import { Extension } from '../dataType/Extension';
-import { Commands, ContextKeys } from '../../constants';
+import { Commands } from '../../constants';
 import { ActionTreeItem } from '../../providers/ActionTreeDataProvider';
 import { Notifications } from '../dataType/Notifications';
 import { CliExecuter } from '../executeWrappers/CliCommandExecuter';
@@ -51,7 +51,7 @@ export class SpfxAppCLIBulkActions {
             const appCatalogUrl = SpfxAppCLIBulkActions.getAppCatalogUrlFromNode(node);
 
             const confirm = await window.showQuickPick(['Yes', 'No'], {
-                title: `Are you sure you want to deploy all non-deployed apps in this app catalog?`,
+                title: 'Are you sure you want to deploy all non-deployed apps in this app catalog?',
                 ignoreFocusOut: true,
                 canPickMany: false
             });
@@ -125,7 +125,7 @@ export class SpfxAppCLIBulkActions {
             const appCatalogUrl = SpfxAppCLIBulkActions.getAppCatalogUrlFromNode(node);
 
             const confirm = await window.showQuickPick(['Yes', 'No'], {
-                title: `Are you sure you want to retract all apps in this app catalog?`,
+                title: 'Are you sure you want to retract all apps in this app catalog?',
                 ignoreFocusOut: true,
                 canPickMany: false
             });
@@ -197,7 +197,7 @@ export class SpfxAppCLIBulkActions {
             const appCatalogUrl = SpfxAppCLIBulkActions.getAppCatalogUrlFromNode(node);
 
             const confirm = await window.showQuickPick(['Yes', 'No'], {
-                title: `Are you sure you want to remove all apps from this app catalog? This action cannot be undone.`,
+                title: 'Are you sure you want to remove all apps from this app catalog? This action cannot be undone.',
                 ignoreFocusOut: true,
                 canPickMany: false
             });
@@ -262,7 +262,7 @@ export class SpfxAppCLIBulkActions {
             const appCatalogUrl = SpfxAppCLIBulkActions.getAppCatalogUrlFromNode(node);
 
             const confirm = await window.showQuickPick(['Yes', 'No'], {
-                title: `Are you sure you want to enable all apps in this app catalog?`,
+                title: 'Are you sure you want to enable all apps in this app catalog?',
                 ignoreFocusOut: true,
                 canPickMany: false
             });
@@ -324,7 +324,7 @@ export class SpfxAppCLIBulkActions {
             const appCatalogUrl = SpfxAppCLIBulkActions.getAppCatalogUrlFromNode(node);
 
             const confirm = await window.showQuickPick(['Yes', 'No'], {
-                title: `Are you sure you want to disable all apps in this app catalog?`,
+                title: 'Are you sure you want to disable all apps in this app catalog?',
                 ignoreFocusOut: true,
                 canPickMany: false
             });
@@ -595,7 +595,7 @@ export class SpfxAppCLIBulkActions {
         isSiteCollectionCatalog: boolean,
         actionVerb: string,
         cliCommand: string,
-        buildCommandOptions: (app: any, siteUrl: string, isSiteCollectionCatalog: boolean, appCatalogUrl?: string) => any
+        buildCommandOptions: (app: any, siteUrl: string, isSiteAppCatalog: boolean, url?: string) => any
     ): Promise<void> {
         let siteUrl: string | undefined;
 
