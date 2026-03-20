@@ -360,15 +360,23 @@ The extension provides the following tools
 | Tool                              | Description                                               |
 |-----------------------------------|-----------------------------------------------------------|
 | SharePointAppInstall              | Installs an app from tenant app catalog in the site       |
+| SharePointAppInstanceList         | List installed SharePoint apps in a site                  |
 | SharePointAppList                 | Lists apps from the tenant app catalog                    |
-| SharePointFrameworkProjectUpgrade | Upgrade SharePoint Framework project                      |
+| SharePointAppUninstall            | Uninstalls an app from a site                             |
+| SharePointAppUpgrade              | Upgrade a SharePoint app in the specified site            |
 | SharePointListAdd                 | Creates list in the specified site                        |
 | SharePointListGet                 | Gets information about the specific list                  |
 | SharePointListRemove              | Removes the specified list                                |
 | SharePointPageAdd                 | Creates a page                                            |
+| SharePointPageGet                 | Gets information about the specific page                  |
+| SharePointPageList                | Lists pages in the specified site                         |
+| SharePointPageCopy                | Copies a SharePoint page                                  |
+| SharePointPageRemove              | Removes the specified page                                |
 | SharePointSiteAdd                 | Create a new SharePoint Online site                       |
 | SharePointSiteGet                 | Gets information about the specific site                  |
 | SharePointSiteRemove              | Remove a SharePoint Online site                           |
+| SharePointFrameworkProjectUpgrade | Upgrade SharePoint Framework project                      |
+| SharePointFrameworkLocalEnvironmentSetup | Set up local environment for SharePoint Framework development |
 
 [Check out our docs for more details](https://pnp.github.io/vscode-viva/features/github-copilot-capabilities)
 
