@@ -196,7 +196,7 @@ export class Dependencies {
       const useNvsOption = 'Install NVS';
 
       Notifications.warning(
-        `Node.js ${currentNodeVersion} is incompatible with SPFx v${spfxVersion}. Required: ${requiredNodeVersions}. 
+        `Node.js ${currentNodeVersion} is incompatible with SPFx v${spfxVersion}. Required: Node.js ${requiredNodeVersions} or higher. 
         It is recommended to use a Node Version Manager and update the SPFx Toolkit setting (File > Preferences > Settings > search "Node Version Manager").`,
         installNodeJSOption,
         useNvmOption,
@@ -228,7 +228,7 @@ export class Dependencies {
       const abortOption = 'I will handle it manually';
       const switchVersionButton = 'Switch to compatible Node.js version';
       const output = Notifications.warning(
-        `Node.js ${currentNodeVersion} is incompatible with SPFx v${spfxVersion}. Need Node.js ${requiredNodeVersions}.`,
+        `Node.js ${currentNodeVersion} is incompatible with SPFx v${spfxVersion}. Need Node.js ${requiredNodeVersions} or higher.`,
         switchVersionButton,
         abortOption
       ).then(async (selectedOption): Promise<boolean> => {

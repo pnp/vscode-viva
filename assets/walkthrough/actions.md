@@ -34,7 +34,7 @@ And the code tour guidance will provide you upgrade tips directly in your code!
 
 [Check out our docs for more details](https://pnp.github.io/vscode-viva/features/actions#rename-current-project)
 
-- **Increase project version** - This action allows you to increase project major, minor or patch varsion and automatically align the versioning between `package.json` and `package-solution.json` files.
+- **Increase project version** - This action allows you to increase project major, minor or patch version and automatically align the versioning between `package.json` and `package-solution.json` files.
 
 ![Increase project version](../../docs/assets/images-vscode/increase-versioning.png)
 
@@ -52,7 +52,7 @@ And the code tour guidance will provide you upgrade tips directly in your code!
 
 [Check out our docs for more details](https://pnp.github.io/vscode-viva/features/actions#deploy-project)
 
-- **Set Form Customizer** - Allows to update the New, Edit or View from of any SharePoint List to a given SPFx Form Customizer based on provided GUID. 
+- **Set Form Customizer** - Allows to update the New, Edit or View form of any SharePoint List to a given SPFx Form Customizer based on provided GUID. 
 
 ![Set Form Customizer](../../docs/assets/images-vscode/set-form-customizer-action.png)
 
