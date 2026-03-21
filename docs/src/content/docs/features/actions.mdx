@@ -9,7 +9,7 @@ The actions section allows unique functionalities that may significantly boost p
 
 It is possible to:
 
-## Upgrade project
+## Upgrade project SPFx version
 
 Generates a detailed upgrade report (`.md` and/or code tour) to guide users from their current SPFx version to a selected target version using CLI for Microsoft 365. The report includes both required and optional upgrade steps, with a consolidated script at the end for automated actions and a list of remaining manual steps.
 
@@ -21,7 +21,7 @@ And the code tour guidance will provide you upgrade tips directly in your code!
 
 For more information check out the [spfx project upgrade command](https://pnp.github.io/cli-microsoft365/cmd/spfx/project/project-upgrade) in the CLI for Microsoft 365 docs.
 
-## Validate current project
+## Validate project correctness
 
 Creates a validation .md report and/or code tour validation guidance for the currently open SPFx project. The action will automatically detect the SPFx version used and will validate if the project is properly set up.
 
@@ -29,7 +29,13 @@ Creates a validation .md report and/or code tour validation guidance for the cur
 
 For more information check out the [spfx project doctor](https://pnp.github.io/cli-microsoft365/cmd/spfx/project/project-doctor) in the CLI for Microsoft 365 docs.
 
-## Rename current project
+## Validate local setup for current project
+
+This action will validate the local setup for the currently open SPFx project, ensuring all necessary global dependencies are in place.
+
+![validate-project](../../../../assets/images-vscode/validate-local-setup-for-current-project.png)
+
+## Rename project
 
 The action will rename your project in the following places: 
 
@@ -45,15 +51,21 @@ When specified it will also generate a new solution ID.
 
 For more information check out the [spfx project rename](https://pnp.github.io/cli-microsoft365/cmd/spfx/project/project-rename) in the CLI for Microsoft 365 docs.
 
+## Increase project version
+
+This action allows you to increase project major, minor or patch version and automatically align the versioning between `package.json` and `package-solution.json` files. If the SPFx solution is part of a Teams Toolkit project it will also update the versioning the `package.json` of the Teams Toolkit project.
+
+![increase-versioning](../../../../assets/images-vscode/increase-versioning.png)
+
 ## Grant API permissions
 
-The action will Grant all API permissions specified in the package-solution.json of the current project. This is especially helpful if you just want to debug your SPFx solution using Workbench. No longer do you need to bundle, package, and deploy the project to then go to the SharePoint admin portal and consent to the permissions. All of that is now done with just a single click
+The action will grant all API permissions specified in the package-solution.json of the current project. This is especially helpful if you just want to debug your SPFx solution using Workbench. No longer do you need to bundle, package, and deploy the project to then go to the SharePoint admin portal and consent to the permissions. All of that is now done with just a single click
 
 ![grant-permissions](../../../../assets/images-vscode/grant-permissions.png)
 
 For more information check out the [spfx project permissions grant](https://pnp.github.io/cli-microsoft365/cmd/spfx/project/project-permissions-grant) in the CLI for Microsoft 365 docs.
 
-## Deploy project 
+## Deploy project to app catalog
 
 This action will only work when the user is logged in to the tenant and the sppkg file is present. The action will deploy the project to the selected (tenant or site) app catalog.
 
@@ -61,23 +73,17 @@ This action will only work when the user is logged in to the tenant and the sppk
 
 For more information check out the [spo app add](https://pnp.github.io/cli-microsoft365/cmd/spo/app/app-add) and [spo app deploy](https://pnp.github.io/cli-microsoft365/cmd/spo/app/app-deploy) in the CLI for Microsoft 365 docs.
 
-## Add new component
-
-Allows scaffolding a new SPFx project as a new component of the currently opened project. The action under the hood uses the same SharePoint Yeoman generator to scaffold a new project and this feature is an abstraction UI layer. The extension will ask for the same information when adding a new component as the SPFx Yeoman generator. After that SharePoint Framework Toolkit will extend the currently opened project with a new component.
-
-![add-component](../../../../assets/images-vscode/add-component.png)
-
 ## Set Form Customizer
 
 Allows to update the New, Edit or View form of any SharePoint List to a given SPFx Form Customizer based on provided GUID.
 
 ![Set form Customizer](../../../../assets/images-vscode/set-form-customizer-action.png)
 
-## Increase project version
+## Add new component
 
-This action allows you to increase project major, minor or patch version and automatically align the versioning between `package.json` and `package-solution.json` files. If the SPFx solution is part of a Teams Toolkit project it will also update the versioning the `package.json` of the Teams Toolkit project.
+Allows scaffolding a new SPFx project as a new component of the currently opened project. The action under the hood uses the same SharePoint Yeoman generator to scaffold a new project and this feature is an abstraction UI layer. The extension will ask for the same information when adding a new component as the SPFx Yeoman generator. After that SharePoint Framework Toolkit will extend the currently opened project with a new component.
 
-![increase-versioning](../../../../assets/images-vscode/increase-versioning.png)
+![add-component](../../../../assets/images-vscode/add-component.png)
 
 ## Open sample/scenario galleries of the SPFx web part, extensions, or ACEs projects
 

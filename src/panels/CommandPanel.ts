@@ -290,6 +290,7 @@ export class CommandPanel {
     if (ProjectInformation.isSPFxProject) {
       actionCommands.push(new ActionTreeItem('Upgrade project SPFx version', '', { name: 'arrow-up', custom: false }, undefined, Commands.upgradeProject));
       actionCommands.push(new ActionTreeItem('Validate project correctness', '', { name: 'check-all', custom: false }, undefined, Commands.validateProject));
+      actionCommands.push(new ActionTreeItem('Validate local setup for current project', '', { name: 'verified', custom: false }, undefined, Commands.validateEnvironmentForProject));
       actionCommands.push(new ActionTreeItem('Rename project', '', { name: 'whole-word', custom: false }, undefined, Commands.renameProject));
       actionCommands.push(new ActionTreeItem('Increase project version', '', { name: 'fold-up', custom: false }, undefined, Commands.increaseVersion));
 
