@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
 
     permissions:
-      contents: write
+      contents: read
       packages: read
 
     steps:
@@ -33,5 +33,5 @@ jobs:
         working-directory: vscode-viva
 
       - name: Publish
-        run: npx ovsx publish -p ${{ secrets.OVSX_TOKEN }}
+        run: npx ovsx@0.10.9 publish -p ${{ secrets.OVSX_TOKEN }}
         working-directory: vscode-viva
