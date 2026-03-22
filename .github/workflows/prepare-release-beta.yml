@@ -12,6 +12,7 @@ jobs:
     permissions:
       contents: write
       packages: read
+      pull-requests: write
     
     steps:
       - name: Setup node
