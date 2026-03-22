@@ -5,7 +5,7 @@ on:
 
 jobs:
   build:
-# if: github.repository_owner == 'pnp'
+    if: github.repository_owner == 'pnp'
     name: "Prepares the pre-release"
     runs-on: ubuntu-latest
 
@@ -43,7 +43,7 @@ jobs:
         uses: peter-evans/create-pull-request@v6
         with:
           path: vscode-viva
-          base: main-test # temporary branch - update later to dev
+          base: dev
           commit-message: prepares pre-release
           branch: prepare-pre-release
           title: Pre-Release preparation
