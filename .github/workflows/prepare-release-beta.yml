@@ -43,7 +43,7 @@ jobs:
         uses: peter-evans/create-pull-request@v6
         with:
           path: vscode-viva
-          base: dev
+          base: main-test # temporary branch - update later to dev
           commit-message: prepares pre-release
           branch: prepare-pre-release
           title: Pre-Release preparation
