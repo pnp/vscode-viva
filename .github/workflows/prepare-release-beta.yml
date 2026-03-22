@@ -5,7 +5,7 @@ on:
 
 jobs:
   build:
-    if: github.repository_owner == 'pnp'
+# if: github.repository_owner == 'pnp'
     name: "Prepares the pre-release"
     runs-on: ubuntu-latest
 
