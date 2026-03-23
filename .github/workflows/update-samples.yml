@@ -7,7 +7,7 @@ on:
 
 jobs:
   update:
-    if: github.repository_owner == 'pnp'
+    # if: github.repository_owner == 'pnp'
     name: "Update samples json"
     runs-on: windows-latest
 
@@ -46,9 +46,21 @@ jobs:
       - run: |
           dir
 
-      - run: .\scripts\prepare-sample-data.ps1 -workspacePath "${{ github.workspace }}"
+      - name: Generate sample data
+        run: .\scripts\prepare-sample-data.ps1 -workspacePath "${{ github.workspace }}"
         shell: pwsh
-        continue-on-error: true
+
+      - name: Read statistics
+        id: stats
+        run: |
+          $stats = Get-Content sample-stats.txt -Raw
+          # Escape special characters for GitHub Actions
+          $stats = $stats -replace '%', '%25'
+          $stats = $stats -replace '\r', '%0D'
+          $stats = $stats -replace '\n', '%0A'
+          echo "STATS=$stats" >> $env:GITHUB_OUTPUT
+          Remove-Item sample-stats.txt
+        shell: pwsh
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v5
@@ -56,5 +68,8 @@ jobs:
           commit-message: Updates sample data
           branch: update-sample-data
           title: Sample data update
-          body: Automated check and update of SPFx extensions and webparts samples data and aces sample data.
+          body: |
+            Automated check and update of SPFx extensions and webparts samples data and aces sample data.
+            
+            ${{ steps.stats.outputs.STATS }}
 ...

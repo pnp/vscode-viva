@@ -185,5 +185,47 @@ $orderedSampleModel = [ordered]@{}
 foreach ($Item in ($sampleModel.GetEnumerator() | Sort-Object -Property Key)) {
     $orderedSampleModel[$Item.Key] = $Item.Value
 }
-New-Object -TypeName psobject -Property $orderedSampleModel | ConvertTo-Json -Depth 10 | Out-File "$workspacePath\data\sp-dev-fx-samples.json"
+
+$jsonOutput = New-Object -TypeName psobject -Property $orderedSampleModel | ConvertTo-Json -Depth 10
+
+try {
+    $null = ConvertFrom-Json -InputObject $jsonOutput -ErrorAction Stop
+    Write-Output "`nJSON validation passed"
+}
+catch {
+    Write-Error "`nGenerated JSON is invalid: $($_.Exception.Message)"
+    exit 1
+}
+
+$jsonOutput | Out-File "$workspacePath\data\sp-dev-fx-samples.json"
+
+$totalSamples = $samples.Count
+$statsByRepo = $samples | Group-Object -Property sampleGallery | Sort-Object Name
+
+$statsContent = @"
+## Sample Data Summary
+
+**Total Samples:** $totalSamples
+
+### Breakdown by Repository
+"@
+
+foreach ($stat in $statsByRepo) {
+    $statsContent += "`n- **$($stat.Name):** $($stat.Count)"
+}
+
+# temp output for PR body; will be deleted after PR is raised
+$statsContent | Out-File "$workspacePath\sample-stats.txt" -Encoding utf8
+
+if ($env:GITHUB_STEP_SUMMARY) {
+    $statsContent | Out-File $env:GITHUB_STEP_SUMMARY -Encoding utf8
+    Write-Output "Statistics written to GitHub Actions summary"
+}
+
+Write-Output "`nSample data update complete: $totalSamples total samples`n"
+foreach ($stat in $statsByRepo) {
+    Write-Output "  $($stat.Name): $($stat.Count)"
+}
+
+exit 0
 
