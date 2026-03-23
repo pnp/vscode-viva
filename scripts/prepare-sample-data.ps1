@@ -202,17 +202,20 @@ $jsonOutput | Out-File "$workspacePath\data\sp-dev-fx-samples.json"
 $totalSamples = $samples.Count
 $statsByRepo = $samples | Group-Object -Property sampleGallery | Sort-Object Name
 
-$statsContent = @"
-## Sample Data Summary
-
-**Total Samples:** $totalSamples
-
-### Breakdown by Repository
-"@
+$statsLines = @()
+$statsLines += '## Sample Data Summary'
+$statsLines += ''
+$statsLines += '✅ **JSON Validation:** Passed'
+$statsLines += ''
+$statsLines += "**Total Samples:** $totalSamples"
+$statsLines += ''
+$statsLines += '### Breakdown by Repository'
 
 foreach ($stat in $statsByRepo) {
-    $statsContent += "`n- **$($stat.Name):** $($stat.Count)"
+    $statsLines += "- **$($stat.Name):** $($stat.Count)"
 }
+
+$statsContent = $statsLines -join "`n"
 
 # temp output for PR body; will be deleted after PR is raised
 $statsContent | Out-File "$workspacePath\sample-stats.txt" -Encoding utf8

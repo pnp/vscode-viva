@@ -7,7 +7,7 @@ on:
 
 jobs:
   update:
-    # if: github.repository_owner == 'pnp'
+    if: github.repository_owner == 'pnp'
     name: "Update samples json"
     runs-on: windows-latest
 
@@ -53,12 +53,11 @@ jobs:
       - name: Read statistics
         id: stats
         run: |
+          $delimiter = "EOF_STATS_$(Get-Random)"
           $stats = Get-Content sample-stats.txt -Raw
-          # Escape special characters for GitHub Actions
-          $stats = $stats -replace '%', '%25'
-          $stats = $stats -replace '\r', '%0D'
-          $stats = $stats -replace '\n', '%0A'
-          echo "STATS=$stats" >> $env:GITHUB_OUTPUT
+          "STATS<<$delimiter" >> $env:GITHUB_OUTPUT
+          $stats >> $env:GITHUB_OUTPUT
+          $delimiter >> $env:GITHUB_OUTPUT
           Remove-Item sample-stats.txt
         shell: pwsh
 
