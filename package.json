@@ -38,6 +38,7 @@
 	],
 	"activationEvents": [
 		"workspaceContains:**/project.pnp",
+		"workspaceContains:**/config/package-solution.json",
 		"onView:pnp-view"
 	],
 	"extensionDependencies": [

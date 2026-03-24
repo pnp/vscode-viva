@@ -12,7 +12,6 @@ import { AuthProvider } from '../../providers/AuthProvider';
 import { CommandOutput } from '@pnp/cli-microsoft365-spfx-toolkit';
 import { M365AgentsToolkitIntegration } from '../dataType/M365AgentsToolkitIntegration';
 import { PnPWebview } from '../../webview/PnPWebview';
-import { parseCliCommand } from '../../utils/parseCliCommand';
 import { CertificateActions } from './CertificateActions';
 import path = require('path');
 import { getExtensionSettings, getPackageManager, getVersion, parsePackageJson } from '../../utils';
