@@ -29,6 +29,7 @@ export const TELEMETRY_EVENTS = {
     // actionsTreeView
     [Commands.upgradeProject]: 'Upgrade Project',
     [Commands.validateProject]: 'Validate Project',
+    [Commands.validateEnvironmentForProject]: 'Validate Environment for Project',
     [Commands.renameProject]: 'Rename Project',
     [Commands.increaseVersion]: 'Increase Project Version',
     [Commands.grantAPIPermissions]: 'Grant API Permissions',

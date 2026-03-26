@@ -37,7 +37,7 @@ export class CliActions {
       commands.registerCommand(Commands.validateProject, TelemetryService.withTelemetry(Commands.validateProject, CliActions.validateProject))
     );
     subscriptions.push(
-      commands.registerCommand(Commands.validateEnvironmentForProject, CliActions.validateEnvironmentForProject)
+      commands.registerCommand(Commands.validateEnvironmentForProject, TelemetryService.withTelemetry(Commands.validateEnvironmentForProject, CliActions.validateEnvironmentForProject))
     );
     subscriptions.push(
       commands.registerCommand(Commands.renameProject, TelemetryService.withTelemetry(Commands.renameProject, CliActions.renameProject))
