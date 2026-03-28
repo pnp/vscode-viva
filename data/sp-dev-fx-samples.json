@@ -2159,6 +2159,30 @@
       "sampleType": "samples"
     },
     {
+      "name": "pnp-sp-dev-spfx-extensions-js-application-layout-customizer",
+      "title": "SharePoint Page Indexer",
+      "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/js-application-layout-customizer",
+      "description": "A SharePoint Framework (SPFx) Application Customizer that applies a responsive 3-column grid layout to SharePoint Modern pages. Provides a Fluent-styled floating toolbar and modal panel for live column-width configuration, persisted via localStorage.",
+      "image": "https://github.com/saiiiiiii/js-application-layout-customizer/raw/main/assets/layout-customizer-demo.gif",
+      "authors": [
+        {
+          "name": "Sai Siva Ram Bandaru",
+          "pictureUrl": "https://avatars.githubusercontent.com/u/46020510?v=4"
+        }
+      ],
+      "tags": [
+        "SharePoint",
+        "Office"
+      ],
+      "createDate": "2026-03-11",
+      "updateDate": "2026-03-11",
+      "version": "1.20.0",
+      "componentType": "extension",
+      "extensionType": "ApplicationCustomizer",
+      "sampleGallery": "sp-dev-fx-extensions",
+      "sampleType": "samples"
+    },
+    {
       "name": "pnp-sp-dev-spfx-extensions-js-application-listdrivenplaceholders",
       "title": "List-Driven Placeholders",
       "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/js-application-listdrivenplaceholders",
@@ -6549,6 +6573,37 @@
       "createDate": "2022-12-03",
       "updateDate": "2025-10-25",
       "version": "1.21.1",
+      "componentType": "webpart",
+      "extensionType": null,
+      "sampleGallery": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
+      "name": "pnp-sp-dev-spfx-web-parts-react-bookmark-hub",
+      "title": "React Bookmark Hub Web Part",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-bookmark-hub",
+      "description": "A SharePoint Framework (SPFx) web part that allows users to manage and organize their bookmarks within SharePoint. Built with React, PnPjs and Fluent UI.",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-bookmark-hub/assets/bookmarkHub.png",
+      "authors": [
+        {
+          "name": "Adam Wójcik",
+          "pictureUrl": "https://github.com/Adam-it.png"
+        },
+        {
+          "name": "Saurabh Tripathi",
+          "pictureUrl": "https://github.com/Saurabh7019.png"
+        },
+        {
+          "name": "Nico De Cleyre",
+          "pictureUrl": "https://github.com/nicodecleyre.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2026-03-13",
+      "updateDate": "2026-03-13",
+      "version": "1.22.1",
       "componentType": "webpart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
@@ -13682,6 +13737,37 @@
       "createDate": "2026-02-08",
       "updateDate": "2026-02-08",
       "version": "1.20.0",
+      "componentType": "webpart",
+      "extensionType": null,
+      "sampleGallery": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
+      "name": "pnp-sp-dev-spfx-web-parts-react-spo-site-game",
+      "title": "React SharePoint Online Site Game Web Part",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-spo-site-game",
+      "description": "This web part turns any SharePoint site content into a 2D game where players discover lists, libraries, and other users in a fun and engaging way.",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-spo-site-game/assets/game1.png",
+      "authors": [
+        {
+          "name": "Adam Wójcik",
+          "pictureUrl": "https://github.com/Adam-it.png"
+        },
+        {
+          "name": "Saurabh Tripathi",
+          "pictureUrl": "https://github.com/Saurabh7019.png"
+        },
+        {
+          "name": "Nico De Cleyre",
+          "pictureUrl": "https://github.com/nicodecleyre.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2026-03-13",
+      "updateDate": "2026-03-13",
+      "version": "1.22.2",
       "componentType": "webpart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
