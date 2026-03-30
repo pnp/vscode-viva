@@ -46,9 +46,20 @@ jobs:
       - run: |
           dir
 
-      - run: .\scripts\prepare-sample-data.ps1 -workspacePath "${{ github.workspace }}"
+      - name: Generate sample data
+        run: .\scripts\prepare-sample-data.ps1 -workspacePath "${{ github.workspace }}"
         shell: pwsh
-        continue-on-error: true
+
+      - name: Read statistics
+        id: stats
+        run: |
+          $delimiter = "EOF_STATS_$(Get-Random)"
+          $stats = Get-Content sample-stats.txt -Raw
+          "STATS<<$delimiter" >> $env:GITHUB_OUTPUT
+          $stats >> $env:GITHUB_OUTPUT
+          $delimiter >> $env:GITHUB_OUTPUT
+          Remove-Item sample-stats.txt
+        shell: pwsh
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v5
@@ -56,5 +67,8 @@ jobs:
           commit-message: Updates sample data
           branch: update-sample-data
           title: Sample data update
-          body: Automated check and update of SPFx extensions and webparts samples data and aces sample data.
+          body: |
+            Automated check and update of SPFx extensions and webparts samples data and aces sample data.
+            
+            ${{ steps.stats.outputs.STATS }}
 ...
