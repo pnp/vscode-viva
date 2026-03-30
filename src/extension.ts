@@ -26,7 +26,7 @@ const feedbackFormUrl = 'https://forms.office.com/e/ZTfqAissqt';
 export async function activate(context: vscode.ExtensionContext) {
 
 	const chatParticipant = vscode.chat.createChatParticipant(CHAT_PARTICIPANT_NAME, PromptHandlers.handle);
-	chatParticipant.iconPath = vscode.Uri.joinPath(context.extensionUri, 'assets', 'images', 'parker-pnp.png');
+	chatParticipant.iconPath = vscode.Uri.joinPath(context.extensionUri, 'docs', 'assets', 'images-vscode', 'parker-pnp.png');
 
 	Extension.getInstance(context);
 
@@ -107,11 +107,6 @@ export async function activate(context: vscode.ExtensionContext) {
 
 				if (fileContents.indexOf(ProjectFileContent.installPnPJs) > -1) {
 					await TerminalCommandExecuter.runCommand(`${packageManager} ${installCmd} @pnp/sp @pnp/graph --save`, terminalTitle, terminalIcon);
-				}
-
-				// spfx-fast-serve has its own package manager detection mechanism
-				if (fileContents.indexOf(ProjectFileContent.installSPFxFastServe) > -1) {
-					await TerminalCommandExecuter.runCommand('spfx-fast-serve --force-install', terminalTitle, terminalIcon);
 				}
 
 				if (fileContents.indexOf(ProjectFileContent.installReact) > -1) {

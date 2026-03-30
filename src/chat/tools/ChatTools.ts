@@ -19,7 +19,7 @@ import {
     SharePointSiteGet,
     SharePointSiteRemove
 } from './spo/index';
-import { SharePointFrameworkProjectUpgrade } from './spfx';
+import { SharePointFrameworkLocalEnvironmentSetup, SharePointFrameworkProjectUpgrade } from './spfx';
 
 
 export class ChatTools {
@@ -76,6 +76,9 @@ export class ChatTools {
         );
         subscriptions.push(
             lm.registerTool('upgrade_spfx_project', new SharePointFrameworkProjectUpgrade())
+        );
+        subscriptions.push(
+            lm.registerTool('setup_spfx_environment', new SharePointFrameworkLocalEnvironmentSetup())
         );
     }
 }

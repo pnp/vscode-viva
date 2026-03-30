@@ -13,9 +13,13 @@ It's possible to scaffold any kind of SPFx project including web parts, extensio
 - **Library components** are reusable code elements that can be shared across all the components in the tenant.
 - **Adaptive Card Extensions (ACEs)** allow you to build rich, native extensions for Viva Connections Dashboards and SharePoint Pages.
 
-Install additional dependencies with a single click straight from the scaffolding form. Currently we support installing [PnP reusable property pane controls](https://pnp.github.io/sp-dev-fx-property-controls/), [PnP reusable React controls](https://pnp.github.io/sp-dev-fx-controls-react/), [PnPjs](https://pnp.github.io/pnpjs/). Add and preconfigure [SPFx Fast Serve](https://github.com/s-KaiNet/spfx-fast-serve) and add a Node Version Manager configuration file either for NVM or NVS.
+Install additional dependencies with a single click straight from the scaffolding form. Currently we support installing [PnP reusable property pane controls](https://pnp.github.io/sp-dev-fx-property-controls/), [PnP reusable React controls](https://pnp.github.io/sp-dev-fx-controls-react/), [PnPjs](https://pnp.github.io/pnpjs/). Add a Node Version Manager configuration file either for NVM or NVS.
 
 ![Additional dependency step](../../docs/assets/images-vscode/scaffolding-additional-step.png)
+
+***Important!***
+
+As of now, creating new project supports only latest version of SharePoint Framework (SPFx). If you need to create a project with an older version, please use the the SharePoint Yeoman generator directly in the terminal.
 
 [Check out our docs for more details](https://pnp.github.io/vscode-viva/features/scaffolding/#1-scaffold-a-new-spfx-project)
 

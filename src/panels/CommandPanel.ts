@@ -7,7 +7,6 @@ import { DebuggerCheck } from '../services/check/DebuggerCheck';
 import { EnvironmentInformation } from '../services/dataType/EnvironmentInformation';
 import { M365AgentsToolkitIntegration } from '../services/dataType/M365AgentsToolkitIntegration';
 import { ProjectInformation } from '../services/dataType/ProjectInformation';
-import { AdaptiveCardCheck } from '../services/check/AdaptiveCardCheck';
 import { Subscription } from '../models';
 import { Extension } from '../services/dataType/Extension';
 import { getExtensionSettings, parsePackageJson, parseYoRc } from '../utils';
@@ -45,10 +44,6 @@ export class CommandPanel {
 
       await CommandPanel.registerTreeView();
       AuthProvider.verify();
-
-      if (isSPFxProject) {
-        AdaptiveCardCheck.validateACEComponent();
-      }
 
     } catch (error) {
       commands.executeCommand('setContext', ContextKeys.isSPFxProject, false);
@@ -295,6 +290,7 @@ export class CommandPanel {
     if (ProjectInformation.isSPFxProject) {
       actionCommands.push(new ActionTreeItem('Upgrade project SPFx version', '', { name: 'arrow-up', custom: false }, undefined, Commands.upgradeProject));
       actionCommands.push(new ActionTreeItem('Validate project correctness', '', { name: 'check-all', custom: false }, undefined, Commands.validateProject));
+      actionCommands.push(new ActionTreeItem('Validate local setup for current project', '', { name: 'verified', custom: false }, undefined, Commands.validateEnvironmentForProject));
       actionCommands.push(new ActionTreeItem('Rename project', '', { name: 'whole-word', custom: false }, undefined, Commands.renameProject));
       actionCommands.push(new ActionTreeItem('Increase project version', '', { name: 'fold-up', custom: false }, undefined, Commands.increaseVersion));
 

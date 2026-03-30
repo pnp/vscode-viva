@@ -110,9 +110,13 @@ It's possible to scaffold any kind of SPFx project.
 
 ![All SPFx project support](./docs/assets/images-vscode/scaffolding-support.png)
 
-Install additional dependencies with a single click straight from the scaffolding form. Currently we support installing [PnP reusable property pane controls](https://pnp.github.io/sp-dev-fx-property-controls/), [PnP reusable React controls](https://pnp.github.io/sp-dev-fx-controls-react/), [PnPjs](https://pnp.github.io/pnpjs/). Add and preconfigure [SPFx Fast Serve](https://github.com/s-KaiNet/spfx-fast-serve) and add a Node Version Manager configuration file either for NVM or NVS.
+Install additional dependencies with a single click straight from the scaffolding form. Currently we support installing [PnP reusable property pane controls](https://pnp.github.io/sp-dev-fx-property-controls/), [PnP reusable React controls](https://pnp.github.io/sp-dev-fx-controls-react/), [PnPjs](https://pnp.github.io/pnpjs/). Add a Node Version Manager configuration file either for NVM or NVS.
 
 ![Additional dependency step](./docs/assets/images-vscode/scaffolding-additional-step.png)
+
+***Important!***
+
+As of now, creating new project supports only latest version of SharePoint Framework (SPFx). If you need to create a project with an older version, please use the the SharePoint Yeoman generator directly in the terminal.
 
 [Check out our docs for more details](https://pnp.github.io/vscode-viva/features/scaffolding)
 
@@ -203,7 +207,59 @@ The actions section allows unique functionalities that may significantly boost p
 
 Currently the extension allows you to:
 
-- **CI/CD Workflow** - This action will allow you to generate yaml CI/CD GitHub Workflow or Azure DevOps Pipeline to bundle, package, and deploy your project to any app catalog on every code push. 
+- **Upgrade project SPFx version** - Generates a detailed upgrade report (`.md` and/or code tour) to guide users from their current SPFx version to a selected target version using CLI for Microsoft 365. The report includes both required and optional upgrade steps, with a consolidated script at the end for automated actions and a list of remaining manual steps.
+
+![Upgrade project](./docs/assets/images-vscode/upgrade-project.png)
+
+And the code tour guidance will provide you upgrade tips directly in your code!
+
+![Upgrade project](./docs/assets/images-vscode/upgrade-project-code-tour.png)
+
+[Check out our docs for more details](https://pnp.github.io/vscode-viva/features/actions#upgrade-project)
+
+- **Validate project correctness** - Creates a validation .md report and/or code tour validation guidance for the currently open SPFx project. The action will automatically detect the SPFx version used and will validate if the project is properly set up.
+
+![Validate project](./docs/assets/images-vscode/validate-project.png)
+
+[Check out our docs for more details](https://pnp.github.io/vscode-viva/features/actions#validate-current-project)
+
+- **Validate local setup for current project** - This action will validate the local setup for the currently open SPFx project, ensuring all necessary global dependencies are in place.
+
+![Validate local setup for current project](./docs/assets/images-vscode/validate-local-setup-for-current-project.png)
+
+[Check out our docs for more details](https://pnp.github.io/vscode-viva/features/actions#validate-local-setup)
+
+- **Rename project** - Forget about manual work and let the extension rename your project and generate a new solution ID. 
+
+![Rename](./docs/assets/images-vscode/rename.png)
+
+[Check out our docs for more details](https://pnp.github.io/vscode-viva/features/actions#rename-current-project)
+
+- **Increase project version** - This action allows you to increase project major, minor or patch version and automatically align the versioning between `package.json` and `package-solution.json` files.
+
+![Increase project version](./docs/assets/images-vscode/increase-versioning.png)
+
+[Check out our docs for more details](https://pnp.github.io/vscode-viva/features/actions#increase-project-version)
+
+- **Grant API permissions** - The action will Grant all API permissions specified in the package-solution.json of the current project. This is especially helpful if you just want to debug your SPFx solution using Workbench. No longer do you need to bundle, package, and deploy the project to then go to the SharePoint admin portal and consent to the permissions. All of that is now done with just a single click. 
+
+![Grant permissions](./docs/assets/images-vscode/grant-permissions.png)
+
+[Check out our docs for more details](https://pnp.github.io/vscode-viva/features/actions#grant-api-permissions)
+
+- **Deploy project to app catalog** - This action will only work when the user is logged in to tenant and the sppkg file is present. The action will deploy the project to the selected (tenant or site) app catalog. 
+
+![Deploy](./docs/assets/images-vscode/deploy.png)
+
+[Check out our docs for more details](https://pnp.github.io/vscode-viva/features/actions#deploy-project)
+
+- **Set Form Customizer** - Allows to update the New, Edit or View form of any SharePoint List to a given SPFx Form Customizer based on provided GUID. 
+
+![Set Form Customizer](./docs/assets/images-vscode/set-form-customizer-action.png)
+
+[Check out our docs for more details](https://pnp.github.io/vscode-viva/features/actions#set-form-customizer)
+
+- **Scaffold CI/CD Workflow** - This action will allow you to generate yaml CI/CD GitHub Workflow or Azure DevOps Pipeline to bundle, package, and deploy your project to any app catalog on every code push. 
 
 ![CI CD pipeline](./docs/assets/images-vscode/CICD-pipeline.png)
 
@@ -217,57 +273,11 @@ And for Azure DevOps👇
 
 [Check out our docs for more details](https://pnp.github.io/vscode-viva/features/ci-cd)
 
-- **Upgrade project** - Generates a detailed upgrade report (`.md` and/or code tour) to guide users from their current SPFx version to a selected target version using CLI for Microsoft 365. The report includes both required and optional upgrade steps, with a consolidated script at the end for automated actions and a list of remaining manual steps.
-
-![Upgrade project](./docs/assets/images-vscode/upgrade-project.png)
-
-And the code tour guidance will provide you upgrade tips directly in your code!
-
-![Upgrade project](./docs/assets/images-vscode/upgrade-project-code-tour.png)
-
-[Check out our docs for more details](https://pnp.github.io/vscode-viva/features/actions#upgrade-project)
-
-- **Validate project** - Creates a validation .md report and/or code tour validation guidance for the currently open SPFx project. The action will automatically detect the SPFx version used and will validate if the project is properly set up.
-
-![Upgrade project](./docs/assets/images-vscode/validate-project.png)
-
-[Check out our docs for more details](https://pnp.github.io/vscode-viva/features/actions#validate-current-project)
-
-- **Rename project** - Forget about manual work and let the extension rename your project and generate a new solution ID. 
-
-![Rename](./docs/assets/images-vscode/rename.png)
-
-[Check out our docs for more details](https://pnp.github.io/vscode-viva/features/actions#rename-current-project)
-
-- **Grant API permissions** - The action will Grant all API permissions specified in the package-solution.json of the current project. This is especially helpful if you just want to debug your SPFx solution using Workbench. No longer do you need to bundle, package, and deploy the project to then go to the SharePoint admin portal and consent to the permissions. All of that is now done with just a single click. 
-
-![Grant permissions](./docs/assets/images-vscode/grant-permissions.png)
-
-[Check out our docs for more details](https://pnp.github.io/vscode-viva/features/actions#grant-api-permissions)
-
-- **Deploy project** - This action will only work when the user is logged in to tenant and the sppkg file is present. The action will deploy the project to the selected (tenant or site) app catalog. 
-
-![Deploy](./docs/assets/images-vscode/deploy.png)
-
-[Check out our docs for more details](https://pnp.github.io/vscode-viva/features/actions#deploy-project)
-
 - **Add new component** - Allows scaffolding a new SPFx project as a new component of the currently opened project. The action under the hood uses the same SharePoint Yeoman generator to scaffold a new project and this feature is an abstraction UI layer. 
 
 ![Add component](./docs/assets/images-vscode/add-component.png)
 
 [Check out our docs for more details](https://pnp.github.io/vscode-viva/features/actions#add-new-component)
-
-- **Set Form Customizer** - Allows to update the New, Edit or View from of any SharePoint List to a given SPFx Form Customizer based on provided GUID. 
-
-![Set Form Customizer](./docs/assets/images-vscode/set-form-customizer-action.png)
-
-[Check out our docs for more details](https://pnp.github.io/vscode-viva/features/actions#set-form-customizer)
-
-- **Increase project version** - This action allows you to increase project major, minor or patch varsion and automatically align the versioning between `package.json` and `package-solution.json` files.
-
-![Increase project version](./docs/assets/images-vscode/increase-versioning.png)
-
-[Check out our docs for more details](https://pnp.github.io/vscode-viva/features/actions#increase-project-version)
 
 - **Open sample/scenario galleries of the SPFx web part, extensions, or ACEs projects** - SharePoint Framework Toolkit supports a couple of sample galleries that may be used to scaffold a new SPFx project. 
 
@@ -335,16 +345,12 @@ Now you may use SPFx Toolkit as a chat participant in GitHub Copilot chat extens
 
 ![SPFx Toolkit chat in action](./docs/assets/images-vscode/chat-in-action-new2.gif)
 
-![SPFx Toolkit chat in action](./docs/assets/images-vscode/chat-in-action-setup.gif)
-
 @spfx is your dedicated AI Copilot that will help you with anything that is needed to develop your SharePoint Framework project. It has predefined commands that are tailored toward a specific activity for which you require guidance.
 
 ![SPFx Toolkit chat commands](./docs/assets/images-vscode/chat-commands.png)
 
 Currently, we support the following commands:
-- `/setup` - that is dedicated to providing information on how to setup your local workspace for SharePoint Framework development
 - `/new` - that may be used to get guidance on how to create a new solution or find and reuse an existing sample from the PnP SPFx sample gallery
-- `/info` - this command will allow you to ask and retrieve any kind of data from you SharePoint Online tenant. This command will only work if your are signed in to your tenant. It uses CLI for Microsoft 365 commands under the hood to retrieve and explain data and assets from your SharePoint Online tenant. It does support only retrieving information, it will not support you in creating, updating or removing any resources. For example, you want to check if some list item or file exists. Or how many items with specific metadata do you have on a list? Or ask for content type columns to generate an interface based on the response quickly.
 
 The SPFx Toolkit Language Model Tools provide a set of skills may be used by GitHub Copilot in agent mode to assist you in your SharePoint Framework development tasks and managing your SharePoint Online tenant. 
 
@@ -360,15 +366,23 @@ The extension provides the following tools
 | Tool                              | Description                                               |
 |-----------------------------------|-----------------------------------------------------------|
 | SharePointAppInstall              | Installs an app from tenant app catalog in the site       |
+| SharePointAppInstanceList         | List installed SharePoint apps in a site                  |
 | SharePointAppList                 | Lists apps from the tenant app catalog                    |
-| SharePointFrameworkProjectUpgrade | Upgrade SharePoint Framework project                      |
+| SharePointAppUninstall            | Uninstalls an app from a site                             |
+| SharePointAppUpgrade              | Upgrade a SharePoint app in the specified site            |
 | SharePointListAdd                 | Creates list in the specified site                        |
 | SharePointListGet                 | Gets information about the specific list                  |
 | SharePointListRemove              | Removes the specified list                                |
 | SharePointPageAdd                 | Creates a page                                            |
+| SharePointPageGet                 | Gets information about the specific page                  |
+| SharePointPageList                | Lists pages in the specified site                         |
+| SharePointPageCopy                | Copies a SharePoint page                                  |
+| SharePointPageRemove              | Removes the specified page                                |
 | SharePointSiteAdd                 | Create a new SharePoint Online site                       |
 | SharePointSiteGet                 | Gets information about the specific site                  |
 | SharePointSiteRemove              | Remove a SharePoint Online site                           |
+| SharePointFrameworkProjectUpgrade | Upgrade SharePoint Framework project                      |
+| SharePointFrameworkLocalEnvironmentSetup | Set up local environment for SharePoint Framework development |
 
 [Check out our docs for more details](https://pnp.github.io/vscode-viva/features/github-copilot-capabilities)
 

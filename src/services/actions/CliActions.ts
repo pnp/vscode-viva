@@ -12,11 +12,9 @@ import { AuthProvider } from '../../providers/AuthProvider';
 import { CommandOutput } from '@pnp/cli-microsoft365-spfx-toolkit';
 import { M365AgentsToolkitIntegration } from '../dataType/M365AgentsToolkitIntegration';
 import { PnPWebview } from '../../webview/PnPWebview';
-import { parseYoRc } from '../../utils/parseYoRc';
-import { parseCliCommand } from '../../utils/parseCliCommand';
 import { CertificateActions } from './CertificateActions';
 import path = require('path');
-import { getExtensionSettings, getPackageManager, getVersion } from '../../utils';
+import { getExtensionSettings, getPackageManager, getVersion, parsePackageJson } from '../../utils';
 import * as fs from 'fs';
 import { ActionTreeItem } from '../../providers/ActionTreeDataProvider';
 import { timezones } from '../../constants/Timezones';
@@ -36,6 +34,9 @@ export class CliActions {
     );
     subscriptions.push(
       commands.registerCommand(Commands.validateProject, CliActions.validateProject)
+    );
+    subscriptions.push(
+      commands.registerCommand(Commands.validateEnvironmentForProject, CliActions.validateEnvironmentForProject)
     );
     subscriptions.push(
       commands.registerCommand(Commands.renameProject, CliActions.renameProject)
@@ -65,18 +66,6 @@ export class CliActions {
    */
   public static async spfxDoctor() {
     try {
-      // Change the current working directory to the root of the Project
-      const wsFolder = await Folders.getWorkspaceFolder();
-      if (wsFolder) {
-        let fsPath = wsFolder.uri.fsPath;
-
-        if (M365AgentsToolkitIntegration.isM365AgentsToolkitProject) {
-          fsPath = join(fsPath, 'src');
-        }
-
-        process.chdir(fsPath);
-      }
-
       await window.withProgress({
         location: ProgressLocation.Notification,
         title: `Validating local setup... Check [output window](command:${Commands.showOutputChannel}) to follow the progress.`,
@@ -392,27 +381,6 @@ export class CliActions {
         PnPWebview.postMessage(WebviewCommand.toWebview.WorkflowCreated, { success: false });
       }
     });
-  }
-
-  /**
-   * Runs a CLI command.
-   * @param command - The CLI command to run.
-   * @returns A promise that resolves to the output of the command
-   */
-  public static async runCliCommand(command: string, output: string = 'text'): Promise<string | undefined> {
-    if (!command) {
-      return;
-    }
-
-    const cliCommand = parseCliCommand(command);
-    const commandToRun = cliCommand.command.replace('m365 ', '');
-    const result = await CliExecuter.execute(commandToRun, output, cliCommand.options);
-    if (result.stderr) {
-      Notifications.error(result.stderr);
-      return;
-    }
-
-    return result.stdout;
   }
 
   /**
@@ -897,9 +865,9 @@ export class CliActions {
    * @returns A promise that resolves when the form is displayed.
    */
   private static async showGenerateWorkflowForm() {
-    const content = await parseYoRc();
+    const packageJson = await parsePackageJson();
     const data = {
-      spfxPackageName: content ? content['@microsoft/generator-sharepoint'].solutionName : '',
+      spfxPackageName: packageJson ? packageJson.name : '',
       appCatalogUrls: EnvironmentInformation.appCatalogUrls && EnvironmentInformation.appCatalogUrls.length > 1 ? EnvironmentInformation.appCatalogUrls : [],
       isSignedIn: EnvironmentInformation.account ? true : false
     };
@@ -949,6 +917,76 @@ export class CliActions {
         Notifications.error(message);
       }
     });
+  }
+
+  private static async validateEnvironmentForProject() {
+    try {
+      const wsFolder = await Folders.getWorkspaceFolder();
+      if (wsFolder) {
+        let fsPath = wsFolder.uri.fsPath;
+
+        if (M365AgentsToolkitIntegration.isM365AgentsToolkitProject) {
+          fsPath = join(fsPath, 'src');
+        }
+
+        process.chdir(fsPath);
+      }
+
+      await window.withProgress({
+        location: ProgressLocation.Notification,
+        title: `Validating local setup for current project... Check [output window](command:${Commands.showOutputChannel}) to follow the progress.`,
+        cancellable: false,
+      }, async () => {
+        const result = await CliExecuter.execute('spfx doctor', 'json');
+
+        const doctorOutput: SpfxDoctorOutput[] = result.stdout ? JSON.parse(result.stdout) : [];
+        const sPFxCheck = doctorOutput.find(output => output.check === 'SharePoint Framework');
+
+        if (!sPFxCheck?.passed) {
+          Notifications.error('Couldn\'t determine the SharePoint Framework version for the current project. Please ensure you are in a valid SPFx project directory.');
+          return;
+        }
+
+        const spfxVersion = SpfxCompatibilityMatrix.find(spfx => spfx.Version === sPFxCheck.version);
+        const nodeCheck = Dependencies.isValidNodeJs(spfxVersion?.SupportedNodeVersions || []);
+        if (!nodeCheck) {
+          const installForSpecifiedVersion = `Yes, setup for SPFx v${sPFxCheck.version}`;
+          const abortOption = 'No';
+
+          Notifications.warning(
+            `Your Node.js version is not compatible with SPFx v${sPFxCheck.version}. Do you want to set up your environment for SPFx v${sPFxCheck.version}?`,
+            installForSpecifiedVersion,
+            abortOption
+          ).then(selectedOption => {
+            if (selectedOption === installForSpecifiedVersion) {
+              Dependencies.install(sPFxCheck.version);
+            }
+          });
+        } else {
+          const notPassedChecks = doctorOutput.filter(check => !['SharePoint Framework', 'Node', 'env', 'typescript'].some(name => name.toLowerCase() === check.check.toLowerCase()) && !check.passed);
+          if (notPassedChecks.length === 0) {
+            Notifications.info('Your local development environment is set up correctly for your current SharePoint Framework project');
+            return;
+          }
+
+          const installForSpecifiedVersion = `Yes, setup for SPFx v${sPFxCheck.version}`;
+          const abortOption = 'No';
+
+          Notifications.warning(
+            `The following dependencies are not set up correctly for your current SharePoint Framework project: ${notPassedChecks.map(c => c.check).join(', ')}. Do you want to set up your environment for SPFx v${sPFxCheck.version}?`,
+            installForSpecifiedVersion,
+            abortOption
+          ).then(selectedOption => {
+            if (selectedOption === installForSpecifiedVersion) {
+              Dependencies.install(sPFxCheck.version, false);
+            }
+          });
+        }
+      });
+    } catch (e: any) {
+      const message = e?.error?.message || 'An unexpected error occurred.';
+      Notifications.error(message);
+    }
   }
 
   /**

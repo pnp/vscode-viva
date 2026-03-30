@@ -2,7 +2,7 @@
 	"name": "viva-connections-toolkit",
 	"displayName": "SharePoint Framework Toolkit",
 	"description": "SharePoint Framework Toolkit aims to boost your productivity in developing and managing SharePoint Framework solutions helping at every stage of your development flow, from setting up your development workspace to deploying a solution straight to your tenant without the need to leave VS Code and now even create a CI/CD pipeline to introduce automate deployment of your app. This toolkit is provided by the community.",
-	"version": "4.17.0",
+	"version": "4.18.0",
 	"publisher": "m365pnp",
 	"preview": false,
 	"homepage": "https://pnp.github.io/vscode-viva",
@@ -38,6 +38,7 @@
 	],
 	"activationEvents": [
 		"workspaceContains:**/project.pnp",
+		"workspaceContains:**/config/package-solution.json",
 		"onView:pnp-view"
 	],
 	"extensionDependencies": [
@@ -52,23 +53,13 @@
 				"id": "spfx-toolkit.pnp",
 				"fullName": "SPFx Toolkit",
 				"name": "spfx",
-				"description": "How can I help you with SPFx development? Use /setup, /new, /info commands for job specific support.",
+				"description": "How can I help you with SPFx development? Use /new command for job specific support.",
 				"isSticky": true,
 				"commands": [
-					{
-						"name": "setup",
-						"isSticky": true,
-						"description": "Prepare your local workspace for SharePoint Framework development"
-					},
 					{
 						"name": "new",
 						"isSticky": true,
 						"description": "Create a new SharePoint Framework project"
-					},
-					{
-						"name": "info",
-						"isSticky": true,
-						"description": "Retrieve information from your SharePoint Online tenant"
 					}
 				]
 			}
@@ -703,6 +694,32 @@
 						}
 					}
 				}
+			},
+			{
+				"name": "setup_spfx_environment",
+				"tags": [
+					"sharepoint framework",
+					"SPFx",
+					"project",
+					"setup",
+					"spfx-toolkit"
+				],
+				"toolReferenceName": "SharePointFrameworkLocalEnvironmentSetup",
+				"displayName": "Set up local environment for SharePoint Framework development",
+				"modelDescription": "This tool will validate and help you set up your local environment for any version of SharePoint Framework development.",
+				"userDescription": "Set up local environment for SharePoint Framework development",
+				"canBeReferencedInPrompt": true,
+				"icon": "$(package)",
+				"inputSchema": {
+					"type": "object",
+					"properties": {
+						"version": {
+							"type": "string",
+							"description": "SharePoint Framework version to which you want to set up your local environment. This option is optional. If not defined, it will set up the environment for the latest version of SharePoint Framework.",
+							"default": ""
+						}
+					}
+				}
 			}
 		],
 		"walkthroughs": [
@@ -1022,6 +1039,11 @@
 				"category": "SPFx Toolkit"
 			},
 			{
+				"command": "spfx-toolkit.validateEnvironmentForProject",
+				"title": "Validate local setup for current project",
+				"category": "SPFx Toolkit"
+			},
+			{
 				"command": "spfx-toolkit.renameProject",
 				"title": "Rename project",
 				"category": "SPFx Toolkit"
@@ -1317,6 +1339,10 @@
 					"when": "pnp.project.isSPFxProject"
 				},
 				{
+					"command": "spfx-toolkit.validateEnvironmentForProject",
+					"when": "pnp.project.isSPFxProject"
+				},
+				{
 					"command": "spfx-toolkit.deployAppCatalogApp",
 					"when": "false"
 				},
@@ -1584,7 +1610,7 @@
 	},
 	"dependencies": {
 		"@grconrad/vscode-extension-feedback": "^1.0.0",
-		"@pnp/cli-microsoft365-spfx-toolkit": "1.9.0",
+		"@pnp/cli-microsoft365-spfx-toolkit": "1.10.0",
 		"node-forge": "1.4.0",
 		"react-markdown": "10.1.0",
 		"remark-gfm": "4.0.1",

@@ -24,7 +24,7 @@ export class SharePointAppList implements LanguageModelTool<ISharePointAppListPa
             appCatalogUrl: params.appCatalogUrl
         } : {};
 
-        const result = await CliExecuter.execute('spo app list', 'json', commandOptions);
+        const result = await CliExecuter.execute('spo app list', 'csv', commandOptions);
         if (result.stderr) {
             return new LanguageModelToolResult([new LanguageModelTextPart(`Error: ${result.stderr}`)]);
         }
