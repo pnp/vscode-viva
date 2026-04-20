@@ -17,28 +17,28 @@ jobs:
     
     steps:
       - name: Checkout vscode-viva
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Checkout sp-dev-fx-aces
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           repository: pnp/sp-dev-fx-aces
           path: sp-dev-fx-aces
 
       - name: Checkout sp-dev-fx-extensions
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           repository: pnp/sp-dev-fx-extensions
           path: sp-dev-fx-extensions
 
       - name: Checkout sp-dev-fx-library-components
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           repository: pnp/sp-dev-fx-library-components
           path: sp-dev-fx-library-components
 
       - name: Checkout sp-dev-fx-webparts
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           repository: pnp/sp-dev-fx-webparts
           path: sp-dev-fx-webparts
@@ -61,14 +61,26 @@ jobs:
           Remove-Item sample-stats.txt
         shell: pwsh
 
+      - name: Commit and push changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git checkout -b update-sample-data
+          git add -A
+          git diff --quiet && git diff --staged --quiet || git commit -m "Updates sample data"
+          git push origin update-sample-data --force
+        shell: pwsh
+
       - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v5
-        with:
-          commit-message: Updates sample data
-          branch: update-sample-data
-          title: Sample data update
-          body: |
-            Automated check and update of SPFx extensions and webparts samples data and aces sample data.
-            
-            ${{ steps.stats.outputs.STATS }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          $prBody = @"
+          Automated check and update of SPFx extensions and webparts samples data and aces sample data.
+          
+          ${{ steps.stats.outputs.STATS }}
+          "@
+          
+          gh pr create --title "Sample data update" --body $prBody --base main --head update-sample-data || gh pr edit update-sample-data --body $prBody
+        shell: pwsh
 ...
