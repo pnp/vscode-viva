@@ -15,6 +15,7 @@ export const helpCommands: ActionTreeItem[] = [
     new ActionTreeItem('Resources & Tooling', '', undefined, TreeItemCollapsibleState.Expanded, undefined, undefined, undefined, [
         new ActionTreeItem('Microsoft Graph Explorer', '', { name: 'globe', custom: false }, undefined, 'vscode.open', Uri.parse('https://developer.microsoft.com/en-us/graph/graph-explorer')),
         new ActionTreeItem('Microsoft 365 Agents Toolkit', '', { name: 'tools', custom: false }, undefined, 'vscode.open', Uri.parse('https://marketplace.visualstudio.com/items?itemName=TeamsDevApp.ms-teams-vscode-extension')),
+        new ActionTreeItem('SPFx Local Workbench', '', { name: 'tools', custom: false }, undefined, 'vscode.open', Uri.parse('https://marketplace.visualstudio.com/items?itemName=theChrisKent.spfx-local-workbench')),
         new ActionTreeItem('Adaptive Card Previewer', '', { name: 'tools', custom: false }, undefined, 'vscode.open', Uri.parse('https://marketplace.visualstudio.com/items?itemName=TeamsDevApp.vscode-adaptive-cards')),
         new ActionTreeItem('CLI for Microsoft 365 MCP server', '', { name: 'tools', custom: false }, undefined, 'vscode.open', Uri.parse('https://github.com/pnp/cli-microsoft365-mcp-server')),
         new ActionTreeItem('SharePoint Embedded', '', { name: 'tools', custom: false }, undefined, 'vscode.open', Uri.parse('https://marketplace.visualstudio.com/items?itemName=SharepointEmbedded.ms-sharepoint-embedded-vscode-extension')),

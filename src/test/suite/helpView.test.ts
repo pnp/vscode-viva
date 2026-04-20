@@ -72,6 +72,7 @@ suite('Help and feedback', () => {
         const expectedItems = [
             'Microsoft Graph Explorer',
             'Microsoft 365 Agents Toolkit',
+            'SPFx Local Workbench',
             'Adaptive Card Previewer',
             'CLI for Microsoft 365 MCP server',
             'SharePoint Embedded',
@@ -172,6 +173,10 @@ suite('Help and feedback', () => {
             {
                 label: 'Microsoft 365 Agents Toolkit',
                 url: 'https://marketplace.visualstudio.com/items?itemName=TeamsDevApp.ms-teams-vscode-extension'
+            },
+            {
+                label: 'SPFx Local Workbench',
+                url: 'https://marketplace.visualstudio.com/items?itemName=theChrisKent.spfx-local-workbench'
             },
             {
                 label: 'CLI for Microsoft 365 MCP server',
