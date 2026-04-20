@@ -46,81 +46,52 @@ function Parse-SampleJsonFiles {
 
                 $sampleFolder = Split-Path -Path $sample.FullName -Parent
                 $sampleFolder = Split-Path -Path $sampleFolder -Parent
-                $yoRcPath = Join-Path -Path $sampleFolder -ChildPath ".yo-rc.json"
 
-                if (Test-Path -Path $yoRcPath) {
-                    try {
-                        $yoRcContent = Get-Content -Path $yoRcPath -Raw
-                        $yoRcJson = ConvertFrom-Json -InputObject $yoRcContent
-                        $yoRcJson = $yoRcJson.PSObject.Properties.Value
+                $packageJsonPath = Join-Path -Path $sampleFolder -ChildPath "package.json"
 
-                        if ($null -ne $yoRcJson) {
-                            $isSPFxProject = $true
-
-                            if ($null -ne $yoRcJson.version -and $yoRcJson.version.GetType().BaseType -eq [System.Array]) {
-                                if ($null -ne $yoRcJson.version[$yoRcJson.version.Length - 1]) {
-                                    $version = $yoRcJson.version[$yoRcJson.version.Length - 1]
-                                }
-                                else {
-                                    $version = $yoRcJson.version[0]
-                                }
-                            }
-                            else {
-                                $version = $yoRcJson.version
-                            }
-
-                            if ($null -ne $yoRcJson.componentType -and $yoRcJson.componentType.GetType().BaseType -eq [System.Array]) {
-                                if ($null -ne $yoRcJson.componentType[$yoRcJson.componentType.Length - 1]) {
-                                    $componentType = $yoRcJson.componentType[$yoRcJson.componentType.Length - 1]
-                                }
-                                else {
-                                    $componentType = $yoRcJson.componentType[0]
-                                }
-                            }
-                            else {
-                                $componentType = $yoRcJson.componentType
-                            }
-
-                            if ($null -ne $yoRcJson.extensionType -and $yoRcJson.extensionType.GetType().BaseType -eq [System.Array]) {
-                                $extensionType = $yoRcJson.extensionType[$yoRcJson.extensionType.Length - 1]
-                            }
-                            else {
-                                $extensionType = $yoRcJson.extensionType
-                            }
-                        }
-                    }
-                    catch {
-                        Write-Warning "Failed to parse package.json for $($sample.FullName): $($_.Exception.Message)"
-                    }
+                if (-not (Test-Path -Path $packageJsonPath)) {
+                    Continue
                 }
 
-                if (-not $isSPFxProject) {
-                    $packageJsonPath = Join-Path -Path $sampleFolder -ChildPath "package.json"
-
-                    if (-not (Test-Path -Path $packageJsonPath)) {
-                        Continue
-                    }
-
-                    try {
-                        $packageJsonContent = Get-Content -Path $packageJsonPath -Raw
-                        $packageJson = ConvertFrom-Json -InputObject $packageJsonContent
+                try {
+                    $packageJsonContent = Get-Content -Path $packageJsonPath -Raw
+                    $packageJson = ConvertFrom-Json -InputObject $packageJsonContent
+                    
+                    if ($null -ne $packageJson.dependencies.'@microsoft/sp-core-library') {
+                        $isSPFxProject = $true
                         
-                        if ($null -ne $packageJson.dependencies.'@microsoft/sp-core-library') {
-                            $isSPFxProject = $true
-                            
-                            $coreLibVersion = $packageJson.dependencies.'@microsoft/sp-core-library'
-                            $version = $coreLibVersion -replace '[\^~>=<]', ''
-                            
-                            switch ($sampleRepo) {
-                                'sp-dev-fx-webparts' { $componentType = 'webPart' }
-                                'sp-dev-fx-extensions' { $componentType = 'extension' }
-                                'sp-dev-fx-aces' { $componentType = 'adaptiveCardExtension' }
-                                'sp-dev-fx-library-components' { $componentType = 'library' }
+                        $coreLibVersion = $packageJson.dependencies.'@microsoft/sp-core-library'
+                        $version = $coreLibVersion -replace '[\^~>=<]', ''
+                        
+                        switch ($sampleRepo) {
+                            'sp-dev-fx-webparts' { $componentType = 'webPart' }
+                            'sp-dev-fx-extensions' { $componentType = 'extension' }
+                            'sp-dev-fx-aces' { $componentType = 'adaptiveCardExtension' }
+                            'sp-dev-fx-library-components' { $componentType = 'library' }
+                        }
+
+                        $assetsPath = Join-Path -Path $sampleFolder -ChildPath "assets"
+                        $samplePath = Join-Path -Path $assetsPath -ChildPath "sample.json"
+                        if (Test-Path -Path $samplePath) {
+                            try {
+                                $sampleContent = Get-Content -Path $samplePath -Raw
+                                $sampleItems = ConvertFrom-Json -InputObject $sampleContent
+                                $sampleMetadataSource = $sampleItems | Select-Object -First 1
+
+                                if ($null -ne $sampleMetadataSource) {
+                                    if ($null -ne $sampleMetadataSource.categories -and $sampleMetadataSource.categories.Count -gt 0) {
+                                        $extensionType = $sampleMetadataSource.categories[0]
+                                    }
+                                }
                             }
+                            catch {
+                                Write-Warning "Failed to parse sample.json for $($sample.FullName): $($_.Exception.Message)"
+                            } 
                         }
                     }
-                    catch {
-                    }
+                }
+                catch {
+                    Write-Warning "Failed to read package.json for $($sample.FullName): $($_.Exception.Message)"
                 }
 
                 if (-not $isSPFxProject) {
@@ -138,6 +109,19 @@ function Parse-SampleJsonFiles {
                 $tags = @()
                 if ($null -ne $sampleJson.products) {
                     $tags = $sampleJson.products
+                }
+
+                if ("SPFX-APPLICATION-EXTENSION" -eq $extensionType){
+                    $extensionType = "ApplicationCustomizer"
+                }
+                elseif ("SPFX-FIELD-EXTENSION" -eq $extensionType){
+                    $extensionType = "FieldCustomizer"
+                }
+                elseif ("SPFX-COMMAND-EXTENSION" -eq $extensionType){
+                    $extensionType = "ListViewCommandSet"
+                }
+                elseif ("SPFX-FORM-EXTENSION" -eq $extensionType){
+                    $extensionType = "FormCustomizer"
                 }
 
                 $samples += [pscustomobject]@{
@@ -197,7 +181,7 @@ catch {
     exit 1
 }
 
-$jsonOutput | Out-File "$workspacePath\data\sp-dev-fx-samples.json"
+$jsonOutput | Out-File "$workspacePath\vscode-viva\data\sp-dev-fx-samples.json"
 
 $totalSamples = $samples.Count
 $statsByRepo = $samples | Group-Object -Property sampleGallery | Sort-Object Name
