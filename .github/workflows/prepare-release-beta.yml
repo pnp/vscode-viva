@@ -1,0 +1,58 @@
+name: Prepare Pre-Release
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    if: github.repository_owner == 'pnp'
+    name: "Prepares the pre-release"
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+      packages: read
+      pull-requests: write
+    
+    steps:
+      - name: Setup node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          registry-url: https://registry.npmjs.org/
+      
+      - name: Checkout vscode-viva
+        uses: actions/checkout@v4
+        with:
+          path: vscode-viva
+
+      - name: Run update package version script
+        run: .\vscode-viva\scripts\update-package-version.ps1 -PathToWorkspace ".\"
+        shell: pwsh
+        continue-on-error: false
+
+      - name: Verification - Install the dependencies
+        run: npm install --omit=optional
+        working-directory: vscode-viva
+
+      - name: Verification - Build
+        run: npm run vscode:prepublish
+        working-directory: vscode-viva
+        
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v6
+        with:
+          path: vscode-viva
+          base: dev
+          commit-message: prepares pre-release
+          branch: prepare-pre-release
+          title: Pre-Release preparation
+          
+          body: |
+            ## 🎯 Aim
+            
+            THe aim of this PR is to prepare the pre-release of the extension by updating the version number in the package.json file.
+
+            ## ⚠️ Warning - Do review the changes before merging
+
+            Be sure to have a look at the changes before merging as this. Merge it to `dev` branch.
