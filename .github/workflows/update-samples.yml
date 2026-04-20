@@ -7,7 +7,7 @@ on:
 
 jobs:
   update:
-    # if: github.repository_owner == 'pnp'
+    if: github.repository_owner == 'pnp'
     name: "Update samples json"
     runs-on: windows-latest
 
