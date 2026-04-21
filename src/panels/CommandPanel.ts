@@ -1,4 +1,4 @@
-import { commands, workspace, window, Uri, TreeItemCollapsibleState } from 'vscode';
+import { commands, workspace, window, Uri, TreeItemCollapsibleState, StatusBarAlignment } from 'vscode';
 import { Commands, ContextKeys } from '../constants';
 import { ActionTreeItem, ActionTreeDataProvider } from '../providers/ActionTreeDataProvider';
 import { AuthProvider, M365AuthenticationSession } from '../providers/AuthProvider';
@@ -7,18 +7,36 @@ import { DebuggerCheck } from '../services/check/DebuggerCheck';
 import { EnvironmentInformation } from '../services/dataType/EnvironmentInformation';
 import { M365AgentsToolkitIntegration } from '../services/dataType/M365AgentsToolkitIntegration';
 import { ProjectInformation } from '../services/dataType/ProjectInformation';
+import { buildSPFxStatusBarTooltip } from '../services/check/SpfxStatusTooltip';
 import { Subscription } from '../models';
 import { Extension } from '../services/dataType/Extension';
-import { getExtensionSettings, parsePackageJson, parseYoRc } from '../utils';
+import { getExtensionSettings, getVersion, parsePackageJson, parseYoRc } from '../utils';
 import { Notifications } from '../services/dataType/Notifications';
 import { helpCommands } from './HelpTreeData';
 import { getCombinedTaskCommands } from './TaskTreeData';
 
 
 export class CommandPanel {
+  private static readonly refreshSpfxStatusCommand = 'spfx-toolkit.refreshSpfxProjectStatus';
+  private static statusBarItem = window.createStatusBarItem('pnp.spfx.projectStatus', StatusBarAlignment.Left, 100);
 
   public static register() {
     const subscriptions: Subscription[] = Extension.getInstance().subscriptions;
+
+    subscriptions.push(CommandPanel.statusBarItem);
+    subscriptions.push(
+      commands.registerCommand(CommandPanel.refreshSpfxStatusCommand, async () => {
+        await CommandPanel.refreshProjectContext();
+      })
+    );
+    subscriptions.push(workspace.onDidChangeWorkspaceFolders(() => {
+      CommandPanel.refreshProjectContext();
+    }));
+    subscriptions.push(workspace.onDidSaveTextDocument((document) => {
+      if (document.fileName.endsWith('.yo-rc.json') || document.fileName.endsWith('package.json')) {
+        CommandPanel.refreshProjectContext();
+      }
+    }));
 
     subscriptions.push(
       commands.registerCommand(Commands.refreshAppCatalogTreeView, CommandPanel.refreshEnvironmentTreeView)
@@ -34,6 +52,13 @@ export class CommandPanel {
   }
 
   private static async init() {
+    await CommandPanel.refreshProjectContext();
+
+    await CommandPanel.registerTreeView();
+    AuthProvider.verify();
+  }
+
+  private static async refreshProjectContext() {
     try {
       const isM365AgentsToolkitProject = await CommandPanel.isM365AgentsToolkitProject();
       const isSPFxProject = isM365AgentsToolkitProject ? true : await CommandPanel.isSPFxProject();
@@ -42,15 +67,30 @@ export class CommandPanel {
       ProjectInformation.isSPFxProject = isSPFxProject;
       M365AgentsToolkitIntegration.isM365AgentsToolkitProject = isM365AgentsToolkitProject;
 
-      await CommandPanel.registerTreeView();
-      AuthProvider.verify();
+      await CommandPanel.updateSPFxStatusBarItem(isSPFxProject);
 
     } catch (error) {
       commands.executeCommand('setContext', ContextKeys.isSPFxProject, false);
       ProjectInformation.isSPFxProject = false;
       M365AgentsToolkitIntegration.isM365AgentsToolkitProject = false;
+      CommandPanel.statusBarItem.hide();
       Notifications.error('Error initializing the extension, please verify the project and try again.');
     }
+  }
+
+  private static async updateSPFxStatusBarItem(isSPFxProject: boolean) {
+    if (!isSPFxProject) {
+      CommandPanel.statusBarItem.hide();
+      return;
+    }
+
+    const version = await getVersion();
+    const status = await buildSPFxStatusBarTooltip(version);
+
+    CommandPanel.statusBarItem.text = `${status.hasCompatibilityIssues ? '$(warning)' : ''} SPFx ${version ?? ''}`.trim();
+    CommandPanel.statusBarItem.tooltip = status.tooltip;
+    CommandPanel.statusBarItem.command = CommandPanel.refreshSpfxStatusCommand;
+    CommandPanel.statusBarItem.show();
   }
 
   private static async registerTasksTreeView() {
