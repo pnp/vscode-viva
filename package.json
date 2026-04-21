@@ -961,6 +961,14 @@
 				}
 			]
 		},
+		"keybindings": [
+      {
+        "command": "workbench.view.extension.pnp-view",
+        "key": "ctrl+alt+s",
+        "mac": "cmd+alt+s",
+        "when": "true"
+      }
+    ],
 		"views": {
 			"pnp-view": [
 				{
