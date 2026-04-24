@@ -181,7 +181,7 @@ catch {
     exit 1
 }
 
-$jsonOutput | Out-File "$workspacePath\vscode-viva\data\sp-dev-fx-samples.json"
+$jsonOutput | Out-File "$workspacePath\data\sp-dev-fx-samples.json"
 
 $totalSamples = $samples.Count
 $statsByRepo = $samples | Group-Object -Property sampleGallery | Sort-Object Name
