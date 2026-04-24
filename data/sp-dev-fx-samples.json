@@ -114,7 +114,7 @@
       ],
       "createDate": "2024-08-20",
       "updateDate": "2024-08-20",
-      "version": "1.20.0-dev.104",
+      "version": "1.20.0-beta.0",
       "componentType": "adaptiveCardExtension",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-aces",
@@ -330,7 +330,7 @@
       ],
       "createDate": "2024-01-25",
       "updateDate": "2024-01-25",
-      "version": "1.20.0-dev.96",
+      "version": "1.20.0-beta.0",
       "componentType": "adaptiveCardExtension",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-aces",
@@ -619,7 +619,7 @@
       ],
       "createDate": "2024-09-13",
       "updateDate": "2024-09-13",
-      "version": "1.20.0-beta.0",
+      "version": "1.20.0",
       "componentType": "adaptiveCardExtension",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-aces",
@@ -835,7 +835,7 @@
       ],
       "createDate": "2025-06-02",
       "updateDate": "2025-06-02",
-      "version": "1.21.0-rc.0",
+      "version": "1.21.0",
       "componentType": "adaptiveCardExtension",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-aces",
@@ -859,7 +859,7 @@
       ],
       "createDate": "2022-02-15",
       "updateDate": "2022-06-01",
-      "version": "1.13.1",
+      "version": "1.14.0",
       "componentType": "adaptiveCardExtension",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-aces",
@@ -1555,7 +1555,7 @@
       ],
       "createDate": "2021-11-25",
       "updateDate": "2021-11-25",
-      "version": "1.13.0",
+      "version": "1.13.1",
       "componentType": "adaptiveCardExtension",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-aces",
@@ -1731,7 +1731,7 @@
       ],
       "createDate": "2021-10-06",
       "updateDate": "2021-10-28",
-      "version": "1.13.0-beta.20",
+      "version": "1.13.0",
       "componentType": "adaptiveCardExtension",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-aces",
@@ -1882,7 +1882,7 @@
       ],
       "createDate": "2021-06-10",
       "updateDate": "2022-12-09",
-      "version": "1.14.0",
+      "version": "1.16.0",
       "componentType": "adaptiveCardExtension",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-aces",
@@ -1906,7 +1906,7 @@
       ],
       "createDate": "2021-06-10",
       "updateDate": "2022-12-09",
-      "version": "1.14.0",
+      "version": "1.16.0",
       "componentType": "adaptiveCardExtension",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-aces",
@@ -1953,8 +1953,8 @@
       "createDate": "2019-10-10",
       "updateDate": "2019-10-10",
       "version": "1.4.1",
-      "componentType": null,
-      "extensionType": null,
+      "componentType": "extension",
+      "extensionType": "FieldCustomizer",
       "sampleGallery": "sp-dev-fx-extensions",
       "sampleType": "samples"
     },
@@ -2033,7 +2033,7 @@
       ],
       "createDate": "2019-08-29",
       "updateDate": "2019-08-29",
-      "version": "1.8.2",
+      "version": "1.9.1",
       "componentType": "extension",
       "extensionType": "ApplicationCustomizer",
       "sampleGallery": "sp-dev-fx-extensions",
@@ -2107,8 +2107,8 @@
       "createDate": "2017-06-09",
       "updateDate": "2017-06-09",
       "version": "1.1.0",
-      "componentType": null,
-      "extensionType": null,
+      "componentType": "extension",
+      "extensionType": "ApplicationCustomizer",
       "sampleGallery": "sp-dev-fx-extensions",
       "sampleType": "samples"
     },
@@ -2154,7 +2154,7 @@
       "updateDate": "2019-05-16",
       "version": "1.8.0",
       "componentType": "extension",
-      "extensionType": null,
+      "extensionType": "ApplicationCustomizer",
       "sampleGallery": "sp-dev-fx-extensions",
       "sampleType": "samples"
     },
@@ -2178,7 +2178,7 @@
       "updateDate": "2026-03-11",
       "version": "1.20.0",
       "componentType": "extension",
-      "extensionType": "ApplicationCustomizer",
+      "extensionType": null,
       "sampleGallery": "sp-dev-fx-extensions",
       "sampleType": "samples"
     },
@@ -2200,8 +2200,8 @@
       "createDate": "2017-09-05",
       "updateDate": "2017-09-05",
       "version": "1.2.0",
-      "componentType": null,
-      "extensionType": null,
+      "componentType": "extension",
+      "extensionType": "ApplicationCustomizer",
       "sampleGallery": "sp-dev-fx-extensions",
       "sampleType": "samples"
     },
@@ -2228,7 +2228,7 @@
       "updateDate": "2024-10-19",
       "version": "1.20.0",
       "componentType": "extension",
-      "extensionType": null,
+      "extensionType": "ApplicationCustomizer",
       "sampleGallery": "sp-dev-fx-extensions",
       "sampleType": "samples"
     },
@@ -2249,9 +2249,9 @@
       ],
       "createDate": "2017-10-10",
       "updateDate": "2017-10-10",
-      "version": "1.3.1",
-      "componentType": null,
-      "extensionType": null,
+      "version": "1.3.0",
+      "componentType": "extension",
+      "extensionType": "ApplicationCustomizer",
       "sampleGallery": "sp-dev-fx-extensions",
       "sampleType": "samples"
     },
@@ -2273,8 +2273,8 @@
       "createDate": "2019-05-27",
       "updateDate": "2019-05-27",
       "version": "1.4.0",
-      "componentType": null,
-      "extensionType": null,
+      "componentType": "extension",
+      "extensionType": "ListViewCommandSet",
       "sampleGallery": "sp-dev-fx-extensions",
       "sampleType": "samples"
     },
@@ -2324,7 +2324,7 @@
       "updateDate": "2020-04-27",
       "version": "1.10.0",
       "componentType": "extension",
-      "extensionType": "ListViewCommandSet",
+      "extensionType": "ApplicationCustomizer",
       "sampleGallery": "sp-dev-fx-extensions",
       "sampleType": "samples"
     },
@@ -2345,9 +2345,9 @@
       ],
       "createDate": "2017-10-15",
       "updateDate": "2017-10-15",
-      "version": "1.3.2",
-      "componentType": null,
-      "extensionType": null,
+      "version": "1.3.0",
+      "componentType": "extension",
+      "extensionType": "ListViewCommandSet",
       "sampleGallery": "sp-dev-fx-extensions",
       "sampleType": "samples"
     },
@@ -2369,8 +2369,8 @@
       "createDate": "2017-12-20",
       "updateDate": "2017-12-20",
       "version": "1.4.0",
-      "componentType": null,
-      "extensionType": null,
+      "componentType": "extension",
+      "extensionType": "ListViewCommandSet",
       "sampleGallery": "sp-dev-fx-extensions",
       "sampleType": "samples"
     },
@@ -2393,7 +2393,7 @@
       "updateDate": "2018-02-16",
       "version": "1.4.1",
       "componentType": "extension",
-      "extensionType": null,
+      "extensionType": "ListViewCommandSet",
       "sampleGallery": "sp-dev-fx-extensions",
       "sampleType": "samples"
     },
@@ -2437,9 +2437,9 @@
       ],
       "createDate": "2017-06-29",
       "updateDate": "2017-06-29",
-      "version": "1.1.1",
-      "componentType": null,
-      "extensionType": null,
+      "version": "1.1.0",
+      "componentType": "extension",
+      "extensionType": "FieldCustomizer",
       "sampleGallery": "sp-dev-fx-extensions",
       "sampleType": "samples"
     },
@@ -2460,9 +2460,9 @@
       ],
       "createDate": "2017-08-24",
       "updateDate": "2017-08-24",
-      "version": "1.1.3",
-      "componentType": null,
-      "extensionType": null,
+      "version": "1.1.0",
+      "componentType": "extension",
+      "extensionType": "FieldCustomizer",
       "sampleGallery": "sp-dev-fx-extensions",
       "sampleType": "samples"
     },
@@ -2484,8 +2484,8 @@
       "createDate": "2018-01-20",
       "updateDate": "2018-01-20",
       "version": "1.4.0",
-      "componentType": null,
-      "extensionType": null,
+      "componentType": "extension",
+      "extensionType": "FieldCustomizer",
       "sampleGallery": "sp-dev-fx-extensions",
       "sampleType": "samples"
     },
@@ -2552,9 +2552,9 @@
       ],
       "createDate": "2017-06-30",
       "updateDate": "2017-06-30",
-      "version": "1.1.1",
-      "componentType": null,
-      "extensionType": null,
+      "version": "1.1.0",
+      "componentType": "extension",
+      "extensionType": "ApplicationCustomizer",
       "sampleGallery": "sp-dev-fx-extensions",
       "sampleType": "samples"
     },
@@ -2575,7 +2575,7 @@
       ],
       "createDate": "2023-12-25",
       "updateDate": "2025-09-03",
-      "version": "1.19.0",
+      "version": "1.21.1",
       "componentType": "extension",
       "extensionType": "ApplicationCustomizer",
       "sampleGallery": "sp-dev-fx-extensions",
@@ -2627,7 +2627,7 @@
       "updateDate": "2019-10-19",
       "version": "1.9.1",
       "componentType": "extension",
-      "extensionType": null,
+      "extensionType": "ApplicationCustomizer",
       "sampleGallery": "sp-dev-fx-extensions",
       "sampleType": "samples"
     },
@@ -2654,7 +2654,7 @@
       "updateDate": "2024-10-05",
       "version": "1.20.0",
       "componentType": "extension",
-      "extensionType": null,
+      "extensionType": "ApplicationCustomizer",
       "sampleGallery": "sp-dev-fx-extensions",
       "sampleType": "samples"
     },
@@ -2675,7 +2675,7 @@
       ],
       "createDate": "2025-01-08",
       "updateDate": "2025-01-08",
-      "version": "1.18.0",
+      "version": "1.20.0",
       "componentType": "extension",
       "extensionType": "ApplicationCustomizer",
       "sampleGallery": "sp-dev-fx-extensions",
@@ -2698,7 +2698,7 @@
       ],
       "createDate": "2023-12-25",
       "updateDate": "2023-12-31",
-      "version": "1.20.0",
+      "version": "1.21.1",
       "componentType": "extension",
       "extensionType": "ApplicationCustomizer",
       "sampleGallery": "sp-dev-fx-extensions",
@@ -2723,7 +2723,7 @@
       "updateDate": "2023-12-31",
       "version": "1.21.1",
       "componentType": "extension",
-      "extensionType": null,
+      "extensionType": "ApplicationCustomizer",
       "sampleGallery": "sp-dev-fx-extensions",
       "sampleType": "samples"
     },
@@ -2790,9 +2790,9 @@
       ],
       "createDate": "2017-12-26",
       "updateDate": "2017-12-26",
-      "version": "1.1.1",
-      "componentType": null,
-      "extensionType": null,
+      "version": "1.4.0",
+      "componentType": "extension",
+      "extensionType": "ApplicationCustomizer",
       "sampleGallery": "sp-dev-fx-extensions",
       "sampleType": "samples"
     },
@@ -2837,8 +2837,8 @@
       "createDate": "2018-02-16",
       "updateDate": "2018-02-16",
       "version": "1.4.1",
-      "componentType": null,
-      "extensionType": null,
+      "componentType": "extension",
+      "extensionType": "ApplicationCustomizer",
       "sampleGallery": "sp-dev-fx-extensions",
       "sampleType": "samples"
     },
@@ -2884,7 +2884,7 @@
       "updateDate": "2019-03-17",
       "version": "1.8.0",
       "componentType": "extension",
-      "extensionType": null,
+      "extensionType": "ApplicationCustomizer",
       "sampleGallery": "sp-dev-fx-extensions",
       "sampleType": "samples"
     },
@@ -2969,7 +2969,7 @@
       "updateDate": "2025-10-20",
       "version": "1.21.1",
       "componentType": "extension",
-      "extensionType": "ApplicationCustomizer",
+      "extensionType": null,
       "sampleGallery": "sp-dev-fx-extensions",
       "sampleType": "samples"
     },
@@ -3016,7 +3016,7 @@
       "updateDate": "2021-07-08",
       "version": "1.12.1",
       "componentType": "extension",
-      "extensionType": null,
+      "extensionType": "ApplicationCustomizer",
       "sampleGallery": "sp-dev-fx-extensions",
       "sampleType": "samples"
     },
@@ -3037,7 +3037,7 @@
       ],
       "createDate": "2020-04-14",
       "updateDate": "2020-11-11",
-      "version": "1.12.1",
+      "version": "1.10.0",
       "componentType": "extension",
       "extensionType": "ApplicationCustomizer",
       "sampleGallery": "sp-dev-fx-extensions",
@@ -3060,7 +3060,7 @@
       ],
       "createDate": "2020-06-12",
       "updateDate": "2020-06-12",
-      "version": "1.12.1",
+      "version": "1.10.0",
       "componentType": "extension",
       "extensionType": "ApplicationCustomizer",
       "sampleGallery": "sp-dev-fx-extensions",
@@ -3114,9 +3114,9 @@
       ],
       "createDate": "2021-04-19",
       "updateDate": "2025-09-08",
-      "version": "1.20.0",
+      "version": "1.21.1",
       "componentType": "extension",
-      "extensionType": "ApplicationCustomizer",
+      "extensionType": null,
       "sampleGallery": "sp-dev-fx-extensions",
       "sampleType": "samples"
     },
@@ -3138,8 +3138,8 @@
       "createDate": "2018-02-17",
       "updateDate": "2018-02-17",
       "version": "1.4.1",
-      "componentType": null,
-      "extensionType": null,
+      "componentType": "extension",
+      "extensionType": "ApplicationCustomizer",
       "sampleGallery": "sp-dev-fx-extensions",
       "sampleType": "samples"
     },
@@ -3185,7 +3185,7 @@
       "createDate": "2025-02-06",
       "updateDate": "2025-02-06",
       "version": "1.20.0",
-      "componentType": "webpart",
+      "componentType": "extension",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-extensions",
       "sampleType": "samples"
@@ -3286,8 +3286,8 @@
       "createDate": "2017-02-23",
       "updateDate": "2017-02-23",
       "version": "1.4.1",
-      "componentType": null,
-      "extensionType": null,
+      "componentType": "extension",
+      "extensionType": "ApplicationCustomizer",
       "sampleGallery": "sp-dev-fx-extensions",
       "sampleType": "samples"
     },
@@ -3355,8 +3355,8 @@
       "createDate": "2017-09-28",
       "updateDate": "2017-09-28",
       "version": "1.2.0",
-      "componentType": null,
-      "extensionType": null,
+      "componentType": "extension",
+      "extensionType": "ApplicationCustomizer",
       "sampleGallery": "sp-dev-fx-extensions",
       "sampleType": "samples"
     },
@@ -3377,7 +3377,7 @@
       ],
       "createDate": "2018-07-15",
       "updateDate": "2018-07-15",
-      "version": "1.5.0",
+      "version": "1.5.0-plusbeta",
       "componentType": "extension",
       "extensionType": "ApplicationCustomizer",
       "sampleGallery": "sp-dev-fx-extensions",
@@ -3424,8 +3424,8 @@
       "createDate": "2018-04-24",
       "updateDate": "2018-04-24",
       "version": "1.4.1",
-      "componentType": null,
-      "extensionType": null,
+      "componentType": "extension",
+      "extensionType": "ApplicationCustomizer",
       "sampleGallery": "sp-dev-fx-extensions",
       "sampleType": "samples"
     },
@@ -3469,9 +3469,9 @@
       ],
       "createDate": "2019-01-02",
       "updateDate": "2019-01-02",
-      "version": "1.5.1",
-      "componentType": null,
-      "extensionType": null,
+      "version": "1.7.1",
+      "componentType": "extension",
+      "extensionType": "ApplicationCustomizer",
       "sampleGallery": "sp-dev-fx-extensions",
       "sampleType": "samples"
     },
@@ -3608,8 +3608,8 @@
       "createDate": "2017-11-05",
       "updateDate": "2017-11-05",
       "version": "1.3.4",
-      "componentType": null,
-      "extensionType": null,
+      "componentType": "extension",
+      "extensionType": "ApplicationCustomizer",
       "sampleGallery": "sp-dev-fx-extensions",
       "sampleType": "samples"
     },
@@ -3655,7 +3655,7 @@
       "updateDate": "2023-12-31",
       "version": "1.20.0",
       "componentType": "extension",
-      "extensionType": "ListViewCommandSet",
+      "extensionType": "ApplicationCustomizer",
       "sampleGallery": "sp-dev-fx-extensions",
       "sampleType": "samples"
     },
@@ -3676,9 +3676,9 @@
       ],
       "createDate": "2026-01-26",
       "updateDate": "2026-01-26",
-      "version": "1.22.0",
+      "version": "1.22.1",
       "componentType": "extension",
-      "extensionType": "ListViewCommandSet",
+      "extensionType": "ApplicationCustomizer",
       "sampleGallery": "sp-dev-fx-extensions",
       "sampleType": "samples"
     },
@@ -3726,7 +3726,7 @@
       ],
       "createDate": "2021-02-23",
       "updateDate": "2025-09-03",
-      "version": "1.20.0",
+      "version": "1.21.1",
       "componentType": "extension",
       "extensionType": "ListViewCommandSet",
       "sampleGallery": "sp-dev-fx-extensions",
@@ -3751,7 +3751,7 @@
       "updateDate": "2021-09-13",
       "version": "1.11.0",
       "componentType": "extension",
-      "extensionType": "ListViewCommandSet",
+      "extensionType": "ApplicationCustomizer",
       "sampleGallery": "sp-dev-fx-extensions",
       "sampleType": "samples"
     },
@@ -3774,7 +3774,7 @@
       "updateDate": "2021-07-02",
       "version": "1.12.1",
       "componentType": "extension",
-      "extensionType": "ListViewCommandSet",
+      "extensionType": "ApplicationCustomizer",
       "sampleGallery": "sp-dev-fx-extensions",
       "sampleType": "samples"
     },
@@ -3795,9 +3795,9 @@
       ],
       "createDate": "2017-09-27",
       "updateDate": "2017-09-27",
-      "version": "1.1.1",
-      "componentType": null,
-      "extensionType": null,
+      "version": "1.2.0",
+      "componentType": "extension",
+      "extensionType": "ListViewCommandSet",
       "sampleGallery": "sp-dev-fx-extensions",
       "sampleType": "samples"
     },
@@ -3841,9 +3841,9 @@
       ],
       "createDate": "2019-09-01",
       "updateDate": "2019-09-01",
-      "version": "1.2.0",
-      "componentType": null,
-      "extensionType": null,
+      "version": "1.6.0",
+      "componentType": "extension",
+      "extensionType": "ListViewCommandSet",
       "sampleGallery": "sp-dev-fx-extensions",
       "sampleType": "samples"
     },
@@ -3887,9 +3887,9 @@
       ],
       "createDate": "2017-06-29",
       "updateDate": "2017-06-29",
-      "version": "1.1.1",
-      "componentType": null,
-      "extensionType": null,
+      "version": "1.1.0",
+      "componentType": "extension",
+      "extensionType": "ListViewCommandSet",
       "sampleGallery": "sp-dev-fx-extensions",
       "sampleType": "samples"
     },
@@ -3911,8 +3911,8 @@
       "createDate": "2018-07-18",
       "updateDate": "2018-07-18",
       "version": "1.4.1",
-      "componentType": null,
-      "extensionType": null,
+      "componentType": "extension",
+      "extensionType": "ListViewCommandSet",
       "sampleGallery": "sp-dev-fx-extensions",
       "sampleType": "samples"
     },
@@ -3939,7 +3939,7 @@
       "updateDate": "2021-02-21",
       "version": "1.11.0",
       "componentType": "extension",
-      "extensionType": null,
+      "extensionType": "ListViewCommandSet",
       "sampleGallery": "sp-dev-fx-extensions",
       "sampleType": "samples"
     },
@@ -4053,8 +4053,8 @@
       "createDate": "2020-06-16",
       "updateDate": "2020-06-16",
       "version": "1.10.0",
-      "componentType": "webpart",
-      "extensionType": null,
+      "componentType": "extension",
+      "extensionType": "ListViewCommandSet",
       "sampleGallery": "sp-dev-fx-extensions",
       "sampleType": "samples"
     },
@@ -4122,8 +4122,8 @@
       "createDate": "2025-09-02",
       "updateDate": "2025-09-02",
       "version": "1.21.1",
-      "componentType": "webpart",
-      "extensionType": null,
+      "componentType": "extension",
+      "extensionType": "ApplicationCustomizer",
       "sampleGallery": "sp-dev-fx-extensions",
       "sampleType": "samples"
     },
@@ -4148,7 +4148,7 @@
       ],
       "createDate": "2019-03-23",
       "updateDate": "2023-02-15",
-      "version": "1.12.1",
+      "version": "1.12.0",
       "componentType": "extension",
       "extensionType": "ListViewCommandSet",
       "sampleGallery": "sp-dev-fx-extensions",
@@ -4246,7 +4246,7 @@
       "updateDate": "2022-11-11",
       "version": "1.14.0",
       "componentType": "extension",
-      "extensionType": "ListViewCommandSet",
+      "extensionType": null,
       "sampleGallery": "sp-dev-fx-extensions",
       "sampleType": "samples"
     },
@@ -4291,8 +4291,8 @@
       "createDate": "2019-09-01",
       "updateDate": "2019-09-01",
       "version": "1.9.1",
-      "componentType": "webpart",
-      "extensionType": null,
+      "componentType": "extension",
+      "extensionType": "ListViewCommandSet",
       "sampleGallery": "sp-dev-fx-extensions",
       "sampleType": "samples"
     },
@@ -4323,7 +4323,7 @@
       "updateDate": "2025-12-08",
       "version": "1.20.0",
       "componentType": "extension",
-      "extensionType": "ListViewCommandSet",
+      "extensionType": null,
       "sampleGallery": "sp-dev-fx-extensions",
       "sampleType": "samples"
     },
@@ -4346,7 +4346,7 @@
       "updateDate": "2025-03-23",
       "version": "1.20.0",
       "componentType": "extension",
-      "extensionType": "ApplicationCustomizer",
+      "extensionType": null,
       "sampleGallery": "sp-dev-fx-extensions",
       "sampleType": "samples"
     },
@@ -4367,9 +4367,9 @@
       ],
       "createDate": "2025-08-30",
       "updateDate": "2025-08-30",
-      "version": "1.20.2",
+      "version": "1.20.0",
       "componentType": "extension",
-      "extensionType": "ListViewCommandSet",
+      "extensionType": "ApplicationCustomizer",
       "sampleGallery": "sp-dev-fx-extensions",
       "sampleType": "samples"
     },
@@ -4506,8 +4506,8 @@
       "createDate": "2023-12-25",
       "updateDate": "2023-12-31",
       "version": "1.18.2",
-      "componentType": "webpart",
-      "extensionType": null,
+      "componentType": "extension",
+      "extensionType": "FieldCustomizer",
       "sampleGallery": "sp-dev-fx-extensions",
       "sampleType": "samples"
     },
@@ -4528,9 +4528,9 @@
       ],
       "createDate": "2017-08-30",
       "updateDate": "2017-08-30",
-      "version": "1.1.0",
-      "componentType": null,
-      "extensionType": null,
+      "version": "1.2.0",
+      "componentType": "extension",
+      "extensionType": "FieldCustomizer",
       "sampleGallery": "sp-dev-fx-extensions",
       "sampleType": "samples"
     },
@@ -4552,8 +4552,8 @@
       "createDate": "2018-01-18",
       "updateDate": "2018-01-18",
       "version": "1.4.0",
-      "componentType": null,
-      "extensionType": null,
+      "componentType": "extension",
+      "extensionType": "FieldCustomizer",
       "sampleGallery": "sp-dev-fx-extensions",
       "sampleType": "samples"
     },
@@ -4575,8 +4575,8 @@
       "createDate": "2017-10-04",
       "updateDate": "2017-10-04",
       "version": "1.3.0",
-      "componentType": null,
-      "extensionType": null,
+      "componentType": "extension",
+      "extensionType": "FieldCustomizer",
       "sampleGallery": "sp-dev-fx-extensions",
       "sampleType": "samples"
     },
@@ -4599,7 +4599,7 @@
       "updateDate": "2023-06-23",
       "version": "1.17.2",
       "componentType": "extension",
-      "extensionType": "FieldCustomizer",
+      "extensionType": "ApplicationCustomizer",
       "sampleGallery": "sp-dev-fx-extensions",
       "sampleType": "samples"
     },
@@ -4645,7 +4645,7 @@
       "updateDate": "2024-10-29",
       "version": "1.20.0",
       "componentType": "extension",
-      "extensionType": "FieldCustomizer",
+      "extensionType": "ApplicationCustomizer",
       "sampleGallery": "sp-dev-fx-extensions",
       "sampleType": "samples"
     },
@@ -4713,8 +4713,8 @@
       "createDate": "2018-06-15",
       "updateDate": "2018-06-15",
       "version": "1.4.1",
-      "componentType": null,
-      "extensionType": null,
+      "componentType": "extension",
+      "extensionType": "ListViewCommandSet",
       "sampleGallery": "sp-dev-fx-extensions",
       "sampleType": "samples"
     },
@@ -4759,8 +4759,8 @@
       "createDate": "2018-12-10",
       "updateDate": "2024-10-31",
       "version": "1.20.0",
-      "componentType": "webpart",
-      "extensionType": null,
+      "componentType": "extension",
+      "extensionType": "ApplicationCustomizer",
       "sampleGallery": "sp-dev-fx-extensions",
       "sampleType": "samples"
     },
@@ -4791,7 +4791,7 @@
       "updateDate": "2023-10-02",
       "version": "1.17.4",
       "componentType": "extension",
-      "extensionType": "ListViewCommandSet",
+      "extensionType": "ApplicationCustomizer",
       "sampleGallery": "sp-dev-fx-extensions",
       "sampleType": "samples"
     },
@@ -4881,9 +4881,9 @@
       ],
       "createDate": "2023-10-22",
       "updateDate": "2025-02-27",
-      "version": "1.19.0",
+      "version": "1.20.0",
       "componentType": "extension",
-      "extensionType": "ListViewCommandSet",
+      "extensionType": "ApplicationCustomizer",
       "sampleGallery": "sp-dev-fx-extensions",
       "sampleType": "samples"
     },
@@ -4905,7 +4905,7 @@
       "createDate": "2017-03-21",
       "updateDate": "2017-03-21",
       "version": "1.0.0",
-      "componentType": null,
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -4928,7 +4928,7 @@
       "createDate": "2020-02-15",
       "updateDate": "2020-06-29",
       "version": "1.12.1",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -4951,30 +4951,7 @@
       "createDate": "2017-04-19",
       "updateDate": "2017-04-19",
       "version": "1.0.0",
-      "componentType": null,
-      "extensionType": null,
-      "sampleGallery": "sp-dev-fx-webparts",
-      "sampleType": "samples"
-    },
-    {
-      "name": "pnp-sp-dev-spfx-web-parts-angular-multipage",
-      "title": "Angular multi-page client-side web part",
-      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/angular-multipage",
-      "description": "This is a sample SharePoint Framework client-side web part built using Angular, illustrating building multi-page web parts.",
-      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/angular-multipage/assets/poll-preview.gif",
-      "authors": [
-        {
-          "name": "Waldek Mastykarz",
-          "pictureUrl": "https://github.com/waldekmastykarz.png"
-        }
-      ],
-      "tags": [
-        "SharePoint"
-      ],
-      "createDate": "2016-11-01",
-      "updateDate": "2016-11-01",
-      "version": null,
-      "componentType": null,
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -5000,8 +4977,8 @@
       ],
       "createDate": "2017-07-17",
       "updateDate": "2017-07-17",
-      "version": null,
-      "componentType": null,
+      "version": "1.0.0",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -5023,8 +5000,8 @@
       ],
       "createDate": "2017-02-04",
       "updateDate": "2017-02-04",
-      "version": null,
-      "componentType": null,
+      "version": "0.1.2",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -5047,7 +5024,7 @@
       "createDate": "2017-03-10",
       "updateDate": "2017-03-10",
       "version": "1.0.0",
-      "componentType": null,
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -5096,8 +5073,8 @@
       ],
       "createDate": "2018-06-01",
       "updateDate": "2018-06-01",
-      "version": "1.4.0",
-      "componentType": "webpart",
+      "version": "1.4.1",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -5119,8 +5096,8 @@
       ],
       "createDate": "2019-01-08",
       "updateDate": "2019-01-08",
-      "version": "1.4.0",
-      "componentType": "webpart",
+      "version": "1.4.1",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -5143,7 +5120,7 @@
       "createDate": "2017-04-25",
       "updateDate": "2017-04-25",
       "version": "1.0.0",
-      "componentType": null,
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -5165,8 +5142,8 @@
       ],
       "createDate": "2018-03-21",
       "updateDate": "2018-03-21",
-      "version": "1.0.0",
-      "componentType": null,
+      "version": "1.4.1",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -5220,7 +5197,7 @@
       "createDate": "2020-02-05",
       "updateDate": "2025-10-28",
       "version": "1.21.1",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -5243,8 +5220,8 @@
       "createDate": "2024-08-10",
       "updateDate": "2024-08-10",
       "version": "1.19.0",
-      "componentType": "extension",
-      "extensionType": "ApplicationCustomizer",
+      "componentType": "webPart",
+      "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
     },
@@ -5266,7 +5243,7 @@
       "createDate": "2025-03-16",
       "updateDate": "2025-03-16",
       "version": "1.20.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -5293,7 +5270,7 @@
       "createDate": "2020-08-29",
       "updateDate": "2020-08-29",
       "version": "1.11.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -5316,7 +5293,7 @@
       "createDate": "2018-12-03",
       "updateDate": "2018-12-03",
       "version": "1.7.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -5338,8 +5315,8 @@
       ],
       "createDate": "2017-06-12",
       "updateDate": "2017-06-12",
-      "version": "1.0.2",
-      "componentType": null,
+      "version": "1.0.0",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -5361,8 +5338,8 @@
       ],
       "createDate": "2017-01-25",
       "updateDate": "2017-01-25",
-      "version": null,
-      "componentType": null,
+      "version": "0.1.2",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -5388,8 +5365,8 @@
       ],
       "createDate": "2017-01-25",
       "updateDate": "2017-01-25",
-      "version": null,
-      "componentType": null,
+      "version": "1.3.0",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -5412,7 +5389,7 @@
       "createDate": "2019-04-18",
       "updateDate": "2019-04-18",
       "version": "1.8.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -5435,7 +5412,7 @@
       "createDate": "2025-03-16",
       "updateDate": "2025-03-16",
       "version": "1.20.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -5466,7 +5443,7 @@
       "createDate": "2020-06-05",
       "updateDate": "2025-12-30",
       "version": "1.22.1",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -5489,7 +5466,7 @@
       "createDate": "2020-01-21",
       "updateDate": "2020-01-21",
       "version": "1.10.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -5512,7 +5489,7 @@
       "createDate": "2019-08-13",
       "updateDate": "2019-08-13",
       "version": "1.8.2",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -5534,8 +5511,8 @@
       ],
       "createDate": "2024-11-15",
       "updateDate": "2026-01-02",
-      "version": "1.20.0",
-      "componentType": "webpart",
+      "version": "1.22.0",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -5557,8 +5534,8 @@
       ],
       "createDate": "2017-11-12",
       "updateDate": "2022-04-07",
-      "version": "1.3.4",
-      "componentType": null,
+      "version": "1.13.0",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -5580,8 +5557,8 @@
       ],
       "createDate": "2019-02-05",
       "updateDate": "2019-02-05",
-      "version": "1.7.1",
-      "componentType": "webpart",
+      "version": "1.7.1-plusbeta",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -5604,7 +5581,7 @@
       "createDate": "2019-03-27",
       "updateDate": "2019-03-27",
       "version": "1.8.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -5626,8 +5603,8 @@
       ],
       "createDate": "2017-08-23",
       "updateDate": "2017-08-23",
-      "version": "1.1.3",
-      "componentType": null,
+      "version": "1.18.0",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -5658,7 +5635,7 @@
       "createDate": "2020-06-01",
       "updateDate": "2025-10-28",
       "version": "1.21.1",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -5688,8 +5665,8 @@
       ],
       "createDate": "2019-06-17",
       "updateDate": "2019-06-17",
-      "version": "1.8.1",
-      "componentType": "webpart",
+      "version": "1.4.0",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -5712,7 +5689,7 @@
       "createDate": "2020-11-02",
       "updateDate": "2023-12-21",
       "version": "1.18.2",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -5734,8 +5711,8 @@
       ],
       "createDate": "2017-05-20",
       "updateDate": "2017-05-20",
-      "version": null,
-      "componentType": null,
+      "version": "1.0.0",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -5758,7 +5735,7 @@
       "createDate": "2018-11-14",
       "updateDate": "2018-11-14",
       "version": "1.7.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -5780,8 +5757,8 @@
       ],
       "createDate": "2017-05-05",
       "updateDate": "2017-05-05",
-      "version": null,
-      "componentType": null,
+      "version": "1.0.0",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -5804,7 +5781,7 @@
       "createDate": "2018-02-19",
       "updateDate": "2018-02-19",
       "version": "1.4.1",
-      "componentType": null,
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -5827,7 +5804,7 @@
       "createDate": "2017-03-17",
       "updateDate": "2017-03-17",
       "version": "1.0.0",
-      "componentType": null,
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -5858,7 +5835,7 @@
       "createDate": "2020-06-22",
       "updateDate": "2024-10-13",
       "version": "1.20.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -5889,7 +5866,7 @@
       "createDate": "2021-01-05",
       "updateDate": "2024-10-19",
       "version": "1.20.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -5916,7 +5893,7 @@
       "createDate": "2020-09-02",
       "updateDate": "2020-09-02",
       "version": "1.10.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -5939,7 +5916,7 @@
       "createDate": "2022-03-30",
       "updateDate": "2023-01-03",
       "version": "1.13.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -5962,7 +5939,7 @@
       "createDate": "2022-03-09",
       "updateDate": "2022-03-09",
       "version": "1.14.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -5989,7 +5966,7 @@
       "createDate": "2020-06-15",
       "updateDate": "2020-06-15",
       "version": "1.10.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -6012,7 +5989,7 @@
       "createDate": "2021-02-23",
       "updateDate": "2026-02-26",
       "version": "1.21.1",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -6035,7 +6012,7 @@
       "createDate": "2020-08-25",
       "updateDate": "2020-08-25",
       "version": "1.11.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -6057,8 +6034,8 @@
       ],
       "createDate": "2022-09-05",
       "updateDate": "2022-09-05",
-      "version": "1.15.0",
-      "componentType": "webpart",
+      "version": "1.15.2",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -6081,7 +6058,7 @@
       "createDate": "2020-06-11",
       "updateDate": "2024-10-09",
       "version": "1.15.2",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -6104,7 +6081,7 @@
       "createDate": "2019-11-07",
       "updateDate": "2019-11-07",
       "version": "1.9.1",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -6127,7 +6104,7 @@
       "createDate": "2023-08-27",
       "updateDate": "2023-08-27",
       "version": "1.13.1",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -6162,7 +6139,7 @@
       "createDate": "2021-03-30",
       "updateDate": "2024-10-08",
       "version": "1.20.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -6185,7 +6162,7 @@
       "createDate": "2023-12-01",
       "updateDate": "2023-12-01",
       "version": "1.17.3",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -6208,7 +6185,7 @@
       "createDate": "2018-07-16",
       "updateDate": "2018-07-16",
       "version": "1.4.1",
-      "componentType": null,
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -6231,8 +6208,8 @@
       "createDate": "2026-02-17",
       "updateDate": "2026-02-17",
       "version": "1.22.1",
-      "componentType": "extension",
-      "extensionType": "ApplicationCustomizer",
+      "componentType": "webPart",
+      "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
     },
@@ -6254,7 +6231,7 @@
       "createDate": "2023-09-11",
       "updateDate": "2023-09-11",
       "version": "1.17.4",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -6277,7 +6254,7 @@
       "createDate": "2019-03-03",
       "updateDate": "2019-03-03",
       "version": "1.7.1",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -6299,8 +6276,8 @@
       ],
       "createDate": "2020-06-17",
       "updateDate": "2023-02-06",
-      "version": "1.10.0",
-      "componentType": "webpart",
+      "version": "1.16.1",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -6323,7 +6300,7 @@
       "createDate": "2024-05-26",
       "updateDate": "2025-10-25",
       "version": "1.21.1",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -6346,7 +6323,7 @@
       "createDate": "2021-04-19",
       "updateDate": "2025-10-25",
       "version": "1.21.1",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -6369,7 +6346,7 @@
       "createDate": "2018-07-20",
       "updateDate": "2018-07-20",
       "version": "1.14.0-beta.4",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -6392,7 +6369,7 @@
       "createDate": "2021-09-07",
       "updateDate": "2021-10-20",
       "version": "1.12.1",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -6419,7 +6396,7 @@
       "createDate": "2020-08-01",
       "updateDate": "2025-10-25",
       "version": "1.21.1",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -6442,7 +6419,7 @@
       "createDate": "2023-03-19",
       "updateDate": "2023-03-19",
       "version": "1.16.1",
-      "componentType": "adaptiveCardExtension",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -6469,7 +6446,7 @@
       "createDate": "2024-01-02",
       "updateDate": "2025-09-12",
       "version": "1.21.1",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -6492,7 +6469,7 @@
       "createDate": "2023-07-26",
       "updateDate": "2023-10-06",
       "version": "1.17.4",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -6515,7 +6492,7 @@
       "createDate": "2022-08-15",
       "updateDate": "2022-08-15",
       "version": "1.15.2",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -6550,7 +6527,7 @@
       "createDate": "2019-07-23",
       "updateDate": "2025-01-13",
       "version": "1.20.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -6573,7 +6550,7 @@
       "createDate": "2022-12-03",
       "updateDate": "2025-10-25",
       "version": "1.21.1",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -6604,7 +6581,7 @@
       "createDate": "2026-03-13",
       "updateDate": "2026-03-13",
       "version": "1.22.1",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -6635,7 +6612,7 @@
       "createDate": "2020-04-15",
       "updateDate": "2020-04-15",
       "version": "1.10.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -6658,7 +6635,7 @@
       "createDate": "2025-10-12",
       "updateDate": "2025-10-12",
       "version": "1.20.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -6709,7 +6686,7 @@
       "createDate": "2020-12-04",
       "updateDate": "2025-10-07",
       "version": "1.20.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -6736,7 +6713,7 @@
       "createDate": "2020-07-16",
       "updateDate": "2025-02-21",
       "version": "1.20.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -6762,8 +6739,8 @@
       ],
       "createDate": "2022-11-26",
       "updateDate": "2025-03-11",
-      "version": "1.15.2",
-      "componentType": "webpart",
+      "version": "1.20.0",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -6786,7 +6763,7 @@
       "createDate": "2025-05-08",
       "updateDate": "2025-05-08",
       "version": "1.21.1",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -6825,7 +6802,7 @@
       "createDate": "2020-10-31",
       "updateDate": "2025-10-25",
       "version": "1.21.1",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -6848,7 +6825,7 @@
       "createDate": "2024-12-25",
       "updateDate": "2025-09-12",
       "version": "1.21.1",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -6875,7 +6852,7 @@
       "createDate": "2020-12-13",
       "updateDate": "2025-09-12",
       "version": "1.21.1",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -6902,7 +6879,7 @@
       "createDate": "2020-12-13",
       "updateDate": "2025-09-12",
       "version": "1.21.1",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -6929,7 +6906,7 @@
       "createDate": "2020-12-13",
       "updateDate": "2025-09-12",
       "version": "1.21.1",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -6956,7 +6933,7 @@
       "createDate": "2020-12-13",
       "updateDate": "2025-09-12",
       "version": "1.21.1",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -6983,7 +6960,7 @@
       "createDate": "2020-12-13",
       "updateDate": "2025-09-12",
       "version": "1.21.1",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -7010,7 +6987,7 @@
       "createDate": "2020-12-13",
       "updateDate": "2025-09-12",
       "version": "1.21.1",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -7037,7 +7014,7 @@
       "createDate": "2020-12-13",
       "updateDate": "2025-09-12",
       "version": "1.21.1",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -7064,7 +7041,7 @@
       "createDate": "2020-12-13",
       "updateDate": "2025-09-12",
       "version": "1.21.1",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -7091,7 +7068,7 @@
       "createDate": "2020-12-13",
       "updateDate": "2025-09-12",
       "version": "1.21.1",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -7118,7 +7095,7 @@
       "createDate": "2020-12-13",
       "updateDate": "2025-09-12",
       "version": "1.21.1",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -7145,7 +7122,7 @@
       "createDate": "2020-12-13",
       "updateDate": "2025-09-12",
       "version": "1.21.1",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -7172,7 +7149,7 @@
       "createDate": "2020-12-13",
       "updateDate": "2025-09-12",
       "version": "1.21.1",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -7199,7 +7176,7 @@
       "createDate": "2020-12-13",
       "updateDate": "2025-09-12",
       "version": "1.21.1",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -7226,7 +7203,7 @@
       "createDate": "2020-12-13",
       "updateDate": "2025-09-12",
       "version": "1.21.1",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -7253,7 +7230,7 @@
       "createDate": "2020-12-13",
       "updateDate": "2025-09-12",
       "version": "1.21.1",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -7280,7 +7257,7 @@
       "createDate": "2020-12-13",
       "updateDate": "2025-09-12",
       "version": "1.21.1",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -7307,7 +7284,7 @@
       "createDate": "2020-12-13",
       "updateDate": "2025-09-12",
       "version": "1.21.1",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -7334,7 +7311,7 @@
       "createDate": "2020-12-13",
       "updateDate": "2025-09-12",
       "version": "1.21.1",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -7357,7 +7334,7 @@
       "createDate": "2023-02-04",
       "updateDate": "2025-10-25",
       "version": "1.21.1",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -7380,7 +7357,7 @@
       "createDate": "2025-10-15",
       "updateDate": "2025-10-15",
       "version": "1.21.1",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -7403,7 +7380,7 @@
       "createDate": "2023-02-19",
       "updateDate": "2023-03-02",
       "version": "1.16.1",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -7426,7 +7403,7 @@
       "createDate": "2019-09-17",
       "updateDate": "2025-10-25",
       "version": "1.21.1",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -7449,7 +7426,7 @@
       "createDate": "2020-03-09",
       "updateDate": "2020-03-09",
       "version": "1.10.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -7472,7 +7449,7 @@
       "createDate": "2022-02-21",
       "updateDate": "2022-04-09",
       "version": "1.14.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -7495,7 +7472,7 @@
       "createDate": "2025-11-17",
       "updateDate": "2025-11-17",
       "version": "1.21.1",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -7518,7 +7495,7 @@
       "createDate": "2021-03-31",
       "updateDate": "2022-03-16",
       "version": "1.14.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -7541,7 +7518,7 @@
       "createDate": "2019-01-27",
       "updateDate": "2019-01-27",
       "version": "1.7.1",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -7564,7 +7541,7 @@
       "createDate": "2018-10-09",
       "updateDate": "2018-10-09",
       "version": "1.6.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -7587,7 +7564,7 @@
       "createDate": "2024-03-16",
       "updateDate": "2025-03-22",
       "version": "1.20.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -7610,8 +7587,8 @@
       ],
       "createDate": "2025-12-24",
       "updateDate": "2025-12-24",
-      "version": "1.20.0",
-      "componentType": "webpart",
+      "version": "1.21.1",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -7654,7 +7631,7 @@
       "createDate": "2021-01-07",
       "updateDate": "2024-03-31",
       "version": "1.18.2",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -7676,8 +7653,8 @@
       ],
       "createDate": "2018-05-22",
       "updateDate": "2018-05-22",
-      "version": "1.1.1",
-      "componentType": null,
+      "version": "1.1.0",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -7700,7 +7677,7 @@
       "createDate": "2025-12-08",
       "updateDate": "2025-12-08",
       "version": "1.22.0-rc.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -7723,7 +7700,7 @@
       "createDate": "2026-02-01",
       "updateDate": "2026-02-21",
       "version": "1.22.1",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -7746,7 +7723,7 @@
       "createDate": "2026-01-22",
       "updateDate": "2026-01-22",
       "version": "1.22.1",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -7769,7 +7746,7 @@
       "createDate": "2025-01-09",
       "updateDate": "2025-05-16",
       "version": "1.20.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -7792,7 +7769,7 @@
       "createDate": "2025-08-21",
       "updateDate": "2026-03-31",
       "version": "1.21.1",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -7815,7 +7792,7 @@
       "createDate": "2025-01-01",
       "updateDate": "2025-01-01",
       "version": "1.21.1",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -7838,7 +7815,7 @@
       "createDate": "2022-08-29",
       "updateDate": "2025-09-12",
       "version": "1.21.1",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -7861,7 +7838,7 @@
       "createDate": "2020-03-25",
       "updateDate": "2020-03-25",
       "version": "1.10.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -7884,7 +7861,7 @@
       "createDate": "2021-07-26",
       "updateDate": "2021-07-26",
       "version": "1.12.1",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -7907,7 +7884,7 @@
       "createDate": "2020-04-24",
       "updateDate": "2020-04-24",
       "version": "1.10.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -7930,7 +7907,7 @@
       "createDate": "2022-10-11",
       "updateDate": "2024-10-20",
       "version": "1.20.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -7976,7 +7953,7 @@
       "createDate": "2020-10-05",
       "updateDate": "2020-10-05",
       "version": "1.11.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -7999,7 +7976,7 @@
       "createDate": "2025-01-24",
       "updateDate": "2025-01-24",
       "version": "1.18.2",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -8049,7 +8026,7 @@
       "createDate": "2022-11-08",
       "updateDate": "2022-11-08",
       "version": "1.15.2",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -8072,7 +8049,7 @@
       "createDate": "2023-06-05",
       "updateDate": "2023-06-05",
       "version": "1.16.1",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -8095,7 +8072,7 @@
       "createDate": "2025-10-18",
       "updateDate": "2025-10-18",
       "version": "1.21.1",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -8118,7 +8095,7 @@
       "createDate": "2021-03-01",
       "updateDate": "2024-10-20",
       "version": "1.20.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -8140,8 +8117,8 @@
       ],
       "createDate": "2022-01-30",
       "updateDate": "2022-01-30",
-      "version": "1.11.0",
-      "componentType": "webpart",
+      "version": "1.12.1",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -8164,7 +8141,7 @@
       "createDate": "2024-08-12",
       "updateDate": "2024-08-12",
       "version": "1.18.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -8187,7 +8164,7 @@
       "createDate": "2020-07-04",
       "updateDate": "2024-10-07",
       "version": "1.20.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -8210,7 +8187,7 @@
       "createDate": "2020-03-01",
       "updateDate": "2020-03-01",
       "version": "1.10.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -8249,7 +8226,7 @@
       "createDate": "2019-07-29",
       "updateDate": "2026-01-24",
       "version": "1.22.1",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -8276,7 +8253,7 @@
       "createDate": "2020-11-21",
       "updateDate": "2024-06-28",
       "version": "1.18.2",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -8299,7 +8276,7 @@
       "createDate": "2021-04-05",
       "updateDate": "2021-04-05",
       "version": "1.10.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -8322,7 +8299,7 @@
       "createDate": "2025-03-10",
       "updateDate": "2025-03-10",
       "version": "1.20.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -8346,7 +8323,7 @@
       "createDate": "2025-11-09",
       "updateDate": "2025-11-09",
       "version": "1.21.1",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -8369,7 +8346,7 @@
       "createDate": "2021-10-10",
       "updateDate": "2021-10-10",
       "version": "1.12.1",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -8396,7 +8373,7 @@
       "createDate": "2020-04-28",
       "updateDate": "2020-04-28",
       "version": "1.10.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -8419,7 +8396,7 @@
       "createDate": "2023-09-09",
       "updateDate": "2023-09-09",
       "version": "1.17.4",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -8466,7 +8443,7 @@
       "createDate": "2026-02-07",
       "updateDate": "2026-02-07",
       "version": "1.21.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -8489,7 +8466,7 @@
       "createDate": "2020-07-12",
       "updateDate": "2020-07-12",
       "version": "1.10.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -8512,7 +8489,7 @@
       "createDate": "2025-04-15",
       "updateDate": "2025-04-15",
       "version": "1.20.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -8539,7 +8516,7 @@
       "createDate": "2020-11-07",
       "updateDate": "2020-11-07",
       "version": "1.11.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -8562,7 +8539,7 @@
       "createDate": "2021-09-24",
       "updateDate": "2022-11-22",
       "version": "1.12.1",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -8585,7 +8562,7 @@
       "createDate": "2024-09-01",
       "updateDate": "2024-09-01",
       "version": "1.19.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -8608,7 +8585,7 @@
       "createDate": "2025-04-27",
       "updateDate": "2025-10-22",
       "version": "1.21.1",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -8631,7 +8608,7 @@
       "createDate": "2024-09-01",
       "updateDate": "2024-09-01",
       "version": "1.19.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -8658,7 +8635,7 @@
       "createDate": "2020-03-18",
       "updateDate": "2020-03-18",
       "version": "1.10.0",
-      "componentType": "library",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -8681,7 +8658,7 @@
       "createDate": "2023-09-23",
       "updateDate": "2023-10-28",
       "version": "1.19.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -8707,8 +8684,8 @@
       ],
       "createDate": "2024-12-25",
       "updateDate": "2024-12-31",
-      "version": "1.11.0",
-      "componentType": "webpart",
+      "version": "1.13.1",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -8731,7 +8708,7 @@
       "createDate": "2023-11-14",
       "updateDate": "2023-11-14",
       "version": "1.18.1",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -8758,7 +8735,7 @@
       "createDate": "2018-11-18",
       "updateDate": "2018-11-18",
       "version": "1.4.1",
-      "componentType": null,
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -8785,7 +8762,7 @@
       "createDate": "2020-07-08",
       "updateDate": "2020-07-08",
       "version": "1.10.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -8808,7 +8785,7 @@
       "createDate": "2023-07-10",
       "updateDate": "2023-07-10",
       "version": "1.17.2",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -8835,7 +8812,7 @@
       "createDate": "2018-08-26",
       "updateDate": "2021-07-09",
       "version": "1.12.1",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -8862,7 +8839,7 @@
       "createDate": "2020-10-28",
       "updateDate": "2020-10-28",
       "version": "1.8.2",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -8885,7 +8862,7 @@
       "createDate": "2022-03-07",
       "updateDate": "2022-06-02",
       "version": "1.13.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -8908,7 +8885,7 @@
       "createDate": "2017-02-27",
       "updateDate": "2017-02-27",
       "version": "1.0.0",
-      "componentType": null,
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -8935,7 +8912,7 @@
       "createDate": "2021-03-03",
       "updateDate": "2021-03-03",
       "version": "1.11.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -8962,7 +8939,7 @@
       "createDate": "2022-09-14",
       "updateDate": "2023-01-20",
       "version": "1.15.2",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -8985,7 +8962,7 @@
       "createDate": "2025-11-09",
       "updateDate": "2025-11-09",
       "version": "1.21.1",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -9008,7 +8985,7 @@
       "createDate": "2018-02-14",
       "updateDate": "2018-02-14",
       "version": "1.4.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -9031,7 +9008,7 @@
       "createDate": "2021-10-31",
       "updateDate": "2021-10-31",
       "version": "1.13.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -9054,7 +9031,7 @@
       "createDate": "2025-09-14",
       "updateDate": "2025-09-14",
       "version": "1.20.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -9078,7 +9055,7 @@
       "createDate": "2022-11-14",
       "updateDate": "2022-11-14",
       "version": "1.15.2",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -9100,8 +9077,8 @@
       ],
       "createDate": "2022-02-09",
       "updateDate": "2022-03-28",
-      "version": "1.13.1",
-      "componentType": "webpart",
+      "version": "1.14.0",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -9124,7 +9101,7 @@
       "createDate": "2023-08-03",
       "updateDate": "2024-10-01",
       "version": "1.20.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -9146,8 +9123,8 @@
       ],
       "createDate": "2022-04-20",
       "updateDate": "2024-10-03",
-      "version": "1.17.2",
-      "componentType": "webpart",
+      "version": "1.20.0",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -9170,7 +9147,7 @@
       "createDate": "2021-08-09",
       "updateDate": "2021-08-09",
       "version": "1.12.1",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -9197,7 +9174,7 @@
       "createDate": "2021-06-21",
       "updateDate": "2022-05-17",
       "version": "1.12.1",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -9220,7 +9197,7 @@
       "createDate": "2022-01-09",
       "updateDate": "2022-01-09",
       "version": "1.13.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -9266,7 +9243,7 @@
       "createDate": "2019-06-05",
       "updateDate": "2019-06-05",
       "version": "1.8.2",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -9293,7 +9270,7 @@
       "createDate": "2019-06-14",
       "updateDate": "2023-10-10",
       "version": "1.18.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -9316,7 +9293,7 @@
       "createDate": "2020-03-25",
       "updateDate": "2020-03-25",
       "version": "1.10.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -9339,7 +9316,7 @@
       "createDate": "2019-06-05",
       "updateDate": "2019-06-05",
       "version": "1.8.2",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -9362,7 +9339,7 @@
       "createDate": "2026-12-25",
       "updateDate": "2026-12-31",
       "version": "1.22.2",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -9385,7 +9362,7 @@
       "createDate": "2019-06-06",
       "updateDate": "2019-06-06",
       "version": "1.8.2",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -9408,7 +9385,7 @@
       "createDate": "2020-04-14",
       "updateDate": "2020-04-14",
       "version": "1.10.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -9430,8 +9407,8 @@
       ],
       "createDate": "2021-05-22",
       "updateDate": "2021-05-22",
-      "version": "1.11.0",
-      "componentType": "webpart",
+      "version": "1.4.1",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -9454,7 +9431,7 @@
       "createDate": "2019-01-14",
       "updateDate": "2019-01-14",
       "version": "1.7.1",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -9477,7 +9454,7 @@
       "createDate": "2023-11-24",
       "updateDate": "2023-11-24",
       "version": "1.18.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -9500,7 +9477,7 @@
       "createDate": "2021-09-17",
       "updateDate": "2025-05-26",
       "version": "1.21.1",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -9523,7 +9500,7 @@
       "createDate": "2022-02-03",
       "updateDate": "2022-02-03",
       "version": "1.13.0-beta.17",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -9546,7 +9523,7 @@
       "createDate": "2023-05-07",
       "updateDate": "2023-05-07",
       "version": "1.16.1",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -9573,7 +9550,7 @@
       "createDate": "2020-11-06",
       "updateDate": "2024-09-12",
       "version": "1.19.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -9596,7 +9573,7 @@
       "createDate": "2020-09-02",
       "updateDate": "2022-03-02",
       "version": "1.14.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -9619,7 +9596,7 @@
       "createDate": "2018-04-15",
       "updateDate": "2018-04-15",
       "version": "1.4.1",
-      "componentType": null,
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -9642,7 +9619,7 @@
       "createDate": "2020-05-15",
       "updateDate": "2020-05-15",
       "version": "1.10.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -9665,7 +9642,7 @@
       "createDate": "2021-09-27",
       "updateDate": "2021-09-27",
       "version": "1.12.1",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -9688,7 +9665,7 @@
       "createDate": "2021-04-18",
       "updateDate": "2021-04-18",
       "version": "1.11.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -9711,7 +9688,7 @@
       "createDate": "2018-10-03",
       "updateDate": "2018-10-03",
       "version": "1.6.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -9734,7 +9711,7 @@
       "createDate": "2019-01-09",
       "updateDate": "2019-01-09",
       "version": "1.7.1",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -9757,7 +9734,7 @@
       "createDate": "2022-06-02",
       "updateDate": "2022-06-02",
       "version": "1.15.0-beta.1",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -9780,7 +9757,7 @@
       "createDate": "2019-04-09",
       "updateDate": "2019-04-09",
       "version": "1.8.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -9802,8 +9779,8 @@
       ],
       "createDate": "2018-07-03",
       "updateDate": "2018-07-03",
-      "version": "1.5.1",
-      "componentType": "webpart",
+      "version": "1.5.1-plusbeta",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -9833,8 +9810,8 @@
       ],
       "createDate": "2020-11-07",
       "updateDate": "2023-03-10",
-      "version": "1.16.1",
-      "componentType": "webpart",
+      "version": "1.11.0",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -9857,7 +9834,7 @@
       "createDate": "2023-03-23",
       "updateDate": "2025-10-24",
       "version": "1.21.1",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -9880,7 +9857,7 @@
       "createDate": "2025-02-28",
       "updateDate": "2025-04-21",
       "version": "1.20.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -9902,8 +9879,8 @@
       ],
       "createDate": "2022-08-25",
       "updateDate": "2023-05-15",
-      "version": "1.16.1",
-      "componentType": "webpart",
+      "version": "1.17.2",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -9929,8 +9906,8 @@
       ],
       "createDate": "2021-05-06",
       "updateDate": "2023-02-26",
-      "version": "1.9.1",
-      "componentType": "webpart",
+      "version": "1.12.1",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -9953,7 +9930,7 @@
       "createDate": "2026-01-15",
       "updateDate": "2026-01-15",
       "version": "1.22.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -9976,7 +9953,7 @@
       "createDate": "2021-04-02",
       "updateDate": "2022-03-11",
       "version": "1.12.1",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -9999,7 +9976,7 @@
       "createDate": "2021-01-29",
       "updateDate": "2025-09-28",
       "version": "1.21.1",
-      "componentType": "adaptiveCardExtension",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -10022,7 +9999,7 @@
       "createDate": "2019-08-19",
       "updateDate": "2019-08-19",
       "version": "1.9.1",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -10045,7 +10022,7 @@
       "createDate": "2021-08-04",
       "updateDate": "2021-08-04",
       "version": "1.12.1",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -10068,7 +10045,7 @@
       "createDate": "2025-11-06",
       "updateDate": "2025-11-06",
       "version": "1.21.1",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -10091,7 +10068,7 @@
       "createDate": "2021-03-17",
       "updateDate": "2025-04-02",
       "version": "1.21.1",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -10114,7 +10091,7 @@
       "createDate": "2019-03-01",
       "updateDate": "2022-05-23",
       "version": "1.14.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -10137,7 +10114,7 @@
       "createDate": "2017-09-17",
       "updateDate": "2017-09-17",
       "version": "1.2.0",
-      "componentType": null,
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -10160,7 +10137,7 @@
       "createDate": "2019-03-01",
       "updateDate": "2019-03-01",
       "version": "1.6.0",
-      "componentType": null,
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -10183,7 +10160,7 @@
       "createDate": "2023-03-12",
       "updateDate": "2023-03-12",
       "version": "1.16.1",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -10206,7 +10183,7 @@
       "createDate": "2023-01-31",
       "updateDate": "2023-01-31",
       "version": "1.14.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -10228,8 +10205,8 @@
       ],
       "createDate": "2017-10-09",
       "updateDate": "2017-10-09",
-      "version": "1.0.0",
-      "componentType": null,
+      "version": "1.3.0",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -10252,7 +10229,7 @@
       "createDate": "2023-06-12",
       "updateDate": "2023-06-12",
       "version": "1.16.1",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -10274,8 +10251,8 @@
       ],
       "createDate": "2019-03-20",
       "updateDate": "2019-03-20",
-      "version": "1.8.0",
-      "componentType": "webpart",
+      "version": "1.10.0",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -10298,7 +10275,7 @@
       "createDate": "2018-06-15",
       "updateDate": "2018-06-15",
       "version": "1.4.1",
-      "componentType": null,
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -10321,7 +10298,7 @@
       "createDate": "2019-06-23",
       "updateDate": "2019-06-23",
       "version": "1.8.2",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -10344,7 +10321,7 @@
       "createDate": "2023-05-16",
       "updateDate": "2023-05-16",
       "version": "1.17.1",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -10379,7 +10356,7 @@
       "createDate": "2020-07-02",
       "updateDate": "2026-01-23",
       "version": "1.22.1",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -10422,8 +10399,8 @@
       "createDate": "2017-11-24",
       "updateDate": "2022-09-05",
       "version": "1.10.0",
-      "componentType": "webpart",
-      "extensionType": null,
+      "componentType": "webPart",
+      "extensionType": "",
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
     },
@@ -10449,7 +10426,7 @@
       "createDate": "2021-02-18",
       "updateDate": "2021-10-31",
       "version": "1.13.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -10471,8 +10448,8 @@
       ],
       "createDate": "2021-05-06",
       "updateDate": "2021-05-06",
-      "version": "1.11.0",
-      "componentType": "webpart",
+      "version": "1.4.1",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -10495,7 +10472,7 @@
       "createDate": "2020-12-20",
       "updateDate": "2025-10-17",
       "version": "1.20.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -10518,7 +10495,7 @@
       "createDate": "2024-12-25",
       "updateDate": "2024-12-31",
       "version": "1.18.2",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -10541,7 +10518,7 @@
       "createDate": "2022-02-27",
       "updateDate": "2022-02-27",
       "version": "1.13.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -10564,7 +10541,7 @@
       "createDate": "2023-01-01",
       "updateDate": "2023-01-01",
       "version": "1.16.1",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -10587,7 +10564,7 @@
       "createDate": "2024-12-25",
       "updateDate": "2024-12-31",
       "version": "1.20.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -10614,7 +10591,7 @@
       "createDate": "2023-09-01",
       "updateDate": "2024-10-02",
       "version": "1.20.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -10641,7 +10618,7 @@
       "createDate": "2020-01-01",
       "updateDate": "2020-01-01",
       "version": "1.9.1",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -10664,7 +10641,7 @@
       "createDate": "2020-10-05",
       "updateDate": "2020-10-05",
       "version": "1.10.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -10687,7 +10664,7 @@
       "createDate": "2025-09-27",
       "updateDate": "2025-09-27",
       "version": "1.21.1",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -10709,8 +10686,8 @@
       ],
       "createDate": "2019-04-08",
       "updateDate": "2019-04-08",
-      "version": "1.8.0",
-      "componentType": "webpart",
+      "version": "1.8.0-plusbeta",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -10733,7 +10710,7 @@
       "createDate": "2020-03-09",
       "updateDate": "2020-03-09",
       "version": "1.10.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -10756,7 +10733,7 @@
       "createDate": "2019-03-25",
       "updateDate": "2019-03-25",
       "version": "1.8.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -10778,8 +10755,8 @@
       ],
       "createDate": "2025-01-10",
       "updateDate": "2025-01-10",
-      "version": "1.20.0-rc.1",
-      "componentType": "webpart",
+      "version": "1.20.0",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -10802,7 +10779,7 @@
       "createDate": "2019-12-23",
       "updateDate": "2019-12-23",
       "version": "1.9.1",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -10825,7 +10802,7 @@
       "createDate": "2020-11-29",
       "updateDate": "2020-11-29",
       "version": "1.11.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -10848,7 +10825,7 @@
       "createDate": "2025-10-11",
       "updateDate": "2025-10-11",
       "version": "1.21.1",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -10871,7 +10848,7 @@
       "createDate": "2025-07-09",
       "updateDate": "2025-07-09",
       "version": "1.21.1",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -10894,30 +10871,7 @@
       "createDate": "2020-07-01",
       "updateDate": "2020-07-01",
       "version": "1.10.0",
-      "componentType": "webpart",
-      "extensionType": null,
-      "sampleGallery": "sp-dev-fx-webparts",
-      "sampleType": "samples"
-    },
-    {
-      "name": "pnp-sp-dev-spfx-web-parts-react-mobx",
-      "title": "Using React and Mobx Web Part",
-      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-mobx",
-      "description": "Sample web part implementation that uses Mobx to keep track of its state.",
-      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-mobx/assets/mobxreactive.png",
-      "authors": [
-        {
-          "name": "Kevin Mees",
-          "pictureUrl": "https://github.com/kmees.png"
-        }
-      ],
-      "tags": [
-        "SharePoint"
-      ],
-      "createDate": "2016-11-04",
-      "updateDate": "2016-11-04",
-      "version": null,
-      "componentType": null,
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -10940,7 +10894,7 @@
       "createDate": "2019-05-24",
       "updateDate": "2019-05-24",
       "version": "1.8.2",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -10967,7 +10921,7 @@
       "createDate": "2023-01-31",
       "updateDate": "2025-01-19",
       "version": "1.20.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -10994,7 +10948,7 @@
       "createDate": "2023-01-31",
       "updateDate": "2025-01-19",
       "version": "1.20.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -11017,7 +10971,7 @@
       "createDate": "2025-03-08",
       "updateDate": "2025-03-08",
       "version": "1.20.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -11040,7 +10994,7 @@
       "createDate": "2024-03-16",
       "updateDate": "2025-05-01",
       "version": "1.21.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -11067,7 +11021,7 @@
       "createDate": "2020-07-30",
       "updateDate": "2021-10-19",
       "version": "1.10.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -11113,7 +11067,7 @@
       "createDate": "2020-07-09",
       "updateDate": "2024-10-06",
       "version": "1.20.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -11135,8 +11089,8 @@
       ],
       "createDate": "2017-03-17",
       "updateDate": "2017-03-17",
-      "version": "1.1.1",
-      "componentType": null,
+      "version": "1.1.0",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -11159,7 +11113,7 @@
       "createDate": "2019-10-20",
       "updateDate": "2019-10-20",
       "version": "1.9.1",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -11182,7 +11136,7 @@
       "createDate": "2020-07-31",
       "updateDate": "2020-07-31",
       "version": "1.11.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -11204,8 +11158,8 @@
       ],
       "createDate": "2016-12-31",
       "updateDate": "2016-12-31",
-      "version": null,
-      "componentType": null,
+      "version": "0.1.2",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -11235,8 +11189,8 @@
       ],
       "createDate": "2020-07-19",
       "updateDate": "2025-04-25",
-      "version": "1.20.0",
-      "componentType": "webpart",
+      "version": "1.18.2",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -11258,8 +11212,8 @@
       ],
       "createDate": "2017-05-01",
       "updateDate": "2017-05-01",
-      "version": null,
-      "componentType": null,
+      "version": "1.0.0",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -11286,7 +11240,7 @@
       "createDate": "2019-07-03",
       "updateDate": "2021-10-03",
       "version": "1.12.1",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -11308,8 +11262,8 @@
       ],
       "createDate": "2022-01-11",
       "updateDate": "2022-11-03",
-      "version": "1.13.1",
-      "componentType": "webpart",
+      "version": "1.15.2",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -11331,8 +11285,8 @@
       ],
       "createDate": "2021-08-18",
       "updateDate": "2022-03-28",
-      "version": "1.15.0",
-      "componentType": "webpart",
+      "version": "1.15.0-beta.1",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -11355,7 +11309,7 @@
       "createDate": "2020-07-09",
       "updateDate": "2020-07-09",
       "version": "1.10.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -11378,7 +11332,7 @@
       "createDate": "2021-01-24",
       "updateDate": "2025-04-27",
       "version": "1.21.1",
-      "componentType": "adaptiveCardExtension",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -11409,7 +11363,7 @@
       "createDate": "2020-04-28",
       "updateDate": "2025-01-13",
       "version": "1.10.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -11455,7 +11409,7 @@
       "createDate": "2020-08-30",
       "updateDate": "2020-08-30",
       "version": "1.11.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -11482,7 +11436,7 @@
       "createDate": "2019-02-26",
       "updateDate": "2021-12-18",
       "version": "1.13.1",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -11504,8 +11458,8 @@
       ],
       "createDate": "2021-08-12",
       "updateDate": "2024-02-27",
-      "version": "1.11.0",
-      "componentType": "webpart",
+      "version": "1.12.1",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -11532,7 +11486,7 @@
       "createDate": "2020-09-09",
       "updateDate": "2020-09-09",
       "version": "1.11.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -11555,7 +11509,7 @@
       "createDate": "2026-02-20",
       "updateDate": "2026-02-20",
       "version": "1.22.1",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -11577,8 +11531,8 @@
       ],
       "createDate": "2021-04-02",
       "updateDate": "2021-04-02",
-      "version": "1.10.0",
-      "componentType": "webpart",
+      "version": "1.12.1",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -11600,8 +11554,8 @@
       ],
       "createDate": "2021-05-06",
       "updateDate": "2021-05-06",
-      "version": "1.11.0",
-      "componentType": "webpart",
+      "version": "1.4.1",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -11624,7 +11578,7 @@
       "createDate": "2023-10-04",
       "updateDate": "2023-10-04",
       "version": "1.17.4",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -11647,7 +11601,7 @@
       "createDate": "2025-03-25",
       "updateDate": "2025-03-25",
       "version": "1.20.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -11670,7 +11624,7 @@
       "createDate": "2025-10-12",
       "updateDate": "2025-10-12",
       "version": "1.21.1",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -11692,8 +11646,8 @@
       ],
       "createDate": "2023-01-05",
       "updateDate": "2023-01-05",
-      "version": "1.16.0",
-      "componentType": "webpart",
+      "version": "1.16.1",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -11739,7 +11693,7 @@
       "createDate": "2017-05-31",
       "updateDate": "2017-05-31",
       "version": "1.4.1",
-      "componentType": null,
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -11762,7 +11716,7 @@
       "createDate": "2025-08-03",
       "updateDate": "2025-08-03",
       "version": "1.20.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -11785,7 +11739,7 @@
       "createDate": "2021-04-16",
       "updateDate": "2021-05-20",
       "version": "1.11.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -11808,7 +11762,7 @@
       "createDate": "2023-07-23",
       "updateDate": "2023-07-23",
       "version": "1.17.4",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -11831,7 +11785,7 @@
       "createDate": "2017-07-19",
       "updateDate": "2017-07-19",
       "version": "1.0.0",
-      "componentType": null,
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -11862,7 +11816,7 @@
       "createDate": "2021-05-03",
       "updateDate": "2025-12-30",
       "version": "1.22.1",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -11884,8 +11838,8 @@
       ],
       "createDate": "2020-10-16",
       "updateDate": "2020-10-16",
-      "version": "1.10.0",
-      "componentType": "webpart",
+      "version": "1.10.0-plusbeta",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -11907,8 +11861,8 @@
       ],
       "createDate": "2020-04-06",
       "updateDate": "2020-04-06",
-      "version": "1.10.0",
-      "componentType": "webpart",
+      "version": "1.10.0-plusbeta",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -11943,7 +11897,7 @@
       "createDate": "2019-09-05",
       "updateDate": "2026-01-12",
       "version": "1.20.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -11966,7 +11920,7 @@
       "createDate": "2019-03-22",
       "updateDate": "2022-04-25",
       "version": "1.14.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -11989,7 +11943,7 @@
       "createDate": "2017-07-27",
       "updateDate": "2021-07-05",
       "version": "1.12.1",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -12028,7 +11982,7 @@
       "createDate": "2020-04-30",
       "updateDate": "2024-10-12",
       "version": "1.20.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -12051,7 +12005,7 @@
       "createDate": "2022-08-01",
       "updateDate": "2022-08-01",
       "version": "1.13.1",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -12074,7 +12028,7 @@
       "createDate": "2023-10-27",
       "updateDate": "2023-10-27",
       "version": "1.16.1",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -12097,7 +12051,7 @@
       "createDate": "2025-07-08",
       "updateDate": "2025-07-08",
       "version": "1.21.1",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -12119,8 +12073,8 @@
       ],
       "createDate": "2017-12-06",
       "updateDate": "2017-12-06",
-      "version": "1.3.0",
-      "componentType": null,
+      "version": "1.8.0",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -12143,7 +12097,7 @@
       "createDate": "2023-12-09",
       "updateDate": "2023-12-09",
       "version": "1.18.2",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -12166,7 +12120,7 @@
       "createDate": "2025-04-08",
       "updateDate": "2025-04-08",
       "version": "1.20.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -12189,7 +12143,7 @@
       "createDate": "2020-10-18",
       "updateDate": "2020-10-18",
       "version": "1.11.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -12212,7 +12166,7 @@
       "createDate": "2024-02-08",
       "updateDate": "2024-02-25",
       "version": "1.18.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -12235,7 +12189,7 @@
       "createDate": "2020-09-13",
       "updateDate": "2020-09-13",
       "version": "1.11.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -12262,7 +12216,7 @@
       "createDate": "2020-12-16",
       "updateDate": "2020-12-16",
       "version": "1.11.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -12285,7 +12239,7 @@
       "createDate": "2020-03-10",
       "updateDate": "2020-03-10",
       "version": "1.10.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -12308,7 +12262,7 @@
       "createDate": "2022-10-17",
       "updateDate": "2022-10-18",
       "version": "1.15.2",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -12339,7 +12293,7 @@
       "createDate": "2023-02-18",
       "updateDate": "2024-10-23",
       "version": "1.20.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -12362,7 +12316,7 @@
       "createDate": "2023-03-07",
       "updateDate": "2023-03-07",
       "version": "1.16.1",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -12385,7 +12339,7 @@
       "createDate": "2019-12-04",
       "updateDate": "2019-12-04",
       "version": "1.8.2",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -12408,7 +12362,7 @@
       "createDate": "2022-11-07",
       "updateDate": "2022-12-21",
       "version": "1.15.2",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -12443,7 +12397,7 @@
       "createDate": "2020-10-30",
       "updateDate": "2020-10-30",
       "version": "1.11.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -12466,7 +12420,7 @@
       "createDate": "2024-03-16",
       "updateDate": "2024-03-16",
       "version": "1.17.1",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -12489,7 +12443,7 @@
       "createDate": "2022-03-20",
       "updateDate": "2022-03-20",
       "version": "1.15.0-beta.1",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -12512,7 +12466,7 @@
       "createDate": "2022-02-10",
       "updateDate": "2022-02-10",
       "version": "1.14.0-beta.5",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -12535,7 +12489,7 @@
       "createDate": "2021-07-02",
       "updateDate": "2021-07-02",
       "version": "1.10.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -12558,7 +12512,7 @@
       "createDate": "2020-04-12",
       "updateDate": "2020-04-12",
       "version": "1.10.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -12581,7 +12535,7 @@
       "createDate": "2017-03-19",
       "updateDate": "2024-02-21",
       "version": "1.17.1",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -12604,7 +12558,7 @@
       "createDate": "2024-02-22",
       "updateDate": "2024-02-22",
       "version": "1.18.2",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -12630,8 +12584,8 @@
       ],
       "createDate": "2020-09-06",
       "updateDate": "2020-09-06",
-      "version": "1.1.1",
-      "componentType": null,
+      "version": "1.18.0",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -12654,7 +12608,7 @@
       "createDate": "2025-06-17",
       "updateDate": "2025-06-17",
       "version": "1.20.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -12676,8 +12630,8 @@
       ],
       "createDate": "2021-03-22",
       "updateDate": "2021-03-22",
-      "version": "1.7.0",
-      "componentType": "webpart",
+      "version": "1.11.0",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -12704,7 +12658,7 @@
       "createDate": "2023-03-05",
       "updateDate": "2025-07-31",
       "version": "1.15.2",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -12731,7 +12685,7 @@
       "createDate": "2024-08-11",
       "updateDate": "2025-07-18",
       "version": "1.21.1",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -12754,8 +12708,8 @@
       ],
       "createDate": "2025-11-07",
       "updateDate": "2025-11-07",
-      "version": "1.20.0",
-      "componentType": "webpart",
+      "version": "1.21.1",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -12779,7 +12733,7 @@
       "createDate": "2025-10-30",
       "updateDate": "2025-10-30",
       "version": "1.21.1",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -12806,7 +12760,7 @@
       "createDate": "2020-10-17",
       "updateDate": "2022-03-18",
       "version": "1.13.1",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -12833,7 +12787,7 @@
       "createDate": "2019-11-11",
       "updateDate": "2022-01-01",
       "version": "1.13.1",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -12856,7 +12810,7 @@
       "createDate": "2022-10-18",
       "updateDate": "2022-10-18",
       "version": "1.15.2",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -12878,8 +12832,8 @@
       ],
       "createDate": "2018-11-09",
       "updateDate": "2018-11-09",
-      "version": "1.7.0-pr.3",
-      "componentType": "webpart",
+      "version": "1.7.0",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -12902,7 +12856,7 @@
       "createDate": "2023-10-23",
       "updateDate": "2023-10-23",
       "version": "1.18.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -12924,31 +12878,8 @@
       ],
       "createDate": "2019-10-10",
       "updateDate": "2019-10-10",
-      "version": "1.8.2",
-      "componentType": "webpart",
-      "extensionType": null,
-      "sampleGallery": "sp-dev-fx-webparts",
-      "sampleType": "samples"
-    },
-    {
-      "name": "pnp-sp-dev-spfx-web-parts-react-redux",
-      "title": "Using React and Redux",
-      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-redux",
-      "description": "Sample web part implementation that uses Redux to keep track of its state.",
-      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-redux/assets/nonreactive.png",
-      "authors": [
-        {
-          "name": "Kevin Mees",
-          "pictureUrl": "https://github.com/kmees.png"
-        }
-      ],
-      "tags": [
-        "SharePoint"
-      ],
-      "createDate": "2016-10-28",
-      "updateDate": "2016-10-28",
-      "version": null,
-      "componentType": null,
+      "version": "1.9.1",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -12970,8 +12901,8 @@
       ],
       "createDate": "2017-07-11",
       "updateDate": "2017-07-11",
-      "version": "1.1.1",
-      "componentType": null,
+      "version": "1.1.0",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -12994,7 +12925,7 @@
       "createDate": "2018-05-02",
       "updateDate": "2018-05-02",
       "version": "1.4.1",
-      "componentType": null,
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -13017,7 +12948,7 @@
       "createDate": "2021-05-03",
       "updateDate": "2021-06-09",
       "version": "1.11.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -13040,7 +12971,7 @@
       "createDate": "2020-09-05",
       "updateDate": "2020-09-05",
       "version": "1.11.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -13064,7 +12995,7 @@
       "createDate": "2022-09-26",
       "updateDate": "2024-09-13",
       "version": "1.15.2",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -13087,7 +13018,7 @@
       "createDate": "2025-02-11",
       "updateDate": "2025-02-11",
       "version": "1.20.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -13110,7 +13041,7 @@
       "createDate": "2022-07-19",
       "updateDate": "2022-07-19",
       "version": "1.15.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -13149,7 +13080,7 @@
       "createDate": "2024-12-25",
       "updateDate": "2026-02-27",
       "version": "1.22.2",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -13172,7 +13103,7 @@
       "createDate": "2018-12-10",
       "updateDate": "2018-12-10",
       "version": "1.7.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -13194,8 +13125,8 @@
       ],
       "createDate": "2020-10-04",
       "updateDate": "2021-10-19",
-      "version": "1.13.0",
-      "componentType": "webpart",
+      "version": "1.13.0-beta.15",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -13230,7 +13161,7 @@
       "createDate": "2019-10-13",
       "updateDate": "2024-10-01",
       "version": "1.21.1",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -13253,7 +13184,7 @@
       "createDate": "2020-03-16",
       "updateDate": "2020-03-16",
       "version": "1.4.1",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -13299,7 +13230,7 @@
       "createDate": "2021-03-06",
       "updateDate": "2025-09-12",
       "version": "1.21.1",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -13321,8 +13252,8 @@
       ],
       "createDate": "2017-05-11",
       "updateDate": "2017-05-11",
-      "version": "1.0.2",
-      "componentType": null,
+      "version": "1.0.0",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -13345,7 +13276,7 @@
       "createDate": "2025-09-07",
       "updateDate": "2025-11-20",
       "version": "1.21.1",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -13368,7 +13299,7 @@
       "createDate": "2024-07-12",
       "updateDate": "2024-07-12",
       "version": "1.18.2",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -13391,7 +13322,7 @@
       "createDate": "2018-04-17",
       "updateDate": "2018-04-17",
       "version": "1.4.1",
-      "componentType": null,
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -13414,7 +13345,7 @@
       "createDate": "2021-03-08",
       "updateDate": "2021-03-08",
       "version": "1.11.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -13437,7 +13368,7 @@
       "createDate": "2019-03-27",
       "updateDate": "2019-03-27",
       "version": "1.8.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -13460,7 +13391,7 @@
       "createDate": "2019-11-01",
       "updateDate": "2019-11-01",
       "version": "1.7.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -13483,7 +13414,7 @@
       "createDate": "2020-08-12",
       "updateDate": "2020-08-12",
       "version": "1.11.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -13506,7 +13437,7 @@
       "createDate": "2020-10-30",
       "updateDate": "2020-10-30",
       "version": "1.11.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -13529,7 +13460,7 @@
       "createDate": "2025-01-27",
       "updateDate": "2025-01-27",
       "version": "1.20.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -13552,7 +13483,7 @@
       "createDate": "2024-12-25",
       "updateDate": "2024-12-31",
       "version": "1.20.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -13575,7 +13506,7 @@
       "createDate": "2025-04-20",
       "updateDate": "2025-04-20",
       "version": "1.20.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -13598,7 +13529,7 @@
       "createDate": "2025-04-20",
       "updateDate": "2025-04-20",
       "version": "1.20.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -13620,8 +13551,8 @@
       ],
       "createDate": "2017-07-02",
       "updateDate": "2017-07-02",
-      "version": "1.0.2",
-      "componentType": null,
+      "version": "1.1.0",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -13644,7 +13575,7 @@
       "createDate": "2024-12-25",
       "updateDate": "2024-12-31",
       "version": "1.20.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -13667,7 +13598,7 @@
       "createDate": "2020-09-08",
       "updateDate": "2020-09-08",
       "version": "1.11.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -13690,7 +13621,7 @@
       "createDate": "2023-06-06",
       "updateDate": "2023-06-06",
       "version": "1.17.4",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -13713,7 +13644,7 @@
       "createDate": "2023-03-29",
       "updateDate": "2023-03-29",
       "version": "1.16.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -13737,7 +13668,7 @@
       "createDate": "2026-02-08",
       "updateDate": "2026-02-08",
       "version": "1.20.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -13768,7 +13699,7 @@
       "createDate": "2026-03-13",
       "updateDate": "2026-03-13",
       "version": "1.22.2",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -13791,7 +13722,7 @@
       "createDate": "2020-04-23",
       "updateDate": "2020-04-23",
       "version": "1.10.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -13826,7 +13757,7 @@
       "createDate": "2021-03-09",
       "updateDate": "2022-06-16",
       "version": "1.14.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -13849,7 +13780,7 @@
       "createDate": "2021-10-07",
       "updateDate": "2025-01-22",
       "version": "1.20.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -13872,7 +13803,7 @@
       "createDate": "2025-08-23",
       "updateDate": "2025-08-23",
       "version": "1.20.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -13895,7 +13826,7 @@
       "createDate": "2024-11-01",
       "updateDate": "2024-11-01",
       "version": "1.20.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -13922,7 +13853,7 @@
       "createDate": "2022-03-30",
       "updateDate": "2025-03-16",
       "version": "1.20.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -13945,7 +13876,7 @@
       "createDate": "2020-10-17",
       "updateDate": "2020-10-17",
       "version": "1.11.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -13967,8 +13898,8 @@
       ],
       "createDate": "2023-10-07",
       "updateDate": "2023-10-07",
-      "version": "1.20.0",
-      "componentType": "webpart",
+      "version": "1.18.0",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -13991,7 +13922,7 @@
       "createDate": "2020-01-28",
       "updateDate": "2020-01-28",
       "version": "1.11.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -14014,7 +13945,7 @@
       "createDate": "2021-12-26",
       "updateDate": "2022-07-16",
       "version": "1.15.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -14036,8 +13967,8 @@
       ],
       "createDate": "2017-04-14",
       "updateDate": "2017-04-14",
-      "version": "1.0.0",
-      "componentType": null,
+      "version": "1.1.0",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -14059,8 +13990,8 @@
       ],
       "createDate": "2018-07-20",
       "updateDate": "2018-07-20",
-      "version": "1.5.0",
-      "componentType": "webpart",
+      "version": "1.5.1",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -14083,7 +14014,7 @@
       "createDate": "2018-11-19",
       "updateDate": "2018-11-19",
       "version": "1.7.0",
-      "componentType": null,
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -14106,7 +14037,7 @@
       "createDate": "2020-01-06",
       "updateDate": "2020-01-06",
       "version": "1.9.1",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -14133,7 +14064,7 @@
       "createDate": "2023-03-11",
       "updateDate": "2023-03-11",
       "version": "1.16.1",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -14156,7 +14087,7 @@
       "createDate": "2020-11-10",
       "updateDate": "2021-11-08",
       "version": "1.13.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -14187,8 +14118,8 @@
       ],
       "createDate": "2021-10-05",
       "updateDate": "2023-04-07",
-      "version": "1.17.0",
-      "componentType": "webpart",
+      "version": "1.17.1",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -14220,7 +14151,7 @@
       "createDate": "2021-03-22",
       "updateDate": "2022-05-02",
       "version": "1.14.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -14243,7 +14174,7 @@
       "createDate": "2020-04-27",
       "updateDate": "2022-03-24",
       "version": "1.14.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -14266,7 +14197,7 @@
       "createDate": "2020-05-23",
       "updateDate": "2020-05-23",
       "version": "1.10.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -14289,7 +14220,7 @@
       "createDate": "2021-02-28",
       "updateDate": "2021-02-28",
       "version": "1.11.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -14311,8 +14242,8 @@
       ],
       "createDate": "2023-12-25",
       "updateDate": "2023-12-31",
-      "version": "1.18.1",
-      "componentType": "webpart",
+      "version": "1.18.2",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -14335,7 +14266,7 @@
       "createDate": "2020-04-24",
       "updateDate": "2020-04-24",
       "version": "1.10.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -14358,7 +14289,7 @@
       "createDate": "2020-12-04",
       "updateDate": "2020-12-04",
       "version": "1.11.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -14380,8 +14311,8 @@
       ],
       "createDate": "2019-04-20",
       "updateDate": "2019-04-20",
-      "version": "1.7.0",
-      "componentType": "webpart",
+      "version": "1.8.0",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -14403,8 +14334,8 @@
       ],
       "createDate": "2018-11-18",
       "updateDate": "2018-11-18",
-      "version": "1.7.0",
-      "componentType": "webpart",
+      "version": "1.7.0-plusbeta",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -14431,7 +14362,7 @@
       "createDate": "2025-01-01",
       "updateDate": "2025-01-01",
       "version": "1.20.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -14453,8 +14384,8 @@
       ],
       "createDate": "2019-10-30",
       "updateDate": "2019-10-30",
-      "version": "1.7.1",
-      "componentType": "webpart",
+      "version": "1.9.1",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -14477,7 +14408,7 @@
       "createDate": "2019-04-18",
       "updateDate": "2019-04-18",
       "version": "1.8.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -14500,7 +14431,7 @@
       "createDate": "2025-11-18",
       "updateDate": "2025-11-18",
       "version": "1.21.1",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -14527,7 +14458,7 @@
       "createDate": "2020-10-20",
       "updateDate": "2020-10-20",
       "version": "1.11.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -14550,7 +14481,7 @@
       "createDate": "2017-05-08",
       "updateDate": "2017-05-08",
       "version": "1.11.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -14573,7 +14504,7 @@
       "createDate": "2025-06-13",
       "updateDate": "2025-06-13",
       "version": "1.20.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -14604,7 +14535,7 @@
       "createDate": "2021-07-14",
       "updateDate": "2022-03-28",
       "version": "1.11.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -14631,7 +14562,7 @@
       "createDate": "2020-07-10",
       "updateDate": "2020-07-10",
       "version": "1.10.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -14654,7 +14585,7 @@
       "createDate": "2018-02-01",
       "updateDate": "2018-02-01",
       "version": "1.4.1",
-      "componentType": null,
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -14676,8 +14607,8 @@
       ],
       "createDate": "2017-05-04",
       "updateDate": "2017-05-04",
-      "version": "1.0.2",
-      "componentType": null,
+      "version": "1.1.0",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -14704,7 +14635,7 @@
       "createDate": "2019-11-23",
       "updateDate": "2024-03-20",
       "version": "1.18.2",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -14727,7 +14658,7 @@
       "createDate": "2024-09-12",
       "updateDate": "2024-09-12",
       "version": "1.20.0-beta.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -14758,7 +14689,7 @@
       "createDate": "2021-02-28",
       "updateDate": "2025-12-31",
       "version": "1.22.1",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -14785,7 +14716,7 @@
       "createDate": "2020-01-20",
       "updateDate": "2023-02-27",
       "version": "1.16.1",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -14809,7 +14740,7 @@
       "createDate": "2025-11-03",
       "updateDate": "2025-11-03",
       "version": "1.21.1",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -14831,8 +14762,8 @@
       ],
       "createDate": "2020-08-27",
       "updateDate": "2020-08-27",
-      "version": "1.4.0",
-      "componentType": null,
+      "version": "1.4.1",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -14878,7 +14809,7 @@
       "createDate": "2020-04-10",
       "updateDate": "2022-02-07",
       "version": "1.13.1",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -14901,7 +14832,7 @@
       "createDate": "2021-04-02",
       "updateDate": "2021-04-02",
       "version": "1.11.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -14923,8 +14854,8 @@
       ],
       "createDate": "2016-12-31",
       "updateDate": "2016-12-31",
-      "version": null,
-      "componentType": null,
+      "version": "0.1.2",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -14947,7 +14878,7 @@
       "createDate": "2020-08-25",
       "updateDate": "2020-08-25",
       "version": "1.11.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -14970,7 +14901,7 @@
       "createDate": "2019-09-05",
       "updateDate": "2019-09-05",
       "version": "1.9.1",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -14992,8 +14923,8 @@
       ],
       "createDate": "2017-10-29",
       "updateDate": "2017-10-29",
-      "version": "1.3.2",
-      "componentType": null,
+      "version": "1.3.0",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -15016,7 +14947,7 @@
       "createDate": "2020-06-13",
       "updateDate": "2020-06-13",
       "version": "1.10.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -15039,7 +14970,7 @@
       "createDate": "2025-06-29",
       "updateDate": "2025-11-08",
       "version": "1.20.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -15062,7 +14993,7 @@
       "createDate": "2020-05-27",
       "updateDate": "2020-05-27",
       "version": "1.11.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -15085,7 +15016,7 @@
       "createDate": "2020-09-26",
       "updateDate": "2020-09-26",
       "version": "1.11.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -15108,7 +15039,7 @@
       "createDate": "2017-04-19",
       "updateDate": "2017-04-19",
       "version": "1.0.0",
-      "componentType": null,
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -15131,7 +15062,7 @@
       "createDate": "2020-03-23",
       "updateDate": "2020-03-23",
       "version": "1.10.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -15154,7 +15085,7 @@
       "createDate": "2025-02-23",
       "updateDate": "2025-02-23",
       "version": "1.20.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -15181,7 +15112,7 @@
       "createDate": "2020-10-01",
       "updateDate": "2020-10-01",
       "version": "1.11.0",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -15204,7 +15135,7 @@
       "createDate": "2022-11-08",
       "updateDate": "2022-11-08",
       "version": "1.15.2",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -15227,7 +15158,7 @@
       "createDate": "2020-02-13",
       "updateDate": "2020-02-13",
       "version": "1.9.1",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -15249,8 +15180,8 @@
       ],
       "createDate": "2017-04-26",
       "updateDate": "2017-04-26",
-      "version": "1.0.2",
-      "componentType": null,
+      "version": "1.0.0",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -15272,8 +15203,8 @@
       ],
       "createDate": "2019-03-13",
       "updateDate": "2019-03-13",
-      "version": "1.7.1",
-      "componentType": "webpart",
+      "version": "1.7.1-plusbeta",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -15304,7 +15235,7 @@
       "createDate": "2018-11-01",
       "updateDate": "2021-09-26",
       "version": "1.12.1",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -15327,7 +15258,7 @@
       "createDate": "2019-06-11",
       "updateDate": "2019-06-11",
       "version": "1.8.1",
-      "componentType": "webpart",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
@@ -15349,8 +15280,8 @@
       ],
       "createDate": "2020-04-27",
       "updateDate": "2022-04-04",
-      "version": "1.11.0",
-      "componentType": "webpart",
+      "version": "1.10.0",
+      "componentType": "webPart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
