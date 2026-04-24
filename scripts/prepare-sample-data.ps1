@@ -64,7 +64,7 @@ function Parse-SampleJsonFiles {
                         $version = $coreLibVersion -replace '[\^~>=<]', ''
                         
                         switch ($sampleRepo) {
-                            'sp-dev-fx-webparts' { $componentType = 'webPart' }
+                            'sp-dev-fx-webparts' { $componentType = 'webpart' }
                             'sp-dev-fx-extensions' { $componentType = 'extension' }
                             'sp-dev-fx-aces' { $componentType = 'adaptiveCardExtension' }
                             'sp-dev-fx-library-components' { $componentType = 'library' }
