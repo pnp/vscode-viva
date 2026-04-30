@@ -16,6 +16,7 @@ import { getCombinedTaskCommands } from './TaskTreeData';
 
 
 export class CommandPanel {
+  private static appCatalogFilter: string | undefined;
 
   public static register() {
     const subscriptions: Subscription[] = Extension.getInstance().subscriptions;
@@ -27,10 +28,40 @@ export class CommandPanel {
       commands.registerCommand(Commands.refreshAccountTreeView, CommandPanel.refreshAccountTreeView)
     );
     subscriptions.push(
+      commands.registerCommand(Commands.filterAppCatalogTreeView, CommandPanel.promptAppCatalogFilter)
+    );
+    subscriptions.push(
+      commands.registerCommand(Commands.clearAppCatalogTreeViewFilter, CommandPanel.clearAppCatalogFilter)
+    );
+    subscriptions.push(
       commands.registerCommand(Commands.welcome, () => commands.executeCommand('workbench.action.openWalkthrough', 'm365pnp.viva-connections-toolkit#spfx-toolkit-intro', false))
     );
 
     CommandPanel.init();
+  }
+
+  private static async promptAppCatalogFilter() {
+    const input = await window.showInputBox({
+      prompt: 'Filter app catalogs by URL (case-insensitive substring). Leave empty to clear.',
+      placeHolder: 'e.g. contoso or /sites/dev',
+      value: CommandPanel.appCatalogFilter ?? '',
+      ignoreFocusOut: true
+    });
+
+    if (input === undefined) {
+      return;
+    }
+
+    const trimmed = input.trim();
+    CommandPanel.appCatalogFilter = trimmed.length > 0 ? trimmed : undefined;
+    commands.executeCommand('setContext', ContextKeys.appCatalogFilterActive, !!CommandPanel.appCatalogFilter);
+    CommandPanel.environmentTreeView(EnvironmentInformation.appCatalogUrls);
+  }
+
+  private static async clearAppCatalogFilter() {
+    CommandPanel.appCatalogFilter = undefined;
+    commands.executeCommand('setContext', ContextKeys.appCatalogFilterActive, false);
+    CommandPanel.environmentTreeView(EnvironmentInformation.appCatalogUrls);
   }
 
   private static async init() {
@@ -155,6 +186,8 @@ export class CommandPanel {
     } else {
       const tenantAppCatalogUrl = appCatalogUrls[0];
       const origin = new URL(tenantAppCatalogUrl).origin;
+      const filter = CommandPanel.appCatalogFilter?.toLowerCase();
+      const matchesFilter = (url: string) => !filter || url.toLowerCase().includes(filter);
 
       commands.executeCommand('setContext', ContextKeys.hasAppCatalog, true);
 
@@ -225,15 +258,23 @@ export class CommandPanel {
         }
       );
 
-      catalogItems.push(tenantAppCatalogNode);
+      if (matchesFilter(tenantAppCatalogUrl)) {
+        catalogItems.push(tenantAppCatalogNode);
+      }
 
-      environmentCommands.push(
-        new ActionTreeItem('Tenant App Catalog', '', { name: 'spo-logo', custom: true }, TreeItemCollapsibleState.Expanded, undefined, undefined, undefined, catalogItems),
-      );
+      if (catalogItems.length > 0) {
+        environmentCommands.push(
+          new ActionTreeItem('Tenant App Catalog', '', { name: 'spo-logo', custom: true }, TreeItemCollapsibleState.Expanded, undefined, undefined, undefined, catalogItems),
+        );
+      }
 
       const siteAppCatalogActionItems: ActionTreeItem[] = [];
       for (let i = 1; i < appCatalogUrls.length; i++) {
         const siteAppCatalogUrl = appCatalogUrls[i];
+
+        if (!matchesFilter(siteAppCatalogUrl)) {
+          continue;
+        }
 
         const siteAppCatalogNode = new ActionTreeItem(siteAppCatalogUrl.replace(origin, '...'), '', { name: 'globe', custom: false }, showExpandTreeIcon, 'vscode.open', `${Uri.parse(siteAppCatalogUrl)}/AppCatalog`, 'sp-app-catalog-url', undefined,
           async () => {
@@ -273,7 +314,7 @@ export class CommandPanel {
       }
 
       if (siteAppCatalogActionItems.length === 0) {
-        siteAppCatalogActionItems.push(new ActionTreeItem('No site app catalog found', ''));
+        siteAppCatalogActionItems.push(new ActionTreeItem(filter ? 'No site app catalog matches filter' : 'No site app catalog found', ''));
       }
 
       environmentCommands.push(

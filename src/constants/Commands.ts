@@ -74,6 +74,8 @@ export const Commands = {
   // TreeViews
   refreshAppCatalogTreeView: `${EXTENSION_NAME}.refreshAppCatalogTreeView`,
   refreshAccountTreeView: `${EXTENSION_NAME}.refreshAccountTreeView`,
+  filterAppCatalogTreeView: `${EXTENSION_NAME}.filterAppCatalogTreeView`,
+  clearAppCatalogTreeViewFilter: `${EXTENSION_NAME}.clearAppCatalogTreeViewFilter`,
 
   // Welcome
   welcome: `${EXTENSION_NAME}.welcome`,

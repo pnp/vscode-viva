@@ -1087,6 +1087,18 @@
 				"icon": "$(refresh)"
 			},
 			{
+				"command": "spfx-toolkit.filterAppCatalogTreeView",
+				"title": "Filter App Catalogs by URL",
+				"category": "SPFx Toolkit",
+				"icon": "$(search)"
+			},
+			{
+				"command": "spfx-toolkit.clearAppCatalogTreeViewFilter",
+				"title": "Clear App Catalog filter",
+				"category": "SPFx Toolkit",
+				"icon": "$(clear-all)"
+			},
+			{
 				"command": "spfx-toolkit.refreshAccountTreeView",
 				"title": "Refresh Account view",
 				"category": "SPFx Toolkit",
@@ -1411,7 +1423,17 @@
 				{
 					"command": "spfx-toolkit.refreshAppCatalogTreeView",
 					"when": "view == pnp-view-environment",
-					"group": "navigation"
+					"group": "navigation@1"
+				},
+				{
+					"command": "spfx-toolkit.filterAppCatalogTreeView",
+					"when": "view == pnp-view-environment",
+					"group": "navigation@2"
+				},
+				{
+					"command": "spfx-toolkit.clearAppCatalogTreeViewFilter",
+					"when": "view == pnp-view-environment && pnp.etv.appCatalogFilterActive",
+					"group": "navigation@3"
 				},
 				{
 					"command": "spfx-toolkit.refreshAccountTreeView",
