@@ -2113,6 +2113,29 @@
       "sampleType": "samples"
     },
     {
+      "name": "pnp-sp-dev-spfx-extensions-js-application-gtm-injector",
+      "title": "Google Tag Manager Injector",
+      "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/js-application-gtm-injector",
+      "description": "This SharePoint Framework (SPFx) Application Customizer injects Google Tag Manager (GTM) into SharePoint Modern pages, enabling analytics and tag management across your tenant. It initializes the standard GTM dataLayer, loads the GTM script via SPComponentLoader, and hooks into SharePoint's navigation events to track Single Page Application (SPA) route changes — ensuring every page view is captured without a full browser reload.",
+      "image": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/js-application-gtm-injector/assets/gtm-injector-demo.png",
+      "authors": [
+        {
+          "name": "@saiiiiiii",
+          "pictureUrl": "https://github.com/saiiiiiii.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2026-04-01",
+      "updateDate": "2026-04-01",
+      "version": "1.22.2",
+      "componentType": "extension",
+      "extensionType": "ApplicationCustomizer",
+      "sampleGallery": "sp-dev-fx-extensions",
+      "sampleType": "samples"
+    },
+    {
       "name": "pnp-sp-dev-spfx-extensions-js-application-header-toggler",
       "title": "Site Header Toggler",
       "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/js-application-header-toggler",
@@ -2163,7 +2186,7 @@
       "title": "SharePoint Page Indexer",
       "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/js-application-layout-customizer",
       "description": "A SharePoint Framework (SPFx) Application Customizer that applies a responsive 3-column grid layout to SharePoint Modern pages. Provides a Fluent-styled floating toolbar and modal panel for live column-width configuration, persisted via localStorage.",
-      "image": "https://github.com/saiiiiiii/js-application-layout-customizer/raw/main/assets/layout-customizer-demo.gif",
+      "image": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/js-application-layout-customizer/assets/layout-customizer-demo.gif",
       "authors": [
         {
           "name": "Sai Siva Ram Bandaru",
@@ -13078,7 +13101,7 @@
         "SharePoint"
       ],
       "createDate": "2024-12-25",
-      "updateDate": "2026-02-27",
+      "updateDate": "2026-04-15",
       "version": "1.22.2",
       "componentType": "webpart",
       "extensionType": null,
@@ -13529,6 +13552,29 @@
       "createDate": "2025-04-20",
       "updateDate": "2025-04-20",
       "version": "1.20.0",
+      "componentType": "webpart",
+      "extensionType": null,
+      "sampleGallery": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
+      "name": "pnp-sp-dev-spfx-web-parts-react-sp-permission-manager",
+      "title": "SharePoint Permissions Manager",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-sp-permission-manager",
+      "description": "SharePoint Permissions Manager is a SharePoint Framework web part for administering SharePoint site groups, group membership, and user permissions from a single interface.",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-sp-permission-manager/assets/CheckPermissions.png",
+      "authors": [
+        {
+          "name": "Harminder Singh",
+          "pictureUrl": "https://github.com/HarminderSethi.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2026-04-13",
+      "updateDate": "2026-04-13",
+      "version": "1.22.2",
       "componentType": "webpart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
