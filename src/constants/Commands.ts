@@ -75,6 +75,9 @@ export const Commands = {
   refreshAppCatalogTreeView: `${EXTENSION_NAME}.refreshAppCatalogTreeView`,
   refreshAccountTreeView: `${EXTENSION_NAME}.refreshAccountTreeView`,
 
+  // Status bar
+  refreshSpfxProjectStatus: `${EXTENSION_NAME}.refreshSpfxProjectStatus`,
+
   // Welcome
   welcome: `${EXTENSION_NAME}.welcome`,
 
