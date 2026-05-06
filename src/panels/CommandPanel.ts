@@ -1,3 +1,4 @@
+import * as path from 'path';
 import { commands, workspace, window, Uri, TreeItemCollapsibleState, StatusBarAlignment } from 'vscode';
 import { Commands, ContextKeys } from '../constants';
 import { ActionTreeItem, ActionTreeDataProvider } from '../providers/ActionTreeDataProvider';
@@ -17,7 +18,6 @@ import { getCombinedTaskCommands } from './TaskTreeData';
 
 
 export class CommandPanel {
-  private static readonly refreshSpfxStatusCommand = 'spfx-toolkit.refreshSpfxProjectStatus';
   private static statusBarItem = window.createStatusBarItem('pnp.spfx.projectStatus', StatusBarAlignment.Left, 100);
 
   public static register() {
@@ -25,7 +25,7 @@ export class CommandPanel {
 
     subscriptions.push(CommandPanel.statusBarItem);
     subscriptions.push(
-      commands.registerCommand(CommandPanel.refreshSpfxStatusCommand, async () => {
+      commands.registerCommand(Commands.refreshSpfxProjectStatus, async () => {
         await CommandPanel.refreshProjectContext();
       })
     );
@@ -33,7 +33,7 @@ export class CommandPanel {
       CommandPanel.refreshProjectContext();
     }));
     subscriptions.push(workspace.onDidSaveTextDocument((document) => {
-      if (document.fileName.endsWith('.yo-rc.json') || document.fileName.endsWith('package.json')) {
+      if (CommandPanel.isProjectManifestFile(document.fileName)) {
         CommandPanel.refreshProjectContext();
       }
     }));
@@ -89,8 +89,27 @@ export class CommandPanel {
 
     CommandPanel.statusBarItem.text = `${status.hasCompatibilityIssues ? '$(warning)' : ''} SPFx ${version ?? ''}`.trim();
     CommandPanel.statusBarItem.tooltip = status.tooltip;
-    CommandPanel.statusBarItem.command = CommandPanel.refreshSpfxStatusCommand;
+    CommandPanel.statusBarItem.command = Commands.refreshSpfxProjectStatus;
     CommandPanel.statusBarItem.show();
+  }
+
+  private static isProjectManifestFile(fileName: string): boolean {
+    const baseName = path.basename(fileName);
+    if (baseName !== '.yo-rc.json' && baseName !== 'package.json') {
+      return false;
+    }
+
+    const folders = workspace.workspaceFolders;
+    if (!folders || folders.length === 0) {
+      return false;
+    }
+
+    const normalized = path.normalize(fileName);
+    return folders.some(folder => {
+      const root = folder.uri.fsPath;
+      return normalized === path.join(root, baseName) ||
+             normalized === path.join(root, 'src', baseName);
+    });
   }
 
   private static async registerTasksTreeView() {
