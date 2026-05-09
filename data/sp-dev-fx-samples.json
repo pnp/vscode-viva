@@ -12449,6 +12449,29 @@
       "sampleType": "samples"
     },
     {
+      "name": "pnp-sp-dev-spfx-web-parts-react-powerapps-power-palette",
+      "title": "Power Palette Studio",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-powerapps-power-palette",
+      "description": "A SharePoint Framework (SPFx) web part that lets you generate, customize, and preview color palettes for Power Apps themes — all within SharePoint. Choose colors, fine-tune them with an interactive HSL picker, and instantly see how they look applied to a realistic dashboard in desktop and mobile views. When you're happy with your palette, copy the ready-to-paste Power Apps ColorValue formula with one click.",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-powerapps-power-palette/assets/power-palette-light-dark.png",
+      "authors": [
+        {
+          "name": "Sandeep-FED",
+          "pictureUrl": "https://github.com/Sandeep-FED.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2026-04-01",
+      "updateDate": "2026-04-01",
+      "version": "1.21.1",
+      "componentType": "webpart",
+      "extensionType": null,
+      "sampleGallery": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
       "name": "pnp-sp-dev-spfx-web-parts-react-ppp-pnp-controls",
       "title": "Property Pane Portal PnP Controls Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-ppp-pnp-controls",
