@@ -1,16 +1,16 @@
 {
 	"name": "viva-connections-toolkit",
-	"version": "4.18.0",
+	"version": "4.19.0",
 	"lockfileVersion": 3,
 	"requires": true,
 	"packages": {
 		"": {
 			"name": "viva-connections-toolkit",
-			"version": "4.18.0",
+			"version": "4.19.0",
 			"license": "MIT",
 			"dependencies": {
 				"@grconrad/vscode-extension-feedback": "^1.0.0",
-				"@pnp/cli-microsoft365-spfx-toolkit": "1.10.0",
+				"@pnp/cli-microsoft365-spfx-toolkit": "1.11.0",
 				"node-forge": "1.4.0",
 				"react-markdown": "10.1.0",
 				"rehype-raw": "7.0.0",
@@ -858,9 +858,9 @@
 			}
 		},
 		"node_modules/@pnp/cli-microsoft365-spfx-toolkit": {
-			"version": "1.10.0",
-			"resolved": "https://registry.npmjs.org/@pnp/cli-microsoft365-spfx-toolkit/-/cli-microsoft365-spfx-toolkit-1.10.0.tgz",
-			"integrity": "sha512-Db0BpjAF6Q76UWsjpTcCuMRf4xHJqYvwKb93oQKQsoUyLy5GixPK89S7Z9RVWmRS+b66DDIY4ohvyJ1aJeKDWA==",
+			"version": "1.11.0",
+			"resolved": "https://registry.npmjs.org/@pnp/cli-microsoft365-spfx-toolkit/-/cli-microsoft365-spfx-toolkit-1.11.0.tgz",
+			"integrity": "sha512-YMjLH3D+7zowLMjJlB5UCRe8SJPkYyhpWx1ok8CobnAjhH0xvo3Yryt1UKIaQUOi76tQGOe+9WWpCWpInxAlbA==",
 			"hasShrinkwrap": true,
 			"license": "MIT",
 			"dependencies": {
@@ -872,7 +872,7 @@
 				"adaptivecards-templating": "^2.3.1",
 				"adm-zip": "^0.5.10",
 				"applicationinsights": "^2.9.8",
-				"axios": "^0.30.2",
+				"axios": "0.30.2",
 				"chalk": "^4.1.2",
 				"clipboardy": "^2.3.0",
 				"csv-stringify": "^6.4.0",
