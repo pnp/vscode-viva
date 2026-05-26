@@ -23,16 +23,7 @@ jobs:
         with:
           node-version: 22
 
-      - name: Cache node modules
-        id: cache
-        uses: actions/cache@v4
-        with:
-          path: |
-            **/docs/node_modules
-          key: docs_node_modules-${{ hashFiles('**/docs/package-lock.json') }}
-      
       - name: Install the dependencies
-        if: steps.cache.outputs.cache-hit != 'true'
         run: npm ci
         working-directory: docs
 
