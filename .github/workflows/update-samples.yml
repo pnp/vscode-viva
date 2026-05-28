@@ -10,6 +10,7 @@ jobs:
     if: github.repository_owner == 'pnp'
     name: "Update samples json"
     runs-on: windows-latest
+    timeout-minutes: 40
 
     permissions:
       contents: write
@@ -17,28 +18,28 @@ jobs:
     
     steps:
       - name: Checkout vscode-viva
-        uses: actions/checkout@v5
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd  # v6.0.2
 
       - name: Checkout sp-dev-fx-aces
-        uses: actions/checkout@v5
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd  # v6.0.2
         with:
           repository: pnp/sp-dev-fx-aces
           path: sp-dev-fx-aces
 
       - name: Checkout sp-dev-fx-extensions
-        uses: actions/checkout@v5
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd  # v6.0.2
         with:
           repository: pnp/sp-dev-fx-extensions
           path: sp-dev-fx-extensions
 
       - name: Checkout sp-dev-fx-library-components
-        uses: actions/checkout@v5
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd  # v6.0.2
         with:
           repository: pnp/sp-dev-fx-library-components
           path: sp-dev-fx-library-components
 
       - name: Checkout sp-dev-fx-webparts
-        uses: actions/checkout@v5
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd  # v6.0.2
         with:
           repository: pnp/sp-dev-fx-webparts
           path: sp-dev-fx-webparts
