@@ -66,7 +66,7 @@
       ],
       "createDate": "2021-09-29",
       "updateDate": "2021-11-29",
-      "version": "1.13.0-beta.17",
+      "version": "1.23.0",
       "componentType": "adaptiveCardExtension",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-aces",
@@ -1431,7 +1431,7 @@
       ],
       "createDate": "2022-02-28",
       "updateDate": "2023-03-06",
-      "version": "1.16.1",
+      "version": "1.23.0",
       "componentType": "adaptiveCardExtension",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-aces",
@@ -8737,6 +8737,29 @@
       "sampleType": "samples"
     },
     {
+      "name": "pnp-sp-dev-spfx-web-parts-react-events",
+      "title": "React Events Feed Web Part",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-events",
+      "description": "A SharePoint Framework (SPFx) web part that aggregates and displays calendar events from multiple sources — Microsoft 365 Group calendars and SharePoint list calendars — in a single, unified feed. It supports 9 layout styles, live date-range filtering with timezone-aware boundaries, drag-and-drop reordering, and full SharePoint theme integration via Fluent UI v9. Built with @spteck/react-controls-v2 and runs on SharePoint Online, Microsoft Teams, and Microsoft 365 (Office) hosts.",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-events/assets/feed01.png",
+      "authors": [
+        {
+          "name": "João Mendes",
+          "pictureUrl": "https://github.com/joaojmendes.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2026-05-24",
+      "updateDate": "2026-05-24",
+      "version": "1.23.0",
+      "componentType": "webpart",
+      "extensionType": null,
+      "sampleGallery": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
       "name": "pnp-sp-dev-spfx-web-parts-react-events-aggregator",
       "title": "Event Aggregator Sample (DEPRECATED)",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-events-aggregator",
@@ -9359,8 +9382,8 @@
       "tags": [
         "SharePoint"
       ],
-      "createDate": "2026-12-25",
-      "updateDate": "2026-12-31",
+      "createDate": "2026-03-06",
+      "updateDate": "2026-03-06",
       "version": "1.22.2",
       "componentType": "webpart",
       "extensionType": null,
@@ -11941,7 +11964,7 @@
         "SharePoint"
       ],
       "createDate": "2019-09-05",
-      "updateDate": "2026-01-12",
+      "updateDate": "2026-05-15",
       "version": "1.20.0",
       "componentType": "webpart",
       "extensionType": null,
@@ -15327,6 +15350,29 @@
       "createDate": "2018-11-01",
       "updateDate": "2021-09-26",
       "version": "1.12.1",
+      "componentType": "webpart",
+      "extensionType": null,
+      "sampleGallery": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
+      "name": "pnp-sp-dev-spfx-web-parts-spfx-news",
+      "title": "News Web Part",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/spfx-news",
+      "description": "A SharePoint Framework (SPFx) web part that displays SharePoint news in 6 configurable layout modes, with support for data source selection, auto-refresh, card customization, and full Fluent UI v9 theming. Built with @spteck/react-controls-v2 and runs on SharePoint Online, Microsoft Teams, and Microsoft 365 (Office) hosts.",
+      "image": null,
+      "authors": [
+        {
+          "name": "João Mendes",
+          "pictureUrl": "https://github.com/joaojmendes.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2026-05-17",
+      "updateDate": "2026-05-17",
+      "version": "1.22.2",
       "componentType": "webpart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
