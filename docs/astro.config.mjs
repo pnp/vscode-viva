@@ -48,6 +48,7 @@ export default defineConfig({
 				{
 					label: 'Scenarios',
 					items: [
+						{ label: 'Use SPFx Toolkit features in any SharePoint Framework version', link: 'scenarios/use-spfx-toolkit-with-any-spfx-version' },
 						{ label: 'Upgrade SPFx project using SPFx Toolkit language model tools in GitHub Copilot Chat', link: 'scenarios/spfx-project-upgrade-lm-tool' },
 						{ label: 'Manage SharePoint pages using SPFx Toolkit language model tools in GitHub Copilot Chat', link: 'scenarios/manage-sp-pages-lm-tools' }
 					],
