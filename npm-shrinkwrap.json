@@ -1,12 +1,12 @@
 {
   "name": "viva-connections-toolkit",
-  "version": "4.19.0",
+  "version": "4.19.1",
   "lockfileVersion": 3,
   "requires": true,
   "packages": {
     "": {
       "name": "viva-connections-toolkit",
-      "version": "4.19.0",
+      "version": "4.19.1",
       "license": "MIT",
       "dependencies": {
         "@grconrad/vscode-extension-feedback": "1.0.0",
@@ -4472,7 +4472,6 @@
       "resolved": "https://registry.npmjs.org/fsevents/-/fsevents-2.3.3.tgz",
       "integrity": "sha512-5xoDfX+fL7faATnagmWPpbFtwh/R77WmMMqqHGS65C3vvB0YHrgF+B1YmZ3441tMj5n63k0212XNoJwzlhffQw==",
       "extraneous": true,
-      "optional": true,
       "hasInstallScript": true,
       "license": "MIT",
       "os": [
