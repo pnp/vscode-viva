@@ -8600,14 +8600,18 @@
         {
           "name": "Sandeep P S",
           "pictureUrl": "https://github.com/Sandeep-FED.png"
+        },
+        {
+          "name": "AOAI SDK",
+          "pictureUrl": "https://github.com/Azure/azure-sdk-for-js/tree/main/sdk/openai/openai.png"
         }
       ],
       "tags": [
         "SharePoint"
       ],
       "createDate": "2025-04-27",
-      "updateDate": "2025-10-22",
-      "version": "1.21.1",
+      "updateDate": "2026-04-26",
+      "version": "1.22.2",
       "componentType": "webpart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
@@ -10425,6 +10429,33 @@
       "createDate": "2020-07-02",
       "updateDate": "2026-01-23",
       "version": "1.22.1",
+      "componentType": "webpart",
+      "extensionType": null,
+      "sampleGallery": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
+      "name": "pnp-sp-dev-spfx-web-parts-react-legallens",
+      "title": "LegalLens SPFx Solution",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-legallens",
+      "description": "AI-powered contract management and e-signature platform built on SharePoint Online. Includes an SPFx web part for internal users and a vendor-facing signing flow backed by Azure Functions — no SharePoint access required for external signers.",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-legallens/assets/placeholder-app-screenshot.png",
+      "authors": [
+        {
+          "name": "Sai Siva Ram Bandaru",
+          "pictureUrl": "https://github.com/saiiiiiii.png"
+        },
+        {
+          "name": "Antanina Druzhkina",
+          "pictureUrl": "https://github.com/Ateina.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2026-04-10",
+      "updateDate": "2026-04-10",
+      "version": "1.22.0",
       "componentType": "webpart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
