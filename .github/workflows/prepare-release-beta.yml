@@ -8,6 +8,7 @@ jobs:
     if: github.repository_owner == 'pnp'
     name: "Prepares the pre-release"
     runs-on: windows-latest
+    timeout-minutes: 40
 
     permissions:
       contents: write
@@ -16,10 +17,10 @@ jobs:
     
     steps:
       - name: Checkout vscode-viva
-        uses: actions/checkout@v5
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd  # v6.0.2
 
       - name: Setup node
-        uses: actions/setup-node@v5
+        uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e  # v6.4.0
         with:
           node-version: 22
           registry-url: https://registry.npmjs.org/
@@ -30,7 +31,7 @@ jobs:
         continue-on-error: false
 
       - name: Verification - Install the dependencies
-        run: npm install --omit=optional
+        run: npm ci --ignore-scripts --omit=optional
 
       - name: Verification - Build
         run: npm run vscode:prepublish
