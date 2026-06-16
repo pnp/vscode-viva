@@ -18,28 +18,28 @@ jobs:
     
     steps:
       - name: Checkout vscode-viva
-        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd  # v6.0.2
+        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10  # v6.0.3
 
       - name: Checkout sp-dev-fx-aces
-        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd  # v6.0.2
+        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10  # v6.0.3
         with:
           repository: pnp/sp-dev-fx-aces
           path: sp-dev-fx-aces
 
       - name: Checkout sp-dev-fx-extensions
-        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd  # v6.0.2
+        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10  # v6.0.3
         with:
           repository: pnp/sp-dev-fx-extensions
           path: sp-dev-fx-extensions
 
       - name: Checkout sp-dev-fx-library-components
-        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd  # v6.0.2
+        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10  # v6.0.3
         with:
           repository: pnp/sp-dev-fx-library-components
           path: sp-dev-fx-library-components
 
       - name: Checkout sp-dev-fx-webparts
-        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd  # v6.0.2
+        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10  # v6.0.3
         with:
           repository: pnp/sp-dev-fx-webparts
           path: sp-dev-fx-webparts
