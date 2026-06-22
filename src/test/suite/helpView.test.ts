@@ -176,7 +176,7 @@ suite('Help and feedback', () => {
             },
             {
                 label: 'SPFx Local Workbench',
-                url: 'https://marketplace.visualstudio.com/items?itemName=theChrisKent.spfx-local-workbench'
+                url: 'https://marketplace.visualstudio.com/items?itemName=m365pnp.pnp-spfx-local-workbench'
             },
             {
                 label: 'CLI for Microsoft 365 MCP server',
