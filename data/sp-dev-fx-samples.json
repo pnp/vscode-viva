@@ -2559,6 +2559,29 @@
       "sampleType": "samples"
     },
     {
+      "name": "pnp-sp-dev-spfx-extensions-react-access-lens",
+      "title": "Access Lens",
+      "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-access-lens",
+      "description": "Inspect SharePoint document library permissions from the command bar.",
+      "image": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-access-lens/assets/panel-overview.png",
+      "authors": [
+        {
+          "name": "Rick Wenz",
+          "pictureUrl": "https://github.com/rwenz02.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2026-06-15",
+      "updateDate": "2026-06-16",
+      "version": "1.23.0",
+      "componentType": "extension",
+      "extensionType": "SPFX-LISTVIEW-COMMANDSET",
+      "sampleGallery": "sp-dev-fx-extensions",
+      "sampleType": "samples"
+    },
+    {
       "name": "pnp-sp-dev-spfx-extensions-react-app-announcements",
       "title": "Announcements SharePoint Framework application customizer",
       "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-app-announcements",
@@ -4297,6 +4320,29 @@
       "sampleType": "samples"
     },
     {
+      "name": "pnp-sp-dev-spfx-extensions-react-command-task-mgmt",
+      "title": "Grouped ListView Command Set - Task Management",
+      "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-command-task-mgmt",
+      "description": "This sample demonstrates the new Grouping support for ListView Command Sets introduced in SPFx 1.23. It adds a grouped Status command (with Approve and Reject sub-commands) to the SharePoint modern list view toolbar and context menu.",
+      "image": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-command-task-mgmt/assets/task-management.png",
+      "authors": [
+        {
+          "name": "Aimery Thomas",
+          "pictureUrl": "https://github.com/a1mery.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2026-05-31",
+      "updateDate": "2026-05-31",
+      "version": "1.23.0",
+      "componentType": "extension",
+      "extensionType": "ApplicationCustomizer",
+      "sampleGallery": "sp-dev-fx-extensions",
+      "sampleType": "samples"
+    },
+    {
       "name": "pnp-sp-dev-spfx-extensions-react-command-vision-api",
       "title": "Image Metadata from Cognitive Services Vision API List View Command Set",
       "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-command-vision-api",
@@ -4884,6 +4930,29 @@
       "version": "1.12.0",
       "componentType": "extension",
       "extensionType": "ListViewCommandSet",
+      "sampleGallery": "sp-dev-fx-extensions",
+      "sampleType": "samples"
+    },
+    {
+      "name": "pnp-sp-dev-spfx-extensions-react-site-content-ribbon-extension",
+      "title": "Site Content Ribbon Extension",
+      "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-site-content-ribbon-extension",
+      "description": "Site Content Ribbon Extension is a SharePoint Framework Application Customizer for SharePoint Online that adds a ribbon-style “Site content” action to the SharePoint header and opens a modern, searchable experience for browsing site content directly from the current page.",
+      "image": null,
+      "authors": [
+        {
+          "name": "Harminder Singh",
+          "pictureUrl": "https://github.com/HarminderSethi.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2026-06-19",
+      "updateDate": "2026-06-19",
+      "version": "1.23.0",
+      "componentType": "extension",
+      "extensionType": "ApplicationCustomizer",
       "sampleGallery": "sp-dev-fx-extensions",
       "sampleType": "samples"
     },
@@ -8610,7 +8679,7 @@
         "SharePoint"
       ],
       "createDate": "2025-04-27",
-      "updateDate": "2026-04-26",
+      "updateDate": "2026-06-17",
       "version": "1.22.2",
       "componentType": "webpart",
       "extensionType": null,
@@ -10078,6 +10147,29 @@
       "sampleType": "samples"
     },
     {
+      "name": "pnp-sp-dev-spfx-web-parts-react-hot-desk-booking",
+      "title": "React Hot Desk Booking Web Part",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-hot-desk-booking",
+      "description": "This SharePoint Framework (SPFx) web part enables organizations to efficiently manage shared resource bookings, such as hot desks, parking spots, and lockers. Users can browse available resources, make instant bookings for specific dates, view their existing bookings, and cancel reservations when needed.",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-hot-desk-booking/assets/screenshot1.png",
+      "authors": [
+        {
+          "name": "sudeepghatak",
+          "pictureUrl": "https://github.com/sudeepghatak.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2026-06-22",
+      "updateDate": "2026-06-22",
+      "version": "1.20.0",
+      "componentType": "webpart",
+      "extensionType": null,
+      "sampleGallery": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
       "name": "pnp-sp-dev-spfx-web-parts-react-htm-templating",
       "title": "HTM (Hyperscript Tagged Markup) Templating Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-htm-templating",
@@ -10381,7 +10473,7 @@
       "title": "JSON form builder Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-json-form",
       "description": "Build a custom form with ease",
-      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-caml2table/assets/Demo.gif",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-json-form/assets/Demo.gif",
       "authors": [
         {
           "name": "Dan Toft",
@@ -13398,7 +13490,7 @@
       ],
       "createDate": "2025-09-07",
       "updateDate": "2025-11-20",
-      "version": "1.21.1",
+      "version": "1.23.0",
       "componentType": "webpart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
