@@ -1303,7 +1303,7 @@
       ],
       "createDate": "2021-10-06",
       "updateDate": "2021-10-06",
-      "version": "1.13.0-beta.15",
+      "version": "1.23.0",
       "componentType": "adaptiveCardExtension",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-aces",
@@ -14740,7 +14740,7 @@
         "SharePoint"
       ],
       "createDate": "2025-06-13",
-      "updateDate": "2025-06-13",
+      "updateDate": "2026-06-24",
       "version": "1.20.0",
       "componentType": "webpart",
       "extensionType": null,
