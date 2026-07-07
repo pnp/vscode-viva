@@ -1615,7 +1615,7 @@
     "typescript": "^5.8.3",
     "webpack": "^5.76.0",
     "webpack-cli": "^5.0.0",
-    "webpack-dev-server": "^5.2.5"
+    "webpack-dev-server": "^6.0.0"
   },
   "dependencies": {
     "@grconrad/vscode-extension-feedback": "^1.0.0",
