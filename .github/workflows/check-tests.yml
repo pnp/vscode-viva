@@ -32,6 +32,8 @@ jobs:
       - name: Install dependencies for SPFx Toolkit
         run: npm ci --ignore-scripts --omit=optional
         working-directory: vscode-viva
+        env:
+          npm_config_omit: optional
 
       - name: Build SPFx Toolkit
         run: npm run package
