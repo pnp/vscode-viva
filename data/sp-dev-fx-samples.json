@@ -4934,6 +4934,29 @@
       "sampleType": "samples"
     },
     {
+      "name": "pnp-sp-dev-spfx-extensions-react-share-via-teams-chat-extension",
+      "title": "Share via Teams Chat",
+      "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-share-via-teams-chat-extension",
+      "description": "Share via Teams Chat is a SharePoint Framework list view command set that enables users to send one or more selected SharePoint list items or documents to Microsoft Teams chats and channels as a rich, formatted message with an Adaptive Card.",
+      "image": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-share-via-teams-chat-extension/assets/SendToTeamsMenuOption.png",
+      "authors": [
+        {
+          "name": "Harminder Singh",
+          "pictureUrl": "https://github.com/HarminderSethi.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2026-07-02",
+      "updateDate": "2026-07-02",
+      "version": "1.23.0",
+      "componentType": "extension",
+      "extensionType": "ApplicationCustomizer",
+      "sampleGallery": "sp-dev-fx-extensions",
+      "sampleType": "samples"
+    },
+    {
       "name": "pnp-sp-dev-spfx-extensions-react-site-content-ribbon-extension",
       "title": "Site Content Ribbon Extension",
       "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-site-content-ribbon-extension",
@@ -14252,6 +14275,29 @@
       "createDate": "2018-11-19",
       "updateDate": "2018-11-19",
       "version": "1.7.0",
+      "componentType": "webpart",
+      "extensionType": null,
+      "sampleGallery": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
+      "name": "pnp-sp-dev-spfx-web-parts-react-team-randomiser",
+      "title": "Team Randomiser",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-team-randomiser",
+      "description": "Randomly assign people into evenly-sized groups with a single click. Enter a list of names and a desired group size; the web part shuffles them and displays colour-coded group cards. Hit Shuffle Groups to re-randomise at any time.",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-team-randomiser/assets/screenshot.png",
+      "authors": [
+        {
+          "name": "Sudeep Ghatak",
+          "pictureUrl": "https://github.com/sudeepghatak.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2026-07-01",
+      "updateDate": "2026-07-01",
+      "version": "1.20.0",
       "componentType": "webpart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
