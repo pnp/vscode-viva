@@ -12641,6 +12641,29 @@
       "sampleType": "samples"
     },
     {
+      "name": "pnp-sp-dev-spfx-web-parts-react-power-platform-environments",
+      "title": "Power Platform Environments",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-power-platform-environments",
+      "description": "Manage and explore Power Platform environments directly from SharePoint with sorting, environment details, administrative actions and environment deletion.",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-power-platform-environments/assets/sample.png",
+      "authors": [
+        {
+          "name": "joshua",
+          "pictureUrl": "https://github.com/brayjosh.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2026-07-09",
+      "updateDate": "2026-07-09",
+      "version": "1.23.0",
+      "componentType": "webpart",
+      "extensionType": null,
+      "sampleGallery": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
       "name": "pnp-sp-dev-spfx-web-parts-react-powerapps-power-palette",
       "title": "Power Palette Studio",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-powerapps-power-palette",
@@ -12658,6 +12681,29 @@
       "createDate": "2026-04-01",
       "updateDate": "2026-04-01",
       "version": "1.21.1",
+      "componentType": "webpart",
+      "extensionType": null,
+      "sampleGallery": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
+      "name": "pnp-sp-dev-spfx-web-parts-react-powerautomate-approvals",
+      "title": "Power Automate Approvals",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-powerautomate-approvals",
+      "description": "The Power Automate Approvals web part is a SharePoint Framework (SPFx) solution that demonstrates how to consume the Microsoft Graph Approvals API (beta) using the native MSGraphClientV3 HTTP client. It renders a full approvals dashboard - approvals waiting on you, requests you've raised, and their history - with a per-item detail panel showing an activity timeline built from approver responses and reassignment history.",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-powerautomate-approvals/assets/PA Approvals 1.png",
+      "authors": [
+        {
+          "name": "Siddharth Vaghasia",
+          "pictureUrl": "https://github.com/siddharth-vaghasia.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2026-07-07",
+      "updateDate": "2026-07-07",
+      "version": "1.22.1",
       "componentType": "webpart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
