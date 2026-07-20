@@ -4,7 +4,7 @@ import { Extension } from '../dataType/Extension';
 import { Subscription } from '../../models';
 import { Commands, WebViewType } from '../../constants';
 import { PnPWebview } from '../../webview/PnPWebview';
-import { executeCommand } from '@pnp/cli-microsoft365';
+import { executeCommand } from '@pnp/cli-microsoft365-spfx-toolkit';
 import { Logger } from '../dataType/Logger';
 import { Notifications } from '../dataType/Notifications';
 import { EnvironmentInformation } from '../dataType/EnvironmentInformation';

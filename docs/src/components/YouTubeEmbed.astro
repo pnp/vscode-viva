@@ -1,0 +1,66 @@
+---
+const { videoId, videoTitle } = Astro.props;
+---
+
+
+<div class="youtube-video-container"
+    data-video-id={videoId}
+    data-video-title={videoTitle}
+    role="button"
+    aria-label={`Play ${videoTitle} video`}
+    tabindex="0"
+    style="position:relative;cursor:pointer;max-width:560px;width:100%;aspect-ratio:16/9;margin:auto;border-radius:8px;overflow:hidden;">
+
+    <img src={`https://img.youtube.com/vi/${videoId}/hqdefault.jpg`}
+        alt={`Video thumbnail for ${videoTitle}`}
+        style="width:100%;height:100%;object-fit:cover;display:block;"
+        loading="lazy" />
+
+    <div style="position:absolute;top:0;left:0;width:100%;height:100%;display:flex;align-items:center;justify-content:center;">
+        <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="40" cy="40" r="40" fill="rgba(0,0,0,0.6)" />
+            <polygon points="32,25 60,40 32,55" fill="#fff" />
+        </svg>
+    </div>
+</div>
+
+<noscript>
+    <iframe src={`https://www.youtube.com/embed/${videoId}`}
+            title={videoTitle}
+            width="560" height="315"
+            allowfullscreen
+            loading="lazy"
+            style="border:none;border-radius:8px;"></iframe>
+</noscript>
+
+<script>
+    document.querySelectorAll('.youtube-video-container').forEach(container => {
+        const videoId = container.dataset.videoId;
+        const title = container.dataset.videoTitle;
+
+        const embedIframe = () => {
+            if (container.dataset.loaded === "true") return;
+
+            container.innerHTML = `
+                <iframe src=\"https://www.youtube.com/embed/${videoId}?autoplay=1\"
+                        title=\"${title}\"
+                        loading=\"lazy\"
+                        allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\"
+                        allowfullscreen
+                        style=\"width:100%;height:100%;aspect-ratio:16/9;border:none;border-radius:8px;\"></iframe>
+            `;
+            container.dataset.loaded = "true";
+        };
+
+        const onClick = () => embedIframe();
+        const onKeyDown = (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                embedIframe();
+            }
+        };
+
+        container.addEventListener('click', onClick);
+        container.addEventListener('keydown', onKeyDown);
+    });
+</script>

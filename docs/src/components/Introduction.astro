@@ -1,0 +1,50 @@
+---
+import YouTubeEmbed from './YouTubeEmbed.astro';
+---
+
+
+<div class="intro">
+    <h2>What is SPFx Toolkit?</h2>
+    <div class="intro-body">
+        <div class="intro-content">
+            <p>
+                <strong>
+                    <a href="https://marketplace.visualstudio.com/items?itemName=m365pnp.viva-connections-toolkit" target="_blank" rel="noopener noreferrer">
+                        SharePoint Framework Toolkit
+                    </a>
+                </strong> 
+                is a Visual Studio Code extension that helps you build, deploy, and manage 
+                <a href="https://learn.microsoft.com/en-us/sharepoint/dev/spfx/sharepoint-framework-overview?WT.mc_id=m365-15744-cxa" target="_blank" rel="noopener noreferrer">
+                    SharePoint Framework (SPFx)
+                </a> projects faster.
+            </p>
+            <p>
+                Working with SPFx takes effort. You need to set up the right development environment, install the correct versions of Node.js and global tools, scaffold projects, run the right build and package commands, deploy packages, approve API permissions, and manage your solutions across different app catalogs. Most of this means memorizing steps and constantly switching between VS Code, the terminal, and various SharePoint portals.
+            </p>
+            <p>
+                That's why we built SPFx Toolkit, an open-source extension co-created with the Microsoft 365 developer community, to bring the full SPFx development lifecycle into a single, centralized experience inside VS Code.
+            </p>
+            
+        </div>
+        <div class="youtube-video">
+            <YouTubeEmbed videoId="dObwt18yieE" videoTitle="Getting Started with SharePoint Framework with SPFx Toolkit" />
+        </div>
+        <p>
+            With SharePoint Framework Toolkit you:
+        </p>
+        <ul>
+            <li><strong><a href="/vscode-viva/features/setup">Validate your environment</a></strong> to check Node.js version, dependencies, and tools. Fix missing requirements with one click.</li>
+            <li><strong><a href="/vscode-viva/features/sign-in">Sign in and manage your tenant</a></strong> by authenticating using Entra app registration. View admin URLs, service health, and manage solutions.</li>
+            <li><strong><a href="/vscode-viva/features/scaffolding">Scaffold new projects</a></strong> using a guided form to create Web Parts, Extensions, ACEs, and Library Components.</li>
+            <li><strong><a href="/vscode-viva/features/scaffolding#sample-gallery-start-with-a-sample">Use community samples</a></strong> by browsing, searching, and filtering samples. One-click to clone, rename, and open with npm install running automatically.</li>
+            <li><strong><a href="/vscode-viva/features/coding#gulp-tasks-view">Run and manage Gulp tasks</a></strong> with common tasks (build, bundle, clean, package, serve) available with one click.</li>
+            <li><strong><a href="/vscode-viva/features/actions">Boost productivity with Actions</a></strong> to validate, rename, or upgrade projects. Scaffold components, grant permissions, or create workflows.</li>
+            <li><strong><a href="/vscode-viva/features/management-capabilities">Manage apps in app catalogs</a></strong> by deploying, enabling, disabling, uninstalling, or removing SPFx solutions from tenant and site app catalogs.</li>
+            <li><strong><a href="/vscode-viva/features/github-copilot-capabilities#chat-participant">Use @spfx Copilot Chat Participant</a></strong> by mentioning @spfx for tailored guidance. Use command like /new for instant help.</li>
+            <li><strong><a href="/vscode-viva/features/github-copilot-capabilities#agent-mode---language-model-tools">Use language model tools (agent mode)</a></strong> where Copilot adds AI skills to manage your tenant, create sites, install apps, and more.</li>
+        </ul>
+        <p>
+            How much faster could you build if everything you do in SPFx was available inside VS Code?
+        </p>
+    </div>
+</div>

@@ -1,6 +1,7 @@
 import { parseWinPath } from '../../utils/parseWinPath';
 import { Folders } from '../check/Folders';
 import { Notifications } from '../dataType/Notifications';
+import { execSync } from 'child_process';
 import { Logger } from '../dataType/Logger';
 import { commands, ProgressLocation, QuickPickItem, Uri, window, workspace } from 'vscode';
 import { Commands, ComponentType, ProjectFileContent, WebviewCommand, WebViewType } from '../../constants';
@@ -11,11 +12,11 @@ import * as glob from 'fast-glob';
 import { Extension } from '../dataType/Extension';
 import download from 'github-directory-downloader/esm';
 import { CliExecuter } from '../executeWrappers/CliCommandExecuter';
-import { getExtensionSettings, getPlatform } from '../../utils';
+import { getExtensionSettings, getPackageManager, getPlatform } from '../../utils';
 import { PnPWebview } from '../../webview/PnPWebview';
 import { Executer } from '../executeWrappers/CommandExecuter';
-import { TeamsToolkitIntegration } from '../dataType/TeamsToolkitIntegration';
 import { TerminalCommandExecuter } from '../executeWrappers/TerminalCommandExecuter';
+import { M365AgentsToolkitIntegration } from '../dataType/M365AgentsToolkitIntegration';
 
 
 export const PROJECT_FILE = 'project.pnp';
@@ -229,6 +230,35 @@ export class Scaffolder {
   }
 
   /**
+   * Validates required dependencies for SPFx scaffolding.
+   * @returns A promise that resolves to an object indicating whether the dependencies are valid or an error message.
+   */
+  private static async validateDependencies(): Promise<{ isValid: boolean, errorMessage?: string }> {
+    Logger.info('Validating required dependencies...');
+
+    try {
+      execSync('yo @microsoft/sharepoint --help', { encoding: 'utf8', stdio: 'pipe' });
+      return { isValid: true };
+    } catch (error: any) {
+      const errorMessage = error.stderr || 'Failed to validate dependencies';
+      const validateLocalSetupOption = 'Validate local setup';
+      Notifications.error(
+        errorMessage,
+        validateLocalSetupOption
+      ).then((selectedOption) => {
+        if (selectedOption === validateLocalSetupOption) {
+          commands.executeCommand(Commands.checkDependencies);
+        }
+      });
+
+      return {
+        isValid: false,
+        errorMessage
+      };
+    }
+  }
+
+  /**
    * Scaffold method for creating a new project.
    * @param input - The input for the scaffold command.
    * @param isNewProject - A boolean indicating whether it's a new project or not.
@@ -236,6 +266,12 @@ export class Scaffolder {
    */
   private static async scaffold(input: SpfxScaffoldCommandInput | SpfxAddComponentCommandInput, isNewProject: boolean) {
     Logger.info('Start creating a new project');
+
+    const dependencyCheck = await Scaffolder.validateDependencies();
+    if (!dependencyCheck.isValid) {
+      PnPWebview.postMessage(WebviewCommand.toWebview.resetFormState, {});
+      return;
+    }
 
     let yoCommand = '';
 
@@ -276,7 +312,7 @@ export class Scaffolder {
           const wsFolder = await Folders.getWorkspaceFolder();
           let path = wsFolder?.uri.fsPath;
 
-          if (path && TeamsToolkitIntegration.isTeamsToolkitProject) {
+          if (path && M365AgentsToolkitIntegration.isM365AgentsToolkitProject) {
             path = join(path, 'src');
           }
 
@@ -285,6 +321,7 @@ export class Scaffolder {
 
         const result = await Executer.executeCommand(folderPath, yoCommand);
         if (result !== 0) {
+          PnPWebview.postMessage(WebviewCommand.toWebview.resetFormState, {});
           Notifications.errorNoLog(`Error creating the component. Check [output window](command:${Commands.showOutputChannel}) for more details.`);
           return;
         }
@@ -308,10 +345,6 @@ export class Scaffolder {
 
           if (newSolutionInput.shouldInstallPnPJs) {
             content += ` ${ProjectFileContent.installPnPJs}`;
-          }
-
-          if (newSolutionInput.shouldInstallSPFxFastServe) {
-            content += ` ${ProjectFileContent.installSPFxFastServe}`;
           }
 
           if (newSolutionInput.shouldCreateNodeVersionFile) {
@@ -342,12 +375,19 @@ export class Scaffolder {
 
           Scaffolder.createProjectFileAndOpen(newFolderPath, content);
         } else {
+          // always run package manager install after adding a component
+          const terminalTitle = 'Installing dependencies';
+          const terminalIcon = 'cloud-download';
+          const packageManager = getPackageManager();
+          await TerminalCommandExecuter.runCommandAndWait(`${packageManager} install`, terminalTitle, terminalIcon);
+
           PnPWebview.close();
         }
 
         Notifications.info('Component successfully created.');
       } catch (e) {
         Logger.error((e as Error).message);
+        PnPWebview.postMessage(WebviewCommand.toWebview.resetFormState, {});
         Notifications.errorNoLog(`Error creating the component. Check [output window](command:${Commands.showOutputChannel}) for more details.`);
       }
     });

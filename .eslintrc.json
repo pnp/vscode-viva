@@ -13,7 +13,7 @@
     ],
     "rules": {
         "@typescript-eslint/naming-convention": "off",
-        "@typescript-eslint/semi": "warn",
+        "@typescript-eslint/semi": "off",
         "no-compare-neg-zero": "error",
         "no-cond-assign": "error",
         "no-const-assign": "error",
@@ -26,7 +26,6 @@
         "curly": "error",
         "eqeqeq": "error",
         "no-throw-literal": "warn",
-        "semi": "error",
         "no-extra-semi": "error",
         "no-console": "error",
         "no-else-return": "error",

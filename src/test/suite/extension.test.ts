@@ -1,19 +1,16 @@
 import * as assert from 'assert';
 import * as vscode from 'vscode';
-import { sleep } from '../../utils/sleep';
+import { waitForExtensionToActivate } from '../utils';
 
 
-suite('Extension', () => {
-
+suite('Extension', function () {
+	this.timeout(10000);
 	suiteSetup(async () => {
-		do {
-			await sleep(1000);
-		} while (!vscode.extensions.getExtension('m365pnp.viva-connections-toolkit')?.isActive);
+		await waitForExtensionToActivate();
 	});
 
-	test('should activate', async () => {
-		const expected = true;
-		const actual = vscode.extensions.getExtension('m365pnp.viva-connections-toolkit')?.isActive;
-		assert.strictEqual(actual, expected);
+	test('should have the "spfx-toolkit.login" command', async () => {
+		const commands = await vscode.commands.getCommands(true);
+		assert(commands.includes('spfx-toolkit.login'));
 	});
 });

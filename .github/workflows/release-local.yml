@@ -5,56 +5,40 @@ on:
 
 jobs:
   build:
+    if: github.repository_owner == 'pnp'
     name: "Build and package"
     runs-on: ubuntu-latest
+    timeout-minutes: 40
+
+    permissions:
+      contents: read
 
     steps:
       - name: Setup node
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e  # v6.4.0
         with:
-          node-version: 20
+          node-version: 22
           registry-url: https://registry.npmjs.org/
       
       - name: Checkout vscode-viva
-        uses: actions/checkout@v4
+        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10  # v6.0.3
         with:
           path: vscode-viva
         
       - name: Install the dependencies
-        run: npm ci
+        run: npm ci --ignore-scripts --omit=optional
         working-directory: vscode-viva
 
-      - name: Checkout cli-microsoft365
-        uses: actions/checkout@v4
-        with:
-          repository: Adam-it/cli-microsoft365
-          path: cli-microsoft365
-          ref: cli-cjs
-
-      - name: Print dir
-        run: |
-          dir
-
-      - name: Restore dependencies for cli-microsoft365
-        run: npm i
-        working-directory: cli-microsoft365
-
-      - name: Build cli-microsoft365
-        run: npm run build
-        working-directory: cli-microsoft365
-
-      - name: Run script copy local CLI for M365    
-        run: .\vscode-viva\scripts\cli-for-microsoft365-copy-local-version.ps1 -workspacePath "${{ github.workspace }}"
-        shell: pwsh
-        continue-on-error: false
+      - name: Install vsce
+        run: npm install --global --ignore-scripts @vscode/vsce@3.3.2
+        working-directory: vscode-viva
 
       - name: Package
-        run: |
-          npx @vscode/vsce@2.30.0 package
+        run: vsce package
         working-directory: vscode-viva
 
       - name: Upload artifacts
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a  # v7.0.1
         with:
           name: vsix_package
           path: |

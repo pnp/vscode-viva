@@ -1,0 +1,1 @@
+export const EXTENSION_ID = 'm365pnp.viva-connections-toolkit';

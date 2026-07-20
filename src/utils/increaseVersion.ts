@@ -1,7 +1,7 @@
 import { readFileSync, writeFileSync } from 'fs';
 import { join } from 'path';
 import { workspace } from 'vscode';
-import { TeamsToolkitIntegration } from '../services/dataType/TeamsToolkitIntegration';
+import { M365AgentsToolkitIntegration } from '../services/dataType/M365AgentsToolkitIntegration';
 
 
 export async function increaseVersion(versionType: 'major' | 'minor' | 'patch') {
@@ -11,7 +11,7 @@ export async function increaseVersion(versionType: 'major' | 'minor' | 'patch') 
   }
 
   let packageSolutionFiles = [];
-  if (TeamsToolkitIntegration.isTeamsToolkitProject) {
+  if (M365AgentsToolkitIntegration.isM365AgentsToolkitProject) {
     packageSolutionFiles = await workspace.findFiles('src/config/package-solution.json', '**/node_modules/**');
   } else {
     packageSolutionFiles = await workspace.findFiles('config/package-solution.json', '**/node_modules/**');
@@ -30,7 +30,7 @@ export async function increaseVersion(versionType: 'major' | 'minor' | 'patch') 
   writeFileSync(packageJsonPath, JSON.stringify(packageJson, null, 2));
   writeFileSync(packageSolutionPath, JSON.stringify(packageSolution, null, 2));
 
-  if (TeamsToolkitIntegration.isTeamsToolkitProject) {
+  if (M365AgentsToolkitIntegration.isM365AgentsToolkitProject) {
     const packageJsonSrcPath = join(wsFolder.uri.fsPath, 'src', 'package.json');
     const packageJsonSrc = JSON.parse(readFileSync(packageJsonPath, 'utf8'));
     packageJsonSrc.version = newVersion;

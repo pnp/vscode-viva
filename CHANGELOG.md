@@ -1,5 +1,114 @@
 # Change Log
 
+## [4.19.0] - 2026-05-22
+
+- Added support for SPFx 1.23
+- Added status bar SPFx indicator
+- Added shortcut for the extension
+- Added SPFx workbench extension link
+
+## [4.18.0] - 2026-04-01
+
+- Updated the way SPFx Toolkit handles token refresh, which extends the time the user is signed in to SharePoint Online tenant
+- Updated the scaffolding form to communicate that it supports the latest version of SPFx
+- Refactored list-related language model tools CLI commands to use CSV output
+- Refactored or removed all usage of yo-rc.json
+- Refactored /setup chat command to SPFx setup language model tool
+- Fixed issue in the sample gallery with missing ACE samples
+- Fixed nvm use error on Windows without a version argument
+- Removed /info chat command
+- Added validate local setup for current project action
+
+## [4.17.0] - 2026-02-15
+
+- Added copy SharePoint Online page Language Model Tool
+- Updated 'add component form' to run install dependencies
+- Added support for SPFx 1.22.2
+
+## [4.16.0] - 2025-12-20
+
+- Fixed bug in project upgrade action
+
+## [4.15.0] - 2025-12-19
+
+- Technical Release to address VS Code Marketplace issue
+
+## [4.14.0] - 2025-12-18
+
+- Added Support for SPFx 1.22.0 and 1.22.1
+- Added preferred node package manager setting
+- Added Heft tasks view
+- Added remove_spo_page language model tool for SharePoint
+- Added get_spo_page language model tool for SharePoint
+- Added list_spo_page language model tool for modern SharePoint page listing
+- Added support for all SPFx versions to upgrade action and language model upgrade project tool
+- Fixed bug with publish solution
+- Extended copilot-instructions
+- Refactored spo_list_get language model tool
+- Refactored spo_list_add language model tool
+- Refactored spo_list_remove language model tool
+- Fixed Toolkit getting stuck during component creation if `yo` is not installed
+- Updated Contribution guidelines
+- Refactored the way we add CLI for Microsoft 365 to SPFx Toolkit
+- Updated install dependencies and validate local setup to support all SPFx versions
+- Added Timezone Dropdown for Tenant App Catalog Creation
+- Added Feedback form
+- Added npm scripts as part of Tasks view
+- Fixed sample gallery script
+- Added link for CLI for Microsoft 365 MCP server in the help and feedback section
+- Improved model description for list_spo_app, install_spo_app language model tools
+- Enhanced list_spo_app to support listing apps from site collection app catalog
+- Enhanced install_spo_app to install app from site level app catalog
+- Added new uninstall_spo_app language model tools
+- Added new upgrade_spo_app language model tool
+- Added new list_spo_app_instances language model tool
+
+## [4.12.0] - 2025-10-07
+
+- Compressed images in extension and docs
+- Updated Adaptive Card Designer link to new Microsoft URL
+- Fixed broken image links for proper rendering
+- Fixed app catalog view not to show deleted sites
+- Added copy/move app actions
+- Added CLI for Microsoft 365 package clean up
+- Updated spo_page_add Language Model Tool
+- Added try catch safe guards in sample gallery
+
+## [4.11.0] - 2025-10-07 
+
+- Technical Release to address VS Code Marketplace issue
+
+## [4.10.0] - 2025-10-04
+
+- Technical Release to address VS Code Marketplace issue
+
+## [4.9.0] - 2025-08-14
+
+- Added product integration tests
+- Added LM Tool to perform SPFx project upgrade by GitHub Copilot agent mode
+- Added management capabilities to tenant-wide extension: Enable/Disable, Remove, Update
+- Updated welcome experience, allowing users to always use the extension management capabilities
+- Added new extension settings that allow specifying the shell type for SPFx project upgrade action
+- Removed/Deprecated code chat participant command
+
+## [4.8.0] - 2025-06-07
+
+- Added LLM Tools for GitHub Copilot agent mode
+- Hidden app management related context-menu actions from the command pallete
+- Added support for installing the correct version of Node.js
+- Fixed setting form customizer list from to root site
+- Updated command category names to shorten version
+- Updated default action for SPFx app to install
+- Renamed the /manage chat command to /info
+- Added gulp operations to VS Code extension commands
+- Updated gulp tasks icons
+- Updated Teams Toolkit to M365 Agents Toolkit
+- Updated wiki link to a new name and URL
+- Updated Dependencies
+- Added features to add tenant app catalog and add/remove site app catalog
+- Added progress notification for SPFx actions
+- Added upgrade suggestion in case installation fails due to app being already installed
+
 ## [4.7.0] - 2025-05-04
 
 - Added support for SPFx 1.21.1

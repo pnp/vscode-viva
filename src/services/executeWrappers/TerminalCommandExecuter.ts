@@ -1,9 +1,9 @@
-import { commands, ThemeIcon, workspace, window, Terminal } from 'vscode';
+import { commands, ThemeIcon, workspace, window, Terminal, Disposable } from 'vscode';
 import { Commands, NodeVersionManagers } from '../../constants';
 import { Subscription } from '../../models';
 import { Extension } from '../dataType/Extension';
 import { getPlatform, getExtensionSettings } from '../../utils';
-import { TeamsToolkitIntegration } from '../dataType/TeamsToolkitIntegration';
+import { M365AgentsToolkitIntegration } from '../dataType/M365AgentsToolkitIntegration';
 import { Folders } from '../check/Folders';
 import { join } from 'path';
 import { ServeConfig } from '../../models/ServeConfig';
@@ -12,28 +12,71 @@ import { Logger } from '../dataType/Logger';
 
 
 interface ShellSetting {
-  path: string;
+  source?: string;
+  path?: string;
 }
 
 export class TerminalCommandExecuter {
-  private static shellPath: string | undefined = undefined;
+  private static shellPath: ShellSetting = {};
 
   public static register() {
     const subscriptions: Subscription[] = Extension.getInstance().subscriptions;
     subscriptions.push(
-      commands.registerCommand(Commands.serveProject, TerminalCommandExecuter.serveProject)
-    );
-    subscriptions.push(
-      commands.registerCommand(Commands.bundleProject, TerminalCommandExecuter.bundleProject)
-    );
-    subscriptions.push(
-      commands.registerCommand(Commands.packageProject, TerminalCommandExecuter.packageProject)
-    );
-    subscriptions.push(
-      commands.registerCommand(Commands.publishProject, TerminalCommandExecuter.publishProject)
-    );
-    subscriptions.push(
       commands.registerCommand(Commands.executeTerminalCommand, TerminalCommandExecuter.runCommand)
+    );
+    subscriptions.push(
+      commands.registerCommand(Commands.gulpServeProject, TerminalCommandExecuter.gulpServeProject)
+    );
+    subscriptions.push(
+      commands.registerCommand(Commands.heftStartProject, TerminalCommandExecuter.heftStartProject)
+    );
+    subscriptions.push(
+      commands.registerCommand(Commands.gulpBundleProject, TerminalCommandExecuter.gulpBundleProject)
+    );
+    subscriptions.push(
+      commands.registerCommand(Commands.gulpPackageProject, TerminalCommandExecuter.gulpPackageProject)
+    );
+    subscriptions.push(
+      commands.registerCommand(Commands.heftEjectProject, TerminalCommandExecuter.heftEjectProject)
+    );
+    subscriptions.push(
+      commands.registerCommand(Commands.heftPackageProject, TerminalCommandExecuter.heftPackageProject)
+    );
+    subscriptions.push(
+      commands.registerCommand(Commands.gulpPublishProject, TerminalCommandExecuter.gulpPublishProject)
+    );
+    subscriptions.push(
+      commands.registerCommand(Commands.heftPublishProject, TerminalCommandExecuter.heftPublishProject)
+    );
+    subscriptions.push(
+      commands.registerCommand(Commands.gulpCleanProject, TerminalCommandExecuter.gulpCleanProject)
+    );
+    subscriptions.push(
+      commands.registerCommand(Commands.heftCleanProject, TerminalCommandExecuter.heftCleanProject)
+    );
+    subscriptions.push(
+      commands.registerCommand(Commands.gulpBuildProject, TerminalCommandExecuter.gulpBuildProject)
+    );
+    subscriptions.push(
+      commands.registerCommand(Commands.heftBuildProject, TerminalCommandExecuter.heftBuildProject)
+    );
+    subscriptions.push(
+      commands.registerCommand(Commands.gulpTestProject, TerminalCommandExecuter.gulpTestProject)
+    );
+    subscriptions.push(
+      commands.registerCommand(Commands.heftTestProject, TerminalCommandExecuter.heftTestProject)
+    );
+    subscriptions.push(
+      commands.registerCommand(Commands.gulpTrustDevCert, TerminalCommandExecuter.gulpTrustDevCert)
+    );
+    subscriptions.push(
+      commands.registerCommand(Commands.heftTrustDevCert, TerminalCommandExecuter.heftTrustDevCert)
+    );
+    subscriptions.push(
+      commands.registerCommand(Commands.gulpDeployToAzureStorage, TerminalCommandExecuter.gulpDeployToAzureStorage)
+    );
+    subscriptions.push(
+      commands.registerCommand(Commands.heftDeployToAzureStorage, TerminalCommandExecuter.heftDeployToAzureStorage)
     );
 
     TerminalCommandExecuter.initShellPath();
@@ -53,14 +96,14 @@ export class TerminalCommandExecuter {
    * @param terminalTitle - The title of the terminal.
    * @param terminalIcon - The icon of the terminal.
    */
-  public static async runCommand(command: string, terminalTitle: string = 'Gulp task', terminalIcon: string = 'tasks-list-configure') {
+  public static async runCommand(command: string, terminalTitle: string = 'Task', terminalIcon: string = 'tasks-list-configure') {
     const terminal = await TerminalCommandExecuter.createTerminal(terminalTitle, terminalIcon);
 
     const wsFolder = await Folders.getWorkspaceFolder();
     if (wsFolder) {
       let currentProjectPath = wsFolder.uri.fsPath;
 
-      if (TeamsToolkitIntegration.isTeamsToolkitProject) {
+      if (M365AgentsToolkitIntegration.isM365AgentsToolkitProject) {
         currentProjectPath = join(currentProjectPath, 'src');
       }
 
@@ -71,9 +114,52 @@ export class TerminalCommandExecuter {
   }
 
   /**
+   * Runs a command in a terminal and waits for it to complete.
+   * @param command - The command to run.
+   * @param terminalTitle - The title of the terminal.
+   * @param terminalIcon - The icon of the terminal.
+   * @returns A promise that resolves when the command completes with exit code 0, or rejects on non-zero exit.
+   */
+  public static async runCommandAndWait(command: string, terminalTitle: string = 'Task', terminalIcon: string = 'terminal'): Promise<void> {
+    const terminal = await TerminalCommandExecuter.createTerminal(terminalTitle, terminalIcon);
+
+    if (!terminal) {
+      throw new Error('Failed to create terminal');
+    }
+
+    const wsFolder = await Folders.getWorkspaceFolder();
+    if (wsFolder) {
+      let currentProjectPath = wsFolder.uri.fsPath;
+
+      if (M365AgentsToolkitIntegration.isM365AgentsToolkitProject) {
+        currentProjectPath = join(currentProjectPath, 'src');
+      }
+
+      terminal.sendText(`cd "${currentProjectPath}"`);
+    }
+
+    return new Promise<void>((resolve, reject) => {
+      const disposable: Disposable = window.onDidCloseTerminal(async (closedTerminal) => {
+        if (closedTerminal === terminal) {
+          disposable.dispose();
+          const exitStatus = await closedTerminal.exitStatus;
+          if (exitStatus && exitStatus.code !== 0) {
+            reject(new Error(`Command failed with exit code ${exitStatus.code}`));
+          } else {
+            resolve();
+          }
+        }
+      });
+
+      terminal.show(true);
+      terminal.sendText(`${command}${TerminalCommandExecuter.getCommandChainOperator()} exit`);
+    });
+  }
+
+  /**
    * Serves the project based on the user selected task type.
    */
-  public static async serveProject(): Promise<void> {
+  public static async gulpServeProject(): Promise<void> {
     const wsFolder = await Folders.getWorkspaceFolder();
     if (!wsFolder) {
       return;
@@ -92,7 +178,34 @@ export class TerminalCommandExecuter {
         commands.executeCommand(Commands.executeTerminalCommand, 'gulp serve --nobrowser');
         break;
       case 'Serve from configuration':
-        TerminalCommandExecuter.serveFromConfiguration();
+        await TerminalCommandExecuter.serveFromConfiguration('gulp serve --config=');
+        break;
+    }
+  }
+
+  /**
+   * Start the project based on the user selected task type.
+   */
+  public static async heftStartProject(): Promise<void> {
+    const wsFolder = await Folders.getWorkspaceFolder();
+    if (!wsFolder) {
+      return;
+    }
+
+    const startTaskType = await TerminalCommandExecuter.startTaskTypePrompt();
+    if (!startTaskType) {
+      return;
+    }
+
+    switch (startTaskType) {
+      case 'Start':
+        commands.executeCommand(Commands.executeTerminalCommand, 'heft start');
+        break;
+      case 'Start (no browser)':
+        commands.executeCommand(Commands.executeTerminalCommand, 'heft start --nobrowser');
+        break;
+      case 'Start from configuration':
+        await TerminalCommandExecuter.serveFromConfiguration('heft start --serve-config=');
         break;
     }
   }
@@ -101,7 +214,7 @@ export class TerminalCommandExecuter {
    * Serves the project by executing the specified configuration using Gulp.
    * Prompts the user to select a configuration from the serve.json file.
    */
-  public static async serveFromConfiguration() {
+  public static async serveFromConfiguration(startCommand: string) {
     const configNames = await TerminalCommandExecuter.getServeConfigNames();
 
     const answer = await window.showQuickPick(configNames, {
@@ -113,13 +226,13 @@ export class TerminalCommandExecuter {
       return;
     }
 
-    commands.executeCommand(Commands.executeTerminalCommand, `gulp serve --config=${answer}`);
+    commands.executeCommand(Commands.executeTerminalCommand, `${startCommand}${answer}`);
   }
 
   /**
    * Bundles the project based on the environment type selected by the user.
    */
-  public static async bundleProject() {
+  public static async gulpBundleProject() {
     const answer = await TerminalCommandExecuter.environmentTypePrompt();
 
     if (answer) {
@@ -128,10 +241,17 @@ export class TerminalCommandExecuter {
   }
 
   /**
+   * Heft command to eject the project
+   */
+  public static async heftEjectProject() {
+    commands.executeCommand(Commands.executeTerminalCommand, 'heft eject-webpack');
+  }
+
+  /**
    * Prompts the user to select an environment type and executes the appropriate
    * Gulp command to package the project based on the user's selection.
    */
-  public static async packageProject() {
+  public static async gulpPackageProject() {
     const answer = await TerminalCommandExecuter.environmentTypePrompt();
 
     if (answer) {
@@ -141,13 +261,39 @@ export class TerminalCommandExecuter {
 
   /**
    * Prompts the user to select an environment type and executes the appropriate
-   * Gulp command to publish (bundle & package) the project based on the user's selection.
+   * Heft command to package the project based on the user's selection.
    */
-  public static async publishProject() {
+  public static async heftPackageProject() {
     const answer = await TerminalCommandExecuter.environmentTypePrompt();
 
     if (answer) {
-      commands.executeCommand(Commands.executeTerminalCommand, `gulp bundle${answer === 'local' ? '' : ' --ship'} && gulp package-solution${answer === 'local' ? '' : ' --ship'}`);
+      commands.executeCommand(Commands.executeTerminalCommand, `heft package-solution${answer === 'local' ? '' : ' --production'}`);
+    }
+  }
+
+  /**
+   * Prompts the user to select an environment type and executes the appropriate
+   * Gulp command to publish (bundle & package) the project based on the user's selection.
+   */
+  public static async gulpPublishProject() {
+    const answer = await TerminalCommandExecuter.environmentTypePrompt();
+
+    if (answer) {
+      const cmdChainOperator = TerminalCommandExecuter.getCommandChainOperator();
+      commands.executeCommand(Commands.executeTerminalCommand, `gulp bundle${answer === 'local' ? '' : ' --ship'}${cmdChainOperator} gulp package-solution${answer === 'local' ? '' : ' --ship'}`);
+    }
+  }
+
+  /**
+   * Prompts the user to select an environment type and executes the appropriate
+   * Heft command to publish (build & package) the project based on the user's selection.
+   */
+  public static async heftPublishProject() {
+    const answer = await TerminalCommandExecuter.environmentTypePrompt();
+
+    if (answer) {
+      const cmdChainOperator = TerminalCommandExecuter.getCommandChainOperator();
+      commands.executeCommand(Commands.executeTerminalCommand, `heft build${answer === 'local' ? '' : ' --production'}${cmdChainOperator} heft package-solution${answer === 'local' ? '' : ' --production'}`);
     }
   }
 
@@ -155,7 +301,7 @@ export class TerminalCommandExecuter {
    * Gets the names of the serve configurations from the serve.json file.
    */
   private static async getServeConfigNames(): Promise<string[]> {
-    const wsFolder = Folders.getWorkspaceFolder();
+    const wsFolder = await Folders.getWorkspaceFolder();
     if (!wsFolder) {
       return [];
     }
@@ -189,18 +335,92 @@ export class TerminalCommandExecuter {
   }
 
   /**
+   * Cleans the project by executing the Gulp clean command.
+   */
+  private static gulpCleanProject() {
+    commands.executeCommand(Commands.executeTerminalCommand, 'gulp clean');
+  }
+
+  /**
+   * Cleans the project by executing the Heft clean command.
+   */
+  private static heftCleanProject() {
+    commands.executeCommand(Commands.executeTerminalCommand, 'heft clean');
+  }
+
+  /**
+   * Builds the project by executing the Gulp build command.
+  */
+  private static gulpBuildProject() {
+    commands.executeCommand(Commands.executeTerminalCommand, 'gulp build');
+  }
+
+  /**
+   * Builds the project by executing the Heft build command.
+  */
+  private static async heftBuildProject() {
+    const answer = await TerminalCommandExecuter.environmentTypePrompt();
+
+    if (answer) {
+      commands.executeCommand(Commands.executeTerminalCommand, `heft build${answer === 'local' ? '' : ' --production'}`);
+    }
+  }
+
+  /**
+   * Tests the project by executing the Gulp test command.
+  */
+  private static gulpTestProject() {
+    commands.executeCommand(Commands.executeTerminalCommand, 'gulp test');
+  }
+
+  /**
+   * Tests the project by executing the Heft test command.
+  */
+  private static heftTestProject() {
+    commands.executeCommand(Commands.executeTerminalCommand, 'heft test');
+  }
+
+  /**
+   * Trusts the development certificate by executing the Gulp trust-dev-cert command.
+  */
+  private static gulpTrustDevCert() {
+    commands.executeCommand(Commands.executeTerminalCommand, 'gulp trust-dev-cert');
+  }
+
+  /**
+   * Trusts the development certificate by executing the Heft trust-dev-cert command.
+  */
+  private static heftTrustDevCert() {
+    commands.executeCommand(Commands.executeTerminalCommand, 'heft trust-dev-cert');
+  }
+
+  /**
+   * Deploys to Azure CDN by executing the Gulp deploy-to-azure-storage command.
+  */
+  private static gulpDeployToAzureStorage() {
+    commands.executeCommand(Commands.executeTerminalCommand, 'gulp deploy-azure-storage');
+  }
+
+  /**
+   * Deploys to Azure CDN by executing the Heft deploy-azure-storage command.
+  */
+  private static heftDeployToAzureStorage() {
+    commands.executeCommand(Commands.executeTerminalCommand, 'heft deploy-azure-storage');
+  }
+
+  /**
    * Initializes the shell path for executing terminal commands.
    * If the shell path is an object with a `path` property, it sets the `shellPath` to that value.
    * If the shell path is a string, it sets the `shellPath` to that value.
    * If the shell path is undefined, it sets the `shellPath` to undefined.
    */
   private static initShellPath() {
-    const shell: string | { path: string } | undefined = TerminalCommandExecuter.getShellPath();
+    const shell: string | ShellSetting | undefined = TerminalCommandExecuter.getShellPath();
 
     if (typeof shell !== 'string' && !!shell) {
-      TerminalCommandExecuter.shellPath = shell.path;
+      TerminalCommandExecuter.shellPath = shell;
     } else {
-      TerminalCommandExecuter.shellPath = shell || undefined;
+      TerminalCommandExecuter.shellPath.path = shell || undefined;
     }
   }
 
@@ -215,6 +435,21 @@ export class TerminalCommandExecuter {
     }
     return await window.showQuickPick(options, {
       title: 'Select the serve type',
+      ignoreFocusOut: true
+    });
+  }
+
+  /**
+   * Prompts the user to select the start task type.
+   */
+  private static async startTaskTypePrompt(): Promise<string | undefined> {
+    const configNames = await TerminalCommandExecuter.getServeConfigNames();
+    const options = ['Start', 'Start (no browser)'];
+    if (configNames.length > 1) {
+      options.push('Start from configuration');
+    }
+    return await window.showQuickPick(options, {
+      title: 'Select the start type',
       ignoreFocusOut: true
     });
   }
@@ -264,17 +499,45 @@ export class TerminalCommandExecuter {
       // Get the user's preferred node version manager -- nvm, nvs, fnm, or none if node version managernot selected
       const nodeVersionManager: string = getExtensionSettings('nodeVersionManager', 'nvm');
 
-      // Check if nvm is used
-      const nvmFiles = await workspace.findFiles('.nvmrc', '**/node_modules/**');
+      const nvmrcFiles = await workspace.findFiles('.nvmrc', '**/node_modules/**');
 
-      // If there are .nvmrc files and the user wants to use nvm, then 'use' their preferred node version manager
-      if (nvmFiles.length > 0 && nodeVersionManager !== NodeVersionManagers.none) {
-        if (nodeVersionManager === NodeVersionManagers.nvs) {
+      if (nodeVersionManager === NodeVersionManagers.nvs) {
+        const nodeVersionFiles = await workspace.findFiles('.node-version', '**/node_modules/**');
+
+        if (nvmrcFiles.length > 0 || nodeVersionFiles.length > 0) {
           terminal.sendText('nvs use');
-        } else if (nodeVersionManager === NodeVersionManagers.fnm) {
-          terminal.sendText('fnm use');
-        } else {
-          terminal.sendText('nvm use');
+        }
+      } else if (nodeVersionManager === NodeVersionManagers.nvm) {
+        if (nvmrcFiles.length > 0) {
+          const nvmrcPath = nvmrcFiles[0].fsPath;
+          try {
+            const content = readFileSync(nvmrcPath, 'utf8').trim();
+            const version = content.startsWith('v') ? content.substring(1) : content;
+            if (version) {
+              terminal.sendText(`nvm use ${version}`);
+            } else {
+              terminal.sendText('nvm use');
+            }
+          } catch (error) {
+            Logger.error(`Failed to read .nvmrc file at ${nvmrcPath}. Falling back to "nvm use" without version. Error: ${error}`);
+            terminal.sendText('nvm use');
+          }
+        }
+      } else if (nodeVersionManager === NodeVersionManagers.fnm) {
+        if (nvmrcFiles.length > 0) {
+          const nvmrcPath = nvmrcFiles[0].fsPath;
+          try {
+            const content = readFileSync(nvmrcPath, 'utf8').trim();
+            const version = content.startsWith('v') ? content.substring(1) : content;
+            if (version) {
+              terminal.sendText(`fnm use ${version}`);
+            } else {
+              terminal.sendText('fnm use');
+            }
+          } catch (error) {
+            Logger.error(`Failed to read .nvmrc file at ${nvmrcPath}. Falling back to "fnm use" without version. Error: ${error}`);
+            terminal.sendText('fnm use');
+          }
         }
       }
     }
@@ -292,5 +555,15 @@ export class TerminalCommandExecuter {
       terminal.show(true);
       terminal.sendText(` ${command}`);
     }
+  }
+
+  private static getCommandChainOperator(): string {
+    const shell = TerminalCommandExecuter.shell || '';
+
+    if (shell.path?.includes('PowerShell') || shell.path?.includes('pwsh') || shell.source?.includes('PowerShell') || shell.source?.includes('pwsh')) {
+      return ';';
+    }
+
+    return ' &&';
   }
 }
