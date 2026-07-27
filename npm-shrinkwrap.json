@@ -5087,6 +5087,7 @@
       "extraneous": true,
       "hasInstallScript": true,
       "license": "MIT",
+      "optional": true,
       "os": [
         "darwin"
       ],
