@@ -8,6 +8,7 @@ import { executeCommand } from '@pnp/cli-microsoft365-spfx-toolkit';
 import { Logger } from '../dataType/Logger';
 import { Notifications } from '../dataType/Notifications';
 import { EnvironmentInformation } from '../dataType/EnvironmentInformation';
+import { AppRegistrations } from '../dataType/AppRegistrations';
 import { AuthProvider } from '../../providers/AuthProvider';
 
 
@@ -63,12 +64,20 @@ export class EntraAppRegistration {
           }
         });
 
-        await EntraAppRegistration.context.globalState.update('clientId', EnvironmentInformation.clientId);
-        await EntraAppRegistration.context.globalState.update('tenantId', EnvironmentInformation.tenantId);
+        const { clientId, tenantId } = EnvironmentInformation;
+        if (!clientId || !tenantId) {
+          PnPWebview.close();
+          AuthProvider.signIn();
+          return;
+        }
+
+        const registration = await AuthProvider.nameAppRegistration({ name: 'SPFx Toolkit', clientId, tenantId });
+        await AppRegistrations.save(registration);
+        await AppRegistrations.setLastUsed(EntraAppRegistration.context, registration);
 
         Notifications.info('SPFx Toolkit App Registration created successfully');
         PnPWebview.close();
-        AuthProvider.signIn();
+        AuthProvider.login();
       });
     });
   }
