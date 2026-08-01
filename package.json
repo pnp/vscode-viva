@@ -8,7 +8,7 @@
   "homepage": "https://pnp.github.io/vscode-viva",
   "icon": "assets/logo-large.png",
   "engines": {
-    "vscode": "^1.93.0"
+    "vscode": "^1.125.0"
   },
   "categories": [
     "Snippets",
