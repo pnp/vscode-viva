@@ -560,10 +560,11 @@ export class SpfxAppCLIBulkActions {
         appCatalogUrl: string | undefined,
         isEnabled: boolean
     ): Promise<void> {
+        const webUrl = appCatalogUrl || EnvironmentInformation.appCatalogUrls?.[0];
         const appProductIdFilter = `Title eq '${app.Title}'`;
         const commandOptionsList: any = {
             listTitle: 'Apps for SharePoint',
-            webUrl: appCatalogUrl,
+            webUrl,
             fields: 'Id, Title, IsAppPackageEnabled',
             filter: appProductIdFilter
         };
@@ -577,7 +578,7 @@ export class SpfxAppCLIBulkActions {
             const commandOptionsSet: any = {
                 listTitle: 'Apps for SharePoint',
                 id: appListItemId,
-                webUrl: appCatalogUrl,
+                webUrl,
                 IsAppPackageEnabled: isEnabled
             };
 
@@ -664,12 +665,18 @@ export class SpfxAppCLIBulkActions {
     }
 
     /**
-     * Helper method to extract app catalog URL from a tree node.
+     * Helper method to extract the site URL from a tree node.
+     * The tenant app catalog node has no site-specific URL; site collection app catalog
+     * nodes carry the AppCatalog library URL (used to open it in the browser), so the
+     * '/AppCatalog' suffix is stripped to get back to the actual site URL.
      */
     private static getAppCatalogUrlFromNode(node: ActionTreeItem): string | undefined {
+        if (node.contextValue === 'sp-tenant-app-catalog-url') {
+            return undefined;
+        }
         if (node.command?.arguments?.[0]) {
             const urlString = node.command.arguments[0] as string;
-            return urlString;
+            return urlString.replace('/AppCatalog', '');
         }
         return undefined;
     }
