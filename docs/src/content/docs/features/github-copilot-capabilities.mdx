@@ -3,9 +3,9 @@ title: GitHub Copilot Capabilities
 description: Explore the capabilities of SPFx Toolkit in GitHub Copilot
 ---
 
-SPFx Toolkit provides a set of AI capabilities that may be used in GitHub Copilot Chat extension. The chat participant allows you to have a discussion grounded for SharePoint Framework development and the Language Model tools will provide you with several capabilities to manage your SharePoint Online tenant.
+SPFx Toolkit provides a set of AI Language Model tools that  will provide you with several capabilities to manage your SharePoint Online tenant.
 
-## Agent Mode - Language Model Tools
+## Language Model Tools
 
 SPFx Toolkit provides a set of language model tools that are available in GitHub Copilot agent mode. Some of them are designed to work in the context of your SharePoint Framework project but other may work regardless of what you have opened in VS Code and aim to do common task on your SharePoint Online tenant.
 
@@ -14,8 +14,6 @@ SPFx Toolkit provides a set of language model tools that are available in GitHub
 You don't need to do anything specific to use any of the language model tools in GitHub Copilot agent mode. Copilot should figure out the best tool that it may use to fulfill your prompt. Optionally you may `#` hashtag a tool in your prompt to make it clear what you want to be used.
 
 ![language-model-tools-in-action](../../../../assets/images-vscode/language-model-tools-in-action.png)
-
-### SharePoint Online Management
 
 This set of tools aim to allow you to perform common management tasks on your SharePoint Online tenant. In order to use them you need to be first signed in to your tenant in SPFx Toolkit. 
 
@@ -41,26 +39,7 @@ The extension provides the following tools
 | SharePointSiteRemove              | Remove a SharePoint Online site                           |
 | SharePointFrameworkProjectUpgrade | Upgrade SharePoint Framework project                      |
 | SharePointFrameworkLocalEnvironmentSetup | Set up local environment for SharePoint Framework development |
-
-## Chat Participant
-
-![chat-intro](../../../../assets/images-vscode/chat-intro.png)
-
-SPFx Toolkit comes along with a chat participant that you may use in GitHub Copilot ask mode. Simply, mention @spfx in the chat to ask dedicated questions regarding SharePoint Framework development. 
-
-@spfx is your dedicated AI assistant that will help you with anything that is needed to develop your SharePoint Framework project. It has predefined commands that are tailored toward a specific activity for which you require guidance.
-
-![chat-commands](../../../../assets/images-vscode/chat-commands.png)
-
-Lets explore the available commands that you may use in the chat participant.
-
-### `/new`
-
-May be used to get guidance on how to create a new solution or find and reuse an existing sample from the PnP SPFx sample gallery
-Check it out in action 👇
-
-![chat-in-action-new](../../../../assets/images-vscode/chat-in-action-new.gif)
-![chat-in-action-new2](../../../../assets/images-vscode/chat-in-action-new2.gif)
+| SharePointFrameworkCreateNewProject | Create a new SharePoint Framework project               |
 
 ## Managing Microsoft 365 tenant using natural language
 

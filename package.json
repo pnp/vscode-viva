@@ -48,22 +48,6 @@
   "license": "MIT",
   "main": "./dist/extension.js",
   "contributes": {
-    "chatParticipants": [
-      {
-        "id": "spfx-toolkit.pnp",
-        "fullName": "SPFx Toolkit",
-        "name": "spfx",
-        "description": "How can I help you with SPFx development? Use /new command for job specific support.",
-        "isSticky": true,
-        "commands": [
-          {
-            "name": "new",
-            "isSticky": true,
-            "description": "Create a new SharePoint Framework project"
-          }
-        ]
-      }
-    ],
     "languageModelTools": [
       {
         "name": "install_spo_app",
@@ -719,6 +703,166 @@
               "default": ""
             }
           }
+        }
+      },
+      {
+        "name": "create_spfx_project",
+        "tags": [
+          "sharepoint framework",
+          "SPFx",
+          "project",
+          "new",
+          "create",
+          "spfx-toolkit"
+        ],
+        "toolReferenceName": "SharePointFrameworkCreateNewProject",
+        "displayName": "Create new SharePoint Framework project",
+        "modelDescription": "This tool will help you create a new SharePoint Framework project using the Yeoman generator. It will prompt for project details and generate the necessary files and structure for a new SPFx project.",
+        "userDescription": "Create new SharePoint Framework project",
+        "canBeReferencedInPrompt": true,
+        "icon": "$(package)",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "solutionName": {
+              "type": "string",
+              "description": "Solution name and folder name. This option is required."
+            },
+            "componentType": {
+              "type": "string",
+              "description": "The type of component. Allowed values: webpart, extension, library, adaptiveCardExtension. This option is required.",
+              "enum": [
+                "webpart",
+                "extension",
+                "library",
+                "adaptiveCardExtension"
+              ]
+            },
+            "componentName": {
+              "type": "string",
+              "description": "Component name. This option is required."
+            },
+            "framework": {
+              "type": "string",
+              "description": "Template to use. Allowed values: none, react, minimal. Required when componentType is webpart or extension. For extensionType FormCustomizer, only react and none are allowed.",
+              "enum": [
+                "none",
+                "react",
+                "minimal"
+              ]
+            },
+            "extensionType": {
+              "type": "string",
+              "description": "The type of extension. Allowed values: ApplicationCustomizer, FieldCustomizer, ListViewCommandSet, FormCustomizer, SearchQueryModifier. Required when componentType is extension.",
+              "enum": [
+                "ApplicationCustomizer",
+                "FieldCustomizer",
+                "ListViewCommandSet",
+                "FormCustomizer",
+                "SearchQueryModifier"
+              ]
+            },
+            "aceTemplateType": {
+              "type": "string",
+              "description": "The type of adaptive card extension template. Allowed values: Generic, Search, DataVisualization. Required when componentType is adaptiveCardExtension.",
+              "enum": [
+                "Generic",
+                "Search",
+                "DataVisualization"
+              ]
+            },
+            "skipInstall": {
+              "type": "boolean",
+              "description": "Set to true to add --skip-install and avoid automatic dependency installation."
+            }
+          },
+          "required": [
+            "solutionName",
+            "componentType",
+            "componentName"
+          ],
+          "allOf": [
+            {
+              "if": {
+                "properties": {
+                  "componentType": {
+                    "enum": [
+                      "webpart",
+                      "extension"
+                    ]
+                  }
+                },
+                "required": [
+                  "componentType"
+                ]
+              },
+              "then": {
+                "required": [
+                  "framework"
+                ]
+              }
+            },
+            {
+              "if": {
+                "properties": {
+                  "componentType": {
+                    "const": "extension"
+                  }
+                },
+                "required": [
+                  "componentType"
+                ]
+              },
+              "then": {
+                "required": [
+                  "extensionType"
+                ]
+              }
+            },
+            {
+              "if": {
+                "properties": {
+                  "componentType": {
+                    "const": "adaptiveCardExtension"
+                  }
+                },
+                "required": [
+                  "componentType"
+                ]
+              },
+              "then": {
+                "required": [
+                  "aceTemplateType"
+                ]
+              }
+            },
+            {
+              "if": {
+                "properties": {
+                  "componentType": {
+                    "const": "extension"
+                  },
+                  "extensionType": {
+                    "const": "FormCustomizer"
+                  }
+                },
+                "required": [
+                  "componentType",
+                  "extensionType"
+                ]
+              },
+              "then": {
+                "properties": {
+                  "framework": {
+                    "enum": [
+                      "none",
+                      "react"
+                    ]
+                  }
+                }
+              }
+            }
+          ]
         }
       }
     ],
