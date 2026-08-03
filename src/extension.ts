@@ -11,7 +11,6 @@ import { AuthProvider } from './providers/AuthProvider';
 import { CliActions } from './services/actions/CliActions';
 import { ProjectFileContent } from './constants';
 import { EntraAppRegistration } from './services/actions/EntraAppRegistration';
-import { CopilotActions } from './services/actions/CopilotActions';
 import { ChatTools } from './chat/tools/ChatTools';
 import { SpfxAppCLIActions } from './services/actions/SpfxAppCLIActions';
 import { IncreaseVersionActions } from './services/actions/IncreaseVersionActions';
@@ -37,7 +36,6 @@ export async function activate(context: vscode.ExtensionContext) {
 	CliActions.registerCommands();
 	SpfxAppCLIActions.registerCommands();
 	EntraAppRegistration.registerCommands(context);
-	CopilotActions.registerCommands();
 	IncreaseVersionActions.registerCommands();
 
 	CommandPanel.register();
