@@ -835,7 +835,7 @@
             "npm",
             "pnpm"
           ],
-          "description": "Choose your preferred Node package manager. Choose between `npm` and  `pnpm`."
+          "description": "Choose your preferred Node package manager. Choose between `npm` and `pnpm`."
         },
         "spfx-toolkit.showServiceIncidentList": {
           "title": "Show service health incidents",
