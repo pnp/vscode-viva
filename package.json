@@ -833,10 +833,9 @@
           "default": "npm",
           "enum": [
             "npm",
-            "pnpm",
-            "yarn"
+            "pnpm"
           ],
-          "description": "Choose your preferred Node package manager. Choose between `npm`, `pnpm`, or `yarn`."
+          "description": "Choose your preferred Node package manager. Choose between `npm` and `pnpm`."
         },
         "spfx-toolkit.showServiceIncidentList": {
           "title": "Show service health incidents",
