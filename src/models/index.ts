@@ -5,6 +5,7 @@ export * from './GenerateWorkflowCommandInput';
 export * from './Sample';
 export * from './ServeConfig';
 export * from './SiteAppCatalog';
+export * from './SiteAppCatalogExport';
 export * from './solution-add-result';
 export * from './SpfxAddComponentCommandInput';
 export * from './SpfxDoctorOutput';

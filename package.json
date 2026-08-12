@@ -1297,6 +1297,12 @@
         "icon": "$(trash)"
       },
       {
+        "command": "spfx-toolkit.exportSiteAppCatalogs",
+        "title": "Export Site App Catalogs",
+        "category": "SPFx Toolkit",
+        "icon": "$(export)"
+      },
+      {
         "command": "spfx-toolkit.moreTenantWideExtensionActions",
         "title": "...",
         "category": "SPFx Toolkit",
@@ -1450,7 +1456,12 @@
         {
           "command": "spfx-toolkit.addSiteAppCatalog",
           "when": "viewItem == sp-app-catalog-root",
-          "group": "inline"
+          "group": "inline@1"
+        },
+        {
+          "command": "spfx-toolkit.exportSiteAppCatalogs",
+          "when": "viewItem == sp-app-catalog-root",
+          "group": "inline@2"
         },
         {
           "command": "spfx-toolkit.removeSiteAppCatalog",
