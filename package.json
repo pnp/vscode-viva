@@ -849,6 +849,35 @@
           "default": true,
           "description": "When set it will load all apps in every app catalog from your tenant."
         },
+        "spfx-toolkit.appRegistrations": {
+          "title": "Entra app registrations",
+          "type": "array",
+          "default": [],
+          "scope": "application",
+          "markdownDescription": "The Entra app registrations saved for signing in to Microsoft 365. Entries are added when you sign in and may be removed from the sign in list.",
+          "items": {
+            "type": "object",
+            "required": [
+              "clientId",
+              "tenantId"
+            ],
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "The friendly name shown in the sign in list."
+              },
+              "clientId": {
+                "type": "string",
+                "description": "Application (client) ID"
+              },
+              "tenantId": {
+                "type": "string",
+                "description": "Tenant ID"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
         "spfx-toolkit.createNodeVersionFileDefaultValue": {
           "title": "Default value for the Node version file option",
           "type": "boolean",

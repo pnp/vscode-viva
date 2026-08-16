@@ -1,4 +1,5 @@
 export * from './AppCatalogApp';
+export * from './AppRegistration';
 export * from './command-result';
 export * from './CompatibilityItem';
 export * from './GenerateWorkflowCommandInput';
