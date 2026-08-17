@@ -335,22 +335,7 @@ It is also possible to set the default behavior when you're about to scaffold a 
 
 ![Settings Node version file default value](./docs/assets/images-vscode/settings-node-version-manager-file-default-value.png)
 
-### 1️⃣3️⃣ SPFx Toolkit GitHub Chat Participant 
-
-![SPFx Toolkit chat](./docs/assets/images-vscode/chat-intro.png)
-
-Now you may use SPFx Toolkit as a chat participant in GitHub Copilot chat extension. Simply, mention @spfx in the chat to ask dedicated questions regarding SharePoint Framework development. 
-
-![SPFx Toolkit chat in action](./docs/assets/images-vscode/chat-in-action-new.gif)
-
-![SPFx Toolkit chat in action](./docs/assets/images-vscode/chat-in-action-new2.gif)
-
-@spfx is your dedicated AI Copilot that will help you with anything that is needed to develop your SharePoint Framework project. It has predefined commands that are tailored toward a specific activity for which you require guidance.
-
-![SPFx Toolkit chat commands](./docs/assets/images-vscode/chat-commands.png)
-
-Currently, we support the following commands:
-- `/new` - that may be used to get guidance on how to create a new solution or find and reuse an existing sample from the PnP SPFx sample gallery
+### 1️⃣3️⃣ SPFx Toolkit GitHub Language Model Tools 
 
 The SPFx Toolkit Language Model Tools provide a set of skills may be used by GitHub Copilot in agent mode to assist you in your SharePoint Framework development tasks and managing your SharePoint Online tenant. 
 
@@ -383,6 +368,7 @@ The extension provides the following tools
 | SharePointSiteRemove              | Remove a SharePoint Online site                           |
 | SharePointFrameworkProjectUpgrade | Upgrade SharePoint Framework project                      |
 | SharePointFrameworkLocalEnvironmentSetup | Set up local environment for SharePoint Framework development |
+| SharePointFrameworkCreateNewProject | Create a new SharePoint Framework project               |
 
 [Check out our docs for more details](https://pnp.github.io/vscode-viva/features/github-copilot-capabilities)
 
