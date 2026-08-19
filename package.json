@@ -2,7 +2,7 @@
   "name": "viva-connections-toolkit",
   "displayName": "SharePoint Framework Toolkit",
   "description": "SharePoint Framework Toolkit aims to boost your productivity in developing and managing SharePoint Framework solutions helping at every stage of your development flow, from setting up your development workspace to deploying a solution straight to your tenant without the need to leave VS Code and now even create a CI/CD pipeline to introduce automate deployment of your app. This toolkit is provided by the community.",
-  "version": "4.20.0",
+  "version": "4.20.1",
   "publisher": "m365pnp",
   "preview": false,
   "homepage": "https://pnp.github.io/vscode-viva",
@@ -833,10 +833,9 @@
           "default": "npm",
           "enum": [
             "npm",
-            "pnpm",
-            "yarn"
+            "pnpm"
           ],
-          "description": "Choose your preferred Node package manager. Choose between `npm`, `pnpm`, or `yarn`."
+          "description": "Choose your preferred Node package manager. Choose between `npm` and `pnpm`."
         },
         "spfx-toolkit.showServiceIncidentList": {
           "title": "Show service health incidents",
@@ -1298,6 +1297,12 @@
         "icon": "$(trash)"
       },
       {
+        "command": "spfx-toolkit.exportSiteAppCatalogs",
+        "title": "Export Site App Catalogs",
+        "category": "SPFx Toolkit",
+        "icon": "$(export)"
+      },
+      {
         "command": "spfx-toolkit.moreTenantWideExtensionActions",
         "title": "...",
         "category": "SPFx Toolkit",
@@ -1451,7 +1456,12 @@
         {
           "command": "spfx-toolkit.addSiteAppCatalog",
           "when": "viewItem == sp-app-catalog-root",
-          "group": "inline"
+          "group": "inline@1"
+        },
+        {
+          "command": "spfx-toolkit.exportSiteAppCatalogs",
+          "when": "viewItem == sp-app-catalog-root",
+          "group": "inline@2"
         },
         {
           "command": "spfx-toolkit.removeSiteAppCatalog",
