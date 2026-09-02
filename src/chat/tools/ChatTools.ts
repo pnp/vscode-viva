@@ -10,6 +10,7 @@ import {
     SharePointListAdd,
     SharePointListGet,
     SharePointListRemove,
+    SharePointListSet,
     SharePointPageAdd,
     SharePointPageCopy,
     SharePointPageGet,
@@ -49,6 +50,9 @@ export class ChatTools {
         );
         subscriptions.push(
             lm.registerTool('remove_spo_list', new SharePointListRemove())
+        );
+        subscriptions.push(
+            lm.registerTool('update_spo_list', new SharePointListSet())
         );
         subscriptions.push(
             lm.registerTool('add_spo_page', new SharePointPageAdd())

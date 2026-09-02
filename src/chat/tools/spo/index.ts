@@ -6,6 +6,7 @@ export * from './app/AppUpgrade';
 export * from './list/ListAdd';
 export * from './list/ListGet';
 export * from './list/ListRemove';
+export * from './list/ListSet';
 export * from './page/PageAdd';
 export * from './page/PageCopy';
 export * from './page/PageGet';
