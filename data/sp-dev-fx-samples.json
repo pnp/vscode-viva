@@ -90,7 +90,7 @@
       ],
       "createDate": "2024-01-25",
       "updateDate": "2024-01-25",
-      "version": "1.18.0",
+      "version": "1.23.0",
       "componentType": "adaptiveCardExtension",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-aces",
@@ -186,7 +186,7 @@
       ],
       "createDate": "2023-04-13",
       "updateDate": "2023-04-13",
-      "version": "1.16.1",
+      "version": "1.23.0",
       "componentType": "adaptiveCardExtension",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-aces",
@@ -258,7 +258,7 @@
       ],
       "createDate": "2023-01-08",
       "updateDate": "2023-01-08",
-      "version": "1.15.2",
+      "version": "1.23.0",
       "componentType": "adaptiveCardExtension",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-aces",
@@ -475,7 +475,7 @@
       ],
       "createDate": "2024-03-09",
       "updateDate": "2024-03-09",
-      "version": "1.18.2",
+      "version": "1.23.0",
       "componentType": "adaptiveCardExtension",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-aces",
@@ -523,7 +523,7 @@
       ],
       "createDate": "2023-05-16",
       "updateDate": "2023-05-16",
-      "version": "1.16.1",
+      "version": "1.23.0",
       "componentType": "adaptiveCardExtension",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-aces",
@@ -547,7 +547,7 @@
       ],
       "createDate": "2024-03-20",
       "updateDate": "2024-03-20",
-      "version": "1.18.2",
+      "version": "1.23.0",
       "componentType": "adaptiveCardExtension",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-aces",
@@ -883,7 +883,7 @@
       ],
       "createDate": "2022-04-11",
       "updateDate": "2022-04-11",
-      "version": "1.13.0",
+      "version": "1.23.0",
       "componentType": "adaptiveCardExtension",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-aces",
@@ -987,7 +987,7 @@
       ],
       "createDate": "2023-11-01",
       "updateDate": "2023-11-01",
-      "version": "1.18.1",
+      "version": "1.23.0",
       "componentType": "adaptiveCardExtension",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-aces",
@@ -1107,7 +1107,7 @@
       ],
       "createDate": "2024-02-03",
       "updateDate": "2024-01-21",
-      "version": "1.18.2",
+      "version": "1.23.0",
       "componentType": "adaptiveCardExtension",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-aces",
@@ -1155,7 +1155,7 @@
       ],
       "createDate": "2023-06-28",
       "updateDate": "2023-06-28",
-      "version": "1.18.0",
+      "version": "1.23.0",
       "componentType": "adaptiveCardExtension",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-aces",
@@ -1179,7 +1179,7 @@
       ],
       "createDate": "2023-06-28",
       "updateDate": "2023-06-28",
-      "version": "1.18.0",
+      "version": "1.23.0",
       "componentType": "adaptiveCardExtension",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-aces",
@@ -1203,7 +1203,7 @@
       ],
       "createDate": "2023-06-28",
       "updateDate": "2023-06-28",
-      "version": "1.18.0",
+      "version": "1.23.0",
       "componentType": "adaptiveCardExtension",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-aces",
@@ -1255,7 +1255,7 @@
       ],
       "createDate": "2023-02-18",
       "updateDate": "2023-02-18",
-      "version": "1.15.2",
+      "version": "1.23.0",
       "componentType": "adaptiveCardExtension",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-aces",
@@ -1376,7 +1376,7 @@
       ],
       "createDate": "2022-11-08",
       "updateDate": "2022-11-08",
-      "version": "1.16.0-beta.2",
+      "version": "1.23.0",
       "componentType": "adaptiveCardExtension",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-aces",
@@ -1628,7 +1628,7 @@
       ],
       "createDate": "2022-02-07",
       "updateDate": "2022-02-07",
-      "version": "1.14.0-beta.4",
+      "version": "1.23.0",
       "componentType": "adaptiveCardExtension",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-aces",
@@ -1805,7 +1805,7 @@
       ],
       "createDate": "2022-09-11",
       "updateDate": "2022-09-11",
-      "version": "1.15.2",
+      "version": "1.23.0",
       "componentType": "adaptiveCardExtension",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-aces",
@@ -1829,7 +1829,7 @@
       ],
       "createDate": "2021-10-06",
       "updateDate": "2023-06-16",
-      "version": "1.17.2",
+      "version": "1.23.0",
       "componentType": "adaptiveCardExtension",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-aces",
@@ -1901,7 +1901,7 @@
       ],
       "createDate": "2023-10-31",
       "updateDate": "2023-10-31",
-      "version": "1.18.0",
+      "version": "1.23.0",
       "componentType": "adaptiveCardExtension",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-aces",
@@ -4198,6 +4198,29 @@
       "version": "1.10.0",
       "componentType": "extension",
       "extensionType": "ListViewCommandSet",
+      "sampleGallery": "sp-dev-fx-extensions",
+      "sampleType": "samples"
+    },
+    {
+      "name": "pnp-sp-dev-spfx-extensions-react-command-live-dashboard-sharepoint",
+      "title": "react-command-live-dashboard-sharepoint",
+      "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-command-live-dashboard-sharepoint",
+      "description": "This solution deploys an SPFx Command Set Extension to surface a SharePoint HTML Live Dashboard created using Copilot in the context of a SharePoint list or library. It adds a \"Show Dashboard\" command to the command bar; clicking it opens the Copilot-generated dashboard's embed page in a modal iframe popup, without leaving the list view.",
+      "image": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-command-live-dashboard-sharepoint/assets/1.png",
+      "authors": [
+        {
+          "name": "Siddharth Vaghasia",
+          "pictureUrl": "https://github.com/siddharth-vaghasia.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2026-08-29",
+      "updateDate": "2026-08-29",
+      "version": "1.24.0-beta.2",
+      "componentType": "extension",
+      "extensionType": "ApplicationCustomizer",
       "sampleGallery": "sp-dev-fx-extensions",
       "sampleType": "samples"
     },
@@ -7872,6 +7895,29 @@
       "sampleType": "samples"
     },
     {
+      "name": "pnp-sp-dev-spfx-web-parts-react-content-rollup",
+      "title": "Content Rollup",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-content-rollup",
+      "description": "Rolls up recent news from a chosen list, or across sites via a Microsoft Search (KQL) query, with no CAML or Handlebars setup.",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-content-rollup/assets/screenshot.png",
+      "authors": [
+        {
+          "name": "Vijay Kumar G",
+          "pictureUrl": "https://github.com/gvijaikumar9.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2026-08-28",
+      "updateDate": "2026-08-28",
+      "version": "1.21.1",
+      "componentType": "webpart",
+      "extensionType": null,
+      "sampleGallery": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
       "name": "pnp-sp-dev-spfx-web-parts-react-copilot-apis",
       "title": "Microsoft 365 Copilot Chat and Search with Work IQ in SPFx",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-copilot-apis",
@@ -7958,6 +8004,29 @@
       "createDate": "2025-01-09",
       "updateDate": "2025-05-16",
       "version": "1.20.0",
+      "componentType": "webpart",
+      "extensionType": null,
+      "sampleGallery": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
+      "name": "pnp-sp-dev-spfx-web-parts-react-copilot-html-app-integrator",
+      "title": "Integrate (Copilot) HTML apps seamlessly in SharePoint (WebPart)",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-copilot-html-app-integrator",
+      "description": "An SPFx web part that embeds small, self-contained HTML applications (HTML + inline JavaScript + CSS, stored in a SharePoint document library) into SharePoint pages without the SharePoint file-preview chrome (toolbar, download button).",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-copilot-html-app-integrator/assets/app-screen-01.png",
+      "authors": [
+        {
+          "name": "Marc André Schröder-Zhou",
+          "pictureUrl": "https://github.com/maschroeder-z.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2026-10-08",
+      "updateDate": "2026-10-08",
+      "version": "1.23.2",
       "componentType": "webpart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
@@ -8375,6 +8444,29 @@
       ],
       "createDate": "2020-07-04",
       "updateDate": "2024-10-07",
+      "version": "1.20.0",
+      "componentType": "webpart",
+      "extensionType": null,
+      "sampleGallery": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
+      "name": "pnp-sp-dev-spfx-web-parts-react-delivery-plan",
+      "title": "Delivery Plan",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-delivery-plan",
+      "description": "A project delivery dashboard web part that reads tasks from a SharePoint list and displays them across four interactive views. Resources, phases, and date ranges are all driven by list data — no hardcoded configuration required.",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-delivery-plan/assets/phase-summary.png",
+      "authors": [
+        {
+          "name": "Sudeep Ghatak",
+          "pictureUrl": "https://github.com/sudeepghatak.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2026-08-26",
+      "updateDate": "2026-08-26",
       "version": "1.20.0",
       "componentType": "webpart",
       "extensionType": null,
@@ -10655,6 +10747,29 @@
       "sampleType": "samples"
     },
     {
+      "name": "pnp-sp-dev-spfx-web-parts-react-knowledge-source-health",
+      "title": "Knowledge Source Health",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-knowledge-source-health",
+      "description": "A SharePoint Framework web part that audits a site's document libraries against the documented constraints of Copilot Studio knowledge sources, and flags the content that will silently fail to ground.",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-knowledge-source-health/assets/screenshot-real-scan.png",
+      "authors": [
+        {
+          "name": "Elliot Margot",
+          "pictureUrl": "https://github.com/OwnOptic.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2026-12-25",
+      "updateDate": "2026-12-31",
+      "version": "1.23.2",
+      "componentType": "webpart",
+      "extensionType": null,
+      "sampleGallery": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
       "name": "pnp-sp-dev-spfx-web-parts-react-legallens",
       "title": "LegalLens SPFx Solution",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-legallens",
@@ -11077,6 +11192,29 @@
       "createDate": "2019-03-25",
       "updateDate": "2019-03-25",
       "version": "1.8.0",
+      "componentType": "webpart",
+      "extensionType": null,
+      "sampleGallery": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
+      "name": "pnp-sp-dev-spfx-web-parts-react-mcp-client",
+      "title": "MCP Client for SharePoint",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-mcp-client",
+      "description": "A SharePoint Framework web part that acts as a Model Context Protocol (MCP) client from inside a SharePoint page. It connects to an MCP server over Streamable HTTP, lists the tools that server exposes, lets a user invoke one from a form generated out of the tool's JSON Schema, and renders the full HTTP and JSON-RPC trace so the protocol is visible rather than hidden inside an agent.",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-mcp-client/assets/screenshot-sse.png",
+      "authors": [
+        {
+          "name": "Elliot Margot",
+          "pictureUrl": "https://github.com/OwnOptic.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2026-08-15",
+      "updateDate": "2026-08-15",
+      "version": "1.23.2",
       "componentType": "webpart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
