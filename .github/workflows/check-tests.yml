@@ -36,7 +36,7 @@ jobs:
           npm_config_omit: optional
 
       - name: Validate lockfile for SPFx Toolkit
-        run: .\node_modules\.bin\lockfile-lint --path npm-shrinkwrap.json --type npm --allowed-hosts npm --validate-https
+        run: .\node_modules\.bin\lockfile-lint
         working-directory: vscode-viva
 
       - name: Build SPFx Toolkit
