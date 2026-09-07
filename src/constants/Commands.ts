@@ -101,6 +101,7 @@ export const Commands = {
   addTenantAppCatalog: `${EXTENSION_NAME}.addTenantAppCatalog`,
   addSiteAppCatalog: `${EXTENSION_NAME}.addSiteAppCatalog`,
   removeSiteAppCatalog: `${EXTENSION_NAME}.removeSiteAppCatalog`,
+  exportSiteAppCatalogs: `${EXTENSION_NAME}.exportSiteAppCatalogs`,
 
   // Set form customizer
   setFormCustomizer: `${EXTENSION_NAME}.setFormCustomizer`,

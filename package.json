@@ -2,7 +2,7 @@
   "name": "viva-connections-toolkit",
   "displayName": "SharePoint Framework Toolkit",
   "description": "SharePoint Framework Toolkit aims to boost your productivity in developing and managing SharePoint Framework solutions helping at every stage of your development flow, from setting up your development workspace to deploying a solution straight to your tenant without the need to leave VS Code and now even create a CI/CD pipeline to introduce automate deployment of your app. This toolkit is provided by the community.",
-  "version": "4.20.0",
+  "version": "4.20.2",
   "publisher": "m365pnp",
   "preview": false,
   "homepage": "https://pnp.github.io/vscode-viva",
@@ -349,6 +349,30 @@
         }
       },
       {
+        "name": "list_spo_list",
+        "tags": [
+          "sharepoint",
+          "list",
+          "spfx-toolkit"
+        ],
+        "toolReferenceName": "SharePointListList",
+        "displayName": "List SharePoint lists",
+        "modelDescription": "Gets all lists and document libraries within a specified SharePoint Online site. Use this tool to discover available lists on a site, enumerate data sources for selection, or verify list existence. Do not use for retrieving details of a single specific list (use get_spo_list instead) or for working with list items. Requires Microsoft 365 authentication and read permissions. Returns only lists the authenticated user can access.",
+        "userDescription": "Gets all lists and libraries from the specified site.",
+        "canBeReferencedInPrompt": true,
+        "icon": "$(list-unordered)",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "webUrl": {
+              "type": "string",
+              "description": "URL of the site to retrieve lists from. This option is required.",
+              "default": ""
+            }
+          }
+        }
+      },
+      {
         "name": "remove_spo_list",
         "tags": [
           "sharepoint",
@@ -377,6 +401,110 @@
             "recycle": {
               "type": "boolean",
               "description": "When set to true, sends the list to the site's recycle bin instead of permanently removing it. This option is optional.",
+              "default": false
+            }
+          }
+        }
+      },
+      {
+        "name": "update_spo_list",
+        "tags": [
+          "sharepoint",
+          "list",
+          "spfx-toolkit"
+        ],
+        "toolReferenceName": "SharePointListSet",
+        "displayName": "Update a SharePoint list",
+        "modelDescription": "Updates settings of an existing SharePoint list or document library, such as its title, description, versioning, content types, commenting, and other configuration properties. Returns confirmation once the update completes; the underlying command does not return the updated list object. Use this tool when you need to change the configuration of a list that already exists. Do not use this tool to create a new list (use add_spo_list instead) or to work with list items. The list to update must be identified by exactly one of id, title, or url together with webUrl. The list's base template (e.g. GenericList, DocumentLibrary) cannot be changed once created. Requires Microsoft 365 authentication and permissions to manage the list on the target site.",
+        "userDescription": "Updates the settings of the specified list.",
+        "canBeReferencedInPrompt": true,
+        "icon": "$(edit)",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "webUrl": {
+              "type": "string",
+              "description": "URL of the site where the list to update is located. This option is required.",
+              "default": ""
+            },
+            "id": {
+              "type": "string",
+              "description": "ID of the list to update. Specify only one of id, title, or url. This option is optional.",
+              "default": ""
+            },
+            "title": {
+              "type": "string",
+              "description": "Title of the list to update. Specify only one of id, title, or url. This option is optional.",
+              "default": ""
+            },
+            "url": {
+              "type": "string",
+              "description": "Server-relative URL of the list to update. Specify only one of id, title, or url. This option is optional.",
+              "default": ""
+            },
+            "newTitle": {
+              "type": "string",
+              "description": "New title to set for the list. This option is optional.",
+              "default": ""
+            },
+            "description": {
+              "type": "string",
+              "description": "The description to set for the list. This option is optional.",
+              "default": ""
+            },
+            "allowDeletion": {
+              "type": "boolean",
+              "description": "Specifies whether the list can be deleted. This option is optional.",
+              "default": false
+            },
+            "contentTypesEnabled": {
+              "type": "boolean",
+              "description": "Specifies whether content types are enabled for the list. This option is optional.",
+              "default": false
+            },
+            "disableCommenting": {
+              "type": "boolean",
+              "description": "Specifies whether commenting on list items is disabled. This option is optional.",
+              "default": false
+            },
+            "disableGridEditing": {
+              "type": "boolean",
+              "description": "Specifies whether grid editing is disabled for the list. This option is optional.",
+              "default": false
+            },
+            "draftVersionVisibility": {
+              "type": "string",
+              "description": "Specifies the visibility of draft versions in the list. Allowed values: Reader, Author, Approver. This option is optional.",
+              "default": ""
+            },
+            "enableFolderCreation": {
+              "type": "boolean",
+              "description": "Specifies whether folder creation is enabled for the list. This option is optional.",
+              "default": false
+            },
+            "enableMinorVersions": {
+              "type": "boolean",
+              "description": "Specifies whether minor versions are enabled for the list. This option is optional.",
+              "default": false
+            },
+            "enableVersioning": {
+              "type": "boolean",
+              "description": "Specifies whether versioning is enabled for the list. This option is optional.",
+              "default": false
+            },
+            "forceCheckout": {
+              "type": "boolean",
+              "description": "Specifies whether forced checkout is enabled for the list. This option is optional.",
+              "default": false
+            },
+            "hidden": {
+              "type": "boolean",
+              "description": "Specifies whether the list is hidden from the browser. This option is optional.",
+              "default": false
+            },
+            "noCrawl": {
+              "type": "boolean",
+              "description": "Specifies whether the list should be excluded from search crawling. This option is optional.",
               "default": false
             }
           }
@@ -833,10 +961,9 @@
           "default": "npm",
           "enum": [
             "npm",
-            "pnpm",
-            "yarn"
+            "pnpm"
           ],
-          "description": "Choose your preferred Node package manager. Choose between `npm`, `pnpm`, or `yarn`."
+          "description": "Choose your preferred Node package manager. Choose between `npm` and `pnpm`."
         },
         "spfx-toolkit.showServiceIncidentList": {
           "title": "Show service health incidents",
@@ -1327,6 +1454,12 @@
         "icon": "$(trash)"
       },
       {
+        "command": "spfx-toolkit.exportSiteAppCatalogs",
+        "title": "Export Site App Catalogs",
+        "category": "SPFx Toolkit",
+        "icon": "$(export)"
+      },
+      {
         "command": "spfx-toolkit.moreTenantWideExtensionActions",
         "title": "...",
         "category": "SPFx Toolkit",
@@ -1480,7 +1613,12 @@
         {
           "command": "spfx-toolkit.addSiteAppCatalog",
           "when": "viewItem == sp-app-catalog-root",
-          "group": "inline"
+          "group": "inline@1"
+        },
+        {
+          "command": "spfx-toolkit.exportSiteAppCatalogs",
+          "when": "viewItem == sp-app-catalog-root",
+          "group": "inline@2"
         },
         {
           "command": "spfx-toolkit.removeSiteAppCatalog",

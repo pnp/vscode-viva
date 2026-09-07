@@ -25,7 +25,7 @@ suite('Package Manager Settings', () => {
 		const packageManagerSetting = contributedSettings['spfx-toolkit.packageManager'];
 
 		assert(packageManagerSetting, 'Package Manager setting is not contributed');
-		assert.deepStrictEqual(packageManagerSetting.enum, ['npm', 'pnpm', 'yarn']);
+		assert.deepStrictEqual(packageManagerSetting.enum, ['npm', 'pnpm']);
 	});
 
 	test('should verify that package manager setting can be read', async () => {
@@ -39,6 +39,5 @@ suite('Package Manager Settings', () => {
 	test('should verify that PackageManagers enum has correct values', () => {
 		assert.strictEqual(PackageManagers.npm, 'npm');
 		assert.strictEqual(PackageManagers.pnpm, 'pnpm');
-		assert.strictEqual(PackageManagers.yarn, 'yarn');
 	});
 });

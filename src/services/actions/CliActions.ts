@@ -1,8 +1,9 @@
 import { readFileSync, writeFileSync } from 'fs';
+import { homedir } from 'os';
 import { Folders } from '../check/Folders';
 import { commands, Progress, ProgressLocation, Uri, window, workspace, WorkspaceFolder } from 'vscode';
 import { Commands, SpfxCompatibilityMatrix, WebViewType, WebviewCommand, WorkflowType } from '../../constants';
-import { AppCatalogApp, GenerateWorkflowCommandInput, SiteAppCatalog, SolutionAddResult, SpfxDoctorOutput, Subscription } from '../../models';
+import { AppCatalogApp, GenerateWorkflowCommandInput, SiteAppCatalog, SiteAppCatalogExport, SolutionAddResult, SpfxDoctorOutput, Subscription } from '../../models';
 import { Extension } from '../dataType/Extension';
 import { CliExecuter } from '../executeWrappers/CliCommandExecuter';
 import { Notifications } from '../dataType/Notifications';
@@ -58,6 +59,9 @@ export class CliActions {
     );
     subscriptions.push(
       commands.registerCommand(Commands.removeSiteAppCatalog, CliActions.removeSiteAppCatalog)
+    );
+    subscriptions.push(
+      commands.registerCommand(Commands.exportSiteAppCatalogs, CliActions.exportSiteAppCatalogs)
     );
   }
 
@@ -175,15 +179,8 @@ export class CliActions {
 */
   public static async getAppCatalogApps(appCatalogUrl?: string): Promise<AppCatalogApp[] | undefined> {
     try {
-      const commandOptions: any = appCatalogUrl && appCatalogUrl.trim() !== '' ? {
-        appCatalogScope: 'sitecollection',
-        appCatalogUrl: appCatalogUrl
-      } : {};
+      const appsJson = await CliActions.getAppCatalogAppsRaw(appCatalogUrl);
 
-      const response = (await CliExecuter.execute('spo app list', 'json', commandOptions));
-      const apps = response?.stdout || '[]';
-
-      const appsJson: any[] = JSON.parse(apps);
       const appList = appsJson.map(({ ID, Title, Deployed, IsEnabled }) => {
         return {
           ID,
@@ -198,6 +195,23 @@ export class CliActions {
       const message = e?.error?.message;
       Notifications.error(message);
     }
+  }
+
+  /**
+   * Retrieves the unmapped 'spo app list' output for the tenant or site app catalog.
+   *
+   * @param appCatalogUrl The URL of the tenant or site app catalog.
+   * @returns A promise that resolves to the app objects as returned by the CLI, with all their properties.
+   */
+  public static async getAppCatalogAppsRaw(appCatalogUrl?: string): Promise<any[]> {
+    const commandOptions: any = appCatalogUrl && appCatalogUrl.trim() !== '' ? {
+      appCatalogScope: 'sitecollection',
+      appCatalogUrl: appCatalogUrl
+    } : {};
+
+    const response = (await CliExecuter.execute('spo app list', 'json', commandOptions));
+
+    return JSON.parse(response?.stdout || '[]');
   }
 
   /**
@@ -669,6 +683,86 @@ export class CliActions {
       const message = e?.error?.message;
       Notifications.error(message);
     }
+  }
+
+  /**
+   * Exports an inventory of all site collection app catalogs and the apps they contain.
+   */
+  public static async exportSiteAppCatalogs() {
+    try {
+      const appCatalogUrls = await CliActions.appCatalogUrlsGet();
+      // the first entry is the tenant app catalog, which is out of scope for this export
+      const siteAppCatalogUrls = appCatalogUrls?.slice(1) ?? [];
+
+      if (siteAppCatalogUrls.length === 0) {
+        Notifications.warning('No site app catalogs found to export.');
+        return;
+      }
+
+      const siteAppCatalogs = await window.withProgress({
+        location: ProgressLocation.Notification,
+        title: `Collecting the site app catalog details... Check [output window](command:${Commands.showOutputChannel}) to follow the progress.`,
+        cancellable: false
+      }, async () => {
+        const catalogs: SiteAppCatalogExport[] = [];
+
+        for (const siteAppCatalogUrl of siteAppCatalogUrls) {
+          try {
+            catalogs.push({
+              url: siteAppCatalogUrl,
+              apps: await CliActions.getAppCatalogAppsRaw(siteAppCatalogUrl)
+            });
+          } catch (e: any) {
+            catalogs.push({
+              url: siteAppCatalogUrl,
+              apps: [],
+              error: e?.error?.message || e?.message || 'Failed to retrieve the apps of this site app catalog.'
+            });
+          }
+        }
+
+        return catalogs;
+      });
+
+      const timestamp = new Date().toISOString().slice(0, 16).replace(/[:T]/g, '-');
+      const defaultPath = join(workspace.workspaceFolders?.[0]?.uri.fsPath || homedir(), `site-app-catalogs-${timestamp}.json`);
+
+      const targetUri = await window.showSaveDialog({
+        defaultUri: Uri.file(defaultPath),
+        filters: { JSON: ['json'] },
+        saveLabel: 'Export'
+      });
+
+      if (!targetUri) {
+        return;
+      }
+
+      writeFileSync(targetUri.fsPath, CliActions.buildSiteAppCatalogsExport(siteAppCatalogs), 'utf8');
+
+      const openFile = 'Open file';
+      Notifications.info(`Exported ${siteAppCatalogs.length} site app catalog(s) to '${basename(targetUri.fsPath)}'.`, openFile).then((selectedOption) => {
+        if (selectedOption === openFile) {
+          commands.executeCommand('vscode.open', targetUri);
+        }
+      });
+    } catch (e: any) {
+      const message = e?.error?.message || e?.message || 'An unexpected error occurred during the export.';
+      Notifications.error(message);
+    }
+  }
+
+  /**
+   * Builds the content of the site app catalogs export file.
+   *
+   * @param siteAppCatalogs The site app catalogs to include in the export.
+   * @returns The serialized export content.
+   */
+  private static buildSiteAppCatalogsExport(siteAppCatalogs: SiteAppCatalogExport[]): string {
+    return JSON.stringify({
+      generatedOn: new Date().toISOString(),
+      tenantUrl: EnvironmentInformation.tenantUrl,
+      siteAppCatalogs
+    }, null, 2);
   }
 
   /**
