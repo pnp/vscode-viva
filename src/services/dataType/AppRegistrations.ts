@@ -57,12 +57,12 @@ export class AppRegistrations {
    * @returns The last used app registration or undefined when there is none.
    */
   public static getLastUsed(context: ExtensionContext): AppRegistration | undefined {
-    const clientId = context.globalState.get<string>(LAST_USED_KEY);
-    if (!clientId) {
+    const lastUsed = context.globalState.get<{ clientId: string; tenantId: string }>(LAST_USED_KEY);
+    if (!lastUsed) {
       return undefined;
     }
 
-    return AppRegistrations.getAll().find(item => item.clientId.toLowerCase() === clientId.toLowerCase());
+    return AppRegistrations.getAll().find(item => AppRegistrations.isSame(item, lastUsed as AppRegistration));
   }
 
   /**
@@ -71,7 +71,7 @@ export class AppRegistrations {
    * @param registration - The app registration used to sign in.
    */
   public static async setLastUsed(context: ExtensionContext, registration: AppRegistration): Promise<void> {
-    await context.globalState.update(LAST_USED_KEY, registration.clientId);
+    await context.globalState.update(LAST_USED_KEY, { clientId: registration.clientId, tenantId: registration.tenantId });
   }
 
   /**
