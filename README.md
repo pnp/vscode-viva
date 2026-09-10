@@ -168,6 +168,8 @@ You can expand each app catalog to reveal the list of apps contained within. Sel
 
 ![tenant details](./docs/assets/images-vscode/app-catalog-list.png)
 
+> The extension also provides **bulk operation capabilities** that allow you to perform actions on multiple apps simultaneously. Bulk operations include Deploy, Retract, Remove, Enable, Disable, Install, Uninstall, and Upgrade. Each operation intelligently filters apps based on their current state (e.g., Bulk Deploy only processes non-deployed apps). This significantly boosts productivity when managing multiple SPFx apps in your app catalogs. [Learn more about bulk operations](https://pnp.github.io/vscode-viva/features/management-capabilities#bulk-app-operations)
+
 Additionally, on the tenant app catalog level, SPFx Toolkit presents all tenant-wide extensions that are available on your tenant with additional management capabilities:
 
 - **Remove**: Allows to remove tenant-wide extension.
