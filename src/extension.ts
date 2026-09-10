@@ -9,10 +9,8 @@ import { unlinkSync, readFileSync } from 'fs';
 import { TerminalCommandExecuter } from './services/executeWrappers/TerminalCommandExecuter';
 import { AuthProvider } from './providers/AuthProvider';
 import { CliActions } from './services/actions/CliActions';
-import { PromptHandlers } from './chat/PromptHandlers';
-import { CHAT_PARTICIPANT_NAME, ProjectFileContent } from './constants';
+import { ProjectFileContent } from './constants';
 import { EntraAppRegistration } from './services/actions/EntraAppRegistration';
-import { CopilotActions } from './services/actions/CopilotActions';
 import { ChatTools } from './chat/tools/ChatTools';
 import { SpfxAppCLIActions } from './services/actions/SpfxAppCLIActions';
 import { IncreaseVersionActions } from './services/actions/IncreaseVersionActions';
@@ -24,9 +22,6 @@ import { Logger } from './services/dataType/Logger';
 const feedbackFormUrl = 'https://forms.office.com/e/ZTfqAissqt';
 
 export async function activate(context: vscode.ExtensionContext) {
-
-	const chatParticipant = vscode.chat.createChatParticipant(CHAT_PARTICIPANT_NAME, PromptHandlers.handle);
-	chatParticipant.iconPath = vscode.Uri.joinPath(context.extensionUri, 'docs', 'assets', 'images-vscode', 'parker-pnp.png');
 
 	Extension.getInstance(context);
 
@@ -41,7 +36,6 @@ export async function activate(context: vscode.ExtensionContext) {
 	CliActions.registerCommands();
 	SpfxAppCLIActions.registerCommands();
 	EntraAppRegistration.registerCommands(context);
-	CopilotActions.registerCommands();
 	IncreaseVersionActions.registerCommands();
 
 	CommandPanel.register();

@@ -14,7 +14,6 @@ export const Commands = {
   // Scaffolding
   createProject: `${EXTENSION_NAME}.createProject`,
   addToProject: `${EXTENSION_NAME}.addToProject`,
-  createProjectCopilot: `${EXTENSION_NAME}.createProjectCopilot`,
 
   // Output channel
   showOutputChannel: `${EXTENSION_NAME}.showOutputChannel`,
@@ -80,9 +79,6 @@ export const Commands = {
 
   // Welcome
   welcome: `${EXTENSION_NAME}.welcome`,
-
-  //Copilot
-  openCopilot: `${EXTENSION_NAME}.openCopilot`,
 
   // App actions
   deployAppCatalogApp: `${EXTENSION_NAME}.deployAppCatalogApp`,
