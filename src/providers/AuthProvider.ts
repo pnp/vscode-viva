@@ -1,5 +1,5 @@
 import { EnvironmentInformation } from '../services/dataType/EnvironmentInformation';
-import { env, authentication, AuthenticationProvider, AuthenticationProviderAuthenticationSessionsChangeEvent, AuthenticationSession, AuthenticationSessionAccountInformation, commands, Disposable, Event, EventEmitter, ProgressLocation, window, Progress } from 'vscode';
+import { env, authentication, AuthenticationProvider, AuthenticationProviderAuthenticationSessionsChangeEvent, AuthenticationSession, AuthenticationSessionAccountInformation, commands, Disposable, Event, EventEmitter, ProgressLocation, window, Progress, QuickInputButton, QuickPickItem, QuickPickItemKind, ThemeIcon } from 'vscode';
 import * as vscode from 'vscode';
 import { Commands } from '../constants';
 import { Logger } from '../services/dataType/Logger';
@@ -12,6 +12,16 @@ import { TerminalCommandExecuter } from '../services/executeWrappers/TerminalCom
 import { isValidGUID } from '../utils/validateGuid';
 import { CliExecuter } from '../services/executeWrappers/CliCommandExecuter';
 import { EntraAppRegistration } from '../services/actions/EntraAppRegistration';
+import { AppRegistrations } from '../services/dataType/AppRegistrations';
+import { AppRegistration } from '../models';
+
+
+const SIGN_IN_TITLE = 'SPFx Toolkit needs an Entra App Registration in order to grant the required permissions when signing in to your tenant. Pick one of the saved app registrations, provide the client ID and tenant ID of an existing one or create a new one.';
+
+interface AppRegistrationQuickPickItem extends QuickPickItem {
+  registration?: AppRegistration;
+  action?: 'manual' | 'create';
+}
 
 
 export class M365AuthenticationSession implements AuthenticationSession {
@@ -76,23 +86,26 @@ export class AuthProvider implements AuthenticationProvider, Disposable {
   }
 
   public static async signIn(createIfNone: boolean = true) {
-    let shouldGenerateNewEntraAppReg = false;
-    if (!EnvironmentInformation.clientId) {
-      const shouldGenerateNewEntraAppRegistration = await window.showQuickPick(['Sign in using existing App Registration', 'Create a new App Registration'], {
-        title: 'SPFx Toolkit needs an Entra App Registration in order to grant the required permissions when signing in to your tenant. Do you want to provide client ID and tenant ID of an existing Entra App Registration or create a new one?',
-        ignoreFocusOut: true,
-        canPickMany: false
-      });
+    const selection = await AuthProvider.pickAppRegistration();
 
-      shouldGenerateNewEntraAppReg = shouldGenerateNewEntraAppRegistration === 'Create a new App Registration';
+    if (!selection) {
+      return;
     }
 
-    if (shouldGenerateNewEntraAppReg) {
+    if (selection.action === 'create') {
       EntraAppRegistration.showRegisterEntraAppRegistrationPage();
       return;
     }
 
-    EnvironmentInformation.clientId = await AuthProvider.context.globalState.get('clientId');
+    if (selection.registration) {
+      EnvironmentInformation.clientId = selection.registration.clientId;
+      EnvironmentInformation.tenantId = selection.registration.tenantId;
+      await AppRegistrations.setLastUsed(AuthProvider.context, selection.registration);
+
+      await authentication.getSession(AuthProvider.id, [], { createIfNone });
+      return;
+    }
+
     const clientId = await window.showInputBox({
       title: 'Specify the application (client) ID',
       value: EnvironmentInformation.clientId ?? '',
@@ -117,7 +130,6 @@ export class AuthProvider implements AuthenticationProvider, Disposable {
       throw new Error('Client ID is required');
     }
 
-    EnvironmentInformation.tenantId = await AuthProvider.context.globalState.get('tenantId');
     const tenantId = await window.showInputBox({
       title: 'Specify the tenant ID',
       value: EnvironmentInformation.tenantId ?? '',
@@ -143,12 +155,132 @@ export class AuthProvider implements AuthenticationProvider, Disposable {
       throw new Error('Tenant ID is required');
     }
 
+    const registration = await AuthProvider.nameAppRegistration({ clientId, tenantId });
+
     EnvironmentInformation.clientId = clientId;
     EnvironmentInformation.tenantId = tenantId;
-    await AuthProvider.context.globalState.update('clientId', clientId);
-    await AuthProvider.context.globalState.update('tenantId', tenantId);
+    await AppRegistrations.save(registration);
+    await AppRegistrations.setLastUsed(AuthProvider.context, registration);
 
     await authentication.getSession(AuthProvider.id, [], { createIfNone });
+  }
+
+  /**
+   * Asks the user for an optional friendly name for the app registration.
+   * @param registration - The app registration to name.
+   * @returns The app registration including the name when one was provided.
+   */
+  public static async nameAppRegistration(registration: AppRegistration): Promise<AppRegistration> {
+    const name = await window.showInputBox({
+      title: 'App registration name',
+      value: registration.name ?? '',
+      ignoreFocusOut: true,
+      placeHolder: 'For example: Contoso dev tenant',
+      prompt: 'Optionally provide a friendly name for your app registration. Leave empty to use the client ID instead.'
+    });
+
+    const trimmedName = name?.trim();
+    return trimmedName ? { ...registration, name: trimmedName } : { clientId: registration.clientId, tenantId: registration.tenantId };
+  }
+
+  /**
+   * Shows the list of saved app registrations together with the options to provide an existing one or to create a new one.
+   * Saved app registrations may be removed from the list using the button on the item.
+   * @returns The picked item or undefined when the user dismissed the list.
+   */
+  private static async pickAppRegistration(): Promise<AppRegistrationQuickPickItem | undefined> {
+    const removeButton: QuickInputButton = {
+      iconPath: new ThemeIcon('trash'),
+      tooltip: 'Remove this app registration from the list'
+    };
+
+    const getItems = (): AppRegistrationQuickPickItem[] => {
+      const lastUsed = AppRegistrations.getLastUsed(AuthProvider.context);
+      const items: AppRegistrationQuickPickItem[] = AppRegistrations.getAll().map(registration => ({
+        label: registration.name || registration.clientId,
+        description: registration.name ? registration.clientId : undefined,
+        detail: `Tenant ID: ${registration.tenantId}${lastUsed?.clientId === registration.clientId ? ' (last used)' : ''}`,
+        buttons: [removeButton],
+        registration
+      }));
+
+      if (items.length > 0) {
+        items.push({ label: '', kind: QuickPickItemKind.Separator });
+      }
+
+      items.push({
+        label: 'Sign in using existing App Registration',
+        detail: 'Provide the client ID and tenant ID of an existing Entra app registration',
+        action: 'manual'
+      });
+      items.push({
+        label: 'Create a new App Registration',
+        detail: 'Let the SPFx Toolkit create a new Entra app registration in your tenant',
+        action: 'create'
+      });
+
+      return items;
+    };
+
+    const quickPick = window.createQuickPick<AppRegistrationQuickPickItem>();
+    quickPick.title = SIGN_IN_TITLE;
+    quickPick.ignoreFocusOut = true;
+    quickPick.canSelectMany = false;
+    quickPick.items = getItems();
+
+    const lastUsed = AppRegistrations.getLastUsed(AuthProvider.context);
+    const lastUsedItem = lastUsed ? quickPick.items.find(item => item.registration?.clientId === lastUsed.clientId) : undefined;
+    if (lastUsedItem) {
+      quickPick.activeItems = [lastUsedItem];
+    }
+
+    return new Promise<AppRegistrationQuickPickItem | undefined>((resolve) => {
+      let picked: AppRegistrationQuickPickItem | undefined = undefined;
+      // the confirmation dialog takes the focus away from the list, so the hide event must be ignored while it is shown
+      let isRemoving = false;
+
+      quickPick.onDidTriggerItemButton(async (event) => {
+        const registration = event.item.registration;
+        if (!registration) {
+          return;
+        }
+
+        isRemoving = true;
+        try {
+          const confirmation = await window.showWarningMessage(
+            `Are you sure you want to remove '${event.item.label}' from the list? The app registration itself will not be deleted from your tenant.`,
+            { modal: true },
+            'Remove'
+          );
+
+          if (confirmation === 'Remove') {
+            await AppRegistrations.remove(registration);
+            quickPick.items = getItems();
+          }
+        } catch (error) {
+          Notifications.error(`Removing the app registration from the list failed: ${(error as Error).message}`);
+        } finally {
+          isRemoving = false;
+          quickPick.show();
+        }
+      });
+
+      quickPick.onDidAccept(() => {
+        picked = quickPick.selectedItems[0];
+        quickPick.hide();
+      });
+
+      quickPick.onDidHide(() => {
+        if (isRemoving) {
+          return;
+        }
+
+        quickPick.dispose();
+        resolve(picked);
+      });
+
+      quickPick.show();
+    });
   }
 
   /**
