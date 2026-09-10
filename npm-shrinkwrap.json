@@ -11,6 +11,7 @@
       "dependencies": {
         "@grconrad/vscode-extension-feedback": "1.0.0",
         "@pnp/cli-microsoft365-spfx-toolkit": "1.13.0",
+        "@vscode/extension-telemetry": "^1.2.0",
         "node-forge": "1.4.0",
         "react-markdown": "10.1.0",
         "rehype-raw": "7.0.0",
@@ -1254,6 +1255,113 @@
       "dev": true,
       "license": "MIT"
     },
+    "node_modules/@microsoft/1ds-core-js": {
+      "version": "4.4.4",
+      "resolved": "https://registry.npmjs.org/@microsoft/1ds-core-js/-/1ds-core-js-4.4.4.tgz",
+      "integrity": "sha512-rXWefMBlDfkdYsIfrifw30Yq2s5PD4iU1VbifL8AWPB94S/CKKaUg+Zy4rZPLmCTocONalrs8GrcpaPxN/KXrg==",
+      "license": "MIT",
+      "dependencies": {
+        "@microsoft/applicationinsights-core-js": "3.4.4",
+        "@microsoft/applicationinsights-shims": "3.0.1",
+        "@microsoft/dynamicproto-js": "^2.0.3",
+        "@nevware21/ts-async": ">= 0.5.5 < 0.6.0",
+        "@nevware21/ts-utils": ">= 0.14.0 < 2.x"
+      }
+    },
+    "node_modules/@microsoft/1ds-post-js": {
+      "version": "4.4.4",
+      "resolved": "https://registry.npmjs.org/@microsoft/1ds-post-js/-/1ds-post-js-4.4.4.tgz",
+      "integrity": "sha512-ah1NOJx3sBZ+2uLQHFUrT5G8xbQ4vllfxNwDHPR+dh6cuE98ynlsdlgMtArkCqdRMILcDMTu8ZD4v9NASafAmw==",
+      "license": "MIT",
+      "dependencies": {
+        "@microsoft/applicationinsights-core-js": "3.4.4",
+        "@microsoft/applicationinsights-shims": "3.0.1",
+        "@microsoft/dynamicproto-js": "^2.0.3",
+        "@nevware21/ts-async": ">= 0.5.5 < 0.6.0",
+        "@nevware21/ts-utils": ">= 0.14.0 < 2.x"
+      }
+    },
+    "node_modules/@microsoft/applicationinsights-channel-js": {
+      "version": "3.4.4",
+      "resolved": "https://registry.npmjs.org/@microsoft/applicationinsights-channel-js/-/applicationinsights-channel-js-3.4.4.tgz",
+      "integrity": "sha512-SugYDcBVOqCbyymTOTaltYeg9pTWWaax+IW5zEVeDZr2paTOMdNMDnjdfjtL5RwJGd6j2TG8qK6XKTKKQeZZUg==",
+      "license": "MIT",
+      "dependencies": {
+        "@microsoft/applicationinsights-core-js": "3.4.4",
+        "@microsoft/applicationinsights-shims": "3.0.1",
+        "@microsoft/dynamicproto-js": "^2.0.3",
+        "@nevware21/ts-async": ">= 0.5.5 < 0.6.0",
+        "@nevware21/ts-utils": ">= 0.14.0 < 2.x"
+      },
+      "peerDependencies": {
+        "tslib": ">= 1.0.0"
+      }
+    },
+    "node_modules/@microsoft/applicationinsights-common": {
+      "version": "3.4.4",
+      "resolved": "https://registry.npmjs.org/@microsoft/applicationinsights-common/-/applicationinsights-common-3.4.4.tgz",
+      "integrity": "sha512-XkvEJhkAfenf41VLdVjkrIXvUyHSFWz0i7N1FZD7k+Hk8rwdNeGgYqXgGtMy1QtrgQG8rP+XGc9hiOibkndbzg==",
+      "license": "MIT",
+      "dependencies": {
+        "@microsoft/applicationinsights-core-js": "3.4.4",
+        "@microsoft/applicationinsights-shims": "3.0.1",
+        "@microsoft/dynamicproto-js": "^2.0.3",
+        "@nevware21/ts-utils": ">= 0.14.0 < 2.x"
+      },
+      "peerDependencies": {
+        "tslib": ">= 1.0.0"
+      }
+    },
+    "node_modules/@microsoft/applicationinsights-core-js": {
+      "version": "3.4.4",
+      "resolved": "https://registry.npmjs.org/@microsoft/applicationinsights-core-js/-/applicationinsights-core-js-3.4.4.tgz",
+      "integrity": "sha512-bbc3XqoTKMIy9iarDgi2tzplBsOeVXJbSnn+lUBS2BbeyYVzLf+6R7BFuHFUdNN1akePTluJtOhdctyoSjzWJQ==",
+      "license": "MIT",
+      "dependencies": {
+        "@microsoft/applicationinsights-shims": "3.0.1",
+        "@microsoft/dynamicproto-js": "^2.0.3",
+        "@nevware21/ts-async": ">= 0.5.5 < 0.6.0",
+        "@nevware21/ts-utils": ">= 0.14.0 < 2.x"
+      },
+      "peerDependencies": {
+        "tslib": ">= 1.0.0"
+      }
+    },
+    "node_modules/@microsoft/applicationinsights-shims": {
+      "version": "3.0.1",
+      "resolved": "https://registry.npmjs.org/@microsoft/applicationinsights-shims/-/applicationinsights-shims-3.0.1.tgz",
+      "integrity": "sha512-DKwboF47H1nb33rSUfjqI6ryX29v+2QWcTrRvcQDA32AZr5Ilkr7whOOSsD1aBzwqX0RJEIP1Z81jfE3NBm/Lg==",
+      "license": "MIT",
+      "dependencies": {
+        "@nevware21/ts-utils": ">= 0.9.4 < 2.x"
+      }
+    },
+    "node_modules/@microsoft/applicationinsights-web-basic": {
+      "version": "3.4.4",
+      "resolved": "https://registry.npmjs.org/@microsoft/applicationinsights-web-basic/-/applicationinsights-web-basic-3.4.4.tgz",
+      "integrity": "sha512-aNw01G4WiyQGms+3I5du5YsB+h+p9nzymMZf+6q3+6RUYJf4QX7o3rPaIC+0ulLaZut6t9CjvGBJARd4n1vpig==",
+      "license": "MIT",
+      "dependencies": {
+        "@microsoft/applicationinsights-channel-js": "3.4.4",
+        "@microsoft/applicationinsights-core-js": "3.4.4",
+        "@microsoft/applicationinsights-shims": "3.0.1",
+        "@microsoft/dynamicproto-js": "^2.0.3",
+        "@nevware21/ts-async": ">= 0.5.5 < 0.6.0",
+        "@nevware21/ts-utils": ">= 0.14.0 < 2.x"
+      },
+      "peerDependencies": {
+        "tslib": ">= 1.0.0"
+      }
+    },
+    "node_modules/@microsoft/dynamicproto-js": {
+      "version": "2.0.5",
+      "resolved": "https://registry.npmjs.org/@microsoft/dynamicproto-js/-/dynamicproto-js-2.0.5.tgz",
+      "integrity": "sha512-V+Zr7PDKIEaItVwF/OyWQlKeugNRYg7KJJ+RhEIL2FMW6NlG8FN2l4XA9Z42hNtsjwJFlcUiF38pmM/AaXsF7g==",
+      "license": "MIT",
+      "dependencies": {
+        "@nevware21/ts-utils": ">= 0.14.0 < 2.x"
+      }
+    },
     "node_modules/@microsoft/fast-element": {
       "version": "1.14.0",
       "resolved": "https://registry.npmjs.org/@microsoft/fast-element/-/fast-element-1.14.0.tgz",
@@ -1310,6 +1418,31 @@
       "resolved": "https://registry.npmjs.org/@microsoft/load-themed-styles/-/load-themed-styles-1.10.295.tgz",
       "integrity": "sha512-W+IzEBw8a6LOOfRJM02dTT7BDZijxm+Z7lhtOAz1+y9vQm1Kdz9jlAO+qCEKsfxtUOmKilW8DIRqFw2aUgKeGg==",
       "dev": true,
+      "license": "MIT"
+    },
+    "node_modules/@nevware21/ts-async": {
+      "version": "0.5.5",
+      "resolved": "https://registry.npmjs.org/@nevware21/ts-async/-/ts-async-0.5.5.tgz",
+      "integrity": "sha512-vwqaL05iJPjLeh5igPi8MeeAu10i+Aq7xko1fbo9F5Si6MnVN5505qaV7AhSdk5MCBJVT/UYMk3kgInNjDb4Ig==",
+      "license": "MIT",
+      "dependencies": {
+        "@nevware21/ts-utils": ">= 0.12.2 < 2.x"
+      }
+    },
+    "node_modules/@nevware21/ts-utils": {
+      "version": "0.16.0",
+      "resolved": "https://registry.npmjs.org/@nevware21/ts-utils/-/ts-utils-0.16.0.tgz",
+      "integrity": "sha512-DDln15VUBSw5JjJlNno1UCSzgAGzHHklm7u695jXDCzwSn7W2F7B2VYHwLLcT1cOWQQBQAJK6e2/Y8oTG+W0Ig==",
+      "funding": [
+        {
+          "type": "github",
+          "url": "https://github.com/sponsors/nevware21"
+        },
+        {
+          "type": "other",
+          "url": "https://buymeacoffee.com/nevware21"
+        }
+      ],
       "license": "MIT"
     },
     "node_modules/@noble/hashes": {
@@ -9732,6 +9865,22 @@
       "resolved": "https://registry.npmjs.org/@ungap/structured-clone/-/structured-clone-1.3.0.tgz",
       "integrity": "sha512-WmoN8qaIAo7WTYWbAZuG8PYEhn5fkz7dZrqTBZ7dtt//lL2Gwms1IcnQ5yHqjDfX8Ft5j4YzDM23f87zBfDe9g==",
       "license": "ISC"
+    },
+    "node_modules/@vscode/extension-telemetry": {
+      "version": "1.5.2",
+      "resolved": "https://registry.npmjs.org/@vscode/extension-telemetry/-/extension-telemetry-1.5.2.tgz",
+      "integrity": "sha512-fO4huHz5apb5RtddC8DuUeSbBqYQw1EiBaOOGngq57nGbsDgcvm0jAibTY/kigJyjY0fQ4Vx7owQcCJRUrkT4g==",
+      "license": "MIT",
+      "dependencies": {
+        "@microsoft/1ds-core-js": "^4.4.1",
+        "@microsoft/1ds-post-js": "^4.4.1",
+        "@microsoft/applicationinsights-common": "^3.4.1",
+        "@microsoft/applicationinsights-core-js": "^3.4.1",
+        "@microsoft/applicationinsights-web-basic": "^3.4.1"
+      },
+      "engines": {
+        "vscode": "^1.75.0"
+      }
     },
     "node_modules/@vscode/test-cli": {
       "version": "0.0.10",
@@ -22280,7 +22429,6 @@
       "version": "2.8.1",
       "resolved": "https://registry.npmjs.org/tslib/-/tslib-2.8.1.tgz",
       "integrity": "sha512-oJFu94HQb+KVduSUQL7wnpmqnfmLsOA/nAh6b6EH0wCEoK0/mPeXU6c3wKDV83MkOuHPRHtSXKKU99IBazS/2w==",
-      "dev": true,
       "license": "0BSD"
     },
     "node_modules/tsyringe": {

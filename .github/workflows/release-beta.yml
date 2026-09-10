@@ -34,6 +34,12 @@ jobs:
         run: npm install --global --ignore-scripts @vscode/vsce@3.3.2
         working-directory: vscode-viva
 
+      - name: Set the Application Insights connection string
+        env:
+          APP_INSIGHTS: ${{ secrets.APP_INSIGHTS }}
+        run: node -e "const fs=require('fs');const pkg=JSON.parse(fs.readFileSync('package.json','utf8'));pkg.aiConnectionString=process.env.APP_INSIGHTS||'';fs.writeFileSync('package.json',JSON.stringify(pkg,null,2)+'\n');"
+        working-directory: vscode-viva
+
       - name: Publish 
         run: vsce publish -p ${{ secrets.VSCE_PAT }} --pre-release --baseImagesUrl https://raw.githubusercontent.com/pnp/vscode-viva/dev
         working-directory: vscode-viva
