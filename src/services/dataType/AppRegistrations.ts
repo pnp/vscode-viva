@@ -96,7 +96,7 @@ export class AppRegistrations {
     await context.globalState.update(LEGACY_TENANT_ID_KEY, undefined);
   }
 
-  private static isSame(first: AppRegistration, second: AppRegistration): boolean {
+  public static isSame(first: AppRegistration, second: AppRegistration): boolean {
     return first.clientId.toLowerCase() === second.clientId.toLowerCase() &&
       first.tenantId.toLowerCase() === second.tenantId.toLowerCase();
   }

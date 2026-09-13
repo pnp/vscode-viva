@@ -199,7 +199,7 @@ export class AuthProvider implements AuthenticationProvider, Disposable {
       const items: AppRegistrationQuickPickItem[] = AppRegistrations.getAll().map(registration => ({
         label: registration.name || registration.clientId,
         description: registration.name ? registration.clientId : undefined,
-        detail: `Tenant ID: ${registration.tenantId}${lastUsed?.clientId === registration.clientId ? ' (last used)' : ''}`,
+        detail: `Tenant ID: ${registration.tenantId}${lastUsed && AppRegistrations.isSame(lastUsed, registration) ? ' (last used)' : ''}`,
         buttons: [removeButton],
         registration
       }));
@@ -229,7 +229,7 @@ export class AuthProvider implements AuthenticationProvider, Disposable {
     quickPick.items = getItems();
 
     const lastUsed = AppRegistrations.getLastUsed(AuthProvider.context);
-    const lastUsedItem = lastUsed ? quickPick.items.find(item => item.registration?.clientId === lastUsed.clientId) : undefined;
+    const lastUsedItem = lastUsed ? quickPick.items.find(item => item.registration && AppRegistrations.isSame(item.registration, lastUsed)) : undefined;
     if (lastUsedItem) {
       quickPick.activeItems = [lastUsedItem];
     }
