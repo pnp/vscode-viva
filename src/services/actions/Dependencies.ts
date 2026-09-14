@@ -10,6 +10,7 @@ import { execSync } from 'child_process';
 import { TerminalCommandExecuter } from '../executeWrappers/TerminalCommandExecuter';
 import { getExtensionSettings, getPackageManager } from '../../utils';
 import { CliActions } from './CliActions';
+import { TelemetryService } from '../../utils/telemetry';
 
 export class Dependencies {
 
@@ -17,10 +18,10 @@ export class Dependencies {
     const subscriptions: Subscription[] = Extension.getInstance().subscriptions;
 
     subscriptions.push(
-      commands.registerCommand(Commands.checkDependencies, Dependencies.validate)
+      commands.registerCommand(Commands.checkDependencies, TelemetryService.withTelemetry(Commands.checkDependencies, Dependencies.validate))
     );
     subscriptions.push(
-      commands.registerCommand(Commands.installDependencies, Dependencies.install)
+      commands.registerCommand(Commands.installDependencies, TelemetryService.withTelemetry(Commands.installDependencies, Dependencies.install))
     );
   }
 

@@ -6,6 +6,7 @@ import { ActionTreeItem } from '../../providers/ActionTreeDataProvider';
 import { Notifications } from '../dataType/Notifications';
 import { CliExecuter } from '../executeWrappers/CliCommandExecuter';
 import { EnvironmentInformation } from '../dataType/EnvironmentInformation';
+import { TelemetryService } from '../../utils/telemetry';
 
 
 export class SpfxAppCLIActions {
@@ -14,66 +15,66 @@ export class SpfxAppCLIActions {
         const subscriptions: Subscription[] = Extension.getInstance().subscriptions;
 
         subscriptions.push(
-            commands.registerCommand(Commands.deployAppCatalogApp, (node: ActionTreeItem) =>
+            commands.registerCommand(Commands.deployAppCatalogApp, TelemetryService.withTelemetry(Commands.deployAppCatalogApp, (node: ActionTreeItem) =>
                 SpfxAppCLIActions.toggleAppDeployed(node, ContextKeys.deployApp, 'deploy')
-            )
+            ))
         );
         subscriptions.push(
-            commands.registerCommand(Commands.retractAppCatalogApp, (node: ActionTreeItem) =>
+            commands.registerCommand(Commands.retractAppCatalogApp, TelemetryService.withTelemetry(Commands.retractAppCatalogApp, (node: ActionTreeItem) =>
                 SpfxAppCLIActions.toggleAppDeployed(node, ContextKeys.retractApp, 'retract')
-            )
+            ))
         );
         subscriptions.push(
-            commands.registerCommand(Commands.removeAppCatalogApp, SpfxAppCLIActions.removeAppCatalogApp)
+            commands.registerCommand(Commands.removeAppCatalogApp, TelemetryService.withTelemetry(Commands.removeAppCatalogApp, SpfxAppCLIActions.removeAppCatalogApp))
         );
         subscriptions.push(
-            commands.registerCommand(Commands.enableAppCatalogApp, (node: ActionTreeItem) =>
+            commands.registerCommand(Commands.enableAppCatalogApp, TelemetryService.withTelemetry(Commands.enableAppCatalogApp, (node: ActionTreeItem) =>
                 SpfxAppCLIActions.toggleAppEnabled(node, ContextKeys.enableApp, 'enable')
-            )
+            ))
         );
         subscriptions.push(
-            commands.registerCommand(Commands.disableAppCatalogApp, (node: ActionTreeItem) =>
+            commands.registerCommand(Commands.disableAppCatalogApp, TelemetryService.withTelemetry(Commands.disableAppCatalogApp, (node: ActionTreeItem) =>
                 SpfxAppCLIActions.toggleAppEnabled(node, ContextKeys.disableApp, 'disable')
-            )
+            ))
         );
         subscriptions.push(
-            commands.registerCommand(Commands.installAppCatalogApp, (node: ActionTreeItem) =>
+            commands.registerCommand(Commands.installAppCatalogApp, TelemetryService.withTelemetry(Commands.installAppCatalogApp, (node: ActionTreeItem) =>
                 SpfxAppCLIActions.toggleAppInstalled(node, ContextKeys.installApp, 'install')
-            )
+            ))
         );
         subscriptions.push(
-            commands.registerCommand(Commands.uninstallAppCatalogApp, (node: ActionTreeItem) =>
+            commands.registerCommand(Commands.uninstallAppCatalogApp, TelemetryService.withTelemetry(Commands.uninstallAppCatalogApp, (node: ActionTreeItem) =>
                 SpfxAppCLIActions.toggleAppInstalled(node, ContextKeys.uninstallApp, 'uninstall')
-            )
+            ))
         );
         subscriptions.push(
-            commands.registerCommand(Commands.upgradeAppCatalogApp, SpfxAppCLIActions.upgradeAppCatalogApp)
+            commands.registerCommand(Commands.upgradeAppCatalogApp, TelemetryService.withTelemetry(Commands.upgradeAppCatalogApp, SpfxAppCLIActions.upgradeAppCatalogApp))
         );
         subscriptions.push(
-            commands.registerCommand(Commands.removeTenantWideExtension, SpfxAppCLIActions.removeTenantWideExtension)
+            commands.registerCommand(Commands.removeTenantWideExtension, TelemetryService.withTelemetry(Commands.removeTenantWideExtension, SpfxAppCLIActions.removeTenantWideExtension))
         );
         subscriptions.push(
-            commands.registerCommand(Commands.enableTenantWideExtension, (node: ActionTreeItem) =>
+            commands.registerCommand(Commands.enableTenantWideExtension, TelemetryService.withTelemetry(Commands.enableTenantWideExtension, (node: ActionTreeItem) =>
                 SpfxAppCLIActions.toggleExtensionEnabled(node, ContextKeys.enableTenantWideExtension, 'enable')
-            )
+            ))
         );
         subscriptions.push(
-            commands.registerCommand(Commands.disableTenantWideExtension, (node: ActionTreeItem) =>
+            commands.registerCommand(Commands.disableTenantWideExtension, TelemetryService.withTelemetry(Commands.disableTenantWideExtension, (node: ActionTreeItem) =>
                 SpfxAppCLIActions.toggleExtensionEnabled(node, ContextKeys.disableTenantWideExtension, 'disable')
-            )
+            ))
         );
         subscriptions.push(
-            commands.registerCommand(Commands.updateTenantWideExtension, SpfxAppCLIActions.updateTenantWideExtension)
+            commands.registerCommand(Commands.updateTenantWideExtension, TelemetryService.withTelemetry(Commands.updateTenantWideExtension, SpfxAppCLIActions.updateTenantWideExtension))
         );
         subscriptions.push(
-            commands.registerCommand(Commands.copyAppCatalogApp, (node: ActionTreeItem) =>
+            commands.registerCommand(Commands.copyAppCatalogApp, TelemetryService.withTelemetry(Commands.copyAppCatalogApp, (node: ActionTreeItem) =>
                 SpfxAppCLIActions.handleAppCatalogAppTransfer(node, ContextKeys.copyApp, 'copy')
-            )
+            ))
         );
         subscriptions.push(
-            commands.registerCommand(Commands.moveAppCatalogApp, (node: ActionTreeItem) =>
+            commands.registerCommand(Commands.moveAppCatalogApp, TelemetryService.withTelemetry(Commands.moveAppCatalogApp, (node: ActionTreeItem) =>
                 SpfxAppCLIActions.handleAppCatalogAppTransfer(node, ContextKeys.moveApp, 'move')
-            )
+            ))
         );
     }
 
