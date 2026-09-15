@@ -19,6 +19,7 @@ import { IncreaseVersionActions } from './services/actions/IncreaseVersionAction
 import { scheduleFeedbackChecks } from '@grconrad/vscode-extension-feedback';
 import { getPackageManager, getInstallCommand, deobfuscateConnectionString } from './utils';
 import { Logger } from './services/dataType/Logger';
+import { AppRegistrations } from './services/dataType/AppRegistrations';
 import { TelemetryService } from './utils/telemetry';
 
 
@@ -38,6 +39,8 @@ export async function activate(context: vscode.ExtensionContext) {
 	TerminalCommandExecuter.register();
 
 	AuthProvider.register(context);
+
+	void AppRegistrations.migrateLegacy(context);
 
 	Dependencies.registerCommands();
 	Scaffolder.registerCommands();

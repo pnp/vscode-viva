@@ -4,13 +4,19 @@ The extension allows you to sign in to your Microsoft 365 tenant using CLI for M
 
 ![login](../../docs/assets/images-vscode/login.png)
 
-SPFx Toolkit needs and Entra App Registration to sign in to your tenant. You may either use an existing app registration or create a new one with a single click using a dedicated form. SPFx Toolkit will guide you through the process of creating a new app registration either manually by providing step-by-step guidance or automatically by creating the app registration for you.
+SPFx Toolkit needs and Entra App Registration to be able to sign in to your tenant. You may either use an existing app registration or create a new one with a single click using a dedicated form. 
 
-![app registration](../../docs/assets/images-vscode/sign-in.gif)
+![sign in options](../../docs/assets/images-vscode/sign-in-options.png)
 
-If you already have an Entra App Registration you may use it to sign in to your tenant by providing the Client Id and Tenant Id.
+SPFx Toolkit will guide you through the process of creating a new app registration either manually by providing step-by-step guidance 
 
-![app registration](../../docs/assets/images-vscode/sign-in-existing-app.gif)
+![entra app reg manual form](../../docs/assets/images-vscode/sign-in-entra-app-reg-form-manual.png)
+
+or automatically by creating the app registration for you with a single click.
+
+![entra app reg form](../../docs/assets/images-vscode/sign-in-entra-app-reg-form.png)
+
+Once you sign in you may provide a friendly name for your app registration and SPFx Toolkit will store that in extension settings. That way when you will sign in again you may just pick from saved existing app registrations to easily resign-in between multiple tenants. 
 
 Thanks to that the extension will retrieve helpful URLs from your tenant like link to: 
 
