@@ -44,6 +44,12 @@ jobs:
           repository: pnp/sp-dev-fx-webparts
           path: sp-dev-fx-webparts
 
+      - name: Checkout spfx-copilot-components
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1  # v7.0.1
+        with:
+          repository: pnp/spfx-copilot-components
+          path: spfx-copilot-components
+
       - run: |
           dir
 
@@ -77,7 +83,7 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           $prBody = @"
-          Automated check and update of SPFx extensions and webparts samples data and aces sample data.
+          Automated check and update of SPFx extensions and webparts samples data, aces sample data and copilot components sample data.
           
           ${{ steps.stats.outputs.STATS }}
           "@

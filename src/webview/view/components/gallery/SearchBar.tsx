@@ -53,7 +53,8 @@ export const SearchBar: React.FunctionComponent<ISearchBarProps> = ({ onSearchTe
     const options: IDropdownOption[] = [
       { key: 'webpart', text: 'Web Part' },
       { key: 'extension', text: 'Extension' },
-      { key: 'adaptiveCardExtension', text: 'ACE' }
+      { key: 'adaptiveCardExtension', text: 'ACE' },
+      { key: 'copilotComponent', text: 'Copilot Component' }
     ];
 
     selectedFilters.forEach(filter => {
