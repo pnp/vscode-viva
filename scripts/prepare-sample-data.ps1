@@ -1,6 +1,6 @@
 param ([string[]]$workspacePath)
 
-$sampleRepos = @("sp-dev-fx-aces", "sp-dev-fx-extensions", "sp-dev-fx-library-components", "sp-dev-fx-webparts")
+$sampleRepos = @("sp-dev-fx-aces", "sp-dev-fx-extensions", "sp-dev-fx-library-components", "sp-dev-fx-webparts", "spfx-copilot-components")
 
 function Test-JsonContent {
     param (
@@ -57,17 +57,18 @@ function Parse-SampleJsonFiles {
                     $packageJsonContent = Get-Content -Path $packageJsonPath -Raw
                     $packageJson = ConvertFrom-Json -InputObject $packageJsonContent
                     
-                    if ($null -ne $packageJson.dependencies.'@microsoft/sp-core-library') {
+                    if ($null -ne $packageJson.dependencies.'@microsoft/sp-core-library' -or $null -ne $packageJson.dependencies.'@microsoft/sp-copilot-component') {
                         $isSPFxProject = $true
                         
-                        $coreLibVersion = $packageJson.dependencies.'@microsoft/sp-core-library'
-                        $version = $coreLibVersion -replace '[\^~>=<]', ''
+                        $spfxVersion = if ($null -ne $packageJson.dependencies.'@microsoft/sp-core-library') { $packageJson.dependencies.'@microsoft/sp-core-library' } else { $packageJson.dependencies.'@microsoft/sp-copilot-component' }
+                        $version = $spfxVersion -replace '[\^~>=<]', ''
                         
                         switch ($sampleRepo) {
                             'sp-dev-fx-webparts' { $componentType = 'webpart' }
                             'sp-dev-fx-extensions' { $componentType = 'extension' }
                             'sp-dev-fx-aces' { $componentType = 'adaptiveCardExtension' }
                             'sp-dev-fx-library-components' { $componentType = 'library' }
+                            'spfx-copilot-components' { $componentType = 'copilotComponent' }
                         }
 
                         $assetsPath = Join-Path -Path $sampleFolder -ChildPath "assets"

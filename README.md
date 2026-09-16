@@ -81,7 +81,7 @@ It is also possible to install the required Node.js version and global dependenc
 
 ### 3️⃣ Don't Start from scratch. Reuse an SPFx web part or extension or ACE sample
 
-You may kick-start your development with a new project based on an existing ACE or SPFx web part or extension with a click of a button. All of the provided samples are powered by [PnP Samples repositories](https://pnp.github.io/sp-dev-fx-webparts/samples/type/).
+You may kick-start your development with a new project based on an existing ACE, SPFx web part, extension or Copilot Component with a click of a button. All of the provided samples are powered by [PnP Samples repositories](https://pnp.github.io/sp-dev-fx-webparts/samples/type/).
 
 ![Sample gallery](./docs/assets/images-vscode/samples.png)
 
