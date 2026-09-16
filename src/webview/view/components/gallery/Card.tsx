@@ -62,6 +62,8 @@ export const Card: React.FunctionComponent<ICardProps> = ({ item }: React.PropsW
         return 'Web part';
       case 'adaptiveCardExtension':
         return 'ACE';
+      case 'copilotComponent':
+        return 'Copilot Component';
       default:
         return '';
     }
