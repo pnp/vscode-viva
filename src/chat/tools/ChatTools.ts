@@ -19,7 +19,9 @@ import {
     SharePointPageRemove,
     SharePointSiteAdd,
     SharePointSiteGet,
-    SharePointSiteRemove
+    SharePointSiteList,
+    SharePointSiteRemove,
+    SharePointSiteSet
 } from './spo/index';
 import { SharePointFrameworkLocalEnvironmentSetup, SharePointFrameworkProjectUpgrade } from './spfx';
 
@@ -80,7 +82,13 @@ export class ChatTools {
             lm.registerTool('spo_site_get', new SharePointSiteGet())
         );
         subscriptions.push(
+            lm.registerTool('spo_site_list', new SharePointSiteList())
+        );
+        subscriptions.push(
             lm.registerTool('spo_site_remove', new SharePointSiteRemove())
+        );
+        subscriptions.push(
+            lm.registerTool('spo_site_set', new SharePointSiteSet())
         );
         subscriptions.push(
             lm.registerTool('upgrade_spfx_project', new SharePointFrameworkProjectUpgrade())
