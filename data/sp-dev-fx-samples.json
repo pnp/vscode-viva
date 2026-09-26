@@ -6733,6 +6733,29 @@
       "sampleType": "samples"
     },
     {
+      "name": "pnp-sp-dev-spfx-web-parts-react-birthday-calendar",
+      "title": "Birthday Calendar View",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-birthday-calendar",
+      "description": "Shows team birthdays from a SharePoint list on a month calendar, with person cards showing department, job title and office, and one-click email or Teams greetings. No Microsoft Graph permissions required.",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-birthday-calendar/assets/screenshot.png",
+      "authors": [
+        {
+          "name": "Alexandr Abdulca",
+          "pictureUrl": "https://github.com/Niacrisss.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2026-09-06",
+      "updateDate": "2026-09-06",
+      "version": "1.23.2",
+      "componentType": "webpart",
+      "extensionType": null,
+      "sampleGallery": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
       "name": "pnp-sp-dev-spfx-web-parts-react-birthdays",
       "title": "Birthdays Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-birthdays",
@@ -8024,8 +8047,8 @@
       "tags": [
         "SharePoint"
       ],
-      "createDate": "2026-10-08",
-      "updateDate": "2026-10-08",
+      "createDate": "2026-09-08",
+      "updateDate": "2026-09-08",
       "version": "1.23.2",
       "componentType": "webpart",
       "extensionType": null,
@@ -8745,8 +8768,8 @@
         "SharePoint"
       ],
       "createDate": "2026-02-07",
-      "updateDate": "2026-02-07",
-      "version": "1.21.0",
+      "updateDate": "2026-09-12",
+      "version": "1.21.1",
       "componentType": "webpart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
@@ -10761,8 +10784,8 @@
       "tags": [
         "SharePoint"
       ],
-      "createDate": "2026-12-25",
-      "updateDate": "2026-12-31",
+      "createDate": "2026-08-15",
+      "updateDate": "2026-08-15",
       "version": "1.23.2",
       "componentType": "webpart",
       "extensionType": null,
@@ -10791,6 +10814,29 @@
       "createDate": "2026-04-10",
       "updateDate": "2026-04-10",
       "version": "1.22.0",
+      "componentType": "webpart",
+      "extensionType": null,
+      "sampleGallery": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
+      "name": "pnp-sp-dev-spfx-web-parts-react-list-dashboard",
+      "title": "List Dashboard",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-list-dashboard",
+      "description": "One versatile web part that turns any SharePoint list or library into a dashboard - stat, KPI tiles, bar, column, pie, donut, line, area, or table - with colourblind-safe palettes, status-vs-target colouring, and number formatting, and no Power BI or external chart library.",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-list-dashboard/assets/screenshot.png",
+      "authors": [
+        {
+          "name": "Vijay Kumar G",
+          "pictureUrl": "https://github.com/gvijaikumar9.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2026-09-10",
+      "updateDate": "2026-09-10",
+      "version": "1.21.1",
       "componentType": "webpart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
@@ -11948,6 +11994,29 @@
       "sampleType": "samples"
     },
     {
+      "name": "pnp-sp-dev-spfx-web-parts-react-my-workspaces-hub",
+      "title": "My Workspaces Hub",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-my-workspaces-hub",
+      "description": "My Workspaces Hub is SharePoint Framework (SPFx) web part that gives the signed-in user a single, sleek place to explore, monitor, and navigate every site, team, group space they can access. It pairs a fast, virtualized catalog with an analytics dashboard and rich on-demand detail drawers - all built on Fluent UI v9 and fully theme-aware across SharePoint Online and Microsoft Teams.",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-my-workspaces-hub/assets/AllSites.png",
+      "authors": [
+        {
+          "name": "Harminder Singh",
+          "pictureUrl": "https://github.com/HarminderSethi.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2026-09-12",
+      "updateDate": "2026-09-12",
+      "version": "1.23.0",
+      "componentType": "webpart",
+      "extensionType": null,
+      "sampleGallery": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
       "name": "pnp-sp-dev-spfx-web-parts-react-myonedrive",
       "title": "My OneDrive",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-myonedrive",
@@ -12641,14 +12710,18 @@
         {
           "name": "Zach Roberts",
           "pictureUrl": "https://github.com/zachroberts8668.png"
+        },
+        {
+          "name": "Ari Gunawan",
+          "pictureUrl": "https://github.com/AriGunawan.png"
         }
       ],
       "tags": [
         "SharePoint"
       ],
       "createDate": "2020-10-18",
-      "updateDate": "2020-10-18",
-      "version": "1.11.0",
+      "updateDate": "2026-09-13",
+      "version": "1.23.2",
       "componentType": "webpart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
