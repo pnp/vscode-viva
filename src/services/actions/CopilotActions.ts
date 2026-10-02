@@ -5,6 +5,7 @@ import { Extension } from '../dataType/Extension';
 import { Notifications } from '../dataType/Notifications';
 import { sleep } from '../../utils/sleep';
 import { Logger } from '../dataType/Logger';
+import { TelemetryService } from '../../utils/telemetry';
 
 
 export class CopilotActions {
@@ -13,7 +14,7 @@ export class CopilotActions {
     const subscriptions: Subscription[] = Extension.getInstance().subscriptions;
 
     subscriptions.push(
-      commands.registerCommand(Commands.openCopilot, CopilotActions.openCopilot)
+      commands.registerCommand(Commands.openCopilot, TelemetryService.withTelemetry(Commands.openCopilot, CopilotActions.openCopilot))
     );
   }
 

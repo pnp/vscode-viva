@@ -1,5 +1,16 @@
 # Change Log
 
+## [4.21.0] - 2026-10-02
+
+- Removed yarn package manager
+- Added export of site level app catalogs with apps
+- Added list_spo_list Language Model Tool for SharePoint List enumeration
+- Added update_spo_list Language Model Tool for SharePoint List updates.
+- Updated sign in confirmation page
+- Updated CI/CD action to support multiple SPFx versions
+- Added telemetry
+- Added saving multiple app regs for login
+
 ## [4.20.0] - 2026-07-28
 
 - Added support for SPFx 1.23.2

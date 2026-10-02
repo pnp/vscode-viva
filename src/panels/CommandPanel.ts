@@ -6,6 +6,7 @@ import { AuthProvider, M365AuthenticationSession } from '../providers/AuthProvid
 import { CliActions } from '../services/actions/CliActions';
 import { DebuggerCheck } from '../services/check/DebuggerCheck';
 import { EnvironmentInformation } from '../services/dataType/EnvironmentInformation';
+import { AppRegistrations } from '../services/dataType/AppRegistrations';
 import { M365AgentsToolkitIntegration } from '../services/dataType/M365AgentsToolkitIntegration';
 import { ProjectInformation } from '../services/dataType/ProjectInformation';
 import { buildSPFxStatusBarTooltip } from '../services/check/SpfxStatusTooltip';
@@ -156,7 +157,9 @@ export class CommandPanel {
       commands.executeCommand('setContext', ContextKeys.isLoggedIn, true);
 
       accountCommands.push(new ActionTreeItem(session.account.label, '', { name: 'spo-m365', custom: true }, TreeItemCollapsibleState.Expanded, undefined, undefined, 'm365Account', []));
-      accountCommands[0].children?.push(new ActionTreeItem('Entra app registration', '', { name: 'entra-id', custom: true }, undefined, 'vscode.open', Uri.parse(`https://portal.azure.com/#view/Microsoft_AAD_RegisteredApps/ApplicationMenuBlade/~/Overview/appId/${session.clientId}`), 'sp-admin-api-url'));
+
+      const appRegistrationName = AppRegistrations.getAll().find(registration => registration.clientId.toLowerCase() === session.clientId.toLowerCase())?.name ?? '';
+      accountCommands[0].children?.push(new ActionTreeItem('Entra app registration', appRegistrationName, { name: 'entra-id', custom: true }, undefined, 'vscode.open', Uri.parse(`https://portal.azure.com/#view/Microsoft_AAD_RegisteredApps/ApplicationMenuBlade/~/Overview/appId/${session.clientId}`), 'sp-admin-api-url'));
 
       const appCatalogUrls = await CliActions.appCatalogUrlsGet();
       if (appCatalogUrls?.some) {
@@ -362,7 +365,7 @@ export class CommandPanel {
       actionCommands.push(new ActionTreeItem('Scaffold CI/CD Workflow', '', { name: 'rocket', custom: false }, undefined, Commands.pipeline));
       actionCommands.push(new ActionTreeItem('Add new component', '', { name: 'add', custom: false }, undefined, Commands.addToProject));
       actionCommands.push(new ActionTreeItem('View samples', '', { name: 'library', custom: false }, undefined, Commands.samplesGallery));
-      actionCommands.push(new ActionTreeItem('Use @spfx in GitHub Copilot ', '', { name: 'copilot', custom: false }, undefined, Commands.openCopilot));
+      actionCommands.push(new ActionTreeItem('Use @spfx in GitHub Copilot', '', { name: 'copilot', custom: false }, undefined, Commands.openCopilot));
     } else {
       actionCommands.push(new ActionTreeItem('Create new project', '', { name: 'add', custom: false }, undefined, Commands.createProject));
       actionCommands.push(new ActionTreeItem('View samples', '', { name: 'library', custom: false }, undefined, Commands.samplesGallery));
@@ -373,7 +376,7 @@ export class CommandPanel {
 
       actionCommands.push(new ActionTreeItem('Validate local setup', '', { name: 'verified', custom: false }, undefined, Commands.checkDependencies));
       actionCommands.push(new ActionTreeItem('Install dependencies', '', { name: 'cloud-download', custom: false }, undefined, Commands.installDependencies));
-      actionCommands.push(new ActionTreeItem('Use @spfx in GitHub Copilot ', '', { name: 'copilot', custom: false }, undefined, Commands.openCopilot));
+      actionCommands.push(new ActionTreeItem('Use @spfx in GitHub Copilot', '', { name: 'copilot', custom: false }, undefined, Commands.openCopilot));
     }
 
     window.registerTreeDataProvider('pnp-view-actions', new ActionTreeDataProvider(actionCommands));
