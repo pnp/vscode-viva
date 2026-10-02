@@ -64,9 +64,6 @@ export class CliActions {
     subscriptions.push(
       commands.registerCommand(Commands.exportSiteAppCatalogs, CliActions.exportSiteAppCatalogs)
     );
-    subscriptions.push(
-      commands.registerCommand(Commands.exportSiteAppCatalogs, CliActions.exportSiteAppCatalogs)
-    );
   }
 
   /**
