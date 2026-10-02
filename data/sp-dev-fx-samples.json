@@ -18,7 +18,7 @@
       ],
       "createDate": "2021-09-28",
       "updateDate": "2021-09-28",
-      "version": "1.13.0-beta.17",
+      "version": "1.23.0",
       "componentType": "adaptiveCardExtension",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-aces",
@@ -90,7 +90,7 @@
       ],
       "createDate": "2024-01-25",
       "updateDate": "2024-01-25",
-      "version": "1.18.0",
+      "version": "1.23.0",
       "componentType": "adaptiveCardExtension",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-aces",
@@ -114,7 +114,7 @@
       ],
       "createDate": "2024-08-20",
       "updateDate": "2024-08-20",
-      "version": "1.20.0-beta.0",
+      "version": "1.23.0",
       "componentType": "adaptiveCardExtension",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-aces",
@@ -138,7 +138,7 @@
       ],
       "createDate": "2024-10-05",
       "updateDate": "2024-10-05",
-      "version": "1.20.0",
+      "version": "1.23.0",
       "componentType": "adaptiveCardExtension",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-aces",
@@ -162,7 +162,7 @@
       ],
       "createDate": "2022-02-05",
       "updateDate": "2022-02-05",
-      "version": "1.13.1",
+      "version": "1.23.0",
       "componentType": "adaptiveCardExtension",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-aces",
@@ -186,7 +186,7 @@
       ],
       "createDate": "2023-04-13",
       "updateDate": "2023-04-13",
-      "version": "1.16.1",
+      "version": "1.23.0",
       "componentType": "adaptiveCardExtension",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-aces",
@@ -210,7 +210,7 @@
       ],
       "createDate": "2023-02-21",
       "updateDate": "2023-02-21",
-      "version": "1.16.1",
+      "version": "1.23.0",
       "componentType": "adaptiveCardExtension",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-aces",
@@ -258,7 +258,7 @@
       ],
       "createDate": "2023-01-08",
       "updateDate": "2023-01-08",
-      "version": "1.15.2",
+      "version": "1.23.0",
       "componentType": "adaptiveCardExtension",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-aces",
@@ -306,31 +306,31 @@
       ],
       "createDate": "2022-12-21",
       "updateDate": "2023-01-22",
-      "version": "1.16.0-rc.0",
+      "version": "1.23.0",
       "componentType": "adaptiveCardExtension",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-aces",
       "sampleType": "samples"
     },
     {
-      "name": "pnp-sp-fx-aces-basiccard-helpdesk",
-      "title": "Basic Card Help Desk",
-      "url": "https://github.com/pnp/sp-dev-fx-aces/tree/main/samples/BasicCard-HelpDesk",
-      "description": "This solution uses a help desk scenaio to demonstrate how to use the geolocation features and image upload functionality in Adaptive Card Extensions.",
-      "image": "https://raw.githubusercontent.com/pnp/sp-dev-fx-aces/main/samples/BasicCard-HelpDesk/assets/demo1.png",
+      "name": "pnp-sp-fx-aces-chartcard-datavisualizationoptions",
+      "title": "Data Visualization options for ACE cards",
+      "url": "https://github.com/pnp/sp-dev-fx-aces/tree/main/samples/ChartCard-DataVisualizationOptions",
+      "description": "This is a baseline solution demonstrating the different data visualization options for the Viva Connections Cards.",
+      "image": "https://raw.githubusercontent.com/pnp/sp-dev-fx-aces/main/samples/ChartCard-DataVisualizationOptions/assets/chart-cards-options.png",
       "authors": [
         {
-          "name": "Derek Cash-Peterson",
-          "pictureUrl": "https://github.com/dcashpeterson.png"
+          "name": "Vesa Juvonen",
+          "pictureUrl": "https://github.com/VesaJuvonen.png"
         }
       ],
       "tags": [
         "SharePoint",
         "Viva"
       ],
-      "createDate": "2024-01-25",
-      "updateDate": "2024-01-25",
-      "version": "1.20.0-beta.0",
+      "createDate": "2024-08-20",
+      "updateDate": "2024-08-20",
+      "version": "1.23.0",
       "componentType": "adaptiveCardExtension",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-aces",
@@ -354,7 +354,7 @@
       ],
       "createDate": "2024-09-13",
       "updateDate": "2024-09-13",
-      "version": "1.21.1",
+      "version": "1.23.0",
       "componentType": "adaptiveCardExtension",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-aces",
@@ -378,7 +378,7 @@
       ],
       "createDate": "2024-03-29",
       "updateDate": "2024-03-29",
-      "version": "1.21.1",
+      "version": "1.23.0",
       "componentType": "adaptiveCardExtension",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-aces",
@@ -427,7 +427,7 @@
       ],
       "createDate": "2024-03-27",
       "updateDate": "2024-03-27",
-      "version": "1.19.0-beta.0",
+      "version": "1.23.0",
       "componentType": "adaptiveCardExtension",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-aces",
@@ -451,7 +451,7 @@
       ],
       "createDate": "2024-01-24",
       "updateDate": "2024-01-24",
-      "version": "1.18.2",
+      "version": "1.23.0",
       "componentType": "adaptiveCardExtension",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-aces",
@@ -475,7 +475,7 @@
       ],
       "createDate": "2024-03-09",
       "updateDate": "2024-03-09",
-      "version": "1.18.2",
+      "version": "1.23.0",
       "componentType": "adaptiveCardExtension",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-aces",
@@ -499,7 +499,7 @@
       ],
       "createDate": "2021-10-06",
       "updateDate": "2021-10-06",
-      "version": "1.13.0-beta.17",
+      "version": "1.23.0",
       "componentType": "adaptiveCardExtension",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-aces",
@@ -523,7 +523,7 @@
       ],
       "createDate": "2023-05-16",
       "updateDate": "2023-05-16",
-      "version": "1.16.1",
+      "version": "1.23.0",
       "componentType": "adaptiveCardExtension",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-aces",
@@ -547,7 +547,7 @@
       ],
       "createDate": "2024-03-20",
       "updateDate": "2024-03-20",
-      "version": "1.18.2",
+      "version": "1.23.0",
       "componentType": "adaptiveCardExtension",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-aces",
@@ -571,7 +571,7 @@
       ],
       "createDate": "2022-03-24",
       "updateDate": "2022-03-24",
-      "version": "1.15.2",
+      "version": "1.23.0",
       "componentType": "adaptiveCardExtension",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-aces",
@@ -691,7 +691,7 @@
       ],
       "createDate": "2025-02-17",
       "updateDate": "2025-02-17",
-      "version": "1.20.0",
+      "version": "1.23.0",
       "componentType": "adaptiveCardExtension",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-aces",
@@ -715,7 +715,7 @@
       ],
       "createDate": "2021-11-08",
       "updateDate": "2021-11-08",
-      "version": "1.13.0",
+      "version": "1.23.0",
       "componentType": "adaptiveCardExtension",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-aces",
@@ -739,7 +739,7 @@
       ],
       "createDate": "2023-04-15",
       "updateDate": "2023-04-15",
-      "version": "1.16.1",
+      "version": "1.23.0",
       "componentType": "adaptiveCardExtension",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-aces",
@@ -763,7 +763,7 @@
       ],
       "createDate": "2023-05-03",
       "updateDate": "2023-05-03",
-      "version": "1.16.0",
+      "version": "1.23.0",
       "componentType": "adaptiveCardExtension",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-aces",
@@ -811,7 +811,7 @@
       ],
       "createDate": "2022-04-12",
       "updateDate": "2022-04-12",
-      "version": "1.14.0",
+      "version": "1.23.0",
       "componentType": "adaptiveCardExtension",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-aces",
@@ -835,7 +835,7 @@
       ],
       "createDate": "2025-06-02",
       "updateDate": "2025-06-02",
-      "version": "1.21.0",
+      "version": "1.23.0",
       "componentType": "adaptiveCardExtension",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-aces",
@@ -883,7 +883,7 @@
       ],
       "createDate": "2022-04-11",
       "updateDate": "2022-04-11",
-      "version": "1.13.0",
+      "version": "1.23.0",
       "componentType": "adaptiveCardExtension",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-aces",
@@ -963,7 +963,7 @@
       ],
       "createDate": "2022-01-27",
       "updateDate": "2022-01-27",
-      "version": "1.13.1",
+      "version": "1.23.0",
       "componentType": "adaptiveCardExtension",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-aces",
@@ -987,7 +987,7 @@
       ],
       "createDate": "2023-11-01",
       "updateDate": "2023-11-01",
-      "version": "1.18.1",
+      "version": "1.23.0",
       "componentType": "adaptiveCardExtension",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-aces",
@@ -1011,7 +1011,7 @@
       ],
       "createDate": "2023-05-03",
       "updateDate": "2023-05-03",
-      "version": "1.16.1",
+      "version": "1.23.0",
       "componentType": "adaptiveCardExtension",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-aces",
@@ -1035,7 +1035,7 @@
       ],
       "createDate": "2021-10-28",
       "updateDate": "2021-12-13",
-      "version": "1.13.0-rc.1",
+      "version": "1.23.0",
       "componentType": "adaptiveCardExtension",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-aces",
@@ -1059,7 +1059,7 @@
       ],
       "createDate": "2023-04-15",
       "updateDate": "2023-04-15",
-      "version": "1.16.0",
+      "version": "1.23.0",
       "componentType": "adaptiveCardExtension",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-aces",
@@ -1107,7 +1107,7 @@
       ],
       "createDate": "2024-02-03",
       "updateDate": "2024-01-21",
-      "version": "1.18.2",
+      "version": "1.23.0",
       "componentType": "adaptiveCardExtension",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-aces",
@@ -1131,7 +1131,7 @@
       ],
       "createDate": "2023-10-15",
       "updateDate": "2023-10-31",
-      "version": "1.21.1",
+      "version": "1.23.0",
       "componentType": "adaptiveCardExtension",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-aces",
@@ -1155,7 +1155,7 @@
       ],
       "createDate": "2023-06-28",
       "updateDate": "2023-06-28",
-      "version": "1.18.0",
+      "version": "1.23.0",
       "componentType": "adaptiveCardExtension",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-aces",
@@ -1179,7 +1179,7 @@
       ],
       "createDate": "2023-06-28",
       "updateDate": "2023-06-28",
-      "version": "1.18.0",
+      "version": "1.23.0",
       "componentType": "adaptiveCardExtension",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-aces",
@@ -1203,7 +1203,7 @@
       ],
       "createDate": "2023-06-28",
       "updateDate": "2023-06-28",
-      "version": "1.18.0",
+      "version": "1.23.0",
       "componentType": "adaptiveCardExtension",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-aces",
@@ -1227,7 +1227,7 @@
       ],
       "createDate": "2023-10-10",
       "updateDate": "2024-12-20",
-      "version": "1.21.1",
+      "version": "1.23.0",
       "componentType": "adaptiveCardExtension",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-aces",
@@ -1255,7 +1255,7 @@
       ],
       "createDate": "2023-02-18",
       "updateDate": "2023-02-18",
-      "version": "1.15.2",
+      "version": "1.23.0",
       "componentType": "adaptiveCardExtension",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-aces",
@@ -1327,7 +1327,32 @@
       ],
       "createDate": "2022-03-12",
       "updateDate": "2022-03-12",
-      "version": "1.14.0-beta.4",
+      "version": "1.23.0",
+      "componentType": "adaptiveCardExtension",
+      "extensionType": null,
+      "sampleGallery": "sp-dev-fx-aces",
+      "sampleType": "samples"
+    },
+    {
+      "name": "pnp-sp-fx-aces-primarytextcard-emailsummary",
+      "title": "Email Summary",
+      "url": "https://github.com/pnp/sp-dev-fx-aces/tree/main/samples/PrimaryTextCard-EmailSummary",
+      "description": "This Adaptive Card Extension displays the user's latest received email on the Viva Connections dashboard and shows the Copilot-generated summary of that email in the quick view.",
+      "image": "https://raw.githubusercontent.com/pnp/sp-dev-fx-aces/main/samples/PrimaryTextCard-EmailSummary/assets/LatestEmailCardView.png",
+      "authors": [
+        {
+          "name": "Aimery Thomas",
+          "pictureUrl": "https://github.com/a1mery.png"
+        }
+      ],
+      "tags": [
+        "SharePoint",
+        "Office",
+        "Viva"
+      ],
+      "createDate": "2026-08-05",
+      "updateDate": "2026-08-05",
+      "version": "1.23.0",
       "componentType": "adaptiveCardExtension",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-aces",
@@ -1351,7 +1376,7 @@
       ],
       "createDate": "2022-11-08",
       "updateDate": "2022-11-08",
-      "version": "1.16.0-beta.2",
+      "version": "1.23.0",
       "componentType": "adaptiveCardExtension",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-aces",
@@ -1375,7 +1400,7 @@
       ],
       "createDate": "2021-12-01",
       "updateDate": "2021-12-01",
-      "version": "1.13.0",
+      "version": "1.23.0",
       "componentType": "adaptiveCardExtension",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-aces",
@@ -1407,7 +1432,7 @@
       ],
       "createDate": "2022-01-25",
       "updateDate": "2022-01-25",
-      "version": "1.13.1",
+      "version": "1.23.0",
       "componentType": "adaptiveCardExtension",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-aces",
@@ -1455,7 +1480,7 @@
       ],
       "createDate": "2021-12-06",
       "updateDate": "2022-05-04",
-      "version": "1.14.0",
+      "version": "1.23.0",
       "componentType": "adaptiveCardExtension",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-aces",
@@ -1531,7 +1556,7 @@
       ],
       "createDate": "2022-01-07",
       "updateDate": "2022-06-12",
-      "version": "1.14.0",
+      "version": "1.23.0",
       "componentType": "adaptiveCardExtension",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-aces",
@@ -1579,7 +1604,7 @@
       ],
       "createDate": "2022-01-03",
       "updateDate": "2022-01-03",
-      "version": "1.14.0-beta.4",
+      "version": "1.23.0",
       "componentType": "adaptiveCardExtension",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-aces",
@@ -1603,7 +1628,7 @@
       ],
       "createDate": "2022-02-07",
       "updateDate": "2022-02-07",
-      "version": "1.14.0-beta.4",
+      "version": "1.23.0",
       "componentType": "adaptiveCardExtension",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-aces",
@@ -1635,7 +1660,7 @@
       ],
       "createDate": "2022-01-03",
       "updateDate": "2022-01-03",
-      "version": "1.13.1",
+      "version": "1.23.0",
       "componentType": "adaptiveCardExtension",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-aces",
@@ -1683,7 +1708,7 @@
       ],
       "createDate": "2022-04-11",
       "updateDate": "2022-04-11",
-      "version": "1.14.0",
+      "version": "1.23.0",
       "componentType": "adaptiveCardExtension",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-aces",
@@ -1707,7 +1732,7 @@
       ],
       "createDate": "2022-12-09",
       "updateDate": "2022-12-09",
-      "version": "1.16.0-beta.2",
+      "version": "1.23.0",
       "componentType": "adaptiveCardExtension",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-aces",
@@ -1738,6 +1763,31 @@
       "sampleType": "samples"
     },
     {
+      "name": "pnp-sp-fx-aces-primarytextcard-skillsoverview",
+      "title": "Skills Overview",
+      "url": "https://github.com/pnp/sp-dev-fx-aces/tree/main/samples/PrimaryTextCard-SkillsOverview",
+      "description": "This Adaptive Card Extension gives an overview of the SharePoint skills in the current SharePoint site.",
+      "image": "https://raw.githubusercontent.com/pnp/sp-dev-fx-aces/main/samples/PrimaryTextCard-SkillsOverview/assets/SkillsOverview-cardview.png",
+      "authors": [
+        {
+          "name": "Aimery Thomas",
+          "pictureUrl": "https://github.com/a1mery.png"
+        }
+      ],
+      "tags": [
+        "SharePoint",
+        "Office",
+        "Viva"
+      ],
+      "createDate": "2026-08-05",
+      "updateDate": "2026-08-05",
+      "version": "1.23.0",
+      "componentType": "adaptiveCardExtension",
+      "extensionType": null,
+      "sampleGallery": "sp-dev-fx-aces",
+      "sampleType": "samples"
+    },
+    {
       "name": "pnp-sp-fx-aces-StockBitcoinFeed",
       "title": "Price updates on stocks, rex and crypto",
       "url": "https://github.com/pnp/sp-dev-fx-aces/tree/main/samples/PrimaryTextCard-StockBitcoinFeed",
@@ -1755,7 +1805,7 @@
       ],
       "createDate": "2022-09-11",
       "updateDate": "2022-09-11",
-      "version": "1.15.2",
+      "version": "1.23.0",
       "componentType": "adaptiveCardExtension",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-aces",
@@ -1779,7 +1829,7 @@
       ],
       "createDate": "2021-10-06",
       "updateDate": "2023-06-16",
-      "version": "1.17.2",
+      "version": "1.23.0",
       "componentType": "adaptiveCardExtension",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-aces",
@@ -1803,7 +1853,31 @@
       ],
       "createDate": "2022-04-14",
       "updateDate": "2022-04-14",
-      "version": "1.13.0",
+      "version": "1.23.0",
+      "componentType": "adaptiveCardExtension",
+      "extensionType": null,
+      "sampleGallery": "sp-dev-fx-aces",
+      "sampleType": "samples"
+    },
+    {
+      "name": "pnp-sp-fx-aces-primarytextcard-workiq-todaysummary",
+      "title": "Today with Work IQ (PrimaryTextCard-WorkIQ-TodaySummary)",
+      "url": "https://github.com/pnp/sp-dev-fx-aces/tree/main/samples/PrimaryTextCard-WorkIQ-TodaySummary",
+      "description": "Viva Connections card showing a Work IQ-generated 'what's relevant today' summary, via a C# Azure Function OBO proxy.",
+      "image": "https://raw.githubusercontent.com/pnp/sp-dev-fx-aces/main/samples/PrimaryTextCard-WorkIQ-TodaySummary/assets/demo.gif",
+      "authors": [
+        {
+          "name": "Ramin Ahmadi",
+          "pictureUrl": "https://github.com/AhmadiRamin.png"
+        }
+      ],
+      "tags": [
+        "SharePoint",
+        "Viva"
+      ],
+      "createDate": "2026-07-10",
+      "updateDate": "2026-07-10",
+      "version": "1.23.2",
       "componentType": "adaptiveCardExtension",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-aces",
@@ -1827,7 +1901,7 @@
       ],
       "createDate": "2023-10-31",
       "updateDate": "2023-10-31",
-      "version": "1.18.0",
+      "version": "1.23.0",
       "componentType": "adaptiveCardExtension",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-aces",
@@ -4124,6 +4198,29 @@
       "version": "1.10.0",
       "componentType": "extension",
       "extensionType": "ListViewCommandSet",
+      "sampleGallery": "sp-dev-fx-extensions",
+      "sampleType": "samples"
+    },
+    {
+      "name": "pnp-sp-dev-spfx-extensions-react-command-live-dashboard-sharepoint",
+      "title": "react-command-live-dashboard-sharepoint",
+      "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-command-live-dashboard-sharepoint",
+      "description": "This solution deploys an SPFx Command Set Extension to surface a SharePoint HTML Live Dashboard created using Copilot in the context of a SharePoint list or library. It adds a \"Show Dashboard\" command to the command bar; clicking it opens the Copilot-generated dashboard's embed page in a modal iframe popup, without leaving the list view.",
+      "image": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-command-live-dashboard-sharepoint/assets/1.png",
+      "authors": [
+        {
+          "name": "Siddharth Vaghasia",
+          "pictureUrl": "https://github.com/siddharth-vaghasia.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2026-08-29",
+      "updateDate": "2026-08-29",
+      "version": "1.24.0-beta.2",
+      "componentType": "extension",
+      "extensionType": "ApplicationCustomizer",
       "sampleGallery": "sp-dev-fx-extensions",
       "sampleType": "samples"
     },
@@ -6636,6 +6733,29 @@
       "sampleType": "samples"
     },
     {
+      "name": "pnp-sp-dev-spfx-web-parts-react-birthday-calendar",
+      "title": "Birthday Calendar View",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-birthday-calendar",
+      "description": "Shows team birthdays from a SharePoint list on a month calendar, with person cards showing department, job title and office, and one-click email or Teams greetings. No Microsoft Graph permissions required.",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-birthday-calendar/assets/screenshot.png",
+      "authors": [
+        {
+          "name": "Alexandr Abdulca",
+          "pictureUrl": "https://github.com/Niacrisss.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2026-09-06",
+      "updateDate": "2026-09-06",
+      "version": "1.23.2",
+      "componentType": "webpart",
+      "extensionType": null,
+      "sampleGallery": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
       "name": "pnp-sp-dev-spfx-web-parts-react-birthdays",
       "title": "Birthdays Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-birthdays",
@@ -6899,7 +7019,7 @@
         "SharePoint"
       ],
       "createDate": "2025-05-08",
-      "updateDate": "2025-05-08",
+      "updateDate": "2026-07-28",
       "version": "1.21.1",
       "componentType": "webpart",
       "extensionType": null,
@@ -7798,6 +7918,29 @@
       "sampleType": "samples"
     },
     {
+      "name": "pnp-sp-dev-spfx-web-parts-react-content-rollup",
+      "title": "Content Rollup",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-content-rollup",
+      "description": "Rolls up recent news from a chosen list, or across sites via a Microsoft Search (KQL) query, with no CAML or Handlebars setup.",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-content-rollup/assets/screenshot.png",
+      "authors": [
+        {
+          "name": "Vijay Kumar G",
+          "pictureUrl": "https://github.com/gvijaikumar9.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2026-08-28",
+      "updateDate": "2026-08-28",
+      "version": "1.21.1",
+      "componentType": "webpart",
+      "extensionType": null,
+      "sampleGallery": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
       "name": "pnp-sp-dev-spfx-web-parts-react-copilot-apis",
       "title": "Microsoft 365 Copilot Chat and Search with Work IQ in SPFx",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-copilot-apis",
@@ -7884,6 +8027,29 @@
       "createDate": "2025-01-09",
       "updateDate": "2025-05-16",
       "version": "1.20.0",
+      "componentType": "webpart",
+      "extensionType": null,
+      "sampleGallery": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
+      "name": "pnp-sp-dev-spfx-web-parts-react-copilot-html-app-integrator",
+      "title": "Integrate (Copilot) HTML apps seamlessly in SharePoint (WebPart)",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-copilot-html-app-integrator",
+      "description": "An SPFx web part that embeds small, self-contained HTML applications (HTML + inline JavaScript + CSS, stored in a SharePoint document library) into SharePoint pages without the SharePoint file-preview chrome (toolbar, download button).",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-copilot-html-app-integrator/assets/app-screen-01.png",
+      "authors": [
+        {
+          "name": "Marc André Schröder-Zhou",
+          "pictureUrl": "https://github.com/maschroeder-z.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2026-09-08",
+      "updateDate": "2026-09-08",
+      "version": "1.23.2",
       "componentType": "webpart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
@@ -8308,6 +8474,29 @@
       "sampleType": "samples"
     },
     {
+      "name": "pnp-sp-dev-spfx-web-parts-react-delivery-plan",
+      "title": "Delivery Plan",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-delivery-plan",
+      "description": "A project delivery dashboard web part that reads tasks from a SharePoint list and displays them across four interactive views. Resources, phases, and date ranges are all driven by list data — no hardcoded configuration required.",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-delivery-plan/assets/phase-summary.png",
+      "authors": [
+        {
+          "name": "Sudeep Ghatak",
+          "pictureUrl": "https://github.com/sudeepghatak.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2026-08-26",
+      "updateDate": "2026-08-26",
+      "version": "1.20.0",
+      "componentType": "webpart",
+      "extensionType": null,
+      "sampleGallery": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
       "name": "pnp-sp-dev-spfx-web-parts-react-dev-radar",
       "title": "Dev-Radar for SharePoint Online",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-dev-radar",
@@ -8579,8 +8768,8 @@
         "SharePoint"
       ],
       "createDate": "2026-02-07",
-      "updateDate": "2026-02-07",
-      "version": "1.21.0",
+      "updateDate": "2026-09-12",
+      "version": "1.21.1",
       "componentType": "webpart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
@@ -10378,22 +10567,26 @@
     },
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-interactive-map",
-      "title": "Interactive Map Web Part",
+      "title": "Interactive Map",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-interactive-map",
-      "description": "This web parts displays a (world) map. An editor can set custom markers directly in the map. Each marker can configured individually.",
-      "image": "https://raw.githubusercontent.com/pnp/sp-dev-fx-webparts/main/samples/react-interactive-map/assets/WPPreview.png",
+      "description": "This web parts displays a (world) map. An editor can set custom markers directly in the map. Each marker can configured individually. It is possible to determine the color of the pin, the icon in the pin or what should happen when the pin is clicked. It is even possible to change the tile layer in the web part properties.",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-interactive-map/assets/CreateNewMarker.png",
       "authors": [
         {
           "name": "Sergej Schwabauer",
           "pictureUrl": "https://github.com/SPFxAppDev.png"
+        },
+        {
+          "name": "Nello D'Andrea",
+          "pictureUrl": "https://github.com/ferrarirosso.png"
         }
       ],
       "tags": [
         "SharePoint"
       ],
-      "createDate": "2023-01-31",
-      "updateDate": "2023-01-31",
-      "version": "1.14.0",
+      "createDate": "2023-01-19",
+      "updateDate": "2026-07-01",
+      "version": "1.23.0",
       "componentType": "webpart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
@@ -10427,19 +10620,23 @@
       "title": "Invoice Generator Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-invoice-generator",
       "description": "SPFx Invoice Generator Web part using PnP JS allows users to create invoices for different clients or customers.",
-      "image": "https://raw.githubusercontent.com/pnp/sp-dev-fx-webparts/main/samples/react-invoice-generator/assets/invoice.PNG",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-invoice-generator/assets/configureWebpart.PNG",
       "authors": [
         {
           "name": "Rishabh Shukla",
           "pictureUrl": "https://github.com/rishabhshukla12.png"
+        },
+        {
+          "name": "Nello D'Andrea",
+          "pictureUrl": "https://github.com/ferrarirosso.png"
         }
       ],
       "tags": [
         "SharePoint"
       ],
-      "createDate": "2023-06-12",
-      "updateDate": "2023-06-12",
-      "version": "1.16.1",
+      "createDate": "2023-05-25",
+      "updateDate": "2026-07-01",
+      "version": "1.23.0",
       "componentType": "webpart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
@@ -10573,6 +10770,29 @@
       "sampleType": "samples"
     },
     {
+      "name": "pnp-sp-dev-spfx-web-parts-react-knowledge-source-health",
+      "title": "Knowledge Source Health",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-knowledge-source-health",
+      "description": "A SharePoint Framework web part that audits a site's document libraries against the documented constraints of Copilot Studio knowledge sources, and flags the content that will silently fail to ground.",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-knowledge-source-health/assets/screenshot-real-scan.png",
+      "authors": [
+        {
+          "name": "Elliot Margot",
+          "pictureUrl": "https://github.com/OwnOptic.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2026-08-15",
+      "updateDate": "2026-08-15",
+      "version": "1.23.2",
+      "componentType": "webpart",
+      "extensionType": null,
+      "sampleGallery": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
       "name": "pnp-sp-dev-spfx-web-parts-react-legallens",
       "title": "LegalLens SPFx Solution",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-legallens",
@@ -10594,6 +10814,29 @@
       "createDate": "2026-04-10",
       "updateDate": "2026-04-10",
       "version": "1.22.0",
+      "componentType": "webpart",
+      "extensionType": null,
+      "sampleGallery": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
+      "name": "pnp-sp-dev-spfx-web-parts-react-list-dashboard",
+      "title": "List Dashboard",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-list-dashboard",
+      "description": "One versatile web part that turns any SharePoint list or library into a dashboard - stat, KPI tiles, bar, column, pie, donut, line, area, or table - with colourblind-safe palettes, status-vs-target colouring, and number formatting, and no Power BI or external chart library.",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-list-dashboard/assets/screenshot.png",
+      "authors": [
+        {
+          "name": "Vijay Kumar G",
+          "pictureUrl": "https://github.com/gvijaikumar9.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2026-09-10",
+      "updateDate": "2026-09-10",
+      "version": "1.21.1",
       "componentType": "webpart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
@@ -10808,6 +11051,30 @@
       "sampleType": "samples"
     },
     {
+      "name": "pnp-sp-dev-spfx-web-parts-react-m365-search-hub",
+      "title": "Microsoft 365 Search Hub",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-m365-search-hub",
+      "description": "A custom Microsoft 365 search experience built on the Microsoft Search API in Microsoft Graph. Demonstrates the architecture behind a search web part rather than the search box itself.",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-m365-search-hub/assets/sample.png",
+      "authors": [
+        {
+          "name": "João Livio",
+          "pictureUrl": "https://github.com/jtlivio.png"
+        }
+      ],
+      "tags": [
+        "SharePoint",
+        "Microsoft Graph"
+      ],
+      "createDate": "2026-07-28",
+      "updateDate": "2026-07-28",
+      "version": "1.23.2",
+      "componentType": "webpart",
+      "extensionType": null,
+      "sampleGallery": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
       "name": "pnp-sp-dev-spfx-web-parts-react-manage-hublevel-subscriptions",
       "title": "Subscription Manager Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-manage-hublevel-subscriptions",
@@ -10971,6 +11238,29 @@
       "createDate": "2019-03-25",
       "updateDate": "2019-03-25",
       "version": "1.8.0",
+      "componentType": "webpart",
+      "extensionType": null,
+      "sampleGallery": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
+      "name": "pnp-sp-dev-spfx-web-parts-react-mcp-client",
+      "title": "MCP Client for SharePoint",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-mcp-client",
+      "description": "A SharePoint Framework web part that acts as a Model Context Protocol (MCP) client from inside a SharePoint page. It connects to an MCP server over Streamable HTTP, lists the tools that server exposes, lets a user invoke one from a form generated out of the tool's JSON Schema, and renders the full HTTP and JSON-RPC trace so the protocol is visible rather than hidden inside an agent.",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-mcp-client/assets/screenshot-sse.png",
+      "authors": [
+        {
+          "name": "Elliot Margot",
+          "pictureUrl": "https://github.com/OwnOptic.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2026-08-15",
+      "updateDate": "2026-08-15",
+      "version": "1.23.2",
       "componentType": "webpart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
@@ -11259,6 +11549,30 @@
       "createDate": "2020-07-30",
       "updateDate": "2021-10-19",
       "version": "1.10.0",
+      "componentType": "webpart",
+      "extensionType": null,
+      "sampleGallery": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
+      "name": "pnp-sp-dev-spfx-web-parts-react-modern-glossary",
+      "title": "Modern Glossary",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-modern-glossary",
+      "description": "A dynamic SharePoint Framework web part displaying an A-Z indexed, accordion-style glossary with alphabet navigation, in-place item management, and Active/Inactive content lifecycle control.",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-modern-glossary/assets/modern-glossary-demo.gif",
+      "authors": [
+        {
+          "name": "Sai Siva Ram Bandaru",
+          "pictureUrl": "https://github.com/saiiiiiii.png"
+        }
+      ],
+      "tags": [
+        "SharePoint",
+        "Office"
+      ],
+      "createDate": "2026-08-08",
+      "updateDate": "2026-08-08",
+      "version": "1.23.0",
       "componentType": "webpart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
@@ -11674,6 +11988,29 @@
       "createDate": "2019-02-26",
       "updateDate": "2021-12-18",
       "version": "1.13.1",
+      "componentType": "webpart",
+      "extensionType": null,
+      "sampleGallery": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
+      "name": "pnp-sp-dev-spfx-web-parts-react-my-workspaces-hub",
+      "title": "My Workspaces Hub",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-my-workspaces-hub",
+      "description": "My Workspaces Hub is SharePoint Framework (SPFx) web part that gives the signed-in user a single, sleek place to explore, monitor, and navigate every site, team, group space they can access. It pairs a fast, virtualized catalog with an analytics dashboard and rich on-demand detail drawers - all built on Fluent UI v9 and fully theme-aware across SharePoint Online and Microsoft Teams.",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-my-workspaces-hub/assets/AllSites.png",
+      "authors": [
+        {
+          "name": "Harminder Singh",
+          "pictureUrl": "https://github.com/HarminderSethi.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2026-09-12",
+      "updateDate": "2026-09-12",
+      "version": "1.23.0",
       "componentType": "webpart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
@@ -12373,14 +12710,18 @@
         {
           "name": "Zach Roberts",
           "pictureUrl": "https://github.com/zachroberts8668.png"
+        },
+        {
+          "name": "Ari Gunawan",
+          "pictureUrl": "https://github.com/AriGunawan.png"
         }
       ],
       "tags": [
         "SharePoint"
       ],
       "createDate": "2020-10-18",
-      "updateDate": "2020-10-18",
-      "version": "1.11.0",
+      "updateDate": "2026-09-13",
+      "version": "1.23.2",
       "componentType": "webpart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
@@ -12913,7 +13254,7 @@
         "SharePoint"
       ],
       "createDate": "2025-06-17",
-      "updateDate": "2025-06-17",
+      "updateDate": "2026-07-28",
       "version": "1.20.0",
       "componentType": "webpart",
       "extensionType": null,
@@ -13606,6 +13947,29 @@
       "createDate": "2024-07-12",
       "updateDate": "2024-07-12",
       "version": "1.18.2",
+      "componentType": "webpart",
+      "extensionType": null,
+      "sampleGallery": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
+      "name": "pnp-sp-dev-spfx-web-parts-react-sitepage-migration",
+      "title": "Page Migration Admin",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-sitepage-migration",
+      "description": "Copies modern Site Pages from one SharePoint Online site to another, with their images, layout and web part configuration.",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-sitepage-migration/assets/01-choose-sites-empty-state.png",
+      "authors": [
+        {
+          "name": "Nico",
+          "pictureUrl": "https://github.com/NicolasKheirallah.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2026-05-03",
+      "updateDate": "2026-07-26",
+      "version": "1.23.2",
       "componentType": "webpart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",

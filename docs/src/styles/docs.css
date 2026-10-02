@@ -3,7 +3,8 @@
 }
 
 .site-title img {
-    width: 350;
+    width: auto;
+    max-width: 2.5rem;
 }
 
 .hero {
