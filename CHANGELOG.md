@@ -1,5 +1,9 @@
 # Change Log
 
+## [4.22.0] - 2026-10-02
+
+- Resolved critical bug fix
+
 ## [4.21.0] - 2026-10-02
 
 - Removed yarn package manager
