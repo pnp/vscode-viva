@@ -20,6 +20,7 @@ import { getCombinedTaskCommands } from './TaskTreeData';
 
 export class CommandPanel {
   private static statusBarItem = window.createStatusBarItem('pnp.spfx.projectStatus', StatusBarAlignment.Left, 100);
+  private static accountTreeDataProvider = new ActionTreeDataProvider();
 
   public static register() {
     const subscriptions: Subscription[] = Extension.getInstance().subscriptions;
@@ -56,7 +57,6 @@ export class CommandPanel {
     await CommandPanel.refreshProjectContext();
 
     await CommandPanel.registerTreeView();
-    AuthProvider.verify();
   }
 
   private static async refreshProjectContext() {
@@ -121,7 +121,7 @@ export class CommandPanel {
   private static async registerTreeView() {
     const authInstance = AuthProvider.getInstance();
     if (authInstance) {
-      authInstance.getAccount().then(account => CommandPanel.accountTreeView(account));
+      CommandPanel.registerAccountTreeView();
 
       authInstance.onDidChangeSessions(e => {
         if (e && e.added && e.added.length > 0) {
@@ -141,6 +141,26 @@ export class CommandPanel {
         treeDataProvider: new ActionTreeDataProvider(helpCommands),
         showCollapseAll: true
       });
+  }
+
+  private static registerAccountTreeView() {
+    const accountView = window.createTreeView('pnp-view-account', { treeDataProvider: CommandPanel.accountTreeDataProvider, showCollapseAll: true });
+    Extension.getInstance().subscriptions.push(accountView);
+
+    if (accountView.visible) {
+      CommandPanel.refreshAccountTreeView();
+      return;
+    }
+
+    CommandPanel.accountTreeDataProvider.actions = [new ActionTreeItem('Checking sign in status...', '', { name: 'loading~spin', custom: false })];
+    CommandPanel.actionsTreeView();
+    const visibilityListener = accountView.onDidChangeVisibility(e => {
+      if (e.visible) {
+        visibilityListener.dispose();
+        CommandPanel.refreshAccountTreeView();
+      }
+    });
+    Extension.getInstance().subscriptions.push(visibilityListener);
   }
 
   private static refreshAccountTreeView() {
@@ -201,7 +221,8 @@ export class CommandPanel {
     }
 
     CommandPanel.actionsTreeView();
-    window.createTreeView('pnp-view-account', { treeDataProvider: new ActionTreeDataProvider(accountCommands), showCollapseAll: true });
+    CommandPanel.accountTreeDataProvider.actions = accountCommands;
+    CommandPanel.accountTreeDataProvider.refresh();
   }
 
   private static async refreshEnvironmentTreeView() {

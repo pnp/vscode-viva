@@ -42,6 +42,7 @@ export class AuthProvider implements AuthenticationProvider, Disposable {
   private static context: vscode.ExtensionContext;
   private onDidChangeEventEmit = new EventEmitter<AuthenticationProviderAuthenticationSessionsChangeEvent>();
   private initializedDisposable: Disposable | undefined;
+  private accountRequest: Promise<M365AuthenticationSession | undefined> | undefined;
 
   /**
    * Registers the authentication provider and associated commands.
@@ -75,14 +76,6 @@ export class AuthProvider implements AuthenticationProvider, Disposable {
    */
   public static getInstance(): AuthProvider {
     return AuthProvider.instance;
-  }
-
-  /**
-   * Verifies the authentication status.
-   * Calls the `login` method of the `AuthProvider` class with `false` as the argument.
-   */
-  public static verify() {
-    AuthProvider.login(false);
   }
 
   public static async signIn(createIfNone: boolean = true) {
@@ -391,47 +384,15 @@ export class AuthProvider implements AuthenticationProvider, Disposable {
    */
   public async getAccount(): Promise<M365AuthenticationSession | undefined> {
     if (!EnvironmentInformation.account) {
-      return await new Promise((resolve: (res: M365AuthenticationSession | undefined) => void, reject: (e: Error) => void): void => {
-        let account: M365AuthenticationSession | undefined;
-        executeCommand('status', { output: 'json' }, {
-          stdout: (message: string) => {
-            Logger.info(`status: ${message}`);
-            const sessions = JSON.parse(message.toString());
-
-            if (sessions && sessions.connectedAs) {
-              EnvironmentInformation.account = sessions.connectedAs;
-
-              account = new M365AuthenticationSession({
-                id: AuthProvider.id,
-                label: sessions.connectedAs
-              });
-              account.tenantId = sessions.appTenant ?? '';
-              EnvironmentInformation.tenantId = sessions.appTenant;
-              account.clientId = sessions.appId ?? '';
-              EnvironmentInformation.clientId = sessions.appId;
-            }
-          },
-          stderr: (message: string) => {
-            message = message.toString();
-            if (!AuthProvider.reSignIn && message.includes('Access token expired')) {
-              AuthProvider.logout();
-              AuthProvider.reSignIn = true;
-              const SignInButton = 'Sign in';
-              Notifications.info('Access token expired.', SignInButton).then((item) => {
-                if (item === SignInButton) {
-                  AuthProvider.signIn();
-                }
-              });
-            } else {
-              Logger.error(`status: ${message}`);
-            }
-          }
-        }).then(() => {
-          resolve(account);
-        }).catch(error => {
-          reject(error);
+      // HACK: the status check may be requested by multiple callers at the same time (eg. the account view and VS Code calling getSessions)
+      // so the in-flight check is shared to make sure the CLI status command is executed only once
+      if (!this.accountRequest) {
+        this.accountRequest = this.getAccountStatus().finally(() => {
+          this.accountRequest = undefined;
         });
-      });
+      }
+
+      return this.accountRequest;
     }
 
     const account = new M365AuthenticationSession({
@@ -442,5 +403,69 @@ export class AuthProvider implements AuthenticationProvider, Disposable {
     account.clientId = EnvironmentInformation.clientId ?? '';
 
     return account;
+  }
+
+  /**
+   * Retrieves the account information using the CLI 'status' command.
+   * When the login has expired, the user is signed out and notified so that they may sign in again.
+   * @returns A Promise that resolves to an M365AuthenticationSession object or undefined when the user is not signed in.
+   */
+  private async getAccountStatus(): Promise<M365AuthenticationSession | undefined> {
+    let account: M365AuthenticationSession | undefined;
+
+    try {
+      await executeCommand('status', { output: 'json' }, {
+        stdout: (message: string) => {
+          Logger.info(`status: ${message}`);
+          const sessions = JSON.parse(message.toString());
+
+          if (sessions && sessions.connectedAs) {
+            EnvironmentInformation.account = sessions.connectedAs;
+
+            account = new M365AuthenticationSession({
+              id: AuthProvider.id,
+              label: sessions.connectedAs
+            });
+            account.tenantId = sessions.appTenant ?? '';
+            EnvironmentInformation.tenantId = sessions.appTenant;
+            account.clientId = sessions.appId ?? '';
+            EnvironmentInformation.clientId = sessions.appId;
+          }
+        },
+        stderr: (message: string) => {
+          Logger.error(`status: ${message}`);
+        }
+      });
+    } catch (error: any) {
+      const message: string = error?.error?.message ?? error?.message ?? `${error}`;
+      Logger.error(`status: ${message}`);
+
+      if (message.includes('Your login has expired') || message.includes('Access token expired')) {
+        AuthProvider.handleExpiredLogin();
+      }
+
+      return undefined;
+    }
+
+    return account;
+  }
+
+  /**
+   * Signs out the user after the login has expired and lets them know they need to sign in again.
+   */
+  private static handleExpiredLogin() {
+    if (AuthProvider.reSignIn) {
+      return;
+    }
+
+    AuthProvider.reSignIn = true;
+    AuthProvider.logout();
+
+    const SignInButton = 'Sign in';
+    Notifications.info('Your Microsoft 365 login has expired. Sign in again to continue.', SignInButton).then((item) => {
+      if (item === SignInButton) {
+        AuthProvider.signIn();
+      }
+    });
   }
 }
