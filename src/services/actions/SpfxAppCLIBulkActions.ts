@@ -169,16 +169,19 @@ export class SpfxAppCLIBulkActions {
                         };
 
                         await CliExecuter.execute('spo app retract', 'json', commandOptions);
+                        Logger.info(`Retracted app '${app.Title}' with ID '${app.ID}'.`);
                         completed++;
                     } catch (e: any) {
-                        Notifications.error(`Failed to retract '${app.Title}': ${e?.error?.message || e?.message}`);
+                        Logger.error(`Failed to retract app '${app.Title}' with ID '${app.ID}': ${e?.error?.message || e?.message}`);
                     }
                 }
 
-                progress.report({ message: `Completed: ${completed} of ${deployedApps.length} app(s) retracted.` });
+                if (completed === deployedApps.length) {
+                    Notifications.info(`Successfully retracted ${completed} app(s).`);
+                } else {
+                    Notifications.warning(`Retracted ${completed} out of ${deployedApps.length} app(s). Check [output window](command:${Commands.showOutputChannel}) for details.`);
+                }
             });
-
-            Notifications.info(`Bulk retract completed: ${deployedApps.length} app(s) processed.`);
 
             await commands.executeCommand('spfx-toolkit.refreshAppCatalogTreeView');
         } catch (e: any) {
@@ -234,16 +237,19 @@ export class SpfxAppCLIBulkActions {
                         };
 
                         await CliExecuter.execute('spo app remove', 'json', commandOptions);
+                        Logger.info(`Removed app '${app.Title}' with ID '${app.ID}'.`);
                         completed++;
                     } catch (e: any) {
-                        Notifications.error(`Failed to remove '${app.Title}': ${e?.error?.message || e?.message}`);
+                        Logger.error(`Failed to remove app '${app.Title}' with ID '${app.ID}': ${e?.error?.message || e?.message}`);
                     }
                 }
 
-                progress.report({ message: `Completed: ${completed} of ${apps.length} app(s) removed.` });
+                if (completed === apps.length) {
+                    Notifications.info(`Successfully removed ${completed} app(s).`);
+                } else {
+                    Notifications.warning(`Removed ${completed} out of ${apps.length} app(s). Check [output window](command:${Commands.showOutputChannel}) for details.`);
+                }
             });
-
-            Notifications.info(`Bulk remove completed: ${apps.length} app(s) processed.`);
 
             await commands.executeCommand('spfx-toolkit.refreshAppCatalogTreeView');
         } catch (e: any) {
@@ -296,16 +302,19 @@ export class SpfxAppCLIBulkActions {
                     try {
                         progress.report({ message: `Enabling '${app.Title}'...`, increment: (1 / disabledApps.length) * 100 });
                         await SpfxAppCLIBulkActions.updateAppPackageEnabledStatus(app, appCatalogUrl, true);
+                        Logger.info(`Enabled app '${app.Title}' with ID '${app.ID}'.`);
                         completed++;
                     } catch (e: any) {
-                        Notifications.error(`Failed to enable '${app.Title}': ${e?.error?.message || e?.message}`);
+                        Logger.error(`Failed to enable app '${app.Title}' with ID '${app.ID}': ${e?.error?.message || e?.message}`);
                     }
                 }
 
-                progress.report({ message: `Completed: ${completed} of ${disabledApps.length} app(s) enabled.` });
+                if (completed === disabledApps.length) {
+                    Notifications.info(`Successfully enabled ${completed} app(s).`);
+                } else {
+                    Notifications.warning(`Enabled ${completed} out of ${disabledApps.length} app(s). Check [output window](command:${Commands.showOutputChannel}) for details.`);
+                }
             });
-
-            Notifications.info(`Bulk enable completed: ${disabledApps.length} app(s) processed.`);
 
             await commands.executeCommand('spfx-toolkit.refreshAppCatalogTreeView');
         } catch (e: any) {
@@ -358,16 +367,19 @@ export class SpfxAppCLIBulkActions {
                     try {
                         progress.report({ message: `Disabling '${app.Title}'...`, increment: (1 / enabledApps.length) * 100 });
                         await SpfxAppCLIBulkActions.updateAppPackageEnabledStatus(app, appCatalogUrl, false);
+                        Logger.info(`Disabled app '${app.Title}' with ID '${app.ID}'.`);
                         completed++;
                     } catch (e: any) {
-                        Notifications.error(`Failed to disable '${app.Title}': ${e?.error?.message || e?.message}`);
+                        Logger.error(`Failed to disable app '${app.Title}' with ID '${app.ID}': ${e?.error?.message || e?.message}`);
                     }
                 }
 
-                progress.report({ message: `Completed: ${completed} of ${enabledApps.length} app(s) disabled.` });
+                if (completed === enabledApps.length) {
+                    Notifications.info(`Successfully disabled ${completed} app(s).`);
+                } else {
+                    Notifications.warning(`Disabled ${completed} out of ${enabledApps.length} app(s). Check [output window](command:${Commands.showOutputChannel}) for details.`);
+                }
             });
-
-            Notifications.info(`Bulk disable completed: ${enabledApps.length} app(s) processed.`);
 
             await commands.executeCommand('spfx-toolkit.refreshAppCatalogTreeView');
         } catch (e: any) {
@@ -378,7 +390,6 @@ export class SpfxAppCLIBulkActions {
 
     /**
      * Installs all apps from the specified app catalog to a site.
-     * If installing to a site collection app catalog, apps will first be copied from tenant catalog.
      *
      * @param node The tree item representing the app catalog.
      */
@@ -467,10 +478,10 @@ export class SpfxAppCLIBulkActions {
             const appCatalogUrl = SpfxAppCLIBulkActions.getAppCatalogUrlFromNode(node);
             const isTenantCatalog = !appCatalogUrl || (EnvironmentInformation.appCatalogUrls && appCatalogUrl === EnvironmentInformation.appCatalogUrls[0]);
 
-            const apps = await CliActions.getAppCatalogApps();
+            const apps = await CliActions.getAppCatalogApps(appCatalogUrl);
 
             if (!apps || apps.length === 0) {
-                Notifications.info('No apps found in the tenant app catalog.');
+                Notifications.info(`No apps found in the ${isTenantCatalog ? 'tenant' : 'site collection'} app catalog.`);
                 return;
             }
 
@@ -532,16 +543,19 @@ export class SpfxAppCLIBulkActions {
                         };
 
                         await CliExecuter.execute('spo app upgrade', 'json', commandOptions);
+                        Logger.info(`Upgraded app '${app.Title}' with ID '${app.ID}'.`);
                         completed++;
                     } catch (e: any) {
-                        Notifications.error(`Failed to upgrade '${app.Title}': ${e?.error?.message || e?.message}`);
+                        Logger.error(`Failed to upgrade app '${app.Title}' with ID '${app.ID}': ${e?.error?.message || e?.message}`);
                     }
                 }
 
-                progress.report({ message: `Completed: ${completed} of ${apps.length} app(s) upgraded.` });
+                if (completed === apps.length) {
+                    Notifications.info(`Successfully upgraded ${completed} app(s).`);
+                } else {
+                    Notifications.warning(`Upgraded ${completed} out of ${apps.length} app(s). Check [output window](command:${Commands.showOutputChannel}) for details.`);
+                }
             });
-
-            Notifications.info(`Bulk upgrade completed: ${apps.length} app(s) processed.`);
         } catch (e: any) {
             const message = e?.message || 'An unexpected error occurred during the bulk upgrade.';
             Notifications.error(message);
@@ -652,16 +666,19 @@ export class SpfxAppCLIBulkActions {
 
                     const commandOptions: any = buildCommandOptions(app, siteUrl as string, isSiteCollectionCatalog, appCatalogUrl);
                     await CliExecuter.execute(cliCommand, 'json', commandOptions);
+                    Logger.info(`${actionVerb.charAt(0).toUpperCase() + actionVerb.slice(1)}ed app '${app.Title}' with ID '${app.ID}'.`);
                     completed++;
                 } catch (e: any) {
-                    Notifications.error(`Failed to ${actionVerb} '${app.Title}': ${e?.error?.message || e?.message}`);
+                    Logger.error(`Failed to ${actionVerb} app '${app.Title}' with ID '${app.ID}': ${e?.error?.message || e?.message}`);
                 }
             }
 
-            progress.report({ message: `Completed: ${completed} of ${apps.length} app(s) ${actionVerb}ed.` });
+            if (completed === apps.length) {
+                Notifications.info(`Successfully ${actionVerb}ed ${completed} app(s).`);
+            } else {
+                Notifications.warning(`${actionVerb.charAt(0).toUpperCase() + actionVerb.slice(1)}ed ${completed} out of ${apps.length} app(s). Check [output window](command:${Commands.showOutputChannel}) for details.`);
+            }
         });
-
-        Notifications.info(`Bulk ${actionVerb} completed: ${completed} of ${apps.length} app(s) processed.`);
     }
 
     /**

@@ -1598,6 +1598,38 @@
           "when": "false"
         },
         {
+          "command": "spfx-toolkit.bulkDeployAppCatalogApps",
+          "when": "false"
+        },
+        {
+          "command": "spfx-toolkit.bulkRetractAppCatalogApps",
+          "when": "false"
+        },
+        {
+          "command": "spfx-toolkit.bulkRemoveAppCatalogApps",
+          "when": "false"
+        },
+        {
+          "command": "spfx-toolkit.bulkEnableAppCatalogApps",
+          "when": "false"
+        },
+        {
+          "command": "spfx-toolkit.bulkDisableAppCatalogApps",
+          "when": "false"
+        },
+        {
+          "command": "spfx-toolkit.bulkInstallAppCatalogApps",
+          "when": "false"
+        },
+        {
+          "command": "spfx-toolkit.bulkUninstallAppCatalogApps",
+          "when": "false"
+        },
+        {
+          "command": "spfx-toolkit.bulkUpgradeAppCatalogApps",
+          "when": "false"
+        },
+        {
           "command": "spfx-toolkit.moreTenantWideExtensionActions",
           "when": "false"
         },
