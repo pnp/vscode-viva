@@ -1,0 +1,223 @@
+{
+  "events": [
+    {
+      "name": "Extension Activated",
+      "description": "Extension was activated successfully",
+      "properties": {
+        "version": "Extension version number",
+        "nodeVersion": "Node.js version being used",
+        "platform": "Operating system platform"
+      },
+      "measurements": {
+        "activationTimeMs": "Time taken to activate the extension in milliseconds"
+      }
+    },
+    {
+      "name": "Extension Deactivated",
+      "description": "Extension was deactivated"
+    },
+    {
+      "name": "Gulp Build Project",
+      "description": "User executed gulp build task"
+    },
+    {
+      "name": "Gulp Bundle Project",
+      "description": "User executed gulp bundle task"
+    },
+    {
+      "name": "Gulp Clean Project",
+      "description": "User executed gulp clean task"
+    },
+    {
+      "name": "Gulp Deploy to Azure Storage",
+      "description": "User executed gulp deploy-azure-storage task"
+    },
+    {
+      "name": "Gulp Package Project",
+      "description": "User executed gulp package-solution task"
+    },
+    {
+      "name": "Gulp Publish Project",
+      "description": "User executed gulp publish task (bundle + package)"
+    },
+    {
+      "name": "Gulp Serve Project",
+      "description": "User executed gulp serve task"
+    },
+    {
+      "name": "Gulp Test Project",
+      "description": "User executed gulp test task"
+    },
+    {
+      "name": "Gulp Trust Dev Cert",
+      "description": "User executed gulp trust-dev-cert task"
+    },
+    {
+      "name": "Execute Terminal Command",
+      "description": "User executed an NPM script from the tasks view",
+      "properties": {
+        "script": "Name of the NPM script executed (e.g., 'lint', 'watch')"
+      }
+    },
+    {
+      "name": "Heft Build Project",
+      "description": "User executed heft build task"
+    },
+    {
+      "name": "Heft Clean Project",
+      "description": "User executed heft clean task"
+    },
+    {
+      "name": "Heft Deploy to Azure Storage",
+      "description": "User executed heft deploy-azure-storage task"
+    },
+    {
+      "name": "Heft Eject Project",
+      "description": "User executed heft eject task"
+    },
+    {
+      "name": "Heft Package Project",
+      "description": "User executed heft package task"
+    },
+    {
+      "name": "Heft Publish Project",
+      "description": "User executed heft publish task (build + package)"
+    },
+    {
+      "name": "Heft Start Project",
+      "description": "User executed heft start task"
+    },
+    {
+      "name": "Heft Test Project",
+      "description": "User executed heft test task"
+    },
+    {
+      "name": "Heft Trust Dev Cert",
+      "description": "User executed heft trust-dev-cert task"
+    },
+    {
+      "name": "Upgrade Project",
+      "description": "User initiated SPFx project upgrade"
+    },
+    {
+      "name": "Validate Project",
+      "description": "User validated SPFx project structure and dependencies"
+    },
+    {
+      "name": "Rename Project",
+      "description": "User renamed the SPFx project"
+    },
+    {
+      "name": "Increase Project Version",
+      "description": "User increased the project version"
+    },
+    {
+      "name": "Grant API Permissions",
+      "description": "User granted API permissions for the project"
+    },
+    {
+      "name": "Deploy Project",
+      "description": "User deployed the project to an app catalog"
+    },
+    {
+      "name": "Set Form Customizer",
+      "description": "User configured a form customizer"
+    },
+    {
+      "name": "Scaffold CI/CD Workflow",
+      "description": "User generated a CI/CD pipeline configuration"
+    },
+    {
+      "name": "Add Component to Project",
+      "description": "User added a new component to an existing project"
+    },
+    {
+      "name": "View Samples Gallery",
+      "description": "User opened the SPFx samples gallery"
+    },
+    {
+      "name": "Use @spfx in GitHub Copilot",
+      "description": "User opened GitHub Copilot chat with @spfx participant"
+    },
+    {
+      "name": "Create New Project",
+      "description": "User created a new SPFx project"
+    },
+    {
+      "name": "Validate Local Setup",
+      "description": "User validated their local development environment setup"
+    },
+    {
+      "name": "Install Dependencies",
+      "description": "User installed missing dependencies"
+    },
+    {
+      "name": "Add Tenant App Catalog",
+      "description": "User added a tenant-wide app catalog"
+    },
+    {
+      "name": "Remove Tenant Wide Extension",
+      "description": "User removed a tenant-wide extension"
+    },
+    {
+      "name": "Enable Tenant Wide Extension",
+      "description": "User enabled a tenant-wide extension"
+    },
+    {
+      "name": "Disable Tenant Wide Extension",
+      "description": "User disabled a tenant-wide extension"
+    },
+    {
+      "name": "Update Tenant Wide Extension",
+      "description": "User updated a tenant-wide extension"
+    },
+    {
+      "name": "Copy App",
+      "description": "User copied an app in the app catalog"
+    },
+    {
+      "name": "Deploy App",
+      "description": "User deployed an app in the app catalog"
+    },
+    {
+      "name": "Disable App",
+      "description": "User disabled an app in the app catalog"
+    },
+    {
+      "name": "Enable App",
+      "description": "User enabled an app in the app catalog"
+    },
+    {
+      "name": "Install App",
+      "description": "User installed an app to a site"
+    },
+    {
+      "name": "Move App",
+      "description": "User moved an app in the app catalog"
+    },
+    {
+      "name": "Remove App",
+      "description": "User removed an app from the app catalog"
+    },
+    {
+      "name": "Retract App",
+      "description": "User retracted an app in the app catalog"
+    },
+    {
+      "name": "Uninstall App",
+      "description": "User uninstalled an app from a site"
+    },
+    {
+      "name": "Upgrade App",
+      "description": "User upgraded an app in the app catalog"
+    },
+    {
+      "name": "Add Site App Catalog",
+      "description": "User added a site collection app catalog"
+    },
+    {
+      "name": "Remove Site App Catalog",
+      "description": "User removed a site collection app catalog"
+    }
+  ]
+}

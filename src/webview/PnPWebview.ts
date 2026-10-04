@@ -6,6 +6,7 @@ import { Logger } from '../services/dataType/Logger';
 import { Scaffolder } from '../services/actions/Scaffolder';
 import { CliActions } from '../services/actions/CliActions';
 import { EntraAppRegistration } from '../services/actions/EntraAppRegistration';
+import { TelemetryService } from '../utils/telemetry';
 
 
 export class PnPWebview {
@@ -17,7 +18,7 @@ export class PnPWebview {
     const subscriptions = ext.subscriptions;
 
     subscriptions.push(
-      commands.registerCommand(Commands.samplesGallery, () => PnPWebview.open(WebViewType.samplesGallery))
+      commands.registerCommand(Commands.samplesGallery, TelemetryService.withTelemetry(Commands.samplesGallery, () => PnPWebview.open(WebViewType.samplesGallery)))
     );
   }
 
