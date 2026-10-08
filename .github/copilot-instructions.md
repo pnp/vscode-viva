@@ -92,7 +92,7 @@ The extension exposes SharePoint Online operations as GitHub Copilot tools:
 - `list_spo_app`, `install_spo_app`, `uninstall_spo_app`, `upgrade_spo_app`, `list_spo_app_instances` - App catalog management
 - `add_spo_list`, `get_spo_list`, `remove_spo_list` - List operations
 - `add_spo_page`, `get_spo_page`, `list_spo_page`, `copy_spo_page`, `remove_spo_page` - Page operations
-- `spo_site_add`, `spo_site_get`, `spo_site_remove` - Site management
+- `add_spo_site`, `get_spo_site`, `list_spo_site`, `remove_spo_site`, `set_spo_site` - Site management
 - `upgrade_spfx_project` - SPFx project upgrade
 
 ## Development Conventions

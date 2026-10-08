@@ -9,6 +9,10 @@ interface ISharePointSiteAddParameters {
     description?: string;
     owners?: string[];
     url?: string;
+    siteDesign?: string;
+    siteDesignId?: string;
+    removeDeletedSite?: boolean;
+    withAppCatalog?: boolean;
 }
 
 export class SharePointSiteAdd implements LanguageModelTool<ISharePointSiteAddParameters> {
@@ -22,7 +26,11 @@ export class SharePointSiteAdd implements LanguageModelTool<ISharePointSiteAddPa
             return authValidationResult as LanguageModelToolResult;
         }
 
-        const result = await CliExecuter.execute('spo site add', 'json', params);
+        const result = await CliExecuter.execute('spo site add', 'json', {
+            ...params,
+            removeDeletedSite: params.removeDeletedSite ?? false,
+            withAppCatalog: params.withAppCatalog ?? false
+        });
         if (result.stderr) {
             return new LanguageModelToolResult([new LanguageModelTextPart(`Error: ${result.stderr}`)]);
         }

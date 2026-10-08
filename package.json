@@ -707,7 +707,7 @@
         }
       },
       {
-        "name": "spo_site_add",
+        "name": "add_spo_site",
         "tags": [
           "sharepoint",
           "site",
@@ -715,7 +715,7 @@
         ],
         "toolReferenceName": "SharePointSiteAdd",
         "displayName": "Add SharePoint Site",
-        "modelDescription": "Create a new SharePoint Online site. This tool may be used to create a CommunicationSite or a TeamSite. in case of TeamSite we need to provide the owners of the site and in case of CommunicationSite we need to specify the url.",
+        "modelDescription": "Create a new SharePoint Online site. This tool may be used to create a CommunicationSite or a TeamSite. in case of TeamSite we need to provide the owners of the site and in case of CommunicationSite we need to specify the url. For CommunicationSite you may control the look by specifying either siteDesign (one of the built-in designs Topic, Showcase, or Blank) or siteDesignId (the GUID of a custom site design), but not both. Set withAppCatalog to create a site collection app catalog on the newly created site. Set removeDeletedSite to first remove an existing site with the same URL from the recycle bin before creating the new one.",
         "userDescription": "Create a new SharePoint Online site.",
         "canBeReferencedInPrompt": true,
         "icon": "$(add)",
@@ -746,12 +746,32 @@
               "type": "string",
               "description": "Comma-separated list of user emails to set as site owners. In case of TeamSite this option is required.",
               "default": ""
+            },
+            "siteDesign": {
+              "type": "string",
+              "description": "Type of communication site design to use. Allowed values: Topic, Showcase, Blank. Applies to CommunicationSite. Specify either siteDesign or siteDesignId, not both. This option is optional.",
+              "default": ""
+            },
+            "siteDesignId": {
+              "type": "string",
+              "description": "GUID of a custom site design to use to create the site. Applies to CommunicationSite. Specify either siteDesign or siteDesignId, not both. This option is optional.",
+              "default": ""
+            },
+            "removeDeletedSite": {
+              "type": "boolean",
+              "description": "Set to remove an existing deleted site with the same URL from the recycle bin before creating the new site. This option is optional.",
+              "default": false
+            },
+            "withAppCatalog": {
+              "type": "boolean",
+              "description": "Set to create a site collection app catalog on the newly created site. This option is optional.",
+              "default": false
             }
           }
         }
       },
       {
-        "name": "spo_site_remove",
+        "name": "remove_spo_site",
         "tags": [
           "sharepoint",
           "site",
@@ -759,7 +779,7 @@
         ],
         "toolReferenceName": "SharePointSiteRemove",
         "displayName": "Remove SharePoint Site",
-        "modelDescription": "Remove a SharePoint Online site. This tool may be used to remove a site.",
+        "modelDescription": "Removes a SharePoint Online site identified by its URL. By default the site is moved to the SharePoint recycle bin, from where it can be restored. Set skipRecycleBin to permanently delete the site directly without moving it to the recycle bin. Set fromRecycleBin to permanently remove a site that was already deleted and is currently in the recycle bin (this also permanently removes groupified sites). The command does not return a response on success. Use this tool when a user explicitly asks to delete or remove a site. Do not use it to remove lists, pages, or apps. This action is destructive; permanent deletions (skipRecycleBin or fromRecycleBin) cannot be undone. Requires Microsoft 365 authentication and Global administrator or SharePoint administrator permissions. skipRecycleBin and fromRecycleBin are mutually exclusive and should not both be set.",
         "userDescription": "Remove a SharePoint Online site.",
         "canBeReferencedInPrompt": true,
         "icon": "$(trash)",
@@ -770,12 +790,22 @@
               "type": "string",
               "description": "URL of the site. This option is required.",
               "default": ""
+            },
+            "skipRecycleBin": {
+              "type": "boolean",
+              "description": "Set to directly remove the site without moving it to the recycle bin. This permanently deletes the site. This option is optional.",
+              "default": false
+            },
+            "fromRecycleBin": {
+              "type": "boolean",
+              "description": "Set to permanently remove the site from the recycle bin. Use only for a site that has already been deleted. This option is optional.",
+              "default": false
             }
           }
         }
       },
       {
-        "name": "spo_site_get",
+        "name": "get_spo_site",
         "tags": [
           "sharepoint",
           "site",
@@ -794,6 +824,165 @@
               "type": "string",
               "description": "URL of the site. This option is required.",
               "default": ""
+            }
+          }
+        }
+      },
+      {
+        "name": "list_spo_site",
+        "tags": [
+          "sharepoint",
+          "site",
+          "spfx-toolkit"
+        ],
+        "toolReferenceName": "SharePointSiteList",
+        "displayName": "List SharePoint Sites",
+        "modelDescription": "Lists modern SharePoint Online site collections in the currently connected tenant. Use this tool to inventory sites, discover sites of a specific type, or find sites matching a filter. Returns all available properties for each site (such as Title, Url, Template, Status, StorageUsage, and sharing settings). Optionally narrow the results by type (TeamSite or CommunicationSite) OR by webTemplate (e.g. GROUP#0, SITEPAGEPUBLISHING#0) - specify only one of these, not both. Use filter to apply a server-side filter (e.g. \"Url -like 'project'\"). Set withOneDriveSites to include OneDrive sites in the result, but do not combine it with type or webTemplate. This tool does not list deleted sites. Do not use it to retrieve a single specific site (use get_spo_site instead). Requires Microsoft 365 authentication and permission to access the tenant admin site.",
+        "userDescription": "Lists modern sites in the tenant.",
+        "canBeReferencedInPrompt": true,
+        "icon": "$(list-unordered)",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string",
+              "description": "Convenience option for the type of sites to list. Allowed values: TeamSite, CommunicationSite. Specify either type or webTemplate, but not both. This option is optional.",
+              "default": ""
+            },
+            "webTemplate": {
+              "type": "string",
+              "description": "Type of sites to list, to be used with values like GROUP#0 and SITEPAGEPUBLISHING#0. Specify either type or webTemplate, but not both. This option is optional.",
+              "default": ""
+            },
+            "filter": {
+              "type": "string",
+              "description": "Filter to apply when retrieving sites, e.g. \"Url -like 'project'\". This option is optional.",
+              "default": ""
+            },
+            "withOneDriveSites": {
+              "type": "boolean",
+              "description": "Set to include OneDrive sites in the result. Do not specify type or webTemplate when using this. This option is optional.",
+              "default": false
+            }
+          }
+        }
+      },
+      {
+        "name": "set_spo_site",
+        "tags": [
+          "sharepoint",
+          "site",
+          "spfx-toolkit"
+        ],
+        "toolReferenceName": "SharePointSiteSet",
+        "displayName": "Update SharePoint Site",
+        "modelDescription": "Updates the properties and settings of an existing SharePoint Online site collection identified by its URL. Use this tool to change site configuration such as title, description, classification, sharing capability, external sharing, lock state, site design, quotas, logo/thumbnail, and group visibility. Only the properties you provide are changed; omitted properties are left untouched. Note that when setting owners, the specified users are ADDED as site collection administrators and existing owners are not removed, and isPublic can only be set on group-connected sites. The command does not return a response on success. Do not use this tool to create a site (use add_spo_site) or to remove a site (use remove_spo_site). The target site must already exist or you will get a 404 error. Requires Microsoft 365 authentication and SharePoint Administrator or Global Administrator permissions.",
+        "userDescription": "Updates the properties of the specified site.",
+        "canBeReferencedInPrompt": true,
+        "icon": "$(edit)",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "description": "The URL of the site collection to update. This option is required.",
+              "default": ""
+            },
+            "title": {
+              "type": "string",
+              "description": "The new title for the site collection. This option is optional.",
+              "default": ""
+            },
+            "description": {
+              "type": "string",
+              "description": "The new description for the site collection. This option is optional.",
+              "default": ""
+            },
+            "classification": {
+              "type": "string",
+              "description": "The new classification for the site collection. Pass an empty value to reset the classification. This option is optional.",
+              "default": ""
+            },
+            "disableFlows": {
+              "type": "boolean",
+              "description": "Set to true to disable using Microsoft Flow (Power Automate) in this site collection. This option is optional.",
+              "default": false
+            },
+            "socialBarOnSitePagesDisabled": {
+              "type": "boolean",
+              "description": "Set to true to disable the Social Bar for the site collection. This option is optional.",
+              "default": false
+            },
+            "isPublic": {
+              "type": "boolean",
+              "description": "Set to true to make the Microsoft 365 group linked to the site public, or false to make it private. Only applies to group-connected sites. This option is optional.",
+              "default": false
+            },
+            "owners": {
+              "type": "string",
+              "description": "Comma-separated list of users to add as site collection administrators. Specified owners are added to the existing owners; existing owners are not removed. This option is optional.",
+              "default": ""
+            },
+            "shareByEmailEnabled": {
+              "type": "boolean",
+              "description": "Set to true to allow sharing files with guests, or false to disallow it. This option is optional.",
+              "default": false
+            },
+            "siteDesignId": {
+              "type": "string",
+              "description": "GUID of the custom site design to apply to the site. This option is optional.",
+              "default": ""
+            },
+            "sharingCapability": {
+              "type": "string",
+              "description": "The sharing capability for the site. Allowed values: Disabled, ExternalUserSharingOnly, ExternalUserAndGuestSharing, ExistingExternalUserSharingOnly. This option is optional.",
+              "default": ""
+            },
+            "siteLogoUrl": {
+              "type": "string",
+              "description": "Absolute or relative URL to a file to set as the site logo. Pass an empty value to unset the logo. This option is optional.",
+              "default": ""
+            },
+            "siteThumbnailUrl": {
+              "type": "string",
+              "description": "Absolute or relative URL to a file to set as the site thumbnail. Pass an empty value to unset the thumbnail. This option is optional.",
+              "default": ""
+            },
+            "resourceQuota": {
+              "type": "number",
+              "description": "The quota for this site collection in Sandboxed Solutions units. This option is optional."
+            },
+            "resourceQuotaWarningLevel": {
+              "type": "number",
+              "description": "The warning level for the resource quota. Must not exceed resourceQuota. This option is optional."
+            },
+            "storageQuota": {
+              "type": "number",
+              "description": "The storage quota for this site collection in megabytes. This option is optional."
+            },
+            "storageQuotaWarningLevel": {
+              "type": "number",
+              "description": "The warning level for the storage quota in megabytes. Must not exceed storageQuota. This option is optional."
+            },
+            "allowSelfServiceUpgrade": {
+              "type": "boolean",
+              "description": "Set to true to allow tenant administrators to upgrade the site collection. This option is optional.",
+              "default": false
+            },
+            "lockState": {
+              "type": "string",
+              "description": "Sets the site's lock state. Allowed values: Unlock, NoAdditions, ReadOnly, NoAccess. This option is optional.",
+              "default": ""
+            },
+            "noScriptSite": {
+              "type": "boolean",
+              "description": "Set to true to allow custom script on the site, or false to disallow it. This option is optional.",
+              "default": false
+            },
+            "wait": {
+              "type": "boolean",
+              "description": "Set to wait for the settings to be applied before completing the command. This option is optional.",
+              "default": false
             }
           }
         }

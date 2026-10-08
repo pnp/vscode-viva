@@ -15,5 +15,7 @@ export * from './page/PageList';
 export * from './page/PageRemove';
 export * from './site/SiteAdd';
 export * from './site/SiteGet';
+export * from './site/SiteList';
 export * from './site/SiteRemove';
+export * from './site/SiteSet';
 export * from './utils/ToolAuthValidationUtil';
