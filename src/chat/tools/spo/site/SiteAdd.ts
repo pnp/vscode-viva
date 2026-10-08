@@ -26,15 +26,11 @@ export class SharePointSiteAdd implements LanguageModelTool<ISharePointSiteAddPa
             return authValidationResult as LanguageModelToolResult;
         }
 
-        const cmdArgs: Record<string, unknown> = { ...params };
-        if (!params.removeDeletedSite) {
-            delete cmdArgs.removeDeletedSite;
-        }
-        if (!params.withAppCatalog) {
-            delete cmdArgs.withAppCatalog;
-        }
-
-        const result = await CliExecuter.execute('spo site add', 'json', cmdArgs);
+        const result = await CliExecuter.execute('spo site add', 'json', {
+            ...params,
+            removeDeletedSite: params.removeDeletedSite ?? false,
+            withAppCatalog: params.withAppCatalog ?? false
+        });
         if (result.stderr) {
             return new LanguageModelToolResult([new LanguageModelTextPart(`Error: ${result.stderr}`)]);
         }

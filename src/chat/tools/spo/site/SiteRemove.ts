@@ -20,20 +20,22 @@ export class SharePointSiteRemove implements LanguageModelTool<ISharePointSiteRe
             return authValidationResult as LanguageModelToolResult;
         }
 
-        const cmdArgs: { url: string; force: boolean; skipRecycleBin?: boolean; fromRecycleBin?: boolean } = {
+        const result = await CliExecuter.execute('spo site remove', 'json', {
             url: params.url,
+            skipRecycleBin: params.skipRecycleBin ?? false,
+            fromRecycleBin: params.fromRecycleBin ?? false,
             force: true
-        };
-        if (params.skipRecycleBin) {
-            cmdArgs.skipRecycleBin = true;
-        }
-        if (params.fromRecycleBin) {
-            cmdArgs.fromRecycleBin = true;
+        });
+        if (result.stderr) {
+            return new LanguageModelToolResult([new LanguageModelTextPart(`Error: ${result.stderr}`)]);
         }
 
-        const result = await CliExecuter.execute('spo site remove', 'json', cmdArgs);
-
-        return new LanguageModelToolResult([new LanguageModelTextPart(`Site removed successfully ${(result.stdout !== '' ? `\nResult: ${result.stdout}` : '')}`)]);
+        const removeAction = params.fromRecycleBin
+            ? 'permanently removed from the recycle bin'
+            : params.skipRecycleBin
+                ? 'permanently removed'
+                : 'moved to the recycle bin';
+        return new LanguageModelToolResult([new LanguageModelTextPart(`Site ${removeAction} successfully ${(result.stdout !== '' ? `\nResult: ${result.stdout}` : '')}`)]);
     }
 
     async prepareInvocation(

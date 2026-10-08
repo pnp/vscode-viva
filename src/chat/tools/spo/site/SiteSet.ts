@@ -38,12 +38,10 @@ export class SharePointSiteSet implements LanguageModelTool<ISharePointSiteSetPa
             return authValidationResult as LanguageModelToolResult;
         }
 
-        const cmdArgs: Record<string, unknown> = { ...params };
-        if (!params.wait) {
-            delete cmdArgs.wait;
-        }
-
-        const result = await CliExecuter.execute('spo site set', 'json', cmdArgs);
+        const result = await CliExecuter.execute('spo site set', 'json', {
+            ...params,
+            wait: params.wait ?? false
+        });
         if (result.stderr) {
             return new LanguageModelToolResult([new LanguageModelTextPart(`Error: ${result.stderr}`)]);
         }
