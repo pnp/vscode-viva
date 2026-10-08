@@ -290,7 +290,7 @@ export class Scaffolder {
         // To prevent the 'templates/react' scandir issue
         yoCommand += ' --template ""';
       }
-    } else if (input.componentType === ComponentType.webPart) {
+    } else if (input.componentType === ComponentType.webPart || input.componentType === ComponentType.copilotComponent) {
       yoCommand = `yo @microsoft/sharepoint ${yoCommandSolutionName} --component-type ${input.componentType} --component-name "${input.componentName}" --framework ${input.frameworkType} --skip-install`;
     } else if (input.componentType === ComponentType.library) {
       yoCommand = `yo @microsoft/sharepoint ${yoCommandSolutionName} --component-type ${input.componentType} --component-name "${input.componentName}" --skip-install`;
