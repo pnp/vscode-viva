@@ -189,13 +189,15 @@ export class Dependencies {
       const installNodeJSOption = 'Download Node.js';
       const useNvmOption = isWindows ? 'Install NVM for Windows' : 'Install NVM';
       const useNvsOption = 'Install NVS';
+      const useFnmOption = 'Install FNM';
 
       Notifications.warning(
-        `Node.js ${currentNodeVersion} is incompatible with SPFx v${spfxVersion}. Required: Node.js ${requiredNodeVersions} or higher. 
+        `Node.js ${currentNodeVersion} is incompatible with SPFx v${spfxVersion}. Required: Node.js ${requiredNodeVersions} or higher.
         It is recommended to use a Node Version Manager and update the SPFx Toolkit setting (File > Preferences > Settings > search "Node Version Manager").`,
         installNodeJSOption,
         useNvmOption,
-        useNvsOption
+        useNvsOption,
+        useFnmOption
       ).then((selectedOption) => {
         if (selectedOption === installNodeJSOption) {
           commands.executeCommand('vscode.open', Uri.parse('https://nodejs.org/en/download/'));
@@ -207,17 +209,22 @@ export class Dependencies {
         } else if (selectedOption === useNvsOption) {
           const nvsInstallUrl = 'https://github.com/jasongin/nvs?tab=readme-ov-file#nvs-node-version-switcher';
           commands.executeCommand('vscode.open', Uri.parse(nvsInstallUrl));
+        } else if (selectedOption === useFnmOption) {
+          const fnmInstallUrl = 'https://github.com/Schniz/fnm#--fast-node-manager-fnm----';
+          commands.executeCommand('vscode.open', Uri.parse(fnmInstallUrl));
         }
       });
       return false;
-    } else if (nodeVersionManager === NodeVersionManagers.nvm || nodeVersionManager === NodeVersionManagers.nvs) {
+    } else if (nodeVersionManager === NodeVersionManagers.nvm || nodeVersionManager === NodeVersionManagers.nvs || nodeVersionManager === NodeVersionManagers.fnm) {
       let useNodeVersionOption: string = '';
       const requiredNodeVersionToInstall = requiredNodeVersions.replace(/x/g, '0');
 
       if (nodeVersionManager === NodeVersionManagers.nvm) {
         useNodeVersionOption = `nvm install ${requiredNodeVersionToInstall} && nvm use ${requiredNodeVersionToInstall}`;
-      } else {
+      } else if (nodeVersionManager === NodeVersionManagers.nvs) {
         useNodeVersionOption = `nvs add ${requiredNodeVersionToInstall} && nvs use ${requiredNodeVersionToInstall}`;
+      } else {
+        useNodeVersionOption = `fnm install ${requiredNodeVersionToInstall} && fnm use ${requiredNodeVersionToInstall}`;
       }
 
       const abortOption = 'I will handle it manually';

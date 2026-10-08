@@ -21,8 +21,8 @@ interface AdditionalStepProps {
     setShouldInstallPnPJs: (value: boolean) => void;
     shouldCreateNodeVersionFile: boolean;
     setShouldCreateNodeVersionFile: (value: boolean) => void;
-    nodeVersionManager: 'nvm' | 'nvs' | 'none';
-    setNodeVersionManager: (value: 'nvm' | 'nvs' | 'none') => void;
+    nodeVersionManager: 'nvm' | 'nvs' | 'fnm' | 'none';
+    setNodeVersionManager: (value: 'nvm' | 'nvs' | 'fnm' | 'none') => void;
     setNodeVersionManagerFile: (value: '.nvmrc' | '.node-version') => void;
 }
 

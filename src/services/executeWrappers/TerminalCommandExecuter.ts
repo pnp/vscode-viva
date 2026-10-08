@@ -481,7 +481,7 @@ export class TerminalCommandExecuter {
   /**
    * Creates a new terminal with the specified name and icon.
    * If a terminal with the same name already exists, it returns that terminal instead.
-   * If the user's settings specify to use a specific node version manager (nvm or nvs),
+   * If the user's settings specify to use a specific node version manager (nvm, nvs or fnm),
    * it checks for the presence of .nvmrc files and sets the appropriate node version manager command.
    * @param name - The name of the terminal.
    * @param icon - The path to the icon for the terminal.
@@ -496,8 +496,8 @@ export class TerminalCommandExecuter {
         iconPath: icon ? new ThemeIcon(icon) : undefined
       });
 
-      // Check the user's settings to see if they want to use nvm or nvs
-      // Get the user's preferred node version manager -- nvm or nvs or none, if they don't want to use either
+      // Check the user's settings to see if they want to use nvm, nvs or fnm
+      // Get the user's preferred node version manager -- nvm, nvs, fnm, or none if node version managernot selected
       const nodeVersionManager: string = getExtensionSettings('nodeVersionManager', 'nvm');
 
       const nvmrcFiles = await workspace.findFiles('.nvmrc', '**/node_modules/**');
@@ -522,6 +522,22 @@ export class TerminalCommandExecuter {
           } catch (error) {
             Logger.error(`Failed to read .nvmrc file at ${nvmrcPath}. Falling back to "nvm use" without version. Error: ${error}`);
             terminal.sendText('nvm use');
+          }
+        }
+      } else if (nodeVersionManager === NodeVersionManagers.fnm) {
+        if (nvmrcFiles.length > 0) {
+          const nvmrcPath = nvmrcFiles[0].fsPath;
+          try {
+            const content = readFileSync(nvmrcPath, 'utf8').trim();
+            const version = content.startsWith('v') ? content.substring(1) : content;
+            if (version) {
+              terminal.sendText(`fnm use ${version}`);
+            } else {
+              terminal.sendText('fnm use');
+            }
+          } catch (error) {
+            Logger.error(`Failed to read .nvmrc file at ${nvmrcPath}. Falling back to "fnm use" without version. Error: ${error}`);
+            terminal.sendText('fnm use');
           }
         }
       }
