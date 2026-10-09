@@ -56,7 +56,7 @@ function Parse-SampleJsonFiles {
                 try {
                     $packageJsonContent = Get-Content -Path $packageJsonPath -Raw
                     $packageJson = ConvertFrom-Json -InputObject $packageJsonContent
-                    
+
                     if ($null -ne $packageJson.dependencies.'@microsoft/sp-core-library') {
                         $isSPFxProject = $true
                         
