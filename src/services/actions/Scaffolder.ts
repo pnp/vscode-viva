@@ -33,9 +33,6 @@ export class Scaffolder {
     subscriptions.push(
       commands.registerCommand(Commands.addToProject, TelemetryService.withTelemetry(Commands.addToProject, Scaffolder.showAddProjectForm))
     );
-    subscriptions.push(
-      commands.registerCommand(Commands.createProjectCopilot, Scaffolder.createProjectCopilot)
-    );
   }
 
   /**

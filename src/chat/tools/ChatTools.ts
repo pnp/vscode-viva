@@ -23,7 +23,7 @@ import {
     SharePointSiteRemove,
     SharePointSiteSet
 } from './spo/index';
-import { SharePointFrameworkLocalEnvironmentSetup, SharePointFrameworkProjectUpgrade } from './spfx';
+import { SharePointFrameworkCreateNewProject, SharePointFrameworkLocalEnvironmentSetup, SharePointFrameworkProjectUpgrade } from './spfx';
 
 
 export class ChatTools {
@@ -95,6 +95,9 @@ export class ChatTools {
         );
         subscriptions.push(
             lm.registerTool('setup_spfx_environment', new SharePointFrameworkLocalEnvironmentSetup())
+        );
+        subscriptions.push(
+            lm.registerTool('create_spfx_project', new SharePointFrameworkCreateNewProject())
         );
     }
 }
