@@ -16048,6 +16048,920 @@
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
+    },
+    {
+      "name": "pnp-spfx-copilot-components-agents-explorer",
+      "title": "Agents Explorer - Discover Copilot Agents in Copilot Chat",
+      "url": "https://github.com/pnp/spfx-copilot-components/tree/main/samples/agents-explorer",
+      "description": "SPFx Copilot Component that brings a tenant-wide, live view of Copilot Agents (Power Platform / Copilot Studio bots) into the Microsoft Copilot canvas.",
+      "image": "https://github.com/pnp/spfx-copilot-components/raw/main/samples/agents-explorer/assets/3.png",
+      "authors": [
+        {
+          "name": "Siddharth Vaghasia",
+          "pictureUrl": "https://github.com/siddharth-vaghasia.png"
+        }
+      ],
+      "tags": [
+        "SharePoint",
+        "Microsoft Copilot"
+      ],
+      "createDate": "2026-09-06",
+      "updateDate": "2026-09-06",
+      "version": "1.24.0-beta.2",
+      "componentType": "copilotComponent",
+      "extensionType": null,
+      "sampleGallery": "spfx-copilot-components",
+      "sampleType": "samples"
+    },
+    {
+      "name": "pnp-spfx-copilot-apps-apps-directory",
+      "title": "Apps directory",
+      "url": "https://github.com/pnp/spfx-copilot-components/tree/main/samples/apps-directory",
+      "description": "Apps directory - Workplace Application Catalogue",
+      "image": "https://github.com/pnp/spfx-copilot-components/raw/main/samples/apps-directory/assets/preview.png",
+      "authors": [
+        {
+          "name": "Saurabh Tripathi",
+          "pictureUrl": "https://github.com/saurabh7019.png"
+        }
+      ],
+      "tags": [
+        "SharePoint",
+        "Microsoft Copilot"
+      ],
+      "createDate": "2026-07-16",
+      "updateDate": "2026-07-16",
+      "version": "1.24.0-beta.2",
+      "componentType": "copilotComponent",
+      "extensionType": null,
+      "sampleGallery": "spfx-copilot-components",
+      "sampleType": "samples"
+    },
+    {
+      "name": "pnp-spfx-copilot-apps-choice-relay",
+      "title": "Choice Relay",
+      "url": "https://github.com/pnp/spfx-copilot-components/tree/main/samples/choice-relay",
+      "description": "Follow a user choice from Copilot into SPFx, back into the conversation, and into a second interactive component.",
+      "image": "https://github.com/pnp/spfx-copilot-components/raw/main/samples/choice-relay/assets/preview.png",
+      "authors": [
+        {
+          "name": "Nello D'Andrea",
+          "pictureUrl": "https://github.com/ferrarirosso.png"
+        }
+      ],
+      "tags": [
+        "SharePoint",
+        "Microsoft Copilot"
+      ],
+      "createDate": "2026-07-29",
+      "updateDate": "2026-07-29",
+      "version": "1.24.0-beta.2",
+      "componentType": "copilotComponent",
+      "extensionType": null,
+      "sampleGallery": "spfx-copilot-components",
+      "sampleType": "samples"
+    },
+    {
+      "name": "pnp-sp-dev-spfx-copilot-apps-copilot-m365-roadmap-features",
+      "title": "Copilot M365 Roadmap Features",
+      "url": "https://github.com/pnp/spfx-copilot-components/tree/main/samples/copilot-m365-roadmap-features",
+      "description": "A Copilot Agent that helps teams stay informed about the latest Microsoft 365 roadmap features.",
+      "image": "https://github.com/pnp/spfx-copilot-components/raw/main/samples/copilot-m365-roadmap-features/assets/fullscreen-roadmap-features.png",
+      "authors": [
+        {
+          "name": "Mohammad Amer",
+          "pictureUrl": "https://github.com/mohammadamer.png"
+        }
+      ],
+      "tags": [
+        "SharePoint",
+        "Copilot"
+      ],
+      "createDate": "2026-08-26",
+      "updateDate": "2026-08-26",
+      "version": "1.24.0-beta.2",
+      "componentType": "copilotComponent",
+      "extensionType": null,
+      "sampleGallery": "spfx-copilot-components",
+      "sampleType": "samples"
+    },
+    {
+      "name": "pnp-spfx-copilot-apps-copilot-my-approvals",
+      "title": "MyApprovals Agent - Act on Microsoft 365 approvals from Copilot chat",
+      "url": "https://github.com/pnp/spfx-copilot-components/tree/main/samples/copilot-my-approvals",
+      "description": "View and act on your Microsoft 365 approvals directly from Copilot chat.",
+      "image": "https://github.com/pnp/spfx-copilot-components/raw/main/samples/copilot-my-approvals/assets/copilot-spfx-agent-approvals-01.png",
+      "authors": [
+        {
+          "name": "Marc A. Schröder-Zhou",
+          "pictureUrl": "https://github.com/maschroeder-z.png"
+        }
+      ],
+      "tags": [
+        "SharePoint",
+        "Copilot"
+      ],
+      "createDate": "2026-07-12",
+      "updateDate": "2026-07-12",
+      "version": "1.24.0-beta.2",
+      "componentType": "copilotComponent",
+      "extensionType": null,
+      "sampleGallery": "spfx-copilot-components",
+      "sampleType": "samples"
+    },
+    {
+      "name": "pnp-spfx-copilot-apps-copilot-readiness-action-centre",
+      "title": "Copilot Readiness Action Centre",
+      "url": "https://github.com/pnp/spfx-copilot-components/tree/main/samples/copilot-readiness-action-centre",
+      "description": "Review Microsoft Copilot readiness risks and create governed SharePoint remediation actions from the Copilot canvas.",
+      "image": "https://github.com/pnp/spfx-copilot-components/raw/main/samples/copilot-readiness-action-centre/assets/preview.png",
+      "authors": [
+        {
+          "name": "Daniel Brown",
+          "pictureUrl": "https://github.com/DanielBrownAG.png"
+        }
+      ],
+      "tags": [
+        "SharePoint",
+        "Microsoft Copilot"
+      ],
+      "createDate": "2026-07-14",
+      "updateDate": "2026-07-14",
+      "version": "1.24.0-beta.2",
+      "componentType": "copilotComponent",
+      "extensionType": null,
+      "sampleGallery": "spfx-copilot-components",
+      "sampleType": "samples"
+    },
+    {
+      "name": "pnp-sp-dev-spfx-copilot-apps-copilot-star-match-game",
+      "title": "Copilot Star Match Game",
+      "url": "https://github.com/pnp/spfx-copilot-apps/tree/main/samples/copilot-star-match-game",
+      "description": "A SharePoint Copilot app that enables teams to play the Star Match game.",
+      "image": "https://github.com/pnp/spfx-copilot-apps/raw/main/samples/copilot-star-match-game/assets/inline-star-match-game01.png",
+      "authors": [
+        {
+          "name": "Mohammad Amer",
+          "pictureUrl": "https://github.com/mohammadamer.png"
+        }
+      ],
+      "tags": [
+        "SharePoint",
+        "Copilot"
+      ],
+      "createDate": "2026-09-20",
+      "updateDate": "2026-09-20",
+      "version": "1.24.0-beta.2",
+      "componentType": "copilotComponent",
+      "extensionType": null,
+      "sampleGallery": "spfx-copilot-components",
+      "sampleType": "samples"
+    },
+    {
+      "name": "pnp-spfx-copilot-apps-events",
+      "title": "SharePoint Events Copilot Agent",
+      "url": "https://github.com/pnp/spfx-copilot-components/tree/main/samples/events",
+      "description": "Find SharePoint events from Microsoft Copilot and explore them in an interactive calendar.",
+      "image": "https://github.com/pnp/spfx-copilot-components/raw/main/samples/events/assets/compact-calendar.png",
+      "authors": [
+        {
+          "name": "João Mendes",
+          "pictureUrl": "https://github.com/joaojmendes.png"
+        }
+      ],
+      "tags": [
+        "SharePoint",
+        "Microsoft Copilot"
+      ],
+      "createDate": "2026-08-25",
+      "updateDate": "2026-08-25",
+      "version": "1.24.0-beta.2",
+      "componentType": "copilotComponent",
+      "extensionType": null,
+      "sampleGallery": "spfx-copilot-components",
+      "sampleType": "samples"
+    },
+    {
+      "name": "pnp-sp-dev-spfx-copilot-apps-executive-sales-dashboard",
+      "title": "Executive Sales & Revenue Dashboard (Copilot Component)",
+      "url": "https://github.com/pnp/spfx-copilot-components/tree/main/samples/executive-sales-dashboard",
+      "description": "An SPFx Copilot Component that renders an executive sales dashboard inline in Microsoft Copilot and expands to a rich full-screen view, entirely from offline mock data.",
+      "image": "https://github.com/pnp/spfx-copilot-components/raw/main/samples/executive-sales-dashboard/assets/screenshot-fullscreen.png",
+      "authors": [
+        {
+          "name": "Paolo Pialorsi",
+          "pictureUrl": "https://github.com/PaoloPia.png"
+        }
+      ],
+      "tags": [
+        "SharePoint",
+        "Copilot"
+      ],
+      "createDate": "2026-07-08",
+      "updateDate": "2026-07-08",
+      "version": "1.24.0-beta.2",
+      "componentType": "copilotComponent",
+      "extensionType": null,
+      "sampleGallery": "spfx-copilot-components",
+      "sampleType": "samples"
+    },
+    {
+      "name": "pnp-spfx-copilot-components-file-uploader",
+      "title": "Document Intake",
+      "url": "https://github.com/pnp/spfx-copilot-components/tree/main/samples/file-uploader",
+      "description": "A Copilot Component that files invoices and expense reports into a records library with complete, validated metadata, and shows recent filings.",
+      "image": "https://github.com/pnp/spfx-copilot-components/raw/main/samples/file-uploader/assets/screenshot-inline.png",
+      "authors": [
+        {
+          "name": "Kurt Rolland",
+          "pictureUrl": "https://github.com/kurt-rolland.png"
+        }
+      ],
+      "tags": [
+        "SharePoint",
+        "Copilot"
+      ],
+      "createDate": "2026-09-08",
+      "updateDate": "2026-09-24",
+      "version": "1.24.0-beta.2",
+      "componentType": "copilotComponent",
+      "extensionType": null,
+      "sampleGallery": "spfx-copilot-components",
+      "sampleType": "samples"
+    },
+    {
+      "name": "pnp-spfx-copilot-apps-holiday-planner",
+      "title": "Holiday Planner - Working Days, Long Weekends, and Regional Holidays in Copilot Chat",
+      "url": "https://github.com/pnp/spfx-copilot-components/tree/main/samples/holiday-planner",
+      "description": "Five SPFx Copilot Components and one declarative agent that calculate working days, find long weekends with bridge-day suggestions, list holidays, check dates, and compare office calendars directly in Copilot chat.",
+      "image": "https://github.com/pnp/spfx-copilot-components/raw/main/samples/holiday-planner/assets/FullView-HolidayPlanner.png",
+      "authors": [
+        {
+          "name": "Harminder Singh",
+          "pictureUrl": "https://github.com/HarminderSethi.png"
+        }
+      ],
+      "tags": [
+        "SharePoint",
+        "Microsoft Copilot"
+      ],
+      "createDate": "2026-09-24",
+      "updateDate": "2026-09-30",
+      "version": "1.24.0-beta.5",
+      "componentType": "copilotComponent",
+      "extensionType": null,
+      "sampleGallery": "spfx-copilot-components",
+      "sampleType": "samples"
+    },
+    {
+      "name": "pnp-spfx-copilot-apps-kudos-recognition-wall",
+      "title": "Kudos & Recognition Wall - Recognise colleagues from Microsoft Copilot chat",
+      "url": "https://github.com/pnp/spfx-copilot-components/tree/main/samples/kudos-recognition-wall",
+      "description": "Give kudos and browse your organization's recognition wall directly from Microsoft Copilot chat.",
+      "image": "https://github.com/pnp/spfx-copilot-components/raw/main/samples/kudos-recognition-wall/assets/preview.png",
+      "authors": [
+        {
+          "name": "Ejaz Hussain",
+          "pictureUrl": "https://github.com/ejazhussain.png"
+        }
+      ],
+      "tags": [
+        "SharePoint",
+        "Copilot"
+      ],
+      "createDate": "2026-08-12",
+      "updateDate": "2026-08-12",
+      "version": "1.24.0-beta.2",
+      "componentType": "copilotComponent",
+      "extensionType": null,
+      "sampleGallery": "spfx-copilot-components",
+      "sampleType": "samples"
+    },
+    {
+      "name": "pnp-spfx-copilot-components-m365-roadmap",
+      "title": "M365 Product Roadmap",
+      "url": "https://github.com/pnp/spfx-copilot-components/tree/main/samples/m365-roadmap",
+      "description": "An SPFx 1.24 Copilot UX component for discovering Microsoft 365 roadmap features through the public Microsoft Release Communications MCP server.",
+      "image": "https://github.com/pnp/spfx-copilot-components/raw/main/samples/m365-roadmap/assets/preview.png",
+      "authors": [
+        {
+          "name": "João Mendes",
+          "pictureUrl": "https://github.com/joaojmendes.png"
+        }
+      ],
+      "tags": [
+        "SharePoint",
+        "Microsoft Copilot"
+      ],
+      "createDate": "2026-09-22",
+      "updateDate": "2026-09-22",
+      "version": "1.24.0-beta.4",
+      "componentType": "copilotComponent",
+      "extensionType": null,
+      "sampleGallery": "spfx-copilot-components",
+      "sampleType": "samples"
+    },
+    {
+      "name": "pnp-spfx-copilot-apps-m365-service-health",
+      "title": "M365 Service Health - Live Microsoft 365 Service Health in Copilot Chat",
+      "url": "https://github.com/pnp/spfx-copilot-components/tree/main/samples/m365-service-health",
+      "description": "An SPFx Copilot Component that displays live Microsoft 365 service health in Copilot chat, with interactive inline and full-screen views powered by Microsoft Graph.",
+      "image": "https://github.com/pnp/spfx-copilot-components/raw/main/samples/m365-service-health/assets/main%20page.png",
+      "authors": [
+        {
+          "name": "Harminder Singh",
+          "pictureUrl": "https://github.com/HarminderSethi.png"
+        }
+      ],
+      "tags": [
+        "SharePoint",
+        "Microsoft Copilot"
+      ],
+      "createDate": "2026-07-31",
+      "updateDate": "2026-07-31",
+      "version": "1.24.0-beta.2",
+      "componentType": "copilotComponent",
+      "extensionType": null,
+      "sampleGallery": "spfx-copilot-components",
+      "sampleType": "samples"
+    },
+    {
+      "name": "pnp-sp-dev-spfx-copilot-apps-my-day",
+      "title": "My Day — Personalized Intranet Copilot App",
+      "url": "https://github.com/pnp/spfx-copilot-components/tree/main/samples/my-day",
+      "description": "A SharePoint Copilot App (SPFx 1.24 Copilot Component) that renders a personal 'My Day' cockpit inside the Microsoft Copilot canvas — a compact inline card that expands to a full-screen dashboard with agenda, tasks, mail, news, a 'Plan my day' briefing and session-persisted settings.",
+      "image": "https://github.com/pnp/spfx-copilot-components/raw/main/samples/my-day/assets/introduction.png",
+      "authors": [
+        {
+          "name": "Vesa Juvonen",
+          "pictureUrl": "https://github.com/vesajuvonen.png"
+        }
+      ],
+      "tags": [
+        "SharePoint",
+        "Copilot"
+      ],
+      "createDate": "2026-07-02",
+      "updateDate": "2026-07-02",
+      "version": "1.24.0-beta.2",
+      "componentType": "copilotComponent",
+      "extensionType": null,
+      "sampleGallery": "spfx-copilot-components",
+      "sampleType": "samples"
+    },
+    {
+      "name": "pnp-spfx-copilot-components-my-planner-projects",
+      "title": "My Planner Projects Agent",
+      "url": "https://github.com/pnp/spfx-copilot-components/tree/main/samples/my-planner-projects",
+      "description": "An SPFx 1.24 Copilot declarative agent that reads the current user's Microsoft Planner projects and prepares new projects for explicit creation.",
+      "image": "https://github.com/pnp/spfx-copilot-components/raw/main/samples/my-planner-projects/assets/preview.png",
+      "authors": [
+        {
+          "name": "João Mendes",
+          "pictureUrl": "https://github.com/joaojmendes.png"
+        }
+      ],
+      "tags": [
+        "SharePoint",
+        "Microsoft Copilot"
+      ],
+      "createDate": "2026-09-21",
+      "updateDate": "2026-09-21",
+      "version": "1.24.0-beta.3",
+      "componentType": "copilotComponent",
+      "extensionType": null,
+      "sampleGallery": "spfx-copilot-components",
+      "sampleType": "samples"
+    },
+    {
+      "name": "pnp-spfx-copilot-apps-my-sites-groups-info",
+      "title": "My Sites & Groups Info - Explore SharePoint Sites and Microsoft 365 Groups in Copilot Chat",
+      "url": "https://github.com/pnp/spfx-copilot-components/tree/main/samples/my-sites-groups-info",
+      "description": "An SPFx Copilot Component that helps users discover and manage followed and accessible SharePoint sites and Microsoft 365 Groups directly in Copilot chat.",
+      "image": "https://github.com/pnp/spfx-copilot-components/raw/main/samples/my-sites-groups-info/assets/MainPage.png",
+      "authors": [
+        {
+          "name": "Harminder Singh",
+          "pictureUrl": "https://github.com/HarminderSethi.png"
+        }
+      ],
+      "tags": [
+        "SharePoint",
+        "Microsoft Copilot"
+      ],
+      "createDate": "2026-08-25",
+      "updateDate": "2026-08-25",
+      "version": "1.24.0-beta.2",
+      "componentType": "copilotComponent",
+      "extensionType": null,
+      "sampleGallery": "spfx-copilot-components",
+      "sampleType": "samples"
+    },
+    {
+      "name": "pnp-spfx-copilot-components-negotiation-lab",
+      "title": "Negotiation Lab",
+      "url": "https://github.com/pnp/spfx-copilot-components/tree/main/samples/negotiation-lab",
+      "description": "Augment SPFx React components with Copilot conversations, structured replies and APVEE-provisioned SharePoint storage.",
+      "image": "https://github.com/pnp/spfx-copilot-components/raw/main/samples/negotiation-lab/assets/preview.png",
+      "authors": [
+        {
+          "name": "Nello D'Andrea",
+          "pictureUrl": "https://github.com/ferrarirosso.png"
+        }
+      ],
+      "tags": [
+        "SharePoint",
+        "Microsoft Copilot"
+      ],
+      "createDate": "2026-08-03",
+      "updateDate": "2026-09-06",
+      "version": "1.24.0-beta.3",
+      "componentType": "copilotComponent",
+      "extensionType": null,
+      "sampleGallery": "spfx-copilot-components",
+      "sampleType": "samples"
+    },
+    {
+      "name": "pnp-sp-dev-spfx-copilot-apps-people-directory",
+      "title": "People Directory - Find Microsoft 365 People in Copilot Chat",
+      "url": "https://github.com/pnp/spfx-copilot-components/tree/main/samples/people-directory",
+      "description": "An SPFx Copilot Component that searches Microsoft 365 users in Copilot chat, with inline and fullscreen results, filters, and direct Teams/email actions.",
+      "image": "https://github.com/pnp/spfx-copilot-components/raw/main/samples/people-directory/assets/1.png",
+      "authors": [
+        {
+          "name": "Siddharth Vaghasia",
+          "pictureUrl": "https://github.com/siddharth-vaghasia.png"
+        }
+      ],
+      "tags": [
+        "SharePoint",
+        "Copilot"
+      ],
+      "createDate": "2026-07-13",
+      "updateDate": "2026-07-13",
+      "version": "1.24.0-beta.2",
+      "componentType": "copilotComponent",
+      "extensionType": null,
+      "sampleGallery": "spfx-copilot-components",
+      "sampleType": "samples"
+    },
+    {
+      "name": "pnp-spfx-copilot-components-personal-links",
+      "title": "Personal Links",
+      "url": "https://github.com/pnp/spfx-copilot-components/tree/main/samples/personal-links",
+      "description": "One UX across Copilot and SharePoint, with cross-device App Folder storage",
+      "image": "https://github.com/pnp/spfx-copilot-components/raw/main/samples/personal-links/assets/personal-links-compact.png",
+      "authors": [
+        {
+          "name": "Vesa Juvonen",
+          "pictureUrl": "https://github.com/VesaJuvonen.png"
+        }
+      ],
+      "tags": [
+        "SharePoint",
+        "Microsoft Copilot",
+        "Microsoft Teams"
+      ],
+      "createDate": "2026-10-08",
+      "updateDate": "2026-10-09",
+      "version": "1.24.0-rc.0",
+      "componentType": "copilotComponent",
+      "extensionType": null,
+      "sampleGallery": "spfx-copilot-components",
+      "sampleType": "samples"
+    },
+    {
+      "name": "pnp-spfx-copilot-apps-photos",
+      "title": "SharePoint Photos Copilot Agent",
+      "url": "https://github.com/pnp/spfx-copilot-components/tree/main/samples/photos",
+      "description": "Find SharePoint and OneDrive photos from Microsoft Copilot and explore them in an interactive gallery.",
+      "image": "https://github.com/pnp/spfx-copilot-components/raw/main/samples/photos/assets/preview.png",
+      "authors": [
+        {
+          "name": "João Mendes",
+          "pictureUrl": "https://github.com/joaojmendes.png"
+        }
+      ],
+      "tags": [
+        "SharePoint",
+        "Microsoft Copilot"
+      ],
+      "createDate": "2026-08-24",
+      "updateDate": "2026-08-24",
+      "version": "1.24.0-beta.2",
+      "componentType": "copilotComponent",
+      "extensionType": null,
+      "sampleGallery": "spfx-copilot-components",
+      "sampleType": "samples"
+    },
+    {
+      "name": "pnp-spfx-copilot-apps-release-readiness-board",
+      "title": "Release readiness board",
+      "url": "https://github.com/pnp/spfx-copilot-components/tree/main/samples/release-readiness-board",
+      "description": "Track blockers, overdue checks, and go-live confidence directly in Copilot.",
+      "image": "https://github.com/pnp/spfx-copilot-components/raw/main/samples/release-readiness-board/assets/preview.png",
+      "authors": [
+        {
+          "name": "Valeras Narbutas",
+          "pictureUrl": "https://github.com/ValerasNarbutas.png"
+        }
+      ],
+      "tags": [
+        "SharePoint",
+        "Microsoft Copilot"
+      ],
+      "createDate": "2026-08-02",
+      "updateDate": "2026-08-02",
+      "version": "1.24.0-beta.2",
+      "componentType": "copilotComponent",
+      "extensionType": null,
+      "sampleGallery": "spfx-copilot-components",
+      "sampleType": "samples"
+    },
+    {
+      "name": "pnp-spfx-copilot-components-sharepoint-governance-copilot",
+      "title": "Governance Risk Advisor — Executive Tenant Governance Dashboard",
+      "url": "https://github.com/pnp/spfx-copilot-components/tree/main/samples/sharepoint-governance-copilot",
+      "description": "A SharePoint Copilot App (SPFx 1.24 Copilot Component) that turns tenant governance findings into an executive briefing: a governance score with trend, an AI-generated executive summary, prioritized remediation actions, explainable findings, and a tenant-wide insights panel.",
+      "image": "https://github.com/pnp/spfx-copilot-components/raw/main/samples/sharepoint-governance-copilot/assets/preview.png",
+      "authors": [
+        {
+          "name": "Maycon de Novaes Batista",
+          "pictureUrl": "https://github.com/mnbatista.png"
+        }
+      ],
+      "tags": [
+        "SharePoint",
+        "Microsoft Copilot"
+      ],
+      "createDate": "2026-10-03",
+      "updateDate": "2026-10-03",
+      "version": "1.24.0-beta.5",
+      "componentType": "copilotComponent",
+      "extensionType": null,
+      "sampleGallery": "spfx-copilot-components",
+      "sampleType": "samples"
+    },
+    {
+      "name": "pnp-spfx-copilot-components-site-snapshot",
+      "title": "Site Snapshot - SharePoint Site Health Copilot App",
+      "url": "https://github.com/pnp/spfx-copilot-components/tree/main/samples/site-snapshot",
+      "description": "On-demand health snapshot of a SharePoint site inside Microsoft 365 Copilot: a transparent health score, stale documents, external sharing, duplicates, large and empty files, and a file-type breakdown.",
+      "image": "https://github.com/pnp/spfx-copilot-components/raw/main/samples/site-snapshot/assets/site-snapshot-inline.png",
+      "authors": [
+        {
+          "name": "Tanel Vahk",
+          "pictureUrl": "https://github.com/tvahk.png"
+        }
+      ],
+      "tags": [
+        "SharePoint",
+        "Microsoft Copilot"
+      ],
+      "createDate": "2026-10-02",
+      "updateDate": "2026-10-02",
+      "version": "1.24.0-beta.3",
+      "componentType": "copilotComponent",
+      "extensionType": null,
+      "sampleGallery": "spfx-copilot-components",
+      "sampleType": "samples"
+    },
+    {
+      "name": "pnp-sp-dev-spfx-copilot-apps-sp-permissions-explorer",
+      "title": "SP Permissions Explorer - SharePoint Access Review Copilot App",
+      "url": "https://github.com/pnp/spfx-copilot-components/tree/main/samples/sp-permissions-explorer",
+      "description": "An SPFx Copilot Component that lets users review SharePoint access, inspect principals and permission levels, and perform guarded write operations from Microsoft Copilot.",
+      "image": "https://github.com/pnp/spfx-copilot-components/raw/main/samples/sp-permissions-explorer/assets/SharePointAccessReview_Introduction.png",
+      "authors": [
+        {
+          "name": "Aimery Thomas",
+          "pictureUrl": "https://github.com/a1mery.png"
+        }
+      ],
+      "tags": [
+        "SharePoint",
+        "Copilot"
+      ],
+      "createDate": "2026-07-15",
+      "updateDate": "2026-07-15",
+      "version": "1.24.0-beta.2",
+      "componentType": "copilotComponent",
+      "extensionType": null,
+      "sampleGallery": "spfx-copilot-components",
+      "sampleType": "samples"
+    },
+    {
+      "name": "pnp-sp-dev-spfx-copilot-apps-time-off-absence",
+      "title": "My Time Off — Time-Off & Absence Copilot App",
+      "url": "https://github.com/pnp/spfx-copilot-components/tree/main/samples/time-off-absence",
+      "description": "A SharePoint Copilot App (SPFx 1.24 Copilot Components) that brings the employee time-off (PTO) experience inside the Microsoft Copilot canvas — a personal overview, a request form with an Outlook conflict pre-check, and a team view with manager approvals and a full-screen absence calendar, all powered by delegated, client-side SharePoint REST and Microsoft Graph calls.",
+      "image": "https://github.com/pnp/spfx-copilot-components/raw/main/samples/time-off-absence/assets/introduction.png",
+      "authors": [
+        {
+          "name": "Bert Jansen",
+          "pictureUrl": "https://github.com/jansenbe.png"
+        }
+      ],
+      "tags": [
+        "SharePoint",
+        "Copilot"
+      ],
+      "createDate": "2026-07-06",
+      "updateDate": "2026-07-06",
+      "version": "1.24.0-beta.2",
+      "componentType": "copilotComponent",
+      "extensionType": null,
+      "sampleGallery": "spfx-copilot-components",
+      "sampleType": "samples"
+    },
+    {
+      "name": "pnp-spfx-copilot-components-tutorial-access-data",
+      "title": "Access data with the SharePoint REST API and Microsoft Graph",
+      "url": "https://github.com/pnp/spfx-copilot-components/tree/main/samples/tutorial-access-data",
+      "description": "Two Copilot UX components that show the lists on a site with the SharePoint REST API, and the user's profile, mail, and calendar with Microsoft Graph.",
+      "image": "https://github.com/pnp/spfx-copilot-components/raw/main/samples/tutorial-access-data/assets/copilot-sharepoint-lists.png",
+      "authors": [
+        {
+          "name": "Andrew Connell",
+          "pictureUrl": "https://github.com/andrewconnell.png"
+        }
+      ],
+      "tags": [
+        "SharePoint",
+        "Copilot"
+      ],
+      "createDate": "2026-10-04",
+      "updateDate": "2026-10-04",
+      "version": "1.24.0-beta.5",
+      "componentType": "copilotComponent",
+      "extensionType": null,
+      "sampleGallery": "spfx-copilot-components",
+      "sampleType": "samples"
+    },
+    {
+      "name": "pnp-spfx-copilot-components-tutorial-connect-to-sharepoint-data",
+      "title": "Lists and items on a site",
+      "url": "https://github.com/pnp/spfx-copilot-components/tree/main/samples/tutorial-connect-to-sharepoint-data",
+      "description": "The tutorial project that shows the lists on a SharePoint site, and the items in the list the user selects, from a site URL the agent passes to the tool.",
+      "image": "https://github.com/pnp/spfx-copilot-components/raw/main/samples/tutorial-connect-to-sharepoint-data/assets/copilot-lists.png",
+      "authors": [
+        {
+          "name": "Andrew Connell",
+          "pictureUrl": "https://github.com/andrewconnell.png"
+        }
+      ],
+      "tags": [
+        "SharePoint",
+        "Copilot"
+      ],
+      "createDate": "2026-10-04",
+      "updateDate": "2026-10-04",
+      "version": "1.24.0-beta.5",
+      "componentType": "copilotComponent",
+      "extensionType": null,
+      "sampleGallery": "spfx-copilot-components",
+      "sampleType": "samples"
+    },
+    {
+      "name": "pnp-spfx-copilot-apps-work-iq-answers",
+      "title": "Work IQ Answers",
+      "url": "https://github.com/pnp/spfx-copilot-components/tree/main/samples/work-iq-answers",
+      "description": "Turns a Work IQ answer into structured UI: entity chips inline and every citation grouped into a clickable source panel.",
+      "image": "https://github.com/pnp/spfx-copilot-components/raw/main/samples/work-iq-answers/assets/preview.png",
+      "authors": [
+        {
+          "name": "Ramin Ahmadi",
+          "pictureUrl": "https://github.com/AhmadiRamin.png"
+        }
+      ],
+      "tags": [
+        "SharePoint",
+        "Microsoft Copilot"
+      ],
+      "createDate": "2026-08-21",
+      "updateDate": "2026-08-21",
+      "version": "1.24.0-beta.2",
+      "componentType": "copilotComponent",
+      "extensionType": null,
+      "sampleGallery": "spfx-copilot-components",
+      "sampleType": "samples"
+    },
+    {
+      "name": "pnp-sp-dev-spfx-copilot-components-zava-customer-resolution-center",
+      "title": "Zava Customer Resolution Center",
+      "url": "https://github.com/pnp/spfx-copilot-components/tree/main/samples/zava-customer-resolution-center",
+      "description": "An evidence-led customer resolution Copilot App with 23 tools and four connected workspaces.",
+      "image": "https://github.com/pnp/spfx-copilot-components/raw/main/samples/zava-customer-resolution-center/assets/fullscreen-resolution-room.png",
+      "authors": [
+        {
+          "name": "Vesa Juvonen",
+          "pictureUrl": "https://github.com/vesajuvonen.png"
+        }
+      ],
+      "tags": [
+        "SharePoint",
+        "Copilot"
+      ],
+      "createDate": "2026-08-31",
+      "updateDate": "2026-09-21",
+      "version": "1.24.0-beta.3",
+      "componentType": "copilotComponent",
+      "extensionType": null,
+      "sampleGallery": "spfx-copilot-components",
+      "sampleType": "samples"
+    },
+    {
+      "name": "pnp-sp-dev-spfx-copilot-apps-zava-employee-agent",
+      "title": "Zava Employee Agent",
+      "url": "https://github.com/pnp/spfx-copilot-components/tree/main/samples/zava-employee-agent",
+      "description": "An employee-first SharePoint Copilot App with 20 intent-routed HR components and one shared ten-family workspace.",
+      "image": "https://github.com/pnp/spfx-copilot-components/raw/main/samples/zava-employee-agent/assets/fullscreen-home.png",
+      "authors": [
+        {
+          "name": "Vesa Juvonen",
+          "pictureUrl": "https://github.com/vesajuvonen.png"
+        }
+      ],
+      "tags": [
+        "SharePoint",
+        "Copilot"
+      ],
+      "createDate": "2026-08-21",
+      "updateDate": "2026-08-21",
+      "version": "1.24.0-beta.2",
+      "componentType": "copilotComponent",
+      "extensionType": null,
+      "sampleGallery": "spfx-copilot-components",
+      "sampleType": "samples"
+    },
+    {
+      "name": "pnp-sp-dev-spfx-copilot-components-zava-innovation-portfolio",
+      "title": "Zava Innovation Hub",
+      "url": "https://github.com/VesaJuvonen/spfx-copilot-components/tree/main/samples/zava-innovation-portfolio",
+      "description": "An intent-routed innovation portfolio Copilot App with 17 inline components and five connected workspaces.",
+      "image": "https://github.com/VesaJuvonen/spfx-copilot-components/raw/main/samples/zava-innovation-portfolio/assets/ux-fullscreen-enterprise.png",
+      "authors": [
+        {
+          "name": "Vesa Juvonen",
+          "pictureUrl": "https://github.com/vesajuvonen.png"
+        }
+      ],
+      "tags": [
+        "SharePoint",
+        "Copilot"
+      ],
+      "createDate": "2026-08-28",
+      "updateDate": "2026-08-28",
+      "version": "1.24.0-beta.2",
+      "componentType": "copilotComponent",
+      "extensionType": null,
+      "sampleGallery": "spfx-copilot-components",
+      "sampleType": "samples"
+    },
+    {
+      "name": "pnp-sp-dev-spfx-copilot-apps-zava-it-concierge",
+      "title": "Zava IT Concierge",
+      "url": "https://github.com/pnp/spfx-copilot-components/tree/main/samples/zava-it-concierge",
+      "description": "An IT self-service Copilot App with 31 intent-routed components and three connected operational dashboards.",
+      "image": "https://github.com/pnp/spfx-copilot-components/raw/main/samples/zava-it-concierge/assets/fullscreen-personal.png",
+      "authors": [
+        {
+          "name": "Vesa Juvonen",
+          "pictureUrl": "https://github.com/vesajuvonen.png"
+        }
+      ],
+      "tags": [
+        "SharePoint",
+        "Copilot"
+      ],
+      "createDate": "2026-08-22",
+      "updateDate": "2026-08-25",
+      "version": "1.24.0-beta.2",
+      "componentType": "copilotComponent",
+      "extensionType": null,
+      "sampleGallery": "spfx-copilot-components",
+      "sampleType": "samples"
+    },
+    {
+      "name": "pnp-sp-dev-spfx-copilot-apps-zava-one-hub",
+      "title": "Zava One - Employee Experience Hub",
+      "url": "https://github.com/pnp/spfx-copilot-components/tree/main/samples/zava-one-hub",
+      "description": "A fixture-first employee hub with 35 paired SharePoint web parts and Copilot Components for company communications, personal work, services, decisions, and business insights.",
+      "image": "https://github.com/pnp/spfx-copilot-components/raw/main/samples/zava-one-hub/assets/preview.png",
+      "authors": [
+        {
+          "name": "Vesa Juvonen",
+          "pictureUrl": "https://github.com/vesajuvonen.png"
+        }
+      ],
+      "tags": [
+        "SharePoint",
+        "Copilot",
+        "Teams"
+      ],
+      "createDate": "2026-09-26",
+      "updateDate": "2026-10-02",
+      "version": "1.24.0-beta.5",
+      "componentType": "copilotComponent",
+      "extensionType": null,
+      "sampleGallery": "spfx-copilot-components",
+      "sampleType": "samples"
+    },
+    {
+      "name": "pnp-sp-dev-spfx-copilot-components-zava-procurement-command-center",
+      "title": "Zava Procurement Command Center",
+      "url": "https://github.com/pnp/spfx-copilot-components/tree/main/samples/zava-procurement-command-center",
+      "description": "An evidence-led procurement Copilot App with 22 routed components and four connected workspaces.",
+      "image": "https://github.com/pnp/spfx-copilot-components/raw/main/samples/zava-procurement-command-center/assets/ux-sourcing-workbench.png",
+      "authors": [
+        {
+          "name": "Vesa Juvonen",
+          "pictureUrl": "https://github.com/vesajuvonen.png"
+        }
+      ],
+      "tags": [
+        "SharePoint",
+        "Copilot"
+      ],
+      "createDate": "2026-08-31",
+      "updateDate": "2026-08-31",
+      "version": "1.24.0-beta.3",
+      "componentType": "copilotComponent",
+      "extensionType": null,
+      "sampleGallery": "spfx-copilot-components",
+      "sampleType": "samples"
+    },
+    {
+      "name": "pnp-sp-dev-spfx-copilot-apps-zava-project-tracker",
+      "title": "Zava AI Project Portfolio Agent",
+      "url": "https://github.com/pnp/spfx-copilot-components/tree/main/samples/zava-project-tracker",
+      "description": "A leadership-ready SharePoint Copilot App with 31 intent-routed UX components for personal work, project delivery, portfolio governance, AI investment, capacity, submissions, and approvals.",
+      "image": "https://github.com/pnp/spfx-copilot-components/raw/main/samples/zava-project-tracker/assets/fullscreen-my-work.png",
+      "authors": [
+        {
+          "name": "Vesa Juvonen",
+          "pictureUrl": "https://github.com/vesajuvonen.png"
+        }
+      ],
+      "tags": [
+        "SharePoint",
+        "Copilot"
+      ],
+      "createDate": "2026-08-21",
+      "updateDate": "2026-08-21",
+      "version": "1.24.0-beta.2",
+      "componentType": "copilotComponent",
+      "extensionType": null,
+      "sampleGallery": "spfx-copilot-components",
+      "sampleType": "samples"
+    },
+    {
+      "name": "pnp-sp-dev-spfx-copilot-apps-zava-retail-store",
+      "title": "Zava Retail Store — Retail Performance Copilot App",
+      "url": "https://github.com/pnp/spfx-copilot-components/tree/main/samples/zava-retail-store",
+      "description": "A SharePoint Copilot App (SPFx 1.24 Copilot Component) that renders an executive retail cockpit inside the Microsoft Copilot canvas — a compact inline performance card that expands to a full-screen dashboard covering sales, category mix, customer satisfaction, feedback, top products and store comparisons.",
+      "image": "https://github.com/pnp/spfx-copilot-components/raw/main/samples/zava-retail-store/assets/concept-mockup.png",
+      "authors": [
+        {
+          "name": "Paolo Pialorsi",
+          "pictureUrl": "https://github.com/PaoloPia.png"
+        }
+      ],
+      "tags": [
+        "SharePoint",
+        "Copilot"
+      ],
+      "createDate": "2026-07-06",
+      "updateDate": "2026-07-06",
+      "version": "1.24.0-beta.2",
+      "componentType": "copilotComponent",
+      "extensionType": null,
+      "sampleGallery": "spfx-copilot-components",
+      "sampleType": "samples"
+    },
+    {
+      "name": "pnp-sp-dev-spfx-copilot-components-zava-revenue-deal-room",
+      "title": "Zava Revenue Deal Room",
+      "url": "https://github.com/pnp/spfx-copilot-components/tree/main/samples/zava-revenue-deal-room",
+      "description": "An evidence-led revenue Copilot App with 21 intent-routed components and four connected workspaces.",
+      "image": "https://github.com/pnp/spfx-copilot-components/raw/main/samples/zava-revenue-deal-room/assets/fullscreen-deal-room.png",
+      "authors": [
+        {
+          "name": "Vesa Juvonen",
+          "pictureUrl": "https://github.com/vesajuvonen.png"
+        }
+      ],
+      "tags": [
+        "SharePoint",
+        "Copilot"
+      ],
+      "createDate": "2026-08-31",
+      "updateDate": "2026-08-31",
+      "version": "1.24.0-beta.3",
+      "componentType": "copilotComponent",
+      "extensionType": null,
+      "sampleGallery": "spfx-copilot-components",
+      "sampleType": "samples"
     }
   ]
 }
