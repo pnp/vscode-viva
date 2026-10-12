@@ -1977,7 +1977,7 @@
   "dependencies": {
     "@grconrad/vscode-extension-feedback": "1.0.0",
     "@vscode/extension-telemetry": "^1.2.0",
-    "@pnp/cli-microsoft365-spfx-toolkit": "1.14.0",
+    "@pnp/cli-microsoft365-spfx-toolkit": "1.15.0",
     "node-forge": "1.4.0",
     "react-markdown": "10.1.0",
     "remark-gfm": "4.0.1",
