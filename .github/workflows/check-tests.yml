@@ -35,6 +35,10 @@ jobs:
         env:
           npm_config_omit: optional
 
+      - name: Validate lockfile for SPFx Toolkit
+        run: .\node_modules\.bin\lockfile-lint
+        working-directory: vscode-viva
+
       - name: Build SPFx Toolkit
         run: npm run package
         working-directory: vscode-viva
