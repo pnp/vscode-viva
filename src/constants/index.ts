@@ -13,6 +13,6 @@ export * from './Prompts';
 export * from './SpfxCompatibilityMatrix';
 export * from './Timezones';
 export * from './WebTemplates';
-export * from './WebviewCommand';
 export * from './WebViewTypes';
+export * from './WebviewCommand';
 export * from './WorkflowTypes';

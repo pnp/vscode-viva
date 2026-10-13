@@ -355,7 +355,8 @@ export class Scaffolder {
                 content += ` ${ProjectFileContent.createNVMRCFile}`;
                 break;
               case 'nvs':
-                // If the node version manager is nvs, create the file based on the user's settings
+              case 'fnm':
+                // If the node version manager is nvs or fnm, create the file based on the user's settings
                 switch (newSolutionInput.nodeVersionManagerFile) {
                   case '.nvmrc':
                     content += ` ${ProjectFileContent.createNVMRCFile}`;
