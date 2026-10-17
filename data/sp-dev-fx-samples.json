@@ -619,7 +619,7 @@
       ],
       "createDate": "2024-09-13",
       "updateDate": "2024-09-13",
-      "version": "1.20.0",
+      "version": "1.23.0",
       "componentType": "adaptiveCardExtension",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-aces",
@@ -667,7 +667,7 @@
       ],
       "createDate": "2025-05-31",
       "updateDate": "2025-05-31",
-      "version": "1.21.1",
+      "version": "1.23.0",
       "componentType": "adaptiveCardExtension",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-aces",
@@ -787,7 +787,7 @@
       ],
       "createDate": "2023-03-15",
       "updateDate": "2023-03-15",
-      "version": "1.16.1",
+      "version": "1.23.0",
       "componentType": "adaptiveCardExtension",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-aces",
@@ -16716,6 +16716,30 @@
       ],
       "createDate": "2026-10-04",
       "updateDate": "2026-10-04",
+      "version": "1.24.0-beta.5",
+      "componentType": "copilotComponent",
+      "extensionType": null,
+      "sampleGallery": "spfx-copilot-components",
+      "sampleType": "samples"
+    },
+    {
+      "name": "pnp-spfx-copilot-components-tutorial-theme-and-design",
+      "title": "Theme and design for the Copilot canvas",
+      "url": "https://github.com/pnp/spfx-copilot-components/tree/main/samples/tutorial-theme-and-design",
+      "description": "A Copilot UX component with sample project cards that follows the Copilot light and dark themes and adapts to the inline and fullscreen display modes.",
+      "image": "https://github.com/pnp/spfx-copilot-components/raw/main/samples/tutorial-theme-and-design/assets/preview.png",
+      "authors": [
+        {
+          "name": "Andrew Connell",
+          "pictureUrl": "https://github.com/andrewconnell.png"
+        }
+      ],
+      "tags": [
+        "SharePoint",
+        "Copilot"
+      ],
+      "createDate": "2026-10-11",
+      "updateDate": "2026-10-11",
       "version": "1.24.0-beta.5",
       "componentType": "copilotComponent",
       "extensionType": null,
