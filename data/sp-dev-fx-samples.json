@@ -16098,6 +16098,30 @@
       "sampleType": "samples"
     },
     {
+      "name": "pnp-spfx-copilot-components-cafeteria",
+      "title": "Cafeteria - Browse Cafeterias and Menus in Copilot",
+      "url": "https://github.com/pnp/spfx-copilot-components/tree/main/samples/cafeteria",
+      "description": "Browse cafeteria hours, menus, and dish options from Microsoft Copilot.",
+      "image": "https://github.com/pnp/spfx-copilot-components/raw/main/samples/cafeteria/assets/Screenshot-fullscreen-main.png",
+      "authors": [
+        {
+          "name": "Sandeep P S",
+          "pictureUrl": "https://github.com/Sandeep-FED.png"
+        }
+      ],
+      "tags": [
+        "SharePoint",
+        "Microsoft Copilot"
+      ],
+      "createDate": "2026-10-19",
+      "updateDate": "2026-10-22",
+      "version": "1.24.0-beta.5",
+      "componentType": "copilotComponent",
+      "extensionType": null,
+      "sampleGallery": "spfx-copilot-components",
+      "sampleType": "samples"
+    },
+    {
       "name": "pnp-spfx-copilot-apps-choice-relay",
       "title": "Choice Relay",
       "url": "https://github.com/pnp/spfx-copilot-components/tree/main/samples/choice-relay",
@@ -16196,9 +16220,9 @@
     {
       "name": "pnp-sp-dev-spfx-copilot-apps-copilot-star-match-game",
       "title": "Copilot Star Match Game",
-      "url": "https://github.com/pnp/spfx-copilot-apps/tree/main/samples/copilot-star-match-game",
+      "url": "https://github.com/pnp/spfx-copilot-components/tree/main/samples/copilot-star-match-game",
       "description": "A SharePoint Copilot app that enables teams to play the Star Match game.",
-      "image": "https://github.com/pnp/spfx-copilot-apps/raw/main/samples/copilot-star-match-game/assets/inline-star-match-game01.png",
+      "image": "https://github.com/pnp/spfx-copilot-components/raw/main/samples/copilot-star-match-game/assets/inline-star-match-game01.png",
       "authors": [
         {
           "name": "Mohammad Amer",
@@ -16210,7 +16234,7 @@
         "Copilot"
       ],
       "createDate": "2026-09-20",
-      "updateDate": "2026-09-20",
+      "updateDate": "2026-10-22",
       "version": "1.24.0-beta.2",
       "componentType": "copilotComponent",
       "extensionType": null,
@@ -16386,11 +16410,35 @@
       "sampleType": "samples"
     },
     {
-      "name": "pnp-sp-dev-spfx-copilot-apps-my-day",
+      "name": "pnp-spfx-copilot-components-multilingual-story-card",
+      "title": "CosmoPolite - multilingual story card",
+      "url": "https://github.com/pnp/spfx-copilot-components/tree/main/samples/multilingual-story-card",
+      "description": "Ask in any language or dialect and get a story card in that language: labels, reading direction, fonts, photo credit and a read-aloud voice all follow the story, including right-to-left scripts.",
+      "image": "https://github.com/pnp/spfx-copilot-components/raw/main/samples/multilingual-story-card/assets/cosmopolite-inline.png",
+      "authors": [
+        {
+          "name": "Stefan Bauer",
+          "pictureUrl": "https://github.com/StfBauer.png"
+        }
+      ],
+      "tags": [
+        "SharePoint",
+        "Microsoft Copilot"
+      ],
+      "createDate": "2026-10-18",
+      "updateDate": "2026-10-18",
+      "version": "1.24.0-rc.0",
+      "componentType": "copilotComponent",
+      "extensionType": null,
+      "sampleGallery": "spfx-copilot-components",
+      "sampleType": "samples"
+    },
+    {
+      "name": "pnp-sp-dev-spfx-copilot-components-my-day",
       "title": "My Day — Personalized Intranet Copilot App",
       "url": "https://github.com/pnp/spfx-copilot-components/tree/main/samples/my-day",
       "description": "A SharePoint Copilot App (SPFx 1.24 Copilot Component) that renders a personal 'My Day' cockpit inside the Microsoft Copilot canvas — a compact inline card that expands to a full-screen dashboard with agenda, tasks, mail, news, a 'Plan my day' briefing and session-persisted settings.",
-      "image": "https://github.com/pnp/spfx-copilot-components/raw/main/samples/my-day/assets/introduction.png",
+      "image": "https://github.com/pnp/spfx-copilot-components/raw/main/samples/my-day/assets/screenshot-inline.png",
       "authors": [
         {
           "name": "Vesa Juvonen",
@@ -16402,8 +16450,8 @@
         "Copilot"
       ],
       "createDate": "2026-07-02",
-      "updateDate": "2026-07-02",
-      "version": "1.24.0-beta.2",
+      "updateDate": "2026-10-20",
+      "version": "1.24.0-rc.0",
       "componentType": "copilotComponent",
       "extensionType": null,
       "sampleGallery": "spfx-copilot-components",
@@ -16747,6 +16795,34 @@
       "sampleType": "samples"
     },
     {
+      "name": "pnp-spfx-copilot-components-viva-engage-explorer",
+      "title": "Viva Engage Community Explorer",
+      "url": "https://github.com/pnp/spfx-copilot-components/tree/main/samples/viva-engage-explorer",
+      "description": "Discover, search and explore live Viva Engage communities inside Microsoft 365 Copilot.",
+      "image": "https://github.com/pnp/spfx-copilot-components/raw/main/samples/viva-engage-explorer/assets/architecture.svg",
+      "authors": [
+        {
+          "name": "Nanddeep Nachan",
+          "pictureUrl": "https://github.com/nanddeepn.png"
+        },
+        {
+          "name": "Smita Nachan",
+          "pictureUrl": "https://github.com/smitanachan.png"
+        }
+      ],
+      "tags": [
+        "SharePoint",
+        "Microsoft Copilot"
+      ],
+      "createDate": "2026-10-16",
+      "updateDate": "2026-10-19",
+      "version": "1.24.0-rc.0",
+      "componentType": "copilotComponent",
+      "extensionType": null,
+      "sampleGallery": "spfx-copilot-components",
+      "sampleType": "samples"
+    },
+    {
       "name": "pnp-spfx-copilot-apps-work-iq-answers",
       "title": "Work IQ Answers",
       "url": "https://github.com/pnp/spfx-copilot-components/tree/main/samples/work-iq-answers",
@@ -16787,8 +16863,8 @@
         "Copilot"
       ],
       "createDate": "2026-08-31",
-      "updateDate": "2026-09-21",
-      "version": "1.24.0-beta.3",
+      "updateDate": "2026-10-20",
+      "version": "1.24.0-rc.0",
       "componentType": "copilotComponent",
       "extensionType": null,
       "sampleGallery": "spfx-copilot-components",
@@ -16798,7 +16874,7 @@
       "name": "pnp-sp-dev-spfx-copilot-apps-zava-employee-agent",
       "title": "Zava Employee Agent",
       "url": "https://github.com/pnp/spfx-copilot-components/tree/main/samples/zava-employee-agent",
-      "description": "An employee-first SharePoint Copilot App with 20 intent-routed HR components and one shared ten-family workspace.",
+      "description": "An employee-first Copilot App with 20 operational HR components, a dedicated feature explorer, and one shared ten-family workspace.",
       "image": "https://github.com/pnp/spfx-copilot-components/raw/main/samples/zava-employee-agent/assets/fullscreen-home.png",
       "authors": [
         {
@@ -16811,8 +16887,8 @@
         "Copilot"
       ],
       "createDate": "2026-08-21",
-      "updateDate": "2026-08-21",
-      "version": "1.24.0-beta.2",
+      "updateDate": "2026-10-20",
+      "version": "1.24.0-rc.0",
       "componentType": "copilotComponent",
       "extensionType": null,
       "sampleGallery": "spfx-copilot-components",
@@ -16835,8 +16911,8 @@
         "Copilot"
       ],
       "createDate": "2026-08-28",
-      "updateDate": "2026-08-28",
-      "version": "1.24.0-beta.2",
+      "updateDate": "2026-10-20",
+      "version": "1.24.0-rc.0",
       "componentType": "copilotComponent",
       "extensionType": null,
       "sampleGallery": "spfx-copilot-components",
@@ -16859,8 +16935,8 @@
         "Copilot"
       ],
       "createDate": "2026-08-22",
-      "updateDate": "2026-08-25",
-      "version": "1.24.0-beta.2",
+      "updateDate": "2026-10-20",
+      "version": "1.24.0-rc.0",
       "componentType": "copilotComponent",
       "extensionType": null,
       "sampleGallery": "spfx-copilot-components",
@@ -16884,8 +16960,8 @@
         "Teams"
       ],
       "createDate": "2026-09-26",
-      "updateDate": "2026-10-02",
-      "version": "1.24.0-beta.5",
+      "updateDate": "2026-10-20",
+      "version": "1.24.0-rc.0",
       "componentType": "copilotComponent",
       "extensionType": null,
       "sampleGallery": "spfx-copilot-components",
@@ -16908,8 +16984,8 @@
         "Copilot"
       ],
       "createDate": "2026-08-31",
-      "updateDate": "2026-08-31",
-      "version": "1.24.0-beta.3",
+      "updateDate": "2026-10-20",
+      "version": "1.24.0-rc.0",
       "componentType": "copilotComponent",
       "extensionType": null,
       "sampleGallery": "spfx-copilot-components",
@@ -16932,8 +17008,8 @@
         "Copilot"
       ],
       "createDate": "2026-08-21",
-      "updateDate": "2026-08-21",
-      "version": "1.24.0-beta.2",
+      "updateDate": "2026-10-20",
+      "version": "1.24.0-rc.0",
       "componentType": "copilotComponent",
       "extensionType": null,
       "sampleGallery": "spfx-copilot-components",
@@ -16980,8 +17056,8 @@
         "Copilot"
       ],
       "createDate": "2026-08-31",
-      "updateDate": "2026-08-31",
-      "version": "1.24.0-beta.3",
+      "updateDate": "2026-10-20",
+      "version": "1.24.0-rc.0",
       "componentType": "copilotComponent",
       "extensionType": null,
       "sampleGallery": "spfx-copilot-components",
