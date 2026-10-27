@@ -525,8 +525,11 @@ export class TerminalCommandExecuter {
           }
         }
       } else if (nodeVersionManager === NodeVersionManagers.fnm) {
-        if (nvmrcFiles.length > 0) {
-          const nvmrcPath = nvmrcFiles[0].fsPath;
+        const versionFiles = nvmrcFiles.length > 0
+          ? nvmrcFiles
+          : await workspace.findFiles('.node-version', '**/node_modules/**');
+        if (versionFiles.length > 0) {
+          const nvmrcPath = versionFiles[0].fsPath;
           try {
             const content = readFileSync(nvmrcPath, 'utf8').trim();
             const version = content.startsWith('v') ? content.substring(1) : content;
