@@ -1211,7 +1211,7 @@
             ".nvmrc",
             ".node-version"
           ],
-          "description": "The file to be used to store the Node version for the selected Node version manager. Remember that the .node-version file is supported only while using nvs."
+          "description": "The file to be used to store the Node version for the selected Node version manager. Remember that the .node-version file is supported only while using nvs or fnm."
         },
         "spfx-toolkit.projectUpgradeOutputMode": {
           "title": "Project upgrade output mode",
