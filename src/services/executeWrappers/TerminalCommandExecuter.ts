@@ -512,8 +512,7 @@ export class TerminalCommandExecuter {
         if (nvmrcFiles.length > 0) {
           const nvmrcPath = nvmrcFiles[0].fsPath;
           try {
-            const content = readFileSync(nvmrcPath, 'utf8').trim();
-            const version = content.startsWith('v') ? content.substring(1) : content;
+            const version = TerminalCommandExecuter.readNodeVersion(nvmrcPath);
             if (version) {
               terminal.sendText(`nvm use ${version}`);
             } else {
@@ -531,8 +530,7 @@ export class TerminalCommandExecuter {
         if (versionFiles.length > 0) {
           const nvmrcPath = versionFiles[0].fsPath;
           try {
-            const content = readFileSync(nvmrcPath, 'utf8').trim();
-            const version = content.startsWith('v') ? content.substring(1) : content;
+            const version = TerminalCommandExecuter.readNodeVersion(nvmrcPath);
             if (version) {
               terminal.sendText(`fnm use ${version}`);
             } else {
@@ -547,6 +545,24 @@ export class TerminalCommandExecuter {
     }
 
     return terminal;
+  }
+
+  /**
+   * Reads a Node version from a .nvmrc or .node-version file.
+   * The value is sent to a shell, so only plain numeric versions (e.g. 22, 22.14, v22.14.0) are accepted.
+   * @param filePath - The path to the version file.
+   * @returns The version without a leading `v`, or undefined if the file content is not a plain numeric version.
+   */
+  private static readNodeVersion(filePath: string): string | undefined {
+    const content = readFileSync(filePath, 'utf8').trim();
+    const match = /^v?(\d+(?:\.\d+){0,2})$/.exec(content);
+    if (!match) {
+      if (content) {
+        Logger.warning(`Ignoring unsupported Node version "${content}" in ${filePath}. Falling back to the version manager's own file lookup.`);
+      }
+      return undefined;
+    }
+    return match[1];
   }
 
   /**
