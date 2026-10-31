@@ -16218,6 +16218,30 @@
       "sampleType": "samples"
     },
     {
+      "name": "pnp-spfx-copilot-components-copilot-sharepoint-form-app",
+      "title": "SharePoint Document Submission Form",
+      "url": "https://github.com/pnp/spfx-copilot-components/tree/main/samples/copilot-sharepoint-form-app",
+      "description": "Submit files up to 50 MB and dynamic library metadata directly to a SharePoint document library from an inline Microsoft 365 Copilot chat form or a modern SharePoint page without passing file bytes through the LLM prompt.",
+      "image": "https://github.com/pnp/spfx-copilot-components/raw/main/samples/copilot-sharepoint-form-app/assets/copilot-chat-kb-1-form-masked.png",
+      "authors": [
+        {
+          "name": "Anand Vijayaragavan",
+          "pictureUrl": "https://github.com/anandragav.png"
+        }
+      ],
+      "tags": [
+        "SharePoint",
+        "Microsoft Copilot"
+      ],
+      "createDate": "2026-10-28",
+      "updateDate": "2026-10-28",
+      "version": "1.24.0-rc.0",
+      "componentType": "copilotComponent",
+      "extensionType": null,
+      "sampleGallery": "spfx-copilot-components",
+      "sampleType": "samples"
+    },
+    {
       "name": "pnp-sp-dev-spfx-copilot-apps-copilot-star-match-game",
       "title": "Copilot Star Match Game",
       "url": "https://github.com/pnp/spfx-copilot-components/tree/main/samples/copilot-star-match-game",
@@ -16282,8 +16306,8 @@
         "Copilot"
       ],
       "createDate": "2026-07-08",
-      "updateDate": "2026-07-08",
-      "version": "1.24.0-beta.2",
+      "updateDate": "2026-10-28",
+      "version": "1.24.0",
       "componentType": "copilotComponent",
       "extensionType": null,
       "sampleGallery": "spfx-copilot-components",
@@ -16426,8 +16450,8 @@
         "Microsoft Copilot"
       ],
       "createDate": "2026-10-18",
-      "updateDate": "2026-10-18",
-      "version": "1.24.0-rc.0",
+      "updateDate": "2026-10-29",
+      "version": "1.24.0",
       "componentType": "copilotComponent",
       "extensionType": null,
       "sampleGallery": "spfx-copilot-components",
@@ -16450,8 +16474,8 @@
         "Copilot"
       ],
       "createDate": "2026-07-02",
-      "updateDate": "2026-10-20",
-      "version": "1.24.0-rc.0",
+      "updateDate": "2026-10-28",
+      "version": "1.24.0",
       "componentType": "copilotComponent",
       "extensionType": null,
       "sampleGallery": "spfx-copilot-components",
@@ -16571,8 +16595,8 @@
         "Microsoft Teams"
       ],
       "createDate": "2026-10-08",
-      "updateDate": "2026-10-09",
-      "version": "1.24.0-rc.0",
+      "updateDate": "2026-10-28",
+      "version": "1.24.0",
       "componentType": "copilotComponent",
       "extensionType": null,
       "sampleGallery": "spfx-copilot-components",
@@ -16715,8 +16739,8 @@
         "Copilot"
       ],
       "createDate": "2026-07-06",
-      "updateDate": "2026-07-06",
-      "version": "1.24.0-beta.2",
+      "updateDate": "2026-10-28",
+      "version": "1.24.0",
       "componentType": "copilotComponent",
       "extensionType": null,
       "sampleGallery": "spfx-copilot-components",
@@ -16863,8 +16887,8 @@
         "Copilot"
       ],
       "createDate": "2026-08-31",
-      "updateDate": "2026-10-20",
-      "version": "1.24.0-rc.0",
+      "updateDate": "2026-10-28",
+      "version": "1.24.0",
       "componentType": "copilotComponent",
       "extensionType": null,
       "sampleGallery": "spfx-copilot-components",
@@ -16887,8 +16911,8 @@
         "Copilot"
       ],
       "createDate": "2026-08-21",
-      "updateDate": "2026-10-20",
-      "version": "1.24.0-rc.0",
+      "updateDate": "2026-10-28",
+      "version": "1.24.0",
       "componentType": "copilotComponent",
       "extensionType": null,
       "sampleGallery": "spfx-copilot-components",
@@ -16911,8 +16935,8 @@
         "Copilot"
       ],
       "createDate": "2026-08-28",
-      "updateDate": "2026-10-20",
-      "version": "1.24.0-rc.0",
+      "updateDate": "2026-10-28",
+      "version": "1.24.0",
       "componentType": "copilotComponent",
       "extensionType": null,
       "sampleGallery": "spfx-copilot-components",
@@ -16935,8 +16959,8 @@
         "Copilot"
       ],
       "createDate": "2026-08-22",
-      "updateDate": "2026-10-20",
-      "version": "1.24.0-rc.0",
+      "updateDate": "2026-10-28",
+      "version": "1.24.0",
       "componentType": "copilotComponent",
       "extensionType": null,
       "sampleGallery": "spfx-copilot-components",
@@ -16960,8 +16984,8 @@
         "Teams"
       ],
       "createDate": "2026-09-26",
-      "updateDate": "2026-10-20",
-      "version": "1.24.0-rc.0",
+      "updateDate": "2026-10-28",
+      "version": "1.24.0",
       "componentType": "copilotComponent",
       "extensionType": null,
       "sampleGallery": "spfx-copilot-components",
@@ -16969,9 +16993,9 @@
     },
     {
       "name": "pnp-sp-dev-spfx-copilot-components-zava-procurement-command-center",
-      "title": "Zava Procurement Command Center",
+      "title": "ZavaCore Procurement Command Center",
       "url": "https://github.com/pnp/spfx-copilot-components/tree/main/samples/zava-procurement-command-center",
-      "description": "An evidence-led procurement Copilot App with 22 routed components and four connected workspaces.",
+      "description": "Guided intake, human approvals, resilient sourcing and global investment insights in 22 Copilot experiences.",
       "image": "https://github.com/pnp/spfx-copilot-components/raw/main/samples/zava-procurement-command-center/assets/ux-sourcing-workbench.png",
       "authors": [
         {
@@ -16984,8 +17008,8 @@
         "Copilot"
       ],
       "createDate": "2026-08-31",
-      "updateDate": "2026-10-20",
-      "version": "1.24.0-rc.0",
+      "updateDate": "2026-10-28",
+      "version": "1.24.0",
       "componentType": "copilotComponent",
       "extensionType": null,
       "sampleGallery": "spfx-copilot-components",
@@ -17008,8 +17032,8 @@
         "Copilot"
       ],
       "createDate": "2026-08-21",
-      "updateDate": "2026-10-20",
-      "version": "1.24.0-rc.0",
+      "updateDate": "2026-10-28",
+      "version": "1.24.0",
       "componentType": "copilotComponent",
       "extensionType": null,
       "sampleGallery": "spfx-copilot-components",
@@ -17032,8 +17056,8 @@
         "Copilot"
       ],
       "createDate": "2026-07-06",
-      "updateDate": "2026-07-06",
-      "version": "1.24.0-beta.2",
+      "updateDate": "2026-10-28",
+      "version": "1.24.0",
       "componentType": "copilotComponent",
       "extensionType": null,
       "sampleGallery": "spfx-copilot-components",
@@ -17041,9 +17065,9 @@
     },
     {
       "name": "pnp-sp-dev-spfx-copilot-components-zava-revenue-deal-room",
-      "title": "Zava Revenue Deal Room",
+      "title": "ZavaMesh Revenue Deal Room",
       "url": "https://github.com/pnp/spfx-copilot-components/tree/main/samples/zava-revenue-deal-room",
-      "description": "An evidence-led revenue Copilot App with 21 intent-routed components and four connected workspaces.",
+      "description": "A ZavaMesh-branded revenue Copilot App with global analytics, guided deal intake and human-governed approvals.",
       "image": "https://github.com/pnp/spfx-copilot-components/raw/main/samples/zava-revenue-deal-room/assets/fullscreen-deal-room.png",
       "authors": [
         {
@@ -17056,8 +17080,8 @@
         "Copilot"
       ],
       "createDate": "2026-08-31",
-      "updateDate": "2026-10-20",
-      "version": "1.24.0-rc.0",
+      "updateDate": "2026-10-28",
+      "version": "1.24.0",
       "componentType": "copilotComponent",
       "extensionType": null,
       "sampleGallery": "spfx-copilot-components",
