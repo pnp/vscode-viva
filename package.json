@@ -1088,10 +1088,6 @@
                 "Search",
                 "DataVisualization"
               ]
-            },
-            "skipInstall": {
-              "type": "boolean",
-              "description": "Set to true to add --skip-install and avoid automatic dependency installation."
             }
           },
           "required": [

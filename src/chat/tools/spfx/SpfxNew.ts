@@ -76,10 +76,6 @@ export class SharePointFrameworkCreateNewProject implements LanguageModelTool<IS
                 commandParts.push(`--aceTemplateType ${quote(params.aceTemplateType!)}`);
             }
 
-            if (params.skipInstall) {
-                commandParts.push('--skip-install');
-            }
-
             const yoCommand = commandParts.join(' ');
 
             await Scaffolder.createProjectCopilot(yoCommand);
