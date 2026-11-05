@@ -1,5 +1,13 @@
 # Change Log
 
+## [4.23.0] - 2026-11-05
+
+- Added support for SPFx 1.24.0 and 1.24.1
+- Added support for SPFx Copilot Apps Samples Repository
+- Refactored spo_site_add and spo_site_remove Language Model Tools
+- Added spo_site_list and spo_site_set Language Model Tools for SharePoint Site management
+- Updated dependencies to reduce vulnerabilities
+
 ## [4.22.0] - 2026-10-02
 
 - Resolved critical bug fix
