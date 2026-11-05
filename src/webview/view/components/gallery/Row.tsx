@@ -34,6 +34,8 @@ export const Row: React.FunctionComponent<IRowProps> = ({ item }: React.PropsWit
         return 'Web part';
       case 'adaptiveCardExtension':
         return 'ACE';
+      case 'copilotComponent':
+        return 'Copilot Component';
       default:
         return '';
     }

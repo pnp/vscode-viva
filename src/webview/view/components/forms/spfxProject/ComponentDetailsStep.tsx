@@ -102,7 +102,7 @@ export const ComponentDetailsStep: React.FunctionComponent<IComponentDetailsStep
                     </div>
                 }
                 {
-                    componentType === ComponentType.webPart &&
+                    (componentType === ComponentType.webPart || componentType === ComponentType.copilotComponent) &&
                     <div className={'mb-2'}>
                         <LabelWithTooltip label='Which template would you like to use?' tooltip={FrameworkTypes.find((framework) => framework.value === frameworkType)?.description as string} />
                         <VSCodeDropdown className={'w-full'} value={frameworkType} onChange={(e: any) => setFrameworkType(e.target.value)}>
