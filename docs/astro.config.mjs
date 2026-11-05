@@ -34,6 +34,8 @@ export default defineConfig({
 					items: [
 						{ label: 'Welcome experience & Walkthrough', link: 'features/welcome-experience-and-walkthrough' },
 						{ label: 'Setup', link: 'features/setup' },
+						{ label: 'Settings', link: 'features/settings' },
+						{ label: 'Entra App Registration', link: 'features/entra-app-registration' },
 						{ label: 'Sign in', link: 'features/sign-in' },
 						{ label: 'Create new project', link: 'features/scaffolding' },
 						{ label: 'GitHub Copilot Capabilities', link: 'features/github-copilot-capabilities' },

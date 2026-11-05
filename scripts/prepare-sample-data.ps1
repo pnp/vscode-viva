@@ -216,4 +216,3 @@ foreach ($stat in $statsByRepo) {
 }
 
 exit 0
-
