@@ -481,7 +481,7 @@ export class TerminalCommandExecuter {
   /**
    * Creates a new terminal with the specified name and icon.
    * If a terminal with the same name already exists, it returns that terminal instead.
-   * If the user's settings specify to use a specific node version manager (nvm or nvs),
+   * If the user's settings specify to use a specific node version manager (nvm, nvs or fnm),
    * it checks for the presence of .nvmrc files and sets the appropriate node version manager command.
    * @param name - The name of the terminal.
    * @param icon - The path to the icon for the terminal.
@@ -496,8 +496,8 @@ export class TerminalCommandExecuter {
         iconPath: icon ? new ThemeIcon(icon) : undefined
       });
 
-      // Check the user's settings to see if they want to use nvm or nvs
-      // Get the user's preferred node version manager -- nvm or nvs or none, if they don't want to use either
+      // Check the user's settings to see if they want to use nvm, nvs or fnm
+      // Get the user's preferred node version manager -- nvm, nvs, fnm, or none if node version managernot selected
       const nodeVersionManager: string = getExtensionSettings('nodeVersionManager', 'nvm');
 
       const nvmrcFiles = await workspace.findFiles('.nvmrc', '**/node_modules/**');
@@ -512,8 +512,7 @@ export class TerminalCommandExecuter {
         if (nvmrcFiles.length > 0) {
           const nvmrcPath = nvmrcFiles[0].fsPath;
           try {
-            const content = readFileSync(nvmrcPath, 'utf8').trim();
-            const version = content.startsWith('v') ? content.substring(1) : content;
+            const version = TerminalCommandExecuter.readNodeVersion(nvmrcPath);
             if (version) {
               terminal.sendText(`nvm use ${version}`);
             } else {
@@ -524,10 +523,46 @@ export class TerminalCommandExecuter {
             terminal.sendText('nvm use');
           }
         }
+      } else if (nodeVersionManager === NodeVersionManagers.fnm) {
+        const versionFiles = nvmrcFiles.length > 0
+          ? nvmrcFiles
+          : await workspace.findFiles('.node-version', '**/node_modules/**');
+        if (versionFiles.length > 0) {
+          const nvmrcPath = versionFiles[0].fsPath;
+          try {
+            const version = TerminalCommandExecuter.readNodeVersion(nvmrcPath);
+            if (version) {
+              terminal.sendText(`fnm use ${version}`);
+            } else {
+              terminal.sendText('fnm use');
+            }
+          } catch (error) {
+            Logger.error(`Failed to read .nvmrc file at ${nvmrcPath}. Falling back to "fnm use" without version. Error: ${error}`);
+            terminal.sendText('fnm use');
+          }
+        }
       }
     }
 
     return terminal;
+  }
+
+  /**
+   * Reads a Node version from a .nvmrc or .node-version file.
+   * The value is sent to a shell, so only plain numeric versions (e.g. 22, 22.14, v22.14.0) are accepted.
+   * @param filePath - The path to the version file.
+   * @returns The version without a leading `v`, or undefined if the file content is not a plain numeric version.
+   */
+  private static readNodeVersion(filePath: string): string | undefined {
+    const content = readFileSync(filePath, 'utf8').trim();
+    const match = /^v?(\d+(?:\.\d+){0,2})$/.exec(content);
+    if (!match) {
+      if (content) {
+        Logger.warning(`Ignoring unsupported Node version "${content}" in ${filePath}. Falling back to the version manager's own file lookup.`);
+      }
+      return undefined;
+    }
+    return match[1];
   }
 
   /**
