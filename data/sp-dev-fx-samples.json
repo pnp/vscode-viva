@@ -3189,7 +3189,7 @@
     {
       "name": "pnp-sp-dev-spfx-extensions-react-application-nav-search-driven",
       "title": "Search driven navigation",
-      "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-application-qna-chat",
+      "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-application-nav-search-driven",
       "description": "SPFx application search driven navigation and permission side panel.",
       "image": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-nav-search-driven/assets/01SearchDrivenNavigation.png",
       "authors": [
@@ -4060,6 +4060,29 @@
       "sampleType": "samples"
     },
     {
+      "name": "pnp-sp-dev-spfx-extensions-react-command-document-preview",
+      "title": "Document Preview ListView Command Set",
+      "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-command-document-preview",
+      "description": "Preview images, videos and documents in a side panel with the Smart View list command.",
+      "image": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-command-document-preview/assets/Document-Preview.gif",
+      "authors": [
+        {
+          "name": "Sudharsan K.",
+          "pictureUrl": "https://github.com/sudharsank.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2020-03-08",
+      "updateDate": "2026-04-22",
+      "version": "1.10.0",
+      "componentType": "extension",
+      "extensionType": "ListViewCommandSet",
+      "sampleGallery": "sp-dev-fx-extensions",
+      "sampleType": "samples"
+    },
+    {
       "name": "pnp-sp-dev-spfx-extensions-react-command-file-size-viewer",
       "title": "File Size Viewer sample with Command View Set",
       "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-command-file-size-viewer",
@@ -4773,7 +4796,7 @@
       "name": "pnp-sp-dev-spfx-extensions-react-field-unique-permissions",
       "title": "Unique permissions on list items",
       "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-field-unique-permissions",
-      "description": "This sample demonstrates how to use field customizer to handle unique permissions on list items. ",
+      "description": "This sample demonstrates how to use field customizer to handle unique permissions on list items.",
       "image": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-field-unique-permissions/assets/currentUserPermissions.png",
       "authors": [
         {
@@ -5100,6 +5123,29 @@
       "sampleType": "samples"
     },
     {
+      "name": "pnp-sp-dev-spfx-extensions-react-teamschatNotifications",
+      "title": "Teams Chat Notifications",
+      "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-teamschatNotifications",
+      "description": "Show Teams chat notifications and unread-message counts in SharePoint.",
+      "image": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-teamschatNotifications/assets/TeamsNotification.png",
+      "authors": [
+        {
+          "name": "João Mendes",
+          "pictureUrl": "https://github.com/joaojmendes.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2020-03-13",
+      "updateDate": "2026-07-21",
+      "version": "1.9.1",
+      "componentType": "extension",
+      "extensionType": "ApplicationCustomizer",
+      "sampleGallery": "sp-dev-fx-extensions",
+      "sampleType": "samples"
+    },
+    {
       "name": "pnp-sp-dev-spfx-extensions-react-utility-extensions",
       "title": "Copy Path and Copy Name List view command set extensions",
       "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-utility-extensions",
@@ -5120,6 +5166,30 @@
       "componentType": "extension",
       "extensionType": "ApplicationCustomizer",
       "sampleGallery": "sp-dev-fx-extensions",
+      "sampleType": "samples"
+    },
+    {
+      "name": "pnp-sp-dev-spfx-web-parts-ace-strategy-pattern",
+      "title": "Adaptive Card Extension strategy pattern",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/ace-strategy-pattern",
+      "description": "Avoid complex conditional logic in Adaptive Card Extension quick view actions by using the strategy pattern.",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/ace-strategy-pattern/doc-resources/QuickViewBeforeRefactoring.PNG",
+      "authors": [
+        {
+          "name": "Marcin Wojciechowski",
+          "pictureUrl": "https://github.com/mgwojciech.png"
+        }
+      ],
+      "tags": [
+        "SharePoint",
+        "Teams"
+      ],
+      "createDate": "2022-05-27",
+      "updateDate": "2022-05-27",
+      "version": "1.14.0",
+      "componentType": "webpart",
+      "extensionType": null,
+      "sampleGallery": "sp-dev-fx-webparts",
       "sampleType": "samples"
     },
     {
@@ -5610,7 +5680,7 @@
       "name": "pnp-sp-dev-spfx-web-parts-js-githubbadge",
       "title": "GitHub Badge Web Part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/js-gitHubBadge",
-      "description": "",
+      "description": "Displays information from GitHub for a specified user.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/e92d0dac567cc4d59cdfc94186a52a3b776c6d21/samples/js-gitHubBadge/assets/1.png",
       "authors": [
         {
@@ -5822,6 +5892,30 @@
       "sampleType": "samples"
     },
     {
+      "name": "js-smart-table-of-contents",
+      "title": "Smart Table of Contents",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/js-smart-table-of-contents",
+      "description": "Advanced Smart Table of Contents web part for modern SharePoint pages.",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/js-smart-table-of-contents/assets/screenshots/floating-drawer-mode.png",
+      "authors": [
+        {
+          "name": "Jonathan Adcox",
+          "pictureUrl": "https://github.com/blayderunner123.png"
+        }
+      ],
+      "tags": [
+        "SharePoint",
+        "SharePoint Online"
+      ],
+      "createDate": "2026-05-28",
+      "updateDate": "2026-05-28",
+      "version": "1.20.0",
+      "componentType": "webpart",
+      "extensionType": null,
+      "sampleGallery": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
       "name": "pnp-sp-dev-spfx-web-parts-js-solution-editions",
       "title": "Handling Multiple Editions of SPFx Solution",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/js-solution-editions",
@@ -5839,6 +5933,30 @@
       "createDate": "2017-08-23",
       "updateDate": "2017-08-23",
       "version": "1.18.0",
+      "componentType": "webpart",
+      "extensionType": null,
+      "sampleGallery": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
+      "name": "pnp-sp-dev-spfx-web-parts-js-teams-meeting-app",
+      "title": "SPFx web part in Teams Meetings App",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/js-teams-meeting-app",
+      "description": "A minimal SharePoint Framework web part demonstrating use as a Microsoft Teams meetings app.",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/js-teams-meeting-app/assets/preview.png",
+      "authors": [
+        {
+          "name": "Andrew Connell",
+          "pictureUrl": "https://github.com/andrewconnell.png"
+        }
+      ],
+      "tags": [
+        "SharePoint",
+        "Teams"
+      ],
+      "createDate": "2021-04-27",
+      "updateDate": "2021-04-27",
+      "version": "1.12.1-rc.3",
       "componentType": "webpart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
@@ -6403,6 +6521,29 @@
       "sampleType": "samples"
     },
     {
+      "name": "pnp-sp-dev-spfx-web-parts-react-advent-calendar",
+      "title": "Advent Calendar Web Part",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-advent-calendar",
+      "description": "This project shows how to create an Advent Calendar using SPFx and React.",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-advent-calendar/assets/adventCalendar.gif",
+      "authors": [
+        {
+          "name": "Valeras Narbutas",
+          "pictureUrl": "https://github.com/valerasnarbutas.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2023-12-01",
+      "updateDate": "2023-12-01",
+      "version": "1.17.3",
+      "componentType": "webpart",
+      "extensionType": null,
+      "sampleGallery": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
       "name": "pnp-sp-dev-spfx-web-parts-react-aggregated-calendar",
       "title": "Aggregated Calendar Web part",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-aggregated-calendar",
@@ -6784,6 +6925,37 @@
       ],
       "createDate": "2019-07-23",
       "updateDate": "2025-01-13",
+      "version": "1.20.0",
+      "componentType": "webpart",
+      "extensionType": null,
+      "sampleGallery": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
+      "name": "pnp-sp-dev-spfx-web-parts-react-birthdays",
+      "title": "Birthdays Web Part",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-birthdays",
+      "description": "The Web Part Birthdays shows the upcoming birthdays in the company, the web part reads birthdays from a list located on the tenant's root site with title \"Birthdays.\"",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-birthdays/assets/birthdays.gif",
+      "authors": [
+        {
+          "name": "Valeras Narbutas",
+          "pictureUrl": "https://github.com/ValerasNarbutas.png"
+        },
+        {
+          "name": "João Mendes",
+          "pictureUrl": "https://github.com/joaojmendes.png"
+        },
+        {
+          "name": "Sajal Maity",
+          "pictureUrl": "https://github.com/smaity.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2019-07-23",
+      "updateDate": "2024-10-02",
       "version": "1.20.0",
       "componentType": "webpart",
       "extensionType": null,
@@ -10194,6 +10366,31 @@
       "sampleType": "samples"
     },
     {
+      "name": "pnp-sp-dev-spfx-web-parts-react-group-members",
+      "title": "Group Members",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-group-members",
+      "description": "List Microsoft 365 group members using Microsoft Graph and display person cards with PnP property controls.",
+      "image": null,
+      "authors": [
+        {
+          "name": "Nick Brown",
+          "pictureUrl": "https://github.com/techienickb.png"
+        }
+      ],
+      "tags": [
+        "SharePoint",
+        "Teams",
+        "Microsoft Graph"
+      ],
+      "createDate": "2022-03-30",
+      "updateDate": "2022-03-30",
+      "version": "1.14.0",
+      "componentType": "webpart",
+      "extensionType": null,
+      "sampleGallery": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
       "name": "pnp-sp-dev-spfx-web-parts-react-group-members-webpart",
       "title": "Group Members Web Part – Microsoft 365 Group User Management",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-group-members-webpart",
@@ -11030,7 +11227,7 @@
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-m365-planner-timeline",
       "title": "M365 Planner Timeline Web Part",
-      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-m365-planner-timeline",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-M365-Planner-Timeline",
       "description": "The purpose of this web part sample is to render M365 Group Plan tasks in a timeline ordered by the task due date with tags for years and months in a vertical stack. There are filter options to filter out completed tasks and tender tasks by a plan bucket. A task's detail can be viewed by clicking the (i) icon below the \"Due Date\" popping up a callout dialog with task details. It Should be noted that a M365 Group Planner can have 0 to 200 plans assigned to M365 Group. The web part needs to be configured in the web part's property pane you must select the plan to be rendered, along with options for the plan bucket and completed task filter. These setting will be used when the web part renders on the page. The configuration of multiple web parts on hte page for different plans and buckets is supported.",
       "image": "https://raw.githubusercontent.com/pnp/sp-dev-fx-webparts/refs/heads/main/samples/react-M365-Planner-Timeline/assets/webParts.png",
       "authors": [
@@ -11628,7 +11825,7 @@
       "name": "pnp-sp-dev-spfx-web-parts-react-msal-msgraph",
       "title": "Microsoft Authentication Library (MSAL JS) authentication sample",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-msal-msgraph",
-      "description": "",
+      "description": "Sample SharePoint Framework web part which uses the Microsoft Authentication Library (MSAL JS) to call the Microsoft Graph.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-msal-msgraph/assets/msal-wp-output.png",
       "authors": [
         {
@@ -12231,7 +12428,7 @@
       "name": "pnp-sp-dev-spfx-web-parts-react-officegraph",
       "title": "Office Graph Web Part samples",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-officegraph",
-      "description": "",
+      "description": "Sample SharePoint Framework client-side web parts built using React showing interaction with the Office Graph.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-officegraph/assets/trendinginthissite-preview.png",
       "authors": [
         {
@@ -12377,7 +12574,7 @@
           "pictureUrl": "https://github.com/joaojmendes.png"
         },
         {
-          "name": null,
+          "name": "Passoli Mirko",
           "pictureUrl": "https://github.com/Paxol.png"
         },
         {
@@ -13932,7 +14129,7 @@
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-site-secure-function-call",
       "title": "Site Secure Function Call",
-      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-office-offer-creation",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-site-secure-function-call",
       "description": "This combined SharePoint Framework and Azure Function solution is to provide the potentially most secure access from SharePoint Framework to any kind of third party API or Microsoft Graph.",
       "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-site-secure-function-call/assets/SetSiteDescreption.png",
       "authors": [
@@ -14344,6 +14541,35 @@
       "sampleType": "samples"
     },
     {
+      "name": "pnp-sp-dev-spfx-web-parts-react-spfx-room-booking",
+      "title": "Room Booking",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-spfx-room-booking",
+      "description": "Discover meeting rooms, check availability, and manage Outlook calendar bookings with Microsoft Graph and SharePoint.",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-spfx-room-booking/assets/img-book-a-room.png",
+      "authors": [
+        {
+          "name": "Swami Nawale",
+          "pictureUrl": "https://github.com/swaminawale.png"
+        },
+        {
+          "name": "Divyanshu Barania",
+          "pictureUrl": "https://github.com/divyanshubarania.png"
+        }
+      ],
+      "tags": [
+        "SharePoint",
+        "Teams",
+        "Microsoft Graph"
+      ],
+      "createDate": "2026-03-22",
+      "updateDate": "2026-03-22",
+      "version": "1.22.1",
+      "componentType": "webpart",
+      "extensionType": null,
+      "sampleGallery": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
       "name": "pnp-sp-dev-spfx-web-parts-react-spin-wheel",
       "title": "Spin Wheel Game",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-spin-wheel",
@@ -14416,6 +14642,29 @@
       "createDate": "2020-04-23",
       "updateDate": "2020-04-23",
       "version": "1.10.0",
+      "componentType": "webpart",
+      "extensionType": null,
+      "sampleGallery": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
+      "name": "pnp-sp-dev-spfx-web-parts-react-staff-directory-sp2019",
+      "title": "Staff Directory (Search Directory) Version 2019",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-staff-directory-sp2019",
+      "description": "Show the current user's colleagues, search the directory, and configure the properties displayed on expanded user cards.",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-staff-directory-sp2019/assets/staffdirectory_OnPrem.png",
+      "authors": [
+        {
+          "name": "João Mendes",
+          "pictureUrl": "https://github.com/joaojmendes.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2021-05-22",
+      "updateDate": "2021-05-22",
+      "version": "1.4.1",
       "componentType": "webpart",
       "extensionType": null,
       "sampleGallery": "sp-dev-fx-webparts",
@@ -14601,7 +14850,7 @@
     {
       "name": "pnp-sp-dev-spfx-web-parts-react-tailwindcss3",
       "title": "Tailwind 3 Web Part",
-      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-tailwindcss",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-tailwindcss3",
       "description": "This project showcases an integration of Tailwind CSS into an SPFx project.",
       "image": "https://raw.githubusercontent.com/pnp/sp-dev-fx-webparts/main/samples/react-tailwindcss3/assets/example.png",
       "authors": [
@@ -15693,6 +15942,29 @@
       "sampleType": "samples"
     },
     {
+      "name": "pnp-sp-dev-spfx-web-parts-react-wellbeing-tracker",
+      "title": "React Wellbeing Tracker",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-wellbeing-tracker",
+      "description": "Track personal wellbeing and engagement habits in SharePoint with daily activity completion, progress bars, and week or month views.",
+      "image": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-wellbeing-tracker/assets/screenshot.png",
+      "authors": [
+        {
+          "name": "Sudeep Ghatak",
+          "pictureUrl": "https://github.com/sudeepghatak.png"
+        }
+      ],
+      "tags": [
+        "SharePoint"
+      ],
+      "createDate": "2026-05-01",
+      "updateDate": "2026-05-06",
+      "version": "1.20.0",
+      "componentType": "webpart",
+      "extensionType": null,
+      "sampleGallery": "sp-dev-fx-webparts",
+      "sampleType": "samples"
+    },
+    {
       "name": "pnp-sp-dev-spfx-web-parts-react-whos-in",
       "title": "React Who's In",
       "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-whos-in",
@@ -16218,6 +16490,30 @@
       "sampleType": "samples"
     },
     {
+      "name": "pnp-spfx-copilot-recipe-agent",
+      "title": "Recipe Kitchen Agent - Find recipes to cook from Copilot chat",
+      "url": "https://github.com/pnp/spfx-copilot-components/tree/main/samples/copilot-recipe-finder",
+      "description": "Discover and view recipes directly from Copilot chat.",
+      "image": "https://github.com/pnp/spfx-copilot-components/raw/main/samples/copilot-recipe-finder/assets/copilot-spfx-recipe-agent-01.png",
+      "authors": [
+        {
+          "name": "Simon Doy",
+          "pictureUrl": "https://github.com/simondoy.png"
+        }
+      ],
+      "tags": [
+        "SharePoint",
+        "Copilot"
+      ],
+      "createDate": "2026-11-03",
+      "updateDate": "2026-11-04",
+      "version": "1.24.0",
+      "componentType": "copilotComponent",
+      "extensionType": null,
+      "sampleGallery": "spfx-copilot-components",
+      "sampleType": "samples"
+    },
+    {
       "name": "pnp-spfx-copilot-components-copilot-sharepoint-form-app",
       "title": "SharePoint Document Submission Form",
       "url": "https://github.com/pnp/spfx-copilot-components/tree/main/samples/copilot-sharepoint-form-app",
@@ -16260,6 +16556,30 @@
       "createDate": "2026-09-20",
       "updateDate": "2026-10-22",
       "version": "1.24.0-beta.2",
+      "componentType": "copilotComponent",
+      "extensionType": null,
+      "sampleGallery": "spfx-copilot-components",
+      "sampleType": "samples"
+    },
+    {
+      "name": "pnp-spfx-copilot-components-copilot-studio-agent-map",
+      "title": "Agent Map for Copilot Studio agents",
+      "url": "https://github.com/pnp/spfx-copilot-components/tree/main/samples/copilot-studio-agent-map",
+      "description": "SPFx Copilot UX component that shows an interactive map of a Copilot Studio agent in Microsoft 365 Copilot: its skills, tools, knowledge sources, connected agents, topics, triggers, and evaluation sets.",
+      "image": "https://github.com/pnp/spfx-copilot-components/raw/main/samples/copilot-studio-agent-map/assets/preview.png",
+      "authors": [
+        {
+          "name": "Ramakrishnan Raman",
+          "pictureUrl": "https://github.com/Ramakrishnan24689.png"
+        }
+      ],
+      "tags": [
+        "SharePoint",
+        "Microsoft Copilot"
+      ],
+      "createDate": "2026-10-29",
+      "updateDate": "2026-10-30",
+      "version": "1.24.0",
       "componentType": "copilotComponent",
       "extensionType": null,
       "sampleGallery": "spfx-copilot-components",
@@ -16355,7 +16675,7 @@
       ],
       "createDate": "2026-09-24",
       "updateDate": "2026-09-30",
-      "version": "1.24.0-beta.5",
+      "version": "1.24.1",
       "componentType": "copilotComponent",
       "extensionType": null,
       "sampleGallery": "spfx-copilot-components",
@@ -16498,7 +16818,7 @@
         "Microsoft Copilot"
       ],
       "createDate": "2026-09-21",
-      "updateDate": "2026-09-21",
+      "updateDate": "2026-11-06",
       "version": "1.24.0-beta.3",
       "componentType": "copilotComponent",
       "extensionType": null,
@@ -16621,6 +16941,30 @@
       "createDate": "2026-08-24",
       "updateDate": "2026-08-24",
       "version": "1.24.0-beta.2",
+      "componentType": "copilotComponent",
+      "extensionType": null,
+      "sampleGallery": "spfx-copilot-components",
+      "sampleType": "samples"
+    },
+    {
+      "name": "pnp-spfx-copilot-apps-portfolio-carryover-review",
+      "title": "Portfolio Carryover Review",
+      "url": "https://github.com/pnp/spfx-copilot-components/tree/main/samples/portfolio-carryover-review",
+      "description": "Review initiatives carried over between fiscal years, including their status, ownership, and carryover rationale.",
+      "image": "https://github.com/pnp/spfx-copilot-components/raw/main/samples/portfolio-carryover-review/assets/preview.png",
+      "authors": [
+        {
+          "name": "Antonio Villarruel",
+          "pictureUrl": "https://github.com/a-villarruel.png"
+        }
+      ],
+      "tags": [
+        "SharePoint",
+        "Microsoft Copilot"
+      ],
+      "createDate": "2026-10-31",
+      "updateDate": "2026-10-31",
+      "version": "1.24.0",
       "componentType": "copilotComponent",
       "extensionType": null,
       "sampleGallery": "spfx-copilot-components",
@@ -16847,6 +17191,30 @@
       "sampleType": "samples"
     },
     {
+      "name": "pnp-spfx-copilot-components-weekly-pulse-quiz",
+      "title": "Weekly Pulse Quiz",
+      "url": "https://github.com/pnp/spfx-copilot-components/tree/main/samples/weekly-pulse-quiz",
+      "description": "One multiple-choice question a week on a SharePoint page and inline in Microsoft 365 Copilot chat, with private answers stored in a SharePoint list that uses item-level security.",
+      "image": "https://github.com/pnp/spfx-copilot-components/raw/main/samples/weekly-pulse-quiz/assets/weekly-pulse-quiz-answer-correct.png",
+      "authors": [
+        {
+          "name": "Anand Vijayaragavan",
+          "pictureUrl": "https://github.com/anandragav.png"
+        }
+      ],
+      "tags": [
+        "SharePoint",
+        "Microsoft Copilot"
+      ],
+      "createDate": "2026-10-29",
+      "updateDate": "2026-10-29",
+      "version": "1.24.0",
+      "componentType": "copilotComponent",
+      "extensionType": null,
+      "sampleGallery": "spfx-copilot-components",
+      "sampleType": "samples"
+    },
+    {
       "name": "pnp-spfx-copilot-apps-work-iq-answers",
       "title": "Work IQ Answers",
       "url": "https://github.com/pnp/spfx-copilot-components/tree/main/samples/work-iq-answers",
@@ -16921,9 +17289,9 @@
     {
       "name": "pnp-sp-dev-spfx-copilot-components-zava-innovation-portfolio",
       "title": "Zava Innovation Hub",
-      "url": "https://github.com/VesaJuvonen/spfx-copilot-components/tree/main/samples/zava-innovation-portfolio",
+      "url": "https://github.com/pnp/spfx-copilot-components/tree/main/samples/zava-innovation-portfolio",
       "description": "An intent-routed innovation portfolio Copilot App with 17 inline components and five connected workspaces.",
-      "image": "https://github.com/VesaJuvonen/spfx-copilot-components/raw/main/samples/zava-innovation-portfolio/assets/ux-fullscreen-enterprise.png",
+      "image": "https://github.com/pnp/spfx-copilot-components/raw/main/samples/zava-innovation-portfolio/assets/ux-fullscreen-enterprise.png",
       "authors": [
         {
           "name": "Vesa Juvonen",
@@ -16935,7 +17303,7 @@
         "Copilot"
       ],
       "createDate": "2026-08-28",
-      "updateDate": "2026-10-28",
+      "updateDate": "2026-11-06",
       "version": "1.24.0",
       "componentType": "copilotComponent",
       "extensionType": null,
@@ -16995,7 +17363,7 @@
       "name": "pnp-sp-dev-spfx-copilot-components-zava-procurement-command-center",
       "title": "ZavaCore Procurement Command Center",
       "url": "https://github.com/pnp/spfx-copilot-components/tree/main/samples/zava-procurement-command-center",
-      "description": "Guided intake, human approvals, resilient sourcing and global investment insights in 22 Copilot experiences.",
+      "description": "Evidence-led procurement with value Sankeys, world maps and grounded Copilot continuation.",
       "image": "https://github.com/pnp/spfx-copilot-components/raw/main/samples/zava-procurement-command-center/assets/ux-sourcing-workbench.png",
       "authors": [
         {
@@ -17008,7 +17376,7 @@
         "Copilot"
       ],
       "createDate": "2026-08-31",
-      "updateDate": "2026-10-28",
+      "updateDate": "2026-11-03",
       "version": "1.24.0",
       "componentType": "copilotComponent",
       "extensionType": null,
@@ -17067,8 +17435,8 @@
       "name": "pnp-sp-dev-spfx-copilot-components-zava-revenue-deal-room",
       "title": "ZavaMesh Revenue Deal Room",
       "url": "https://github.com/pnp/spfx-copilot-components/tree/main/samples/zava-revenue-deal-room",
-      "description": "A ZavaMesh-branded revenue Copilot App with global analytics, guided deal intake and human-governed approvals.",
-      "image": "https://github.com/pnp/spfx-copilot-components/raw/main/samples/zava-revenue-deal-room/assets/fullscreen-deal-room.png",
+      "description": "27 revenue Copilot Components with four contextual workspaces, country maps, value flows and human-governed approvals.",
+      "image": "https://github.com/pnp/spfx-copilot-components/raw/main/samples/zava-revenue-deal-room/assets/inline-country-spend-map.png",
       "authors": [
         {
           "name": "Vesa Juvonen",
@@ -17080,7 +17448,7 @@
         "Copilot"
       ],
       "createDate": "2026-08-31",
-      "updateDate": "2026-10-28",
+      "updateDate": "2026-11-02",
       "version": "1.24.0",
       "componentType": "copilotComponent",
       "extensionType": null,
