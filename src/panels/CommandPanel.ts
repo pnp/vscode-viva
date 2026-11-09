@@ -191,6 +191,7 @@ export class CommandPanel {
         }
       }
 
+      accountCommands[0].children?.push(new ActionTreeItem('Switch app registration', '', { name: 'arrow-swap', custom: false }, undefined, Commands.switchAppRegistration));
       accountCommands[0].children?.push(new ActionTreeItem('Sign out', '', { name: 'sign-out', custom: false }, undefined, Commands.logout));
       CommandPanel.environmentTreeView(appCatalogUrls);
     } else {

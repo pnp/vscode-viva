@@ -29,6 +29,14 @@ SPFx Toolkit shows a list where you choose the app registration to sign in with.
 
 SPFx Toolkit then signs you in to Microsoft 365 using the selected app registration.
 
+## Switch app registration
+
+Once you are signed in, you may switch to another app registration, for example to work with a different tenant, without signing out first. In the account panel, select the `Switch app registration` action, either from the list under your account or using the icon next to it. Alternatively, you may use the `>SPFx Toolkit: Switch app registration` command.
+
+SPFx Toolkit shows the list of saved app registrations. Pick the one you want to switch to, or pick `Sign in using existing App Registration` to provide the IDs of an app registration which is not on the list yet. SPFx Toolkit then signs you out from the current session and signs you in using the selected app registration.
+
+If you dismiss the list or cancel providing the IDs, your current session stays untouched. If signing in using the selected app registration fails, you remain signed out and may sign in again using `Sign in to Microsoft 365`.
+
 ## Manage saved app registrations
 
 Each time you sign in with a new app registration, SPFx Toolkit saves it in the extension settings, so you can easily sign in again or switch between multiple tenants.

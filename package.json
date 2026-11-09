@@ -1430,6 +1430,12 @@
         "icon": "$(sign-out)"
       },
       {
+        "command": "spfx-toolkit.switchAppRegistration",
+        "title": "Switch app registration",
+        "category": "SPFx Toolkit",
+        "icon": "$(arrow-swap)"
+      },
+      {
         "command": "spfx-toolkit.registerEntraAppRegistration",
         "title": "Create a new app registration",
         "category": "SPFx Toolkit"
@@ -1683,6 +1689,10 @@
     "menus": {
       "commandPalette": [
         {
+          "command": "spfx-toolkit.switchAppRegistration",
+          "when": "pnp.project.isLoggedIn"
+        },
+        {
           "command": "spfx-toolkit.executeTerminalCommand",
           "when": "false"
         },
@@ -1781,9 +1791,14 @@
       ],
       "view/item/context": [
         {
-          "command": "spfx-toolkit.logout",
+          "command": "spfx-toolkit.switchAppRegistration",
           "when": "view == pnp-view-account && viewItem == m365Account",
           "group": "inline@1"
+        },
+        {
+          "command": "spfx-toolkit.logout",
+          "when": "view == pnp-view-account && viewItem == m365Account",
+          "group": "inline@2"
         },
         {
           "command": "spfx-toolkit.installAppCatalogApp",
