@@ -13,4 +13,9 @@ suite('Extension', function () {
 		const commands = await vscode.commands.getCommands(true);
 		assert(commands.includes('spfx-toolkit.login'));
 	});
+
+	test('should have the "spfx-toolkit.switchAppRegistration" command', async () => {
+		const commands = await vscode.commands.getCommands(true);
+		assert(commands.includes('spfx-toolkit.switchAppRegistration'));
+	});
 });

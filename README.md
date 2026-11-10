@@ -138,7 +138,7 @@ or automatically by creating the app registration for you with a single click.
 
 ![entra app reg form](./docs/assets/images-vscode/sign-in-entra-app-reg-form.png)
 
-Once you sign in you may provide a friendly name for your app registration and SPFx Toolkit will store that in extension settings. That way when you will sign in again you may just pick from saved existing app registrations to easily resign-in between multiple tenants. 
+Once you sign in you may provide a friendly name for your app registration and SPFx Toolkit will store that in extension settings. That way when you will sign in again you may just pick from saved existing app registrations to easily resign-in between multiple tenants. While signed in, you may also use the `Switch app registration` action in the account panel to sign out and sign in using another saved app registration in one step. 
 
 Thanks to that the extension will retrieve helpful URLs from your tenant like link to: 
 

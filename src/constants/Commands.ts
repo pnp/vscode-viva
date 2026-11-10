@@ -6,6 +6,7 @@ export const Commands = {
   login: `${EXTENSION_NAME}.login`,
   logout: `${EXTENSION_NAME}.logout`,
   registerEntraAppRegistration: `${EXTENSION_NAME}.registerEntraAppRegistration`,
+  switchAppRegistration: `${EXTENSION_NAME}.switchAppRegistration`,
 
   // Dependencies
   checkDependencies: `${EXTENSION_NAME}.checkDependencies`,

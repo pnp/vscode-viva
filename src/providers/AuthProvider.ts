@@ -17,6 +17,7 @@ import { AppRegistration } from '../models';
 
 
 const SIGN_IN_TITLE = 'SPFx Toolkit needs an Entra App Registration in order to grant the required permissions when signing in to your tenant. Pick one of the saved app registrations, provide the client ID and tenant ID of an existing one or create a new one.';
+const SWITCH_TITLE = 'Pick the app registration to switch to. You will be signed out from the current session and signed in using the selected app registration.';
 
 interface AppRegistrationQuickPickItem extends QuickPickItem {
   registration?: AppRegistration;
@@ -67,6 +68,9 @@ export class AuthProvider implements AuthenticationProvider, Disposable {
     subscriptions.push(
       commands.registerCommand(Commands.logout, AuthProvider.logout)
     );
+    subscriptions.push(
+      commands.registerCommand(Commands.switchAppRegistration, AuthProvider.switchAppRegistration)
+    );
   }
 
   /**
@@ -97,15 +101,63 @@ export class AuthProvider implements AuthenticationProvider, Disposable {
       return;
     }
 
-    if (selection.registration) {
-      EnvironmentInformation.clientId = selection.registration.clientId;
-      EnvironmentInformation.tenantId = selection.registration.tenantId;
-      await AppRegistrations.setLastUsed(AuthProvider.context, selection.registration);
+    const registration = selection.registration ?? await AuthProvider.promptForAppRegistration();
 
-      await authentication.getSession(AuthProvider.id, [], { createIfNone });
+    if (!registration) {
+      Logger.error('Client ID and tenant ID are required');
+      EnvironmentInformation.clientId = undefined;
+      EnvironmentInformation.tenantId = undefined;
+      throw new Error('Client ID and tenant ID are required');
+    }
+
+    EnvironmentInformation.clientId = registration.clientId;
+    EnvironmentInformation.tenantId = registration.tenantId;
+    await AppRegistrations.setLastUsed(AuthProvider.context, registration);
+
+    await authentication.getSession(AuthProvider.id, [], { createIfNone });
+  }
+
+  /**
+   * Switches the current session to another app registration.
+   */
+  public static async switchAppRegistration() {
+    const selection = await AuthProvider.pickAppRegistration(true);
+
+    if (!selection) {
       return;
     }
 
+    const registration = selection.registration ?? await AuthProvider.promptForAppRegistration();
+
+    if (!registration) {
+      return;
+    }
+
+    const { clientId, tenantId } = EnvironmentInformation;
+    if (clientId && tenantId && AppRegistrations.isSame(registration, { clientId, tenantId })) {
+      Notifications.info('You are already signed in using this app registration.');
+      return;
+    }
+
+    await AuthProvider.instance.removeSession('');
+
+    if (EnvironmentInformation.account) {
+      Notifications.error('Signing out from the current session failed. Your current session was not changed.');
+      return;
+    }
+
+    EnvironmentInformation.clientId = registration.clientId;
+    EnvironmentInformation.tenantId = registration.tenantId;
+    await AppRegistrations.setLastUsed(AuthProvider.context, registration);
+
+    await authentication.getSession(AuthProvider.id, [], { createIfNone: true });
+  }
+
+  /**
+   * Asks the user for the client ID, tenant ID and friendly name of an existing app registration and saves it.
+   * @returns The saved app registration or undefined when client ID or tenant ID is not provided.
+   */
+  private static async promptForAppRegistration(): Promise<AppRegistration | undefined> {
     const clientId = await window.showInputBox({
       title: 'Specify the application (client) ID',
       value: EnvironmentInformation.clientId ?? '',
@@ -125,9 +177,7 @@ export class AuthProvider implements AuthenticationProvider, Disposable {
     });
 
     if (!clientId) {
-      Logger.error('Client ID is required');
-      EnvironmentInformation.clientId = undefined;
-      throw new Error('Client ID is required');
+      return undefined;
     }
 
     const tenantId = await window.showInputBox({
@@ -149,20 +199,13 @@ export class AuthProvider implements AuthenticationProvider, Disposable {
     });
 
     if (!tenantId) {
-      Logger.error('Tenant ID is required');
-      EnvironmentInformation.clientId = undefined;
-      EnvironmentInformation.tenantId = undefined;
-      throw new Error('Tenant ID is required');
+      return undefined;
     }
 
     const registration = await AuthProvider.nameAppRegistration({ clientId, tenantId });
-
-    EnvironmentInformation.clientId = clientId;
-    EnvironmentInformation.tenantId = tenantId;
     await AppRegistrations.save(registration);
-    await AppRegistrations.setLastUsed(AuthProvider.context, registration);
 
-    await authentication.getSession(AuthProvider.id, [], { createIfNone });
+    return registration;
   }
 
   /**
@@ -186,9 +229,10 @@ export class AuthProvider implements AuthenticationProvider, Disposable {
   /**
    * Shows the list of saved app registrations together with the options to provide an existing one or to create a new one.
    * Saved app registrations may be removed from the list using the button on the item.
+   * @param switching - When true, the option to create a new app registration is not shown.
    * @returns The picked item or undefined when the user dismissed the list.
    */
-  private static async pickAppRegistration(): Promise<AppRegistrationQuickPickItem | undefined> {
+  private static async pickAppRegistration(switching: boolean = false): Promise<AppRegistrationQuickPickItem | undefined> {
     const removeButton: QuickInputButton = {
       iconPath: new ThemeIcon('trash'),
       tooltip: 'Remove this app registration from the list'
@@ -213,6 +257,11 @@ export class AuthProvider implements AuthenticationProvider, Disposable {
         detail: 'Provide the client ID and tenant ID of an existing Entra app registration',
         action: 'manual'
       });
+
+      if (switching) {
+        return items;
+      }
+
       items.push({
         label: 'Create a new App Registration',
         detail: 'Let the SPFx Toolkit create a new Entra app registration in your tenant',
@@ -223,7 +272,7 @@ export class AuthProvider implements AuthenticationProvider, Disposable {
     };
 
     const quickPick = window.createQuickPick<AppRegistrationQuickPickItem>();
-    quickPick.title = SIGN_IN_TITLE;
+    quickPick.title = switching ? SWITCH_TITLE : SIGN_IN_TITLE;
     quickPick.ignoreFocusOut = true;
     quickPick.canSelectMany = false;
     quickPick.items = getItems();
