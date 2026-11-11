@@ -491,6 +491,13 @@ export class SpfxAppCLIBulkActions {
                 return;
             }
 
+            const deployedApps = apps.filter(app => app.Deployed);
+
+            if (deployedApps.length === 0) {
+                Notifications.info(`No deployed apps found in the ${isTenantCatalog ? 'tenant' : 'site collection'} app catalog.`);
+                return;
+            }
+
             let siteUrl: string = appCatalogUrl || '';
 
             if (isTenantCatalog) {
@@ -522,7 +529,7 @@ export class SpfxAppCLIBulkActions {
             }
 
             const confirm = await window.showQuickPick(['Yes', 'No'], {
-                title: `Are you sure you want to upgrade all ${apps.length} apps on site '${siteUrl}'?`,
+                title: `Are you sure you want to upgrade all ${deployedApps.length} deployed apps on site '${siteUrl}'?`,
                 ignoreFocusOut: true,
                 canPickMany: false
             });
@@ -534,13 +541,13 @@ export class SpfxAppCLIBulkActions {
 
             await window.withProgress({
                 location: ProgressLocation.Notification,
-                title: `Upgrading ${apps.length} app(s)... Check [output window](command:${Commands.showOutputChannel}) to follow the progress.`,
+                title: `Upgrading ${deployedApps.length} app(s)... Check [output window](command:${Commands.showOutputChannel}) to follow the progress.`,
                 cancellable: false
             }, async (progress: Progress<{ message?: string; increment?: number }>) => {
                 let completed = 0;
-                for (const app of apps) {
+                for (const app of deployedApps) {
                     try {
-                        progress.report({ message: `Upgrading '${app.Title}'...`, increment: (1 / apps.length) * 100 });
+                        progress.report({ message: `Upgrading '${app.Title}'...`, increment: (1 / deployedApps.length) * 100 });
 
                         const commandOptions: any = {
                             id: app.ID,
@@ -557,10 +564,10 @@ export class SpfxAppCLIBulkActions {
                     }
                 }
 
-                if (completed === apps.length) {
+                if (completed === deployedApps.length) {
                     Notifications.info(`Successfully upgraded ${completed} app(s).`);
                 } else {
-                    Notifications.warning(`Upgraded ${completed} out of ${apps.length} app(s). Check [output window](command:${Commands.showOutputChannel}) for details.`);
+                    Notifications.warning(`Upgraded ${completed} out of ${deployedApps.length} app(s). Check [output window](command:${Commands.showOutputChannel}) for details.`);
                 }
             });
 
@@ -664,19 +671,20 @@ export class SpfxAppCLIBulkActions {
             return;
         }
 
+        const actionLabel = actionVerb.charAt(0).toUpperCase() + actionVerb.slice(1);
         let completed = 0;
         await window.withProgress({
             location: ProgressLocation.Notification,
-            title: `${actionVerb.charAt(0).toUpperCase() + actionVerb.slice(1)} ${apps.length} app(s)... Check [output window](command:${Commands.showOutputChannel}) to follow the progress.`,
+            title: `${actionLabel}ing ${apps.length} app(s)... Check [output window](command:${Commands.showOutputChannel}) to follow the progress.`,
             cancellable: false
         }, async (progress: Progress<{ message?: string; increment?: number }>) => {
             for (const app of apps) {
                 try {
-                    progress.report({ message: `${actionVerb.charAt(0).toUpperCase() + actionVerb.slice(1)} '${app.Title}'...`, increment: (1 / apps.length) * 100 });
+                    progress.report({ message: `${actionLabel}ing '${app.Title}'...`, increment: (1 / apps.length) * 100 });
 
                     const commandOptions: any = buildCommandOptions(app, siteUrl as string, isSiteCollectionCatalog, appCatalogUrl);
                     await CliExecuter.execute(cliCommand, 'json', commandOptions);
-                    Logger.info(`${actionVerb.charAt(0).toUpperCase() + actionVerb.slice(1)}ed app '${app.Title}' with ID '${app.ID}'.`);
+                    Logger.info(`${actionLabel}ed app '${app.Title}' with ID '${app.ID}'.`);
                     completed++;
                 } catch (e: any) {
                     Logger.error(`Failed to ${actionVerb} app '${app.Title}' with ID '${app.ID}': ${e?.error?.message || e?.message}`);
@@ -686,7 +694,7 @@ export class SpfxAppCLIBulkActions {
             if (completed === apps.length) {
                 Notifications.info(`Successfully ${actionVerb}ed ${completed} app(s).`);
             } else {
-                Notifications.warning(`${actionVerb.charAt(0).toUpperCase() + actionVerb.slice(1)}ed ${completed} out of ${apps.length} app(s). Check [output window](command:${Commands.showOutputChannel}) for details.`);
+                Notifications.warning(`${actionLabel}ed ${completed} out of ${apps.length} app(s). Check [output window](command:${Commands.showOutputChannel}) for details.`);
             }
         });
     }
