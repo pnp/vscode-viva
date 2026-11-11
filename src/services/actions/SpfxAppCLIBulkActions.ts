@@ -8,6 +8,7 @@ import { CliExecuter } from '../executeWrappers/CliCommandExecuter';
 import { EnvironmentInformation } from '../dataType/EnvironmentInformation';
 import { CliActions } from './CliActions';
 import { Logger } from '../dataType/Logger';
+import { TelemetryService } from '../../utils/telemetry';
 
 
 export class SpfxAppCLIBulkActions {
@@ -16,28 +17,28 @@ export class SpfxAppCLIBulkActions {
         const subscriptions: Subscription[] = Extension.getInstance().subscriptions;
 
         subscriptions.push(
-            commands.registerCommand(Commands.bulkDeployAppCatalogApps, (node: ActionTreeItem) => SpfxAppCLIBulkActions.bulkDeployAppCatalogApps(node))
+            commands.registerCommand(Commands.bulkDeployAppCatalogApps, TelemetryService.withTelemetry(Commands.bulkDeployAppCatalogApps, SpfxAppCLIBulkActions.bulkDeployAppCatalogApps))
         );
         subscriptions.push(
-            commands.registerCommand(Commands.bulkRetractAppCatalogApps, (node: ActionTreeItem) => SpfxAppCLIBulkActions.bulkRetractAppCatalogApps(node))
+            commands.registerCommand(Commands.bulkRetractAppCatalogApps, TelemetryService.withTelemetry(Commands.bulkRetractAppCatalogApps, SpfxAppCLIBulkActions.bulkRetractAppCatalogApps))
         );
         subscriptions.push(
-            commands.registerCommand(Commands.bulkRemoveAppCatalogApps, (node: ActionTreeItem) => SpfxAppCLIBulkActions.bulkRemoveAppCatalogApps(node))
+            commands.registerCommand(Commands.bulkRemoveAppCatalogApps, TelemetryService.withTelemetry(Commands.bulkRemoveAppCatalogApps, SpfxAppCLIBulkActions.bulkRemoveAppCatalogApps))
         );
         subscriptions.push(
-            commands.registerCommand(Commands.bulkEnableAppCatalogApps, (node: ActionTreeItem) => SpfxAppCLIBulkActions.bulkEnableAppCatalogApps(node))
+            commands.registerCommand(Commands.bulkEnableAppCatalogApps, TelemetryService.withTelemetry(Commands.bulkEnableAppCatalogApps, SpfxAppCLIBulkActions.bulkEnableAppCatalogApps))
         );
         subscriptions.push(
-            commands.registerCommand(Commands.bulkDisableAppCatalogApps, (node: ActionTreeItem) => SpfxAppCLIBulkActions.bulkDisableAppCatalogApps(node))
+            commands.registerCommand(Commands.bulkDisableAppCatalogApps, TelemetryService.withTelemetry(Commands.bulkDisableAppCatalogApps, SpfxAppCLIBulkActions.bulkDisableAppCatalogApps))
         );
         subscriptions.push(
-            commands.registerCommand(Commands.bulkInstallAppCatalogApps, (node: ActionTreeItem) => SpfxAppCLIBulkActions.bulkInstallAppCatalogApps(node))
+            commands.registerCommand(Commands.bulkInstallAppCatalogApps, TelemetryService.withTelemetry(Commands.bulkInstallAppCatalogApps, SpfxAppCLIBulkActions.bulkInstallAppCatalogApps))
         );
         subscriptions.push(
-            commands.registerCommand(Commands.bulkUninstallAppCatalogApps, (node: ActionTreeItem) => SpfxAppCLIBulkActions.bulkUninstallAppCatalogApps(node))
+            commands.registerCommand(Commands.bulkUninstallAppCatalogApps, TelemetryService.withTelemetry(Commands.bulkUninstallAppCatalogApps, SpfxAppCLIBulkActions.bulkUninstallAppCatalogApps))
         );
         subscriptions.push(
-            commands.registerCommand(Commands.bulkUpgradeAppCatalogApps, (node: ActionTreeItem) => SpfxAppCLIBulkActions.bulkUpgradeAppCatalogApps(node))
+            commands.registerCommand(Commands.bulkUpgradeAppCatalogApps, TelemetryService.withTelemetry(Commands.bulkUpgradeAppCatalogApps, SpfxAppCLIBulkActions.bulkUpgradeAppCatalogApps))
         );
     }
 
@@ -405,23 +406,29 @@ export class SpfxAppCLIBulkActions {
                 return;
             }
 
-                await SpfxAppCLIBulkActions.performBulkAppSiteAction(
-                    apps,
-                    appCatalogUrl,
-                    isSiteCollectionCatalog,
-                    'install',
-                    'spo app install',
-                    (app, siteUrl, isSiteCollectionCatalogParam, appCatalogUrlParam) => ({
-                        id: app.ID,
-                        siteUrl: siteUrl,
-                        ...(isSiteCollectionCatalogParam && {
-                            appCatalogScope: 'sitecollection',
-                            appCatalogUrl: appCatalogUrlParam
-                        })
-                    })
-                );
+            const deployedApps = apps.filter((app: any) => app.Deployed);
 
-                await commands.executeCommand('spfx-toolkit.refreshAppCatalogTreeView');
+            if (deployedApps.length === 0) {
+                Notifications.info(`No deployed apps found in the ${isSiteCollectionCatalog ? 'site collection' : 'tenant'} app catalog.`);
+                return;
+            }
+
+            await SpfxAppCLIBulkActions.performBulkAppSiteAction(
+                deployedApps,
+                appCatalogUrl,
+                isSiteCollectionCatalog,
+                'install',
+                'spo app install',
+                (app, siteUrl, isSiteCollectionCatalogParam) => ({
+                    id: app.ID,
+                    siteUrl: siteUrl,
+                    ...(isSiteCollectionCatalogParam && {
+                        appCatalogScope: 'sitecollection'
+                    })
+                })
+            );
+
+            await commands.executeCommand('spfx-toolkit.refreshAppCatalogTreeView');
         } catch (e: any) {
             const message = e?.error?.message || e?.message;
             Notifications.error(message);
@@ -450,13 +457,12 @@ export class SpfxAppCLIBulkActions {
                 isSiteCollectionCatalog,
                 'uninstall',
                 'spo app uninstall',
-                (app, siteUrl, isSiteCollectionCatalogParam, appCatalogUrlParam) => ({
+                (app, siteUrl, isSiteCollectionCatalogParam) => ({
                     id: app.ID,
                     siteUrl: siteUrl,
                     force: true,
                     ...(isSiteCollectionCatalogParam && {
-                        appCatalogScope: 'sitecollection',
-                        appCatalogUrl: appCatalogUrlParam
+                        appCatalogScope: 'sitecollection'
                     })
                 })
             );
@@ -490,6 +496,7 @@ export class SpfxAppCLIBulkActions {
             if (isTenantCatalog) {
                 const relativeUrl = await window.showInputBox({
                     prompt: 'Enter the relative URL of the site where all apps will be upgraded',
+                    ignoreFocusOut: true,
                     placeHolder: 'e.g., sites/sales or leave blank for root site',
                     validateInput: (input) => {
                         const trimmedInput = input.trim();
@@ -556,6 +563,8 @@ export class SpfxAppCLIBulkActions {
                     Notifications.warning(`Upgraded ${completed} out of ${apps.length} app(s). Check [output window](command:${Commands.showOutputChannel}) for details.`);
                 }
             });
+
+            await commands.executeCommand('spfx-toolkit.refreshAppCatalogTreeView');
         } catch (e: any) {
             const message = e?.message || 'An unexpected error occurred during the bulk upgrade.';
             Notifications.error(message);
@@ -617,6 +626,7 @@ export class SpfxAppCLIBulkActions {
         if (!appCatalogUrl) {
             const relativeUrl = await window.showInputBox({
                 prompt: `Enter the relative URL of the site where all apps will be ${actionVerb}ed`,
+                ignoreFocusOut: true,
                 placeHolder: 'e.g., sites/sales or leave blank for root site',
                 validateInput: (input) => {
                     const trimmedInput = input.trim();
