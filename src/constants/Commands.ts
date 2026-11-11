@@ -15,7 +15,6 @@ export const Commands = {
   // Scaffolding
   createProject: `${EXTENSION_NAME}.createProject`,
   addToProject: `${EXTENSION_NAME}.addToProject`,
-  createProjectCopilot: `${EXTENSION_NAME}.createProjectCopilot`,
 
   // Output channel
   showOutputChannel: `${EXTENSION_NAME}.showOutputChannel`,
