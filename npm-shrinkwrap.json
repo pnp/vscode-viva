@@ -12,7 +12,7 @@
         "@grconrad/vscode-extension-feedback": "1.0.0",
         "@pnp/cli-microsoft365-spfx-toolkit": "1.16.0",
         "@vscode/extension-telemetry": "^1.2.0",
-        "node-forge": "1.4.2",
+        "node-forge": "1.4.3",
         "react-markdown": "10.1.0",
         "rehype-raw": "7.0.0",
         "remark-gfm": "4.0.1",
@@ -65,7 +65,7 @@
         "webpack-dev-server": "5.2.7"
       },
       "engines": {
-        "vscode": "^1.138.0"
+        "vscode": "^1.144.0"
       }
     },
     "node_modules/@actions/core": {
@@ -12171,9 +12171,9 @@
       }
     },
     "node_modules/node-forge": {
-      "version": "1.4.2",
-      "resolved": "https://registry.npmjs.org/node-forge/-/node-forge-1.4.2.tgz",
-      "integrity": "sha512-rRtAR5XLJ8gCKd9du4qrKAsgCG1ObGP4gLeNJMa4vYSeq4bmBMOJk5IHkrviBV0q7uoAJlVd8HEQYQSVUb4FGQ==",
+      "version": "1.4.3",
+      "resolved": "https://registry.npmjs.org/node-forge/-/node-forge-1.4.3.tgz",
+      "integrity": "sha512-P6wzfh6t70avmV8FrVEAd/36sOPJQ+hkaJVX1Laap9J/77m7M0eyozDvc8SwnDf4P7MP94gwbAAo0rg3YVXT+g==",
       "license": "(BSD-3-Clause OR GPL-2.0)",
       "engines": {
         "node": ">= 6.13.0"
