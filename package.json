@@ -49,22 +49,6 @@
   "main": "./dist/extension.js",
   "aiConnectionString": "",
   "contributes": {
-    "chatParticipants": [
-      {
-        "id": "spfx-toolkit.pnp",
-        "fullName": "SPFx Toolkit",
-        "name": "spfx",
-        "description": "How can I help you with SPFx development? Use /new command for job specific support.",
-        "isSticky": true,
-        "commands": [
-          {
-            "name": "new",
-            "isSticky": true,
-            "description": "Create a new SharePoint Framework project"
-          }
-        ]
-      }
-    ],
     "languageModelTools": [
       {
         "name": "install_spo_app",
@@ -1037,6 +1021,161 @@
               "default": ""
             }
           }
+        }
+      },
+      {
+        "name": "create_spfx_project",
+        "tags": [
+          "sharepoint framework",
+          "SPFx",
+          "project",
+          "new",
+          "create",
+          "spfx-toolkit"
+        ],
+        "toolReferenceName": "SharePointFrameworkCreateNewProject",
+        "displayName": "Create new SharePoint Framework project or add a component",
+        "modelDescription": "This tool will help you create a new SharePoint Framework (SPFx) project or extend an existing one using the Yeoman generator. If the currently opened workspace is already an SPFx project, the new component (web part, extension, library or Adaptive Card Extension) is added to that existing project and its dependencies are installed, so solutionName is not needed. Otherwise, a new SPFx project with the given solutionName is generated with the necessary files and structure.",
+        "userDescription": "Create new SharePoint Framework project or add a component to the currently opened one",
+        "canBeReferencedInPrompt": true,
+        "icon": "$(package)",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "solutionName": {
+              "type": "string",
+              "description": "Solution name and folder name. Required when creating a new project. Not needed (and ignored) when the currently opened workspace is already a SharePoint Framework project, as the component is then added to that project."
+            },
+            "componentType": {
+              "type": "string",
+              "description": "The type of component. Allowed values: webpart, extension, library, adaptiveCardExtension. This option is required.",
+              "enum": [
+                "webpart",
+                "extension",
+                "library",
+                "adaptiveCardExtension"
+              ]
+            },
+            "componentName": {
+              "type": "string",
+              "description": "Component name. This option is required."
+            },
+            "framework": {
+              "type": "string",
+              "description": "Template to use. Allowed values: none, react, minimal. Required when componentType is webpart or extension. For extensionType FormCustomizer, only react and none are allowed.",
+              "enum": [
+                "none",
+                "react",
+                "minimal"
+              ]
+            },
+            "extensionType": {
+              "type": "string",
+              "description": "The type of extension. Allowed values: ApplicationCustomizer, FieldCustomizer, ListViewCommandSet, FormCustomizer, SearchQueryModifier. Required when componentType is extension.",
+              "enum": [
+                "ApplicationCustomizer",
+                "FieldCustomizer",
+                "ListViewCommandSet",
+                "FormCustomizer",
+                "SearchQueryModifier"
+              ]
+            },
+            "aceTemplateType": {
+              "type": "string",
+              "description": "The type of adaptive card extension template. Allowed values: Generic, Search, DataVisualization. Required when componentType is adaptiveCardExtension.",
+              "enum": [
+                "Generic",
+                "Search",
+                "DataVisualization"
+              ]
+            }
+          },
+          "required": [
+            "componentType",
+            "componentName"
+          ],
+          "allOf": [
+            {
+              "if": {
+                "properties": {
+                  "componentType": {
+                    "enum": [
+                      "webpart",
+                      "extension"
+                    ]
+                  }
+                },
+                "required": [
+                  "componentType"
+                ]
+              },
+              "then": {
+                "required": [
+                  "framework"
+                ]
+              }
+            },
+            {
+              "if": {
+                "properties": {
+                  "componentType": {
+                    "const": "extension"
+                  }
+                },
+                "required": [
+                  "componentType"
+                ]
+              },
+              "then": {
+                "required": [
+                  "extensionType"
+                ]
+              }
+            },
+            {
+              "if": {
+                "properties": {
+                  "componentType": {
+                    "const": "adaptiveCardExtension"
+                  }
+                },
+                "required": [
+                  "componentType"
+                ]
+              },
+              "then": {
+                "required": [
+                  "aceTemplateType"
+                ]
+              }
+            },
+            {
+              "if": {
+                "properties": {
+                  "componentType": {
+                    "const": "extension"
+                  },
+                  "extensionType": {
+                    "const": "FormCustomizer"
+                  }
+                },
+                "required": [
+                  "componentType",
+                  "extensionType"
+                ]
+              },
+              "then": {
+                "properties": {
+                  "framework": {
+                    "enum": [
+                      "none",
+                      "react"
+                    ]
+                  }
+                }
+              }
+            }
+          ]
         }
       }
     ],
