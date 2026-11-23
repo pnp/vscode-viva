@@ -33,9 +33,6 @@ export class Scaffolder {
     subscriptions.push(
       commands.registerCommand(Commands.addToProject, TelemetryService.withTelemetry(Commands.addToProject, Scaffolder.showAddProjectForm))
     );
-    subscriptions.push(
-      commands.registerCommand(Commands.createProjectCopilot, Scaffolder.createProjectCopilot)
-    );
   }
 
   /**
@@ -74,6 +71,43 @@ export class Scaffolder {
       const newFolderPath = join(workspacePath!, solutionName![1]);
       Scaffolder.createProjectFileAndOpen(newFolderPath, ProjectFileContent.init);
     });
+  }
+
+  /**
+   * Adds a component to the currently opened SPFx project using the provided command
+   * and installs the project dependencies afterwards.
+   * @param yoCommand - The Yeoman command for adding the component (without `--solution-name`).
+   * @throws An error when the component could not be added or the dependencies could not be installed.
+   */
+  public static async addComponentToProjectCopilot(yoCommand: string) {
+    if (!yoCommand.includes('--skip-install')) {
+      yoCommand += ' --skip-install';
+    }
+
+    const projectPath = await Scaffolder.getCurrentProjectPath();
+    if (!projectPath) {
+      throw new Error('No workspace folder is opened.');
+    }
+
+    await window.withProgress({
+      location: ProgressLocation.Notification,
+      title: `Adding component... Check [output window](command:${Commands.showOutputChannel}) for more details`,
+      cancellable: false
+    }, async () => {
+      const result = await Executer.executeCommand(projectPath, yoCommand);
+      if (result !== 0) {
+        throw new Error(`The SharePoint Framework Yeoman generator exited with code ${result}. Check the SPFx Toolkit output window for more details.`);
+      }
+
+      const packageManager = getPackageManager();
+      try {
+        await TerminalCommandExecuter.runCommandAndWait(`${packageManager} install`, 'Installing dependencies', 'cloud-download');
+      } catch (e) {
+        throw new Error(`The component was added, but installing dependencies with ${packageManager} failed: ${(e as Error).message}`);
+      }
+    });
+
+    Notifications.info('Component successfully created.');
   }
 
   /**
@@ -231,6 +265,39 @@ export class Scaffolder {
   }
 
   /**
+   * Checks if a component folder exists in the workspace.
+   * @param type - The type of the component.
+   * @returns A boolean indicating whether the component folder exists.
+   */
+  public static async componentFolderExists(type: ComponentType, value: string) {
+    let componentFolder = '';
+    switch (type) {
+      case ComponentType.adaptiveCardExtension:
+        componentFolder = 'adaptiveCardExtensions';
+        break;
+      case ComponentType.extension:
+        componentFolder = 'extensions';
+        break;
+      case ComponentType.library:
+        componentFolder = 'libraries';
+        break;
+      case ComponentType.webPart:
+        componentFolder = 'webparts';
+        break;
+    }
+  
+    const wsFolder = await Folders.getWorkspaceFolder();
+    if (wsFolder) {
+      const pattern = `**/${componentFolder}/${value}/*`;
+      const files = await glob([pattern], { caseSensitiveMatch: false, cwd: wsFolder?.uri.fsPath });
+
+      return files.length > 0;
+    }
+
+    return false;
+  }
+
+  /**
    * Validates required dependencies for SPFx scaffolding.
    * @returns A promise that resolves to an object indicating whether the dependencies are valid or an error message.
    */
@@ -310,14 +377,7 @@ export class Scaffolder {
       try {
         let folderPath = isNewProject ? (input as SpfxScaffoldCommandInput).folderPath : '';
         if (!folderPath) {
-          const wsFolder = await Folders.getWorkspaceFolder();
-          let path = wsFolder?.uri.fsPath;
-
-          if (path && M365AgentsToolkitIntegration.isM365AgentsToolkitProject) {
-            path = join(path, 'src');
-          }
-
-          folderPath = path || '';
+          folderPath = await Scaffolder.getCurrentProjectPath() || '';
         }
 
         const result = await Executer.executeCommand(folderPath, yoCommand);
@@ -391,6 +451,22 @@ export class Scaffolder {
         Notifications.errorNoLog(`Error creating the component. Check [output window](command:${Commands.showOutputChannel}) for more details.`);
       }
     });
+  }
+
+  /**
+   * Retrieves the path of the currently opened SPFx project.
+   * For Microsoft 365 Agents Toolkit projects, the SPFx project is located in the `src` folder.
+   * @returns A Promise that resolves to the project path, or undefined if no workspace folder is opened.
+   */
+  private static async getCurrentProjectPath(): Promise<string | undefined> {
+    const wsFolder = await Folders.getWorkspaceFolder();
+    if (!wsFolder) {
+      return undefined;
+    }
+
+    return M365AgentsToolkitIntegration.isM365AgentsToolkitProject
+      ? join(wsFolder.uri.fsPath, 'src')
+      : wsFolder.uri.fsPath;
   }
 
   /**
@@ -497,39 +573,5 @@ export class Scaffolder {
         return undefined;
       }
     });
-  }
-
-  /**
-   * Checks if a component folder exists in the workspace.
-   * @param type - The type of the component.
-   * @param value - The value of the component.
-   * @returns A boolean indicating whether the component folder exists.
-   */
-  private static async componentFolderExists(type: ComponentType, value: string) {
-    let componentFolder = '';
-    switch (type) {
-      case ComponentType.adaptiveCardExtension:
-        componentFolder = 'adaptiveCardExtensions';
-        break;
-      case ComponentType.extension:
-        componentFolder = 'extensions';
-        break;
-      case ComponentType.library:
-        componentFolder = 'libraries';
-        break;
-      case ComponentType.webPart:
-        componentFolder = 'webparts';
-        break;
-    }
-
-    const wsFolder = await Folders.getWorkspaceFolder();
-    if (wsFolder) {
-      const pattern = `**/${componentFolder}/${value}/*`;
-      const files = await glob([pattern], { caseSensitiveMatch: false, cwd: wsFolder?.uri.fsPath });
-
-      return files.length > 0;
-    }
-
-    return false;
   }
 }
