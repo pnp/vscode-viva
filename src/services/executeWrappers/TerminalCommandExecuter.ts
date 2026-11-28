@@ -148,7 +148,8 @@ export class TerminalCommandExecuter {
       });
 
       terminal.show(true);
-      terminal.sendText(`${command}${TerminalCommandExecuter.getCommandChainOperator()} exit`);
+      // Only exit when the command succeeded, so a failure stays visible in the terminal (in every shell)
+      terminal.sendText(TerminalCommandExecuter.chainCommands(command, 'exit'));
     });
   }
 
@@ -474,13 +475,20 @@ export class TerminalCommandExecuter {
   }
 
   /**
-   * Joins commands so each runs in sequence in the user's terminal shell.
-   * Uses `;` for PowerShell (Windows PowerShell 5.1 does not support `&&`) and `&&` otherwise.
+   * Joins commands so each one runs only if the previous one succeeded.
+   * Uses `&&` for most shells. Windows PowerShell 5.1 does not support `&&`, so for PowerShell
+   * each command after the first is wrapped in `if ($?) { ... }`. A failure skips all later
+   * commands, and the result can itself be chained again.
    * @param commandsToChain - The commands to join.
    * @returns The chained command line.
    */
   public static chainCommands(...commandsToChain: string[]): string {
-    return commandsToChain.join(`${TerminalCommandExecuter.getCommandChainOperator()} `);
+    if (TerminalCommandExecuter.isPowerShell()) {
+      const [first, ...rest] = commandsToChain;
+      return [first, ...rest.map(command => `if ($?) { ${command} }`)].join('; ');
+    }
+
+    return commandsToChain.join(' && ');
   }
 
   /**
@@ -621,12 +629,12 @@ export class TerminalCommandExecuter {
   }
 
   private static getCommandChainOperator(): string {
+    return TerminalCommandExecuter.isPowerShell() ? ';' : ' &&';
+  }
+
+  private static isPowerShell(): boolean {
     const shell = TerminalCommandExecuter.shell || '';
 
-    if (shell.path?.includes('PowerShell') || shell.path?.includes('pwsh') || shell.source?.includes('PowerShell') || shell.source?.includes('pwsh')) {
-      return ';';
-    }
-
-    return ' &&';
+    return !!(shell.path?.includes('PowerShell') || shell.path?.includes('pwsh') || shell.source?.includes('PowerShell') || shell.source?.includes('pwsh'));
   }
 }
