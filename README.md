@@ -327,8 +327,7 @@ It's possible to use the settings to change which Node.js version manager you wa
 
 ![Settings Node version manager](./docs/assets/images-vscode/settings-node-version-manager.png)
 
-Other than selecting the Node.js version manager you may also select which file should be used to store the Node.js version. By default, the extension will use `.nvmrc` file, but you may change it to `.node-version` if you are using `nvs`.
-<!-- I think we should use .node-version as default now that we support fnm as well. More agnostic. -->
+Other than selecting the Node.js version manager you may also select which file should be used to store the Node.js version. By default, the extension will use `.nvmrc` file, but you may change it to `.node-version` if you are using `nvs` or `fnm`.
 
 ![Settings Node version file](./docs/assets/images-vscode/settings-node-version-manager-file.png)
 

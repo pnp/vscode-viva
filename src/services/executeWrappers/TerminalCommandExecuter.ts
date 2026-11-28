@@ -528,16 +528,16 @@ export class TerminalCommandExecuter {
           ? nvmrcFiles
           : await workspace.findFiles('.node-version', '**/node_modules/**');
         if (versionFiles.length > 0) {
-          const nvmrcPath = versionFiles[0].fsPath;
+          const versionFilePath = versionFiles[0].fsPath;
           try {
-            const version = TerminalCommandExecuter.readNodeVersion(nvmrcPath);
+            const version = TerminalCommandExecuter.readNodeVersion(versionFilePath);
             if (version) {
               terminal.sendText(`fnm use ${version}`);
             } else {
               terminal.sendText('fnm use');
             }
           } catch (error) {
-            Logger.error(`Failed to read .nvmrc file at ${nvmrcPath}. Falling back to "fnm use" without version. Error: ${error}`);
+            Logger.error(`Failed to read Node version file at ${versionFilePath}. Falling back to "fnm use" without version. Error: ${error}`);
             terminal.sendText('fnm use');
           }
         }
