@@ -23,7 +23,7 @@ export class SharePointFrameworkLocalEnvironmentSetup implements LanguageModelTo
             }
 
             const response = `Validate user local setup like node version and global npm packages and check if they fulfill the following requirements: ${JSON.stringify(spfxEnvironmentPrerequisite)}. 
-            If not, ask the user for confirmation and perform the necessary steps to fulfill the requirements. If the user has wrong version of node installed, suggest installing and using nvm or nvs to manage node versions. 
+            If not, ask the user for confirmation and perform the necessary steps to fulfill the requirements. If the user has wrong version of node installed, suggest installing and using nvm, nvs, or fnm to manage node versions. 
             If the user doesn't have the required global npm packages installed, perform the installation.`;
 
             return new LanguageModelToolResult([new LanguageModelTextPart(response)]);

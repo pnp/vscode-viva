@@ -321,9 +321,11 @@ Check it out in action 👇
 
 ### 1️⃣2️⃣ Node.js Version Manager Support
 
-By default, the SharePoint Framework Toolkit will use the Node.js version that is installed on your machine. If you want to use a different version, you can use a Node.js Version Manager such as [nvm](https://github.com/nvm-sh/nvm), [nvs](https://github.com/jasongin/nvs), or [fnm](https://github.com/Schniz/fnm). The SharePoint Framework Toolkit will detect the preferred version of Node.js if a `.nvmrc` or '.node-version' file is present in the root of your project, and will use that version for all the actions.
+By default, the SharePoint Framework Toolkit will use the Node.js version that is installed on your machine. If you want to use a different version, you can use a Node.js Version Manager such as [nvm](https://github.com/nvm-sh/nvm), [nvs](https://github.com/jasongin/nvs), or [fnm](https://github.com/Schniz/fnm). The SharePoint Framework Toolkit will detect the preferred version of Node.js if a `.nvmrc` or `.node-version` file is present in the root of your project, and will use that version for all the actions.
 
 It's possible to use the settings to change which Node.js version manager you want to use. You may choose between `nvm`, `nvs`, or `fnm`. If you wish to avoid using a Node.js version manager, you can set the value to `none`
+
+If you use `fnm`, make sure your shell profile is set up to run `fnm env` (see the [fnm shell setup guide](https://github.com/Schniz/fnm#shell-setup)) so that `fnm use` works in the terminals opened by the toolkit.
 
 ![Settings Node version manager](./docs/assets/images-vscode/settings-node-version-manager.png)
 

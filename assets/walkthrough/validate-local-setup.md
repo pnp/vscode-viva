@@ -10,7 +10,7 @@ To build and deploy client-side web parts, extensions, or adaptive cards using t
 
 ![install dependencies](../../docs/assets/images-vscode/Install-dependencies.png)
 
-SPFx Toolkit may also help you install and switch to the correct version of Node.js using either `nvm` (Node Version Manager) or `nvs` (Node Version Switcher). First you need to make sure you have set the Node.js Version Manager setting in SPFx Toolkit to either `nvm` or `nvs`.
+SPFx Toolkit may also help you install and switch to the correct version of Node.js using `nvm` (Node Version Manager), `nvs` (Node Version Switcher), or `fnm` (Fast Node Manager). First you need to make sure you have set the Node.js Version Manager setting in SPFx Toolkit to `nvm`, `nvs`, or `fnm`.
 
 Then during installing dependencies, SPFx Toolkit will check if you have the correct version of Node.js installed, and if not, it will offer to install and switch to the correct version for you using the selected Node version manager.
 
