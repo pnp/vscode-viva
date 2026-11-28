@@ -7,7 +7,7 @@ import { M365AgentsToolkitIntegration } from '../dataType/M365AgentsToolkitInteg
 import { Folders } from '../check/Folders';
 import { join } from 'path';
 import { ServeConfig } from '../../models/ServeConfig';
-import { readFileSync } from 'fs';
+import { existsSync, readFileSync } from 'fs';
 import { Logger } from '../dataType/Logger';
 import { TelemetryService } from '../../utils/telemetry';
 
@@ -15,6 +15,13 @@ import { TelemetryService } from '../../utils/telemetry';
 interface ShellSetting {
   source?: string;
   path?: string;
+}
+
+interface TerminalProject {
+  /** The folder commands run in (the `src` folder for M365 Agents Toolkit projects). */
+  path: string;
+  /** The workspace folder root. */
+  root: string;
 }
 
 export class TerminalCommandExecuter {
@@ -98,17 +105,11 @@ export class TerminalCommandExecuter {
    * @param terminalIcon - The icon of the terminal.
    */
   public static async runCommand(command: string, terminalTitle: string = 'Task', terminalIcon: string = 'tasks-list-configure') {
-    const terminal = await TerminalCommandExecuter.createTerminal(terminalTitle, terminalIcon);
+    const project = await TerminalCommandExecuter.getCurrentProject();
+    const terminal = await TerminalCommandExecuter.createTerminal(terminalTitle, terminalIcon, project);
 
-    const wsFolder = await Folders.getWorkspaceFolder();
-    if (wsFolder) {
-      let currentProjectPath = wsFolder.uri.fsPath;
-
-      if (M365AgentsToolkitIntegration.isM365AgentsToolkitProject) {
-        currentProjectPath = join(currentProjectPath, 'src');
-      }
-
-      TerminalCommandExecuter.runInTerminal(`cd "${currentProjectPath}"`, terminal);
+    if (project) {
+      TerminalCommandExecuter.runInTerminal(`cd "${project.path}"`, terminal);
     }
 
     TerminalCommandExecuter.runInTerminal(command, terminal);
@@ -122,21 +123,15 @@ export class TerminalCommandExecuter {
    * @returns A promise that resolves when the command completes with exit code 0, or rejects on non-zero exit.
    */
   public static async runCommandAndWait(command: string, terminalTitle: string = 'Task', terminalIcon: string = 'terminal'): Promise<void> {
-    const terminal = await TerminalCommandExecuter.createTerminal(terminalTitle, terminalIcon);
+    const project = await TerminalCommandExecuter.getCurrentProject();
+    const terminal = await TerminalCommandExecuter.createTerminal(terminalTitle, terminalIcon, project);
 
     if (!terminal) {
       throw new Error('Failed to create terminal');
     }
 
-    const wsFolder = await Folders.getWorkspaceFolder();
-    if (wsFolder) {
-      let currentProjectPath = wsFolder.uri.fsPath;
-
-      if (M365AgentsToolkitIntegration.isM365AgentsToolkitProject) {
-        currentProjectPath = join(currentProjectPath, 'src');
-      }
-
-      terminal.sendText(`cd "${currentProjectPath}"`);
+    if (project) {
+      terminal.sendText(`cd "${project.path}"`);
     }
 
     return new Promise<void>((resolve, reject) => {
@@ -153,7 +148,8 @@ export class TerminalCommandExecuter {
       });
 
       terminal.show(true);
-      terminal.sendText(`${command}${TerminalCommandExecuter.getCommandChainOperator()} exit`);
+      // Only exit when the command succeeded, so a failure stays visible in the terminal (in every shell)
+      terminal.sendText(TerminalCommandExecuter.chainCommands(command, 'exit'));
     });
   }
 
@@ -479,55 +475,145 @@ export class TerminalCommandExecuter {
   }
 
   /**
+   * Joins commands so each one runs only if the previous one succeeded.
+   * Uses `&&` for most shells. Windows PowerShell 5.1 does not support `&&`, so for PowerShell
+   * each command after the first is wrapped in `if ($?) { ... }`. A failure skips all later
+   * commands, and the result can itself be chained again.
+   * @param commandsToChain - The commands to join.
+   * @returns The chained command line.
+   */
+  public static chainCommands(...commandsToChain: string[]): string {
+    if (TerminalCommandExecuter.isPowerShell()) {
+      const [first, ...rest] = commandsToChain;
+      return [first, ...rest.map(command => `if ($?) { ${command} }`)].join('; ');
+    }
+
+    return commandsToChain.join(' && ');
+  }
+
+  /**
+   * Resolves the project the terminal commands should run in.
+   * In a multi-root workspace this prompts the user to pick a folder.
+   * @returns The project path (the `src` folder for M365 Agents Toolkit projects) and its workspace folder root, or undefined if no folder is open or selected.
+   */
+  private static async getCurrentProject(): Promise<TerminalProject | undefined> {
+    const wsFolder = await Folders.getWorkspaceFolder();
+    if (!wsFolder) {
+      return undefined;
+    }
+
+    const root = wsFolder.uri.fsPath;
+    const path = M365AgentsToolkitIntegration.isM365AgentsToolkitProject ? join(root, 'src') : root;
+    return { path, root };
+  }
+
+  /**
    * Creates a new terminal with the specified name and icon.
    * If a terminal with the same name already exists, it returns that terminal instead.
-   * If the user's settings specify to use a specific node version manager (nvm or nvs),
-   * it checks for the presence of .nvmrc files and sets the appropriate node version manager command.
+   * If the user's settings specify to use a specific node version manager (nvm, nvs or fnm),
+   * it checks the selected project for a .nvmrc or .node-version file and sends the matching "use" command.
    * @param name - The name of the terminal.
    * @param icon - The path to the icon for the terminal.
+   * @param project - The project the terminal runs in. The terminal starts in its folder and only its version files are used.
    * @returns A promise that resolves to the created terminal or the existing terminal with the same name.
    */
-  private static async createTerminal(name?: string, icon?: string): Promise<Terminal | undefined> {
+  private static async createTerminal(name?: string, icon?: string, project?: TerminalProject): Promise<Terminal | undefined> {
     let terminal = window.terminals.find(t => t.name === name);
 
     if (!terminal) {
       terminal = window.createTerminal({
         name: name ? name : undefined,
-        iconPath: icon ? new ThemeIcon(icon) : undefined
+        iconPath: icon ? new ThemeIcon(icon) : undefined,
+        // Start in the project folder so a bare "<manager> use" finds the project's version file
+        cwd: project?.path
       });
 
-      // Check the user's settings to see if they want to use nvm or nvs
-      // Get the user's preferred node version manager -- nvm or nvs or none, if they don't want to use either
+      // Get the user's preferred node version manager -- nvm, nvs, fnm, or none if node version manager not selected
       const nodeVersionManager: string = getExtensionSettings('nodeVersionManager', 'nvm');
 
-      const nvmrcFiles = await workspace.findFiles('.nvmrc', '**/node_modules/**');
+      const nvmrcPath = await TerminalCommandExecuter.findVersionFile('.nvmrc', project);
 
       if (nodeVersionManager === NodeVersionManagers.nvs) {
-        const nodeVersionFiles = await workspace.findFiles('.node-version', '**/node_modules/**');
+        const nodeVersionPath = await TerminalCommandExecuter.findVersionFile('.node-version', project);
 
-        if (nvmrcFiles.length > 0 || nodeVersionFiles.length > 0) {
+        if (nvmrcPath || nodeVersionPath) {
           terminal.sendText('nvs use');
         }
       } else if (nodeVersionManager === NodeVersionManagers.nvm) {
-        if (nvmrcFiles.length > 0) {
-          const nvmrcPath = nvmrcFiles[0].fsPath;
-          try {
-            const content = readFileSync(nvmrcPath, 'utf8').trim();
-            const version = content.startsWith('v') ? content.substring(1) : content;
-            if (version) {
-              terminal.sendText(`nvm use ${version}`);
-            } else {
-              terminal.sendText('nvm use');
-            }
-          } catch (error) {
-            Logger.error(`Failed to read .nvmrc file at ${nvmrcPath}. Falling back to "nvm use" without version. Error: ${error}`);
-            terminal.sendText('nvm use');
-          }
+        if (nvmrcPath) {
+          TerminalCommandExecuter.sendUseCommand(terminal, 'nvm', nvmrcPath);
+        }
+      } else if (nodeVersionManager === NodeVersionManagers.fnm) {
+        const versionFilePath = nvmrcPath ?? await TerminalCommandExecuter.findVersionFile('.node-version', project);
+        if (versionFilePath) {
+          TerminalCommandExecuter.sendUseCommand(terminal, 'fnm', versionFilePath);
         }
       }
     }
 
     return terminal;
+  }
+
+  /**
+   * Finds a Node version file for the project.
+   * Checks the project folder first, then its workspace folder root.
+   * Without a project, falls back to searching the workspace.
+   * @param fileName - The version file name (.nvmrc or .node-version).
+   * @param project - The project to search in.
+   * @returns The path to the version file, or undefined if none is found.
+   */
+  private static async findVersionFile(fileName: string, project?: TerminalProject): Promise<string | undefined> {
+    if (project) {
+      return [project.path, project.root]
+        .map(folder => join(folder, fileName))
+        .find(filePath => existsSync(filePath));
+    }
+
+    const files = await workspace.findFiles(fileName, '**/node_modules/**', 1);
+    return files.length > 0 ? files[0].fsPath : undefined;
+  }
+
+  /**
+   * Sends "<manager> use <version>" to the terminal, using the version from the given file.
+   * Falls back to a bare "<manager> use" (which reads the version file from the terminal's folder)
+   * if the file content is not safe to send to the shell or cannot be read.
+   * @param terminal - The terminal to send the command to.
+   * @param manager - The node version manager command (nvm or fnm).
+   * @param versionFilePath - The path to the .nvmrc or .node-version file.
+   */
+  private static sendUseCommand(terminal: Terminal, manager: string, versionFilePath: string) {
+    try {
+      const version = TerminalCommandExecuter.readNodeVersion(versionFilePath);
+      terminal.sendText(version ? `${manager} use ${version}` : `${manager} use`);
+    } catch (error) {
+      Logger.error(`Failed to read Node version file at ${versionFilePath}. Falling back to "${manager} use" without version. Error: ${error}`);
+      terminal.sendText(`${manager} use`);
+    }
+  }
+
+  /**
+   * Reads a Node version from a .nvmrc or .node-version file.
+   * The value is sent to a shell, so only plain versions (e.g. 22, 22.14, v22.14.0) and simple aliases
+   * made of letters, digits, `.`, `_`, `-` and `/` (e.g. lts/iron, node) are accepted.
+   * @param filePath - The path to the version file.
+   * @returns The version (without a leading `v` for numeric versions), or undefined if the file content is not safe to send to the shell.
+   */
+  private static readNodeVersion(filePath: string): string | undefined {
+    const content = readFileSync(filePath, 'utf8').trim();
+
+    const numeric = /^v?(\d+(?:\.\d+){0,2})$/.exec(content);
+    if (numeric) {
+      return numeric[1];
+    }
+
+    if (/^[A-Za-z0-9][A-Za-z0-9._/-]*$/.test(content)) {
+      return content;
+    }
+
+    if (content) {
+      Logger.warning(`Ignoring unsupported Node version "${content}" in ${filePath}. Falling back to the version manager's own file lookup.`);
+    }
+    return undefined;
   }
 
   /**
@@ -543,12 +629,12 @@ export class TerminalCommandExecuter {
   }
 
   private static getCommandChainOperator(): string {
+    return TerminalCommandExecuter.isPowerShell() ? ';' : ' &&';
+  }
+
+  private static isPowerShell(): boolean {
     const shell = TerminalCommandExecuter.shell || '';
 
-    if (shell.path?.includes('PowerShell') || shell.path?.includes('pwsh') || shell.source?.includes('PowerShell') || shell.source?.includes('pwsh')) {
-      return ';';
-    }
-
-    return ' &&';
+    return !!(shell.path?.includes('PowerShell') || shell.path?.includes('pwsh') || shell.source?.includes('PowerShell') || shell.source?.includes('pwsh'));
   }
 }

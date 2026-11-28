@@ -64,13 +64,15 @@ export class Dependencies {
 
     const isValidNode = shouldValidateNode ? Dependencies.isValidNodeJs(spfxVersion.SupportedNodeVersions) : true;
 
-    let canProceedWithDependencyCheck = false;
+    // When the Node.js version is switched, the switch runs in the same terminal as the install,
+    // because version managers like nvs, fnm and nvm (macOS/Linux) only switch the current shell
+    let switchNodeVersionCommand: string | undefined;
     if (!isValidNode) {
-      canProceedWithDependencyCheck = await Dependencies.HandleNotValidNodeVersion(spfxVersion.SupportedNodeVersions[spfxVersion.SupportedNodeVersions.length - 1], spfxVersion.SupportedNodeVersions, spfxVersion.Version);
-    }
-
-    if (!isValidNode && !canProceedWithDependencyCheck) {
-      return;
+      const nodeVersionResult = await Dependencies.HandleNotValidNodeVersion(spfxVersion.SupportedNodeVersions[spfxVersion.SupportedNodeVersions.length - 1], spfxVersion.SupportedNodeVersions, spfxVersion.Version);
+      if (!nodeVersionResult.canProceed) {
+        return;
+      }
+      switchNodeVersionCommand = nodeVersionResult.switchNodeVersionCommand;
     }
 
     await window.withProgress({
@@ -90,6 +92,10 @@ export class Dependencies {
 
             const cmd = packageManager === PackageManagers.npm ? 'install' : 'add';
             installCommand = `${packageManager} ${cmd} -g ${dependencies} @microsoft/generator-sharepoint@${spfxVersion.Version}`;
+
+            if (switchNodeVersionCommand) {
+              installCommand = TerminalCommandExecuter.chainCommands(switchNodeVersionCommand, installCommand);
+            }
 
             await TerminalCommandExecuter.runCommandAndWait(installCommand, 'Installing dependencies', 'cloud-download');
 
@@ -178,9 +184,10 @@ export class Dependencies {
    * @param requiredNodeVersions - A string representing the required Node.js version(s) for SPFx development
    * @param supportedNodeVersions - An array of strings representing the supported Node.js versions for SPFx development
    * @param spfxVersion - The SPFx version being installed
-   * @returns A boolean indicating whether the invalid Node.js version was successfully handled
+   * @returns Whether the dependency installation can proceed and, if the user chose to switch versions,
+   * the command that installs and switches to a compatible Node.js version. That command must run in the same terminal as the installation.
    */
-  private static HandleNotValidNodeVersion(requiredNodeVersions: string, supportedNodeVersions: string[], spfxVersion: string): boolean {
+  private static async HandleNotValidNodeVersion(requiredNodeVersions: string, supportedNodeVersions: string[], spfxVersion: string): Promise<{ canProceed: boolean; switchNodeVersionCommand?: string }> {
     const nodeVersionManager = getExtensionSettings<string>('nodeVersionManager', 'none');
     const isWindows = os.platform() === 'win32';
     const currentNodeVersion = Dependencies.getCurrentNodeVersion();
@@ -189,13 +196,15 @@ export class Dependencies {
       const installNodeJSOption = 'Download Node.js';
       const useNvmOption = isWindows ? 'Install NVM for Windows' : 'Install NVM';
       const useNvsOption = 'Install NVS';
+      const useFnmOption = 'Install FNM';
 
       Notifications.warning(
-        `Node.js ${currentNodeVersion} is incompatible with SPFx v${spfxVersion}. Required: Node.js ${requiredNodeVersions} or higher. 
+        `Node.js ${currentNodeVersion} is incompatible with SPFx v${spfxVersion}. Required: Node.js ${requiredNodeVersions} or higher.
         It is recommended to use a Node Version Manager and update the SPFx Toolkit setting (File > Preferences > Settings > search "Node Version Manager").`,
         installNodeJSOption,
         useNvmOption,
-        useNvsOption
+        useNvsOption,
+        useFnmOption
       ).then((selectedOption) => {
         if (selectedOption === installNodeJSOption) {
           commands.executeCommand('vscode.open', Uri.parse('https://nodejs.org/en/download/'));
@@ -207,37 +216,34 @@ export class Dependencies {
         } else if (selectedOption === useNvsOption) {
           const nvsInstallUrl = 'https://github.com/jasongin/nvs?tab=readme-ov-file#nvs-node-version-switcher';
           commands.executeCommand('vscode.open', Uri.parse(nvsInstallUrl));
+        } else if (selectedOption === useFnmOption) {
+          const fnmInstallUrl = 'https://github.com/Schniz/fnm#--fast-node-manager-fnm----';
+          commands.executeCommand('vscode.open', Uri.parse(fnmInstallUrl));
         }
       });
-      return false;
-    } else if (nodeVersionManager === NodeVersionManagers.nvm || nodeVersionManager === NodeVersionManagers.nvs) {
-      let useNodeVersionOption: string = '';
+      return { canProceed: false };
+    } else if (nodeVersionManager === NodeVersionManagers.nvm || nodeVersionManager === NodeVersionManagers.nvs || nodeVersionManager === NodeVersionManagers.fnm) {
       const requiredNodeVersionToInstall = requiredNodeVersions.replace(/x/g, '0');
-
-      if (nodeVersionManager === NodeVersionManagers.nvm) {
-        useNodeVersionOption = `nvm install ${requiredNodeVersionToInstall} && nvm use ${requiredNodeVersionToInstall}`;
-      } else {
-        useNodeVersionOption = `nvs add ${requiredNodeVersionToInstall} && nvs use ${requiredNodeVersionToInstall}`;
-      }
+      const installVerb = nodeVersionManager === NodeVersionManagers.nvs ? 'add' : 'install';
+      const switchNodeVersionCommand = TerminalCommandExecuter.chainCommands(
+        `${nodeVersionManager} ${installVerb} ${requiredNodeVersionToInstall}`,
+        `${nodeVersionManager} use ${requiredNodeVersionToInstall}`
+      );
 
       const abortOption = 'I will handle it manually';
       const switchVersionButton = 'Switch to compatible Node.js version';
-      const output = Notifications.warning(
+      const selectedOption = await Notifications.warning(
         `Node.js ${currentNodeVersion} is incompatible with SPFx v${spfxVersion}. Need Node.js ${requiredNodeVersions} or higher.`,
         switchVersionButton,
         abortOption
-      ).then(async (selectedOption): Promise<boolean> => {
-        if (selectedOption === switchVersionButton) {
-          await TerminalCommandExecuter.runCommandAndWait(useNodeVersionOption, 'Switching Node.js version', 'cloud-download');
-          return true;
-        } else if (selectedOption === abortOption) {
-          return false;
-        }
-        return false;
-      });
-      return output as unknown as boolean;
+      );
+
+      if (selectedOption === switchVersionButton) {
+        return { canProceed: true, switchNodeVersionCommand };
+      }
+      return { canProceed: false };
     }
 
-    return false;
+    return { canProceed: false };
   }
 }

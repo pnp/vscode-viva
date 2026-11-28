@@ -110,7 +110,7 @@ It's possible to scaffold any kind of SPFx project.
 
 ![All SPFx project support](./docs/assets/images-vscode/scaffolding-support.png)
 
-Install additional dependencies with a single click straight from the scaffolding form. Currently we support installing [PnP reusable property pane controls](https://pnp.github.io/sp-dev-fx-property-controls/), [PnP reusable React controls](https://pnp.github.io/sp-dev-fx-controls-react/), [PnPjs](https://pnp.github.io/pnpjs/). Add a Node Version Manager configuration file either for NVM or NVS.
+Install additional dependencies with a single click straight from the scaffolding form. Currently we support installing [PnP reusable property pane controls](https://pnp.github.io/sp-dev-fx-property-controls/), [PnP reusable React controls](https://pnp.github.io/sp-dev-fx-controls-react/), [PnPjs](https://pnp.github.io/pnpjs/). Add a Node Version Manager configuration file either for NVM, NVS or FNM.
 
 ![Additional dependency step](./docs/assets/images-vscode/scaffolding-additional-step.png)
 
@@ -321,13 +321,15 @@ Check it out in action 👇
 
 ### 1️⃣2️⃣ Node.js Version Manager Support
 
-By default, the SharePoint Framework Toolkit will use the Node.js version that is installed on your machine. If you want to use a different version, you can use a Node.js Version Manager such as [nvm](https://github.com/nvm-sh/nvm) or [nvs](https://github.com/jasongin/nvs). The SharePoint Framework Toolkit will detect the preferred version of Node.js if a `.nvmrc` file is present in the root of your project, and will use that version for all the actions.
+By default, the SharePoint Framework Toolkit will use the Node.js version that is installed on your machine. If you want to use a different version, you can use a Node.js Version Manager such as [nvm](https://github.com/nvm-sh/nvm), [nvs](https://github.com/jasongin/nvs), or [fnm](https://github.com/Schniz/fnm). The SharePoint Framework Toolkit will detect the preferred version of Node.js if a `.nvmrc` or `.node-version` file is present in the root of your project, and will use that version for all the actions.
 
-It's possible to use the settings to change which Node.js version manager you want to use. You may choose between `nvm` and `nvs`. If you wish to avoid using a Node.js version manager, you can set the value to `none`
+It's possible to use the settings to change which Node.js version manager you want to use. You may choose between `nvm`, `nvs`, or `fnm`. If you wish to avoid using a Node.js version manager, you can set the value to `none`
+
+If you use `fnm`, make sure your shell profile is set up to run `fnm env` (see the [fnm shell setup guide](https://github.com/Schniz/fnm#shell-setup)) so that `fnm use` works in the terminals opened by the toolkit.
 
 ![Settings Node version manager](./docs/assets/images-vscode/settings-node-version-manager.png)
 
-Other than selecting the Node.js version manager you may also select which file should be used to store the Node.js version. By default, the extension will use `.nvmrc` file, but you may change it to `.node-version` if you are using `nvs`.
+Other than selecting the Node.js version manager you may also select which file should be used to store the Node.js version. By default, the extension will use `.nvmrc` file, but you may change it to `.node-version` if you are using `nvs` or `fnm`.
 
 ![Settings Node version file](./docs/assets/images-vscode/settings-node-version-manager-file.png)
 
